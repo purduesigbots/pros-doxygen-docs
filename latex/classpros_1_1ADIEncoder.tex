@@ -1,0 +1,81 @@
+\hypertarget{classpros_1_1ADIEncoder}{}\section{pros\+:\+:A\+D\+I\+Encoder Class Reference}
+\label{classpros_1_1ADIEncoder}\index{pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}}
+
+
+{\ttfamily \#include $<$adi.\+hpp$>$}
+
+Inheritance diagram for pros\+:\+:A\+D\+I\+Encoder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros_1_1ADIEncoder}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpros_1_1ADIEncoder_a927287940aedad3ea67f292908c623f7}{A\+D\+I\+Encoder} (std\+::uint8\+\_\+t port\+\_\+top, std\+::uint8\+\_\+t port\+\_\+bottom, bool reversed=false)
+\item 
+std\+::int32\+\_\+t \hyperlink{classpros_1_1ADIEncoder_a38a555946a841150b203f940b4b44cc8}{reset} (void) const
+\item 
+std\+::int32\+\_\+t \hyperlink{classpros_1_1ADIEncoder_acb4c087c7318028db25ae39dabb64700}{get\+\_\+value} (void) const
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpros_1_1ADIEncoder_a927287940aedad3ea67f292908c623f7}\label{classpros_1_1ADIEncoder_a927287940aedad3ea67f292908c623f7}} 
+\index{pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}!A\+D\+I\+Encoder@{A\+D\+I\+Encoder}}
+\index{A\+D\+I\+Encoder@{A\+D\+I\+Encoder}!pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}}
+\subsubsection{\texorpdfstring{A\+D\+I\+Encoder()}{ADIEncoder()}}
+{\footnotesize\ttfamily pros\+::\+A\+D\+I\+Encoder\+::\+A\+D\+I\+Encoder (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{port\+\_\+top,  }\item[{std\+::uint8\+\_\+t}]{port\+\_\+bottom,  }\item[{bool}]{reversed = {\ttfamily false} }\end{DoxyParamCaption})}
+
+Configures a set of A\+DI ports to act as an Encoder.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of A\+DI Ports.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+top} & The \char`\"{}top\char`\"{} wire from the encoder sensor with the removable cover side UP \\
+\hline
+{\em port\+\_\+bottom} & The \char`\"{}bottom\char`\"{} wire from the encoder sensor \\
+\hline
+{\em reverse} & If \char`\"{}true\char`\"{}, the sensor will count in the opposite direction \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpros_1_1ADIEncoder_acb4c087c7318028db25ae39dabb64700}\label{classpros_1_1ADIEncoder_acb4c087c7318028db25ae39dabb64700}} 
+\index{pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}!get\+\_\+value@{get\+\_\+value}}
+\index{get\+\_\+value@{get\+\_\+value}!pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}}
+\subsubsection{\texorpdfstring{get\+\_\+value()}{get\_value()}}
+{\footnotesize\ttfamily std\+::int32\+\_\+t pros\+::\+A\+D\+I\+Encoder\+::get\+\_\+value (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Gets the number of ticks recorded by the encoder.
+
+There are 360 ticks in one revolution.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port is not configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The signed and cumulative number of counts since the last start or reset 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1ADIEncoder_a38a555946a841150b203f940b4b44cc8}\label{classpros_1_1ADIEncoder_a38a555946a841150b203f940b4b44cc8}} 
+\index{pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}!reset@{reset}}
+\index{reset@{reset}!pros\+::\+A\+D\+I\+Encoder@{pros\+::\+A\+D\+I\+Encoder}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily std\+::int32\+\_\+t pros\+::\+A\+D\+I\+Encoder\+::reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+Sets the encoder value to zero.
+
+It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port is not configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pros/include/pros/\hyperlink{adi_8hpp}{adi.\+hpp}\end{DoxyCompactItemize}
