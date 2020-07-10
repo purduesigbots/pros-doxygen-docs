@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Build and Deploy
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -40,3 +40,9 @@ jobs:
       run: | 
           cd m.css/documentation
           ./doxygen.py /home/runner/work/pros-doxygen-docs/pros-doxygen-docs/Doxyfile-mcss
+    - name: Deploy 🚀
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: master # The branch the action should deploy to.
+        FOLDER: Output # The folder the action should deploy.
