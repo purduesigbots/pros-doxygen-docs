@@ -24,6 +24,8 @@ jobs:
       uses: BSFishy/pip-action@v1
       with:
         packages: jinja2 Pygments
+    - name: Install Doxygen
+      run: sudo apt-get install -y doxygen
     - name: Checkout
       uses: actions/checkout@v2.0.0
     - name: Checkout m.css
@@ -34,7 +36,7 @@ jobs:
       uses: Mushus/checkout-submodule@v1.0.1
       with:
         submodulePath: ./pros
-    - name: Move to m.css directory
+    - name: Generate Documentation
       run: | 
           cd m.css/documentation
           ./doxygen.py /home/runner/work/pros-doxygen-docs/pros-doxygen-docs/Doxyfile-mcss
