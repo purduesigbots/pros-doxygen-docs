@@ -1,4 +1,4 @@
-# PROS: Documentation Home
+# PROS: Documentation Home {#index}
 
 If this is your first time using PROS, it is recommended that you check out one of the **Getting Started** tutorials:
 
