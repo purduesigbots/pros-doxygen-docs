@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="classpros_1_1ADIGyro" kind="class" language="C++" prot="public">
+    <compoundname>pros::ADIGyro</compoundname>
+    <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">pros::ADIPort</basecompoundref>
+    <includes refid="adi_8hpp" local="no">adi.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpros_1_1ADIGyro_1adc826b3bcb88213a0df283178279662a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>pros::ADIGyro::ADIGyro</definition>
+        <argsstring>(std::uint8_t port, double multiplier=1)</argsstring>
+        <name>ADIGyro</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a gyroscope on the given port. If the given port has not previously been configured as a gyro, then this function starts a 1300ms calibration period.</para><para>It is highly recommended that an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object be created in <ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize()</ref> when the robot is stationary to ensure proper calibration. If an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object is declared at the global scope, a hardcoded 1300ms delay at the beginning of initialize will be necessary to ensure that the gyro&apos;s returned values are correct at the beginning of autonomous/opcontrol.</para><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port to initialize as a gyro (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar value that will be multiplied by the gyro heading value supplied by the ADI </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/adi.hpp" line="475" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIGyro_1a829f933aaaa370483c36aba9f4a4f09c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double pros::ADIGyro::get_value</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_value</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gets the current gyro angle in tenths of a degree. Unless a multiplier is applied to the gyro, the return value will be a whole number representing the number of degrees of rotation times 10.</para><para>There are 360 degrees in a circle, thus the gyro will return 3600 for one whole rotation.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</para><para><simplesect kind="return"><para>The gyro angle in degrees. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/adi.hpp" line="491" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIGyro_1a3e2df8c21f4eb0bfa3559834221195fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t pros::ADIGyro::reset</definition>
+        <argsstring>(void) const</argsstring>
+        <name>reset</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Resets the gyroscope value to zero.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</para><para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/adi.hpp" line="503" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="20">
+        <label>pros::ADIGyro</label>
+        <link refid="classpros_1_1ADIGyro"/>
+        <childnode refid="21" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>pros::ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="22">
+        <label>pros::ADIGyro</label>
+        <link refid="classpros_1_1ADIGyro"/>
+        <childnode refid="23" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>pros::ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+    </collaborationgraph>
+    <location file="pros/include/pros/adi.hpp" line="452" column="1" bodyfile="pros/include/pros/adi.hpp" bodystart="452" bodyend="504"/>
+    <listofallmembers>
+      <member refid="classpros_1_1ADIPort_1a75f3b6c1ae3c1f6b755e18444e7559d6" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>_port</name></member>
+      <member refid="classpros_1_1ADIGyro_1adc826b3bcb88213a0df283178279662a" prot="public" virt="non-virtual"><scope>pros::ADIGyro</scope><name>ADIGyro</name></member>
+      <member refid="classpros_1_1ADIPort_1ab6ef7710de366895859d770ffb1d8cf1" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>ADIPort</name></member>
+      <member refid="classpros_1_1ADIPort_1a7f44b44ce0528ea4c5ef83ed8465e72d" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>ADIPort</name></member>
+      <member refid="classpros_1_1ADIPort_1a1227bc815b12d2789cb78f6d3dcaf37b" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>get_config</name></member>
+      <member refid="classpros_1_1ADIGyro_1a829f933aaaa370483c36aba9f4a4f09c" prot="public" virt="non-virtual"><scope>pros::ADIGyro</scope><name>get_value</name></member>
+      <member refid="classpros_1_1ADIGyro_1a3e2df8c21f4eb0bfa3559834221195fe" prot="public" virt="non-virtual"><scope>pros::ADIGyro</scope><name>reset</name></member>
+      <member refid="classpros_1_1ADIPort_1abd86653eebbc34b863ace81839f7e40c" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>set_config</name></member>
+      <member refid="classpros_1_1ADIPort_1ae6711117fbceb3bb6e3602c4ef63aff1" prot="private" virt="non-virtual"><scope>pros::ADIGyro</scope><name>set_value</name></member>
+      <member refid="classpros_1_1ADIPort_1ae6a3753c05e008992e6eff5e8c927e46" prot="private" virt="virtual"><scope>pros::ADIGyro</scope><name>~ADIPort</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
