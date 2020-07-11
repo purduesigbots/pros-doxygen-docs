@@ -7,16 +7,10 @@ of the source files (prior to PROS kernel 3.2.0: `initialize.cpp`,
 `autonomous.cpp`, and `opcontrol.cpp`; after PROS kernel 3.2.0:
 `main.cpp`) to `.c`.
 
-\note Testing Notes
+\warning 
+  Do not change any of the PROS header files in this process. That will cause the wrong files to be
+  included in your project, and will likely prevent compilation. Only modify the extensions of the `.cpp` files.
 
-\warning Testing Warning
-
-> **warning**
->
-> Do not change any of the PROS header files in this process. That will cause the wrong files to be
-> :   included in your project, and will likely prevent compilation.
->     Only modify the extensions of the `.cpp` files.
->
 This will compile your PROS project as C code, and will give you access
 to the [C API](../../api/c/index.html).
 
