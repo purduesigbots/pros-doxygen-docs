@@ -4,7 +4,7 @@ PROS FAQ
 \note
   This document exists to answer questions about what PROS is and its
   general use. For more coding-specific help, visit
-  ../tutorials/general/coding-faq
+  [Coding FAQ](docs/tutorials/general/coding-faq.md)
 
 \warning
   This document is in progress, we will be adding content as we're 
