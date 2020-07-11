@@ -13,14 +13,13 @@ If you're not sure whether your distribution's package manager has the
 toolchain available, or if you prefer to install things manually, follow
 the instructions below.
 
-> **note**
->
-> For users of Debian-based distributions, be aware that the toolchain
-> available through Apt is out of date and likely will not work for PROS
-> projects. For Ubuntu users, you may see references online to a PPA by
-> team-gcc-arm-embedded, but that PPA does not seem to be updated any
-> more. Therefore, if you are using a Debian-based distribution or
-> Ubuntu, please follow the instructions below.
+\note
+    For users of Debian-based distributions, be aware that the toolchain
+    available through Apt is out of date and likely will not work for PROS
+    projects. For Ubuntu users, you may see references online to a PPA by
+    team-gcc-arm-embedded, but that PPA does not seem to be updated any
+    more. Therefore, if you are using a Debian-based distribution or
+    Ubuntu, please follow the instructions below.
 
 1.  Download the latest version of the toolchain from [the Arm developer
     site](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
