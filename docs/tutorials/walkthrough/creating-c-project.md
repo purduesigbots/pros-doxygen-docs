@@ -7,9 +7,9 @@ of the source files (prior to PROS kernel 3.2.0: `initialize.cpp`,
 `autonomous.cpp`, and `opcontrol.cpp`; after PROS kernel 3.2.0:
 `main.cpp`) to `.c`.
 
-| WARNING: be careful to baz the quux before initializing the retro encabulator! |
+\note Testing Notes
 
-> :warning: **If you are using mobile browser**: Be very careful here!
+\warning Testing Warning
 
 > **warning**
 >
