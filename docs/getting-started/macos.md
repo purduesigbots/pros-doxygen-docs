@@ -25,11 +25,10 @@ The recommended method of installing PROS 3 for macOS involves using
     CLI will also be installed). This may also take a while.
 5.  That's it! You can now start using PROS 3.
 
-> **note**
->
-> If you do not want to use the PROS Editor, and instead intend to use
-> only the PROS CLI, substitute the command in step 3 with the
-> following: brew install pros-cli.
+\note
+    If you do not want to use the PROS Editor, and instead intend to use
+    only the PROS CLI, substitute the command in step 3 with the
+    following: brew install pros-cli.
 
 Other Methods
 -------------
@@ -72,10 +71,9 @@ the components manually.
 
 ### Install the Editor
 
-> **note**
->
-> this section is optional if you intend to use an editor other than the
-> PROS Editor
+\note
+    this section is optional if you intend to use an editor other than the
+    PROS Editor
 
 1.  Build and install cquery by following the instructions on [their
     wiki
@@ -123,9 +121,8 @@ export LC_ALL="en_US.utf-8"
 
 /bin/sh: intercept-c++: command not found
 
-> **note**
->
-> This issue should be fixed for PROS CLI versions \> 3.1.2
+\note
+    This issue should be fixed for PROS CLI versions \> 3.1.2
 
 1.  Check your PROS CLI version by running prosv5 --version. If your
     version is \<= 3.1.2, try updating first to check if that solves

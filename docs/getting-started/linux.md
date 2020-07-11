@@ -45,11 +45,10 @@ the instructions below.
     not, make sure you don't have conflicting versions installed through
     a package manager.
 
-> **note**
->
-> After installing the toolchain using the instructions listed above,
-> upgrading to a newer version is as simple as removing the previous
-> install and following the instructions again with the newer version.
+\note
+    After installing the toolchain using the instructions listed above,
+    upgrading to a newer version is as simple as removing the previous
+    install and following the instructions again with the newer version.
 
 Installing the CLI
 ------------------
@@ -69,10 +68,9 @@ Installing the CLI
 Installing the Editor
 ---------------------
 
-> **note**
->
-> The following instructions are for installing Atom and cquery. If you
-> intend to use an editor other than Atom, this section is optional.
+\note
+    The following instructions are for installing Atom and cquery. If you
+    intend to use an editor other than Atom, this section is optional.
 
 1.  Follow the instructions
     [here](https://github.com/cquery-project/cquery/wiki/Building-cquery)
@@ -82,7 +80,6 @@ Installing the Editor
 4.  Open Atom and wait for any plugins to finish installing.
 5.  Happy coding!
 
-> **note**
->
-> If Atom seems to get stuck during step 4, restart Atom every few
-> minutes.
+\note
+    If Atom seems to get stuck during step 4, restart Atom every few
+    minutes.
