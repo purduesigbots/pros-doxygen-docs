@@ -11,8 +11,6 @@
 \item 
 virtual std\+::int32\+\_\+t \hyperlink{classpros_1_1Imu_ad7973cfad5f8f83e7007342055197c43}{reset} () const
 \item 
-virtual std\+::int32\+\_\+t \hyperlink{classpros_1_1Imu_adb0b63f2de5f41b664fff4a60a808ba5}{set\+\_\+data\+\_\+rate} (std\+::uint32\+\_\+t rate) const
-\item 
 virtual double \hyperlink{classpros_1_1Imu_ac8bd7a19a6b4fc0c207a895efd3f0b48}{get\+\_\+rotation} () const
 \item 
 virtual double \hyperlink{classpros_1_1Imu_a35c7953c5def3c034763af25c4dbebe3}{get\+\_\+heading} () const
@@ -254,26 +252,9 @@ This takes approximately 2 seconds, and is a non-\/blocking operation.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is already calibrating
 
-\begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_adb0b63f2de5f41b664fff4a60a808ba5}\label{classpros_1_1Imu_adb0b63f2de5f41b664fff4a60a808ba5}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!set\+\_\+data\+\_\+rate@{set\+\_\+data\+\_\+rate}}
-\index{set\+\_\+data\+\_\+rate@{set\+\_\+data\+\_\+rate}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{set\+\_\+data\+\_\+rate()}{set\_data\_rate()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Imu\+::set\+\_\+data\+\_\+rate (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{rate }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-Set the Inertial Sensor\textquotesingle{}s refresh interval in milliseconds.
-
-The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.
-
-As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor\textquotesingle{}s values any faster. However, it will guarantee that the data is as recent as possible.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
 
 \begin{DoxyParams}{Parameters}
-{\em rate} & The data refresh interval in milliseconds \\
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

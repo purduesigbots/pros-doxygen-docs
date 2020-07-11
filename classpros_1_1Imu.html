@@ -93,10 +93,6 @@ Cortex</span></a>
             </dt>
             <dd></dd>
             <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#adb0b63f2de5f41b664fff4a60a808ba5" class="m-doc">set_data_rate</a>(</span><span class="m-doc-wrap">std::uint32_t rate) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
-            </dt>
-            <dd></dd>
-            <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#ac8bd7a19a6b4fc0c207a895efd3f0b48" class="m-doc">get_rotation</a>(</span><span class="m-doc-wrap">) const -&gt; double <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd></dd>
@@ -157,29 +153,6 @@ Cortex</span></a>
               </tfoot>
             </table>
 <p>Calibrate IMU</p><p>This takes approximately 2 seconds, and is a non-blocking operation.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is already calibrating</p>
-          </div></section>
-          <section class="m-doc-details" id="adb0b63f2de5f41b664fff4a60a808ba5"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Imu::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adb0b63f2de5f41b664fff4a60a808ba5" class="m-doc-self">set_data_rate</a>(</span><span class="m-doc-wrap">std::uint32_t rate) const <span class="m-label m-warning">virtual</span></span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">rate</td>
-                  <td>The data refresh interval in milliseconds</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Set the Inertial Sensor&#x27;s refresh interval in milliseconds.</p><p>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</p><p>As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor&#x27;s values any faster. However, it will guarantee that the data is as recent as possible.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
           </div></section>
           <section class="m-doc-details" id="ac8bd7a19a6b4fc0c207a895efd3f0b48"><div>
             <h3>

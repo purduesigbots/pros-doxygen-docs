@@ -73,7 +73,6 @@ Cortex</span></a>
                 <li><a href="#typedef-members">Typedefs</a></li>
                 <li><a href="#func-members">Functions</a></li>
                 <li><a href="#var-members">Variables</a></li>
-                <li><a href="#define-members">Defines</a></li>
               </ul>
             </li>
           </ul>
@@ -124,11 +123,6 @@ Cortex</span></a>
             <dd></dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#ac337b759e9a31606de5a3dd29c2183a0" class="m-doc">imu_reset</a>(</span><span class="m-doc-wrap">uint8_t port) -&gt; int32_t</span>
-            </dt>
-            <dd></dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#abe5420ec27a4441123e6db20ef0b342c" class="m-doc">imu_set_data_rate</a>(</span><span class="m-doc-wrap">uint8_t port,
-              uint32_t rate) -&gt; int32_t</span>
             </dt>
             <dd></dd>
             <dt>
@@ -186,15 +180,6 @@ Cortex</span></a>
             <dd><span></span></dd>
           </dl>
         </section>
-        <section id="define-members">
-          <h2><a href="#define-members">Defines</a></h2>
-          <dl class="m-doc">
-            <dt id="a25e3767f95baf952241c93391c939702">
-              <span class="m-doc-wrap-bumper">#define <a href="#a25e3767f95baf952241c93391c939702" class="m-doc-self">IMU_MINIMUM_DATA_RATE</a></span>
-            </dt>
-            <dd><span></span></dd>
-          </dl>
-        </section>
         <section>
           <h2>Function documentation</h2>
           <section class="m-doc-details" id="a1befded5164e4754bf64b55078704b43"><div>
@@ -225,34 +210,6 @@ Cortex</span></a>
               </tfoot>
             </table>
 <p>Calibrate IMU</p><p>This takes approximately 2 seconds, and is a non-blocking operation.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is already calibrating</p>
-          </div></section>
-          <section class="m-doc-details" id="abe5420ec27a4441123e6db20ef0b342c"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abe5420ec27a4441123e6db20ef0b342c" class="m-doc-self">imu_set_data_rate</a>(</span><span class="m-doc-wrap">uint8_t port,
-              uint32_t rate)</span></span>
-            </h3>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">port</td>
-                  <td>The V5 Inertial Sensor port number from 1-21</td>
-                </tr>
-                <tr>
-                  <td>rate</td>
-                  <td>The data refresh interval in milliseconds</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Set the Inertial Sensor&#x27;s refresh interval in milliseconds.</p><p>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</p><p>As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor&#x27;s values any faster. However, it will guarantee that the data is as recent as possible.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
           </div></section>
           <section class="m-doc-details" id="a204ed360524681aae9aa2bebd0689c90"><div>
             <h3>
