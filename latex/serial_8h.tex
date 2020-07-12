@@ -1,34 +1,39 @@
 \hypertarget{serial_8h}{}\section{pros/include/pros/serial.h File Reference}
 \label{serial_8h}\index{pros/include/pros/serial.\+h@{pros/include/pros/serial.\+h}}
+
+
+Contains prototypes for the V5 Generic Serial related functions.  
+
+
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int32\+\_\+t \hyperlink{serial_8h_a7003d387555b2709a79b753f6a595fd5}{serial\+\_\+enable} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Serial communication functions. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_a707d648b58b1132bf09e5b0a7a2f4eaf}{serial\+\_\+set\+\_\+baudrate} (uint8\+\_\+t port, int32\+\_\+t baudrate)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the baudrate for the serial port to operate at. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_ade596fb148f39a8834bce07d61ac8bb8}{serial\+\_\+flush} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Clears the internal input and output F\+I\+FO buffers. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_a3f64d958702a6966caae29407f386fa1}{serial\+\_\+get\+\_\+read\+\_\+avail} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the number of bytes available to be read in the the port\textquotesingle{}s F\+I\+FO input buffer. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_ab6ae2634ec1ca6bc718f2698e5226d91}{serial\+\_\+get\+\_\+write\+\_\+free} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the number of bytes free in the port\textquotesingle{}s F\+I\+FO output buffer. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_ab09668cac5100defe31f0a6f96288f62}{serial\+\_\+peek\+\_\+byte} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Reads the next byte avaliable in the port\textquotesingle{}s input buffer without removing it. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_ad1042af5284196938b0c7fc5089b6760}{serial\+\_\+read\+\_\+byte} (uint8\+\_\+t port)
-\item 
+\begin{DoxyCompactList}\small\item\em Reads the next byte avaliable in the port\textquotesingle{}s input buffer. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_a18a0a6fc1a46ef1543b4bc9258cf7d2e}{serial\+\_\+read} (uint8\+\_\+t port, uint8\+\_\+t $\ast$buffer, int32\+\_\+t length)
-\item 
+\begin{DoxyCompactList}\small\item\em Reads up to the next length bytes from the port\textquotesingle{}s input buffer and places them in the user supplied buffer. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_a4236649b58a9c30acc0e6e2eb90e0909}{serial\+\_\+write\+\_\+byte} (uint8\+\_\+t port, uint8\+\_\+t buffer)
-\item 
+\begin{DoxyCompactList}\small\item\em Write the given byte to the port\textquotesingle{}s output buffer. \end{DoxyCompactList}\item 
 int32\+\_\+t \hyperlink{serial_8h_aa44da0430efe50d5a5578aa28287f32b}{serial\+\_\+write} (uint8\+\_\+t port, uint8\+\_\+t $\ast$buffer, int32\+\_\+t length)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Writes up to length bytes from the user supplied buffer to the port\textquotesingle{}s output buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Contains prototypes for the V5 Generic Serial related functions.
+Contains prototypes for the V5 Generic Serial related functions. 
 
 Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/serial.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/serial.\+html} to learn more.
 
@@ -45,7 +50,11 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \subsubsection{\texorpdfstring{serial\+\_\+enable()}{serial\_enable()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+enable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Serial communication functions These functions allow programmers to communicate using U\+A\+RT over R\+S485 Enables generic serial on the given port.
+
+
+Serial communication functions. 
+
+These functions allow programmers to communicate using U\+A\+RT over R\+S485 Enables generic serial on the given port.
 
 \begin{DoxyNote}{Note}
 This function must be called before any of the generic serial functions will work.
@@ -66,7 +75,9 @@ This function uses the following values of errno when an error state is reached\
 \subsubsection{\texorpdfstring{serial\+\_\+flush()}{serial\_flush()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+flush (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Clears the internal input and output F\+I\+FO buffers.
+
+
+Clears the internal input and output F\+I\+FO buffers. 
 
 This can be useful to reset state and remove old, potentially unneeded data from the input F\+I\+FO buffer or to cancel sending any data in the output F\+I\+FO buffer.
 
@@ -89,7 +100,9 @@ This function uses the following values of errno when an error state is reached\
 \subsubsection{\texorpdfstring{serial\+\_\+get\+\_\+read\+\_\+avail()}{serial\_get\_read\_avail()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+get\+\_\+read\+\_\+avail (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Returns the number of bytes available to be read in the the port\textquotesingle{}s F\+I\+FO input buffer.
+
+
+Returns the number of bytes available to be read in the the port\textquotesingle{}s F\+I\+FO input buffer. 
 
 \begin{DoxyNote}{Note}
 This function does not actually read any bytes, is simply returns the number of bytes available to be read.
@@ -110,7 +123,9 @@ The number of bytes avaliable to be read or P\+R\+O\+S\+\_\+\+E\+RR if the opera
 \subsubsection{\texorpdfstring{serial\+\_\+get\+\_\+write\+\_\+free()}{serial\_get\_write\_free()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+get\+\_\+write\+\_\+free (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Returns the number of bytes free in the port\textquotesingle{}s F\+I\+FO output buffer.
+
+
+Returns the number of bytes free in the port\textquotesingle{}s F\+I\+FO output buffer. 
 
 \begin{DoxyNote}{Note}
 This function does not actually write any bytes, is simply returns the number of bytes free in the port\textquotesingle{}s buffer.
@@ -131,7 +146,9 @@ The number of bytes free or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, set
 \subsubsection{\texorpdfstring{serial\+\_\+peek\+\_\+byte()}{serial\_peek\_byte()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+peek\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Reads the next byte avaliable in the port\textquotesingle{}s input buffer without removing it.
+
+
+Reads the next byte avaliable in the port\textquotesingle{}s input buffer without removing it. 
 
 This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
 
@@ -149,7 +166,9 @@ The next byte avaliable to be read, -\/1 if none are available, or P\+R\+O\+S\+\
 \subsubsection{\texorpdfstring{serial\+\_\+read()}{serial\_read()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+read (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{int32\+\_\+t}]{length }\end{DoxyParamCaption})}
 
-Reads up to the next length bytes from the port\textquotesingle{}s input buffer and places them in the user supplied buffer.
+
+
+Reads up to the next length bytes from the port\textquotesingle{}s input buffer and places them in the user supplied buffer. 
 
 \begin{DoxyNote}{Note}
 This function will only return bytes that are currently avaliable to be read and will not block waiting for any to arrive.
@@ -174,7 +193,9 @@ The number of bytes read or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, set
 \subsubsection{\texorpdfstring{serial\+\_\+read\+\_\+byte()}{serial\_read\_byte()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
 
-Reads the next byte avaliable in the port\textquotesingle{}s input buffer.
+
+
+Reads the next byte avaliable in the port\textquotesingle{}s input buffer. 
 
 This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
 
@@ -192,7 +213,9 @@ The next byte avaliable to be read, -\/1 if none are available, or P\+R\+O\+S\+\
 \subsubsection{\texorpdfstring{serial\+\_\+set\+\_\+baudrate()}{serial\_set\_baudrate()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+set\+\_\+baudrate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{int32\+\_\+t}]{baudrate }\end{DoxyParamCaption})}
 
-Sets the baudrate for the serial port to operate at.
+
+
+Sets the baudrate for the serial port to operate at. 
 
 This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
 
@@ -212,7 +235,9 @@ This function uses the following values of errno when an error state is reached\
 \subsubsection{\texorpdfstring{serial\+\_\+write()}{serial\_write()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t $\ast$}]{buffer,  }\item[{int32\+\_\+t}]{length }\end{DoxyParamCaption})}
 
-Writes up to length bytes from the user supplied buffer to the port\textquotesingle{}s output buffer.
+
+
+Writes up to length bytes from the user supplied buffer to the port\textquotesingle{}s output buffer. 
 
 \begin{DoxyNote}{Note}
 Data in the port\textquotesingle{}s output buffer is written to the serial port as soon as possible on a F\+I\+FO basis and can not be done manually by the user.
@@ -237,7 +262,9 @@ The number of bytes written or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, 
 \subsubsection{\texorpdfstring{serial\+\_\+write\+\_\+byte()}{serial\_write\_byte()}}
 {\footnotesize\ttfamily int32\+\_\+t serial\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{buffer }\end{DoxyParamCaption})}
 
-Write the given byte to the port\textquotesingle{}s output buffer.
+
+
+Write the given byte to the port\textquotesingle{}s output buffer. 
 
 \begin{DoxyNote}{Note}
 Data in the port\textquotesingle{}s output buffer is written to the serial port as soon as possible on a F\+I\+FO basis and can not be done manually by the user.

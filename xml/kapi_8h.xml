@@ -302,9 +302,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Suspends the scheduler without disabling interrupts. </para>        </briefdescription>
         <detaileddescription>
-<para>Suspends the scheduler without disabling interrupts. context switches will not occur while the scheduler is suspended. RTOS ticks that occur while the scheduler is suspended will be held pending until the scheduler has been unsuspended with <ref refid="kapi_8h_1a1db72fd4961113c9255cce71d169cbfa" kindref="member">rtos_resume_all()</ref></para><para>When used correctly, this function ensures that operations occur atomically w.r.t. multitasking. Functions like task_delay, queue_send, and other functions MUST NOT be called while the scheduler is disabled. </para>        </detaileddescription>
+<para>context switches will not occur while the scheduler is suspended. RTOS ticks that occur while the scheduler is suspended will be held pending until the scheduler has been unsuspended with <ref refid="kapi_8h_1a1db72fd4961113c9255cce71d169cbfa" kindref="member">rtos_resume_all()</ref></para><para>When used correctly, this function ensures that operations occur atomically w.r.t. multitasking. Functions like task_delay, queue_send, and other functions MUST NOT be called while the scheduler is disabled. </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="pros/include/kapi.h" line="66" column="1"/>
@@ -318,9 +318,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Resumes the scheduler. </para>        </briefdescription>
         <detaileddescription>
-<para>Resumes the scheduler. It does not resume unsuspended tasks that were previously suspended by task_suspend.</para><para>if(rtos_resume_all()) { task_delay(0); // force context switch } <simplesect kind="return"><para>True if a context switch is necessary. </para></simplesect>
+<para>It does not resume unsuspended tasks that were previously suspended by task_suspend.</para><para>if(rtos_resume_all()) { task_delay(0); // force context switch } <simplesect kind="return"><para>True if a context switch is necessary. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -360,9 +360,9 @@
           <declname>task_buffer</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Creates a task using statically allocated buffers. </para>        </briefdescription>
         <detaileddescription>
-<para>Creates a task using statically allocated buffers. All tasks used by the PROS system must use statically allocated buffers. This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</para><para><parameterlist kind="param"><parameteritem>
+<para>All tasks used by the PROS system must use statically allocated buffers. This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>function</parametername>
 </parameternamelist>
@@ -414,9 +414,9 @@
           <declname>mutex_buffer</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Creates a statically allocated mutex. </para>        </briefdescription>
         <detaileddescription>
-<para>Creates a statically allocated mutex.</para><para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
+<para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="out">mutex_buffer</parametername>
 </parameternamelist>
@@ -448,9 +448,9 @@
           <declname>semaphore_buffer</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Creates a statically allocated semaphore. </para>        </briefdescription>
         <detaileddescription>
-<para>Creates a statically allocated semaphore.</para><para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
+<para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>max_count</parametername>
 </parameternamelist>
@@ -500,9 +500,9 @@
           <declname>queue_buffer</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Creates a statically allocated queue. </para>        </briefdescription>
         <detaileddescription>
-<para>Creates a statically allocated queue.</para><para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
+<para>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>length</parametername>
 </parameternamelist>
@@ -547,9 +547,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Display a non-fatal error to the built-in LCD/touch screen. </para>        </briefdescription>
         <detaileddescription>
-<para>Display a non-fatal error to the built-in LCD/touch screen.</para><para>Note that this function is thread-safe, which requires that the scheduler be in a functioning state. For situations in which it is unclear whether the scheduler is working, use <computeroutput>display_fatal_error</computeroutput> instead.</para><para><parameterlist kind="param"><parameteritem>
+<para>Note that this function is thread-safe, which requires that the scheduler be in a functioning state. For situations in which it is unclear whether the scheduler is working, use <computeroutput>display_fatal_error</computeroutput> instead.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">text</parametername>
 </parameternamelist>
@@ -572,9 +572,9 @@
           <declname>text</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Display a fatal error to the built-in LCD/touch screen. </para>        </briefdescription>
         <detaileddescription>
-<para>Display a fatal error to the built-in LCD/touch screen.</para><para>This function is intended to be used when the integrity of the RTOS cannot be trusted. No thread-safety mechanisms are used and this function only relies on the use of the libv5rts.</para><para><parameterlist kind="param"><parameteritem>
+<para>This function is intended to be used when the integrity of the RTOS cannot be trusted. No thread-safety mechanisms are used and this function only relies on the use of the libv5rts.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">text</parametername>
 </parameternamelist>
@@ -601,9 +601,9 @@
           <declname>len</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Prints hex characters to the terminal. </para>        </briefdescription>
         <detaileddescription>
-<para>Prints hex characters to the terminal.</para><para><parameterlist kind="param"><parameteritem>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername direction="in">s</parametername>
 </parameternamelist>
@@ -638,9 +638,9 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Kernel API header. </para>    </briefdescription>
     <detaileddescription>
-<para>Kernel API header</para><para>Contains additional declarations for use internally within kernel development. This file includes the FreeRTOS header, which allows for creation of statically allocated FreeRTOS primitives like tasks, semaphores, and queues.</para><para>Copyright (c) 2017-2020, Purdue University ACM SIGBots. All rights reserved.</para><para>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>    </detaileddescription>
+<para>Contains additional declarations for use internally within kernel development. This file includes the FreeRTOS header, which allows for creation of statically allocated FreeRTOS primitives like tasks, semaphores, and queues.</para><para>Copyright (c) 2017-2020, Purdue University ACM SIGBots. All rights reserved.</para><para>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>    </detaileddescription>
     <location file="pros/include/kapi.h"/>
   </compounddef>
 </doxygen>

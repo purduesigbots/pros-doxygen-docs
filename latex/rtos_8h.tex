@@ -1,5 +1,10 @@
 \hypertarget{rtos_8h}{}\section{pros/include/pros/rtos.h File Reference}
 \label{rtos_8h}\index{pros/include/pros/rtos.\+h@{pros/include/pros/rtos.\+h}}
+
+
+Contains declarations for the P\+R\+OS R\+T\+OS kernel for use by typical V\+EX programmers.  
+
+
 {\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 \subsection*{Macros}
@@ -20,7 +25,7 @@
 \#define \hyperlink{rtos_8h_a9146d5b264ff64b573607d62fc479c3f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+M\+AX}~((uint32\+\_\+t)0xffffffff\+U\+L)
 \item 
 \#define \hyperlink{rtos_8h_ad028cb03c935557184a71a6c53915065}{C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK}~((\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t})N\+U\+LL)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Refers to the current task handle. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -56,53 +61,53 @@ enum \hyperlink{rtos_8h_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\
 \begin{DoxyCompactItemize}
 \item 
 uint32\+\_\+t \hyperlink{rtos_8h_acd8d13c328bebdf9eddea27ff9448c2d}{millis} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the number of milliseconds since P\+R\+OS initialized. \end{DoxyCompactList}\item 
 \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} \hyperlink{rtos_8h_a2e3ed8f26b8c1edcff493bc583f0a76a}{task\+\_\+create} (\hyperlink{rtos_8h_aece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t} function, void $\ast$const parameters, uint32\+\_\+t prio, const uint16\+\_\+t stack\+\_\+depth, const char $\ast$const name)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a new task and add it to the list of tasks that are ready to run. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_acf328f16126485ade810e438db996180}{task\+\_\+delete} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_a3658dea4dcc916f72d05bd6a05bf3d19}{task\+\_\+delay} (const uint32\+\_\+t milliseconds)
-\item 
+\begin{DoxyCompactList}\small\item\em Delays a task for a given number of milliseconds. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_ab8c5a8048d5576a33d7f79b95a2fa0dd}{delay} (const uint32\+\_\+t milliseconds)
 \item 
 void \hyperlink{rtos_8h_a61c8ccf83a0dc79fc0e9fde5e87a0329}{task\+\_\+delay\+\_\+until} (uint32\+\_\+t $\ast$const prev\+\_\+time, const uint32\+\_\+t delta)
-\item 
+\begin{DoxyCompactList}\small\item\em Delays a task until a specified time. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{rtos_8h_a8d6d1ffc897a069346a6a1ee5d3acf87}{task\+\_\+get\+\_\+priority} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the priority of the specified task. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_aa906731a0dbda5c2382ca7e3cc32cc97}{task\+\_\+set\+\_\+priority} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task, uint32\+\_\+t prio)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the priority of the specified task. \end{DoxyCompactList}\item 
 \hyperlink{rtos_8h_a23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t} \hyperlink{rtos_8h_a5d094df87681d230ebffa2cee23d6f07}{task\+\_\+get\+\_\+state} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the state of the specified task. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_a50ab98e83c207eaab4c2b9eb56d9ba0c}{task\+\_\+suspend} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Suspends the specified task, making it ineligible to be scheduled. \end{DoxyCompactList}\item 
 void \hyperlink{rtos_8h_a58bdeeedfe2d98fa57721bb7dad16fee}{task\+\_\+resume} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Resumes the specified task, making it eligible to be scheduled. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{rtos_8h_a7c182e8b87526eb0e4b6ec5a4c858b4e}{task\+\_\+get\+\_\+count} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. \end{DoxyCompactList}\item 
 char $\ast$ \hyperlink{rtos_8h_a81e2f8aab432c811c9e4c0028d99b284}{task\+\_\+get\+\_\+name} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets the name of the specified task. \end{DoxyCompactList}\item 
 \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} \hyperlink{rtos_8h_aad54400367541c9cf7f4eaaec235a9e9}{task\+\_\+get\+\_\+by\+\_\+name} (const char $\ast$name)
-\item 
+\begin{DoxyCompactList}\small\item\em Gets a task handle from the specified name. \end{DoxyCompactList}\item 
 \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} \hyperlink{rtos_8h_ad8c64e24feaa08391eb61b62ea2cdbd5}{task\+\_\+get\+\_\+current} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the currently running task handle. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{rtos_8h_a19e1a0a068f9d5e8493065f6b7944a63}{task\+\_\+notify} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Sends a simple notification to task and increments the notification counter. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{rtos_8h_a81b5dad7acaef5dd60486ab85af5d54b}{task\+\_\+notify\+\_\+ext} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task, uint32\+\_\+t value, \hyperlink{rtos_8h_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t} action, uint32\+\_\+t $\ast$prev\+\_\+value)
-\item 
+\begin{DoxyCompactList}\small\item\em Sends a notification to a task, optionally performing some action. \end{DoxyCompactList}\item 
 uint32\+\_\+t \hyperlink{rtos_8h_aabfb0111c671a56176bc83bb1437635b}{task\+\_\+notify\+\_\+take} (bool clear\+\_\+on\+\_\+exit, uint32\+\_\+t timeout)
-\item 
+\begin{DoxyCompactList}\small\item\em Waits for a notification to be nonzero. \end{DoxyCompactList}\item 
 bool \hyperlink{rtos_8h_ae8697be0d552a81063536c88c0358f38}{task\+\_\+notify\+\_\+clear} (\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task)
-\item 
+\begin{DoxyCompactList}\small\item\em Clears the notification for a task. \end{DoxyCompactList}\item 
 \hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t} \hyperlink{rtos_8h_a475d096afa3abcc9a276ca9fa54bafdf}{mutex\+\_\+create} (void)
-\item 
+\begin{DoxyCompactList}\small\item\em Creates a mutex. \end{DoxyCompactList}\item 
 bool \hyperlink{rtos_8h_a14452e92345bc1bab69e27f35c38e0f9}{mutex\+\_\+take} (\hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t} mutex, uint32\+\_\+t timeout)
-\item 
+\begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. \end{DoxyCompactList}\item 
 bool \hyperlink{rtos_8h_a600f042859f15dee6c34b236670ac3d9}{mutex\+\_\+give} (\hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t} mutex)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Unlocks a mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-Contains declarations for the P\+R\+OS R\+T\+OS kernel for use by typical V\+EX programmers.
+Contains declarations for the P\+R\+OS R\+T\+OS kernel for use by typical V\+EX programmers. 
 
 Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html} to learn more.
 
@@ -119,7 +124,11 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \subsubsection{\texorpdfstring{C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK}{CURRENT\_TASK}}
 {\footnotesize\ttfamily \#define C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK~((\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t})N\+U\+LL)}
 
-Refers to the current task handle \mbox{\Hypertarget{rtos_8h_a6d22565b4bdfe36c8f8a0a376e565460}\label{rtos_8h_a6d22565b4bdfe36c8f8a0a376e565460}} 
+
+
+Refers to the current task handle. 
+
+\mbox{\Hypertarget{rtos_8h_a6d22565b4bdfe36c8f8a0a376e565460}\label{rtos_8h_a6d22565b4bdfe36c8f8a0a376e565460}} 
 \index{rtos.\+h@{rtos.\+h}!T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN@{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN}}
 \index{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN@{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN}!rtos.\+h@{rtos.\+h}}
 \subsubsection{\texorpdfstring{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN}{TASK\_NAME\_MAX\_LEN}}
@@ -260,7 +269,9 @@ E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID&\\
 \subsubsection{\texorpdfstring{millis()}{millis()}}
 {\footnotesize\ttfamily uint32\+\_\+t millis (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Gets the number of milliseconds since P\+R\+OS initialized.
+
+
+Gets the number of milliseconds since P\+R\+OS initialized. 
 
 \begin{DoxyReturn}{Returns}
 The number of milliseconds since P\+R\+OS initialized 
@@ -271,7 +282,9 @@ The number of milliseconds since P\+R\+OS initialized
 \subsubsection{\texorpdfstring{mutex\+\_\+create()}{mutex\_create()}}
 {\footnotesize\ttfamily \hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t} mutex\+\_\+create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Creates a mutex.
+
+
+Creates a mutex. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes} for details.
 
@@ -284,7 +297,9 @@ A handle to a newly created mutex. If an error occurred, N\+U\+LL will be return
 \subsubsection{\texorpdfstring{mutex\+\_\+give()}{mutex\_give()}}
 {\footnotesize\ttfamily bool mutex\+\_\+give (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}]{mutex }\end{DoxyParamCaption})}
 
-Unlocks a mutex.
+
+
+Unlocks a mutex. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes} for details.
 
@@ -302,7 +317,9 @@ True if the mutex was successfully returned, false otherwise. If false is return
 \subsubsection{\texorpdfstring{mutex\+\_\+take()}{mutex\_take()}}
 {\footnotesize\ttfamily bool mutex\+\_\+take (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_ab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}]{mutex,  }\item[{uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
 
-Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out.
+
+
+Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes} for details.
 
@@ -322,7 +339,9 @@ True if the mutex was successfully taken, false otherwise. If false is returned,
 \subsubsection{\texorpdfstring{task\+\_\+create()}{task\_create()}}
 {\footnotesize\ttfamily \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task\+\_\+create (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_aece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t}}]{function,  }\item[{void $\ast$const}]{parameters,  }\item[{uint32\+\_\+t}]{prio,  }\item[{const uint16\+\_\+t}]{stack\+\_\+depth,  }\item[{const char $\ast$const}]{name }\end{DoxyParamCaption})}
 
-Creates a new task and add it to the list of tasks that are ready to run.
+
+
+Creates a new task and add it to the list of tasks that are ready to run. 
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+M\+EM -\/ The stack cannot be used as the T\+CB was not created.
 
@@ -348,7 +367,9 @@ A handle by which the newly created task can be referenced. If an error occurred
 \subsubsection{\texorpdfstring{task\+\_\+delay()}{task\_delay()}}
 {\footnotesize\ttfamily void task\+\_\+delay (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{milliseconds }\end{DoxyParamCaption})}
 
-Delays a task for a given number of milliseconds.
+
+
+Delays a task for a given number of milliseconds. 
 
 This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use \hyperlink{rtos_8h_a61c8ccf83a0dc79fc0e9fde5e87a0329}{task\+\_\+delay\+\_\+until()}.
 
@@ -363,7 +384,11 @@ This is not the best method to have a task execute code at predefined intervals,
 \subsubsection{\texorpdfstring{task\+\_\+delay\+\_\+until()}{task\_delay\_until()}}
 {\footnotesize\ttfamily void task\+\_\+delay\+\_\+until (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$const}]{prev\+\_\+time,  }\item[{const uint32\+\_\+t}]{delta }\end{DoxyParamCaption})}
 
-Delays a task until a specified time. This function can be used by periodic tasks to ensure a constant execution frequency.
+
+
+Delays a task until a specified time. 
+
+This function can be used by periodic tasks to ensure a constant execution frequency.
 
 The task will be woken up at the time $\ast$prev\+\_\+time + delta, and $\ast$prev\+\_\+time will be updated to reflect the time at which the task will unblock.
 
@@ -380,7 +405,11 @@ The task will be woken up at the time $\ast$prev\+\_\+time + delta, and $\ast$pr
 \subsubsection{\texorpdfstring{task\+\_\+delete()}{task\_delete()}}
 {\footnotesize\ttfamily void task\+\_\+delete (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. The task being deleted will be removed from all ready, blocked, suspended and event lists.
+
+
+Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. 
+
+The task being deleted will be removed from all ready, blocked, suspended and event lists.
 
 Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.
 
@@ -395,7 +424,9 @@ Memory dynamically allocated by the task is not automatically freed, and should 
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+by\+\_\+name()}{task\_get\_by\_name()}}
 {\footnotesize\ttfamily \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task\+\_\+get\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
 
-Gets a task handle from the specified name
+
+
+Gets a task handle from the specified name. 
 
 The operation takes a relatively long time and should be used sparingly.
 
@@ -413,7 +444,11 @@ A task handle with a matching name, or N\+U\+LL if none were found.
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+count()}{task\_get\_count()}}
 {\footnotesize\ttfamily uint32\+\_\+t task\+\_\+get\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.
+
+
+Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. 
+
+A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.
 
 \begin{DoxyReturn}{Returns}
 The number of tasks that are currently being managed by the kernel. 
@@ -424,7 +459,11 @@ The number of tasks that are currently being managed by the kernel.
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+current()}{task\_get\_current()}}
 {\footnotesize\ttfamily \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} task\+\_\+get\+\_\+current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Get the currently running task handle. This could be useful if a task wants to tell another task about itself.
+
+
+Get the currently running task handle. 
+
+This could be useful if a task wants to tell another task about itself.
 
 \begin{DoxyReturn}{Returns}
 The currently running task handle. 
@@ -435,7 +474,9 @@ The currently running task handle.
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+name()}{task\_get\_name()}}
 {\footnotesize\ttfamily char$\ast$ task\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Gets the name of the specified task.
+
+
+Gets the name of the specified task. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -451,7 +492,9 @@ A pointer to the name of the task
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+priority()}{task\_get\_priority()}}
 {\footnotesize\ttfamily uint32\+\_\+t task\+\_\+get\+\_\+priority (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Gets the priority of the specified task.
+
+
+Gets the priority of the specified task. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -467,7 +510,9 @@ The priority of the task
 \subsubsection{\texorpdfstring{task\+\_\+get\+\_\+state()}{task\_get\_state()}}
 {\footnotesize\ttfamily \hyperlink{rtos_8h_a23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t} task\+\_\+get\+\_\+state (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Gets the state of the specified task.
+
+
+Gets the state of the specified task. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -483,7 +528,9 @@ The state of the task
 \subsubsection{\texorpdfstring{task\+\_\+notify()}{task\_notify()}}
 {\footnotesize\ttfamily uint32\+\_\+t task\+\_\+notify (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Sends a simple notification to task and increments the notification counter.
+
+
+Sends a simple notification to task and increments the notification counter. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
 
@@ -501,7 +548,9 @@ Always returns true.
 \subsubsection{\texorpdfstring{task\+\_\+notify\+\_\+clear()}{task\_notify\_clear()}}
 {\footnotesize\ttfamily bool task\+\_\+notify\+\_\+clear (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Clears the notification for a task.
+
+
+Clears the notification for a task. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
 
@@ -519,7 +568,11 @@ False if there was not a notification waiting, true if there was
 \subsubsection{\texorpdfstring{task\+\_\+notify\+\_\+ext()}{task\_notify\_ext()}}
 {\footnotesize\ttfamily uint32\+\_\+t task\+\_\+notify\+\_\+ext (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task,  }\item[{uint32\+\_\+t}]{value,  }\item[{\hyperlink{rtos_8h_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}}]{action,  }\item[{uint32\+\_\+t $\ast$}]{prev\+\_\+value }\end{DoxyParamCaption})}
 
-Sends a notification to a task, optionally performing some action. Will also retrieve the value of the notification in the target task before modifying the notification value.
+
+
+Sends a notification to a task, optionally performing some action. 
+
+Will also retrieve the value of the notification in the target task before modifying the notification value.
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
 
@@ -543,7 +596,9 @@ Dependent on the notification action. For N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\
 \subsubsection{\texorpdfstring{task\+\_\+notify\+\_\+take()}{task\_notify\_take()}}
 {\footnotesize\ttfamily uint32\+\_\+t task\+\_\+notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
 
-Waits for a notification to be nonzero.
+
+
+Waits for a notification to be nonzero. 
 
 See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
 
@@ -563,7 +618,9 @@ The value of the task\textquotesingle{}s notification value before it is decreme
 \subsubsection{\texorpdfstring{task\+\_\+resume()}{task\_resume()}}
 {\footnotesize\ttfamily void task\+\_\+resume (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Resumes the specified task, making it eligible to be scheduled.
+
+
+Resumes the specified task, making it eligible to be scheduled. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -576,7 +633,9 @@ Resumes the specified task, making it eligible to be scheduled.
 \subsubsection{\texorpdfstring{task\+\_\+set\+\_\+priority()}{task\_set\_priority()}}
 {\footnotesize\ttfamily void task\+\_\+set\+\_\+priority (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task,  }\item[{uint32\+\_\+t}]{prio }\end{DoxyParamCaption})}
 
-Sets the priority of the specified task.
+
+
+Sets the priority of the specified task. 
 
 If the specified task\textquotesingle{}s state is available to be scheduled (e.\+g. not blocked) and new priority is higher than the currently running task, a context switch may occur.
 
@@ -593,7 +652,9 @@ If the specified task\textquotesingle{}s state is available to be scheduled (e.\
 \subsubsection{\texorpdfstring{task\+\_\+suspend()}{task\_suspend()}}
 {\footnotesize\ttfamily void task\+\_\+suspend (\begin{DoxyParamCaption}\item[{\hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{task }\end{DoxyParamCaption})}
 
-Suspends the specified task, making it ineligible to be scheduled.
+
+
+Suspends the specified task, making it ineligible to be scheduled. 
 
 
 \begin{DoxyParams}{Parameters}

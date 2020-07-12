@@ -15,9 +15,9 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Configures an ADI port to act as an Analog Input. </para>        </briefdescription>
         <detaileddescription>
-<para>Configures an ADI port to act as an Analog Input.</para><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para><para><parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -47,9 +47,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Calibrates the analog sensor on the specified port and returns the new calibration value. </para>        </briefdescription>
         <detaileddescription>
-<para>Calibrates the analog sensor on the specified port and returns the new calibration value.</para><para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="classpros_1_1ADIAnalogIn_1a5930ce87c880833bda8cd202613b8d80" kindref="member">pros::ADIAnalogIn::get_value_calibrated()</ref> and <ref refid="classpros_1_1ADIAnalogIn_1a65bfed175ed1b0efce4566e78e7f9473" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para><para>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The average sensor value computed by this function </para></simplesect>
+<para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="classpros_1_1ADIAnalogIn_1a5930ce87c880833bda8cd202613b8d80" kindref="member">pros::ADIAnalogIn::get_value_calibrated()</ref> and <ref refid="classpros_1_1ADIAnalogIn_1a65bfed175ed1b0efce4566e78e7f9473" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para><para>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The average sensor value computed by this function </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -64,9 +64,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Gets the 12 bit calibrated value of an analog input port. </para>        </briefdescription>
         <detaileddescription>
-<para>Gets the 12 bit calibrated value of an analog input port.</para><para>The <ref refid="classpros_1_1ADIAnalogIn_1ac8dd1e625cbcec4951d20be0c0fa2d3c" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <ref refid="classpros_1_1ADIAnalogIn_1a65bfed175ed1b0efce4566e78e7f9473" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> instead.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095 </para></simplesect>
+<para>The <ref refid="classpros_1_1ADIAnalogIn_1ac8dd1e625cbcec4951d20be0c0fa2d3c" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <ref refid="classpros_1_1ADIAnalogIn_1a65bfed175ed1b0efce4566e78e7f9473" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> instead.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095 </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -81,9 +81,9 @@
           <type>void</type>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Gets the 16 bit calibrated value of an analog input port. </para>        </briefdescription>
         <detaileddescription>
-<para>Gets the 16 bit calibrated value of an analog input port.</para><para>The <ref refid="classpros_1_1ADIAnalogIn_1ac8dd1e625cbcec4951d20be0c0fa2d3c" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</para><para>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to 16384 </para></simplesect>
+<para>The <ref refid="classpros_1_1ADIAnalogIn_1ac8dd1e625cbcec4951d20be0c0fa2d3c" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</para><para>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para><para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to 16384 </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
