@@ -69,6 +69,28 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{serial_8h_a707d648b58b1132bf09e5b0a7a2f4eaf}\label{serial_8h_a707d648b58b1132bf09e5b0a7a2f4eaf}} 
+\index{serial.\+h@{serial.\+h}!serial\+\_\+set\+\_\+baudrate@{serial\+\_\+set\+\_\+baudrate}}
+\index{serial\+\_\+set\+\_\+baudrate@{serial\+\_\+set\+\_\+baudrate}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{serial\+\_\+set\+\_\+baudrate()}{serial\_set\_baudrate()}}
+{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+set\+\_\+baudrate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{int32\+\_\+t}]{baudrate }\end{DoxyParamCaption})}
+
+
+
+Sets the baudrate for the serial port to operate at. 
+
+This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21 \\
+\hline
+{\em baudrate} & The baudrate to operate at\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{serial_8h_ade596fb148f39a8834bce07d61ac8bb8}\label{serial_8h_ade596fb148f39a8834bce07d61ac8bb8}} 
 \index{serial.\+h@{serial.\+h}!serial\+\_\+flush@{serial\+\_\+flush}}
 \index{serial\+\_\+flush@{serial\+\_\+flush}!serial.\+h@{serial.\+h}}
@@ -160,6 +182,26 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The next byte avaliable to be read, -\/1 if none are available, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{serial_8h_ad1042af5284196938b0c7fc5089b6760}\label{serial_8h_ad1042af5284196938b0c7fc5089b6760}} 
+\index{serial.\+h@{serial.\+h}!serial\+\_\+read\+\_\+byte@{serial\+\_\+read\+\_\+byte}}
+\index{serial\+\_\+read\+\_\+byte@{serial\+\_\+read\+\_\+byte}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{serial\+\_\+read\+\_\+byte()}{serial\_read\_byte()}}
+{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Reads the next byte avaliable in the port\textquotesingle{}s input buffer. 
+
+This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The next byte avaliable to be read, -\/1 if none are available, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{serial_8h_a18a0a6fc1a46ef1543b4bc9258cf7d2e}\label{serial_8h_a18a0a6fc1a46ef1543b4bc9258cf7d2e}} 
 \index{serial.\+h@{serial.\+h}!serial\+\_\+read@{serial\+\_\+read}}
 \index{serial\+\_\+read@{serial\+\_\+read}!serial.\+h@{serial.\+h}}
@@ -187,47 +229,30 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The number of bytes read or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{serial_8h_ad1042af5284196938b0c7fc5089b6760}\label{serial_8h_ad1042af5284196938b0c7fc5089b6760}} 
-\index{serial.\+h@{serial.\+h}!serial\+\_\+read\+\_\+byte@{serial\+\_\+read\+\_\+byte}}
-\index{serial\+\_\+read\+\_\+byte@{serial\+\_\+read\+\_\+byte}!serial.\+h@{serial.\+h}}
-\subsubsection{\texorpdfstring{serial\+\_\+read\+\_\+byte()}{serial\_read\_byte()}}
-{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+read\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{serial_8h_a4236649b58a9c30acc0e6e2eb90e0909}\label{serial_8h_a4236649b58a9c30acc0e6e2eb90e0909}} 
+\index{serial.\+h@{serial.\+h}!serial\+\_\+write\+\_\+byte@{serial\+\_\+write\+\_\+byte}}
+\index{serial\+\_\+write\+\_\+byte@{serial\+\_\+write\+\_\+byte}!serial.\+h@{serial.\+h}}
+\subsubsection{\texorpdfstring{serial\+\_\+write\+\_\+byte()}{serial\_write\_byte()}}
+{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{buffer }\end{DoxyParamCaption})}
 
 
 
-Reads the next byte avaliable in the port\textquotesingle{}s input buffer. 
+Write the given byte to the port\textquotesingle{}s output buffer. 
 
-This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 port number from 1-\/21\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The next byte avaliable to be read, -\/1 if none are available, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{serial_8h_a707d648b58b1132bf09e5b0a7a2f4eaf}\label{serial_8h_a707d648b58b1132bf09e5b0a7a2f4eaf}} 
-\index{serial.\+h@{serial.\+h}!serial\+\_\+set\+\_\+baudrate@{serial\+\_\+set\+\_\+baudrate}}
-\index{serial\+\_\+set\+\_\+baudrate@{serial\+\_\+set\+\_\+baudrate}!serial.\+h@{serial.\+h}}
-\subsubsection{\texorpdfstring{serial\+\_\+set\+\_\+baudrate()}{serial\_set\_baudrate()}}
-{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+set\+\_\+baudrate (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{int32\+\_\+t}]{baudrate }\end{DoxyParamCaption})}
-
-
-
-Sets the baudrate for the serial port to operate at. 
-
-This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port.
+\begin{DoxyNote}{Note}
+Data in the port\textquotesingle{}s output buffer is written to the serial port as soon as possible on a F\+I\+FO basis and can not be done manually by the user.
+\end{DoxyNote}
+This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port. E\+IO -\/ Serious internal write error.
 
 
 \begin{DoxyParams}{Parameters}
 {\em port} & The V5 port number from 1-\/21 \\
 \hline
-{\em baudrate} & The baudrate to operate at\\
+{\em buffer} & The byte to write\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+The number of bytes written or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{serial_8h_aa44da0430efe50d5a5578aa28287f32b}\label{serial_8h_aa44da0430efe50d5a5578aa28287f32b}} 
 \index{serial.\+h@{serial.\+h}!serial\+\_\+write@{serial\+\_\+write}}
@@ -251,31 +276,6 @@ This function uses the following values of errno when an error state is reached\
 {\em buffer} & The data to write \\
 \hline
 {\em length} & The maximum number of bytes to write\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The number of bytes written or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{serial_8h_a4236649b58a9c30acc0e6e2eb90e0909}\label{serial_8h_a4236649b58a9c30acc0e6e2eb90e0909}} 
-\index{serial.\+h@{serial.\+h}!serial\+\_\+write\+\_\+byte@{serial\+\_\+write\+\_\+byte}}
-\index{serial\+\_\+write\+\_\+byte@{serial\+\_\+write\+\_\+byte}!serial.\+h@{serial.\+h}}
-\subsubsection{\texorpdfstring{serial\+\_\+write\+\_\+byte()}{serial\_write\_byte()}}
-{\footnotesize\ttfamily int32\+\_\+t serial\+\_\+write\+\_\+byte (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port,  }\item[{uint8\+\_\+t}]{buffer }\end{DoxyParamCaption})}
-
-
-
-Write the given byte to the port\textquotesingle{}s output buffer. 
-
-\begin{DoxyNote}{Note}
-Data in the port\textquotesingle{}s output buffer is written to the serial port as soon as possible on a F\+I\+FO basis and can not be done manually by the user.
-\end{DoxyNote}
-This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ The given value is not within the range of V5 ports (1-\/21). E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the port. E\+IO -\/ Serious internal write error.
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 port number from 1-\/21 \\
-\hline
-{\em buffer} & The byte to write\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

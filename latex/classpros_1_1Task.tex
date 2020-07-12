@@ -2,7 +2,7 @@
 \label{classpros_1_1Task}\index{pros\+::\+Task@{pros\+::\+Task}}
 
 
-{\ttfamily \#include $<$rtos.\+hpp$>$}
+{\ttfamily \#include \char`\"{}rtos.\+hpp\char`\"{}}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -175,6 +175,202 @@ Create a C++ task object from a task handle.
 
 Get the currently running \hyperlink{classpros_1_1Task}{Task}. 
 
+\mbox{\Hypertarget{classpros_1_1Task_aaaeae2788114241e149317248998781e}\label{classpros_1_1Task_aaaeae2788114241e149317248998781e}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!operator=@{operator=}}
+\index{operator=@{operator=}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void pros\+::\+Task\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{in }\end{DoxyParamCaption})}
+
+
+
+Creates a new task and add it to the list of tasks that are ready to run. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & A task handle from \hyperlink{rtos_8h_a2e3ed8f26b8c1edcff493bc583f0a76a}{task\+\_\+create()} for which to create a \hyperlink{classpros_1_1Task}{pros\+::\+Task} object. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpros_1_1Task_a45269807dfc87bb1d5e9580346793e9d}\label{classpros_1_1Task_a45269807dfc87bb1d5e9580346793e9d}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!remove@{remove}}
+\index{remove@{remove}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void pros\+::\+Task\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes the \hyperlink{classpros_1_1Task}{Task} from the R\+T\+OS real time kernel\textquotesingle{}s management. 
+
+This task will be removed from all ready, blocked, suspended and event lists.
+
+Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted. \mbox{\Hypertarget{classpros_1_1Task_a97e11478bd99181a664ed6e975fdb248}\label{classpros_1_1Task_a97e11478bd99181a664ed6e975fdb248}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+priority@{get\+\_\+priority}}
+\index{get\+\_\+priority@{get\+\_\+priority}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{get\+\_\+priority()}{get\_priority()}}
+{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::get\+\_\+priority (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the priority of the specified task. 
+
+\begin{DoxyReturn}{Returns}
+The priority of the task 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_a205a9937d34311ba10f540bc58d0b0b9}\label{classpros_1_1Task_a205a9937d34311ba10f540bc58d0b0b9}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!set\+\_\+priority@{set\+\_\+priority}}
+\index{set\+\_\+priority@{set\+\_\+priority}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{set\+\_\+priority()}{set\_priority()}}
+{\footnotesize\ttfamily void pros\+::\+Task\+::set\+\_\+priority (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{prio }\end{DoxyParamCaption})}
+
+
+
+Sets the priority of the specified task. 
+
+If the specified task\textquotesingle{}s state is available to be scheduled (e.\+g. not blocked) and new priority is higher than the currently running task, a context switch may occur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prio} & The new priority of the task \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpros_1_1Task_a45f0b63eec57e7fe8adf3876988588bf}\label{classpros_1_1Task_a45f0b63eec57e7fe8adf3876988588bf}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+state@{get\+\_\+state}}
+\index{get\+\_\+state@{get\+\_\+state}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{get\+\_\+state()}{get\_state()}}
+{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::get\+\_\+state (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the state of the specified task. 
+
+\begin{DoxyReturn}{Returns}
+The state of the task 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_a89005762dcd3026c953ae5eedd7ecd97}\label{classpros_1_1Task_a89005762dcd3026c953ae5eedd7ecd97}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!suspend@{suspend}}
+\index{suspend@{suspend}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{suspend()}{suspend()}}
+{\footnotesize\ttfamily void pros\+::\+Task\+::suspend (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Suspends the specified task, making it ineligible to be scheduled. 
+
+\mbox{\Hypertarget{classpros_1_1Task_ada2c08d04b39f11582cea90b59b8f317}\label{classpros_1_1Task_ada2c08d04b39f11582cea90b59b8f317}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!resume@{resume}}
+\index{resume@{resume}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily void pros\+::\+Task\+::resume (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Resumes the specified task, making it eligible to be scheduled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to resume \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpros_1_1Task_a3c559d11cf602b99fc870b8be43fe191}\label{classpros_1_1Task_a3c559d11cf602b99fc870b8be43fe191}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
+{\footnotesize\ttfamily const char$\ast$ pros\+::\+Task\+::get\+\_\+name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the specified task. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the name of the task 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_a16c15efcec74a76b6848fc999ff0c232}\label{classpros_1_1Task_a16c15efcec74a76b6848fc999ff0c232}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!operator task\+\_\+t@{operator task\+\_\+t}}
+\index{operator task\+\_\+t@{operator task\+\_\+t}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{operator task\+\_\+t()}{operator task\_t()}}
+{\footnotesize\ttfamily pros\+::\+Task\+::operator \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert this object to a C task\+\_\+t handle. 
+
+\mbox{\Hypertarget{classpros_1_1Task_ad376e3065701ba4853d4be1c90c0544c}\label{classpros_1_1Task_ad376e3065701ba4853d4be1c90c0544c}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!notify@{notify}}
+\index{notify@{notify}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{notify()}{notify()}}
+{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Sends a simple notification to task and increments the notification counter. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
+
+\begin{DoxyReturn}{Returns}
+Always returns true. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_add5bc6272aaa903fdf8ae6656d8ffddb}\label{classpros_1_1Task_add5bc6272aaa903fdf8ae6656d8ffddb}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+ext@{notify\+\_\+ext}}
+\index{notify\+\_\+ext@{notify\+\_\+ext}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{notify\+\_\+ext()}{notify\_ext()}}
+{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify\+\_\+ext (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{value,  }\item[{\hyperlink{rtos_8h_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}}]{action,  }\item[{std\+::uint32\+\_\+t $\ast$}]{prev\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sends a notification to a task, optionally performing some action. 
+
+Will also retrieve the value of the notification in the target task before modifying the notification value.
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value used in performing the action \\
+\hline
+{\em action} & An action to optionally perform on the receiving task\textquotesingle{}s notification value \\
+\hline
+{\em prev\+\_\+value} & A pointer to store the previous value of the target task\textquotesingle{}s notification, may be N\+U\+LL\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dependent on the notification action. For N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+W\+R\+I\+TE\+: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+ON values\+: always return 0 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_ab0424664979128a156fbcd2533a75da2}\label{classpros_1_1Task_ab0424664979128a156fbcd2533a75da2}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+take@{notify\+\_\+take}}
+\index{notify\+\_\+take@{notify\+\_\+take}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{notify\+\_\+take()}{notify\_take()}}
+{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{std\+::uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits for a notification to be nonzero. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clear\+\_\+on\+\_\+exit} & If true (1), then the notification value is cleared. If false (0), then the notification value is decremented. \\
+\hline
+{\em timeout} & Specifies the amount of time to be spent waiting for a notification to occur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the task\textquotesingle{}s notification value before it is decremented or cleared 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Task_a6fc6c97f2dd9fc92b6b9ff47557f215f}\label{classpros_1_1Task_a6fc6c97f2dd9fc92b6b9ff47557f215f}} 
+\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+clear@{notify\+\_\+clear}}
+\index{notify\+\_\+clear@{notify\+\_\+clear}!pros\+::\+Task@{pros\+::\+Task}}
+\subsubsection{\texorpdfstring{notify\+\_\+clear()}{notify\_clear()}}
+{\footnotesize\ttfamily bool pros\+::\+Task\+::notify\+\_\+clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clears the notification for a task. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
+
+\begin{DoxyReturn}{Returns}
+False if there was not a notification waiting, true if there was 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Task_a4341b580544831eea11b840cf068587b}\label{classpros_1_1Task_a4341b580544831eea11b840cf068587b}} 
 \index{pros\+::\+Task@{pros\+::\+Task}!delay@{delay}}
 \index{delay@{delay}!pros\+::\+Task@{pros\+::\+Task}}
@@ -228,202 +424,6 @@ A task that has been deleted, but not yet reaped by the idle task will also be i
 \begin{DoxyReturn}{Returns}
 The number of tasks that are currently being managed by the kernel. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a3c559d11cf602b99fc870b8be43fe191}\label{classpros_1_1Task_a3c559d11cf602b99fc870b8be43fe191}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+name@{get\+\_\+name}}
-\index{get\+\_\+name@{get\+\_\+name}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
-{\footnotesize\ttfamily const char$\ast$ pros\+::\+Task\+::get\+\_\+name (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Gets the name of the specified task. 
-
-\begin{DoxyReturn}{Returns}
-A pointer to the name of the task 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a97e11478bd99181a664ed6e975fdb248}\label{classpros_1_1Task_a97e11478bd99181a664ed6e975fdb248}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+priority@{get\+\_\+priority}}
-\index{get\+\_\+priority@{get\+\_\+priority}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{get\+\_\+priority()}{get\_priority()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::get\+\_\+priority (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Gets the priority of the specified task. 
-
-\begin{DoxyReturn}{Returns}
-The priority of the task 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a45f0b63eec57e7fe8adf3876988588bf}\label{classpros_1_1Task_a45f0b63eec57e7fe8adf3876988588bf}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!get\+\_\+state@{get\+\_\+state}}
-\index{get\+\_\+state@{get\+\_\+state}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{get\+\_\+state()}{get\_state()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::get\+\_\+state (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Gets the state of the specified task. 
-
-\begin{DoxyReturn}{Returns}
-The state of the task 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_ad376e3065701ba4853d4be1c90c0544c}\label{classpros_1_1Task_ad376e3065701ba4853d4be1c90c0544c}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!notify@{notify}}
-\index{notify@{notify}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{notify()}{notify()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Sends a simple notification to task and increments the notification counter. 
-
-See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
-
-\begin{DoxyReturn}{Returns}
-Always returns true. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a6fc6c97f2dd9fc92b6b9ff47557f215f}\label{classpros_1_1Task_a6fc6c97f2dd9fc92b6b9ff47557f215f}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+clear@{notify\+\_\+clear}}
-\index{notify\+\_\+clear@{notify\+\_\+clear}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{notify\+\_\+clear()}{notify\_clear()}}
-{\footnotesize\ttfamily bool pros\+::\+Task\+::notify\+\_\+clear (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Clears the notification for a task. 
-
-See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
-
-\begin{DoxyReturn}{Returns}
-False if there was not a notification waiting, true if there was 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_add5bc6272aaa903fdf8ae6656d8ffddb}\label{classpros_1_1Task_add5bc6272aaa903fdf8ae6656d8ffddb}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+ext@{notify\+\_\+ext}}
-\index{notify\+\_\+ext@{notify\+\_\+ext}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{notify\+\_\+ext()}{notify\_ext()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify\+\_\+ext (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{value,  }\item[{\hyperlink{rtos_8h_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}}]{action,  }\item[{std\+::uint32\+\_\+t $\ast$}]{prev\+\_\+value }\end{DoxyParamCaption})}
-
-
-
-Sends a notification to a task, optionally performing some action. 
-
-Will also retrieve the value of the notification in the target task before modifying the notification value.
-
-See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
-
-
-\begin{DoxyParams}{Parameters}
-{\em value} & The value used in performing the action \\
-\hline
-{\em action} & An action to optionally perform on the receiving task\textquotesingle{}s notification value \\
-\hline
-{\em prev\+\_\+value} & A pointer to store the previous value of the target task\textquotesingle{}s notification, may be N\+U\+LL\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Dependent on the notification action. For N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+W\+R\+I\+TE\+: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+ON values\+: always return 0 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_ab0424664979128a156fbcd2533a75da2}\label{classpros_1_1Task_ab0424664979128a156fbcd2533a75da2}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!notify\+\_\+take@{notify\+\_\+take}}
-\index{notify\+\_\+take@{notify\+\_\+take}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{notify\+\_\+take()}{notify\_take()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t pros\+::\+Task\+::notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{std\+::uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
-
-
-
-Waits for a notification to be nonzero. 
-
-See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\tt https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html} for details.
-
-
-\begin{DoxyParams}{Parameters}
-{\em clear\+\_\+on\+\_\+exit} & If true (1), then the notification value is cleared. If false (0), then the notification value is decremented. \\
-\hline
-{\em timeout} & Specifies the amount of time to be spent waiting for a notification to occur.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The value of the task\textquotesingle{}s notification value before it is decremented or cleared 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a16c15efcec74a76b6848fc999ff0c232}\label{classpros_1_1Task_a16c15efcec74a76b6848fc999ff0c232}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!operator task\+\_\+t@{operator task\+\_\+t}}
-\index{operator task\+\_\+t@{operator task\+\_\+t}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{operator task\+\_\+t()}{operator task\_t()}}
-{\footnotesize\ttfamily pros\+::\+Task\+::operator \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-
-
-Convert this object to a C task\+\_\+t handle. 
-
-\mbox{\Hypertarget{classpros_1_1Task_aaaeae2788114241e149317248998781e}\label{classpros_1_1Task_aaaeae2788114241e149317248998781e}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!operator=@{operator=}}
-\index{operator=@{operator=}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily void pros\+::\+Task\+::operator= (\begin{DoxyParamCaption}\item[{const \hyperlink{rtos_8h_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}]{in }\end{DoxyParamCaption})}
-
-
-
-Creates a new task and add it to the list of tasks that are ready to run. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em in} & A task handle from \hyperlink{rtos_8h_a2e3ed8f26b8c1edcff493bc583f0a76a}{task\+\_\+create()} for which to create a \hyperlink{classpros_1_1Task}{pros\+::\+Task} object. \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classpros_1_1Task_a45269807dfc87bb1d5e9580346793e9d}\label{classpros_1_1Task_a45269807dfc87bb1d5e9580346793e9d}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!remove@{remove}}
-\index{remove@{remove}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{remove()}{remove()}}
-{\footnotesize\ttfamily void pros\+::\+Task\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Removes the \hyperlink{classpros_1_1Task}{Task} from the R\+T\+OS real time kernel\textquotesingle{}s management. 
-
-This task will be removed from all ready, blocked, suspended and event lists.
-
-Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted. \mbox{\Hypertarget{classpros_1_1Task_ada2c08d04b39f11582cea90b59b8f317}\label{classpros_1_1Task_ada2c08d04b39f11582cea90b59b8f317}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!resume@{resume}}
-\index{resume@{resume}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{resume()}{resume()}}
-{\footnotesize\ttfamily void pros\+::\+Task\+::resume (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Resumes the specified task, making it eligible to be scheduled. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em task} & The task to resume \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classpros_1_1Task_a205a9937d34311ba10f540bc58d0b0b9}\label{classpros_1_1Task_a205a9937d34311ba10f540bc58d0b0b9}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!set\+\_\+priority@{set\+\_\+priority}}
-\index{set\+\_\+priority@{set\+\_\+priority}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{set\+\_\+priority()}{set\_priority()}}
-{\footnotesize\ttfamily void pros\+::\+Task\+::set\+\_\+priority (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{prio }\end{DoxyParamCaption})}
-
-
-
-Sets the priority of the specified task. 
-
-If the specified task\textquotesingle{}s state is available to be scheduled (e.\+g. not blocked) and new priority is higher than the currently running task, a context switch may occur.
-
-
-\begin{DoxyParams}{Parameters}
-{\em prio} & The new priority of the task \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classpros_1_1Task_a89005762dcd3026c953ae5eedd7ecd97}\label{classpros_1_1Task_a89005762dcd3026c953ae5eedd7ecd97}} 
-\index{pros\+::\+Task@{pros\+::\+Task}!suspend@{suspend}}
-\index{suspend@{suspend}!pros\+::\+Task@{pros\+::\+Task}}
-\subsubsection{\texorpdfstring{suspend()}{suspend()}}
-{\footnotesize\ttfamily void pros\+::\+Task\+::suspend (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-
-
-Suspends the specified task, making it ineligible to be scheduled. 
-
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}

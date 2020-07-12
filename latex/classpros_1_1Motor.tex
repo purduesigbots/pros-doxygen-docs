@@ -2,7 +2,7 @@
 \label{classpros_1_1Motor}\index{pros\+::\+Motor@{pros\+::\+Motor}}
 
 
-{\ttfamily \#include $<$motors.\+hpp$>$}
+{\ttfamily \#include \char`\"{}motors.\+hpp\char`\"{}}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -169,527 +169,25 @@ This function uses the following values of errno when an error state is reached\
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classpros_1_1Motor_adca7af38b0357c254e81ed882a2283a0}\label{classpros_1_1Motor_adca7af38b0357c254e81ed882a2283a0}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!convert\+\_\+pid@{convert\+\_\+pid}}
-\index{convert\+\_\+pid@{convert\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{convert\+\_\+pid()}{convert\_pid()}}
-{\footnotesize\ttfamily static \hyperlink{motors_8h_ad2e907c8d7ce53c1fd91f1b9801072e3}{motor\+\_\+pid\+\_\+s\+\_\+t} pros\+::\+Motor\+::convert\+\_\+pid (\begin{DoxyParamCaption}\item[{double}]{kf,  }\item[{double}]{kp,  }\item[{double}]{ki,  }\item[{double}]{kd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{classpros_1_1Motor_a4cf8a9518eb6cd268d27151f0df7fd38}\label{classpros_1_1Motor_a4cf8a9518eb6cd268d27151f0df7fd38}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!operator=@{operator=}}
+\index{operator=@{operator=}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::operator= (\begin{DoxyParamCaption}\item[{std\+::int32\+\_\+t}]{voltage }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Takes in floating point values and returns a properly formatted pid struct. 
+\hyperlink{classpros_1_1Motor}{Motor} movement functions. 
 
-The motor\+\_\+pid\+\_\+s\+\_\+t struct is in 4.\+4 format, i.\+e. 0x20 is 2.\+0, 0x21 is 2.\+0625, etc. This function will convert the floating point values to the nearest 4.\+4 value.
+These functions allow programmers to make motors move Sets the voltage for the motor from -\/128 to 127.
 
-
-\begin{DoxyParams}{Parameters}
-{\em kf} & The feedforward constant \\
-\hline
-{\em kp} & The proportional constant \\
-\hline
-{\em ki} & The integral constant \\
-\hline
-{\em kd} & The derivative constant\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A motor\+\_\+pid\+\_\+s\+\_\+t struct formatted properly in 4.\+4. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a2d8c9c462e47e989ebe64fa341be91c6}\label{classpros_1_1Motor_a2d8c9c462e47e989ebe64fa341be91c6}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!convert\+\_\+pid\+\_\+full@{convert\+\_\+pid\+\_\+full}}
-\index{convert\+\_\+pid\+\_\+full@{convert\+\_\+pid\+\_\+full}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{convert\+\_\+pid\+\_\+full()}{convert\_pid\_full()}}
-{\footnotesize\ttfamily static \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::convert\+\_\+pid\+\_\+full (\begin{DoxyParamCaption}\item[{double}]{kf,  }\item[{double}]{kp,  }\item[{double}]{ki,  }\item[{double}]{kd,  }\item[{double}]{filter,  }\item[{double}]{limit,  }\item[{double}]{threshold,  }\item[{double}]{loopspeed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Takes in floating point values and returns a properly formatted pid struct. 
-
-The motor\+\_\+pid\+\_\+s\+\_\+t struct is in 4.\+4 format, i.\+e. 0x20 is 2.\+0, 0x21 is 2.\+0625, etc. This function will convert the floating point values to the nearest 4.\+4 value.
-
-
-\begin{DoxyParams}{Parameters}
-{\em kf} & The feedforward constant \\
-\hline
-{\em kp} & The proportional constant \\
-\hline
-{\em ki} & The integral constant \\
-\hline
-{\em kd} & The derivative constant \\
-\hline
-{\em filter} & A constant used for filtering the profile acceleration \\
-\hline
-{\em limit} & The integral limit \\
-\hline
-{\em threshold} & The threshold for determining if a position movement has reached its goal. This has no effect for velocity P\+ID calculations. \\
-\hline
-{\em loopspeed} & The rate at which the P\+ID computation is run in ms\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A motor\+\_\+pid\+\_\+s\+\_\+t struct formatted properly in 4.\+4. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a696494a4e7c675f7007d41b947f9ea63}\label{classpros_1_1Motor_a696494a4e7c675f7007d41b947f9ea63}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+actual\+\_\+velocity@{get\+\_\+actual\+\_\+velocity}}
-\index{get\+\_\+actual\+\_\+velocity@{get\+\_\+actual\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+actual\+\_\+velocity()}{get\_actual\_velocity()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+actual\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\hyperlink{classpros_1_1Motor}{Motor} telemetry functions. 
-
-These functions allow programmers to collect telemetry from motors Gets the actual velocity of the motor.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s actual velocity in R\+PM or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_acc0c2225d2b713b73e1caee1a483a958}\label{classpros_1_1Motor_acc0c2225d2b713b73e1caee1a483a958}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+brake\+\_\+mode@{get\+\_\+brake\+\_\+mode}}
-\index{get\+\_\+brake\+\_\+mode@{get\+\_\+brake\+\_\+mode}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+brake\+\_\+mode()}{get\_brake\_mode()}}
-{\footnotesize\ttfamily virtual \hyperlink{motors_8h_aa324a2881696428c9e3684f9ad23a83b}{motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+brake\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the brake mode that was set for the motor. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-One of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t, according to what was set for the motor, or E\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+A\+K\+E\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a502eaf3859452721e2327e53ab3f34d8}\label{classpros_1_1Motor_a502eaf3859452721e2327e53ab3f34d8}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+current\+\_\+draw@{get\+\_\+current\+\_\+draw}}
-\index{get\+\_\+current\+\_\+draw@{get\+\_\+current\+\_\+draw}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+draw()}{get\_current\_draw()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+current\+\_\+draw (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the current drawn by the motor in mA. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s current in mA or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_ad2eafcdf16ed480ddcbb80a45b19c01a}\label{classpros_1_1Motor_ad2eafcdf16ed480ddcbb80a45b19c01a}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+current\+\_\+limit@{get\+\_\+current\+\_\+limit}}
-\index{get\+\_\+current\+\_\+limit@{get\+\_\+current\+\_\+limit}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+limit()}{get\_current\_limit()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+current\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the current limit for the motor in mA. 
-
-The default value is 2500 mA.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s current limit in mA or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_acea42a96da651f72f138ea268c76217f}\label{classpros_1_1Motor_acea42a96da651f72f138ea268c76217f}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+direction@{get\+\_\+direction}}
-\index{get\+\_\+direction@{get\+\_\+direction}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+direction()}{get\_direction()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the direction of movement for the motor. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-1 for moving in the positive direction, -\/1 for moving in the negative direction, and P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a6f0b39894abf612a1965a66224893c71}\label{classpros_1_1Motor_a6f0b39894abf612a1965a66224893c71}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+efficiency@{get\+\_\+efficiency}}
-\index{get\+\_\+efficiency@{get\+\_\+efficiency}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+efficiency()}{get\_efficiency()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+efficiency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the efficiency of the motor in percent. 
-
-An efficiency of 100\% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0\% means that the motor is drawing power but not moving.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s efficiency in percent or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a9fd37f3efa2f903bda8bf575b0052fd2}\label{classpros_1_1Motor_a9fd37f3efa2f903bda8bf575b0052fd2}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+encoder\+\_\+units@{get\+\_\+encoder\+\_\+units}}
-\index{get\+\_\+encoder\+\_\+units@{get\+\_\+encoder\+\_\+units}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+encoder\+\_\+units()}{get\_encoder\_units()}}
-{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a6677ba23760c558fd8b7b4e1e00a6123}{motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+encoder\+\_\+units (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the encoder units that were set for the motor. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-One of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t according to what is set for the motor or E\+\_\+\+M\+O\+T\+O\+R\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a66c6f6420485059af301a9c8a99b2045}\label{classpros_1_1Motor_a66c6f6420485059af301a9c8a99b2045}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+faults@{get\+\_\+faults}}
-\index{get\+\_\+faults@{get\+\_\+faults}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+faults()}{get\_faults()}}
-{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t pros\+::\+Motor\+::get\+\_\+faults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the faults experienced by the motor. 
-
-Compare this bitfield to the bitmasks in pros\+::motor\+\_\+fault\+\_\+e\+\_\+t.
+This is designed to map easily to the input from the controller\textquotesingle{}s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of \hyperlink{classpros_1_1Motor_a7ea9aedd4e12844be2584dc3f4b7a4bf}{pros\+::\+Motor\+::move()}, or motor\+Set from the P\+R\+OS 2 A\+PI.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
 
 
 \begin{DoxyParams}{Parameters}
-{\em port} & The V5 port number from 1-\/21\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A bitfield containing the motor\textquotesingle{}s faults. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a7e24aa1c4363a131829e902f12e7364c}\label{classpros_1_1Motor_a7e24aa1c4363a131829e902f12e7364c}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+flags@{get\+\_\+flags}}
-\index{get\+\_\+flags@{get\+\_\+flags}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+flags()}{get\_flags()}}
-{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t pros\+::\+Motor\+::get\+\_\+flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the flags set by the motor\textquotesingle{}s operation. 
-
-Compare this bitfield to the bitmasks in pros\+::motor\+\_\+flag\+\_\+e\+\_\+t.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 port number from 1-\/21\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-A bitfield containing the motor\textquotesingle{}s flags. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a3227bc4fbe531638472fff4dfb134333}\label{classpros_1_1Motor_a3227bc4fbe531638472fff4dfb134333}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+gearing@{get\+\_\+gearing}}
-\index{get\+\_\+gearing@{get\+\_\+gearing}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+gearing()}{get\_gearing()}}
-{\footnotesize\ttfamily virtual \hyperlink{motors_8h_aa2f1c305c998abc3bf8dd1f76fa4da8b}{motor\+\_\+gearset\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+gearing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the gearset that was set for the motor. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-One of motor\+\_\+gearset\+\_\+e\+\_\+t according to what is set for the motor, or E\+\_\+\+G\+E\+A\+R\+S\+E\+T\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a5b0e644c8af396a6af8142b41d1bc7b6}\label{classpros_1_1Motor_a5b0e644c8af396a6af8142b41d1bc7b6}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+port@{get\+\_\+port}}
-\index{get\+\_\+port@{get\+\_\+port}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+port()}{get\_port()}}
-{\footnotesize\ttfamily virtual std\+::uint8\+\_\+t pros\+::\+Motor\+::get\+\_\+port (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the port number of the motor. 
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s port number. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a32193b8d020ad1b47e1cb9f0b74a6c7d}\label{classpros_1_1Motor_a32193b8d020ad1b47e1cb9f0b74a6c7d}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+pos\+\_\+pid@{get\+\_\+pos\+\_\+pid}}
-\index{get\+\_\+pos\+\_\+pid@{get\+\_\+pos\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+pos\+\_\+pid()}{get\_pos\_pid()}}
-{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::get\+\_\+pos\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the position P\+ID that was set for the motor. 
-
-This function will return zero for all of the parameters if the \hyperlink{motors_8h_a389e60d01741d5947a9b7330c6c8bbf7}{motor\+\_\+set\+\_\+pos\+\_\+pid()} or \hyperlink{motors_8h_a1d3273573e296507914d2626121f19ce}{motor\+\_\+set\+\_\+pos\+\_\+pid\+\_\+full()} functions have not been used.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-Additionally, in an error state all values of the returned struct are set to their negative maximum values.
-
-\begin{DoxyReturn}{Returns}
-A motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t containing the position P\+ID constants last set to the given motor 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a70e725a94ec42dc7cbb3e460c36dcad3}\label{classpros_1_1Motor_a70e725a94ec42dc7cbb3e460c36dcad3}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+position@{get\+\_\+position}}
-\index{get\+\_\+position@{get\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+position()}{get\_position()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the absolute position of the motor in its encoder units. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s absolute position in its encoder units or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a51b75dc245257487116e64fa2904d521}\label{classpros_1_1Motor_a51b75dc245257487116e64fa2904d521}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+power@{get\+\_\+power}}
-\index{get\+\_\+power@{get\+\_\+power}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+power()}{get\_power()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+power (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the power drawn by the motor in Watts. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s power draw in Watts or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_ae82c57d590e18d7d90afec1e9cc3bb4e}\label{classpros_1_1Motor_ae82c57d590e18d7d90afec1e9cc3bb4e}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+raw\+\_\+position@{get\+\_\+raw\+\_\+position}}
-\index{get\+\_\+raw\+\_\+position@{get\+\_\+raw\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+raw\+\_\+position()}{get\_raw\_position()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+raw\+\_\+position (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t $\ast$const}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the raw encoder count of the motor at a given timestamp. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-
-\begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em timestamp} & A pointer to a time in milliseconds for which the encoder count will be returned. If N\+U\+LL, the timestamp at which the encoder count was read will not be supplied\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The raw encoder count at the given timestamp or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a7ad83a73bf15b94aaad8d10970bb254c}\label{classpros_1_1Motor_a7ad83a73bf15b94aaad8d10970bb254c}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+target\+\_\+position@{get\+\_\+target\+\_\+position}}
-\index{get\+\_\+target\+\_\+position@{get\+\_\+target\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+target\+\_\+position()}{get\_target\_position()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+target\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the target position set for the motor by the user. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The target position in its encoder units or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a8b8148a179cfadd579c8d4c82eb5873f}\label{classpros_1_1Motor_a8b8148a179cfadd579c8d4c82eb5873f}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+target\+\_\+velocity@{get\+\_\+target\+\_\+velocity}}
-\index{get\+\_\+target\+\_\+velocity@{get\+\_\+target\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+target\+\_\+velocity()}{get\_target\_velocity()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+target\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the velocity commanded to the motor by the user. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The commanded motor velocity from +-\/100, +-\/200, or +-\/600, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a9fd793251b91c2ac0091c65f290f740d}\label{classpros_1_1Motor_a9fd793251b91c2ac0091c65f290f740d}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+temperature@{get\+\_\+temperature}}
-\index{get\+\_\+temperature@{get\+\_\+temperature}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+temperature()}{get\_temperature()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the temperature of the motor in degrees Celsius. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s temperature in degrees Celsius or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a14e0c57c0ca7bde15f73414abf4c3c8e}\label{classpros_1_1Motor_a14e0c57c0ca7bde15f73414abf4c3c8e}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+torque@{get\+\_\+torque}}
-\index{get\+\_\+torque@{get\+\_\+torque}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+torque()}{get\_torque()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+torque (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the torque generated by the motor in Newton Meters (Nm). 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s torque in Nm or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a2b939563c3b915d7b8ce3dd1dece6208}\label{classpros_1_1Motor_a2b939563c3b915d7b8ce3dd1dece6208}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+vel\+\_\+pid@{get\+\_\+vel\+\_\+pid}}
-\index{get\+\_\+vel\+\_\+pid@{get\+\_\+vel\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+vel\+\_\+pid()}{get\_vel\_pid()}}
-{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::get\+\_\+vel\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the velocity P\+ID that was set for the motor. 
-
-This function will return zero for all of the parameters if the \hyperlink{motors_8h_a4255880d012ed0ec856f302536755d8a}{motor\+\_\+set\+\_\+vel\+\_\+pid()} or \hyperlink{motors_8h_acdec538d8f08e8b5946294f84f017e8e}{motor\+\_\+set\+\_\+vel\+\_\+pid\+\_\+full()} functions have not been used.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-Additionally, in an error state all values of the returned struct are set to their negative maximum values.
-
-\begin{DoxyReturn}{Returns}
-A motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t containing the velocity P\+ID constants last set to the given motor 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_abe51732c37c2ec72a8bdceac7f6962cb}\label{classpros_1_1Motor_abe51732c37c2ec72a8bdceac7f6962cb}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+voltage@{get\+\_\+voltage}}
-\index{get\+\_\+voltage@{get\+\_\+voltage}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+voltage()}{get\_voltage()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+voltage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the voltage delivered to the motor in millivolts. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s voltage in mV or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a2afbe15bed764ca6d21f1e7c6c8da700}\label{classpros_1_1Motor_a2afbe15bed764ca6d21f1e7c6c8da700}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+voltage\+\_\+limit@{get\+\_\+voltage\+\_\+limit}}
-\index{get\+\_\+voltage\+\_\+limit@{get\+\_\+voltage\+\_\+limit}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+voltage\+\_\+limit()}{get\_voltage\_limit()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+voltage\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the voltage limit set by the user. 
-
-Default value is 0V, which means that there is no software limitation imposed on the voltage.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-The motor\textquotesingle{}s voltage limit in V or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a589a3cbb397ba065c30c1f16bb3f08a7}\label{classpros_1_1Motor_a589a3cbb397ba065c30c1f16bb3f08a7}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+zero\+\_\+position\+\_\+flag@{get\+\_\+zero\+\_\+position\+\_\+flag}}
-\index{get\+\_\+zero\+\_\+position\+\_\+flag@{get\+\_\+zero\+\_\+position\+\_\+flag}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{get\+\_\+zero\+\_\+position\+\_\+flag()}{get\_zero\_position\_flag()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+zero\+\_\+position\+\_\+flag (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Checks if the motor is at its zero position. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyNote}{Note}
-Although this function forwards data from the motor, the motor presently does not provide any value. This function returns P\+R\+O\+S\+\_\+\+E\+RR with errno set to E\+N\+O\+S\+YS.
-\end{DoxyNote}
-\begin{DoxyReturn}{Returns}
-1 if the motor is at zero absolute position, 0 if the motor has moved from its absolute zero, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a2d34c92effccfbb4d2f45319bf4bd272}\label{classpros_1_1Motor_a2d34c92effccfbb4d2f45319bf4bd272}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+over\+\_\+current@{is\+\_\+over\+\_\+current}}
-\index{is\+\_\+over\+\_\+current@{is\+\_\+over\+\_\+current}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{is\+\_\+over\+\_\+current()}{is\_over\_current()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+over\+\_\+current (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Checks if the motor is drawing over its current limit. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-1 if the motor\textquotesingle{}s current limit is being exceeded and 0 if the current limit is not exceeded, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a099d50ed35d73fa29a46b2beb151ce2b}\label{classpros_1_1Motor_a099d50ed35d73fa29a46b2beb151ce2b}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+over\+\_\+temp@{is\+\_\+over\+\_\+temp}}
-\index{is\+\_\+over\+\_\+temp@{is\+\_\+over\+\_\+temp}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{is\+\_\+over\+\_\+temp()}{is\_over\_temp()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+over\+\_\+temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the temperature limit flag for the motor. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a5122faa60ef7745761eca847192560c5}\label{classpros_1_1Motor_a5122faa60ef7745761eca847192560c5}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+reversed@{is\+\_\+reversed}}
-\index{is\+\_\+reversed@{is\+\_\+reversed}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{is\+\_\+reversed()}{is\_reversed()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+reversed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Gets the operation direction of the motor as set by the user. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyReturn}{Returns}
-1 if the motor has been reversed and 0 if the motor was not reversed, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a884c19ae71a6c9f0b316520f09769be9}\label{classpros_1_1Motor_a884c19ae71a6c9f0b316520f09769be9}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+stopped@{is\+\_\+stopped}}
-\index{is\+\_\+stopped@{is\+\_\+stopped}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{is\+\_\+stopped()}{is\_stopped()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+stopped (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Checks if the motor is stopped. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-\begin{DoxyNote}{Note}
-Although this function forwards data from the motor, the motor presently does not provide any value. This function returns P\+R\+O\+S\+\_\+\+E\+RR with errno set to E\+N\+O\+S\+YS.
-\end{DoxyNote}
-\begin{DoxyReturn}{Returns}
-1 if the motor is not moving, 0 if the motor is moving, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a44f39232cec1caee6d668d8ff21dc28b}\label{classpros_1_1Motor_a44f39232cec1caee6d668d8ff21dc28b}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!modify\+\_\+profiled\+\_\+velocity@{modify\+\_\+profiled\+\_\+velocity}}
-\index{modify\+\_\+profiled\+\_\+velocity@{modify\+\_\+profiled\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{modify\+\_\+profiled\+\_\+velocity()}{modify\_profiled\_velocity()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::modify\+\_\+profiled\+\_\+velocity (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Changes the output velocity for a profiled movement (\hyperlink{motors_8h_ab70bf4937f1b5cefa15c11c15314c90e}{motor\+\_\+move\+\_\+absolute()} or \hyperlink{motors_8h_ab4c1ba35d69e8e9b49df0e848fa305d3}{motor\+\_\+move\+\_\+relative()}). 
-
-This will have no effect if the motor is not following a profiled movement.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-
-\begin{DoxyParams}{Parameters}
-{\em velocity} & The new motor velocity from +-\/100, +-\/200, or +-\/600 depending on the motor\textquotesingle{}s gearset\\
+{\em voltage} & The new motor voltage from -\/127 to 127\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -815,27 +313,363 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a4cf8a9518eb6cd268d27151f0df7fd38}\label{classpros_1_1Motor_a4cf8a9518eb6cd268d27151f0df7fd38}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!operator=@{operator=}}
-\index{operator=@{operator=}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::operator= (\begin{DoxyParamCaption}\item[{std\+::int32\+\_\+t}]{voltage }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classpros_1_1Motor_a44f39232cec1caee6d668d8ff21dc28b}\label{classpros_1_1Motor_a44f39232cec1caee6d668d8ff21dc28b}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!modify\+\_\+profiled\+\_\+velocity@{modify\+\_\+profiled\+\_\+velocity}}
+\index{modify\+\_\+profiled\+\_\+velocity@{modify\+\_\+profiled\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{modify\+\_\+profiled\+\_\+velocity()}{modify\_profiled\_velocity()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::modify\+\_\+profiled\+\_\+velocity (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-\hyperlink{classpros_1_1Motor}{Motor} movement functions. 
+Changes the output velocity for a profiled movement (\hyperlink{motors_8h_ab70bf4937f1b5cefa15c11c15314c90e}{motor\+\_\+move\+\_\+absolute()} or \hyperlink{motors_8h_ab4c1ba35d69e8e9b49df0e848fa305d3}{motor\+\_\+move\+\_\+relative()}). 
 
-These functions allow programmers to make motors move Sets the voltage for the motor from -\/128 to 127.
-
-This is designed to map easily to the input from the controller\textquotesingle{}s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of \hyperlink{classpros_1_1Motor_a7ea9aedd4e12844be2584dc3f4b7a4bf}{pros\+::\+Motor\+::move()}, or motor\+Set from the P\+R\+OS 2 A\+PI.
+This will have no effect if the motor is not following a profiled movement.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
 
 
 \begin{DoxyParams}{Parameters}
-{\em voltage} & The new motor voltage from -\/127 to 127\\
+{\em velocity} & The new motor velocity from +-\/100, +-\/200, or +-\/600 depending on the motor\textquotesingle{}s gearset\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a7ad83a73bf15b94aaad8d10970bb254c}\label{classpros_1_1Motor_a7ad83a73bf15b94aaad8d10970bb254c}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+target\+\_\+position@{get\+\_\+target\+\_\+position}}
+\index{get\+\_\+target\+\_\+position@{get\+\_\+target\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+target\+\_\+position()}{get\_target\_position()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+target\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the target position set for the motor by the user. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The target position in its encoder units or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a8b8148a179cfadd579c8d4c82eb5873f}\label{classpros_1_1Motor_a8b8148a179cfadd579c8d4c82eb5873f}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+target\+\_\+velocity@{get\+\_\+target\+\_\+velocity}}
+\index{get\+\_\+target\+\_\+velocity@{get\+\_\+target\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+target\+\_\+velocity()}{get\_target\_velocity()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+target\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the velocity commanded to the motor by the user. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The commanded motor velocity from +-\/100, +-\/200, or +-\/600, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a696494a4e7c675f7007d41b947f9ea63}\label{classpros_1_1Motor_a696494a4e7c675f7007d41b947f9ea63}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+actual\+\_\+velocity@{get\+\_\+actual\+\_\+velocity}}
+\index{get\+\_\+actual\+\_\+velocity@{get\+\_\+actual\+\_\+velocity}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+actual\+\_\+velocity()}{get\_actual\_velocity()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+actual\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classpros_1_1Motor}{Motor} telemetry functions. 
+
+These functions allow programmers to collect telemetry from motors Gets the actual velocity of the motor.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s actual velocity in R\+PM or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a502eaf3859452721e2327e53ab3f34d8}\label{classpros_1_1Motor_a502eaf3859452721e2327e53ab3f34d8}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+current\+\_\+draw@{get\+\_\+current\+\_\+draw}}
+\index{get\+\_\+current\+\_\+draw@{get\+\_\+current\+\_\+draw}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+draw()}{get\_current\_draw()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+current\+\_\+draw (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the current drawn by the motor in mA. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s current in mA or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_acea42a96da651f72f138ea268c76217f}\label{classpros_1_1Motor_acea42a96da651f72f138ea268c76217f}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+direction@{get\+\_\+direction}}
+\index{get\+\_\+direction@{get\+\_\+direction}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+direction()}{get\_direction()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the direction of movement for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 for moving in the positive direction, -\/1 for moving in the negative direction, and P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a6f0b39894abf612a1965a66224893c71}\label{classpros_1_1Motor_a6f0b39894abf612a1965a66224893c71}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+efficiency@{get\+\_\+efficiency}}
+\index{get\+\_\+efficiency@{get\+\_\+efficiency}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+efficiency()}{get\_efficiency()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+efficiency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the efficiency of the motor in percent. 
+
+An efficiency of 100\% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0\% means that the motor is drawing power but not moving.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s efficiency in percent or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a2d34c92effccfbb4d2f45319bf4bd272}\label{classpros_1_1Motor_a2d34c92effccfbb4d2f45319bf4bd272}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+over\+\_\+current@{is\+\_\+over\+\_\+current}}
+\index{is\+\_\+over\+\_\+current@{is\+\_\+over\+\_\+current}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{is\+\_\+over\+\_\+current()}{is\_over\_current()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+over\+\_\+current (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is drawing over its current limit. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the motor\textquotesingle{}s current limit is being exceeded and 0 if the current limit is not exceeded, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a884c19ae71a6c9f0b316520f09769be9}\label{classpros_1_1Motor_a884c19ae71a6c9f0b316520f09769be9}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+stopped@{is\+\_\+stopped}}
+\index{is\+\_\+stopped@{is\+\_\+stopped}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{is\+\_\+stopped()}{is\_stopped()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+stopped (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is stopped. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyNote}{Note}
+Although this function forwards data from the motor, the motor presently does not provide any value. This function returns P\+R\+O\+S\+\_\+\+E\+RR with errno set to E\+N\+O\+S\+YS.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if the motor is not moving, 0 if the motor is moving, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a589a3cbb397ba065c30c1f16bb3f08a7}\label{classpros_1_1Motor_a589a3cbb397ba065c30c1f16bb3f08a7}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+zero\+\_\+position\+\_\+flag@{get\+\_\+zero\+\_\+position\+\_\+flag}}
+\index{get\+\_\+zero\+\_\+position\+\_\+flag@{get\+\_\+zero\+\_\+position\+\_\+flag}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+zero\+\_\+position\+\_\+flag()}{get\_zero\_position\_flag()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+zero\+\_\+position\+\_\+flag (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is at its zero position. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyNote}{Note}
+Although this function forwards data from the motor, the motor presently does not provide any value. This function returns P\+R\+O\+S\+\_\+\+E\+RR with errno set to E\+N\+O\+S\+YS.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if the motor is at zero absolute position, 0 if the motor has moved from its absolute zero, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a66c6f6420485059af301a9c8a99b2045}\label{classpros_1_1Motor_a66c6f6420485059af301a9c8a99b2045}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+faults@{get\+\_\+faults}}
+\index{get\+\_\+faults@{get\+\_\+faults}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+faults()}{get\_faults()}}
+{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t pros\+::\+Motor\+::get\+\_\+faults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the faults experienced by the motor. 
+
+Compare this bitfield to the bitmasks in pros\+::motor\+\_\+fault\+\_\+e\+\_\+t.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A bitfield containing the motor\textquotesingle{}s faults. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a7e24aa1c4363a131829e902f12e7364c}\label{classpros_1_1Motor_a7e24aa1c4363a131829e902f12e7364c}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+flags@{get\+\_\+flags}}
+\index{get\+\_\+flags@{get\+\_\+flags}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+flags()}{get\_flags()}}
+{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t pros\+::\+Motor\+::get\+\_\+flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the flags set by the motor\textquotesingle{}s operation. 
+
+Compare this bitfield to the bitmasks in pros\+::motor\+\_\+flag\+\_\+e\+\_\+t.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A bitfield containing the motor\textquotesingle{}s flags. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_ae82c57d590e18d7d90afec1e9cc3bb4e}\label{classpros_1_1Motor_ae82c57d590e18d7d90afec1e9cc3bb4e}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+raw\+\_\+position@{get\+\_\+raw\+\_\+position}}
+\index{get\+\_\+raw\+\_\+position@{get\+\_\+raw\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+raw\+\_\+position()}{get\_raw\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+raw\+\_\+position (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t $\ast$const}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the raw encoder count of the motor at a given timestamp. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em timestamp} & A pointer to a time in milliseconds for which the encoder count will be returned. If N\+U\+LL, the timestamp at which the encoder count was read will not be supplied\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The raw encoder count at the given timestamp or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a099d50ed35d73fa29a46b2beb151ce2b}\label{classpros_1_1Motor_a099d50ed35d73fa29a46b2beb151ce2b}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+over\+\_\+temp@{is\+\_\+over\+\_\+temp}}
+\index{is\+\_\+over\+\_\+temp@{is\+\_\+over\+\_\+temp}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{is\+\_\+over\+\_\+temp()}{is\_over\_temp()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+over\+\_\+temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the temperature limit flag for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a70e725a94ec42dc7cbb3e460c36dcad3}\label{classpros_1_1Motor_a70e725a94ec42dc7cbb3e460c36dcad3}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+position@{get\+\_\+position}}
+\index{get\+\_\+position@{get\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+position()}{get\_position()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the absolute position of the motor in its encoder units. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s absolute position in its encoder units or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a51b75dc245257487116e64fa2904d521}\label{classpros_1_1Motor_a51b75dc245257487116e64fa2904d521}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+power@{get\+\_\+power}}
+\index{get\+\_\+power@{get\+\_\+power}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+power()}{get\_power()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+power (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the power drawn by the motor in Watts. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s power draw in Watts or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a9fd793251b91c2ac0091c65f290f740d}\label{classpros_1_1Motor_a9fd793251b91c2ac0091c65f290f740d}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+temperature@{get\+\_\+temperature}}
+\index{get\+\_\+temperature@{get\+\_\+temperature}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+temperature()}{get\_temperature()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the temperature of the motor in degrees Celsius. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s temperature in degrees Celsius or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a14e0c57c0ca7bde15f73414abf4c3c8e}\label{classpros_1_1Motor_a14e0c57c0ca7bde15f73414abf4c3c8e}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+torque@{get\+\_\+torque}}
+\index{get\+\_\+torque@{get\+\_\+torque}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+torque()}{get\_torque()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Motor\+::get\+\_\+torque (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the torque generated by the motor in Newton Meters (Nm). 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s torque in Nm or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_abe51732c37c2ec72a8bdceac7f6962cb}\label{classpros_1_1Motor_abe51732c37c2ec72a8bdceac7f6962cb}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+voltage@{get\+\_\+voltage}}
+\index{get\+\_\+voltage@{get\+\_\+voltage}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+voltage()}{get\_voltage()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+voltage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the voltage delivered to the motor in millivolts. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s voltage in mV or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_af20c036c1d5d68eb5e762c12f9a4b7fe}\label{classpros_1_1Motor_af20c036c1d5d68eb5e762c12f9a4b7fe}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+zero\+\_\+position@{set\+\_\+zero\+\_\+position}}
+\index{set\+\_\+zero\+\_\+position@{set\+\_\+zero\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{set\+\_\+zero\+\_\+position()}{set\_zero\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::set\+\_\+zero\+\_\+position (\begin{DoxyParamCaption}\item[{const double}]{position }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\hyperlink{classpros_1_1Motor}{Motor} configuration functions. 
+
+These functions allow programmers to configure the behavior of motors Sets the position for the motor in its encoder units.
+
+This will be the future reference point for the motor\textquotesingle{}s \char`\"{}absolute\char`\"{} position.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new reference position in its encoder units\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a5d67803a65fa699a169a4ed5a107a964}\label{classpros_1_1Motor_a5d67803a65fa699a169a4ed5a107a964}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!tare\+\_\+position@{tare\+\_\+position}}
+\index{tare\+\_\+position@{tare\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{tare\+\_\+position()}{tare\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::tare\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the \char`\"{}absolute\char`\"{} zero position of the motor to its current position. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
@@ -919,6 +753,66 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_adca7af38b0357c254e81ed882a2283a0}\label{classpros_1_1Motor_adca7af38b0357c254e81ed882a2283a0}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!convert\+\_\+pid@{convert\+\_\+pid}}
+\index{convert\+\_\+pid@{convert\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{convert\+\_\+pid()}{convert\_pid()}}
+{\footnotesize\ttfamily static \hyperlink{motors_8h_ad2e907c8d7ce53c1fd91f1b9801072e3}{motor\+\_\+pid\+\_\+s\+\_\+t} pros\+::\+Motor\+::convert\+\_\+pid (\begin{DoxyParamCaption}\item[{double}]{kf,  }\item[{double}]{kp,  }\item[{double}]{ki,  }\item[{double}]{kd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Takes in floating point values and returns a properly formatted pid struct. 
+
+The motor\+\_\+pid\+\_\+s\+\_\+t struct is in 4.\+4 format, i.\+e. 0x20 is 2.\+0, 0x21 is 2.\+0625, etc. This function will convert the floating point values to the nearest 4.\+4 value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em kf} & The feedforward constant \\
+\hline
+{\em kp} & The proportional constant \\
+\hline
+{\em ki} & The integral constant \\
+\hline
+{\em kd} & The derivative constant\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A motor\+\_\+pid\+\_\+s\+\_\+t struct formatted properly in 4.\+4. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a2d8c9c462e47e989ebe64fa341be91c6}\label{classpros_1_1Motor_a2d8c9c462e47e989ebe64fa341be91c6}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!convert\+\_\+pid\+\_\+full@{convert\+\_\+pid\+\_\+full}}
+\index{convert\+\_\+pid\+\_\+full@{convert\+\_\+pid\+\_\+full}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{convert\+\_\+pid\+\_\+full()}{convert\_pid\_full()}}
+{\footnotesize\ttfamily static \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::convert\+\_\+pid\+\_\+full (\begin{DoxyParamCaption}\item[{double}]{kf,  }\item[{double}]{kp,  }\item[{double}]{ki,  }\item[{double}]{kd,  }\item[{double}]{filter,  }\item[{double}]{limit,  }\item[{double}]{threshold,  }\item[{double}]{loopspeed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Takes in floating point values and returns a properly formatted pid struct. 
+
+The motor\+\_\+pid\+\_\+s\+\_\+t struct is in 4.\+4 format, i.\+e. 0x20 is 2.\+0, 0x21 is 2.\+0625, etc. This function will convert the floating point values to the nearest 4.\+4 value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em kf} & The feedforward constant \\
+\hline
+{\em kp} & The proportional constant \\
+\hline
+{\em ki} & The integral constant \\
+\hline
+{\em kd} & The derivative constant \\
+\hline
+{\em filter} & A constant used for filtering the profile acceleration \\
+\hline
+{\em limit} & The integral limit \\
+\hline
+{\em threshold} & The threshold for determining if a position movement has reached its goal. This has no effect for velocity P\+ID calculations. \\
+\hline
+{\em loopspeed} & The rate at which the P\+ID computation is run in ms\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A motor\+\_\+pid\+\_\+s\+\_\+t struct formatted properly in 4.\+4. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Motor_a7a42563b94124faebb50e5731d5664ad}\label{classpros_1_1Motor_a7a42563b94124faebb50e5731d5664ad}} 
 \index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+pos\+\_\+pid@{set\+\_\+pos\+\_\+pid}}
 \index{set\+\_\+pos\+\_\+pid@{set\+\_\+pos\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
@@ -960,28 +854,6 @@ This function uses the following values of errno when an error state is reached\
 
 \begin{DoxyParams}{Parameters}
 {\em pid} & The new motor P\+ID constants\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a44fcc6447ed1416e880232baa16a221e}\label{classpros_1_1Motor_a44fcc6447ed1416e880232baa16a221e}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+reversed@{set\+\_\+reversed}}
-\index{set\+\_\+reversed@{set\+\_\+reversed}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{set\+\_\+reversed()}{set\_reversed()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::set\+\_\+reversed (\begin{DoxyParamCaption}\item[{const bool}]{reverse }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Sets the reverse flag for the motor. 
-
-This will invert its movements and the values returned for its position.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
-
-
-\begin{DoxyParams}{Parameters}
-{\em reverse} & True reverses the motor, false is default\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -1033,6 +905,28 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a44fcc6447ed1416e880232baa16a221e}\label{classpros_1_1Motor_a44fcc6447ed1416e880232baa16a221e}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+reversed@{set\+\_\+reversed}}
+\index{set\+\_\+reversed@{set\+\_\+reversed}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{set\+\_\+reversed()}{set\_reversed()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::set\+\_\+reversed (\begin{DoxyParamCaption}\item[{const bool}]{reverse }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the reverse flag for the motor. 
+
+This will invert its movements and the values returned for its position.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse} & True reverses the motor, false is default\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Motor_a3cd7e4ca0714b533d873796cf8b74a81}\label{classpros_1_1Motor_a3cd7e4ca0714b533d873796cf8b74a81}} 
 \index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+voltage\+\_\+limit@{set\+\_\+voltage\+\_\+limit}}
 \index{set\+\_\+voltage\+\_\+limit@{set\+\_\+voltage\+\_\+limit}!pros\+::\+Motor@{pros\+::\+Motor}}
@@ -1053,44 +947,150 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_af20c036c1d5d68eb5e762c12f9a4b7fe}\label{classpros_1_1Motor_af20c036c1d5d68eb5e762c12f9a4b7fe}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!set\+\_\+zero\+\_\+position@{set\+\_\+zero\+\_\+position}}
-\index{set\+\_\+zero\+\_\+position@{set\+\_\+zero\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{set\+\_\+zero\+\_\+position()}{set\_zero\_position()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::set\+\_\+zero\+\_\+position (\begin{DoxyParamCaption}\item[{const double}]{position }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classpros_1_1Motor_acc0c2225d2b713b73e1caee1a483a958}\label{classpros_1_1Motor_acc0c2225d2b713b73e1caee1a483a958}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+brake\+\_\+mode@{get\+\_\+brake\+\_\+mode}}
+\index{get\+\_\+brake\+\_\+mode@{get\+\_\+brake\+\_\+mode}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+brake\+\_\+mode()}{get\_brake\_mode()}}
+{\footnotesize\ttfamily virtual \hyperlink{motors_8h_aa324a2881696428c9e3684f9ad23a83b}{motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+brake\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-\hyperlink{classpros_1_1Motor}{Motor} configuration functions. 
-
-These functions allow programmers to configure the behavior of motors Sets the position for the motor in its encoder units.
-
-This will be the future reference point for the motor\textquotesingle{}s \char`\"{}absolute\char`\"{} position.
+Gets the brake mode that was set for the motor. 
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
 
-
-\begin{DoxyParams}{Parameters}
-{\em position} & The new reference position in its encoder units\\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+One of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t, according to what was set for the motor, or E\+\_\+\+M\+O\+T\+O\+R\+\_\+\+B\+R\+A\+K\+E\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed, setting errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Motor_a5d67803a65fa699a169a4ed5a107a964}\label{classpros_1_1Motor_a5d67803a65fa699a169a4ed5a107a964}} 
-\index{pros\+::\+Motor@{pros\+::\+Motor}!tare\+\_\+position@{tare\+\_\+position}}
-\index{tare\+\_\+position@{tare\+\_\+position}!pros\+::\+Motor@{pros\+::\+Motor}}
-\subsubsection{\texorpdfstring{tare\+\_\+position()}{tare\_position()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::tare\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classpros_1_1Motor_ad2eafcdf16ed480ddcbb80a45b19c01a}\label{classpros_1_1Motor_ad2eafcdf16ed480ddcbb80a45b19c01a}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+current\+\_\+limit@{get\+\_\+current\+\_\+limit}}
+\index{get\+\_\+current\+\_\+limit@{get\+\_\+current\+\_\+limit}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+current\+\_\+limit()}{get\_current\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+current\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Sets the \char`\"{}absolute\char`\"{} zero position of the motor to its current position. 
+Gets the current limit for the motor in mA. 
+
+The default value is 2500 mA.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
 
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+The motor\textquotesingle{}s current limit in mA or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a9fd37f3efa2f903bda8bf575b0052fd2}\label{classpros_1_1Motor_a9fd37f3efa2f903bda8bf575b0052fd2}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+encoder\+\_\+units@{get\+\_\+encoder\+\_\+units}}
+\index{get\+\_\+encoder\+\_\+units@{get\+\_\+encoder\+\_\+units}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+encoder\+\_\+units()}{get\_encoder\_units()}}
+{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a6677ba23760c558fd8b7b4e1e00a6123}{motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+encoder\+\_\+units (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the encoder units that were set for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+One of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t according to what is set for the motor or E\+\_\+\+M\+O\+T\+O\+R\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a3227bc4fbe531638472fff4dfb134333}\label{classpros_1_1Motor_a3227bc4fbe531638472fff4dfb134333}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+gearing@{get\+\_\+gearing}}
+\index{get\+\_\+gearing@{get\+\_\+gearing}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+gearing()}{get\_gearing()}}
+{\footnotesize\ttfamily virtual \hyperlink{motors_8h_aa2f1c305c998abc3bf8dd1f76fa4da8b}{motor\+\_\+gearset\+\_\+e\+\_\+t} pros\+::\+Motor\+::get\+\_\+gearing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the gearset that was set for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+One of motor\+\_\+gearset\+\_\+e\+\_\+t according to what is set for the motor, or E\+\_\+\+G\+E\+A\+R\+S\+E\+T\+\_\+\+I\+N\+V\+A\+L\+ID if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a32193b8d020ad1b47e1cb9f0b74a6c7d}\label{classpros_1_1Motor_a32193b8d020ad1b47e1cb9f0b74a6c7d}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+pos\+\_\+pid@{get\+\_\+pos\+\_\+pid}}
+\index{get\+\_\+pos\+\_\+pid@{get\+\_\+pos\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+pos\+\_\+pid()}{get\_pos\_pid()}}
+{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::get\+\_\+pos\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the position P\+ID that was set for the motor. 
+
+This function will return zero for all of the parameters if the \hyperlink{motors_8h_a389e60d01741d5947a9b7330c6c8bbf7}{motor\+\_\+set\+\_\+pos\+\_\+pid()} or \hyperlink{motors_8h_a1d3273573e296507914d2626121f19ce}{motor\+\_\+set\+\_\+pos\+\_\+pid\+\_\+full()} functions have not been used.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+Additionally, in an error state all values of the returned struct are set to their negative maximum values.
+
+\begin{DoxyReturn}{Returns}
+A motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t containing the position P\+ID constants last set to the given motor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a2b939563c3b915d7b8ce3dd1dece6208}\label{classpros_1_1Motor_a2b939563c3b915d7b8ce3dd1dece6208}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+vel\+\_\+pid@{get\+\_\+vel\+\_\+pid}}
+\index{get\+\_\+vel\+\_\+pid@{get\+\_\+vel\+\_\+pid}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+vel\+\_\+pid()}{get\_vel\_pid()}}
+{\footnotesize\ttfamily virtual \hyperlink{motors_8h_a0295cbf49f5c70c17b5fa962bd25febd}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t} pros\+::\+Motor\+::get\+\_\+vel\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the velocity P\+ID that was set for the motor. 
+
+This function will return zero for all of the parameters if the \hyperlink{motors_8h_a4255880d012ed0ec856f302536755d8a}{motor\+\_\+set\+\_\+vel\+\_\+pid()} or \hyperlink{motors_8h_acdec538d8f08e8b5946294f84f017e8e}{motor\+\_\+set\+\_\+vel\+\_\+pid\+\_\+full()} functions have not been used.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+Additionally, in an error state all values of the returned struct are set to their negative maximum values.
+
+\begin{DoxyReturn}{Returns}
+A motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t containing the velocity P\+ID constants last set to the given motor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a5122faa60ef7745761eca847192560c5}\label{classpros_1_1Motor_a5122faa60ef7745761eca847192560c5}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!is\+\_\+reversed@{is\+\_\+reversed}}
+\index{is\+\_\+reversed@{is\+\_\+reversed}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{is\+\_\+reversed()}{is\_reversed()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::is\+\_\+reversed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the operation direction of the motor as set by the user. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the motor has been reversed and 0 if the motor was not reversed, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a2afbe15bed764ca6d21f1e7c6c8da700}\label{classpros_1_1Motor_a2afbe15bed764ca6d21f1e7c6c8da700}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+voltage\+\_\+limit@{get\+\_\+voltage\+\_\+limit}}
+\index{get\+\_\+voltage\+\_\+limit@{get\+\_\+voltage\+\_\+limit}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+voltage\+\_\+limit()}{get\_voltage\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Motor\+::get\+\_\+voltage\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the voltage limit set by the user. 
+
+Default value is 0V, which means that there is no software limitation imposed on the voltage.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s voltage limit in V or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Motor_a5b0e644c8af396a6af8142b41d1bc7b6}\label{classpros_1_1Motor_a5b0e644c8af396a6af8142b41d1bc7b6}} 
+\index{pros\+::\+Motor@{pros\+::\+Motor}!get\+\_\+port@{get\+\_\+port}}
+\index{get\+\_\+port@{get\+\_\+port}!pros\+::\+Motor@{pros\+::\+Motor}}
+\subsubsection{\texorpdfstring{get\+\_\+port()}{get\_port()}}
+{\footnotesize\ttfamily virtual std\+::uint8\+\_\+t pros\+::\+Motor\+::get\+\_\+port (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the port number of the motor. 
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s port number. 
 \end{DoxyReturn}
 
 

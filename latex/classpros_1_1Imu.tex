@@ -2,7 +2,7 @@
 \label{classpros_1_1Imu}\index{pros\+::\+Imu@{pros\+::\+Imu}}
 
 
-{\ttfamily \#include $<$imu.\+hpp$>$}
+{\ttfamily \#include \char`\"{}imu.\+hpp\char`\"{}}
 
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
@@ -45,37 +45,19 @@ virtual bool \hyperlink{classpros_1_1Imu_af7426c086f6f810cca98f4e77765189c}{is\+
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classpros_1_1Imu_ac9a047f46e7ae8d73a6189091df20150}\label{classpros_1_1Imu_ac9a047f46e7ae8d73a6189091df20150}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+accel@{get\+\_\+accel}}
-\index{get\+\_\+accel@{get\+\_\+accel}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+accel()}{get\_accel()}}
-{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a70eb3173193f4f46266eade4c243f662}{pros\+::c\+::imu\+\_\+accel\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classpros_1_1Imu_ad7973cfad5f8f83e7007342055197c43}\label{classpros_1_1Imu_ad7973cfad5f8f83e7007342055197c43}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!reset@{reset}}
+\index{reset@{reset}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Imu\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Get the Inertial Sensor\textquotesingle{}s raw acceleroneter values. 
+Calibrate I\+MU. 
 
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+This takes approximately 2 seconds, and is a non-\/blocking operation.
 
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The raw accelerometer values. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_acd2f926bc97121518da774eefe6fc9e2}\label{classpros_1_1Imu_acd2f926bc97121518da774eefe6fc9e2}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+euler@{get\+\_\+euler}}
-\index{get\+\_\+euler@{get\+\_\+euler}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+euler()}{get\_euler()}}
-{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a93e80020ec907b7e11ac7166e5d01c55}{pros\+::c\+::euler\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+euler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get the Euler angles representing the Inertial Sensor\textquotesingle{}s orientation. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is already calibrating
 
 
 \begin{DoxyParams}{Parameters}
@@ -83,109 +65,7 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The Euler angles representing the sensor\textquotesingle{}s orientation. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_a632aecd3cf0866827ba6521dc19f357d}\label{classpros_1_1Imu_a632aecd3cf0866827ba6521dc19f357d}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+gyro\+\_\+rate@{get\+\_\+gyro\+\_\+rate}}
-\index{get\+\_\+gyro\+\_\+rate@{get\+\_\+gyro\+\_\+rate}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+gyro\+\_\+rate()}{get\_gyro\_rate()}}
-{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a5b9e240cfb181cce3c741e29efbbbf23}{pros\+::c\+::imu\+\_\+gyro\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+gyro\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get the Inertial Sensor\textquotesingle{}s raw gyroscope values. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The raw gyroscope values. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_a35c7953c5def3c034763af25c4dbebe3}\label{classpros_1_1Imu_a35c7953c5def3c034763af25c4dbebe3}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+heading@{get\+\_\+heading}}
-\index{get\+\_\+heading@{get\+\_\+heading}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+heading()}{get\_heading()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+heading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get the Inertial Sensor\textquotesingle{}s heading relative to the initial direction of its x-\/axis. 
-
-This value is bounded by (-\/360,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The degree value or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_a9d9e7ad1da6ea8877c48e1b4fadfe8ee}\label{classpros_1_1Imu_a9d9e7ad1da6ea8877c48e1b4fadfe8ee}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+pitch@{get\+\_\+pitch}}
-\index{get\+\_\+pitch@{get\+\_\+pitch}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+pitch()}{get\_pitch()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get the Inertial Sensor\textquotesingle{}s pitch angle. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The pitch angle, or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_a3656b2476bb3ab8c2539615f76a0db39}\label{classpros_1_1Imu_a3656b2476bb3ab8c2539615f76a0db39}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+quaternion@{get\+\_\+quaternion}}
-\index{get\+\_\+quaternion@{get\+\_\+quaternion}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+quaternion()}{get\_quaternion()}}
-{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a1f3d4bf4251e6ce7cb374297de6390a1}{pros\+::c\+::quaternion\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+quaternion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get a quaternion representing the Inertial Sensor\textquotesingle{}s orientation. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The quaternion representing the sensor\textquotesingle{}s orientation. If the operation failed, all the quaternion\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_a8ec8c7bbb7ee9d9d1c9dca5d992c57b1}\label{classpros_1_1Imu_a8ec8c7bbb7ee9d9d1c9dca5d992c57b1}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+roll@{get\+\_\+roll}}
-\index{get\+\_\+roll@{get\+\_\+roll}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+roll()}{get\_roll()}}
-{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+roll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Get the Inertial Sensor\textquotesingle{}s roll angle. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The roll angle, or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Imu_ac8bd7a19a6b4fc0c207a895efd3f0b48}\label{classpros_1_1Imu_ac8bd7a19a6b4fc0c207a895efd3f0b48}} 
 \index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+rotation@{get\+\_\+rotation}}
@@ -209,15 +89,17 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The degree value or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_ad38c8f55b89f8d2e7b68a6bda0029559}\label{classpros_1_1Imu_ad38c8f55b89f8d2e7b68a6bda0029559}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+status@{get\+\_\+status}}
-\index{get\+\_\+status@{get\+\_\+status}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{get\+\_\+status()}{get\_status()}}
-{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a7d3682de24c3a459dddda55d65793309}{pros\+::c\+::imu\+\_\+status\+\_\+e\+\_\+t} pros\+::\+Imu\+::get\+\_\+status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+\mbox{\Hypertarget{classpros_1_1Imu_a35c7953c5def3c034763af25c4dbebe3}\label{classpros_1_1Imu_a35c7953c5def3c034763af25c4dbebe3}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+heading@{get\+\_\+heading}}
+\index{get\+\_\+heading@{get\+\_\+heading}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+heading()}{get\_heading()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+heading (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
 
 
 
-Get the Inertial Sensor\textquotesingle{}s status. 
+Get the Inertial Sensor\textquotesingle{}s heading relative to the initial direction of its x-\/axis. 
+
+This value is bounded by (-\/360,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
 
@@ -227,7 +109,87 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The Inertial Sensor\textquotesingle{}s status code, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+The degree value or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_a3656b2476bb3ab8c2539615f76a0db39}\label{classpros_1_1Imu_a3656b2476bb3ab8c2539615f76a0db39}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+quaternion@{get\+\_\+quaternion}}
+\index{get\+\_\+quaternion@{get\+\_\+quaternion}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+quaternion()}{get\_quaternion()}}
+{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a1f3d4bf4251e6ce7cb374297de6390a1}{pros\+::c\+::quaternion\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+quaternion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get a quaternion representing the Inertial Sensor\textquotesingle{}s orientation. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The quaternion representing the sensor\textquotesingle{}s orientation. If the operation failed, all the quaternion\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_acd2f926bc97121518da774eefe6fc9e2}\label{classpros_1_1Imu_acd2f926bc97121518da774eefe6fc9e2}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+euler@{get\+\_\+euler}}
+\index{get\+\_\+euler@{get\+\_\+euler}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+euler()}{get\_euler()}}
+{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a93e80020ec907b7e11ac7166e5d01c55}{pros\+::c\+::euler\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+euler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Euler angles representing the Inertial Sensor\textquotesingle{}s orientation. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Euler angles representing the sensor\textquotesingle{}s orientation. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_a9d9e7ad1da6ea8877c48e1b4fadfe8ee}\label{classpros_1_1Imu_a9d9e7ad1da6ea8877c48e1b4fadfe8ee}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+pitch@{get\+\_\+pitch}}
+\index{get\+\_\+pitch@{get\+\_\+pitch}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+pitch()}{get\_pitch()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+pitch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Inertial Sensor\textquotesingle{}s pitch angle. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pitch angle, or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_a8ec8c7bbb7ee9d9d1c9dca5d992c57b1}\label{classpros_1_1Imu_a8ec8c7bbb7ee9d9d1c9dca5d992c57b1}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+roll@{get\+\_\+roll}}
+\index{get\+\_\+roll@{get\+\_\+roll}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+roll()}{get\_roll()}}
+{\footnotesize\ttfamily virtual double pros\+::\+Imu\+::get\+\_\+roll (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Inertial Sensor\textquotesingle{}s roll angle. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The roll angle, or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Imu_aa2dd2dec5b1a91d4358c23afd8f0f1bd}\label{classpros_1_1Imu_aa2dd2dec5b1a91d4358c23afd8f0f1bd}} 
 \index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+yaw@{get\+\_\+yaw}}
@@ -249,6 +211,66 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The yaw angle, or P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F if the operation failed, setting errno. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_a632aecd3cf0866827ba6521dc19f357d}\label{classpros_1_1Imu_a632aecd3cf0866827ba6521dc19f357d}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+gyro\+\_\+rate@{get\+\_\+gyro\+\_\+rate}}
+\index{get\+\_\+gyro\+\_\+rate@{get\+\_\+gyro\+\_\+rate}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+gyro\+\_\+rate()}{get\_gyro\_rate()}}
+{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a5b9e240cfb181cce3c741e29efbbbf23}{pros\+::c\+::imu\+\_\+gyro\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+gyro\+\_\+rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Inertial Sensor\textquotesingle{}s raw gyroscope values. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The raw gyroscope values. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_ac9a047f46e7ae8d73a6189091df20150}\label{classpros_1_1Imu_ac9a047f46e7ae8d73a6189091df20150}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+accel@{get\+\_\+accel}}
+\index{get\+\_\+accel@{get\+\_\+accel}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+accel()}{get\_accel()}}
+{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a70eb3173193f4f46266eade4c243f662}{pros\+::c\+::imu\+\_\+accel\+\_\+s\+\_\+t} pros\+::\+Imu\+::get\+\_\+accel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Inertial Sensor\textquotesingle{}s raw acceleroneter values. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The raw accelerometer values. If the operation failed, all the structure\textquotesingle{}s members are filled with P\+R\+O\+S\+\_\+\+E\+R\+R\+\_\+F and errno is set. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Imu_ad38c8f55b89f8d2e7b68a6bda0029559}\label{classpros_1_1Imu_ad38c8f55b89f8d2e7b68a6bda0029559}} 
+\index{pros\+::\+Imu@{pros\+::\+Imu}!get\+\_\+status@{get\+\_\+status}}
+\index{get\+\_\+status@{get\+\_\+status}!pros\+::\+Imu@{pros\+::\+Imu}}
+\subsubsection{\texorpdfstring{get\+\_\+status()}{get\_status()}}
+{\footnotesize\ttfamily virtual \hyperlink{imu_8h_a7d3682de24c3a459dddda55d65793309}{pros\+::c\+::imu\+\_\+status\+\_\+e\+\_\+t} pros\+::\+Imu\+::get\+\_\+status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the Inertial Sensor\textquotesingle{}s status. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is still calibrating
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Inertial Sensor\textquotesingle{}s status code, or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{classpros_1_1Imu_af7426c086f6f810cca98f4e77765189c}\label{classpros_1_1Imu_af7426c086f6f810cca98f4e77765189c}} 
 \index{pros\+::\+Imu@{pros\+::\+Imu}!is\+\_\+calibrating@{is\+\_\+calibrating}}
 \index{is\+\_\+calibrating@{is\+\_\+calibrating}!pros\+::\+Imu@{pros\+::\+Imu}}
@@ -261,28 +283,6 @@ Check whether the I\+MU is calibrating.
 
 \begin{DoxyReturn}{Returns}
 true if the V5 Inertial Sensor is calibrating or false false if it is not. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Imu_ad7973cfad5f8f83e7007342055197c43}\label{classpros_1_1Imu_ad7973cfad5f8f83e7007342055197c43}} 
-\index{pros\+::\+Imu@{pros\+::\+Imu}!reset@{reset}}
-\index{reset@{reset}!pros\+::\+Imu@{pros\+::\+Imu}}
-\subsubsection{\texorpdfstring{reset()}{reset()}}
-{\footnotesize\ttfamily virtual std\+::int32\+\_\+t pros\+::\+Imu\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-Calibrate I\+MU. 
-
-This takes approximately 2 seconds, and is a non-\/blocking operation.
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is already calibrating
-
-
-\begin{DoxyParams}{Parameters}
-{\em port} & The V5 Inertial Sensor port number from 1-\/21 \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
 
 
