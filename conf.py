@@ -11,4 +11,7 @@ STYLESHEETS = [
     "pros-code.css",
 ]
 
-LINKS_NAVBAR1 = [("Tutorials", "md_docs_tutorials_index", [])]
+LINKS_NAVBAR1 = [
+    ("Getting Started", "md_docs_getting-started_index", []),
+    ("Tutorials", "md_docs_tutorials_index", []),
+]
