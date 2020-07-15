@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="825" column="1" bodyfile="pros/include/pros/motors.hpp" bodystart="825" bodyend="-1"/>
+        <location file="pros/include/pros/motors.hpp" line="910" column="1" bodyfile="pros/include/pros/motors.hpp" bodystart="910" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -69,13 +69,21 @@
 <parametername>encoder_units</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The motor&apos;s encoder units </para></parameterdescription>
+<para>The motor&apos;s encoder units</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1,<sp/>E_MOTOR_GEARSET_18,<sp/>false,<sp/>E_MOTOR_ENCODER_DEGREES);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="45" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="58" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a512050b652bf3034a21da12bf2b663ac" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -100,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="48" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="61" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1aff27ad42b72a59c35e36a665bcd763a6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -121,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="50" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="63" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a822e0023951996ca7eff13ffe9cf953d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -142,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="52" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="65" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a767b4ad39251b8e8411fae17a35b24ba" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -159,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="54" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="67" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a4cf8a9518eb6cd268d27151f0df7fd38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -171,9 +179,9 @@
           <declname>voltage</declname>
         </param>
         <briefdescription>
-<para><ref refid="classpros_1_1Motor" kindref="compound">Motor</ref> movement functions. </para>        </briefdescription>
+<para>Sets the voltage for the motor from -128 to 127. </para>        </briefdescription>
         <detaileddescription>
-<para>These functions allow programmers to make motors move Sets the voltage for the motor from -128 to 127.</para><para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para><para><parameterlist kind="param"><parameteritem>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para><para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>voltage</parametername>
 </parameternamelist>
@@ -181,11 +189,19 @@
 <para>The new motor voltage from -127 to 127</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para></simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1,<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="78" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="104" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -207,11 +223,19 @@
 <para>The new motor voltage from -127 to 127</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para></simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="97" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="135" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7851ffa40c9803d75398a5be355de395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -245,11 +269,28 @@ This function uses the following values of errno when an error state is reached:
 <para>The maximum allowable velocity for the movement in RPM</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para></simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.tare_position();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="121" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="180" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a96c09e169b5135d9001cec92fa2686c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -283,11 +324,23 @@ This function uses the following values of errno when an error state is reached:
 <para>The maximum allowable velocity for the movement in RPM</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para></simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="146" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="221" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a797de937c2d550c3fa199806db07dbcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -309,11 +362,17 @@ This function uses the following values of errno when an error state is reached:
 <para>The new motor velocity from -+-100, +-200, or +-600 depending on the motor&apos;s gearset</para></parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para></simplesect>
-</para>        </detaileddescription>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para></simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="168" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="253" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a3c79db57c20617fbbc49461c58612cfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -346,7 +405,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="185" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="270" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a44f39232cec1caee6d668d8ff21dc28b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -372,7 +431,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="203" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="288" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7ad83a73bf15b94aaad8d10970bb254c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -389,7 +448,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="215" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="300" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a8b8148a179cfadd579c8d4c82eb5873f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -406,7 +465,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="227" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="312" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a696494a4e7c675f7007d41b947f9ea63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -423,7 +482,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="245" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="330" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a502eaf3859452721e2327e53ab3f34d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -440,7 +499,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="257" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="342" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1acea42a96da651f72f138ea268c76217f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -457,7 +516,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="269" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="354" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a6f0b39894abf612a1965a66224893c71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -474,7 +533,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="285" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="370" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a2d34c92effccfbb4d2f45319bf4bd272" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -491,7 +550,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="298" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="383" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a884c19ae71a6c9f0b316520f09769be9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -509,7 +568,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="314" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="399" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a589a3cbb397ba065c30c1f16bb3f08a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -527,7 +586,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="331" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="416" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a66c6f6420485059af301a9c8a99b2045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::uint32_t</type>
@@ -552,7 +611,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="347" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="432" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7e24aa1c4363a131829e902f12e7364c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::uint32_t</type>
@@ -577,7 +636,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="363" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="448" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1ae82c57d590e18d7d90afec1e9cc3bb4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -603,7 +662,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="380" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="465" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a099d50ed35d73fa29a46b2beb151ce2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -620,7 +679,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="392" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="477" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a70e725a94ec42dc7cbb3e460c36dcad3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -637,7 +696,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="404" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="489" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a51b75dc245257487116e64fa2904d521" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -654,7 +713,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="416" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="501" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a9fd793251b91c2ac0091c65f290f740d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -671,7 +730,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="428" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="513" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a14e0c57c0ca7bde15f73414abf4c3c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -688,7 +747,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="440" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="525" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1abe51732c37c2ec72a8bdceac7f6962cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -705,7 +764,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="452" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="537" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -731,7 +790,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="476" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="561" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a5d67803a65fa699a169a4ed5a107a964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -748,7 +807,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="488" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="573" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1ab51969169dc534537f79710261daa3dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -774,7 +833,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="503" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="588" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a4c496dfb0b33f989d7329a61b7b6d6ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -800,7 +859,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="518" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="603" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a2d2fea8d5967d1e41471111aa89afd84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -826,7 +885,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="533" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="618" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a3adf8b737ad2e4ebb5f000401c536fed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -852,7 +911,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="548" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="633" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7a42563b94124faebb50e5731d5664ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -878,7 +937,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="617" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="702" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a67cff0666b34c3731e21e856414c2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -904,7 +963,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="635" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="720" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a69169ae0cd2b7f68ee533648c7830397" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -930,7 +989,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="654" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="739" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a7fc8eefc04c8b8aaefad75437b49f30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -956,7 +1015,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="672" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="757" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a44fcc6447ed1416e880232baa16a221e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -982,7 +1041,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="689" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="774" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a3cd7e4ca0714b533d873796cf8b74a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -1008,7 +1067,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="704" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="789" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1acc0c2225d2b713b73e1caee1a483a958" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="motors_8h_1aa324a2881696428c9e3684f9ad23a83b" kindref="member">motor_brake_mode_e_t</ref></type>
@@ -1025,7 +1084,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="716" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="801" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1ad2eafcdf16ed480ddcbb80a45b19c01a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -1042,7 +1101,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="730" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="815" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a9fd37f3efa2f903bda8bf575b0052fd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="motors_8h_1a6677ba23760c558fd8b7b4e1e00a6123" kindref="member">motor_encoder_units_e_t</ref></type>
@@ -1059,7 +1118,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="742" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="827" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a3227bc4fbe531638472fff4dfb134333" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="motors_8h_1aa2f1c305c998abc3bf8dd1f76fa4da8b" kindref="member">motor_gearset_e_t</ref></type>
@@ -1076,7 +1135,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="754" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="839" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a32193b8d020ad1b47e1cb9f0b74a6c7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="motors_8h_1a0295cbf49f5c70c17b5fa962bd25febd" kindref="member">motor_pid_full_s_t</ref></type>
@@ -1093,7 +1152,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="771" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="856" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a2b939563c3b915d7b8ce3dd1dece6208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="motors_8h_1a0295cbf49f5c70c17b5fa962bd25febd" kindref="member">motor_pid_full_s_t</ref></type>
@@ -1110,7 +1169,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="788" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="873" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a5122faa60ef7745761eca847192560c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -1127,7 +1186,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="800" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="885" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a2afbe15bed764ca6d21f1e7c6c8da700" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -1144,7 +1203,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="815" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="900" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a5b0e644c8af396a6af8142b41d1bc7b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::uint8_t</type>
@@ -1161,7 +1220,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="822" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="907" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -1222,7 +1281,7 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="568" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="653" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1Motor_1a2d8c9c462e47e989ebe64fa341be91c6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="motors_8h_1a0295cbf49f5c70c17b5fa962bd25febd" kindref="member">motor_pid_full_s_t</ref></type>
@@ -1325,14 +1384,14 @@ This function uses the following values of errno when an error state is reached:
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="597" column="1"/>
+        <location file="pros/include/pros/motors.hpp" line="682" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/include/pros/motors.hpp" line="26" column="1" bodyfile="pros/include/pros/motors.hpp" bodystart="26" bodyend="826"/>
+    <location file="pros/include/pros/motors.hpp" line="27" column="1" bodyfile="pros/include/pros/motors.hpp" bodystart="27" bodyend="911"/>
     <listofallmembers>
       <member refid="classpros_1_1Motor_1afc58ebd8a501b0e6e21b7940f4b4ebbf" prot="private" virt="non-virtual"><scope>pros::Motor</scope><name>_port</name></member>
       <member refid="classpros_1_1Motor_1adca7af38b0357c254e81ed882a2283a0" prot="public" virt="non-virtual"><scope>pros::Motor</scope><name>convert_pid</name></member>
