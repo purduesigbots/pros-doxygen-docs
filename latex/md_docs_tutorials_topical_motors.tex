@@ -2,10 +2,7 @@
 {\bfseries{note}}
 
 For a full list of functions for interacting with the V5 Motors, see its \+: \href{../../api/c/motors.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/motors.html}{\texttt{ C++ A\+PI}}. \end{quote}
-
-
-\doxysection*{Initialization}
-
+\hypertarget{md_docs_tutorials_topical_motors_autotoc_md64}{}\doxysection{Initialization}\label{md_docs_tutorials_topical_motors_autotoc_md64}
 V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like \href{../../api/c/motors.html\#motor-move-velocity}{\texttt{ motor\+\_\+move\+\_\+velocity}} will work as expected.
 
 When declaring motors in C++, it is not necessary to set the configuration for the motor with its constructor (beyond its port number) more than once for the given port. An example of this is given below.
@@ -25,30 +22,15 @@ When declaring motors in C++, it is not necessary to set the configuration for t
 
 \end{quote}
 \end{quote}
-
-
-\doxysection*{Simple Usage}
-
-The easiest way to interact with the motors is through the \href{../../api/c/motors.html\#motor-move}{\texttt{ motor\+\_\+move}} function. This is analogous to the \href{../../../cortex/api/index.html\#motorSet}{\texttt{ motor\+Set}} function from P\+R\+OS 2.
-
-\doxysection*{Autonomous Movement}
-
-The V5 Motors can move in a number of different ways that are better suited towards autonomous movement than the simple {\ttfamily \mbox{\hyperlink{motors_8h_a7da9bf1e229e50bfeeaecf026a6d0d08}{motor\+\_\+move()}}} example shown above.
-
-\doxysubsection*{Profile Movements}
-
+\hypertarget{md_docs_tutorials_topical_motors_autotoc_md65}{}\doxysection{Simple Usage}\label{md_docs_tutorials_topical_motors_autotoc_md65}
+The easiest way to interact with the motors is through the \href{../../api/c/motors.html\#motor-move}{\texttt{ motor\+\_\+move}} function. This is analogous to the \href{../../../cortex/api/index.html\#motorSet}{\texttt{ motor\+Set}} function from P\+R\+OS 2.\hypertarget{md_docs_tutorials_topical_motors_autotoc_md66}{}\doxysection{Autonomous Movement}\label{md_docs_tutorials_topical_motors_autotoc_md66}
+The V5 Motors can move in a number of different ways that are better suited towards autonomous movement than the simple {\ttfamily \mbox{\hyperlink{motors_8h_a7da9bf1e229e50bfeeaecf026a6d0d08}{motor\+\_\+move()}}} example shown above.\hypertarget{md_docs_tutorials_topical_motors_autotoc_md67}{}\doxysubsection{Profile Movements}\label{md_docs_tutorials_topical_motors_autotoc_md67}
 Profile movements are movements to a given position that are executed by the motor\textquotesingle{}s firmware. There are two functions that achieve this, {\ttfamily \mbox{\hyperlink{motors_8h_ab70bf4937f1b5cefa15c11c15314c90e}{motor\+\_\+move\+\_\+absolute()}}} and {\ttfamily \mbox{\hyperlink{motors_8h_ab4c1ba35d69e8e9b49df0e848fa305d3}{motor\+\_\+move\+\_\+relative()}}}. These two functions are practically similar, but {\ttfamily \mbox{\hyperlink{motors_8h_ab4c1ba35d69e8e9b49df0e848fa305d3}{motor\+\_\+move\+\_\+relative()}}} takes into account the zero position of the motor\textquotesingle{}s encoder.
 
 These functions are very well suited to movement in autonomous.
 
-For further reading material on the algorithms that create these profiled movement, see \href{https://pdfs.semanticscholar.org/a229/fdba63d8d68abd09f70604d56cc07ee50f7d.pdf}{\texttt{ Mathematics of Motion Control Profiles}} for the \href{https://en.wikipedia.org/wiki/Feed_forward_(control)}{\texttt{ Feedforward}} control, and \href{http://georgegillard.com/documents/2-introduction-to-pid-controllers}{\texttt{ George Gillard\textquotesingle{}s P\+ID Explanation}} for the \href{https://en.wikipedia.org/wiki/Control_theory\#PID_feedback_control}{\texttt{ feedback}} control.
-
-\doxysubsection*{Velocity Controller Movement}
-
-The final {\ttfamily move} function available with the P\+R\+OS Motor A\+PI is {\ttfamily \mbox{\hyperlink{motors_8h_a5a366399c1ff416002641fd05e6d7808}{motor\+\_\+move\+\_\+velocity()}}}. This ensures consistent velocity output from the motor through the use of \href{http://georgegillard.com/documents/2-introduction-to-pid-controllers}{\texttt{ P\+ID}}.
-
-\doxysection*{Telemetry}
-
+For further reading material on the algorithms that create these profiled movement, see \href{https://pdfs.semanticscholar.org/a229/fdba63d8d68abd09f70604d56cc07ee50f7d.pdf}{\texttt{ Mathematics of Motion Control Profiles}} for the \href{https://en.wikipedia.org/wiki/Feed_forward_(control)}{\texttt{ Feedforward}} control, and \href{http://georgegillard.com/documents/2-introduction-to-pid-controllers}{\texttt{ George Gillard\textquotesingle{}s P\+ID Explanation}} for the \href{https://en.wikipedia.org/wiki/Control_theory\#PID_feedback_control}{\texttt{ feedback}} control.\hypertarget{md_docs_tutorials_topical_motors_autotoc_md68}{}\doxysubsection{Velocity Controller Movement}\label{md_docs_tutorials_topical_motors_autotoc_md68}
+The final {\ttfamily move} function available with the P\+R\+OS Motor A\+PI is {\ttfamily \mbox{\hyperlink{motors_8h_a5a366399c1ff416002641fd05e6d7808}{motor\+\_\+move\+\_\+velocity()}}}. This ensures consistent velocity output from the motor through the use of \href{http://georgegillard.com/documents/2-introduction-to-pid-controllers}{\texttt{ P\+ID}}.\hypertarget{md_docs_tutorials_topical_motors_autotoc_md69}{}\doxysection{Telemetry}\label{md_docs_tutorials_topical_motors_autotoc_md69}
 The V5 motors return a plethora of diagnostic information about their performance. The motors return the following parameters\+:
 
 Parameter C Function C++ Function
