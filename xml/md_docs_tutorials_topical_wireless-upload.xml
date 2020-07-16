@@ -12,14 +12,14 @@
 <para>PROS supports wireless upload to the V5 Brain via a V5 Controller. Although there are no special requirements to enable PROS to do this, file transfer speeds are typically unacceptably slow. To make them more reasonable, PROS has a different method of compiling your project so that the PROS kernel and other infrequently modified code are uploaded once and only the code you regularly modify (e.g. opcontrol.cpp, autonomous.cpp, and initialize.cpp) gets transferred to the V5 wirelessly. We call the code you upload once and never change the &quot;cold
 image&quot; and the code that changes frequently and gets uploaded every time the &quot;hot image.&quot;</para>
 <para>To enable this compilation mode, you should open your project&apos;s Makefile and edit the line:</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">#<sp/>Set<sp/>to<sp/>1<sp/>to<sp/>enable<sp/>hot/cold<sp/>linking</highlight></codeline>
+<para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>to<sp/>1<sp/>to<sp/>enable<sp/>hot/cold<sp/>linking</highlight></codeline>
 <codeline><highlight class="normal">USE_PACKAGE:=0</highlight></codeline>
 </programlisting></para>
 <para>so that <computeroutput>USE_PACKAGE:=1</computeroutput>. Re-build and upload your project and PROS will automatically use the new files. PROS will automatically detect when you&apos;re using the same combination of libraries and decide not to re-upload the &quot;cold&quot; code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.</para>
 <sect1 id="md_docs_tutorials_topical_wireless-upload_1autotoc_md86">
 <title>Large Projects</title>
 <para>Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project&apos;s Makefile:</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">#<sp/>Set<sp/>this<sp/>to<sp/>1<sp/>to<sp/>add<sp/>additional<sp/>rules<sp/>to<sp/>compile<sp/>your<sp/>project<sp/>as<sp/>a<sp/>PROS<sp/>library<sp/>template</highlight></codeline>
+<para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>this<sp/>to<sp/>1<sp/>to<sp/>add<sp/>additional<sp/>rules<sp/>to<sp/>compile<sp/>your<sp/>project<sp/>as<sp/>a<sp/>PROS<sp/>library<sp/>template</highlight></codeline>
 <codeline><highlight class="normal">IS_LIBRARY:=0</highlight></codeline>
 <codeline><highlight class="normal">#<sp/>TODO:<sp/>CHANGE<sp/>THIS!</highlight></codeline>
 <codeline><highlight class="normal">LIBNAME:=libbest</highlight></codeline>
@@ -31,7 +31,7 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 </verbatim></para>
 <para>You should refactor your code so that only &quot;hot&quot; code calls &quot;cold&quot; code or include the culprit file in the hot image.</para>
 <para>An example of a modified Makefile&apos;s relevant lines is shown below:</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">#<sp/>Set<sp/>to<sp/>1<sp/>to<sp/>enable<sp/>hot/cold<sp/>linking</highlight></codeline>
+<para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>to<sp/>1<sp/>to<sp/>enable<sp/>hot/cold<sp/>linking</highlight></codeline>
 <codeline><highlight class="normal">USE_PACKAGE=1</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">#<sp/>Set<sp/>this<sp/>to<sp/>1<sp/>to<sp/>add<sp/>additional<sp/>rules<sp/>to<sp/>compile<sp/>your<sp/>project<sp/>as<sp/>a<sp/>PROS<sp/>library<sp/>template</highlight></codeline>

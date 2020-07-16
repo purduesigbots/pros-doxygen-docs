@@ -10,16 +10,16 @@ The only additional detail needed for interacting with the filesystem in P\+R\+O
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{FILE* usd\_file\_write = fopen("/usd/example.txt", "w");}
-\DoxyCodeLine{fputs("Example text", usd\_file\_write);}
+\DoxyCodeLine{FILE* usd\_file\_write = fopen(\textcolor{stringliteral}{"/usd/example.txt"}, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{fputs(\textcolor{stringliteral}{"Example text"}, usd\_file\_write);}
 \DoxyCodeLine{fclose(usd\_file\_write);}
 \DoxyCodeLine{}
-\DoxyCodeLine{FILE* usd\_file\_read = fopen("/usd/example.txt", "r");}
-\DoxyCodeLine{char buf[50]; // This just needs to be larger than the contents of the file}
-\DoxyCodeLine{fread(buf, 1, 50, usd\_file\_read); // passing 1 because a `char` is 1 byte, and 50 b/c it's the length of buf}
-\DoxyCodeLine{printf("\%s\(\backslash\)n", buf); // print the string read from the file}
-\DoxyCodeLine{// Should print "Example text" to the terminal}
-\DoxyCodeLine{fclose(usd\_file\_read); // always close files when you're done with them}
+\DoxyCodeLine{FILE* usd\_file\_read = fopen(\textcolor{stringliteral}{"/usd/example.txt"}, \textcolor{stringliteral}{"r"});}
+\DoxyCodeLine{\textcolor{keywordtype}{char} buf[50]; \textcolor{comment}{// This just needs to be larger than the contents of the file}}
+\DoxyCodeLine{fread(buf, 1, 50, usd\_file\_read); \textcolor{comment}{// passing 1 because a `char` is 1 byte, and 50 b/c it's the length of buf}}
+\DoxyCodeLine{printf(\textcolor{stringliteral}{"\%s\(\backslash\)n"}, buf); \textcolor{comment}{// print the string read from the file}}
+\DoxyCodeLine{\textcolor{comment}{// Should print "Example text" to the terminal}}
+\DoxyCodeLine{fclose(usd\_file\_read); \textcolor{comment}{// always close files when you're done with them}}
 \end{DoxyCode}
 \hypertarget{md_docs_tutorials_topical_filesystem_autotoc_md56}{}\doxysection{Remarks}\label{md_docs_tutorials_topical_filesystem_autotoc_md56}
 The micro\+SD card must be fat32 in order to work.\hypertarget{md_docs_tutorials_topical_filesystem_autotoc_md57}{}\doxysubsection{Serial}\label{md_docs_tutorials_topical_filesystem_autotoc_md57}
@@ -29,8 +29,8 @@ For instance, you can write to {\ttfamily stderr} in the following manner\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{FILE* stderr = fopen("serr", "w");}
-\DoxyCodeLine{fputs("Example text", stderr);}
+\DoxyCodeLine{FILE* stderr = fopen(\textcolor{stringliteral}{"serr"}, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{fputs(\textcolor{stringliteral}{"Example text"}, stderr);}
 \DoxyCodeLine{fclose(usd\_file\_write);}
 \end{DoxyCode}
 

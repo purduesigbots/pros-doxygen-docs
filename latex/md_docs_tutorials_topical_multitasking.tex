@@ -39,16 +39,16 @@ The simplest way to ensure thread safety is to design tasks which will never acc
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{int task1\_variable = 0;}
-\DoxyCodeLine{void Task1(void * ignore) \{}
-\DoxyCodeLine{    // do things}
+\DoxyCodeLine{\textcolor{keywordtype}{int} task1\_variable = 0;}
+\DoxyCodeLine{\textcolor{keywordtype}{void} Task1(\textcolor{keywordtype}{void} * ignore) \{}
+\DoxyCodeLine{    \textcolor{comment}{// do things}}
 \DoxyCodeLine{    task1\_variable = 4;}
 \DoxyCodeLine{\}}
 \DoxyCodeLine{}
-\DoxyCodeLine{void Task2(void * ignore) \{}
-\DoxyCodeLine{  // do things}
-\DoxyCodeLine{  // I can read task1\_variable, but NOT write to it}
-\DoxyCodeLine{  printf("\%d\(\backslash\)n", task1\_variable);}
+\DoxyCodeLine{\textcolor{keywordtype}{void} Task2(\textcolor{keywordtype}{void} * ignore) \{}
+\DoxyCodeLine{  \textcolor{comment}{// do things}}
+\DoxyCodeLine{  \textcolor{comment}{// I can read task1\_variable, but NOT write to it}}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"\%d\(\backslash\)n"}, task1\_variable);}
 \DoxyCodeLine{\}}
 \end{DoxyCode}
 

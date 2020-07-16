@@ -13,16 +13,16 @@
 </listitem></itemizedlist>
 </para>
 <para>The only additional detail needed for interacting with the filesystem in PROS is that any files on the microSD card <bold>must</bold> be prefaced with <computeroutput>/usd/</computeroutput>. A file on the microSD card can be written to in the following manner:</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">FILE*<sp/>usd_file_write<sp/>=<sp/>fopen(&quot;/usd/example.txt&quot;,<sp/>&quot;w&quot;);</highlight></codeline>
-<codeline><highlight class="normal">fputs(&quot;Example<sp/>text&quot;,<sp/>usd_file_write);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">FILE*<sp/>usd_file_write<sp/>=<sp/>fopen(</highlight><highlight class="stringliteral">&quot;/usd/example.txt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">fputs(</highlight><highlight class="stringliteral">&quot;Example<sp/>text&quot;</highlight><highlight class="normal">,<sp/>usd_file_write);</highlight></codeline>
 <codeline><highlight class="normal">fclose(usd_file_write);</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">FILE*<sp/>usd_file_read<sp/>=<sp/>fopen(&quot;/usd/example.txt&quot;,<sp/>&quot;r&quot;);</highlight></codeline>
-<codeline><highlight class="normal">char<sp/>buf[50];<sp/>//<sp/>This<sp/>just<sp/>needs<sp/>to<sp/>be<sp/>larger<sp/>than<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>file</highlight></codeline>
-<codeline><highlight class="normal">fread(buf,<sp/>1,<sp/>50,<sp/>usd_file_read);<sp/>//<sp/>passing<sp/>1<sp/>because<sp/>a<sp/>`char`<sp/>is<sp/>1<sp/>byte,<sp/>and<sp/>50<sp/>b/c<sp/>it&apos;s<sp/>the<sp/>length<sp/>of<sp/>buf</highlight></codeline>
-<codeline><highlight class="normal">printf(&quot;%s\n&quot;,<sp/>buf);<sp/>//<sp/>print<sp/>the<sp/>string<sp/>read<sp/>from<sp/>the<sp/>file</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Should<sp/>print<sp/>&quot;Example<sp/>text&quot;<sp/>to<sp/>the<sp/>terminal</highlight></codeline>
-<codeline><highlight class="normal">fclose(usd_file_read);<sp/>//<sp/>always<sp/>close<sp/>files<sp/>when<sp/>you&apos;re<sp/>done<sp/>with<sp/>them</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">FILE*<sp/>usd_file_read<sp/>=<sp/>fopen(</highlight><highlight class="stringliteral">&quot;/usd/example.txt&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[50];<sp/></highlight><highlight class="comment">//<sp/>This<sp/>just<sp/>needs<sp/>to<sp/>be<sp/>larger<sp/>than<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">fread(buf,<sp/>1,<sp/>50,<sp/>usd_file_read);<sp/></highlight><highlight class="comment">//<sp/>passing<sp/>1<sp/>because<sp/>a<sp/>`char`<sp/>is<sp/>1<sp/>byte,<sp/>and<sp/>50<sp/>b/c<sp/>it&apos;s<sp/>the<sp/>length<sp/>of<sp/>buf</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">printf(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>buf);<sp/></highlight><highlight class="comment">//<sp/>print<sp/>the<sp/>string<sp/>read<sp/>from<sp/>the<sp/>file</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Should<sp/>print<sp/>&quot;Example<sp/>text&quot;<sp/>to<sp/>the<sp/>terminal</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">fclose(usd_file_read);<sp/></highlight><highlight class="comment">//<sp/>always<sp/>close<sp/>files<sp/>when<sp/>you&apos;re<sp/>done<sp/>with<sp/>them</highlight></codeline>
 </programlisting></para>
 <sect1 id="md_docs_tutorials_topical_filesystem_1autotoc_md56">
 <title>Remarks</title>
@@ -31,8 +31,8 @@
 <title>Serial</title>
 <para>It&apos;s also possible to interact with the serial communications (<computeroutput>stdin</computeroutput>, <computeroutput>stdout</computeroutput>, etc.) through the filesystem drivers. You can write and read from these streams in the same manner as a file, but using the four character stream identifiers.</para>
 <para>For instance, you can write to <computeroutput>stderr</computeroutput> in the following manner:</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">FILE*<sp/>stderr<sp/>=<sp/>fopen(&quot;serr&quot;,<sp/>&quot;w&quot;);</highlight></codeline>
-<codeline><highlight class="normal">fputs(&quot;Example<sp/>text&quot;,<sp/>stderr);</highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="normal">FILE*<sp/>stderr<sp/>=<sp/>fopen(</highlight><highlight class="stringliteral">&quot;serr&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;w&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal">fputs(</highlight><highlight class="stringliteral">&quot;Example<sp/>text&quot;</highlight><highlight class="normal">,<sp/>stderr);</highlight></codeline>
 <codeline><highlight class="normal">fclose(usd_file_write);</highlight></codeline>
 </programlisting></para>
 <para>There are also a number of methods for controlling serial communication behavior exposed in <ulink url="../../extended/apix.html">apix.h</ulink>. These methods can be accessed through the <computeroutput><ref refid="apix_8h_1a962daefd6f45a8def6ff00802a23fbff" kindref="member">serctl()</ref></computeroutput> function. At the moment two actions are supported -activating/deactivating the streams, and enabling/disabling <ulink url="https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing">COBS</ulink> . If you want to read the serial comms yourself (without using <computeroutput>pros terminal</computeroutput>), then you&apos;ll want to disable COBS. </para>

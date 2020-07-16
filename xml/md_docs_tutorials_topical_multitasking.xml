@@ -39,16 +39,16 @@
 <title>Synchronization</title>
 <para>One problem which one often runs into when dealing with tasks is the problem of synchronization. If two tasks try to read the same sensor or control the same motor at the same time, unexpected behavior may occur since two tasks are trying to write to the same piece of data or variable (i.e. <ulink url="https://en.wikipedia.org/wiki/Race_condition#Software">race conditions</ulink>). The concept of writing code which has protections against race conditions is called thread safety. There are many different ways to implement thread safety, and PROS has several facilities to help maintain thread safety.</para>
 <para>The simplest way to ensure thread safety is to design tasks which will never access the same variables or data. You may design your code to have each subsystem of your robot in its own task. Ensuring that tasks never write to the same variables is called division of responsibility or separation of domain.</para>
-<para><programlisting filename=".sourceCode"><codeline><highlight class="normal">int<sp/>task1_variable<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal">void<sp/>Task1(void<sp/>*<sp/>ignore)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>do<sp/>things</highlight></codeline>
+<para><programlisting filename=".c"><codeline><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>task1_variable<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Task1(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>things</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task1_variable<sp/>=<sp/>4;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>Task2(void<sp/>*<sp/>ignore)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>do<sp/>things</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>I<sp/>can<sp/>read<sp/>task1_variable,<sp/>but<sp/>NOT<sp/>write<sp/>to<sp/>it</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;%d\n&quot;,<sp/>task1_variable);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Task2(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>things</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>I<sp/>can<sp/>read<sp/>task1_variable,<sp/>but<sp/>NOT<sp/>write<sp/>to<sp/>it</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%d\n&quot;</highlight><highlight class="normal">,<sp/>task1_variable);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 <para>Sometimes this is impossible: suppose you wanted to write a PID controller on its own task and you wanted to change the target of the PID controller. PROS features two types of synchronization structures, <emphasis>mutexes</emphasis> and <emphasis>notifications</emphasis> that can be used to coordinate tasks.</para>
