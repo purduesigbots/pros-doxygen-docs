@@ -1,14 +1,12 @@
-ADI (3 Wire Ports)
-==================
+# ADI (3 Wire Ports)
 
 > **note**
 >
 > For a full list of functions for interacting with the ADI, see its
-> :   [C API](../../api/c/adi.html) and [C++
->     API](../../api/cpp/adi.html).
->
-Analog Sensors
---------------
+> : [C API](../../api/c/adi.html) and [C++
+> API](../../api/cpp/adi.html).
+
+## Analog Sensors
 
 While computers, microcontrollers, and other devices that interface with
 VEX robots are digital systems, most of the real world operates as
@@ -33,7 +31,7 @@ the configuration for its ADI port.
 
 Additionally, it is often worthwhile to calibrate analog sensors before
 using them in the `initialize()` function. The
-[analog\_calibrate](../../api/c/adi.html#adi-analog-calibrate) function
+[analog_calibrate](../../api/c/adi.html#adi-analog-calibrate) function
 collects approximately 500 data samples over a period of half a second
 and returns the average value received over the sampling period. This
 average value can be used to account for variations like ambient light
@@ -50,10 +48,10 @@ helps account for possible shifting in the potentiometer mounting and to
 find the actual range of the potentiometer due to its mechanical stops
 as that range may be closer to 5-4090 instead of 0-4095. If the
 potentiometer is not calibrated, the
-[analog\_read](../../api/c/adi.html#adi-analog-read) function may be
+[analog_read](../../api/c/adi.html#adi-analog-read) function may be
 used to obtain the raw input value of the potentiometer. If the sensor
 was calibrated, the
-[analog\_read\_calibrated](../../api/c/adi.html#adi-analog-read-calibrated)
+[analog_read_calibrated](../../api/c/adi.html#adi-analog-read-calibrated)
 function should be used, as it will account for the sensor's calibration
 and return more accurate results. The input to both of these functions
 is the channel number of the sensor, and an integer is returned.
@@ -83,8 +81,7 @@ Cortex.
 
 Example accelerometer use:
 
-Digital Sensors
----------------
+## Digital Sensors
 
 ### Initialization
 
@@ -106,12 +103,12 @@ With these sensors 1 measured tick is 1 degree of revolution.
 > **note**
 >
 > Encoders must be plugged into the ADI such that the top wire
-> :   is in an odd numbered port (1, 3, 5, 7 or 'A', 'C', 'E', or 'G'),
->     and then the bottom wire must be in the next highest port number.
+> : is in an odd numbered port (1, 3, 5, 7 or 'A', 'C', 'E', or 'G'),
+> and then the bottom wire must be in the next highest port number.
 >
-Encoders are initialized as such:
+> Encoders are initialized as such:
 
-> ``` {.sourceCode .c}
+> ```{.sourceCode .c}
 > void initialize() {
 >   encoder = adi_encoder_init(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, false);
 > }
@@ -127,13 +124,13 @@ encoders, given that they are both two-wire sensors.
 > **note**
 >
 > Ultrasonic sensors must be plugged into the ADI such that the PING wire
-> :   (the orange OUTPUT cable) is in an odd numbered port (1, 3, 5, 7
->     or 'A', 'C', 'E', or 'G'), and then the ECHO wire (the yellow
->     INPUT cable) must be in the next highest port number.
+> : (the orange OUTPUT cable) is in an odd numbered port (1, 3, 5, 7
+> or 'A', 'C', 'E', or 'G'), and then the ECHO wire (the yellow
+> INPUT cable) must be in the next highest port number.
 >
-Ultrasonic sensors are initialized as such:
+> Ultrasonic sensors are initialized as such:
 
-> ``` {.sourceCode .c}
+> ```{.sourceCode .c}
 > void initialize() {
 >   ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
 > }
@@ -148,5 +145,3 @@ other digital sensors in that they are output signals. Therefore, the
 default digital sensor configuration is insufficient.
 
 And then the pneumatics are used as such:
-
-

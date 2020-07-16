@@ -1,14 +1,11 @@
-Programming the Clawbot
-=======================
+# Programming the Clawbot
 
-Objective
----------
+## Objective
 
 This tutorial will guide you through basic programming of the VEX
 Clawbot.
 
-Intended Audience
------------------
+## Intended Audience
 
 This tutorial is intended for developers with some programming
 experience, but with little to no experience with the PROS library. If
@@ -18,20 +15,18 @@ series](http://www.studytonight.com/c/overview-of-c.php); you may also
 benefit from the "Pointers, Arrays and Strings" sections as well
 (although they aren't as pertinent).
 
-Goals
------
+## Goals
 
 At the end of this tutorial you will have:
 
--   Understood the basic project structure of PROS
--   Programmed a basic chassis with "tank" control or "arcade" control
--   Programmed buttons to control the clawbot's lift
--   Programmed a joystick axis to control the clawbot's claw
--   Understood the standard subsystem module methodology
--   Programmed a dead-reckoned autonomous routine
+- Understood the basic project structure of PROS
+- Programmed a basic chassis with "tank" control or "arcade" control
+- Programmed buttons to control the clawbot's lift
+- Programmed a joystick axis to control the clawbot's claw
+- Understood the standard subsystem module methodology
+- Programmed a dead-reckoned autonomous routine
 
-The Clawbot
------------
+## The Clawbot
 
 Here's the robot we'll be programming:
 
@@ -43,32 +38,35 @@ You can follow VEX's tutorial for building this robot
 For the purposes of this tutorial, we've plugged in our motors into the
 following ports:
 
-  Port      Description       Port      Description
-  --------- ----------------- --------- ----------------
-  1         Left Wheels       11        
-  2                           12        
-  3         Claw Motor        13        
-  4                           14        
-  5         Vision Sensor     15        
-  6                           16        
-  7                           17        
-  8         Arm Motor         18        
-  9                           19        
-  10        Right Wheels      20        
+Port Description Port Description
+
+---
+
+1 Left Wheels 11  
+ 2 12  
+ 3 Claw Motor 13  
+ 4 14  
+ 5 Vision Sensor 15  
+ 6 16  
+ 7 17  
+ 8 Arm Motor 18  
+ 9 19  
+ 10 Right Wheels 20
 
 Port 21: Radio
 
 For the ADI:
 
-  Port      Description       Port      Description
-  --------- ----------------- --------- ----------------
-  A         Left Bumper       E         
-  B         Right Bumper      F         
-  C                           G         
-  D                           H         Arm Limit
+Port Description Port Description
 
-Creating the Project
---------------------
+---
+
+A Left Bumper E  
+ B Right Bumper F  
+ C G  
+ D H Arm Limit
+
+## Creating the Project
 
 With Atom started, you can create a new PROS project by clicking the
 `PROS` menu, then click `Create new Project`.
@@ -80,8 +78,7 @@ Pick a directory to create the new project in and click Create. The PROS
 CLI will now copy the latest kernel template into the specified
 directory and Atom will open it.
 
-PROS Project Structure
-----------------------
+## PROS Project Structure
 
 When you create your project, PROS will copy all of the files necessary
 to build your project. The structure of the project looks like:
@@ -94,8 +91,7 @@ to build your project. The structure of the project looks like:
 > by default kept in one file (main.cpp). These could be separated again
 > if you so wish.
 
-Drive Control
--------------
+## Drive Control
 
 Let's start with the simplest operator control setup for the clawbot -
 tank drive control. We'll map the controller's left joystick to the left
@@ -120,8 +116,7 @@ create, build, and upload the code.
 
 These 2 commands can be simplified to `` `prosv5 mu ``.
 
-Arcade Control
---------------
+## Arcade Control
 
 While tank drive control is perfectly suitable for the driving style of
 some individuals, it is worth covering the arcade control method as
@@ -136,8 +131,7 @@ joysticks will be the power values sent to the left and right wheels.
 As with the tank drive code, this can be uploaded with the `prosv5 mu`
 command.
 
-Arm Control
------------
+## Arm Control
 
 Next let's control the clawbot's arm. This will not require the use of a
 joystick, but instead we will use the controller's buttons.
@@ -154,14 +148,12 @@ To actuate the lift, we will check if the upmost right trigger is
 pressed or if the bottommost right trigger is pressed on the controller,
 and move the lift in that direction if so.
 
-Claw Control
-------------
+## Claw Control
 
 We will control the claw in the same manner as the lift, by toggling its
 movement with a controller button.
 
-Reading the Switches
---------------------
+## Reading the Switches
 
 The bump switches, or buttons, are plugged into the ADI and attached to
 the rear of the robot. We'll monitor the status of the bump switches,
@@ -176,8 +168,7 @@ We will use a similar technique for reading the limit switch. If the
 limit switch is pressed, then we will prevent the lift from being driven
 down further.
 
-Simple Autonomous
------------------
+## Simple Autonomous
 
 The autonomous program runs without the use of a controller. We will
 make a simple autonomous program that drives straight.

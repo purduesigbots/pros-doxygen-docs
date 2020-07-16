@@ -1,5 +1,4 @@
-JINX Graphical Debugger
-=======================
+# JINX Graphical Debugger
 
 > **warning**
 >

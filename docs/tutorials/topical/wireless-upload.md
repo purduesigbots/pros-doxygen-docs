@@ -1,5 +1,4 @@
-Wireless Upload and Hot/Cold Linking
-====================================
+# Wireless Upload and Hot/Cold Linking
 
 > **note**
 >
@@ -20,7 +19,7 @@ the "hot image."
 To enable this compilation mode, you should open your project's Makefile
 and edit the line:
 
-``` {.sourceCode .Makefile}
+```{.sourceCode .Makefile}
 # Set to 1 to enable hot/cold linking
 USE_PACKAGE:=0
 ```
@@ -33,8 +32,7 @@ done with filename and checksum of the file. As a result, if you use the
 same combination of libraries (cold image), only one copy of the cold
 image is uploaded to the V5.
 
-Large Projects
---------------
+## Large Projects
 
 Projects with large codebases may still take some time to upload even
 with hot/cold linking. You may be able to reduce the size of your hot
@@ -42,7 +40,7 @@ image by making part of your project a library so that some code is
 included in the cold image. To do so, edit the following lines of your
 project's Makefile:
 
-``` {.sourceCode .Makefile}
+```{.sourceCode .Makefile}
 # Set this to 1 to add additional rules to compile your project as a PROS library template
 IS_LIBRARY:=0
 # TODO: CHANGE THIS!
@@ -74,7 +72,7 @@ or include the culprit file in the hot image.
 
 An example of a modified Makefile's relevant lines is shown below:
 
-``` {.sourceCode .Makefile}
+```{.sourceCode .Makefile}
 # Set to 1 to enable hot/cold linking
 USE_PACKAGE=1
 
@@ -88,8 +86,7 @@ EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # exclude any files in the s
 EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp
 ```
 
-Hot/Cold Linking Troubleshooting
---------------------------------
+## Hot/Cold Linking Troubleshooting
 
 Since hot/cold linking involves ensuring two compiled programs interact
 consistently, there may be additional runtime issues running in this
@@ -104,12 +101,12 @@ so we may assist in troubleshooting.
 
 If you see a black scren, then PROS did not boot correctly.
 
--   A global constructor is in an infinite loop or raised an exception.
--   See also troubleshooting steps below
+- A global constructor is in an infinite loop or raised an exception.
+- See also troubleshooting steps below
 
 If you see a grey screen, then PROS booted correctly, but is not running
 your hot image.
 
--   Delete all user programs, perform a clean build, and upload
+- Delete all user programs, perform a clean build, and upload
 
 If you're having issues, contact us so we may assist in troubleshooting.

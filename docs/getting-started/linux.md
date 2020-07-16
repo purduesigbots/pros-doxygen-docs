@@ -1,8 +1,6 @@
-Installing on Linux
-===================
+# Installing on Linux
 
-Installing the toolchain
-------------------------
+## Installing the toolchain
 
 The steps for installing the toolchain can differ greatly per
 distribution. The first step is to check whether your package manager
@@ -14,12 +12,12 @@ toolchain available, or if you prefer to install things manually, follow
 the instructions below.
 
 \note
-    For users of Debian-based distributions, be aware that the toolchain
-    available through Apt is out of date and likely will not work for PROS
-    projects. For Ubuntu users, you may see references online to a PPA by
-    team-gcc-arm-embedded, but that PPA does not seem to be updated any
-    more. Therefore, if you are using a Debian-based distribution or
-    Ubuntu, please follow the instructions below.
+For users of Debian-based distributions, be aware that the toolchain
+available through Apt is out of date and likely will not work for PROS
+projects. For Ubuntu users, you may see references online to a PPA by
+team-gcc-arm-embedded, but that PPA does not seem to be updated any
+more. Therefore, if you are using a Debian-based distribution or
+Ubuntu, please follow the instructions below.
 
 1.  Download the latest version of the toolchain from [the Arm developer
     site](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads).
@@ -45,12 +43,11 @@ the instructions below.
     a package manager.
 
 \note
-    After installing the toolchain using the instructions listed above,
-    upgrading to a newer version is as simple as removing the previous
-    install and following the instructions again with the newer version.
+After installing the toolchain using the instructions listed above,
+upgrading to a newer version is as simple as removing the previous
+install and following the instructions again with the newer version.
 
-Installing the CLI
-------------------
+## Installing the CLI
 
 1.  If you do not already have one installed, install a version of
     Python greater than or equal to 3.6
@@ -64,12 +61,11 @@ Installing the CLI
 3.  Run prosv5 --version to verify the CLI was installed correctly. If
     the command doesn't work, try restarting your machine.
 
-Installing the Editor
----------------------
+## Installing the Editor
 
 \note
-    The following instructions are for installing Atom and cquery. If you
-    intend to use an editor other than Atom, this section is optional.
+The following instructions are for installing Atom and cquery. If you
+intend to use an editor other than Atom, this section is optional.
 
 1.  Follow the instructions
     [here](https://github.com/cquery-project/cquery/wiki/Building-cquery)
@@ -80,5 +76,5 @@ Installing the Editor
 5.  Happy coding!
 
 \note
-    If Atom seems to get stuck during step 4, restart Atom every few
-    minutes.
+If Atom seems to get stuck during step 4, restart Atom every few
+minutes.

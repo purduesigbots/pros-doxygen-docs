@@ -1,5 +1,4 @@
-Combining C and C++
-===================
+# Combining C and C++
 
 The PROS C and C++ APIs cover the exact same feature set, which means
 that there is no significant advantage to using functions from one API

@@ -1,5 +1,4 @@
-Filesystem
-==========
+# Filesystem
 
 You can interact with files on the microSD card (you can **not**
 interact with files on the V5 brain's flash) through standard C/C++ file
@@ -7,15 +6,15 @@ I/O methods. For the most part, you can follow along with any standard C
 tutorial for file I/O and it will work with PROS. Here are a couple of
 recommended tutorials:
 
--   <https://www.cprogramming.com/tutorial/cfileio.html>
--   <https://www.tutorialspoint.com/cprogramming/c_file_io.htm>
+- <https://www.cprogramming.com/tutorial/cfileio.html>
+- <https://www.tutorialspoint.com/cprogramming/c_file_io.htm>
 
 The only additional detail needed for interacting with the filesystem in
 PROS is that any files on the microSD card **must** be prefaced with
 `/usd/`. A file on the microSD card can be written to in the following
 manner:
 
-``` {.sourceCode .cpp}
+```{.sourceCode .cpp}
 FILE* usd_file_write = fopen("/usd/example.txt", "w");
 fputs("Example text", usd_file_write);
 fclose(usd_file_write);
@@ -28,8 +27,7 @@ printf("%s\n", buf); // print the string read from the file
 fclose(usd_file_read); // always close files when you're done with them
 ```
 
-Remarks
--------
+## Remarks
 
 The microSD card must be fat32 in order to work.
 
@@ -42,7 +40,7 @@ character stream identifiers.
 
 For instance, you can write to `stderr` in the following manner:
 
-``` {.sourceCode .cpp}
+```{.sourceCode .cpp}
 FILE* stderr = fopen("serr", "w");
 fputs("Example text", stderr);
 fclose(usd_file_write);

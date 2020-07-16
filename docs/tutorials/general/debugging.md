@@ -1,5 +1,4 @@
-Debugging
-=========
+# Debugging
 
 > **warning**
 >
@@ -10,8 +9,7 @@ The [PROS API](../../api/index.html) provides functions like
 your robot to output information to a connected serial console during
 operation.
 
-Viewing printf output
----------------------
+## Viewing printf output
 
 To view a robot's output, there are two officially supported methods:
 
@@ -32,8 +30,7 @@ output of a connected robot.
 
 ![image](/images/atom/terminal-platformio.png)
 
-Further debug info with `errno`
--------------------------------
+## Further debug info with `errno`
 
 `errno` is a global value that is set when any part of the PROS kernel
 encounters an error. The value of `errno` is specific to each function,
@@ -46,8 +43,7 @@ Debugging in this manner is standard to other environments besides PROS.
 For further information on using `errno`, see the following tutorial:
 <https://www.tutorialspoint.com/cprogramming/c_error_handling.htm>
 
-JINX Graphical Debugger
------------------------
+## JINX Graphical Debugger
 
 JINX offers further debugging functionality over traditional debugging
 through print statements. For a full explanation of JINX's abilities and
