@@ -108,7 +108,7 @@ With these sensors 1 measured tick is 1 degree of revolution.
 >
 > Encoders are initialized as such:
 
-> ```{.sourceCode .c}
+> ```{.c}
 > void initialize() {
 >   encoder = adi_encoder_init(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, false);
 > }
@@ -130,7 +130,7 @@ encoders, given that they are both two-wire sensors.
 >
 > Ultrasonic sensors are initialized as such:
 
-> ```{.sourceCode .c}
+> ```{.c}
 > void initialize() {
 >   ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
 > }

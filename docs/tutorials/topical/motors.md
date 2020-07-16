@@ -19,7 +19,7 @@ configuration for the motor with its constructor (beyond its port
 number) more than once for the given port. An example of this is given
 below.
 
-> > ```{.sourceCode .cpp}
+> > ```{.cpp}
 > > #define MOTOR_PORT 1
 > >
 > > void opcontrol() {

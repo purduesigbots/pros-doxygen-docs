@@ -14,7 +14,7 @@ PROS is that any files on the microSD card **must** be prefaced with
 `/usd/`. A file on the microSD card can be written to in the following
 manner:
 
-```{.sourceCode .cpp}
+```{.cpp}
 FILE* usd_file_write = fopen("/usd/example.txt", "w");
 fputs("Example text", usd_file_write);
 fclose(usd_file_write);
@@ -40,7 +40,7 @@ character stream identifiers.
 
 For instance, you can write to `stderr` in the following manner:
 
-```{.sourceCode .cpp}
+```{.cpp}
 FILE* stderr = fopen("serr", "w");
 fputs("Example text", stderr);
 fclose(usd_file_write);

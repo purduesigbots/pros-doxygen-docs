@@ -19,7 +19,7 @@ the "hot image."
 To enable this compilation mode, you should open your project's Makefile
 and edit the line:
 
-```{.sourceCode .Makefile}
+```{.Makefile}
 # Set to 1 to enable hot/cold linking
 USE_PACKAGE:=0
 ```
@@ -40,7 +40,7 @@ image by making part of your project a library so that some code is
 included in the cold image. To do so, edit the following lines of your
 project's Makefile:
 
-```{.sourceCode .Makefile}
+```{.Makefile}
 # Set this to 1 to add additional rules to compile your project as a PROS library template
 IS_LIBRARY:=0
 # TODO: CHANGE THIS!
@@ -72,7 +72,7 @@ or include the culprit file in the hot image.
 
 An example of a modified Makefile's relevant lines is shown below:
 
-```{.sourceCode .Makefile}
+```{.Makefile}
 # Set to 1 to enable hot/cold linking
 USE_PACKAGE=1
 

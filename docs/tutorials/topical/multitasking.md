@@ -98,7 +98,7 @@ have each subsystem of your robot in its own task. Ensuring that tasks
 never write to the same variables is called division of responsibility
 or separation of domain.
 
-```{.sourceCode .c}
+```{.c}
 int task1_variable = 0;
 void Task1(void * ignore) {
     // do things

@@ -26,7 +26,7 @@ The recommended method of installing PROS 3 for macOS involves using
 \note
 If you do not want to use the PROS Editor, and instead intend to use
 only the PROS CLI, substitute the command in step 3 with the
-following: brew install pros-cli.
+following: `brew install pros-cli`.
 
 ## Other Methods
 
@@ -51,7 +51,7 @@ the components manually.
       folder you made in step 4 above. Finally, add
       `/usr/local/bin/pros-toolchain` to the end of your `/etc/paths`
       file.
-      ii) (easier, less easy to update) simply run
+    - easier, less easy to update: simply run
       `ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin`.
 
 ### Install the CLI
@@ -62,23 +62,22 @@ the components manually.
     Wheel file (.whl) from
     [here](https://github.com/purduesigbots/pros-cli3/releases/latest).
     Once downloaded, run
-    python3 -m pip install \~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl
+    `python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl`
     (replacing that path with the path to which you downloaded the
     file).
 
 ### Install the Editor
 
 \note
-this section is optional if you intend to use an editor other than the
+This section is optional if you intend to use an editor other than the
 PROS Editor
 
-1.  Build and install cquery by following the instructions on [their
-    wiki
+1.  Build and install cquery by following the instructions on [their wiki
     page](https://github.com/cquery-project/cquery/wiki/Building-cquery).
 2.  Download the pros-editor-mac.zip file from [our releases
     page](https://github.com/purduesigbots/atom/releases/latest). Once
     downloaded, double click to extract the application, then drag the
-    PROS Editor.app file to your /Applications folder.
+    `PROS Editor.app` file to your `/Applications` folder.
 
 ## Requirements
 
@@ -86,35 +85,35 @@ Minimum macOS version: 10.8 Minimum Python version: 3.6
 
 ## Known Issues
 
-RuntimeError: Click will abort further execution because Python 3 was configured
-to use ASCII as encoding for the environment.
+`RuntimeError: Click will abort further execution because Python 3 was configured to use ASCII as encoding for the environment.`
 
 If you are using the PROS Editor, open up your init script (File \> Init
 Script) and add the following two lines:
 
-```{.sourceCode .coffee}
+```{.coffee}
 process.env.LANG = 'en_US.utf-8'
 process.env.LC_ALL = 'en_US.utf-8'
 ```
 
 If you are just using the CLI at the Terminal:
 
-1.  Open up your Terminal.
-2.  Run cd to make sure you're in your home directory.
-3.  Run touch .bash_profile to make sure you have a shell login
-    configuration file.
-4.  Edit the \~/.bash_profile file in your preferred editor (you can
-    also run open -e .bash_profile to edit it in TextEdit), adding the
-    following two lines at the end:
+- Open up your Terminal.
+- Run `cd` to make sure you're in your home directory.
+- Run `touch .bash_profile` to make sure you have a shell login
+  configuration file.
+- Edit the `~/.bash_profile` file in your preferred editor (you can
+  also run `open -e .bash_profile` to edit it in TextEdit), adding the
+  following two lines at the end:
 
-```{.sourceCode .bash}
+```{.bash}
 export LANG="en_US.utf-8"
 export LC_ALL="en_US.utf-8"
 ```
 
-5.  Run . .bash_profile to reload the file for the current session.
+- Run `. .bash_profile` to reload the file for the current session.
 
-/bin/sh: intercept-c++: command not found
+<hr>
+`/bin/sh: intercept-c++: command not found`
 
 \note
 This issue should be fixed for PROS CLI versions \> 3.1.2
@@ -126,6 +125,6 @@ This issue should be fixed for PROS CLI versions \> 3.1.2
     4, however, add the following line instead (replacing the Xs with
     the numbers found in step 1):
 
-```{.sourceCode .bash}
+```{.bash}
 export PATH="/usr/local/Cellar/pros-cli/3.X.X/libexec/bin:$PATH"
 ```
