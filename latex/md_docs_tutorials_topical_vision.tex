@@ -2,10 +2,28 @@
 {\bfseries{note}}
 
 For a full list of functions for interacting with the V5 Vision Sensor, see its \+: \href{../../api/c/vision.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/vision.html}{\texttt{ C++ A\+PI}}. \end{quote}
-\hypertarget{md_docs_tutorials_topical_vision_autotoc_md79}{}\doxysection{Setting Signatures}\label{md_docs_tutorials_topical_vision_autotoc_md79}
-The first step to using the vision sensor is setting color signatures for the sensor to recognize as objects. This is done through the V5 Vision Utility program.\hypertarget{md_docs_tutorials_topical_vision_autotoc_md80}{}\doxysection{Retrieving Objects}\label{md_docs_tutorials_topical_vision_autotoc_md80}
-The primary function of the vision sensor is returning objects, or blobs of color detected by the sensor. The characteristics of an object are defined in \href{../../api/c/vision.html\#vision_object_s_t}{\texttt{ vision\+\_\+object\+\_\+s\+\_\+t}}.\hypertarget{md_docs_tutorials_topical_vision_autotoc_md81}{}\doxysubsection{By Size}\label{md_docs_tutorials_topical_vision_autotoc_md81}
-The simplest way to interact with the vision sensor is to get an object by its size. 0 is the largest object detected by the sensor.\hypertarget{md_docs_tutorials_topical_vision_autotoc_md82}{}\doxysubsection{By Signature}\label{md_docs_tutorials_topical_vision_autotoc_md82}
-If you have multiple signatures saved to the vision signature, you will most likely want to only look for objects of a particular signature. The {\ttfamily get\+\_\+by\+\_\+sig()} function implements this functionality.\hypertarget{md_docs_tutorials_topical_vision_autotoc_md83}{}\doxysection{Changing the Object Coordinates}\label{md_docs_tutorials_topical_vision_autotoc_md83}
-Each returned object from the vision sensor comes with a set of coordinates telling where the object was found in the vision sensor\textquotesingle{}s field of view. The default behavior is to return the coordinates as a function of distance from the top left corner of the field of view -\/ so positive y is downward and positive x is right. With the P\+R\+OS A\+PI, you can change this behavior so that the center of the Field Of View is the (0,0) point for object coordinates. Positive y is still downward and positive x is still right, but negative y is upward of center and negative x is left of center in this configuration.\hypertarget{md_docs_tutorials_topical_vision_autotoc_md84}{}\doxysection{Exposure Setting}\label{md_docs_tutorials_topical_vision_autotoc_md84}
+
+
+\doxysection*{Setting Signatures}
+
+The first step to using the vision sensor is setting color signatures for the sensor to recognize as objects. This is done through the V5 Vision Utility program.
+
+\doxysection*{Retrieving Objects}
+
+The primary function of the vision sensor is returning objects, or blobs of color detected by the sensor. The characteristics of an object are defined in \href{../../api/c/vision.html\#vision_object_s_t}{\texttt{ vision\+\_\+object\+\_\+s\+\_\+t}}.
+
+\doxysubsection*{By Size}
+
+The simplest way to interact with the vision sensor is to get an object by its size. 0 is the largest object detected by the sensor.
+
+\doxysubsection*{By Signature}
+
+If you have multiple signatures saved to the vision signature, you will most likely want to only look for objects of a particular signature. The {\ttfamily get\+\_\+by\+\_\+sig()} function implements this functionality.
+
+\doxysection*{Changing the Object Coordinates}
+
+Each returned object from the vision sensor comes with a set of coordinates telling where the object was found in the vision sensor\textquotesingle{}s field of view. The default behavior is to return the coordinates as a function of distance from the top left corner of the field of view -\/ so positive y is downward and positive x is right. With the P\+R\+OS A\+PI, you can change this behavior so that the center of the Field Of View is the (0,0) point for object coordinates. Positive y is still downward and positive x is still right, but negative y is upward of center and negative x is left of center in this configuration.
+
+\doxysection*{Exposure Setting}
+
 In P\+R\+OS Kernel 3.\+1.\+4 and earlier, the vision sensor exposure parameter was in the range \mbox{[}0,58\mbox{]}. In P\+R\+OS Kernel 3.\+1.\+5 and newer, the parameter is scaled to be in the range \mbox{[}0,150\mbox{]} to match the Vision Sensor utility. As a result, there is a loss of information in this translation since multiple integers on the scale \mbox{[}0,150\mbox{]} map to the scale \mbox{[}0,58\mbox{]}. 
