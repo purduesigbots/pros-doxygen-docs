@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="autotoc_md55" kind="page">
+    <compoundname>autotoc_md55</compoundname>
+    <title>Filesystem</title>
+    <detaileddescription>
+<para>You can interact with files on the microSD card (you can <bold>not</bold> interact with files on the V5 brain&apos;s flash) through standard C/C++ file I/O methods. For the most part, you can follow along with any standard C tutorial for file I/O and it will work with PROS. Here are a couple of recommended tutorials:</para><para><itemizedlist>
+<listitem><para><ulink url="https://www.cprogramming.com/tutorial/cfileio.html">https://www.cprogramming.com/tutorial/cfileio.html</ulink></para></listitem><listitem><para><ulink url="https://www.tutorialspoint.com/cprogramming/c_file_io.htm">https://www.tutorialspoint.com/cprogramming/c_file_io.htm</ulink></para></listitem></itemizedlist>
+</para><para>The only additional detail needed for interacting with the filesystem in PROS is that any files on the microSD card <bold>must</bold> be prefaced with <computeroutput>/usd/</computeroutput>. A file on the microSD card can be written to in the following manner:</para><para><programlisting><codeline><highlight class="normal">FILE*<sp/>usd_file_write<sp/>=<sp/>fopen(&quot;/usd/example.txt&quot;,<sp/>&quot;w&quot;);</highlight></codeline>
+<codeline><highlight class="normal">fputs(&quot;Example<sp/>text&quot;,<sp/>usd_file_write);</highlight></codeline>
+<codeline><highlight class="normal">fclose(usd_file_write);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">FILE*<sp/>usd_file_read<sp/>=<sp/>fopen(&quot;/usd/example.txt&quot;,<sp/>&quot;r&quot;);</highlight></codeline>
+<codeline><highlight class="normal">char<sp/>buf[50];<sp/>//<sp/>This<sp/>just<sp/>needs<sp/>to<sp/>be<sp/>larger<sp/>than<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">fread(buf,<sp/>1,<sp/>50,<sp/>usd_file_read);<sp/>//<sp/>passing<sp/>1<sp/>because<sp/>a<sp/>`char`<sp/>is<sp/>1<sp/>byte,<sp/>and<sp/>50<sp/>b/c<sp/>it&apos;s<sp/>the<sp/>length<sp/>of<sp/>buf</highlight></codeline>
+<codeline><highlight class="normal">printf(&quot;%s\n&quot;,<sp/>buf);<sp/>//<sp/>print<sp/>the<sp/>string<sp/>read<sp/>from<sp/>the<sp/>file</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Should<sp/>print<sp/>&quot;Example<sp/>text&quot;<sp/>to<sp/>the<sp/>terminal</highlight></codeline>
+<codeline><highlight class="normal">fclose(usd_file_read);<sp/>//<sp/>always<sp/>close<sp/>files<sp/>when<sp/>you&apos;re<sp/>done<sp/>with<sp/>them</highlight></codeline>
+</programlisting></para><para>The microSD card must be fat32 in order to work.</para><para>It&apos;s also possible to interact with the serial communications (<computeroutput>stdin</computeroutput>, <computeroutput>stdout</computeroutput>, etc.) through the filesystem drivers. You can write and read from these streams in the same manner as a file, but using the four character stream identifiers.</para><para>For instance, you can write to <computeroutput>stderr</computeroutput> in the following manner:</para><para><programlisting><codeline><highlight class="normal">FILE*<sp/>stderr<sp/>=<sp/>fopen(&quot;serr&quot;,<sp/>&quot;w&quot;);</highlight></codeline>
+<codeline><highlight class="normal">fputs(&quot;Example<sp/>text&quot;,<sp/>stderr);</highlight></codeline>
+<codeline><highlight class="normal">fclose(usd_file_write);</highlight></codeline>
+</programlisting></para><para>There are also a number of methods for controlling serial communication behavior exposed in <ulink url="../../extended/apix.html">apix.h</ulink>. These methods can be accessed through the <computeroutput><ref refid="apix_8h_1a962daefd6f45a8def6ff00802a23fbff" kindref="member">serctl()</ref></computeroutput> function. At the moment two actions are supported -activating/deactivating the streams, and enabling/disabling <ulink url="https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing">COBS</ulink> . If you want to read the serial comms yourself (without using <computeroutput>pros terminal</computeroutput>), then you&apos;ll want to disable COBS. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>
