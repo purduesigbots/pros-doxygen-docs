@@ -1,33 +1,35 @@
 \begin{quote}
 
 \begin{DoxyItemize}
-\item {\ttfamily \char`\"{}main.\+h\char`\"{} file not found}\+: \+: This error occurs when the compilation database {\ttfamily compile\+\_\+commands.\+json} is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the C\+LI without the {\ttfamily –compile-\/after} flag, or there was a hang-\/up in the editor after creating the project. Regardless of when this issue appears, running {\ttfamily pros make all} in the C\+LI or running {\ttfamily P\+R\+OS -\/$>$ Build -\/$>$ All} in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors.
-\end{DoxyItemize}
+\item {\ttfamily \char`\"{}main.\+h\char`\"{} file not found}\+: \+: This error occurs when the compilation database {\ttfamily compile\+\_\+commands.\+json} is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the C\+LI without the {\ttfamily –compile-\/after} flag, or there was a hang-\/up in the editor after creating the project. Regardless of when this issue appears, running {\ttfamily pros make all} in the C\+LI or running {\ttfamily P\+R\+OS -\/$>$ Build -\/$>$ All} in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors. 
+\end{DoxyItemize}\end{quote}
 
-\end{quote}
 
+\subsection*{Compile-\/\+Time Issues}
 
 \begin{quote}
 
 \begin{DoxyItemize}
 \item {\ttfamily undefined reference to ...} or {\ttfamily implicit declaration of function ...}\+: \+: A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in {\ttfamily \hyperlink{main_8h}{main.\+h}} or in the file in which they are used.
 \item {\ttfamily format ... expects argument of type ..., but argument has type ...}\+: \+: The value provided to a function like \href{http://www.cplusplus.com/reference/cstdio/printf/}{\tt printf} or \href{../../api/c/llemu.html#lcd-print}{\tt lcd\+\_\+print} does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types {\ttfamily double} or {\ttfamily long long} are mixed with other types.
-\item {\ttfamily assignment makes pointer from integer without a cast}\+: \+: Typically caused when a C pointer has the wrong number of asterisks to \href{http://stackoverflow.com/a/4955297/3681958}{\tt dereference} it, or when assigning a constant to {\ttfamily pointer} (instead of {\ttfamily $\ast$pointer}).
-\end{DoxyItemize}
+\item {\ttfamily assignment makes pointer from integer without a cast}\+: \+: Typically caused when a C pointer has the wrong number of asterisks to \href{http://stackoverflow.com/a/4955297/3681958}{\tt dereference} it, or when assigning a constant to {\ttfamily pointer} (instead of {\ttfamily $\ast$pointer}). 
+\end{DoxyItemize}\end{quote}
 
-\end{quote}
 
+\subsection*{Run-\/\+Time Issues}
 
 \begin{quote}
 
 \begin{DoxyItemize}
 \item {\bfseries Some tasks are running, others are not\+:} \+: A task is not waiting using \href{../../api/c/rtos.html#delay}{\tt delay} or \href{../../api/c/rtos.html#task-delay-until}{\tt task\+\_\+delay\+\_\+until}. Due to the fact that P\+R\+OS utilizes a priority based non-\/preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as \href{https://en.wikipedia.org/wiki/Starvation_(computer_science)}{\tt starvation}. See \href{/tutorials/topical/multitasking}{\tt Tasks/\+Multithreading} for more information.
-\item {\bfseries V\+EX L\+CD updates very slowly or is \char`\"{}frozen\char`\"{}\+:} \+: A task is not waiting using \href{../../api/c/rtos.html#delay}{\tt delay} or \href{../../api/c/rtos.html#task-delay-until}{\tt task\+\_\+delay\+\_\+until}. From the kernel\textquotesingle{}s perspective, updating the L\+CD is usually less important than how well the robot is running, so P\+R\+OS prioritizes user tasks over the L\+CD.
+\item {\bfseries V\+EX L\+CD updates very slowly or is \char`\"{}frozen\char`\"{}\+:} \+: A task is not waiting using \href{../../api/c/rtos.html#delay}{\tt delay} or \href{../../api/c/rtos.html#task-delay-until}{\tt task\+\_\+delay\+\_\+until}. From the kernel\textquotesingle{}s perspective, updating the L\+CD is usually less important than how well the robot is running, so P\+R\+OS prioritizes user tasks over the L\+CD. \begin{DoxyVerb}The LCD is only updated if all other tasks are waiting.
+\end{DoxyVerb}
 
-The L\+CD is only updated if all other tasks are waiting.
-\item {\bfseries Neither autonomous nor driver control code starts\+:} \+: The {\ttfamily \hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize()}} function may still be running. Some tasks such as \href{../../api/c/adi.html#analog-calibrate}{\tt analog\+\_\+calibrate} take time.
+\item {\bfseries Neither autonomous nor driver control code starts\+:} \+: The {\ttfamily \hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize()}} function may still be running. Some tasks such as \href{../../api/c/adi.html#analog-calibrate}{\tt analog\+\_\+calibrate} take time. \begin{DoxyVerb}If the `initialize()` function implements some type of loop or
+autonomous selection routine, verify that it actually has a
+means of ending.
+\end{DoxyVerb}
 
-If the {\ttfamily \hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize()}} function implements some type of loop or autonomous selection routine, verify that it actually has a means of ending.
 \item {\bfseries Code restarts unexpectedly\+:} \+: A run-\/time error has caused the program to crash. \href{./debugging}{\tt Debugging} may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include\+:
 \begin{DoxyItemize}
 \item {\bfseries Segmentation Fault\+:} \+: Indicates that an invalid C pointer has been used. Check for confusion between pointers and regular variables and that an invalid pointer has not been passed to a P\+R\+OS A\+PI function.
@@ -35,6 +37,6 @@ If the {\ttfamily \hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initiali
 \item {\bfseries System Task Failure\+:} \+: Too many tasks were running for the system to start a new one. Disable or merge unnecessary tasks to eliminate this error.
 \end{DoxyItemize}
 \item {\bfseries Cortex blinking red light after upload\+:} \+: Turn the Cortex microcontroller off and on again. This usually resolves the problem, and it is generally good practice to re-\/initialize the robot to simulate conditions at most competitions. If the error persists, see the \char`\"{}$\ast$$\ast$\+Code restarts
-        unexpectedly$\ast$$\ast$\char`\"{} section above.
-\item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries doesn\textquotesingle{}t work}\+: \+: \href{http://www.cplusplus.com/reference/cstdio/printf/}{\tt printf} prints information over a serial connection (\href{../tutorials/general/debugging}{\tt Debugging}), not to the V\+EX L\+CD. To print to the L\+CD, use \href{../../api/c/llemu.html#lcd-print}{\tt lcd\+\_\+print} instead. 
+  unexpectedly$\ast$$\ast$\char`\"{} section above.
+\item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries doesn\textquotesingle{}t work}\+: \+: \href{http://www.cplusplus.com/reference/cstdio/printf/}{\tt printf} prints information over a serial connection (\href{../tutorials/general/debugging}{\tt Debugging}), not to the V\+EX L\+CD. To print to the L\+CD, use \href{../../api/c/llemu.html#lcd-print}{\tt lcd\+\_\+print} instead.
 \end{DoxyItemize}\end{quote}
