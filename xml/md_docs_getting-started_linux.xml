@@ -1,22 +1,54 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="md_docs_getting-started_linux" kind="page">
     <compoundname>md_docs_getting-started_linux</compoundname>
     <title>Installing on Linux</title>
+    <briefdescription>
+    </briefdescription>
     <detaileddescription>
-<para><heading level="2">Installing the toolchain</heading>
-</para><para>The steps for installing the toolchain can differ greatly per distribution. The first step is to check whether your package manager offers the arm-none-eabi toolchain. If so, make sure that the version available is greater than or equal to 7.2 before installing.</para><para>If you&apos;re not sure whether your distribution&apos;s package manager has the toolchain available, or if you prefer to install things manually, follow the instructions below.</para><para><simplesect kind="note"><para>For users of Debian-based distributions, be aware that the toolchain available through Apt is out of date and likely will not work for PROS projects. For Ubuntu users, you may see references online to a PPA by team-gcc-arm-embedded, but that PPA does not seem to be updated any more. Therefore, if you are using a Debian-based distribution or Ubuntu, please follow the instructions below.</para></simplesect>
+<sect1 id="md_docs_getting-started_linux_1autotoc_md6">
+<title>Installing the toolchain</title>
+<para>The steps for installing the toolchain can differ greatly per distribution. The first step is to check whether your package manager offers the arm-none-eabi toolchain. If so, make sure that the version available is greater than or equal to 7.2 before installing.</para>
+<para>If you&apos;re not sure whether your distribution&apos;s package manager has the toolchain available, or if you prefer to install things manually, follow the instructions below.</para>
+<para><simplesect kind="note"><para>For users of Debian-based distributions, be aware that the toolchain available through Apt is out of date and likely will not work for PROS projects. For Ubuntu users, you may see references online to a PPA by team-gcc-arm-embedded, but that PPA does not seem to be updated any more. Therefore, if you are using a Debian-based distribution or Ubuntu, please follow the instructions below.</para>
+</simplesect>
 <orderedlist>
-<listitem><para>Download the latest version of the toolchain from <ulink url="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">the Arm developer site</ulink>. We recommend the &quot;Linux 64-bit&quot; release. If you can&apos;t use this for some reason (e.g. you have a 32-bit system), you may need to download the &quot;Source Invariant&quot; release and build manually, following the instructions in the archive.</para></listitem><listitem><para>Move the file to your home directory and untar it using the command tar -xjvf gcc-arm-none-eabi-X-20XX-qX-update-linux.tar.bz2:. The Xs should be replaced with those present in the name of the file you downloaded.</para></listitem><listitem><para>Add this line to your .bashrc file (if using bash), replacing &lt;your user&gt; with your username: export PATH=$PATH:/home/&lt;your user&gt;/gcc-arm-none-eabi-8-2019-q3-update/bin/. If you are using a shell other than bash, refer to that shell&apos;s documentation for how and where to add entries to your PATH when logging in.</para></listitem><listitem><para>Close and re-open your terminal, or run source/.bashrc (if running bash).</para></listitem><listitem><para>Test by running arm-none-eabi-gcc <ndash/>version. The output should confirm that the version is greater than or equal to 7.2. If it is not, make sure you don&apos;t have conflicting versions installed through a package manager.</para></listitem></orderedlist>
-</para><para><simplesect kind="note"><para>After installing the toolchain using the instructions listed above, upgrading to a newer version is as simple as removing the previous install and following the instructions again with the newer version.</para></simplesect>
-<heading level="2">Installing the CLI</heading>
-</para><para><orderedlist>
-<listitem><para>If you do not already have one installed, install a version of Python greater than or equal to 3.6</para></listitem><listitem><para>Check the latest version of the PROS CLI on <ulink url="https://github.com/purduesigbots/pros-cli3/releases/latest">our releases page</ulink>, and run python3.6 -m pip install <ndash/>user <ulink url="https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl,">https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl,</ulink> replacing the number after &apos;python&apos; with the version you installed and the Xs with the numbers you found before. If you wish to install for all users, run the command with sudo and remove the <ndash/>user flag.</para></listitem><listitem><para>Run prosv5 <ndash/>version to verify the CLI was installed correctly. If the command doesn&apos;t work, try restarting your machine.</para></listitem></orderedlist>
-</para><para><heading level="2">Installing the Editor</heading>
-</para><para><simplesect kind="note"><para>The following instructions are for installing Atom and cquery. If you intend to use an editor other than Atom, this section is optional.</para></simplesect>
+<listitem><para>Download the latest version of the toolchain from <ulink url="https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads">the Arm developer site</ulink>. We recommend the &quot;Linux 64-bit&quot; release. If you can&apos;t use this for some reason (e.g. you have a 32-bit system), you may need to download the &quot;Source Invariant&quot; release and build manually, following the instructions in the archive.</para>
+</listitem><listitem><para>Move the file to your home directory and untar it using the command tar -xjvf gcc-arm-none-eabi-X-20XX-qX-update-linux.tar.bz2:. The Xs should be replaced with those present in the name of the file you downloaded.</para>
+</listitem><listitem><para>Add this line to your .bashrc file (if using bash), replacing &lt;your user&gt; with your username: export PATH=$PATH:/home/&lt;your user&gt;/gcc-arm-none-eabi-8-2019-q3-update/bin/. If you are using a shell other than bash, refer to that shell&apos;s documentation for how and where to add entries to your PATH when logging in.</para>
+</listitem><listitem><para>Close and re-open your terminal, or run source/.bashrc (if running bash).</para>
+</listitem><listitem><para>Test by running arm-none-eabi-gcc <ndash/>version. The output should confirm that the version is greater than or equal to 7.2. If it is not, make sure you don&apos;t have conflicting versions installed through a package manager.</para>
+</listitem></orderedlist>
+</para>
+<para><simplesect kind="note"><para>After installing the toolchain using the instructions listed above, upgrading to a newer version is as simple as removing the previous install and following the instructions again with the newer version.</para>
+</simplesect>
+</para>
+</sect1>
+<sect1 id="md_docs_getting-started_linux_1autotoc_md7">
+<title>Installing the CLI</title>
+<para><orderedlist>
+<listitem><para>If you do not already have one installed, install a version of Python greater than or equal to 3.6</para>
+</listitem><listitem><para>Check the latest version of the PROS CLI on <ulink url="https://github.com/purduesigbots/pros-cli3/releases/latest">our releases page</ulink>, and run python3.6 -m pip install <ndash/>user <ulink url="https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl,">https://github.com/purduesigbots/pros-cli/releases/download/3.X.X/pros_cli_v5-3.X.X-py3-none-any.whl,</ulink> replacing the number after &apos;python&apos; with the version you installed and the Xs with the numbers you found before. If you wish to install for all users, run the command with sudo and remove the <ndash/>user flag.</para>
+</listitem><listitem><para>Run prosv5 <ndash/>version to verify the CLI was installed correctly. If the command doesn&apos;t work, try restarting your machine.</para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="md_docs_getting-started_linux_1autotoc_md8">
+<title>Installing the Editor</title>
+<para><simplesect kind="note"><para>The following instructions are for installing Atom and cquery. If you intend to use an editor other than Atom, this section is optional.</para>
+</simplesect>
 <orderedlist>
-<listitem><para>Follow the instructions <ulink url="https://github.com/cquery-project/cquery/wiki/Building-cquery">here</ulink> to build and install cquery.</para></listitem><listitem><para><ulink url="https://atom.io">Install Atom</ulink>.</para></listitem><listitem><para>Run apm install <ulink url="mailto:pros-bootstrapper@0.0.12">pros-bootstrapper@0.0.12</ulink>.</para></listitem><listitem><para>Open Atom and wait for any plugins to finish installing.</para></listitem><listitem><para>Happy coding!</para></listitem></orderedlist>
-</para><para><simplesect kind="note"><para>If Atom seems to get stuck during step 4, restart Atom every few minutes. </para></simplesect>
-</para>    </detaileddescription>
+<listitem><para>Follow the instructions <ulink url="https://github.com/cquery-project/cquery/wiki/Building-cquery">here</ulink> to build and install cquery.</para>
+</listitem><listitem><para><ulink url="https://atom.io">Install Atom</ulink>.</para>
+</listitem><listitem><para>Run apm install <ulink url="mailto:pros-bootstrapper@0.0.12">pros-bootstrapper@0.0.12</ulink>.</para>
+</listitem><listitem><para>Open Atom and wait for any plugins to finish installing.</para>
+</listitem><listitem><para>Happy coding!</para>
+</listitem></orderedlist>
+</para>
+<para><simplesect kind="note"><para>If Atom seems to get stuck during step 4, restart Atom every few minutes. </para>
+</simplesect>
+</para>
+</sect1>
+    </detaileddescription>
   </compounddef>
 </doxygen>

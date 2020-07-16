@@ -1,5 +1,5 @@
 \begin{quote}
-{\bfseries note}
+{\bfseries{note}}
 
 Wireless Upload requires at least C\+LI 3.\+1.\+4, Kernel 3.\+1.\+6, V\+E\+Xos 1.\+0.\+5, and Okapi\+Lib 3.\+3.\+12 (if used). \end{quote}
 
@@ -10,32 +10,29 @@ image\char`\"{} and the code that changes frequently and gets uploaded every tim
 To enable this compilation mode, you should open your project\textquotesingle{}s Makefile and edit the line\+:
 
 
-\begin{DoxyCode}
-# Set to 1 to enable hot/cold linking
-USE\_PACKAGE:=0
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Set to 1 to enable hot/cold linking}
+\DoxyCodeLine{USE\_PACKAGE:=0}
 \end{DoxyCode}
 
 
-so that {\ttfamily U\+S\+E\+\_\+\+P\+A\+C\+K\+A\+GE\+:=1}. Re-\/build and upload your project and P\+R\+OS will automatically use the new files. P\+R\+OS will automatically detect when you\textquotesingle{}re using the same combination of libraries and decide not to re-\/upload the \char`\"{}cold\char`\"{} code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.
-
-\subsection*{Large Projects}
-
+so that {\ttfamily U\+S\+E\+\_\+\+P\+A\+C\+K\+A\+GE\+:=1}. Re-\/build and upload your project and P\+R\+OS will automatically use the new files. P\+R\+OS will automatically detect when you\textquotesingle{}re using the same combination of libraries and decide not to re-\/upload the \char`\"{}cold\char`\"{} code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.\hypertarget{md_docs_tutorials_topical_wireless-upload_autotoc_md86}{}\doxysection{Large Projects}\label{md_docs_tutorials_topical_wireless-upload_autotoc_md86}
 Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project\textquotesingle{}s Makefile\+:
 
 
-\begin{DoxyCode}
-# Set this to 1 to add additional rules to compile your project as a PROS library template
-IS\_LIBRARY:=0
-# TODO: CHANGE THIS!
-LIBNAME:=libbest
-VERSION:=1.0.0
-# EXCLUDE\_SRC\_FROM\_LIB= $(SRCDIR)/unpublishedfile.c
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Set this to 1 to add additional rules to compile your project as a PROS library template}
+\DoxyCodeLine{IS\_LIBRARY:=0}
+\DoxyCodeLine{\# TODO: CHANGE THIS!}
+\DoxyCodeLine{LIBNAME:=libbest}
+\DoxyCodeLine{VERSION:=1.0.0}
+\DoxyCodeLine{\# EXCLUDE\_SRC\_FROM\_LIB= \$(SRCDIR)/unpublishedfile.c}
 \end{DoxyCode}
 
 
 Change {\ttfamily I\+S\+\_\+\+L\+I\+B\+R\+A\+RY} to {\ttfamily 1} and rename the library to something of your choosing. We recommend {\ttfamily lib$<$robot name$>$} or {\ttfamily lib$<$team number$>$} (e.\+g. {\ttfamily lib7701}) to be unique enough to avoid cause naming conflicts with other cold images. When compiling, P\+R\+OS will include this library as part of the cold image. Your library should only contain files you infrequently change so that you do not have to frequently upload the cold image. By default, the Makefile is set up to exclude your project\textquotesingle{}s opcontrol.\+cpp, autonomous.\+cpp, and initialize.\+cpp files. If you change other files frequently, you can add lines like {\ttfamily E\+X\+C\+L\+U\+D\+E\+\_\+\+S\+R\+C\+\_\+\+F\+R\+O\+M\+\_\+\+L\+I\+B+=/myfile.c} as needed.
 
-{\bfseries An important caveat} is that code that goes into the cold image is {\bfseries not} able to link against anything (call functions or use variables) in the hot image. Doing so will result in a linker error -\/ you will be told what\textquotesingle{}s trying to refer to what in the hot image\+: \begin{DoxyVerb}bin/libtheseus.a(lcdselector.cpp.o):(.data.inits+0x0): undefined reference to `auton::allianceInit(auton::color)'
+{\bfseries{An important caveat}} is that code that goes into the cold image is {\bfseries{not}} able to link against anything (call functions or use variables) in the hot image. Doing so will result in a linker error -\/ you will be told what\textquotesingle{}s trying to refer to what in the hot image\+: \begin{DoxyVerb}bin/libtheseus.a(lcdselector.cpp.o):(.data.inits+0x0): undefined reference to `auton::allianceInit(auton::color)'
 \end{DoxyVerb}
 
 
@@ -44,24 +41,20 @@ You should refactor your code so that only \char`\"{}hot\char`\"{} code calls \c
 An example of a modified Makefile\textquotesingle{}s relevant lines is shown below\+:
 
 
-\begin{DoxyCode}
-# Set to 1 to enable hot/cold linking
-USE\_PACKAGE=1
-
-# Set this to 1 to add additional rules to compile your project as a PROS library template
-IS\_LIBRARY:=1
-LIBNAME:=libtheseus
-VERSION:=1.0.0
-# this line excludes opcontrol.c and similar files
-EXCLUDE\_SRC\_FROM\_LIB+=$(foreach file, $(SRCDIR)/opcontrol $(SRCDIR)/initialize
-       $(SRCDIR)/autonomous,$(foreach cext,$(CEXTS),$(file).$(cext)) $(foreach cxxext,$(CXXEXTS),$(file).$(cxxext)))
-EXCLUDE\_SRC\_FROM\_LIB+=$(SRCDIR)/scripts             # exclude any files in the src/scripts directory
-EXCLUDE\_SRC\_FROM\_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Set to 1 to enable hot/cold linking}
+\DoxyCodeLine{USE\_PACKAGE=1}
+\DoxyCodeLine{}
+\DoxyCodeLine{\# Set this to 1 to add additional rules to compile your project as a PROS library template}
+\DoxyCodeLine{IS\_LIBRARY:=1}
+\DoxyCodeLine{LIBNAME:=libtheseus}
+\DoxyCodeLine{VERSION:=1.0.0}
+\DoxyCodeLine{\# this line excludes opcontrol.c and similar files}
+\DoxyCodeLine{EXCLUDE\_SRC\_FROM\_LIB+=\$(foreach file, \$(SRCDIR)/opcontrol \$(SRCDIR)/initialize \$(SRCDIR)/autonomous,\$(foreach cext,\$(CEXTS),\$(file).\$(cext)) \$(foreach cxxext,\$(CXXEXTS),\$(file).\$(cxxext)))}
+\DoxyCodeLine{EXCLUDE\_SRC\_FROM\_LIB+=\$(SRCDIR)/scripts             \# exclude any files in the src/scripts directory}
+\DoxyCodeLine{EXCLUDE\_SRC\_FROM\_LIB+=\$(SRCDIR)/lcdselector.cpp     \# exclude src/lcdselector.cpp}
 \end{DoxyCode}
-
-
-\subsection*{Hot/\+Cold Linking Troubleshooting}
-
+\hypertarget{md_docs_tutorials_topical_wireless-upload_autotoc_md87}{}\doxysection{Hot/\+Cold Linking Troubleshooting}\label{md_docs_tutorials_topical_wireless-upload_autotoc_md87}
 Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime issues running in this mode. This section serves as a guide for debugging these sorts of issues.
 
 Generally, if the program appears to be running correctly (i.\+e. the screen shows), then the compilation mode worked correctly and the error you\textquotesingle{}re experiencing is likely related to your code\textquotesingle{}s logic. If your code\textquotesingle{}s logic runs correctly when not using hot/cold linking, contact us so we may assist in troubleshooting.

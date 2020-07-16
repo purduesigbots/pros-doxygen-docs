@@ -78,6 +78,10 @@ Home</span></a>
               <span class="m-doc-wrap-bumper">auto <a href="#a27d82a95e717eeee61ed6555952a93d8" class="m-doc">get_new_press</a>(</span><span class="m-doc-wrap">void) const -&gt; std::int32_t</span>
             </dt>
             <dd>Gets a rising-edge case for a digital button press.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#ac79b5fd3ce67ae6ffc4b1fbbb306e997" class="m-doc">get_value</a>(</span><span class="m-doc-wrap">void) const -&gt; std::int32_t</span>
+            </dt>
+            <dd>Gets the value for the given ADI port.</dd>
           </dl>
         </section>
         <section>
@@ -114,6 +118,21 @@ Home</span></a>
               </tfoot>
             </table>
 <p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a digital input</p>
+          </div></section>
+          <section class="m-doc-details" id="ac79b5fd3ce67ae6ffc4b1fbbb306e997"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />ADIDigitalIn::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac79b5fd3ce67ae6ffc4b1fbbb306e997" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">void) const</span></span>
+            </h3>
+            <p>Gets the value for the given ADI port.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The value stored for the given port</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a digital input</p>
           </div></section>
         </section>
       </div>
@@ -161,7 +180,7 @@ Home</span></a>
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS Documentation
-Home. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.13 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+Home. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classpros_1_1ADIUltrasonic" kind="class" language="C++" prot="public">
     <compoundname>pros::ADIUltrasonic</compoundname>
     <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">pros::ADIPort</basecompoundref>
@@ -19,27 +19,54 @@
           <declname>port_echo</declname>
         </param>
         <briefdescription>
-<para>Configures a set of ADI ports to act as an Ultrasonic. </para>        </briefdescription>
+<para>Configures a set of ADI ports to act as an Ultrasonic. </para>
+        </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</para><para><parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port_ping</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port connected to the orange OUTPUT cable. This should be in port 1, 3, 5, or 7 (&apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;). </para></parameterdescription>
+<para>The port connected to the orange OUTPUT cable. This should be in port 1, 3, 5, or 7 (&apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;). </para>
+</parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
 <parametername>port_echo</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping. </para></parameterdescription>
+<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping. </para>
+</parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>        </detaileddescription>
+</para>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="pros/include/pros/adi.hpp" line="433" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1ac79b5fd3ce67ae6ffc4b1fbbb306e997" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t pros::ADIPort::get_value</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_value</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current ultrasonic sensor value in centimeters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an ultrasonic</para>
+<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/adi.hpp" line="449" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -47,38 +74,33 @@
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
-      <node id="38">
+      <node id="1">
         <label>pros::ADIUltrasonic</label>
         <link refid="classpros_1_1ADIUltrasonic"/>
-        <childnode refid="39" relation="private-inheritance">
+        <childnode refid="2" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="39">
+      <node id="2">
         <label>pros::ADIPort</label>
         <link refid="classpros_1_1ADIPort"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="40">
+      <node id="1">
         <label>pros::ADIUltrasonic</label>
         <link refid="classpros_1_1ADIUltrasonic"/>
-        <childnode refid="41" relation="private-inheritance">
+        <childnode refid="2" relation="private-inheritance">
         </childnode>
       </node>
-      <node id="41">
+      <node id="2">
         <label>pros::ADIPort</label>
         <link refid="classpros_1_1ADIPort"/>
       </node>
     </collaborationgraph>
-    <location file="pros/include/pros/adi.hpp" line="417" column="1" bodyfile="pros/include/pros/adi.hpp" bodystart="417" bodyend="450"/>
+    <location file="pros/include/pros/adi.hpp" line="417" column="36" bodyfile="pros/include/pros/adi.hpp" bodystart="417" bodyend="450"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIPort_1ab6ef7710de366895859d770ffb1d8cf1" prot="private" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIPort</name></member>
       <member refid="classpros_1_1ADIUltrasonic_1ae2b4cd186556af9602cc0017d324494b" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
-      <member refid="classpros_1_1ADIPort_1a1227bc815b12d2789cb78f6d3dcaf37b" prot="private" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_config</name></member>
-      <member refid="classpros_1_1ADIPort_1ac79b5fd3ce67ae6ffc4b1fbbb306e997" prot="private" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIPort_1abd86653eebbc34b863ace81839f7e40c" prot="private" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>set_config</name></member>
-      <member refid="classpros_1_1ADIPort_1ae6711117fbceb3bb6e3602c4ef63aff1" prot="private" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>set_value</name></member>
-      <member refid="classpros_1_1ADIPort_1ae6a3753c05e008992e6eff5e8c927e46" prot="private" virt="virtual"><scope>pros::ADIUltrasonic</scope><name>~ADIPort</name></member>
+      <member refid="classpros_1_1ADIUltrasonic_1ac79b5fd3ce67ae6ffc4b1fbbb306e997" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_value</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
