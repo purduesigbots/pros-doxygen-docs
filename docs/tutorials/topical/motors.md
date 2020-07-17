@@ -1,10 +1,8 @@
-# Motors
+\page motors Motors
 
-> **note**
->
-> For a full list of functions for interacting with the V5 Motors, see its
-> : [C API](../../api/c/motors.html) and [C++
-> API](../../api/cpp/motors.html).
+\note
+For a full list of functions for interacting with the V5 Motors, see its
+[C API](../../api/c/motors.html) and [C++ API](../../api/cpp/motors.html).
 
 ## Initialization
 

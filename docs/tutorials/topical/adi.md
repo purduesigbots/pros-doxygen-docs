@@ -1,10 +1,8 @@
-# ADI (3 Wire Ports)
+\page adi ADI
 
-> **note**
->
-> For a full list of functions for interacting with the ADI, see its
-> : [C API](../../api/c/adi.html) and [C++
-> API](../../api/cpp/adi.html).
+\note 
+For a full list of functions for interacting with the ADI, see its
+: [C API](../../api/c/adi.html) and [C++ API](../../api/cpp/adi.html).
 
 ## Analog Sensors
 
@@ -100,19 +98,16 @@ much the axle spins.
 
 With these sensors 1 measured tick is 1 degree of revolution.
 
-> **note**
->
-> Encoders must be plugged into the ADI such that the top wire
-> : is in an odd numbered port (1, 3, 5, 7 or 'A', 'C', 'E', or 'G'),
-> and then the bottom wire must be in the next highest port number.
->
-> Encoders are initialized as such:
-
-> ```{.c}
-> void initialize() {
->   encoder = adi_encoder_init(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, false);
-> }
-> ```
+\note
+Encoders must be plugged into the ADI such that the top wire
+is in an odd numbered port (1, 3, 5, 7 or 'A', 'C', 'E', or 'G'),
+and then the bottom wire must be in the next highest port number.
+Encoders are initialized as such:
+```{.c}
+ void initialize() {
+   encoder = adi_encoder_init(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, false);
+ }
+ ```
 
 And then used in the following manner:
 
@@ -121,20 +116,17 @@ And then used in the following manner:
 Ultrasonic sensors are used in a manner that is very similar to
 encoders, given that they are both two-wire sensors.
 
-> **note**
->
-> Ultrasonic sensors must be plugged into the ADI such that the PING wire
-> : (the orange OUTPUT cable) is in an odd numbered port (1, 3, 5, 7
-> or 'A', 'C', 'E', or 'G'), and then the ECHO wire (the yellow
-> INPUT cable) must be in the next highest port number.
->
-> Ultrasonic sensors are initialized as such:
-
-> ```{.c}
-> void initialize() {
->   ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
-> }
-> ```
+\note
+Ultrasonic sensors must be plugged into the ADI such that the PING wire
+(the orange OUTPUT cable) is in an odd numbered port (1, 3, 5, 7
+or 'A', 'C', 'E', or 'G'), and then the ECHO wire (the yellow
+INPUT cable) must be in the next highest port number.
+Ultrasonic sensors are initialized as such:
+ ```{.c}
+void initialize() {
+   ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
+ }
+```
 
 And then used in the following manner:
 

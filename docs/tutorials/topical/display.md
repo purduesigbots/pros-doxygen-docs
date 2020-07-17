@@ -1,4 +1,4 @@
-# V5 Brain Display (LVGL)
+\page display V5 Brain Display (LVGL)
 
 Interacting with the touchscreen on the V5 Brain is made possible
 through [LVGL](https://littlevgl.com). LVGL is a full-featured C
@@ -15,8 +15,7 @@ You can follow along with any of the LVGL
 or [wiki](https://docs.littlevgl.com/#Objects). There is no need to port
 or initialize LVGL, you can simply start creating objects.
 
-> **note**
->
-> Custom LVGL code cannot be displayed at the same time as the [LLEMU](./llemu.html).
-> : As a result, you must remove the LLEMU code (`pros::lcd`) that is
-> present in `initialize.cpp` by default in a new project.
+\note
+Custom LVGL code cannot be displayed at the same time as the [LLEMU](./llemu.html).
+As a result, you must remove the LLEMU code (`pros::lcd`) that is
+present in `main.cpp` by default in a new project.

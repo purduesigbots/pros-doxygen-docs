@@ -33,3 +33,15 @@ step by step through the process of writing a PROS program.
 
 If you want more information about using a particular part of the \ref api, the **Topical Tutorials** offer longer examples
 and more detail about using the PROS API.
+
+- \subpage adi
+- \subpage controller
+- \subpage display
+- \subpage filesystem
+- \subpage jinx
+- \subpage llemu
+- \subpage motors
+- \subpage multitasking
+- \subpage notificatios
+- \subpage vision
+- \subpage wireless-upload

@@ -1,10 +1,8 @@
-# LLEMU (Legacy LCD Emulator)
+\page llemu LLEMU (Legacy LCD Emulator)
 
-> **note**
->
-> For a full list of functions for interacting with the LLEMU, see its
-> : [C API](../../api/c/llemu.html) and [C++
-> API](../../api/cpp/llemu.html).
+\note
+For a full list of functions for interacting with the LLEMU, see its
+>[C API](../../api/c/llemu.html) and [C++ API](../../api/cpp/llemu.html).
 
 ## Initialization
 
@@ -36,6 +34,5 @@ functions (where \# is replaced with 0, 1, or 2 for the left, center,
 and right buttons respectively). With these function you can assign a
 function to be called each time that the button is pressed.
 
-> **note**
->
-> Custom LVGL code cannot be displayed at the same time as LLEMU.
+\note
+Custom LVGL code cannot be displayed at the same time as LLEMU.

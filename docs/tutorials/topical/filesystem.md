@@ -1,4 +1,4 @@
-# Filesystem
+\page filesystem Filesystem
 
 You can interact with files on the microSD card (you can **not**
 interact with files on the V5 brain's flash) through standard C/C++ file

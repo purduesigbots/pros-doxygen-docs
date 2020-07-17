@@ -1,19 +1,16 @@
-# Multitasking
+\page multitasking Multitasking
 
-> **note**
->
-> For a full list of functions for interacting with Tasks, see its
-> : [C API](../../api/c/rtos.html) and [C++
-> API](../../api/cpp/rtos.html).
->
-> Tasks are a great tool to do multiple things at once, but they can be
-> difficult to use properly. The most important thing to remember when
-> using tasks is that tasks aren't truly running in the background - they
-> are run one at a time and swapped out by the PROS scheduler. If your
-> task performs some repeated action (e.g. a `while` loop), you should
-> include a `delay()` or `task_delay_until()`. Without a `delay()`
-> statement, your task could starve the processor of resources and prevent
-> the kernel from running properly.
+\note
+For a full list of functions for interacting with Tasks, see its
+[C API](../../api/c/rtos.html) and [C++ API](../../api/cpp/rtos.html).
+Tasks are a great tool to do multiple things at once, but they can be
+difficult to use properly. The most important thing to remember when
+using tasks is that tasks aren't truly running in the background - they
+are run one at a time and swapped out by the PROS scheduler. If your
+task performs some repeated action (e.g. a `while` loop), you should
+include a `delay()` or `task_delay_until()`. Without a `delay()`
+statement, your task could starve the processor of resources and prevent
+the kernel from running properly.
 
 The PROS task scheduler is a preemptive, priority-based, round-robin
 scheduler. This means that tasks are preempted (interrupted) every
