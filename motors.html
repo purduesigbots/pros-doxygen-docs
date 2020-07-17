@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home &raquo; Tutorials &raquo; Motors | PROS for
+V5</title>
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="pros-custom.css" />
+  <link rel="stylesheet" href="pros-code.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e6b85c" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="logo.png" alt="" />PROS <span class="m-thin">for
+V5</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="index.html">Home</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="tutorials.html">Tutorials</a> &raquo;</span>
+          Motors
+        </h1>
+<aside class="m-note m-info"><h4>Note</h4><p>For a full list of functions for interacting with the V5 Motors, see its <a href="../../api/c/motors.html">C API</a> and <a href="../../api/cpp/motors.html">C++ API</a>.</p></aside><section id="autotoc_md46"><h3><a href="#autotoc_md46">Initialization</a></h3><p>V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like <a href="../../api/c/motors.html#motor-move-velocity">motor_<wbr />move_<wbr />velocity</a> will work as expected.</p><p>When declaring motors in C++, it is not necessary to set the configuration for the motor with its constructor (beyond its port number) more than once for the given port. An example of this is given below.</p><blockquote><blockquote><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span> <span class="nf">opcontrol</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">pros</span><span class="o">::</span><span class="n">Motor</span> <span class="n">drive_left</span> <span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
+  <span class="c1">// drive_left will have the same configuration as drive_left_initializer</span>
+<span class="p">}</span></pre></blockquote></blockquote></section><section id="autotoc_md47"><h3><a href="#autotoc_md47">Simple Usage</a></h3><p>The easiest way to interact with the motors is through the <a href="../../api/c/motors.html#motor-move">motor_<wbr />move</a> function. This is analogous to the <a href="../../../cortex/api/index.html#motorSet">motorSet</a> function from PROS 2.</p></section><section id="autotoc_md48"><h3><a href="#autotoc_md48">Autonomous Movement</a></h3><p>The V5 Motors can move in a number of different ways that are better suited towards autonomous movement than the simple <code><a href="motors_8h.html#a7da9bf1e229e50bfeeaecf026a6d0d08" class="m-doc">motor_<wbr />move()</a></code> example shown above.</p><section id="autotoc_md49"><h4><a href="#autotoc_md49">Profile Movements</a></h4><p>Profile movements are movements to a given position that are executed by the motor&#x27;s firmware. There are two functions that achieve this, <code><a href="motors_8h.html#ab70bf4937f1b5cefa15c11c15314c90e" class="m-doc">motor_<wbr />move_<wbr />absolute()</a></code> and <code><a href="motors_8h.html#ab4c1ba35d69e8e9b49df0e848fa305d3" class="m-doc">motor_<wbr />move_<wbr />relative()</a></code>. These two functions are practically similar, but <code><a href="motors_8h.html#ab4c1ba35d69e8e9b49df0e848fa305d3" class="m-doc">motor_<wbr />move_<wbr />relative()</a></code> takes into account the zero position of the motor&#x27;s encoder.</p><p>These functions are very well suited to movement in autonomous.</p><p>For further reading material on the algorithms that create these profiled movement, see <a href="https://pdfs.semanticscholar.org/a229/fdba63d8d68abd09f70604d56cc07ee50f7d.pdf">Mathematics of Motion Control Profiles</a> for the <a href="https://en.wikipedia.org/wiki/Feed_forward_(control)">Feedforward</a> control, and <a href="http://georgegillard.com/documents/2-introduction-to-pid-controllers">George Gillard&#x27;s PID Explanation</a> for the <a href="https://en.wikipedia.org/wiki/Control_theory#PID_feedback_control">feedback</a> control.</p></section><section id="autotoc_md50"><h4><a href="#autotoc_md50">Velocity Controller Movement</a></h4><p>The final <code>move</code> function available with the PROS Motor API is <code><a href="motors_8h.html#a5a366399c1ff416002641fd05e6d7808" class="m-doc">motor_<wbr />move_<wbr />velocity()</a></code>. This ensures consistent velocity output from the motor through the use of <a href="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</a>.</p></section></section><section id="autotoc_md51"><h3><a href="#autotoc_md51">Telemetry</a></h3><p>The V5 motors return a plethora of diagnostic information about their performance. The motors return the following parameters:</p><p>Parameter C Function C++ Function</p><hr/><p>Position <a href="../../api/c/motors.html#motor-get-position">motorggetpposition</a> [<a href="classpros_1_1Motor.html#a70e725a94ec42dc7cbb3e460c36dcad3" class="m-doc">pros::<wbr />Motor::<wbr />get_position</a>](get_position_) Velocity <a href="../../api/c/motors.html#motor-get-actual-velocity">motorggetaactualvvelocity</a> [<a href="classpros_1_1Motor.html#a696494a4e7c675f7007d41b947f9ea63" class="m-doc">pros::<wbr />Motor::<wbr />get_actual_velocity</a>](get_actual_velocity_) Current <a href="../../api/c/motors.html#motor-get-current-draw">motorggetccurrentddraw</a> [<a href="classpros_1_1Motor.html#a502eaf3859452721e2327e53ab3f34d8" class="m-doc">pros::<wbr />Motor::<wbr />get_current_draw</a>](get_current_draw_) Efficiency <a href="../../api/c/motors.html#motor-get-efficiency">motorggeteefficiency</a> [<a href="classpros_1_1Motor.html#a6f0b39894abf612a1965a66224893c71" class="m-doc">pros::<wbr />Motor::<wbr />get_efficiency</a>](get_efficiency_) Power <a href="../../api/c/motors.html#motor-get-power">motorggetppower</a> [<a href="classpros_1_1Motor.html#a51b75dc245257487116e64fa2904d521" class="m-doc">pros::<wbr />Motor::<wbr />get_power</a>](get_power_) Temperature <a href="../../api/c/motors.html#motor-get-temperature">motorggetttemperature</a> [<a href="classpros_1_1Motor.html#a9fd793251b91c2ac0091c65f290f740d" class="m-doc">pros::<wbr />Motor::<wbr />get_temperature</a>](get_temperature_) Torque <a href="../../api/c/motors.html#motor-get-torque">motorggetttorque</a> [<a href="classpros_1_1Motor.html#a14e0c57c0ca7bde15f73414abf4c3c8e" class="m-doc">pros::<wbr />Motor::<wbr />get_torque</a>](get_torque_) Voltage <a href="../../api/c/motors.html#motor-get-voltage">motorggetvvoltage</a> [<a href="classpros_1_1Motor.html#abe51732c37c2ec72a8bdceac7f6962cb" class="m-doc">pros::<wbr />Motor::<wbr />get_voltage</a>](get_voltage_) Direction <a href="../../api/c/motors.html#motor-get-direction">motorggetddirection</a> [<a href="classpros_1_1Motor.html#acea42a96da651f72f138ea268c76217f" class="m-doc">pros::<wbr />Motor::<wbr />get_direction</a>](get_direction_)</p></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>PROS for
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

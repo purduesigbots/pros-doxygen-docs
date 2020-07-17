@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PROS for
+  <title>Home &raquo; Tutorials &raquo; Filesystem | PROS for
 V5</title>
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
@@ -47,63 +47,23 @@ V5</span></a>
   <div class="m-container m-container-inflatable">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <h1>Pages</h2>
-        <ul class="m-doc">
-          <li class="m-doc-collapsible">
-            <a href="#" onclick="return toggle(this)"></a><a href="index.html" class="m-doc">Home</a> <span class="m-doc"></span>
-            <ul class="m-doc">
-              <li class="m-doc-collapsible">
-                <a href="#" onclick="return toggle(this)"></a><a href="getting-started.html" class="m-doc">Getting Started</a> <span class="m-doc"></span>
-                <ul class="m-doc">
-                  <li><a href="new-users.html" class="m-doc">PROS First Time Users Guide</a> <span class="m-doc"></span></li>
-                  <li><a href="install-windows.html" class="m-doc">Installing on Windows</a> <span class="m-doc"></span></li>
-                  <li><a href="install-macos.html" class="m-doc">Installing on macOS</a> <span class="m-doc"></span></li>
-                  <li><a href="install-linux.html" class="m-doc">Installing on Linux</a> <span class="m-doc"></span></li>
-                </ul>
-              </li>
-              <li class="m-doc-collapsible">
-                <a href="#" onclick="return toggle(this)"></a><a href="tutorials.html" class="m-doc">Tutorials</a> <span class="m-doc"></span>
-                <ul class="m-doc">
-                  <li><a href="coding-faq.html" class="m-doc">Coding FAQ</a> <span class="m-doc"></span></li>
-                  <li><a href="combining-c-cpp.html" class="m-doc">Combining C and C++</a> <span class="m-doc"></span></li>
-                  <li><a href="debugging.html" class="m-doc">Debugging</a> <span class="m-doc"></span></li>
-                  <li><a href="project-structure.html" class="m-doc">Project Structure</a> <span class="m-doc"></span></li>
-                  <li><a href="usage-faq.html" class="m-doc">General Usage FAQ</a> <span class="m-doc"></span></li>
-                  <li><a href="clawbot.html" class="m-doc">Programming the Clawbot</a> <span class="m-doc"></span></li>
-                  <li><a href="creating-c-project.html" class="m-doc">Creating a C Project</a> <span class="m-doc"></span></li>
-                  <li><a href="adi.html" class="m-doc">ADI</a> <span class="m-doc"></span></li>
-                  <li><a href="controller.html" class="m-doc">Controller</a> <span class="m-doc"></span></li>
-                  <li><a href="display.html" class="m-doc">V5 Brain Display (LVGL)</a> <span class="m-doc"></span></li>
-                  <li><a href="filesystem.html" class="m-doc">Filesystem</a> <span class="m-doc"></span></li>
-                  <li><a href="jinx.html" class="m-doc">JINX Graphical Debugger</a> <span class="m-doc"></span></li>
-                  <li><a href="llemu.html" class="m-doc">LLEMU (Legacy LCD Emulator)</a> <span class="m-doc"></span></li>
-                  <li><a href="motors.html" class="m-doc">Motors</a> <span class="m-doc"></span></li>
-                  <li><a href="multitasking.html" class="m-doc">Multitasking</a> <span class="m-doc"></span></li>
-                  <li><a href="vision.html" class="m-doc">Vision Sensor</a> <span class="m-doc"></span></li>
-                  <li><a href="wireless-upload.html" class="m-doc">Wireless Upload and Hot/Cold Linking</a> <span class="m-doc"></span></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="md_docs_getting-started_faq.html" class="m-doc">PROS FAQ</a> <span class="m-doc"></span></li>
-          <li><a href="notifications.html" class="m-doc">Notifications</a> <span class="m-doc"></span></li>
-        </ul>
-        <script>
-        function toggle(e) {
-            e.parentElement.className = e.parentElement.className == 'm-doc-collapsible' ?
-                'm-doc-expansible' : 'm-doc-collapsible';
-            return false;
-        }
-        /* Collapse all nodes marked as such. Doing it via JS instead of
-           directly in markup so disabling it doesn't harm usability. The list
-           is somehow regenerated on every iteration and shrinks as I change
-           the classes. It's not documented anywhere and I'm not sure if this
-           is the same across browsers, so I am going backwards in that list to
-           be sure. */
-        var collapsed = document.getElementsByClassName("collapsed");
-        for(var i = collapsed.length - 1; i >= 0; --i)
-            collapsed[i].className = 'm-doc-expansible';
-        </script>
+        <h1>
+          <span class="m-breadcrumb"><a href="index.html">Home</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="tutorials.html">Tutorials</a> &raquo;</span>
+          Filesystem
+        </h1>
+<p>You can interact with files on the microSD card (you can <strong>not</strong> interact with files on the V5 brain&#x27;s flash) through standard C/C++ file I/O methods. For the most part, you can follow along with any standard C tutorial for file I/O and it will work with PROS. Here are a couple of recommended tutorials:</p><ul><li><a href="https://www.cprogramming.com/tutorial/cfileio.html">https:/<wbr />/<wbr />www.cprogramming.com/<wbr />tutorial/<wbr />cfileio.html</a></li><li><a href="https://www.tutorialspoint.com/cprogramming/c_file_io.htm">https://www.tutorialspoint.com/cprogramming/c_<wbr />file_<wbr />io.htm</a></li></ul><p>The only additional detail needed for interacting with the filesystem in PROS is that any files on the microSD card <strong>must</strong> be prefaced with <code>/usd/</code>. A file on the microSD card can be written to in the following manner:</p><pre class="m-code"><span class="kt">FILE</span><span class="o">*</span> <span class="n">usd_file_write</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&quot;/usd/example.txt&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="n">fputs</span><span class="p">(</span><span class="s">&quot;Example text&quot;</span><span class="p">,</span> <span class="n">usd_file_write</span><span class="p">);</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">usd_file_write</span><span class="p">);</span>
+
+<span class="kt">FILE</span><span class="o">*</span> <span class="n">usd_file_read</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&quot;/usd/example.txt&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
+<span class="kt">char</span> <span class="n">buf</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span> <span class="c1">// This just needs to be larger than the contents of the file</span>
+<span class="n">fread</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">usd_file_read</span><span class="p">);</span> <span class="c1">// passing 1 because a `char` is 1 byte, and 50 b/c it&#39;s the length of buf</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">buf</span><span class="p">);</span> <span class="c1">// print the string read from the file</span>
+<span class="c1">// Should print &quot;Example text&quot; to the terminal</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">usd_file_read</span><span class="p">);</span> <span class="c1">// always close files when you&#39;re done with them</span></pre><section id="autotoc_md41"><h3><a href="#autotoc_md41">Remarks</a></h3><p>The microSD card must be fat32 in order to work.</p><section id="autotoc_md42"><h4><a href="#autotoc_md42">Serial</a></h4><p>It&#x27;s also possible to interact with the serial communications (<code>stdin</code>, <code>stdout</code>, etc.) through the filesystem drivers. You can write and read from these streams in the same manner as a file, but using the four character stream identifiers.</p><p>For instance, you can write to <code>stderr</code> in the following manner:</p><pre class="m-code"><span class="kt">FILE</span><span class="o">*</span> <span class="n">stderr</span> <span class="o">=</span> <span class="n">fopen</span><span class="p">(</span><span class="s">&quot;serr&quot;</span><span class="p">,</span> <span class="s">&quot;w&quot;</span><span class="p">);</span>
+<span class="n">fputs</span><span class="p">(</span><span class="s">&quot;Example text&quot;</span><span class="p">,</span> <span class="n">stderr</span><span class="p">);</span>
+<span class="n">fclose</span><span class="p">(</span><span class="n">usd_file_write</span><span class="p">);</span></pre><p>There are also a number of methods for controlling serial communication behavior exposed in <a href="../../extended/apix.html">apix.h</a>. These methods can be accessed through the <code><a href="apix_8h.html#a962daefd6f45a8def6ff00802a23fbff" class="m-doc">serctl()</a></code> function. At the moment two actions are supported -activating/deactivating the streams, and enabling/disabling <a href="https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing">COBS</a> . If you want to read the serial comms yourself (without using <code>pros terminal</code>), then you&#x27;ll want to disable COBS.</p></section></section>
       </div>
     </div>
   </div>
