@@ -58,13 +58,35 @@ Home</span></a>
             <li>
               Reference
               <ul>
+                <li><a href="#pub-static-methods">Public static functions</a></li>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
                 <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pub-static-methods">Public static functions</a></li>
               </ul>
             </li>
           </ul>
         </div>
+        <section id="pub-static-methods">
+          <h2><a href="#pub-static-methods">Public static functions</a></h2>
+          <dl class="m-doc">
+            <dt id="a510ca3e67e54aa4293438d73148a1d6b">
+              <span class="m-doc-wrap-bumper">static auto <a href="#a510ca3e67e54aa4293438d73148a1d6b" class="m-doc-self">current</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpros_1_1Task.html" class="m-doc">Task</a></span>
+            </dt>
+            <dd>Get the currently running <a href="classpros_1_1Task.html" class="m-doc">Task</a>.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#a4341b580544831eea11b840cf068587b" class="m-doc">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span>
+            </dt>
+            <dd>Delays a task for a given number of milliseconds.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static void <a href="#aa038d0eeb973ce7fca8689fa5bb91fec" class="m-doc">delay_until</a>(</span><span class="m-doc-wrap">std::uint32_t*const prev_time,
+              const std::uint32_t delta)</span>
+            </dt>
+            <dd>Delays a task until a specified time.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static auto <a href="#a9b1eda960abda807cb8447075fc4ea44" class="m-doc">get_count</a>(</span><span class="m-doc-wrap">void) -&gt; std::uint32_t</span>
+            </dt>
+            <dd>Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks.</dd>
+          </dl>
+        </section>
         <section id="typeless-methods">
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
@@ -162,30 +184,64 @@ Home</span></a>
             <dd>Clears the notification for a task.</dd>
           </dl>
         </section>
-        <section id="pub-static-methods">
-          <h2><a href="#pub-static-methods">Public static functions</a></h2>
-          <dl class="m-doc">
-            <dt id="a510ca3e67e54aa4293438d73148a1d6b">
-              <span class="m-doc-wrap-bumper">static auto <a href="#a510ca3e67e54aa4293438d73148a1d6b" class="m-doc-self">current</a>(</span><span class="m-doc-wrap">) -&gt; <a href="classpros_1_1Task.html" class="m-doc">Task</a></span>
-            </dt>
-            <dd>Get the currently running <a href="classpros_1_1Task.html" class="m-doc">Task</a>.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#a4341b580544831eea11b840cf068587b" class="m-doc">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span>
-            </dt>
-            <dd>Delays a task for a given number of milliseconds.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static void <a href="#aa038d0eeb973ce7fca8689fa5bb91fec" class="m-doc">delay_until</a>(</span><span class="m-doc-wrap">std::uint32_t*const prev_time,
-              const std::uint32_t delta)</span>
-            </dt>
-            <dd>Delays a task until a specified time.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a9b1eda960abda807cb8447075fc4ea44" class="m-doc">get_count</a>(</span><span class="m-doc-wrap">void) -&gt; std::uint32_t</span>
-            </dt>
-            <dd>Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks.</dd>
-          </dl>
-        </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a4341b580544831eea11b840cf068587b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4341b580544831eea11b840cf068587b" class="m-doc-self">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span></span>
+            </h3>
+            <p>Delays a task for a given number of milliseconds.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">milliseconds</td>
+                  <td>The number of milliseconds to wait (1000 milliseconds per second)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <a href="rtos_8h.html#a61c8ccf83a0dc79fc0e9fde5e87a0329" class="m-doc">task_<wbr />delay_<wbr />until()</a>.</p>
+          </div></section>
+          <section class="m-doc-details" id="aa038d0eeb973ce7fca8689fa5bb91fec"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa038d0eeb973ce7fca8689fa5bb91fec" class="m-doc-self">delay_until</a>(</span><span class="m-doc-wrap">std::uint32_t*const prev_time,
+              const std::uint32_t delta)</span></span>
+            </h3>
+            <p>Delays a task until a specified time.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">prev_time</td>
+                  <td>A pointer to the location storing the setpoint time. This should typically be initialized to the return value from pros::millis().</td>
+                </tr>
+                <tr>
+                  <td>delta</td>
+                  <td>The number of milliseconds to wait (1000 milliseconds per second)</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function can be used by periodic tasks to ensure a constant execution frequency.</p><p>The task will be woken up at the time *prev_time + delta, and *prev_time will be updated to reflect the time at which the task will unblock.</p>
+          </div></section>
+          <section class="m-doc-details" id="a9b1eda960abda807cb8447075fc4ea44"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static std::uint32_t pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b1eda960abda807cb8447075fc4ea44" class="m-doc-self">get_count</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </h3>
+            <p>Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The number of tasks that are currently being managed by the kernel.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</p>
+          </div></section>
           <section class="m-doc-details" id="a938ee60b49f29d743315bf05ee9f4a56"><div>
             <h3>
               <span class="m-doc-wrap-bumper"> pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a938ee60b49f29d743315bf05ee9f4a56" class="m-doc-self">Task</a>(</span><span class="m-doc-wrap"><a href="rtos_8h.html#aece0aa29b1f1538115228d2197239f98" class="m-doc">task_<wbr />fn_<wbr />t</a> function,
@@ -507,62 +563,6 @@ Home</span></a>
               </tfoot>
             </table>
 <p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p>
-          </div></section>
-          <section class="m-doc-details" id="a4341b580544831eea11b840cf068587b"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4341b580544831eea11b840cf068587b" class="m-doc-self">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span></span>
-            </h3>
-            <p>Delays a task for a given number of milliseconds.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">milliseconds</td>
-                  <td>The number of milliseconds to wait (1000 milliseconds per second)</td>
-                </tr>
-              </tbody>
-            </table>
-<p>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <a href="rtos_8h.html#a61c8ccf83a0dc79fc0e9fde5e87a0329" class="m-doc">task_<wbr />delay_<wbr />until()</a>.</p>
-          </div></section>
-          <section class="m-doc-details" id="aa038d0eeb973ce7fca8689fa5bb91fec"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa038d0eeb973ce7fca8689fa5bb91fec" class="m-doc-self">delay_until</a>(</span><span class="m-doc-wrap">std::uint32_t*const prev_time,
-              const std::uint32_t delta)</span></span>
-            </h3>
-            <p>Delays a task until a specified time.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">prev_time</td>
-                  <td>A pointer to the location storing the setpoint time. This should typically be initialized to the return value from pros::millis().</td>
-                </tr>
-                <tr>
-                  <td>delta</td>
-                  <td>The number of milliseconds to wait (1000 milliseconds per second)</td>
-                </tr>
-              </tbody>
-            </table>
-<p>This function can be used by periodic tasks to ensure a constant execution frequency.</p><p>The task will be woken up at the time *prev_time + delta, and *prev_time will be updated to reflect the time at which the task will unblock.</p>
-          </div></section>
-          <section class="m-doc-details" id="a9b1eda960abda807cb8447075fc4ea44"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static std::uint32_t pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9b1eda960abda807cb8447075fc4ea44" class="m-doc-self">get_count</a>(</span><span class="m-doc-wrap">void)</span></span>
-            </h3>
-            <p>Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The number of tasks that are currently being managed by the kernel.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</p>
           </div></section>
         </section>
       </div>
