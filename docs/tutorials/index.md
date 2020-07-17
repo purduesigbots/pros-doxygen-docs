@@ -13,11 +13,10 @@ additional information beyond our \ref getting-started guides, the **General
 Tutorials** are a great resource for topics like debugging and the PROS
 project structure.
 
-- \subpage coding-faq
 - \subpage combining-c-cpp
 - \subpage debugging
 - \subpage project-structure
-- \subpage usage-faq
+- \subpage troubleshooting
 
 ## Walkthrough Tutorials
 
@@ -42,6 +41,6 @@ and more detail about using the PROS API.
 - \subpage llemu
 - \subpage motors
 - \subpage multitasking
-- \subpage notificatios
+- \subpage notifications
 - \subpage vision
 - \subpage wireless-upload
