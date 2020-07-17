@@ -83,13 +83,12 @@ directory and Atom will open it.
 When you create your project, PROS will copy all of the files necessary
 to build your project. The structure of the project looks like:
 
-> **note**
->
-> Prior to PROS kernel 3.2.0, the `opcontrol()`, `autonomous()`, and
-> initialize functions are separated into separate files (opcontrol.cpp,
-> autonomous.cpp, and initialize.cpp). After PROS kernel 3.2.0, they are
-> by default kept in one file (main.cpp). These could be separated again
-> if you so wish.
+\note
+Prior to PROS kernel 3.2.0, the `opcontrol()`, `autonomous()`, and
+initialize functions are separated into separate files (opcontrol.cpp,
+autonomous.cpp, and initialize.cpp). After PROS kernel 3.2.0, they are
+by default kept in one file (main.cpp). These could be separated again
+if you so wish.
 
 ## Drive Control
 

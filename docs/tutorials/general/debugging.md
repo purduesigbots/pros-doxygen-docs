@@ -1,8 +1,7 @@
 \page debugging Debugging
 
-> **warning**
->
-> This content is subject to change as the PROS CLI for V5 is created.
+\warning
+This content is subject to change as the PROS CLI for V5 is created.
 
 The [PROS API](../../api/index.html) provides functions like
 [printf](http://www.cplusplus.com/reference/cstdio/printf/) that allow
