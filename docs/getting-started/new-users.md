@@ -1,4 +1,4 @@
-# PROS First Time Users Guide
+\page new-users PROS First Time Users Guide
 
 The most important characteristic of PROS to note when getting started
 is that PROS is just standard C or C++ programming. Anything that works

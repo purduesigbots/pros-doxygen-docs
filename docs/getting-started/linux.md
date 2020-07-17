@@ -1,4 +1,4 @@
-# Installing on Linux
+\page install-linux Installing on Linux
 
 ## Installing the toolchain
 

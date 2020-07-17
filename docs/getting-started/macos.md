@@ -1,4 +1,4 @@
-# Installing on macOS
+\page install-macos Installing on macOS
 
 There are currently two ways to install PROS 3 on macOS. The recommended
 method uses [Homebrew](https://brew.sh/), and the other method involves

@@ -1,4 +1,4 @@
-# Tutorials
+\page tutorials Tutorials
 
 Learning a new coding platform is often a rather daunting task. For this
 reason we prepared some small tutorials with examples on how to interact
@@ -9,8 +9,7 @@ The PROS tutorials are split into three sections:
 ## General Tutorials
 
 If you're still new to writing software or PROS, and looking for
-additional information beyond our [Getting
-Started](../getting-started/index.html) guides, the **General
+additional information beyond our \ref getting-started guides, the **General
 Tutorials** are a great resource for topics like debugging and the PROS
 project structure.
 
@@ -23,6 +22,5 @@ step by step through the process of writing a PROS program.
 
 ## Topical Tutorials
 
-If you want more information about using a particular part of the [PROS
-API](../api/index.html), the **Topical Tutorials** offer longer examples
+If you want more information about using a particular part of the \ref api, the **Topical Tutorials** offer longer examples
 and more detail about using the PROS API.

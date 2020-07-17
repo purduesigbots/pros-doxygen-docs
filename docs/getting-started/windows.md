@@ -1,4 +1,4 @@
-# Installing on Windows
+\page install-windows Installing on Windows
 
 To start using PROS 3 on Windows, simply download the latest version of
 the installer (.exe file) from
