@@ -118,7 +118,7 @@ export LC_ALL="en_US.utf-8"
 \note
 This issue should be fixed for PROS CLI versions \> 3.1.2
 
-1.  Check your PROS CLI version by running prosv5 --version. If your
+1.  Check your PROS CLI version by running `prosv5 --version`. If your
     version is \<= 3.1.2, try updating first to check if that solves
     your problem. If not, continue with step 2.
 2.  Follow steps 1-4 listed above for those using the CLI only. In step
