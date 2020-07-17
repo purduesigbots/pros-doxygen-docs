@@ -91,7 +91,7 @@ Utility if you want to flash.
 >
 > - **Code restarts unexpectedly:**
 >   : A run-time error has caused the program to crash.
->   [Debugging](./debugging) may reveal the cause of the error.
+>   @ref debugging may reveal the cause of the error.
 >   Examine any newly added code for possible logical errors. Some
 >   common error messages include:
 >
@@ -127,6 +127,6 @@ Utility if you want to flash.
 > - [printf](printf_) **doesn't work**:
 >   : [printf](http://www.cplusplus.com/reference/cstdio/printf/)
 >   prints information over a serial connection
->   ([Debugging](../tutorials/general/debugging)), not to the VEX
+>   @ref debugging, not to the VEX
 >   LCD. To print to the LCD, use
 >   [lcd_print](../../api/c/llemu.html#lcd-print) instead.

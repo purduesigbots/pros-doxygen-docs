@@ -16,7 +16,7 @@ To view a robot's output, there are two officially supported methods:
 
     Running `prosv5 terminal` on the command line will open an output
     stream from a robot connected over direct USB connection, VEXnet, or
-    [JINX](./tutorials/topical/jinx.html).
+    @ref jinx.
 
 2.  From within Atom:
 
@@ -46,4 +46,4 @@ For further information on using `errno`, see the following tutorial:
 
 JINX offers further debugging functionality over traditional debugging
 through print statements. For a full explanation of JINX's abilities and
-its use, see ../topical/jinx.
+its use, see @ref jinx.

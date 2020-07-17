@@ -14,6 +14,6 @@ This will compile your PROS project as C code, and will give you access
 to the [C API](../../api/c/index.html).
 
 If you're interested in combining C and C++, you should read through the
-[Combining C and C++ tutorial](../general/combining-c-cpp.html). Please
+@ref combining-c-cpp. Please
 note that it is typically a complicated matter to combine the two, and
 rarely a good idea.

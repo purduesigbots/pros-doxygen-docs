@@ -129,4 +129,4 @@ a mutex designated for that variable.
 
 Task notifications are a powerful new feature in PROS 3 which allows
 direct-to-task synchronization. A full tutorial on task notifications
-can be found [here](./notifications.html).
+can be found @ref notifications.
