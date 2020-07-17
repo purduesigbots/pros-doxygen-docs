@@ -1,4 +1,4 @@
-# Project Structure
+\page project-structure Project Structure
 
 PROS projects are internally composed of three parts: the **PROS
 library** (found in `/firmware`), the **header** files (found in

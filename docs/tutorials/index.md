@@ -13,6 +13,12 @@ additional information beyond our \ref getting-started guides, the **General
 Tutorials** are a great resource for topics like debugging and the PROS
 project structure.
 
+- \subpage coding-faq
+- \subpage combining-c-cpp
+- \subpage debugging
+- \subpage project-structure
+- \subpage usage-faq
+
 ## Walkthrough Tutorials
 
 If you want to write full sample programs to learn to use PROS through

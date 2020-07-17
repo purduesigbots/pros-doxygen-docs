@@ -1,4 +1,4 @@
-# General Usage FAQ
+\page usage-faq General Usage FAQ
 
 ## Why do I get a "Could not open port" error when flashing?
 

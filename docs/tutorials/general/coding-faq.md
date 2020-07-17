@@ -1,5 +1,6 @@
-# Coding FAQ
+\page coding-faq Coding FAQ
 
+> - `"main.h" file not found`:
 > - `"main.h" file not found`:
 >   : This error occurs when the compilation database
 >   `compile_commands.json` is not up to date. The file contains
@@ -7,7 +8,7 @@
 >   automatically populated when the code is compiled. If you see
 >   this error just after creating a project, it could be because
 >   the project was created using the CLI without the
->   `–compile-after` flag, or there was a hang-up in the editor
+>   after creating the project. Regardless of when this issue
 >   after creating the project. Regardless of when this issue
 >   appears, running `pros make all` in the CLI or running
 >   `PROS -> Build -> All` in the editor, the whole project is
@@ -57,7 +58,6 @@
 > - **VEX LCD updates very slowly or is "frozen":**
 >   : A task is not waiting using
 >   [delay](../../api/c/rtos.html#delay) or
->   [task_delay_until](../../api/c/rtos.html#task-delay-until).
 >   From the kernel's perspective, updating the LCD is usually
 >   less important than how well the robot is running, so PROS
 >   prioritizes user tasks over the LCD.
@@ -108,6 +108,7 @@
 >   competitions. If the error persists, see the "**Code restarts
 >   unexpectedly**" section above.
 >
+> - [printf](printf_) **doesn't work**:
 > - [printf](printf_) **doesn't work**:
 >   : [printf](http://www.cplusplus.com/reference/cstdio/printf/)
 >   prints information over a serial connection

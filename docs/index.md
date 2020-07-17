@@ -1,4 +1,4 @@
-\mainpage PROS Documentation Home
+\mainpage Home
 
 Welcome to the PROS Documentation!
 

@@ -1,4 +1,4 @@
-# Combining C and C++
+\page combining-c-cpp Combining C and C++
 
 The PROS C and C++ APIs cover the exact same feature set, which means
 that there is no significant advantage to using functions from one API

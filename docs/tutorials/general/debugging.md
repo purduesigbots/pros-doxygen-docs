@@ -1,4 +1,4 @@
-# Debugging
+\page debugging Debugging
 
 > **warning**
 >
