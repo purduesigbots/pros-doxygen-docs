@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Vision Sensor | PROS for
+  <title>Home &raquo; Tutorials &raquo; General Usage FAQ | PROS for
 V5</title>
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
@@ -48,9 +48,15 @@ V5</span></a>
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <h1>
-          Vision Sensor
+          <span class="m-breadcrumb"><a href="index.html">Home</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="tutorials.html">Tutorials</a> &raquo;</span>
+          General Usage FAQ
         </h1>
-<blockquote><p><strong>note</strong></p><p>For a full list of functions for interacting with the V5 Vision Sensor, see its : <a href="../../api/c/vision.html">C API</a> and <a href="../../api/cpp/vision.html">C++ API</a>.</p></blockquote><section id="autotoc_md68"><h2><a href="#autotoc_md68">Setting Signatures</a></h2><p>The first step to using the vision sensor is setting color signatures for the sensor to recognize as objects. This is done through the V5 Vision Utility program.</p></section><section id="autotoc_md69"><h2><a href="#autotoc_md69">Retrieving Objects</a></h2><p>The primary function of the vision sensor is returning objects, or blobs of color detected by the sensor. The characteristics of an object are defined in <a href="../../api/c/vision.html#vision_object_s_t">vision_<wbr />object_<wbr />s_<wbr />t</a>.</p><section id="autotoc_md70"><h3><a href="#autotoc_md70">By Size</a></h3><p>The simplest way to interact with the vision sensor is to get an object by its size. 0 is the largest object detected by the sensor.</p></section><section id="autotoc_md71"><h3><a href="#autotoc_md71">By Signature</a></h3><p>If you have multiple signatures saved to the vision signature, you will most likely want to only look for objects of a particular signature. The <code>get_by_sig()</code> function implements this functionality.</p></section></section><section id="autotoc_md72"><h2><a href="#autotoc_md72">Changing the Object Coordinates</a></h2><p>Each returned object from the vision sensor comes with a set of coordinates telling where the object was found in the vision sensor&#x27;s field of view. The default behavior is to return the coordinates as a function of distance from the top left corner of the field of view - so positive y is downward and positive x is right. With the PROS API, you can change this behavior so that the center of the Field Of View is the (0,0) point for object coordinates. Positive y is still downward and positive x is still right, but negative y is upward of center and negative x is left of center in this configuration.</p></section><section id="autotoc_md73"><h2><a href="#autotoc_md73">Exposure Setting</a></h2><p>In PROS Kernel 3.1.4 and earlier, the vision sensor exposure parameter was in the range [0,58]. In PROS Kernel 3.1.5 and newer, the parameter is scaled to be in the range [0,150] to match the Vision Sensor utility. As a result, there is a loss of information in this translation since multiple integers on the scale [0,150] map to the scale [0,58].</p></section>
+<section id="autotoc_md25"><h3><a href="#autotoc_md25">Why do I get a &quot;Could not open port&quot; error when flashing?</a></h3><p>You might have seen an error like this:</p><pre class="m-code">Uploading bin/output.bin to v5 device on COM11 as hello to slot 1
+ERROR - pros.cli.upload:upload - could not open port &#39;COM11&#39;: PermissionError(13, &#39;Access is denied.&#39;, None, 5)
+File &quot;c:\users\jonathan\appdata\local\programs\python\python36-32\lib\site-packages\serial\serialwin32.py&quot;, line 62, in open
+  raise SerialException(&quot;could not open port {!r}: {!r}&quot;.format(self.portstr, ctypes.WinError()))
+serial.serialutil.SerialException: could not open port &#39;COM11&#39;: PermissionError(13, &#39;Access is denied.&#39;, None, 5)</pre><p>That means that some other resource is using the port. If you also have the V5 Utility open, that would cause this error to occur. Close the V5 Utility if you want to flash.</p></section>
       </div>
     </div>
   </div>
