@@ -1,4 +1,4 @@
-# Programming the Clawbot
+\page clawbot Programming the Clawbot
 
 ## Objective
 

@@ -1,4 +1,4 @@
-# Creating a C Project
+\page creating-c-project Creating a C Project
 
 By default, a new PROS project contains C++ source files and the C++
 API. If you would prefer to program in C instead, change the extension

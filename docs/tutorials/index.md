@@ -26,6 +26,9 @@ practical applications, or teach students to use PROS in a classroom
 environment, the **Walkthrough Tutorials** are a great resource to go
 step by step through the process of writing a PROS program.
 
+- \subpage clawbot
+- \subpage creating-c-project
+
 ## Topical Tutorials
 
 If you want more information about using a particular part of the \ref api, the **Topical Tutorials** offer longer examples
