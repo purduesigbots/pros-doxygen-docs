@@ -52,7 +52,7 @@ To view a robot\textquotesingle{}s output, there are two officially supported me
 \begin{DoxyEnumerate}
 \item Through the P\+R\+OS C\+LI\+:
 
-Running {\ttfamily prosv5 terminal} on the command line will open an output stream from a robot connected over direct U\+SB connection, V\+E\+Xnet, or \href{./tutorials/topical/jinx.html}{\texttt{ J\+I\+NX}}.
+Running {\ttfamily prosv5 terminal} on the command line will open an output stream from a robot connected over direct U\+SB connection, V\+E\+Xnet, or \mbox{\hyperlink{jinx}{J\+I\+NX Graphical Debugger}}.
 \item From within Atom\+:
 
 Click the button labeled \char`\"{}\+Open cortex serial output\char`\"{}
@@ -66,7 +66,7 @@ A terminal panel will open at the bottom of the screen containing the output of 
 {\ttfamily errno} is a global value that is set when any part of the P\+R\+OS kernel encounters an error. The value of {\ttfamily errno} is specific to each function, so check the function headers or the \href{../../api/index.html}{\texttt{ A\+PI docs}} for possible values and their meaning. If you think you\textquotesingle{}re encountering an error in the kernel code, check the value of {\ttfamily errno} to see what\textquotesingle{}s causing the issue.
 
 Debugging in this manner is standard to other environments besides P\+R\+OS. For further information on using {\ttfamily errno}, see the following tutorial\+: \href{https://www.tutorialspoint.com/cprogramming/c_error_handling.htm}{\texttt{ https\+://www.\+tutorialspoint.\+com/cprogramming/c\+\_\+error\+\_\+handling.\+htm}}\hypertarget{debugging_autotoc_md19}{}\doxysubsubsection{J\+I\+N\+X Graphical Debugger}\label{debugging_autotoc_md19}
-J\+I\+NX offers further debugging functionality over traditional debugging through print statements. For a full explanation of J\+I\+NX\textquotesingle{}s abilities and its use, see ../topical/jinx. \hypertarget{project-structure}{}\doxysection{Project Structure}\label{project-structure}
+J\+I\+NX offers further debugging functionality over traditional debugging through print statements. For a full explanation of J\+I\+NX\textquotesingle{}s abilities and its use, see \mbox{\hyperlink{jinx}{J\+I\+NX Graphical Debugger}}. \hypertarget{project-structure}{}\doxysection{Project Structure}\label{project-structure}
 P\+R\+OS projects are internally composed of three parts\+: the {\bfseries{P\+R\+OS library}} (found in {\ttfamily /firmware}), the {\bfseries{header}} files (found in {\ttfamily /include}), and {\bfseries{user code}} (found in {\ttfamily /src}).\hypertarget{project-structure_autotoc_md20}{}\doxysubsubsection{firmware}\label{project-structure_autotoc_md20}
 The {\bfseries{P\+R\+OS library}} is a single file containing the core P\+R\+OS routines. This file does not need to be changed. If there appears to be an issue with a core P\+R\+OS function, please file an issue on \href{https://github.com/purduesigbots/pros/issues}{\texttt{ Git\+Hub}}.\hypertarget{project-structure_autotoc_md21}{}\doxysubsubsection{include}\label{project-structure_autotoc_md21}
 The {\bfseries{header}} files are all found in the {\ttfamily include} directory. One header file, \href{../../api/index.html}{\texttt{ api.\+h}}, is required to declare the P\+R\+OS library functions. This file exists merely to include the individual P\+R\+OS A\+PI headers, all of which can be found in {\ttfamily include/pros}. Each header file in this directory covers a specific aspect of interacting with the V5 hardware, and correlates to the files found in the \href{../../api/index.html}{\texttt{ A\+PI documentation}}.
@@ -132,7 +132,7 @@ autonomous selection routine, verify that it actually has a
 means of ending.
 \end{DoxyVerb}
 
-\item {\bfseries{Code restarts unexpectedly\+:}} \+: A run-\/time error has caused the program to crash. \href{./debugging}{\texttt{ Debugging}} may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include\+:
+\item {\bfseries{Code restarts unexpectedly\+:}} \+: A run-\/time error has caused the program to crash. \mbox{\hyperlink{debugging}{Debugging}} may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include\+:
 \begin{DoxyItemize}
 \item {\bfseries{Segmentation Fault\+:}} \+: Indicates that an invalid C pointer has been used. Check for confusion between pointers and regular variables and that an invalid pointer has not been passed to a P\+R\+OS A\+PI function.
 \item {\bfseries{Stack Overflow\+:}} \+: Often indicates infinite recursion, or that the stack size for a custom task is too small. Calling many layers of functions and declaring large local variables can require large amounts of space on the stack. If this error occurs in a default task like {\ttfamily \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous()}}}, consider changing code to reduce the stack requirements, or creating a new task with a larger stack size using \href{../../api/c/rtos.html\#task_create}{\texttt{ task\+\_\+create}} to handle large jobs. Large arrays declared inside functions can usually be declared globally to alleviate pressure on stack space.
@@ -141,7 +141,7 @@ means of ending.
 \item {\bfseries{Cortex blinking red light after upload\+:}} \+: Turn the Cortex microcontroller off and on again. This usually resolves the problem, and it is generally good practice to re-\/initialize the robot to simulate conditions at most competitions. If the error persists, see the \char`\"{}$\ast$$\ast$\+Code restarts
   unexpectedly$\ast$$\ast$\char`\"{} section above.
 \item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries{doesn\textquotesingle{}t work}}\+:
-\item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries{doesn\textquotesingle{}t work}}\+: \+: \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} prints information over a serial connection (\href{../tutorials/general/debugging}{\texttt{ Debugging}}), not to the V\+EX L\+CD. To print to the L\+CD, use \href{../../api/c/llemu.html\#lcd-print}{\texttt{ lcd\+\_\+print}} instead. 
+\item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries{doesn\textquotesingle{}t work}}\+: \+: \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} prints information over a serial connection \mbox{\hyperlink{debugging}{Debugging}}, not to the V\+EX L\+CD. To print to the L\+CD, use \href{../../api/c/llemu.html\#lcd-print}{\texttt{ lcd\+\_\+print}} instead. 
 \end{DoxyItemize}\end{quote}
 \hypertarget{clawbot}{}\doxysection{Programming the Clawbot}\label{clawbot}
 \hypertarget{clawbot_autotoc_md66}{}\doxysubsubsection{Objective}\label{clawbot_autotoc_md66}
@@ -247,7 +247,7 @@ Do not change any of the P\+R\+OS header files in this process. That will cause 
 \end{DoxyWarning}
 This will compile your P\+R\+OS project as C code, and will give you access to the \href{../../api/c/index.html}{\texttt{ C A\+PI}}.
 
-If you\textquotesingle{}re interested in combining C and C++, you should read through the \href{../general/combining-c-cpp.html}{\texttt{ Combining C and C++ tutorial}}. Please note that it is typically a complicated matter to combine the two, and rarely a good idea. \hypertarget{adi}{}\doxysection{A\+DI (3 Wire Ports)}\label{adi}
+If you\textquotesingle{}re interested in combining C and C++, you should read through the \mbox{\hyperlink{combining-c-cpp}{Combining C and C++}}. Please note that it is typically a complicated matter to combine the two, and rarely a good idea. \hypertarget{adi}{}\doxysection{A\+DI (3 Wire Ports)}\label{adi}
 \begin{DoxyNote}{Note}
 For a full list of functions for interacting with the A\+DI, see its \+: \href{../../api/c/adi.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/adi.html}{\texttt{ C++ A\+PI}}.
 \end{DoxyNote}
@@ -470,7 +470,7 @@ Sometimes this is impossible\+: suppose you wanted to write a P\+ID controller o
 Mutexes stand for mutual exclusion; only one task can hold a mutex at any given time. Other tasks must wait for the first task to finish (and release the mutex) before they may continue.
 
 Mutexes do not magically prevent concurrent writing, but provide the ability for tasks to create \char`\"{}contracts\char`\"{} with each other. You can write your code such that a variable is never written to unless the task owns a mutex designated for that variable.\hypertarget{multitasking_autotoc_md57}{}\doxysubsubsection{Notifications}\label{multitasking_autotoc_md57}
-Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. A full tutorial on task notifications can be found \href{./notifications.html}{\texttt{ here}}. \hypertarget{notifications}{}\doxysection{Task Notifications}\label{notifications}
+Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. A full tutorial on task notifications can be found \mbox{\hyperlink{notifications}{Task Notifications}}. \hypertarget{notifications}{}\doxysection{Task Notifications}\label{notifications}
 \begin{DoxyNote}{Note}
 For a full list of functions for interacting with Tasks, see its \href{../../api/c/rtos.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/rtos.html}{\texttt{ C++ A\+PI}}. Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. Each task has a 32-\/bit notification value. Each task can block on its own notification (wait for it to become non-\/zero) and any task can update the notification value. Task notifications have a broad range of applications, are simple to use, and have significant memory and speed advantages when compared to traditional semaphore-\/based synchronization mechanisms.
 \end{DoxyNote}

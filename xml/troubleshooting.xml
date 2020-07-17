@@ -42,7 +42,7 @@
 autonomous selection routine, verify that it actually has a
 means of ending.
 </verbatim></para>
-</listitem><listitem><para><bold>Code restarts unexpectedly:</bold> : A run-time error has caused the program to crash. <ulink url="./debugging">Debugging</ulink> may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include:<itemizedlist>
+</listitem><listitem><para><bold>Code restarts unexpectedly:</bold> : A run-time error has caused the program to crash. <ref refid="debugging" kindref="compound">Debugging</ref> may reveal the cause of the error. Examine any newly added code for possible logical errors. Some common error messages include:<itemizedlist>
 <listitem><para><bold>Segmentation Fault:</bold> : Indicates that an invalid C pointer has been used. Check for confusion between pointers and regular variables and that an invalid pointer has not been passed to a PROS API function.</para>
 </listitem><listitem><para><bold>Stack Overflow:</bold> : Often indicates infinite recursion, or that the stack size for a custom task is too small. Calling many layers of functions and declaring large local variables can require large amounts of space on the stack. If this error occurs in a default task like <computeroutput><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous()</ref></computeroutput>, consider changing code to reduce the stack requirements, or creating a new task with a larger stack size using <ulink url="../../api/c/rtos.html#task_create">task_create</ulink> to handle large jobs. Large arrays declared inside functions can usually be declared globally to alleviate pressure on stack space.</para>
 </listitem><listitem><para><bold>System Task Failure:</bold> : Too many tasks were running for the system to start a new one. Disable or merge unnecessary tasks to eliminate this error.</para>
@@ -51,7 +51,7 @@ means of ending.
 </listitem><listitem><para><bold>Cortex blinking red light after upload:</bold> : Turn the Cortex microcontroller off and on again. This usually resolves the problem, and it is generally good practice to re-initialize the robot to simulate conditions at most competitions. If the error persists, see the &quot;**Code restarts
   unexpectedly**&quot; section above.</para>
 </listitem><listitem><para>[printf](printf_) <bold>doesn&apos;t work</bold>:</para>
-</listitem><listitem><para>[printf](printf_) <bold>doesn&apos;t work</bold>: : <ulink url="http://www.cplusplus.com/reference/cstdio/printf/">printf</ulink> prints information over a serial connection (<ulink url="../tutorials/general/debugging">Debugging</ulink>), not to the VEX LCD. To print to the LCD, use <ulink url="../../api/c/llemu.html#lcd-print">lcd_print</ulink> instead. </para>
+</listitem><listitem><para>[printf](printf_) <bold>doesn&apos;t work</bold>: : <ulink url="http://www.cplusplus.com/reference/cstdio/printf/">printf</ulink> prints information over a serial connection <ref refid="debugging" kindref="compound">Debugging</ref>, not to the VEX LCD. To print to the LCD, use <ulink url="../../api/c/llemu.html#lcd-print">lcd_print</ulink> instead. </para>
 </listitem></itemizedlist>
 </para>
 </blockquote></para>
