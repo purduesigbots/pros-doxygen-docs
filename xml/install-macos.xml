@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="install-macos" kind="page">
+    <compoundname>install-macos</compoundname>
+    <title>Installing on macOS</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>There are currently two ways to install PROS 3 on macOS. The recommended method uses <ulink url="https://brew.sh/">Homebrew</ulink>, and the other method involves installing components manually.</para>
+<sect2 id="install-macos_1autotoc_md7">
+<title>Recommended Method (Homebrew)</title>
+<para>The recommended method of installing PROS 3 for macOS involves using <ulink url="https://brew.sh/">Homebrew</ulink>.</para>
+<para><orderedlist>
+<listitem><para>If you do not already have Homebrew installed, install it by following the instructions on <ulink url="https://brew.sh">their site</ulink>. This will take a while, and may prompt you to follow some additional instructions.</para>
+</listitem><listitem><para>Once you have Homebrew installed, run <computeroutput>brew tap osx-cross/arm &amp;&amp; brew install arm-gcc-bin</computeroutput> to register a repository with Homebrew that contains the toolchain used to build PROS projects, and then install the toolchain.</para>
+</listitem><listitem><para>Run <computeroutput>brew tap purduesigbots/pros</computeroutput> to register the PROS Homebrew repository with Homebrew.</para>
+</listitem><listitem><para>Run <computeroutput>brew cask install pros-editor</computeroutput> to install the PROS Editor (the CLI will also be installed). This may also take a while.</para>
+</listitem><listitem><para>That&apos;s it! You can now start using PROS 3.</para>
+</listitem></orderedlist>
+</para>
+<para><simplesect kind="note"><para>If you do not want to use the PROS Editor, and instead intend to use only the PROS CLI, substitute the command in step 3 with the following: <computeroutput>brew install pros-cli</computeroutput>.</para>
+</simplesect>
+</para>
+</sect2>
+<sect2 id="install-macos_1autotoc_md8">
+<title>Other Methods</title>
+<para>If you don&apos;t want to use Homebrew to install PROS 3, you can install all the components manually.</para>
+<sect3 id="install-macos_1autotoc_md9">
+<title>Install the toolchain</title>
+<para><orderedlist>
+<listitem><para>Download the latest version of the GNU Arm Embedded Toolchain for macOS from <ulink url="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">their site</ulink>.</para>
+</listitem><listitem><para>Once you have downloaded the toolchain, double click the file to extract its contents.</para>
+</listitem><listitem><para>Copy the contents of the <computeroutput>gcc-arm-none-eabi-X-20XX-qX-update</computeroutput> folder (where the Xs are numbers specific to the version you downloaded) to another folder, for example <computeroutput>/usr/local/lib/pros-toolchain</computeroutput>.</para>
+</listitem><listitem><para>Now you will need to link the toolchain binaries to somewhere that the system will be able to find them. There are two ways to do this:<itemizedlist>
+<listitem><para>recommended, easy to update: run <computeroutput>mkdir -p /usr/local/bin/pros-toolchain &amp;&amp; ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin/pros-toolchain</computeroutput> replacing <computeroutput>/usr/local/lib/pros-toolchain</computeroutput> with the path to the folder you made in step 4 above. Finally, add <computeroutput>/usr/local/bin/pros-toolchain</computeroutput> to the end of your <computeroutput>/etc/paths</computeroutput> file.</para>
+</listitem><listitem><para>easier, less easy to update: simply run <computeroutput>ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin</computeroutput>.</para>
+</listitem></itemizedlist>
+</para>
+</listitem></orderedlist>
+</para>
+</sect3>
+<sect3 id="install-macos_1autotoc_md10">
+<title>Install the CLI</title>
+<para><orderedlist>
+<listitem><para>Install Python 3.6 or higher from <ulink url="http://python.org">the Python website</ulink>.</para>
+</listitem><listitem><para>Install the CLI by downloading the latest version of the Python Wheel file (.whl) from <ulink url="https://github.com/purduesigbots/pros-cli3/releases/latest">here</ulink>. Once downloaded, run <computeroutput>python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl</computeroutput> (replacing that path with the path to which you downloaded the file).</para>
+</listitem></orderedlist>
+</para>
+</sect3>
+<sect3 id="install-macos_1autotoc_md11">
+<title>Install the Editor</title>
+<para><simplesect kind="note"><para>This section is optional if you intend to use an editor other than the PROS Editor</para>
+</simplesect>
+<orderedlist>
+<listitem><para>Build and install cquery by following the instructions on <ulink url="https://github.com/cquery-project/cquery/wiki/Building-cquery">their wiki page</ulink>.</para>
+</listitem><listitem><para>Download the pros-editor-mac.zip file from <ulink url="https://github.com/purduesigbots/atom/releases/latest">our releases page</ulink>. Once downloaded, double click to extract the application, then drag the <computeroutput>PROS Editor.app</computeroutput> file to your <computeroutput>/Applications</computeroutput> folder.</para>
+</listitem></orderedlist>
+</para>
+</sect3>
+</sect2>
+<sect2 id="install-macos_1autotoc_md12">
+<title>Requirements</title>
+<para>Minimum macOS version: 10.8 Minimum Python version: 3.6</para>
+</sect2>
+<sect2 id="install-macos_1autotoc_md13">
+<title>Known Issues</title>
+<para><computeroutput>RuntimeError: Click will abort further execution because Python 3 was configured to use ASCII as encoding for the environment.</computeroutput></para>
+<para>If you are using the PROS Editor, open up your init script (File &gt; Init Script) and add the following two lines:</para>
+<para><programlisting filename=".coffee"><codeline><highlight class="normal">process.env.LANG<sp/>=<sp/>&apos;en_US.utf-8&apos;</highlight></codeline>
+<codeline><highlight class="normal">process.env.LC_ALL<sp/>=<sp/>&apos;en_US.utf-8&apos;</highlight></codeline>
+</programlisting></para>
+<para>If you are just using the CLI at the Terminal:</para>
+<para><itemizedlist>
+<listitem><para>Open up your Terminal.</para>
+</listitem><listitem><para>Run <computeroutput>cd</computeroutput> to make sure you&apos;re in your home directory.</para>
+</listitem><listitem><para>Run <computeroutput>touch .bash_profile</computeroutput> to make sure you have a shell login configuration file.</para>
+</listitem><listitem><para>Edit the <computeroutput>~/.bash_profile</computeroutput> file in your preferred editor (you can also run <computeroutput>open -e .bash_profile</computeroutput> to edit it in TextEdit), adding the following two lines at the end:</para>
+</listitem></itemizedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">export<sp/>LANG=&quot;en_US.utf-8&quot;</highlight></codeline>
+<codeline><highlight class="normal">export<sp/>LC_ALL=&quot;en_US.utf-8&quot;</highlight></codeline>
+</programlisting></para>
+<para><itemizedlist>
+<listitem><para>Run <computeroutput>. .bash_profile</computeroutput> to reload the file for the current session.</para>
+</listitem></itemizedlist>
+</para>
+<para><hruler/>
+ <computeroutput>/bin/sh: intercept-c++: command not found</computeroutput></para>
+<para><simplesect kind="note"><para>This issue should be fixed for PROS CLI versions &gt; 3.1.2</para>
+</simplesect>
+<orderedlist>
+<listitem><para>Check your PROS CLI version by running <computeroutput>prosv5 --version</computeroutput>. If your version is &lt;= 3.1.2, try updating first to check if that solves your problem. If not, continue with step 2.</para>
+</listitem><listitem><para>Follow steps 1-4 listed above for those using the CLI only. In step 4, however, add the following line instead (replacing the Xs with the numbers found in step 1):</para>
+</listitem></orderedlist>
+</para>
+<para><programlisting filename=".bash"><codeline><highlight class="normal">export<sp/>PATH=&quot;/usr/local/Cellar/pros-cli/3.X.X/libexec/bin:$PATH&quot;</highlight></codeline>
+</programlisting> </para>
+</sect2>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

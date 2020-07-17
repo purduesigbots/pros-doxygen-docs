@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PROS Documentation Home &raquo; Getting Started &raquo; Installing on macOS | PROS for
+V5</title>
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="pros-custom.css" />
+  <link rel="stylesheet" href="pros-code.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e6b85c" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="logo.png" alt="" />PROS <span class="m-thin">for
+V5</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="tutorials.html">Tutorials</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="3">
+            <li><a href="annotated.html">Classes</a></li>
+            <li><a href="files.html">Files</a></li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="index.html">PROS Documentation Home</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="getting-started.html">Getting Started</a> &raquo;</span>
+          Installing on macOS
+        </h1>
+<p>There are currently two ways to install PROS 3 on macOS. The recommended method uses <a href="https://brew.sh/">Homebrew</a>, and the other method involves installing components manually.</p><section id="autotoc_md7"><h3><a href="#autotoc_md7">Recommended Method (Homebrew)</a></h3><p>The recommended method of installing PROS 3 for macOS involves using <a href="https://brew.sh/">Homebrew</a>.</p><ol><li>If you do not already have Homebrew installed, install it by following the instructions on <a href="https://brew.sh">their site</a>. This will take a while, and may prompt you to follow some additional instructions.</li><li>Once you have Homebrew installed, run <code>brew tap osx-cross/arm &amp;&amp; brew install arm-gcc-bin</code> to register a repository with Homebrew that contains the toolchain used to build PROS projects, and then install the toolchain.</li><li>Run <code>brew tap purduesigbots/pros</code> to register the PROS Homebrew repository with Homebrew.</li><li>Run <code>brew cask install pros-editor</code> to install the PROS Editor (the CLI will also be installed). This may also take a while.</li><li>That&#x27;s it! You can now start using PROS 3.</li></ol><aside class="m-note m-info"><h4>Note</h4><p>If you do not want to use the PROS Editor, and instead intend to use only the PROS CLI, substitute the command in step 3 with the following: <code>brew install pros-cli</code>.</p></aside></section><section id="autotoc_md8"><h3><a href="#autotoc_md8">Other Methods</a></h3><p>If you don&#x27;t want to use Homebrew to install PROS 3, you can install all the components manually.</p><section id="autotoc_md9"><h4><a href="#autotoc_md9">Install the toolchain</a></h4><ol><li>Download the latest version of the GNU Arm Embedded Toolchain for macOS from <a href="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads">their site</a>.</li><li>Once you have downloaded the toolchain, double click the file to extract its contents.</li><li>Copy the contents of the <code>gcc-arm-none-eabi-X-20XX-qX-update</code> folder (where the Xs are numbers specific to the version you downloaded) to another folder, for example <code>/usr/local/lib/pros-toolchain</code>.</li><li>Now you will need to link the toolchain binaries to somewhere that the system will be able to find them. There are two ways to do this:<ul><li>recommended, easy to update: run <code>mkdir -p /usr/local/bin/pros-toolchain &amp;&amp; ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin/pros-toolchain</code> replacing <code>/usr/local/lib/pros-toolchain</code> with the path to the folder you made in step 4 above. Finally, add <code>/usr/local/bin/pros-toolchain</code> to the end of your <code>/etc/paths</code> file.</li><li>easier, less easy to update: simply run <code>ln -s /usr/local/lib/pros-toolchain/bin/* /usr/local/bin</code>.</li></ul></li></ol></section><section id="autotoc_md10"><h4><a href="#autotoc_md10">Install the CLI</a></h4><ol><li>Install Python 3.6 or higher from <a href="http://python.org">the Python website</a>.</li><li>Install the CLI by downloading the latest version of the Python Wheel file (.whl) from <a href="https://github.com/purduesigbots/pros-cli3/releases/latest">here</a>. Once downloaded, run <code>python3 -m pip install ~/Downloads/pros-cli-v5_3.X.X-py3-none-any.whl</code> (replacing that path with the path to which you downloaded the file).</li></ol></section><section id="autotoc_md11"><h4><a href="#autotoc_md11">Install the Editor</a></h4><aside class="m-note m-info"><h4>Note</h4><p>This section is optional if you intend to use an editor other than the PROS Editor</p></aside><ol><li>Build and install cquery by following the instructions on <a href="https://github.com/cquery-project/cquery/wiki/Building-cquery">their wiki page</a>.</li><li>Download the pros-editor-mac.zip file from <a href="https://github.com/purduesigbots/atom/releases/latest">our releases page</a>. Once downloaded, double click to extract the application, then drag the <code>PROS Editor.app</code> file to your <code>/Applications</code> folder.</li></ol></section></section><section id="autotoc_md12"><h3><a href="#autotoc_md12">Requirements</a></h3><p>Minimum macOS version: 10.8 Minimum Python version: 3.6</p></section><section id="autotoc_md13"><h3><a href="#autotoc_md13">Known Issues</a></h3><p><code>RuntimeError: Click will abort further execution because Python 3 was configured to use ASCII as encoding for the environment.</code></p><p>If you are using the PROS Editor, open up your init script (File &gt; Init Script) and add the following two lines:</p><pre class="m-code"><span class="nv">process.env.LANG = </span><span class="s">&#39;en_US.utf-8&#39;</span>
+<span class="nv">process.env.LC_ALL = </span><span class="s">&#39;en_US.utf-8&#39;</span></pre><p>If you are just using the CLI at the Terminal:</p><ul><li>Open up your Terminal.</li><li>Run <code>cd</code> to make sure you&#x27;re in your home directory.</li><li>Run <code>touch .bash_profile</code> to make sure you have a shell login configuration file.</li><li>Edit the <code>~/.bash_profile</code> file in your preferred editor (you can also run <code>open -e .bash_profile</code> to edit it in TextEdit), adding the following two lines at the end:</li></ul><pre class="m-code"><span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;en_US.utf-8&quot;</span>
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span><span class="s2">&quot;en_US.utf-8&quot;</span></pre><ul><li>Run <code>. .bash_profile</code> to reload the file for the current session.</li></ul><hr/>
+ <p><code>/bin/sh: intercept-c++: command not found</code></p><aside class="m-note m-info"><h4>Note</h4><p>This issue should be fixed for PROS CLI versions &gt; 3.1.2</p></aside><ol><li>Check your PROS CLI version by running <code>prosv5 --version</code>. If your version is &lt;= 3.1.2, try updating first to check if that solves your problem. If not, continue with step 2.</li><li>Follow steps 1-4 listed above for those using the CLI only. In step 4, however, add the following line instead (replacing the Xs with the numbers found in step 1):</li></ol><pre class="m-code"><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/Cellar/pros-cli/3.X.X/libexec/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span></pre></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>PROS for
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>
