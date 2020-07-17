@@ -59,8 +59,9 @@ Home</span></a>
               Reference
               <ul>
                 <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
-                <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#pub-static-methods">Public static functions</a></li>
+                <li><a href="#motor-movement-functions">Motor movement functions</a></li>
+                <li><a href="#motor-telemetry-functions">Motor telemetry functions</a></li>
+                <li><a href="#motor-configuration-functions">Motor configuration functions</a></li>
               </ul>
             </li>
           </ul>
@@ -97,8 +98,9 @@ Home</span></a>
             <dd><span></span></dd>
           </dl>
         </section>
-        <section id="pub-methods">
-          <h2><a href="#pub-methods">Public functions</a></h2>
+        <section id="motor-movement-functions">
+          <h2><a href="#motor-movement-functions">Motor movement functions</a></h2>
+<p>These functions allow programmers to make motors move</p>
           <dl class="m-doc">
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a4cf8a9518eb6cd268d27151f0df7fd38" class="m-doc">operator=</a>(</span><span class="m-doc-wrap">std::int32_t voltage) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
@@ -130,6 +132,12 @@ Home</span></a>
               <span class="m-doc-wrap-bumper">auto <a href="#a44f39232cec1caee6d668d8ff21dc28b" class="m-doc">modify_profiled_velocity</a>(</span><span class="m-doc-wrap">const std::int32_t velocity) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Changes the output velocity for a profiled movement (<a href="motors_8h.html#ab70bf4937f1b5cefa15c11c15314c90e" class="m-doc">motor_<wbr />move_<wbr />absolute()</a> or <a href="motors_8h.html#ab4c1ba35d69e8e9b49df0e848fa305d3" class="m-doc">motor_<wbr />move_<wbr />relative()</a>).</dd>
+          </dl>
+        </section>
+        <section id="motor-telemetry-functions">
+          <h2><a href="#motor-telemetry-functions">Motor telemetry functions</a></h2>
+<p>These functions allow programmers to collect telemetry from motors</p>
+          <dl class="m-doc">
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a7ad83a73bf15b94aaad8d10970bb254c" class="m-doc">get_target_position</a>(</span><span class="m-doc-wrap">void) const -&gt; double <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
@@ -141,7 +149,7 @@ Home</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a696494a4e7c675f7007d41b947f9ea63" class="m-doc">get_actual_velocity</a>(</span><span class="m-doc-wrap">void) const -&gt; double <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
-            <dd><a href="classpros_1_1Motor.html" class="m-doc">Motor</a> telemetry functions<br /></dd>
+            <dd>Gets the actual velocity of the motor.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a502eaf3859452721e2327e53ab3f34d8" class="m-doc">get_current_draw</a>(</span><span class="m-doc-wrap">void) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
@@ -202,10 +210,16 @@ Home</span></a>
               <span class="m-doc-wrap-bumper">auto <a href="#abe51732c37c2ec72a8bdceac7f6962cb" class="m-doc">get_voltage</a>(</span><span class="m-doc-wrap">void) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Gets the voltage delivered to the motor in millivolts.</dd>
+          </dl>
+        </section>
+        <section id="motor-configuration-functions">
+          <h2><a href="#motor-configuration-functions">Motor configuration functions</a></h2>
+<p>These functions allow programmers to configure the behavior of motors</p>
+          <dl class="m-doc">
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#af20c036c1d5d68eb5e762c12f9a4b7fe" class="m-doc">set_zero_position</a>(</span><span class="m-doc-wrap">const double position) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
-            <dd><a href="classpros_1_1Motor.html" class="m-doc">Motor</a> configuration functions<br /></dd>
+            <dd>Sets the position for the motor in its encoder units.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a5d67803a65fa699a169a4ed5a107a964" class="m-doc">tare_position</a>(</span><span class="m-doc-wrap">void) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
@@ -226,22 +240,6 @@ Home</span></a>
               <span class="m-doc-wrap-bumper">auto <a href="#a3adf8b737ad2e4ebb5f000401c536fed" class="m-doc">set_gearing</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a4f316b04fcf63921bbf386f9c8d37e92" class="m-doc">motor_<wbr />gearset_<wbr />e_<wbr />t</a> gearset) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Sets one of motor_gearset_e_t for the motor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a7a42563b94124faebb50e5731d5664ad" class="m-doc">set_pos_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
-            </dt>
-            <dd>Sets one of motor_pid_s_t for the motor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a67cff0666b34c3731e21e856414c2066" class="m-doc">set_pos_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
-            </dt>
-            <dd>Sets one of motor_pid_full_s_t for the motor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a69169ae0cd2b7f68ee533648c7830397" class="m-doc">set_vel_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
-            </dt>
-            <dd>Sets one of motor_pid_s_t for the motor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">auto <a href="#a7fc8eefc04c8b8aaefad75437b49f30a" class="m-doc">set_vel_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
-            </dt>
-            <dd>Sets one of motor_pid_full_s_t for the motor.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">auto <a href="#a44fcc6447ed1416e880232baa16a221e" class="m-doc">set_reversed</a>(</span><span class="m-doc-wrap">const bool reverse) const -&gt; std::int32_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
@@ -286,29 +284,22 @@ Home</span></a>
               <span class="m-doc-wrap-bumper">auto <a href="#a5b0e644c8af396a6af8142b41d1bc7b6" class="m-doc">get_port</a>(</span><span class="m-doc-wrap">void) const -&gt; std::uint8_t <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
             <dd>Gets the port number of the motor.</dd>
-          </dl>
-        </section>
-        <section id="pub-static-methods">
-          <h2><a href="#pub-static-methods">Public static functions</a></h2>
-          <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#adca7af38b0357c254e81ed882a2283a0" class="m-doc">convert_pid</a>(</span><span class="m-doc-wrap">double kf,
-              double kp,
-              double ki,
-              double kd) -&gt; <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7a42563b94124faebb50e5731d5664ad" class="m-doc">set_pos_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-danger">private</span> <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
-            <dd>Takes in floating point values and returns a properly formatted pid struct.</dd>
+            <dd>Sets one of motor_pid_s_t for the motor.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static auto <a href="#a2d8c9c462e47e989ebe64fa341be91c6" class="m-doc">convert_pid_full</a>(</span><span class="m-doc-wrap">double kf,
-              double kp,
-              double ki,
-              double kd,
-              double filter,
-              double limit,
-              double threshold,
-              double loopspeed) -&gt; <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a></span>
+              <span class="m-doc-wrap-bumper">auto <a href="#a67cff0666b34c3731e21e856414c2066" class="m-doc">set_pos_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-danger">private</span> <span class="m-label m-flat m-warning">virtual</span></span>
             </dt>
-            <dd>Takes in floating point values and returns a properly formatted pid struct.</dd>
+            <dd>Sets one of motor_pid_full_s_t for the motor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a69169ae0cd2b7f68ee533648c7830397" class="m-doc">set_vel_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-danger">private</span> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets one of motor_pid_s_t for the motor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">auto <a href="#a7fc8eefc04c8b8aaefad75437b49f30a" class="m-doc">set_vel_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const -&gt; std::int32_t <span class="m-label m-flat m-danger">private</span> <span class="m-label m-flat m-warning">virtual</span></span>
+            </dt>
+            <dd>Sets one of motor_pid_full_s_t for the motor.</dd>
           </dl>
         </section>
         <section>
@@ -611,7 +602,7 @@ Home</span></a>
             <h3>
               <span class="m-doc-wrap-bumper">double pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a696494a4e7c675f7007d41b947f9ea63" class="m-doc-self">get_actual_velocity</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">virtual</span></span></span>
             </h3>
-            <p><a href="classpros_1_1Motor.html" class="m-doc">Motor</a> telemetry functions<br /></p>
+            <p>Gets the actual velocity of the motor.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
@@ -620,7 +611,7 @@ Home</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>These functions allow programmers to collect telemetry from motors<br />Gets the actual velocity of the motor.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="a502eaf3859452721e2327e53ab3f34d8"><div>
             <h3>
@@ -860,7 +851,7 @@ Home</span></a>
             <h3>
               <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#af20c036c1d5d68eb5e762c12f9a4b7fe" class="m-doc-self">set_zero_position</a>(</span><span class="m-doc-wrap">const double position) const <span class="m-label m-warning">virtual</span></span></span>
             </h3>
-            <p><a href="classpros_1_1Motor.html" class="m-doc">Motor</a> configuration functions<br /></p>
+            <p>Sets the position for the motor in its encoder units.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -878,7 +869,7 @@ Home</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>These functions allow programmers to configure the behavior of motors Sets the position for the motor in its encoder units.</p><p>This will be the future reference point for the motor&#x27;s &quot;absolute&quot; position.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+<p>This will be the future reference point for the motor&#x27;s &quot;absolute&quot; position.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="a5d67803a65fa699a169a4ed5a107a964"><div>
             <h3>
@@ -990,102 +981,6 @@ Home</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
-          </div></section>
-          <section class="m-doc-details" id="a7a42563b94124faebb50e5731d5664ad"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7a42563b94124faebb50e5731d5664ad" class="m-doc-self">set_pos_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span></span></span>
-            </h3>
-            <p>Sets one of motor_pid_s_t for the motor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">pid</td>
-                  <td>The new motor PID constants</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This intended to just modify the main PID constants.</p><p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
-          </div></section>
-          <section class="m-doc-details" id="a67cff0666b34c3731e21e856414c2066"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a67cff0666b34c3731e21e856414c2066" class="m-doc-self">set_pos_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span></span></span>
-            </h3>
-            <p>Sets one of motor_pid_full_s_t for the motor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">pid</td>
-                  <td>The new motor PID constants</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
-          </div></section>
-          <section class="m-doc-details" id="a69169ae0cd2b7f68ee533648c7830397"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69169ae0cd2b7f68ee533648c7830397" class="m-doc-self">set_vel_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span></span></span>
-            </h3>
-            <p>Sets one of motor_pid_s_t for the motor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">pid</td>
-                  <td>The new motor PID constants</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This intended to just modify the main PID constants.</p><p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
-          </div></section>
-          <section class="m-doc-details" id="a7fc8eefc04c8b8aaefad75437b49f30a"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7fc8eefc04c8b8aaefad75437b49f30a" class="m-doc-self">set_vel_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span></span></span>
-            </h3>
-            <p>Sets one of motor_pid_full_s_t for the motor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">pid</td>
-                  <td>The new motor PID constants</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="a44fcc6447ed1416e880232baa16a221e"><div>
             <h3>
@@ -1269,103 +1164,101 @@ Home</span></a>
               </tfoot>
             </table>
           </div></section>
-          <section class="m-doc-details" id="adca7af38b0357c254e81ed882a2283a0"><div>
+          <section class="m-doc-details" id="a7a42563b94124faebb50e5731d5664ad"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#adca7af38b0357c254e81ed882a2283a0" class="m-doc-self">convert_pid</a>(</span><span class="m-doc-wrap">double kf,
-              double kp,
-              double ki,
-              double kd)</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7a42563b94124faebb50e5731d5664ad" class="m-doc-self">set_pos_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
             </h3>
-            <p>Takes in floating point values and returns a properly formatted pid struct.</p>
+            <p>Sets one of motor_pid_s_t for the motor.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">kf</td>
-                  <td>The feedforward constant</td>
-                </tr>
-                <tr>
-                  <td>kp</td>
-                  <td>The proportional constant</td>
-                </tr>
-                <tr>
-                  <td>ki</td>
-                  <td>The integral constant</td>
-                </tr>
-                <tr>
-                  <td>kd</td>
-                  <td>The derivative constant</td>
+                  <td style="width: 1%">pid</td>
+                  <td>The new motor PID constants</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>A motor_pid_s_t struct formatted properly in 4.4.</td>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</p>
+<p>This intended to just modify the main PID constants.</p><p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
-          <section class="m-doc-details" id="a2d8c9c462e47e989ebe64fa341be91c6"><div>
+          <section class="m-doc-details" id="a67cff0666b34c3731e21e856414c2066"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">static <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d8c9c462e47e989ebe64fa341be91c6" class="m-doc-self">convert_pid_full</a>(</span><span class="m-doc-wrap">double kf,
-              double kp,
-              double ki,
-              double kd,
-              double filter,
-              double limit,
-              double threshold,
-              double loopspeed)</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a67cff0666b34c3731e21e856414c2066" class="m-doc-self">set_pos_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
             </h3>
-            <p>Takes in floating point values and returns a properly formatted pid struct.</p>
+            <p>Sets one of motor_pid_full_s_t for the motor.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">kf</td>
-                  <td>The feedforward constant</td>
-                </tr>
-                <tr>
-                  <td>kp</td>
-                  <td>The proportional constant</td>
-                </tr>
-                <tr>
-                  <td>ki</td>
-                  <td>The integral constant</td>
-                </tr>
-                <tr>
-                  <td>kd</td>
-                  <td>The derivative constant</td>
-                </tr>
-                <tr>
-                  <td>filter</td>
-                  <td>A constant used for filtering the profile acceleration</td>
-                </tr>
-                <tr>
-                  <td>limit</td>
-                  <td>The integral limit</td>
-                </tr>
-                <tr>
-                  <td>threshold</td>
-                  <td>The threshold for determining if a position movement has reached its goal. This has no effect for velocity PID calculations.</td>
-                </tr>
-                <tr>
-                  <td>loopspeed</td>
-                  <td>The rate at which the PID computation is run in ms</td>
+                  <td style="width: 1%">pid</td>
+                  <td>The new motor PID constants</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>A motor_pid_s_t struct formatted properly in 4.4.</td>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</p>
+<p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+          </div></section>
+          <section class="m-doc-details" id="a69169ae0cd2b7f68ee533648c7830397"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a69169ae0cd2b7f68ee533648c7830397" class="m-doc-self">set_vel_pid</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a3aa44f40bdbe70b2444f39cc0c8ed803" class="m-doc">motor_<wbr />pid_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
+            </h3>
+            <p>Sets one of motor_pid_s_t for the motor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pid</td>
+                  <td>The new motor PID constants</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This intended to just modify the main PID constants.</p><p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+          </div></section>
+          <section class="m-doc-details" id="a7fc8eefc04c8b8aaefad75437b49f30a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7fc8eefc04c8b8aaefad75437b49f30a" class="m-doc-self">set_vel_pid_full</a>(</span><span class="m-doc-wrap">const <a href="motors_8h.html#a71487424773f23412e9006ab8ed83a78" class="m-doc">motor_<wbr />pid_<wbr />full_<wbr />s_<wbr />t</a> pid) const <span class="m-label m-warning">virtual</span> <span class="m-label m-danger">private</span></span></span>
+            </h3>
+            <p>Sets one of motor_pid_full_s_t for the motor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">pid</td>
+                  <td>The new motor PID constants</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Only non-zero values of the struct will change the existing motor constants.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
         </section>
       </div>

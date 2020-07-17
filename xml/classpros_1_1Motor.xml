@@ -3,6 +3,1490 @@
   <compounddef id="classpros_1_1Motor" kind="class" language="C++" prot="public">
     <compoundname>pros::Motor</compoundname>
     <includes refid="motors_8hpp" local="yes">motors.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Motor movement functions</header>
+      <description><para>These functions allow programmers to make motors move </para>
+</description>
+      <memberdef kind="function" id="classpros_1_1Motor_1a4cf8a9518eb6cd268d27151f0df7fd38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::operator=</definition>
+        <argsstring>(std::int32_t voltage) const</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>std::int32_t</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voltage for the motor from -128 to 127. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor voltage from -127 to 127</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1,<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="102" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::move</definition>
+        <argsstring>(std::int32_t voltage) const</argsstring>
+        <name>move</name>
+        <param>
+          <type>std::int32_t</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voltage for the motor from -127 to 127. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="motors_8h_1a7da9bf1e229e50bfeeaecf026a6d0d08" kindref="member">motor_move()</ref>, or <ref refid="api__legacy_8h_1a59a0d6bd050cd259ad488e68f856ae81" kindref="member">motorSet()</ref> from the PROS 2 API.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor voltage from -127 to 127</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="133" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7851ffa40c9803d75398a5be355de395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::move_absolute</definition>
+        <argsstring>(const double position, const std::int32_t velocity) const</argsstring>
+        <name>move_absolute</name>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the target absolute position for the motor to move to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" kindref="member">pros::Motor::set_zero_position()</ref>.</para>
+<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The absolute position to move to in the motor&apos;s encoder units </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowable velocity for the movement in RPM</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.tare_position();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="178" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a96c09e169b5135d9001cec92fa2686c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::move_relative</definition>
+        <argsstring>(const double position, const std::int32_t velocity) const</argsstring>
+        <name>move_relative</name>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the relative target position for the motor to move to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This movement is relative to the current position of the motor as given in pros::Motor::motor_get_position(). Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
+<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative position to move to in the motor&apos;s encoder units </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowable velocity for the movement in RPM</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="219" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a797de937c2d550c3fa199806db07dbcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::move_velocity</definition>
+        <argsstring>(const std::int32_t velocity) const</argsstring>
+        <name>move_velocity</name>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the velocity for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&apos;s voltage.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor velocity from -+-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="251" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a3c79db57c20617fbbc49461c58612cfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::move_voltage</definition>
+        <argsstring>(const std::int32_t voltage) const</argsstring>
+        <name>move_voltage</name>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Sets the output voltage for the motor from -12000 to 12000 in millivolts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new voltage value from -12000 to 12000</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="268" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a44f39232cec1caee6d668d8ff21dc28b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::modify_profiled_velocity</definition>
+        <argsstring>(const std::int32_t velocity) const</argsstring>
+        <name>modify_profiled_velocity</name>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Changes the output velocity for a profiled movement (<ref refid="motors_8h_1ab70bf4937f1b5cefa15c11c15314c90e" kindref="member">motor_move_absolute()</ref> or <ref refid="motors_8h_1ab4c1ba35d69e8e9b49df0e848fa305d3" kindref="member">motor_move_relative()</ref>). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will have no effect if the motor is not following a profiled movement.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="286" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Motor telemetry functions</header>
+      <description><para>These functions allow programmers to collect telemetry from motors </para>
+</description>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7ad83a73bf15b94aaad8d10970bb254c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_target_position</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_target_position</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the target position set for the motor by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="304" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a8b8148a179cfadd579c8d4c82eb5873f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_target_velocity</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_target_velocity</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the velocity commanded to the motor by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="316" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a696494a4e7c675f7007d41b947f9ea63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_actual_velocity</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_actual_velocity</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the actual velocity of the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="328" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a502eaf3859452721e2327e53ab3f34d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_current_draw</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_current_draw</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current drawn by the motor in mA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="340" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1acea42a96da651f72f138ea268c76217f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_direction</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_direction</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the direction of movement for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="352" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a6f0b39894abf612a1965a66224893c71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_efficiency</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_efficiency</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the efficiency of the motor in percent. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="368" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a2d34c92effccfbb4d2f45319bf4bd272" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::is_over_current</definition>
+        <argsstring>(void) const</argsstring>
+        <name>is_over_current</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Checks if the motor is drawing over its current limit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="381" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a884c19ae71a6c9f0b316520f09769be9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::is_stopped</definition>
+        <argsstring>(void) const</argsstring>
+        <name>is_stopped</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Checks if the motor is stopped. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS_ERR with errno set to ENOSYS.</para>
+</simplesect>
+<simplesect kind="return"><para>1 if the motor is not moving, 0 if the motor is moving, or PROS_ERR if the operation failed, setting errno </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="397" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a589a3cbb397ba065c30c1f16bb3f08a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_zero_position_flag</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_zero_position_flag</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Checks if the motor is at its zero position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS_ERR with errno set to ENOSYS.</para>
+</simplesect>
+<simplesect kind="return"><para>1 if the motor is at zero absolute position, 0 if the motor has moved from its absolute zero, or PROS_ERR if the operation failed, setting errno </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="414" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a66c6f6420485059af301a9c8a99b2045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::uint32_t</type>
+        <definition>virtual std::uint32_t pros::Motor::get_faults</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_faults</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the faults experienced by the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Compare this bitfield to the bitmasks in pros::motor_fault_e_t.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A bitfield containing the motor&apos;s faults. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="430" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7e24aa1c4363a131829e902f12e7364c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::uint32_t</type>
+        <definition>virtual std::uint32_t pros::Motor::get_flags</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_flags</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the flags set by the motor&apos;s operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Compare this bitfield to the bitmasks in pros::motor_flag_e_t.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A bitfield containing the motor&apos;s flags. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="446" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1ae82c57d590e18d7d90afec1e9cc3bb4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_raw_position</definition>
+        <argsstring>(std::uint32_t *const timestamp) const</argsstring>
+        <name>get_raw_position</name>
+        <param>
+          <type>std::uint32_t *const</type>
+          <declname>timestamp</declname>
+        </param>
+        <briefdescription>
+<para>Gets the raw encoder count of the motor at a given timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">timestamp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="463" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a099d50ed35d73fa29a46b2beb151ce2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::is_over_temp</definition>
+        <argsstring>(void) const</argsstring>
+        <name>is_over_temp</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the temperature limit flag for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="475" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a70e725a94ec42dc7cbb3e460c36dcad3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_position</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_position</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the absolute position of the motor in its encoder units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="487" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a51b75dc245257487116e64fa2904d521" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_power</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_power</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the power drawn by the motor in Watts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="499" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a9fd793251b91c2ac0091c65f290f740d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_temperature</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_temperature</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the temperature of the motor in degrees Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="511" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a14e0c57c0ca7bde15f73414abf4c3c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double pros::Motor::get_torque</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_torque</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the torque generated by the motor in Newton Meters (Nm). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="523" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1abe51732c37c2ec72a8bdceac7f6962cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_voltage</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_voltage</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the voltage delivered to the motor in millivolts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="535" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Motor configuration functions</header>
+      <description><para>These functions allow programmers to configure the behavior of motors </para>
+</description>
+      <memberdef kind="function" id="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_zero_position</definition>
+        <argsstring>(const double position) const</argsstring>
+        <name>set_zero_position</name>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Sets the position for the motor in its encoder units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will be the future reference point for the motor&apos;s &quot;absolute&quot; position.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new reference position in its encoder units</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="559" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a5d67803a65fa699a169a4ed5a107a964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::tare_position</definition>
+        <argsstring>(void) const</argsstring>
+        <name>tare_position</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Sets the &quot;absolute&quot; zero position of the motor to its current position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="571" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1ab51969169dc534537f79710261daa3dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_brake_mode</definition>
+        <argsstring>(const motor_brake_mode_e_t mode) const</argsstring>
+        <name>set_brake_mode</name>
+        <param>
+          <type>const <ref refid="motors_8h_1aa314d93503ff2341ddf0ff0cfd0514b0" kindref="member">motor_brake_mode_e_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_brake_mode_e_t to the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The motor_brake_mode_e_t to set for the motor</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="586" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a4c496dfb0b33f989d7329a61b7b6d6ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_current_limit</definition>
+        <argsstring>(const std::int32_t limit) const</argsstring>
+        <name>set_current_limit</name>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current limit for the motor in mA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new current limit in mA</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="601" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a2d2fea8d5967d1e41471111aa89afd84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_encoder_units</definition>
+        <argsstring>(const motor_encoder_units_e_t units) const</argsstring>
+        <name>set_encoder_units</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a45c20d92f0c97d8b1a1c34cb896df934" kindref="member">motor_encoder_units_e_t</ref></type>
+          <declname>units</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_encoder_units_e_t for the motor encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>units</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor encoder units</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="616" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a3adf8b737ad2e4ebb5f000401c536fed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_gearing</definition>
+        <argsstring>(const motor_gearset_e_t gearset) const</argsstring>
+        <name>set_gearing</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a4f316b04fcf63921bbf386f9c8d37e92" kindref="member">motor_gearset_e_t</ref></type>
+          <declname>gearset</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_gearset_e_t for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gearset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor gearset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="631" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a44fcc6447ed1416e880232baa16a221e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_reversed</definition>
+        <argsstring>(const bool reverse) const</argsstring>
+        <name>set_reversed</name>
+        <param>
+          <type>const bool</type>
+          <declname>reverse</declname>
+        </param>
+        <briefdescription>
+<para>Sets the reverse flag for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will invert its movements and the values returned for its position.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True reverses the motor, false is default</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="778" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a3cd7e4ca0714b533d873796cf8b74a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_voltage_limit</definition>
+        <argsstring>(const std::int32_t limit) const</argsstring>
+        <name>set_voltage_limit</name>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voltage limit for the motor in Volts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new voltage limit in Volts</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="793" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1acc0c2225d2b713b73e1caee1a483a958" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="motors_8h_1aa314d93503ff2341ddf0ff0cfd0514b0" kindref="member">motor_brake_mode_e_t</ref></type>
+        <definition>virtual motor_brake_mode_e_t pros::Motor::get_brake_mode</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_brake_mode</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the brake mode that was set for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>One of motor_brake_mode_e_t, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="805" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1ad2eafcdf16ed480ddcbb80a45b19c01a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_current_limit</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_current_limit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current limit for the motor in mA. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The default value is 2500 mA.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s current limit in mA or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="819" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a9fd37f3efa2f903bda8bf575b0052fd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="motors_8h_1a45c20d92f0c97d8b1a1c34cb896df934" kindref="member">motor_encoder_units_e_t</ref></type>
+        <definition>virtual motor_encoder_units_e_t pros::Motor::get_encoder_units</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_encoder_units</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the encoder units that were set for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>One of motor_encoder_units_e_t according to what is set for the motor or E_MOTOR_ENCODER_INVALID if the operation failed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="831" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a3227bc4fbe531638472fff4dfb134333" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="motors_8h_1a4f316b04fcf63921bbf386f9c8d37e92" kindref="member">motor_gearset_e_t</ref></type>
+        <definition>virtual motor_gearset_e_t pros::Motor::get_gearing</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_gearing</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the gearset that was set for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>One of motor_gearset_e_t according to what is set for the motor, or E_GEARSET_INVALID if the operation failed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="843" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a32193b8d020ad1b47e1cb9f0b74a6c7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
+        <definition>virtual motor_pid_full_s_t pros::Motor::get_pos_pid</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_pos_pid</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the position PID that was set for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function will return zero for all of the parameters if the <ref refid="motors_8h_1a389e60d01741d5947a9b7330c6c8bbf7" kindref="member">motor_set_pos_pid()</ref> or <ref refid="motors_8h_1a1d3273573e296507914d2626121f19ce" kindref="member">motor_set_pos_pid_full()</ref> functions have not been used.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para>Additionally, in an error state all values of the returned struct are set to their negative maximum values.</para>
+<para><simplesect kind="return"><para>A motor_pid_full_s_t containing the position PID constants last set to the given motor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="860" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a2b939563c3b915d7b8ce3dd1dece6208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
+        <definition>virtual motor_pid_full_s_t pros::Motor::get_vel_pid</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_vel_pid</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the velocity PID that was set for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function will return zero for all of the parameters if the <ref refid="motors_8h_1a4255880d012ed0ec856f302536755d8a" kindref="member">motor_set_vel_pid()</ref> or <ref refid="motors_8h_1acdec538d8f08e8b5946294f84f017e8e" kindref="member">motor_set_vel_pid_full()</ref> functions have not been used.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para>Additionally, in an error state all values of the returned struct are set to their negative maximum values.</para>
+<para><simplesect kind="return"><para>A motor_pid_full_s_t containing the velocity PID constants last set to the given motor </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="877" column="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a5122faa60ef7745761eca847192560c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::is_reversed</definition>
+        <argsstring>(void) const</argsstring>
+        <name>is_reversed</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the operation direction of the motor as set by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the motor has been reversed and 0 if the motor was not reversed, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="889" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a2afbe15bed764ca6d21f1e7c6c8da700" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::get_voltage_limit</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_voltage_limit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the voltage limit set by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Default value is 0V, which means that there is no software limitation imposed on the voltage.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>The motor&apos;s voltage limit in V or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="904" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a5b0e644c8af396a6af8142b41d1bc7b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::uint8_t</type>
+        <definition>virtual std::uint8_t pros::Motor::get_port</definition>
+        <argsstring>(void) const</argsstring>
+        <name>get_port</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the port number of the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The motor&apos;s port number. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="911" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1adca7af38b0357c254e81ed882a2283a0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
+        <definition>static motor_pid_s_t pros::Motor::convert_pid</definition>
+        <argsstring>(double kf, double kp, double ki, double kd)</argsstring>
+        <name>convert_pid</name>
+        <param>
+          <type>double</type>
+          <declname>kf</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>kp</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ki</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>kd</declname>
+        </param>
+        <briefdescription>
+<para>Takes in floating point values and returns a properly formatted pid struct. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>kf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feedforward constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The proportional constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ki</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integral constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The derivative constant</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A motor_pid_s_t struct formatted properly in 4.4. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="652" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a2d8c9c462e47e989ebe64fa341be91c6" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
+        <definition>static motor_pid_full_s_t pros::Motor::convert_pid_full</definition>
+        <argsstring>(double kf, double kp, double ki, double kd, double filter, double limit, double threshold, double loopspeed)</argsstring>
+        <name>convert_pid_full</name>
+        <param>
+          <type>double</type>
+          <declname>kf</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>kp</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ki</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>kd</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>limit</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>threshold</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>loopspeed</declname>
+        </param>
+        <briefdescription>
+<para>Takes in floating point values and returns a properly formatted pid struct. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>kf</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The feedforward constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The proportional constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ki</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integral constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>kd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The derivative constant </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A constant used for filtering the profile acceleration </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The integral limit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The threshold for determining if a position movement has reached its goal. This has no effect for velocity PID calculations. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>loopspeed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The rate at which the PID computation is run in ms</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A motor_pid_s_t struct formatted properly in 4.4. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="682" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7a42563b94124faebb50e5731d5664ad" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_pos_pid</definition>
+        <argsstring>(const motor_pid_s_t pid) const</argsstring>
+        <name>set_pos_pid</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_pid_s_t for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This intended to just modify the main PID constants.</para>
+<para>Only non-zero values of the struct will change the existing motor constants.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor PID constants</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="703" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a67cff0666b34c3731e21e856414c2066" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_pos_pid_full</definition>
+        <argsstring>(const motor_pid_full_s_t pid) const</argsstring>
+        <name>set_pos_pid_full</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_pid_full_s_t for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Only non-zero values of the struct will change the existing motor constants.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor PID constants</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="722" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a69169ae0cd2b7f68ee533648c7830397" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_vel_pid</definition>
+        <argsstring>(const motor_pid_s_t pid) const</argsstring>
+        <name>set_vel_pid</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_pid_s_t for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This intended to just modify the main PID constants.</para>
+<para>Only non-zero values of the struct will change the existing motor constants.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor PID constants</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="742" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1Motor_1a7fc8eefc04c8b8aaefad75437b49f30a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t pros::Motor::set_vel_pid_full</definition>
+        <argsstring>(const motor_pid_full_s_t pid) const</argsstring>
+        <name>set_vel_pid_full</name>
+        <param>
+          <type>const <ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
+          <declname>pid</declname>
+        </param>
+        <briefdescription>
+<para>Sets one of motor_pid_full_s_t for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Only non-zero values of the struct will change the existing motor constants.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor PID constants</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/include/pros/motors.hpp" line="761" column="22"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classpros_1_1Motor_1afc58ebd8a501b0e6e21b7940f4b4ebbf" prot="private" static="no" mutable="no">
         <type>const std::uint8_t</type>
@@ -15,7 +1499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="910" column="20" bodyfile="pros/include/pros/motors.hpp" bodystart="910" bodyend="-1"/>
+        <location file="pros/include/pros/motors.hpp" line="916" column="20" bodyfile="pros/include/pros/motors.hpp" bodystart="916" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -176,1492 +1660,16 @@
         </inbodydescription>
         <location file="pros/include/pros/motors.hpp" line="67" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a4cf8a9518eb6cd268d27151f0df7fd38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::operator=</definition>
-        <argsstring>(std::int32_t voltage) const</argsstring>
-        <name>operator=</name>
-        <param>
-          <type>std::int32_t</type>
-          <declname>voltage</declname>
-        </param>
-        <briefdescription>
-<para>Sets the voltage for the motor from -128 to 127. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1,<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="104" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7ea9aedd4e12844be2584dc3f4b7a4bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::move</definition>
-        <argsstring>(std::int32_t voltage) const</argsstring>
-        <name>move</name>
-        <param>
-          <type>std::int32_t</type>
-          <declname>voltage</declname>
-        </param>
-        <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="motors_8h_1a7da9bf1e229e50bfeeaecf026a6d0d08" kindref="member">motor_move()</ref>, or <ref refid="api__legacy_8h_1a59a0d6bd050cd259ad488e68f856ae81" kindref="member">motorSet()</ref> from the PROS 2 API.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="135" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7851ffa40c9803d75398a5be355de395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::move_absolute</definition>
-        <argsstring>(const double position, const std::int32_t velocity) const</argsstring>
-        <name>move_absolute</name>
-        <param>
-          <type>const double</type>
-          <declname>position</declname>
-        </param>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the target absolute position for the motor to move to. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" kindref="member">pros::Motor::set_zero_position()</ref>.</para>
-<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>position</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The absolute position to move to in the motor&apos;s encoder units </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The maximum allowable velocity for the movement in RPM</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.tare_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="180" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a96c09e169b5135d9001cec92fa2686c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::move_relative</definition>
-        <argsstring>(const double position, const std::int32_t velocity) const</argsstring>
-        <name>move_relative</name>
-        <param>
-          <type>const double</type>
-          <declname>position</declname>
-        </param>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the relative target position for the motor to move to. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This movement is relative to the current position of the motor as given in pros::Motor::motor_get_position(). Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
-<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>position</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The relative position to move to in the motor&apos;s encoder units </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The maximum allowable velocity for the movement in RPM</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="221" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a797de937c2d550c3fa199806db07dbcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::move_velocity</definition>
-        <argsstring>(const std::int32_t velocity) const</argsstring>
-        <name>move_velocity</name>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the velocity for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&apos;s voltage.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor velocity from -+-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(0);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="253" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a3c79db57c20617fbbc49461c58612cfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::move_voltage</definition>
-        <argsstring>(const std::int32_t voltage) const</argsstring>
-        <name>move_voltage</name>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>voltage</declname>
-        </param>
-        <briefdescription>
-<para>Sets the output voltage for the motor from -12000 to 12000 in millivolts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new voltage value from -12000 to 12000</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="270" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a44f39232cec1caee6d668d8ff21dc28b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::modify_profiled_velocity</definition>
-        <argsstring>(const std::int32_t velocity) const</argsstring>
-        <name>modify_profiled_velocity</name>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Changes the output velocity for a profiled movement (<ref refid="motors_8h_1ab70bf4937f1b5cefa15c11c15314c90e" kindref="member">motor_move_absolute()</ref> or <ref refid="motors_8h_1ab4c1ba35d69e8e9b49df0e848fa305d3" kindref="member">motor_move_relative()</ref>). </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This will have no effect if the motor is not following a profiled movement.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="288" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7ad83a73bf15b94aaad8d10970bb254c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_target_position</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_target_position</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the target position set for the motor by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="300" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a8b8148a179cfadd579c8d4c82eb5873f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_target_velocity</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_target_velocity</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the velocity commanded to the motor by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="312" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a696494a4e7c675f7007d41b947f9ea63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_actual_velocity</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_actual_velocity</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para><ref refid="classpros_1_1Motor" kindref="compound">Motor</ref> telemetry functions <linebreak/>
- </para>
-        </briefdescription>
-        <detaileddescription>
-<para>These functions allow programmers to collect telemetry from motors <linebreak/>
- Gets the actual velocity of the motor.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="330" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a502eaf3859452721e2327e53ab3f34d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_current_draw</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_current_draw</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the current drawn by the motor in mA. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="342" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1acea42a96da651f72f138ea268c76217f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_direction</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_direction</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the direction of movement for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="354" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a6f0b39894abf612a1965a66224893c71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_efficiency</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_efficiency</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the efficiency of the motor in percent. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="370" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a2d34c92effccfbb4d2f45319bf4bd272" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::is_over_current</definition>
-        <argsstring>(void) const</argsstring>
-        <name>is_over_current</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Checks if the motor is drawing over its current limit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="383" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a884c19ae71a6c9f0b316520f09769be9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::is_stopped</definition>
-        <argsstring>(void) const</argsstring>
-        <name>is_stopped</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Checks if the motor is stopped. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="note"><para>Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS_ERR with errno set to ENOSYS.</para>
-</simplesect>
-<simplesect kind="return"><para>1 if the motor is not moving, 0 if the motor is moving, or PROS_ERR if the operation failed, setting errno </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="399" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a589a3cbb397ba065c30c1f16bb3f08a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_zero_position_flag</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_zero_position_flag</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Checks if the motor is at its zero position. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="note"><para>Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS_ERR with errno set to ENOSYS.</para>
-</simplesect>
-<simplesect kind="return"><para>1 if the motor is at zero absolute position, 0 if the motor has moved from its absolute zero, or PROS_ERR if the operation failed, setting errno </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="416" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a66c6f6420485059af301a9c8a99b2045" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::uint32_t</type>
-        <definition>virtual std::uint32_t pros::Motor::get_faults</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_faults</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the faults experienced by the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Compare this bitfield to the bitmasks in pros::motor_fault_e_t.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s faults. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="432" column="23"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7e24aa1c4363a131829e902f12e7364c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::uint32_t</type>
-        <definition>virtual std::uint32_t pros::Motor::get_flags</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_flags</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the flags set by the motor&apos;s operation. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Compare this bitfield to the bitmasks in pros::motor_flag_e_t.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s flags. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="448" column="23"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1ae82c57d590e18d7d90afec1e9cc3bb4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_raw_position</definition>
-        <argsstring>(std::uint32_t *const timestamp) const</argsstring>
-        <name>get_raw_position</name>
-        <param>
-          <type>std::uint32_t *const</type>
-          <declname>timestamp</declname>
-        </param>
-        <briefdescription>
-<para>Gets the raw encoder count of the motor at a given timestamp. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername direction="in">timestamp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="465" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a099d50ed35d73fa29a46b2beb151ce2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::is_over_temp</definition>
-        <argsstring>(void) const</argsstring>
-        <name>is_over_temp</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the temperature limit flag for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="477" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a70e725a94ec42dc7cbb3e460c36dcad3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_position</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_position</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the absolute position of the motor in its encoder units. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="489" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a51b75dc245257487116e64fa2904d521" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_power</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_power</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the power drawn by the motor in Watts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="501" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a9fd793251b91c2ac0091c65f290f740d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_temperature</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_temperature</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the temperature of the motor in degrees Celsius. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="513" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a14e0c57c0ca7bde15f73414abf4c3c8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>double</type>
-        <definition>virtual double pros::Motor::get_torque</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_torque</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the torque generated by the motor in Newton Meters (Nm). </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="525" column="16"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1abe51732c37c2ec72a8bdceac7f6962cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_voltage</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_voltage</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the voltage delivered to the motor in millivolts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="537" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_zero_position</definition>
-        <argsstring>(const double position) const</argsstring>
-        <name>set_zero_position</name>
-        <param>
-          <type>const double</type>
-          <declname>position</declname>
-        </param>
-        <briefdescription>
-<para><ref refid="classpros_1_1Motor" kindref="compound">Motor</ref> configuration functions <linebreak/>
- </para>
-        </briefdescription>
-        <detaileddescription>
-<para>These functions allow programmers to configure the behavior of motors Sets the position for the motor in its encoder units.</para>
-<para>This will be the future reference point for the motor&apos;s &quot;absolute&quot; position.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>position</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new reference position in its encoder units</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="561" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a5d67803a65fa699a169a4ed5a107a964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::tare_position</definition>
-        <argsstring>(void) const</argsstring>
-        <name>tare_position</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Sets the &quot;absolute&quot; zero position of the motor to its current position. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="573" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1ab51969169dc534537f79710261daa3dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_brake_mode</definition>
-        <argsstring>(const motor_brake_mode_e_t mode) const</argsstring>
-        <name>set_brake_mode</name>
-        <param>
-          <type>const <ref refid="motors_8h_1aa314d93503ff2341ddf0ff0cfd0514b0" kindref="member">motor_brake_mode_e_t</ref></type>
-          <declname>mode</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_brake_mode_e_t to the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>mode</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The motor_brake_mode_e_t to set for the motor</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="588" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a4c496dfb0b33f989d7329a61b7b6d6ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_current_limit</definition>
-        <argsstring>(const std::int32_t limit) const</argsstring>
-        <name>set_current_limit</name>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>limit</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current limit for the motor in mA. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>limit</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new current limit in mA</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="603" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a2d2fea8d5967d1e41471111aa89afd84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_encoder_units</definition>
-        <argsstring>(const motor_encoder_units_e_t units) const</argsstring>
-        <name>set_encoder_units</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a45c20d92f0c97d8b1a1c34cb896df934" kindref="member">motor_encoder_units_e_t</ref></type>
-          <declname>units</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_encoder_units_e_t for the motor encoder. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>units</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor encoder units</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="618" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a3adf8b737ad2e4ebb5f000401c536fed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_gearing</definition>
-        <argsstring>(const motor_gearset_e_t gearset) const</argsstring>
-        <name>set_gearing</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a4f316b04fcf63921bbf386f9c8d37e92" kindref="member">motor_gearset_e_t</ref></type>
-          <declname>gearset</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_gearset_e_t for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>gearset</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor gearset</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="633" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7a42563b94124faebb50e5731d5664ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_pos_pid</definition>
-        <argsstring>(const motor_pid_s_t pid) const</argsstring>
-        <name>set_pos_pid</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
-          <declname>pid</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_pid_s_t for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This intended to just modify the main PID constants.</para>
-<para>Only non-zero values of the struct will change the existing motor constants.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>pid</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor PID constants</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="702" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a67cff0666b34c3731e21e856414c2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_pos_pid_full</definition>
-        <argsstring>(const motor_pid_full_s_t pid) const</argsstring>
-        <name>set_pos_pid_full</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
-          <declname>pid</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_pid_full_s_t for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Only non-zero values of the struct will change the existing motor constants.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>pid</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor PID constants</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="720" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a69169ae0cd2b7f68ee533648c7830397" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_vel_pid</definition>
-        <argsstring>(const motor_pid_s_t pid) const</argsstring>
-        <name>set_vel_pid</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
-          <declname>pid</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_pid_s_t for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This intended to just modify the main PID constants.</para>
-<para>Only non-zero values of the struct will change the existing motor constants.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>pid</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor PID constants</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="739" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a7fc8eefc04c8b8aaefad75437b49f30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_vel_pid_full</definition>
-        <argsstring>(const motor_pid_full_s_t pid) const</argsstring>
-        <name>set_vel_pid_full</name>
-        <param>
-          <type>const <ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
-          <declname>pid</declname>
-        </param>
-        <briefdescription>
-<para>Sets one of motor_pid_full_s_t for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Only non-zero values of the struct will change the existing motor constants.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>pid</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor PID constants</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="757" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a44fcc6447ed1416e880232baa16a221e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_reversed</definition>
-        <argsstring>(const bool reverse) const</argsstring>
-        <name>set_reversed</name>
-        <param>
-          <type>const bool</type>
-          <declname>reverse</declname>
-        </param>
-        <briefdescription>
-<para>Sets the reverse flag for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This will invert its movements and the values returned for its position.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>reverse</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>True reverses the motor, false is default</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="774" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a3cd7e4ca0714b533d873796cf8b74a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::set_voltage_limit</definition>
-        <argsstring>(const std::int32_t limit) const</argsstring>
-        <name>set_voltage_limit</name>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>limit</declname>
-        </param>
-        <briefdescription>
-<para>Sets the voltage limit for the motor in Volts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>limit</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new voltage limit in Volts</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="789" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1acc0c2225d2b713b73e1caee1a483a958" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="motors_8h_1aa314d93503ff2341ddf0ff0cfd0514b0" kindref="member">motor_brake_mode_e_t</ref></type>
-        <definition>virtual motor_brake_mode_e_t pros::Motor::get_brake_mode</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_brake_mode</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the brake mode that was set for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>One of motor_brake_mode_e_t, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="801" column="30"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1ad2eafcdf16ed480ddcbb80a45b19c01a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_current_limit</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_current_limit</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the current limit for the motor in mA. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>The default value is 2500 mA.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s current limit in mA or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="815" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a9fd37f3efa2f903bda8bf575b0052fd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="motors_8h_1a45c20d92f0c97d8b1a1c34cb896df934" kindref="member">motor_encoder_units_e_t</ref></type>
-        <definition>virtual motor_encoder_units_e_t pros::Motor::get_encoder_units</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_encoder_units</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the encoder units that were set for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>One of motor_encoder_units_e_t according to what is set for the motor or E_MOTOR_ENCODER_INVALID if the operation failed. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="827" column="33"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a3227bc4fbe531638472fff4dfb134333" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="motors_8h_1a4f316b04fcf63921bbf386f9c8d37e92" kindref="member">motor_gearset_e_t</ref></type>
-        <definition>virtual motor_gearset_e_t pros::Motor::get_gearing</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_gearing</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the gearset that was set for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>One of motor_gearset_e_t according to what is set for the motor, or E_GEARSET_INVALID if the operation failed. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="839" column="27"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a32193b8d020ad1b47e1cb9f0b74a6c7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
-        <definition>virtual motor_pid_full_s_t pros::Motor::get_pos_pid</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_pos_pid</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the position PID that was set for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function will return zero for all of the parameters if the <ref refid="motors_8h_1a389e60d01741d5947a9b7330c6c8bbf7" kindref="member">motor_set_pos_pid()</ref> or <ref refid="motors_8h_1a1d3273573e296507914d2626121f19ce" kindref="member">motor_set_pos_pid_full()</ref> functions have not been used.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para>Additionally, in an error state all values of the returned struct are set to their negative maximum values.</para>
-<para><simplesect kind="return"><para>A motor_pid_full_s_t containing the position PID constants last set to the given motor </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="856" column="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a2b939563c3b915d7b8ce3dd1dece6208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
-        <definition>virtual motor_pid_full_s_t pros::Motor::get_vel_pid</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_vel_pid</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the velocity PID that was set for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function will return zero for all of the parameters if the <ref refid="motors_8h_1a4255880d012ed0ec856f302536755d8a" kindref="member">motor_set_vel_pid()</ref> or <ref refid="motors_8h_1acdec538d8f08e8b5946294f84f017e8e" kindref="member">motor_set_vel_pid_full()</ref> functions have not been used.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para>Additionally, in an error state all values of the returned struct are set to their negative maximum values.</para>
-<para><simplesect kind="return"><para>A motor_pid_full_s_t containing the velocity PID constants last set to the given motor </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="873" column="28"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a5122faa60ef7745761eca847192560c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::is_reversed</definition>
-        <argsstring>(void) const</argsstring>
-        <name>is_reversed</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the operation direction of the motor as set by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the motor has been reversed and 0 if the motor was not reversed, or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="885" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a2afbe15bed764ca6d21f1e7c6c8da700" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>virtual std::int32_t pros::Motor::get_voltage_limit</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_voltage_limit</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the voltage limit set by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Default value is 0V, which means that there is no software limitation imposed on the voltage.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s voltage limit in V or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="900" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a5b0e644c8af396a6af8142b41d1bc7b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::uint8_t</type>
-        <definition>virtual std::uint8_t pros::Motor::get_port</definition>
-        <argsstring>(void) const</argsstring>
-        <name>get_port</name>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the port number of the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>The motor&apos;s port number. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="907" column="22"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classpros_1_1Motor_1adca7af38b0357c254e81ed882a2283a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="motors_8h_1a3aa44f40bdbe70b2444f39cc0c8ed803" kindref="member">motor_pid_s_t</ref></type>
-        <definition>static motor_pid_s_t pros::Motor::convert_pid</definition>
-        <argsstring>(double kf, double kp, double ki, double kd)</argsstring>
-        <name>convert_pid</name>
-        <param>
-          <type>double</type>
-          <declname>kf</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>kp</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>ki</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>kd</declname>
-        </param>
-        <briefdescription>
-<para>Takes in floating point values and returns a properly formatted pid struct. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>kf</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The feedforward constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The proportional constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>ki</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The integral constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kd</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The derivative constant</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A motor_pid_s_t struct formatted properly in 4.4. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="653" column="22"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Motor_1a2d8c9c462e47e989ebe64fa341be91c6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="motors_8h_1a71487424773f23412e9006ab8ed83a78" kindref="member">motor_pid_full_s_t</ref></type>
-        <definition>static motor_pid_full_s_t pros::Motor::convert_pid_full</definition>
-        <argsstring>(double kf, double kp, double ki, double kd, double filter, double limit, double threshold, double loopspeed)</argsstring>
-        <name>convert_pid_full</name>
-        <param>
-          <type>double</type>
-          <declname>kf</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>kp</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>ki</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>kd</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>filter</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>limit</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>threshold</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>loopspeed</declname>
-        </param>
-        <briefdescription>
-<para>Takes in floating point values and returns a properly formatted pid struct. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>The motor_pid_s_t struct is in 4.4 format, i.e. 0x20 is 2.0, 0x21 is 2.0625, etc. This function will convert the floating point values to the nearest 4.4 value.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>kf</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The feedforward constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The proportional constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>ki</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The integral constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>kd</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The derivative constant </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>filter</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A constant used for filtering the profile acceleration </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>limit</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The integral limit </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>threshold</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The threshold for determining if a position movement has reached its goal. This has no effect for velocity PID calculations. </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>loopspeed</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The rate at which the PID computation is run in ms</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A motor_pid_s_t struct formatted properly in 4.4. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/include/pros/motors.hpp" line="682" column="27"/>
-      </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/include/pros/motors.hpp" line="27" column="12" bodyfile="pros/include/pros/motors.hpp" bodystart="27" bodyend="911"/>
+    <location file="pros/include/pros/motors.hpp" line="27" column="12" bodyfile="pros/include/pros/motors.hpp" bodystart="27" bodyend="917"/>
     <listofallmembers>
       <member refid="classpros_1_1Motor_1afc58ebd8a501b0e6e21b7940f4b4ebbf" prot="private" virt="non-virtual"><scope>pros::Motor</scope><name>_port</name></member>
-      <member refid="classpros_1_1Motor_1adca7af38b0357c254e81ed882a2283a0" prot="public" virt="non-virtual"><scope>pros::Motor</scope><name>convert_pid</name></member>
-      <member refid="classpros_1_1Motor_1a2d8c9c462e47e989ebe64fa341be91c6" prot="public" virt="non-virtual"><scope>pros::Motor</scope><name>convert_pid_full</name></member>
+      <member refid="classpros_1_1Motor_1adca7af38b0357c254e81ed882a2283a0" prot="private" virt="non-virtual"><scope>pros::Motor</scope><name>convert_pid</name></member>
+      <member refid="classpros_1_1Motor_1a2d8c9c462e47e989ebe64fa341be91c6" prot="private" virt="non-virtual"><scope>pros::Motor</scope><name>convert_pid_full</name></member>
       <member refid="classpros_1_1Motor_1a696494a4e7c675f7007d41b947f9ea63" prot="public" virt="virtual"><scope>pros::Motor</scope><name>get_actual_velocity</name></member>
       <member refid="classpros_1_1Motor_1acc0c2225d2b713b73e1caee1a483a958" prot="public" virt="virtual"><scope>pros::Motor</scope><name>get_brake_mode</name></member>
       <member refid="classpros_1_1Motor_1a502eaf3859452721e2327e53ab3f34d8" prot="public" virt="virtual"><scope>pros::Motor</scope><name>get_current_draw</name></member>
@@ -1705,11 +1713,11 @@ This function uses the following values of errno when an error state is reached:
       <member refid="classpros_1_1Motor_1a4c496dfb0b33f989d7329a61b7b6d6ba" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_current_limit</name></member>
       <member refid="classpros_1_1Motor_1a2d2fea8d5967d1e41471111aa89afd84" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_encoder_units</name></member>
       <member refid="classpros_1_1Motor_1a3adf8b737ad2e4ebb5f000401c536fed" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_gearing</name></member>
-      <member refid="classpros_1_1Motor_1a7a42563b94124faebb50e5731d5664ad" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_pos_pid</name></member>
-      <member refid="classpros_1_1Motor_1a67cff0666b34c3731e21e856414c2066" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_pos_pid_full</name></member>
+      <member refid="classpros_1_1Motor_1a7a42563b94124faebb50e5731d5664ad" prot="private" virt="virtual"><scope>pros::Motor</scope><name>set_pos_pid</name></member>
+      <member refid="classpros_1_1Motor_1a67cff0666b34c3731e21e856414c2066" prot="private" virt="virtual"><scope>pros::Motor</scope><name>set_pos_pid_full</name></member>
       <member refid="classpros_1_1Motor_1a44fcc6447ed1416e880232baa16a221e" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_reversed</name></member>
-      <member refid="classpros_1_1Motor_1a69169ae0cd2b7f68ee533648c7830397" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_vel_pid</name></member>
-      <member refid="classpros_1_1Motor_1a7fc8eefc04c8b8aaefad75437b49f30a" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_vel_pid_full</name></member>
+      <member refid="classpros_1_1Motor_1a69169ae0cd2b7f68ee533648c7830397" prot="private" virt="virtual"><scope>pros::Motor</scope><name>set_vel_pid</name></member>
+      <member refid="classpros_1_1Motor_1a7fc8eefc04c8b8aaefad75437b49f30a" prot="private" virt="virtual"><scope>pros::Motor</scope><name>set_vel_pid_full</name></member>
       <member refid="classpros_1_1Motor_1a3cd7e4ca0714b533d873796cf8b74a81" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_voltage_limit</name></member>
       <member refid="classpros_1_1Motor_1af20c036c1d5d68eb5e762c12f9a4b7fe" prot="public" virt="virtual"><scope>pros::Motor</scope><name>set_zero_position</name></member>
       <member refid="classpros_1_1Motor_1a5d67803a65fa699a169a4ed5a107a964" prot="public" virt="virtual"><scope>pros::Motor</scope><name>tare_position</name></member>
