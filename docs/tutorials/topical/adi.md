@@ -1,4 +1,4 @@
-\page adi ADI
+\page adi ADI (3 Wire Ports)
 
 \note 
 For a full list of functions for interacting with the ADI, see its

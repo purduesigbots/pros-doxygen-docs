@@ -1,4 +1,4 @@
-\page notifications Notifications
+\page notifications Task Notifications
 
 \note
 For a full list of functions for interacting with Tasks, see its
