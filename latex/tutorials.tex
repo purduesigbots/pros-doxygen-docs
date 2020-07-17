@@ -5,11 +5,10 @@ If you\textquotesingle{}re still new to writing software or P\+R\+OS, and lookin
 
 
 \begin{DoxyItemize}
-\item \mbox{\hyperlink{coding-faq}{Coding F\+AQ}}
 \item \mbox{\hyperlink{combining-c-cpp}{Combining C and C++}}
 \item \mbox{\hyperlink{debugging}{Debugging}}
 \item \mbox{\hyperlink{project-structure}{Project Structure}}
-\item \mbox{\hyperlink{usage-faq}{General Usage F\+AQ}}
+\item \mbox{\hyperlink{troubleshooting}{P\+R\+OS Troubleshooting and Common Problems}}
 \end{DoxyItemize}\hypertarget{tutorials_autotoc_md27}{}\doxysubsection{Walkthrough Tutorials}\label{tutorials_autotoc_md27}
 If you want to write full sample programs to learn to use P\+R\+OS through practical applications, or teach students to use P\+R\+OS in a classroom environment, the {\bfseries{Walkthrough Tutorials}} are a great resource to go step by step through the process of writing a P\+R\+OS program.
 
@@ -30,17 +29,92 @@ If you want more information about using a particular part of the api, the {\bfs
 \item \mbox{\hyperlink{llemu}{L\+L\+E\+MU (Legacy L\+CD Emulator)}}
 \item \mbox{\hyperlink{motors}{Motors}}
 \item \mbox{\hyperlink{multitasking}{Multitasking}}
-\item notificatios
+\item \mbox{\hyperlink{notifications}{Notifications}}
 \item \mbox{\hyperlink{vision}{Vision Sensor}}
 \item \mbox{\hyperlink{wireless-upload}{Wireless Upload and Hot/\+Cold Linking}} 
-\end{DoxyItemize}\hypertarget{coding-faq}{}\doxysection{Coding F\+AQ}\label{coding-faq}
+\end{DoxyItemize}\hypertarget{combining-c-cpp}{}\doxysection{Combining C and C++}\label{combining-c-cpp}
+The P\+R\+OS C and C++ A\+P\+Is cover the exact same feature set, which means that there is no significant advantage to using functions from one A\+PI in another language. However, if you do find yourself wanting to use C A\+PI functions in C++, these functions are accessible through the namespace {\ttfamily pros\+::c}.
+
+This can also be done by using the {\ttfamily pros\+::c} namespace as such\+: \begin{DoxyVerb}using namespace pros::c;
+\end{DoxyVerb}
+
+
+As always, bear in mind the dangers of setting a global namespace and only use the {\ttfamily using} keyword in appropriate scopes.
+
+For guidance on mixing C and C++ code with code you\textquotesingle{}ve written, see \href{https://isocpp.org/wiki/faq/mixing-c-and-cpp}{\texttt{ this tutorial}}. \hypertarget{debugging}{}\doxysection{Debugging}\label{debugging}
+\begin{quote}
+{\bfseries{warning}}
+
+This content is subject to change as the P\+R\+OS C\+LI for V5 is created. \end{quote}
+
+
+The \href{../../api/index.html}{\texttt{ P\+R\+OS A\+PI}} provides functions like \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} that allow your robot to output information to a connected serial console during operation.\hypertarget{debugging_autotoc_md17}{}\doxysubsubsection{Viewing printf output}\label{debugging_autotoc_md17}
+To view a robot\textquotesingle{}s output, there are two officially supported methods\+:
+
+
+\begin{DoxyEnumerate}
+\item Through the P\+R\+OS C\+LI\+:
+
+Running {\ttfamily prosv5 terminal} on the command line will open an output stream from a robot connected over direct U\+SB connection, V\+E\+Xnet, or \href{./tutorials/topical/jinx.html}{\texttt{ J\+I\+NX}}.
+\item From within Atom\+:
+
+Click the button labeled \char`\"{}\+Open cortex serial output\char`\"{}
+\end{DoxyEnumerate}
+
+
+
+A terminal panel will open at the bottom of the screen containing the output of a connected robot.
+
+\hypertarget{debugging_autotoc_md18}{}\doxysubsubsection{Further debug info with $<$tt$>$errno$<$/tt$>$}\label{debugging_autotoc_md18}
+{\ttfamily errno} is a global value that is set when any part of the P\+R\+OS kernel encounters an error. The value of {\ttfamily errno} is specific to each function, so check the function headers or the \href{../../api/index.html}{\texttt{ A\+PI docs}} for possible values and their meaning. If you think you\textquotesingle{}re encountering an error in the kernel code, check the value of {\ttfamily errno} to see what\textquotesingle{}s causing the issue.
+
+Debugging in this manner is standard to other environments besides P\+R\+OS. For further information on using {\ttfamily errno}, see the following tutorial\+: \href{https://www.tutorialspoint.com/cprogramming/c_error_handling.htm}{\texttt{ https\+://www.\+tutorialspoint.\+com/cprogramming/c\+\_\+error\+\_\+handling.\+htm}}\hypertarget{debugging_autotoc_md19}{}\doxysubsubsection{J\+I\+N\+X Graphical Debugger}\label{debugging_autotoc_md19}
+J\+I\+NX offers further debugging functionality over traditional debugging through print statements. For a full explanation of J\+I\+NX\textquotesingle{}s abilities and its use, see ../topical/jinx. \hypertarget{project-structure}{}\doxysection{Project Structure}\label{project-structure}
+P\+R\+OS projects are internally composed of three parts\+: the {\bfseries{P\+R\+OS library}} (found in {\ttfamily /firmware}), the {\bfseries{header}} files (found in {\ttfamily /include}), and {\bfseries{user code}} (found in {\ttfamily /src}).\hypertarget{project-structure_autotoc_md20}{}\doxysubsubsection{firmware}\label{project-structure_autotoc_md20}
+The {\bfseries{P\+R\+OS library}} is a single file containing the core P\+R\+OS routines. This file does not need to be changed. If there appears to be an issue with a core P\+R\+OS function, please file an issue on \href{https://github.com/purduesigbots/pros/issues}{\texttt{ Git\+Hub}}.\hypertarget{project-structure_autotoc_md21}{}\doxysubsubsection{include}\label{project-structure_autotoc_md21}
+The {\bfseries{header}} files are all found in the {\ttfamily include} directory. One header file, \href{../../api/index.html}{\texttt{ api.\+h}}, is required to declare the P\+R\+OS library functions. This file exists merely to include the individual P\+R\+OS A\+PI headers, all of which can be found in {\ttfamily include/pros}. Each header file in this directory covers a specific aspect of interacting with the V5 hardware, and correlates to the files found in the \href{../../api/index.html}{\texttt{ A\+PI documentation}}.
+
+The other file, {\ttfamily \mbox{\hyperlink{main_8h}{main.\+h}}}, is intended for declaring functions and variables shared between the user code files. {\ttfamily \mbox{\hyperlink{main_8h}{main.\+h}}} also offers a variety of configurable options for tailoring P\+R\+OS to your needs.
+
+
+\begin{DoxyItemize}
+\item {\ttfamily P\+R\+O\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+N\+A\+M\+ES}\+: If defined, some commonly used enums will have preprocessor macros which give a shorter, more convenient naming pattern. For instance, E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER has a shorter name\+: {\ttfamily C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER}. {\ttfamily E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER} is pedantically correct within the P\+R\+OS styleguide, but not convenient for most student programmers.
+\item {\ttfamily using namespace pros}\+: This can be uncommented to be added with the use of {\ttfamily P\+R\+O\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+N\+A\+M\+ES}. This reduces the length of declarations when using C++, allowing you to simply declare a {\ttfamily Motor} instead of a {\ttfamily \mbox{\hyperlink{classpros_1_1Motor}{pros\+::\+Motor}}}. This will make the code appear cleaner and will be simpler for newer programmers, but is typically considered \href{https://msdn.microsoft.com/en-us/library/5cb46ksf.aspx}{\texttt{ bad practice}}. As a result, this line is commented out by default.
+\end{DoxyItemize}
+
+New header files can be created in the include directory, as long as the name ends with {\ttfamily .h} (Traditionally for C files) or {\ttfamily .hpp} (for C++ files). See this \href{http://www.learncpp.com/cpp-tutorial/19-header-files/}{\texttt{ C++ tutorial}} for more information on how to create header files.\hypertarget{project-structure_autotoc_md22}{}\doxysubsubsection{src}\label{project-structure_autotoc_md22}
+{\bfseries{User code}} has the actual sequential instructions that govern the robot\textquotesingle{}s behavior. Prior to P\+R\+OS kernel 3.\+2.\+0, new projects by default split user code into autonomous ({\ttfamily autonomous.\+c} or {\ttfamily autonomous.\+cpp}), driver control ({\ttfamily opcontrol.\+c} or {\ttfamily opcontrol.\+cpp}), and initialization ({\ttfamily initialize.\+c} or {\ttfamily initialize.\+cpp}) files. Code in one file can talk to code in another file using declarations in the header files. Beginning with P\+R\+OS kernel 3.\+2.\+0, new projects by default have a single {\ttfamily main.\+cpp} file that contains all of the competition task functions.
+
+New user code files can be created in the {\ttfamily src} directory, as long as the name ends with {\ttfamily .c} or {\ttfamily .cpp} it will be compiled with the others.
+
+All user code files should start with\+: \begin{DoxyVerb}#include "main.h"
+\end{DoxyVerb}
+
+
+This will ensure that the P\+R\+OS A\+PI and other critical definitions are available in each file.
+
+While more complicated than some environments, splitting up code grants powerful modularity and code reusability, especially when combined with source control. \hypertarget{troubleshooting}{}\doxysection{P\+R\+OS Troubleshooting and Common Problems}\label{troubleshooting}
+\hypertarget{troubleshooting_autotoc_md23}{}\doxysubsubsection{Why do I get a \char`\"{}\+Could not open port\char`\"{} error when flashing?}\label{troubleshooting_autotoc_md23}
+You might have seen an error like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{Uploading bin/output.bin to v5 device on COM11 as hello to slot 1}
+\DoxyCodeLine{ERROR -\/ pros.cli.upload:upload -\/ could not open port 'COM11': PermissionError(13, 'Access is denied.', None, 5)}
+\DoxyCodeLine{File "c:\(\backslash\)users\(\backslash\)jonathan\(\backslash\)appdata\(\backslash\)local\(\backslash\)programs\(\backslash\)python\(\backslash\)python36-\/32\(\backslash\)lib\(\backslash\)site-\/packages\(\backslash\)serial\(\backslash\)serialwin32.py", line 62, in open}
+\DoxyCodeLine{  raise SerialException("could not open port \{!r\}: \{!r\}".format(self.portstr, ctypes.WinError()))}
+\DoxyCodeLine{serial.serialutil.SerialException: could not open port 'COM11': PermissionError(13, 'Access is denied.', None, 5)}
+\end{DoxyCode}
+
+
+That means that some other resource is using the port. If you also have the V5 Utility open, that would cause this error to occur. Close the V5 Utility if you want to flash.\hypertarget{troubleshooting_autotoc_md24}{}\doxysubsubsection{Compile-\/\+Time Issues}\label{troubleshooting_autotoc_md24}
 \begin{quote}
 
 \begin{DoxyItemize}
-\item {\ttfamily \char`\"{}main.\+h\char`\"{} file not found}\+:
 \item {\ttfamily \char`\"{}main.\+h\char`\"{} file not found}\+: \+: This error occurs when the compilation database {\ttfamily compile\+\_\+commands.\+json} is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the C\+LI without the after creating the project. Regardless of when this issue after creating the project. Regardless of when this issue appears, running {\ttfamily pros make all} in the C\+LI or running {\ttfamily P\+R\+OS -\/$>$ Build -\/$>$ All} in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors. 
 \end{DoxyItemize}\end{quote}
-\hypertarget{coding-faq_autotoc_md17}{}\doxysubsubsection{Compile-\/\+Time Issues}\label{coding-faq_autotoc_md17}
+
+
 \begin{quote}
 
 \begin{DoxyItemize}
@@ -48,7 +122,7 @@ If you want more information about using a particular part of the api, the {\bfs
 \item {\ttfamily format ... expects argument of type ..., but argument has type ...}\+: \+: The value provided to a function like \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} or \href{../../api/c/llemu.html\#lcd-print}{\texttt{ lcd\+\_\+print}} does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types {\ttfamily double} or {\ttfamily long long} are mixed with other types.
 \item {\ttfamily assignment makes pointer from integer without a cast}\+: \+: Typically caused when a C pointer has the wrong number of asterisks to \href{http://stackoverflow.com/a/4955297/3681958}{\texttt{ dereference}} it, or when assigning a constant to {\ttfamily pointer} (instead of {\ttfamily $\ast$pointer}). 
 \end{DoxyItemize}\end{quote}
-\hypertarget{coding-faq_autotoc_md18}{}\doxysubsubsection{Run-\/\+Time Issues}\label{coding-faq_autotoc_md18}
+\hypertarget{troubleshooting_autotoc_md25}{}\doxysubsubsection{Run-\/\+Time Issues}\label{troubleshooting_autotoc_md25}
 \begin{quote}
 
 \begin{DoxyItemize}
@@ -72,82 +146,7 @@ means of ending.
 \item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries{doesn\textquotesingle{}t work}}\+:
 \item \mbox{[}printf\mbox{]}(printf\+\_\+) {\bfseries{doesn\textquotesingle{}t work}}\+: \+: \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} prints information over a serial connection (\href{../tutorials/general/debugging}{\texttt{ Debugging}}), not to the V\+EX L\+CD. To print to the L\+CD, use \href{../../api/c/llemu.html\#lcd-print}{\texttt{ lcd\+\_\+print}} instead. 
 \end{DoxyItemize}\end{quote}
-\hypertarget{combining-c-cpp}{}\doxysection{Combining C and C++}\label{combining-c-cpp}
-The P\+R\+OS C and C++ A\+P\+Is cover the exact same feature set, which means that there is no significant advantage to using functions from one A\+PI in another language. However, if you do find yourself wanting to use C A\+PI functions in C++, these functions are accessible through the namespace {\ttfamily pros\+::c}.
-
-This can also be done by using the {\ttfamily pros\+::c} namespace as such\+: \begin{DoxyVerb}using namespace pros::c;
-\end{DoxyVerb}
-
-
-As always, bear in mind the dangers of setting a global namespace and only use the {\ttfamily using} keyword in appropriate scopes.
-
-For guidance on mixing C and C++ code with code you\textquotesingle{}ve written, see \href{https://isocpp.org/wiki/faq/mixing-c-and-cpp}{\texttt{ this tutorial}}. \hypertarget{debugging}{}\doxysection{Debugging}\label{debugging}
-\begin{quote}
-{\bfseries{warning}}
-
-This content is subject to change as the P\+R\+OS C\+LI for V5 is created. \end{quote}
-
-
-The \href{../../api/index.html}{\texttt{ P\+R\+OS A\+PI}} provides functions like \href{http://www.cplusplus.com/reference/cstdio/printf/}{\texttt{ printf}} that allow your robot to output information to a connected serial console during operation.\hypertarget{debugging_autotoc_md19}{}\doxysubsubsection{Viewing printf output}\label{debugging_autotoc_md19}
-To view a robot\textquotesingle{}s output, there are two officially supported methods\+:
-
-
-\begin{DoxyEnumerate}
-\item Through the P\+R\+OS C\+LI\+:
-
-Running {\ttfamily prosv5 terminal} on the command line will open an output stream from a robot connected over direct U\+SB connection, V\+E\+Xnet, or \href{./tutorials/topical/jinx.html}{\texttt{ J\+I\+NX}}.
-\item From within Atom\+:
-
-Click the button labeled \char`\"{}\+Open cortex serial output\char`\"{}
-\end{DoxyEnumerate}
-
-
-
-A terminal panel will open at the bottom of the screen containing the output of a connected robot.
-
-\hypertarget{debugging_autotoc_md20}{}\doxysubsubsection{Further debug info with $<$tt$>$errno$<$/tt$>$}\label{debugging_autotoc_md20}
-{\ttfamily errno} is a global value that is set when any part of the P\+R\+OS kernel encounters an error. The value of {\ttfamily errno} is specific to each function, so check the function headers or the \href{../../api/index.html}{\texttt{ A\+PI docs}} for possible values and their meaning. If you think you\textquotesingle{}re encountering an error in the kernel code, check the value of {\ttfamily errno} to see what\textquotesingle{}s causing the issue.
-
-Debugging in this manner is standard to other environments besides P\+R\+OS. For further information on using {\ttfamily errno}, see the following tutorial\+: \href{https://www.tutorialspoint.com/cprogramming/c_error_handling.htm}{\texttt{ https\+://www.\+tutorialspoint.\+com/cprogramming/c\+\_\+error\+\_\+handling.\+htm}}\hypertarget{debugging_autotoc_md21}{}\doxysubsubsection{J\+I\+N\+X Graphical Debugger}\label{debugging_autotoc_md21}
-J\+I\+NX offers further debugging functionality over traditional debugging through print statements. For a full explanation of J\+I\+NX\textquotesingle{}s abilities and its use, see ../topical/jinx. \hypertarget{project-structure}{}\doxysection{Project Structure}\label{project-structure}
-P\+R\+OS projects are internally composed of three parts\+: the {\bfseries{P\+R\+OS library}} (found in {\ttfamily /firmware}), the {\bfseries{header}} files (found in {\ttfamily /include}), and {\bfseries{user code}} (found in {\ttfamily /src}).\hypertarget{project-structure_autotoc_md22}{}\doxysubsubsection{firmware}\label{project-structure_autotoc_md22}
-The {\bfseries{P\+R\+OS library}} is a single file containing the core P\+R\+OS routines. This file does not need to be changed. If there appears to be an issue with a core P\+R\+OS function, please file an issue on \href{https://github.com/purduesigbots/pros/issues}{\texttt{ Git\+Hub}}.\hypertarget{project-structure_autotoc_md23}{}\doxysubsubsection{include}\label{project-structure_autotoc_md23}
-The {\bfseries{header}} files are all found in the {\ttfamily include} directory. One header file, \href{../../api/index.html}{\texttt{ api.\+h}}, is required to declare the P\+R\+OS library functions. This file exists merely to include the individual P\+R\+OS A\+PI headers, all of which can be found in {\ttfamily include/pros}. Each header file in this directory covers a specific aspect of interacting with the V5 hardware, and correlates to the files found in the \href{../../api/index.html}{\texttt{ A\+PI documentation}}.
-
-The other file, {\ttfamily \mbox{\hyperlink{main_8h}{main.\+h}}}, is intended for declaring functions and variables shared between the user code files. {\ttfamily \mbox{\hyperlink{main_8h}{main.\+h}}} also offers a variety of configurable options for tailoring P\+R\+OS to your needs.
-
-
-\begin{DoxyItemize}
-\item {\ttfamily P\+R\+O\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+N\+A\+M\+ES}\+: If defined, some commonly used enums will have preprocessor macros which give a shorter, more convenient naming pattern. For instance, E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER has a shorter name\+: {\ttfamily C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER}. {\ttfamily E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER} is pedantically correct within the P\+R\+OS styleguide, but not convenient for most student programmers.
-\item {\ttfamily using namespace pros}\+: This can be uncommented to be added with the use of {\ttfamily P\+R\+O\+S\+\_\+\+U\+S\+E\+\_\+\+S\+I\+M\+P\+L\+E\+\_\+\+N\+A\+M\+ES}. This reduces the length of declarations when using C++, allowing you to simply declare a {\ttfamily Motor} instead of a {\ttfamily \mbox{\hyperlink{classpros_1_1Motor}{pros\+::\+Motor}}}. This will make the code appear cleaner and will be simpler for newer programmers, but is typically considered \href{https://msdn.microsoft.com/en-us/library/5cb46ksf.aspx}{\texttt{ bad practice}}. As a result, this line is commented out by default.
-\end{DoxyItemize}
-
-New header files can be created in the include directory, as long as the name ends with {\ttfamily .h} (Traditionally for C files) or {\ttfamily .hpp} (for C++ files). See this \href{http://www.learncpp.com/cpp-tutorial/19-header-files/}{\texttt{ C++ tutorial}} for more information on how to create header files.\hypertarget{project-structure_autotoc_md24}{}\doxysubsubsection{src}\label{project-structure_autotoc_md24}
-{\bfseries{User code}} has the actual sequential instructions that govern the robot\textquotesingle{}s behavior. Prior to P\+R\+OS kernel 3.\+2.\+0, new projects by default split user code into autonomous ({\ttfamily autonomous.\+c} or {\ttfamily autonomous.\+cpp}), driver control ({\ttfamily opcontrol.\+c} or {\ttfamily opcontrol.\+cpp}), and initialization ({\ttfamily initialize.\+c} or {\ttfamily initialize.\+cpp}) files. Code in one file can talk to code in another file using declarations in the header files. Beginning with P\+R\+OS kernel 3.\+2.\+0, new projects by default have a single {\ttfamily main.\+cpp} file that contains all of the competition task functions.
-
-New user code files can be created in the {\ttfamily src} directory, as long as the name ends with {\ttfamily .c} or {\ttfamily .cpp} it will be compiled with the others.
-
-All user code files should start with\+: \begin{DoxyVerb}#include "main.h"
-\end{DoxyVerb}
-
-
-This will ensure that the P\+R\+OS A\+PI and other critical definitions are available in each file.
-
-While more complicated than some environments, splitting up code grants powerful modularity and code reusability, especially when combined with source control. \hypertarget{usage-faq}{}\doxysection{General Usage F\+AQ}\label{usage-faq}
-\hypertarget{usage-faq_autotoc_md25}{}\doxysubsubsection{Why do I get a \char`\"{}\+Could not open port\char`\"{} error when flashing?}\label{usage-faq_autotoc_md25}
-You might have seen an error like this\+:
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{Uploading bin/output.bin to v5 device on COM11 as hello to slot 1}
-\DoxyCodeLine{ERROR -\/ pros.cli.upload:upload -\/ could not open port 'COM11': PermissionError(13, 'Access is denied.', None, 5)}
-\DoxyCodeLine{File "c:\(\backslash\)users\(\backslash\)jonathan\(\backslash\)appdata\(\backslash\)local\(\backslash\)programs\(\backslash\)python\(\backslash\)python36-\/32\(\backslash\)lib\(\backslash\)site-\/packages\(\backslash\)serial\(\backslash\)serialwin32.py", line 62, in open}
-\DoxyCodeLine{  raise SerialException("could not open port \{!r\}: \{!r\}".format(self.portstr, ctypes.WinError()))}
-\DoxyCodeLine{serial.serialutil.SerialException: could not open port 'COM11': PermissionError(13, 'Access is denied.', None, 5)}
-\end{DoxyCode}
-
-
-That means that some other resource is using the port. If you also have the V5 Utility open, that would cause this error to occur. Close the V5 Utility if you want to flash. \hypertarget{clawbot}{}\doxysection{Programming the Clawbot}\label{clawbot}
+\hypertarget{clawbot}{}\doxysection{Programming the Clawbot}\label{clawbot}
 \hypertarget{clawbot_autotoc_md66}{}\doxysubsubsection{Objective}\label{clawbot_autotoc_md66}
 This tutorial will guide you through basic programming of the V\+EX Clawbot.\hypertarget{clawbot_autotoc_md67}{}\doxysubsubsection{Intended Audience}\label{clawbot_autotoc_md67}
 This tutorial is intended for developers with some programming experience, but with little to no experience with the P\+R\+OS library. If you haven\textquotesingle{}t programmed before, we recommend checking out all the \char`\"{}\+Introduction and Basic C Features\char`\"{} sections of \href{http://www.studytonight.com/c/overview-of-c.php}{\texttt{ this tutorial series}}; you may also benefit from the \char`\"{}\+Pointers, Arrays and Strings\char`\"{} sections as well (although they aren\textquotesingle{}t as pertinent).\hypertarget{clawbot_autotoc_md68}{}\doxysubsubsection{Goals}\label{clawbot_autotoc_md68}
@@ -475,7 +474,11 @@ Sometimes this is impossible\+: suppose you wanted to write a P\+ID controller o
 Mutexes stand for mutual exclusion; only one task can hold a mutex at any given time. Other tasks must wait for the first task to finish (and release the mutex) before they may continue.
 
 Mutexes do not magically prevent concurrent writing, but provide the ability for tasks to create \char`\"{}contracts\char`\"{} with each other. You can write your code such that a variable is never written to unless the task owns a mutex designated for that variable.\hypertarget{multitasking_autotoc_md57}{}\doxysubsubsection{Notifications}\label{multitasking_autotoc_md57}
-Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. A full tutorial on task notifications can be found \href{./notifications.html}{\texttt{ here}}. \hypertarget{vision}{}\doxysection{Vision Sensor}\label{vision}
+Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. A full tutorial on task notifications can be found \href{./notifications.html}{\texttt{ here}}. \hypertarget{notifications}{}\doxysection{Notifications}\label{notifications}
+\begin{DoxyNote}{Note}
+For a full list of functions for interacting with Tasks, see its \href{../../api/c/rtos.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/rtos.html}{\texttt{ C++ A\+PI}}. Task notifications are a powerful new feature in P\+R\+OS 3 which allows direct-\/to-\/task synchronization. Each task has a 32-\/bit notification value. Each task can block on its own notification (wait for it to become non-\/zero) and any task can update the notification value. Task notifications have a broad range of applications, are simple to use, and have significant memory and speed advantages when compared to traditional semaphore-\/based synchronization mechanisms.
+\end{DoxyNote}
+The simplest application of task notifications does not care about the task notification value\+: \hypertarget{vision}{}\doxysection{Vision Sensor}\label{vision}
 \begin{DoxyNote}{Note}
 For a full list of functions for interacting with the V5 Vision Sensor, see its \href{../../api/c/vision.html}{\texttt{ C A\+PI}} and \href{../../api/cpp/vision.html}{\texttt{ C++ A\+PI}}.
 \end{DoxyNote}
