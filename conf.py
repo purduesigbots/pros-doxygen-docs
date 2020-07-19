@@ -13,5 +13,16 @@ STYLESHEETS = [
 
 LINKS_NAVBAR1 = [
     ("Getting Started", "getting-started", []),
-    ("Tutorials", "tutorials", []),
+    (
+        "Tutorials",
+        "tutorials",
+        [
+            (None, "general-tutorials"),
+            (None, "walkthrough-tutorials"),
+            (None, "topical-tutorials"),
+        ],
+    ),
+    ("Modules", "modules", []),
+    # ("Namespaces", "namespaces", []),
+    ("Pages", "pages", []),
 ]
