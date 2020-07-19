@@ -30,7 +30,7 @@ At the end of this tutorial you will have:
 
 Here's the robot we'll be programming:
 
-![image](/images/tuts/clawbot1.jpg)
+![](clawbot1.jpg)
 
 You can follow VEX's tutorial for building this robot
 [here](https://v5beta.vex.com/parent-wrapper.php?id=v5-with-clawbot).

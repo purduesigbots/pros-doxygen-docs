@@ -22,12 +22,12 @@ To view a robot's output, there are two officially supported methods:
 
     Click the button labeled "Open cortex serial output"
 
-![image](/images/atom/open-cortex.png)
+![](open-cortex.png)
 
 A terminal panel will open at the bottom of the screen containing the
 output of a connected robot.
 
-![image](/images/atom/terminal-platformio.png)
+![](terminal-platformio.png)
 
 ## Further debug info with `errno`
 
