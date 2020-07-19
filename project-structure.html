@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Home &raquo; Tutorials &raquo; Project Structure | PROS for
+  <title>Home &raquo; Tutorials &raquo; General Tutorials &raquo; Project Structure | PROS for
 V5</title>
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
@@ -29,9 +29,18 @@ V5</span></a>
         <div class="m-row">
           <ol class="m-col-t-6 m-col-m-none">
             <li><a href="getting-started.html">Getting Started</a></li>
-            <li><a href="tutorials.html">Tutorials</a></li>
+            <li>
+              <a href="tutorials.html">Tutorials</a>
+              <ol>
+                <li><a href="general-tutorials.html">General Tutorials</a></li>
+                <li><a href="walkthrough-tutorials.html">Walkthrough Tutorials</a></li>
+                <li><a href="topical-tutorials.html">Topical Tutorials</a></li>
+              </ol>
+            </li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="pages.html">Pages</a></li>
           </ol>
-          <ol class="m-col-t-6 m-col-m-none" start="3">
+          <ol class="m-col-t-6 m-col-m-none" start="5">
             <li><a href="annotated.html">Classes</a></li>
             <li><a href="files.html">Files</a></li>
             <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
@@ -50,6 +59,7 @@ V5</span></a>
         <h1>
           <span class="m-breadcrumb"><a href="index.html">Home</a> &raquo;</span>
           <span class="m-breadcrumb"><a href="tutorials.html">Tutorials</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="general-tutorials.html">General Tutorials</a> &raquo;</span>
           Project Structure
         </h1>
 <p>PROS projects are internally composed of three parts: the <strong>PROS library</strong> (found in <code>/firmware</code>), the <strong>header</strong> files (found in <code>/include</code>), and <strong>user code</strong> (found in <code>/src</code>).</p><section id="autotoc_md20"><h3><a href="#autotoc_md20">firmware</a></h3><p>The <strong>PROS library</strong> is a single file containing the core PROS routines. This file does not need to be changed. If there appears to be an issue with a core PROS function, please file an issue on <a href="https://github.com/purduesigbots/pros/issues">GitHub</a>.</p></section><section id="autotoc_md21"><h3><a href="#autotoc_md21">include</a></h3><p>The <strong>header</strong> files are all found in the <code>include</code> directory. One header file, <a href="../../api/index.html">api.h</a>, is required to declare the PROS library functions. This file exists merely to include the individual PROS API headers, all of which can be found in <code>include/pros</code>. Each header file in this directory covers a specific aspect of interacting with the V5 hardware, and correlates to the files found in the <a href="../../api/index.html">API documentation</a>.</p><p>The other file, <code><a href="main_8h.html" class="m-doc">main.h</a></code>, is intended for declaring functions and variables shared between the user code files. <code><a href="main_8h.html" class="m-doc">main.h</a></code> also offers a variety of configurable options for tailoring PROS to your needs.</p><ul><li><code>PROS_USE_SIMPLE_NAMES</code>: If defined, some commonly used enums will have preprocessor macros which give a shorter, more convenient naming pattern. For instance, E_CONTROLLER_MASTER has a shorter name: <code>CONTROLLER_MASTER</code>. <code>E_CONTROLLER_MASTER</code> is pedantically correct within the PROS styleguide, but not convenient for most student programmers.</li><li><code>using namespace pros</code>: This can be uncommented to be added with the use of <code>PROS_USE_SIMPLE_NAMES</code>. This reduces the length of declarations when using C++, allowing you to simply declare a <code>Motor</code> instead of a <code><a href="classpros_1_1Motor.html" class="m-doc">pros::<wbr />Motor</a></code>. This will make the code appear cleaner and will be simpler for newer programmers, but is typically considered <a href="https://msdn.microsoft.com/en-us/library/5cb46ksf.aspx">bad practice</a>. As a result, this line is commented out by default.</li></ul><p>New header files can be created in the include directory, as long as the name ends with <code>.h</code> (Traditionally for C files) or <code>.hpp</code> (for C++ files). See this <a href="http://www.learncpp.com/cpp-tutorial/19-header-files/">C++ tutorial</a> for more information on how to create header files.</p></section><section id="autotoc_md22"><h3><a href="#autotoc_md22">src</a></h3><p><strong>User code</strong> has the actual sequential instructions that govern the robot&#x27;s behavior. Prior to PROS kernel 3.2.0, new projects by default split user code into autonomous (<code>autonomous.c</code> or <code>autonomous.cpp</code>), driver control (<code>opcontrol.c</code> or <code>opcontrol.cpp</code>), and initialization (<code>initialize.c</code> or <code>initialize.cpp</code>) files. Code in one file can talk to code in another file using declarations in the header files. Beginning with PROS kernel 3.2.0, new projects by default have a single <code>main.cpp</code> file that contains all of the competition task functions.</p><p>New user code files can be created in the <code>src</code> directory, as long as the name ends with <code>.c</code> or <code>.cpp</code> it will be compiled with the others.</p><p>All user code files should start with:</p><pre>#include &quot;main.h&quot;
