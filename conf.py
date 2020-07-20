@@ -12,7 +12,7 @@ STYLESHEETS = [
 ]
 
 LINKS_NAVBAR1 = [
-    ("Docs", "pages", [(None, "getting-started"), (None, "tutorials"),]),
+    (None, "getting-started", []),
     (
         "None",
         "tutorials",
@@ -28,6 +28,12 @@ LINKS_NAVBAR1 = [
 LINKS_NAVBAR2 = [
     (
         '<a href="#">Other</a>',
-        [(None, "annotated"), (None, "files"), (None, "namespaces"), (None, "modules")],
+        [
+            (None, "pages"),
+            (None, "annotated"),
+            (None, "modules"),
+            (None, "namespaces"),
+            (None, "files"),
+        ],
     )
 ]
