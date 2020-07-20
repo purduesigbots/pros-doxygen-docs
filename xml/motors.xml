@@ -6,27 +6,23 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><simplesect kind="note"><para>For a full list of functions for interacting with the V5 Motors, see its <ulink url="../../api/c/motors.html">C API</ulink> and <ulink url="../../api/cpp/motors.html">C++ API</ulink>.</para>
+<para><simplesect kind="note"><para>For a full list of functions for interacting with the V5 Motors, see its <ref refid="group__c-motors" kindref="compound">C API</ref> and <ref refid="group__cpp-motors" kindref="compound">C++ API</ref>.</para>
 </simplesect>
 </para>
 <sect2 id="motors_1autotoc_md48">
 <title>Initialization</title>
-<para>V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like <ulink url="../../api/c/motors.html#motor-move-velocity">motor_move_velocity</ulink> will work as expected.</para>
+<para>V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like <computeroutput><ref refid="group__c-motors_1ga2f3f7e0a243e9432b3d60e4b6147f177" kindref="member">motor_move_velocity()</ref></computeroutput> will work as expected.</para>
 <para>When declaring motors in C++, it is not necessary to set the configuration for the motor with its constructor (beyond its port number) more than once for the given port. An example of this is given below.</para>
-<para><blockquote><para><blockquote><para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#define<sp/>MOTOR_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"></highlight></codeline>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#define<sp/>MOTOR_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1Motor" kindref="compound">pros::Motor</ref><sp/>drive_left<sp/>(MOTOR_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>drive_left<sp/>will<sp/>have<sp/>the<sp/>same<sp/>configuration<sp/>as<sp/>drive_left_initializer</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
-<para></para>
-</blockquote></para>
-</blockquote></para>
 </sect2>
 <sect2 id="motors_1autotoc_md49">
 <title>Simple Usage</title>
-<para>The easiest way to interact with the motors is through the <ulink url="../../api/c/motors.html#motor-move">motor_move</ulink> function. This is analogous to the <ulink url="../../../cortex/api/index.html#motorSet">motorSet</ulink> function from PROS 2.</para>
+<para>The easiest way to interact with the motors is through the <ulink url="../../api/c/motors.html#motor-move">motor_move</ulink> function.</para>
 </sect2>
 <sect2 id="motors_1autotoc_md50">
 <title>Autonomous Movement</title>
@@ -39,16 +35,8 @@
 </sect3>
 <sect3 id="motors_1autotoc_md52">
 <title>Velocity Controller Movement</title>
-<para>The final <computeroutput>move</computeroutput> function available with the PROS Motor API is <computeroutput><ref refid="group__c-motors_1ga2f3f7e0a243e9432b3d60e4b6147f177" kindref="member">motor_move_velocity()</ref></computeroutput>. This ensures consistent velocity output from the motor through the use of <ulink url="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</ulink>.</para>
+<para>The final <computeroutput>move</computeroutput> function available with the PROS Motor API is <computeroutput><ref refid="group__c-motors_1ga2f3f7e0a243e9432b3d60e4b6147f177" kindref="member">motor_move_velocity()</ref></computeroutput>. This ensures consistent velocity output from the motor through the use of <ulink url="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</ulink>. </para>
 </sect3>
-</sect2>
-<sect2 id="motors_1autotoc_md53">
-<title>Telemetry</title>
-<para>The V5 motors return a plethora of diagnostic information about their performance. The motors return the following parameters:</para>
-<para>Parameter C Function C++ Function</para>
-<para><hruler/>
-</para>
-<para>Position <ulink url="../../api/c/motors.html#motor-get-position">motorggetpposition</ulink> [<ref refid="group__cpp-motors_1ga70e725a94ec42dc7cbb3e460c36dcad3" kindref="member">pros::Motor::get_position</ref>](get_position_) Velocity <ulink url="../../api/c/motors.html#motor-get-actual-velocity">motorggetaactualvvelocity</ulink> [<ref refid="group__cpp-motors_1ga696494a4e7c675f7007d41b947f9ea63" kindref="member">pros::Motor::get_actual_velocity</ref>](get_actual_velocity_) Current <ulink url="../../api/c/motors.html#motor-get-current-draw">motorggetccurrentddraw</ulink> [<ref refid="group__cpp-motors_1ga502eaf3859452721e2327e53ab3f34d8" kindref="member">pros::Motor::get_current_draw</ref>](get_current_draw_) Efficiency <ulink url="../../api/c/motors.html#motor-get-efficiency">motorggeteefficiency</ulink> [<ref refid="group__cpp-motors_1ga6f0b39894abf612a1965a66224893c71" kindref="member">pros::Motor::get_efficiency</ref>](get_efficiency_) Power <ulink url="../../api/c/motors.html#motor-get-power">motorggetppower</ulink> [<ref refid="group__cpp-motors_1ga51b75dc245257487116e64fa2904d521" kindref="member">pros::Motor::get_power</ref>](get_power_) Temperature <ulink url="../../api/c/motors.html#motor-get-temperature">motorggetttemperature</ulink> [<ref refid="group__cpp-motors_1ga9fd793251b91c2ac0091c65f290f740d" kindref="member">pros::Motor::get_temperature</ref>](get_temperature_) Torque <ulink url="../../api/c/motors.html#motor-get-torque">motorggetttorque</ulink> [<ref refid="group__cpp-motors_1ga14e0c57c0ca7bde15f73414abf4c3c8e" kindref="member">pros::Motor::get_torque</ref>](get_torque_) Voltage <ulink url="../../api/c/motors.html#motor-get-voltage">motorggetvvoltage</ulink> [<ref refid="group__cpp-motors_1gabe51732c37c2ec72a8bdceac7f6962cb" kindref="member">pros::Motor::get_voltage</ref>](get_voltage_) Direction <ulink url="../../api/c/motors.html#motor-get-direction">motorggetddirection</ulink> [<ref refid="group__cpp-motors_1gacea42a96da651f72f138ea268c76217f" kindref="member">pros::Motor::get_direction</ref>](get_direction_) </para>
 </sect2>
     </detaileddescription>
   </compounddef>
