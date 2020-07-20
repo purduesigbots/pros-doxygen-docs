@@ -8,12 +8,18 @@ The PROS tutorials are split into three sections:
 
 # General Tutorials
 
+\subpage general-tutorials
+
 \copydoc general-tutorials
 
 # Walkthrough Tutorials
 
+\subpage walkthrough-tutorials
+
 \copydoc walkthrough-tutorials
 
 # Topical Tutorials
+
+\subpage topical-tutorials
 
 \copydoc topical-tutorials
