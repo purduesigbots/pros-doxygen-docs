@@ -1,9 +1,7 @@
 \page llemu LLEMU (Legacy LCD Emulator)
 
 \note
-For a full list of functions for interacting with the LLEMU, see its
-
-> [C API](@ref c-llemu) and [C++ API](@ref cpp-llemu).
+For a full list of functions for interacting with the LLEMU, see its [C API](@ref c-llemu) and [C++ API](@ref cpp-llemu).
 
 ## Initialization
 
