@@ -22,6 +22,12 @@ LINKS_NAVBAR1 = [
             (None, "topical-tutorials"),
         ],
     ),
-    ("Modules", "modules", []),
-    # ("Namespaces", "namespaces", []),
+    ("API", "api", []),
+]
+
+LINKS_NAVBAR2 = [
+    (
+        '<a href="#">Other</a>',
+        [(None, "annotated"), (None, "files"), (None, "namespaces"), (None, "modules")],
+    )
 ]
