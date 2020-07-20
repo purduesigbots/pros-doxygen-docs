@@ -1,4 +1,5 @@
 \page walkthrough-tutorials Walkthrough Tutorials
+\ingroup tutorials
 
 If you want to write full sample programs to learn to use PROS through
 practical applications, or teach students to use PROS in a classroom
