@@ -1,9 +1,16 @@
 \hypertarget{namespacepros}{}\doxysection{pros Namespace Reference}
 \label{namespacepros}\index{pros@{pros}}
+
+
+Get the current status of the competition control.  
+
+
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespacepros_1_1battery}{battery}}
+\item 
+ \mbox{\hyperlink{namespacepros_1_1c}{c}}
 \item 
  \mbox{\hyperlink{namespacepros_1_1competition}{competition}}
 \item 
@@ -38,6 +45,8 @@ class \mbox{\hyperlink{classpros_1_1Controller}{Controller}}
 \item 
 class \mbox{\hyperlink{classpros_1_1Imu}{Imu}}
 \item 
+struct \mbox{\hyperlink{structpros_1_1lcd__s}{lcd\+\_\+s}}
+\item 
 class \mbox{\hyperlink{classpros_1_1Motor}{Motor}}
 \item 
 class \mbox{\hyperlink{classpros_1_1Mutex}{Mutex}}
@@ -51,6 +60,8 @@ class \mbox{\hyperlink{classpros_1_1Vision}{Vision}}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+typedef enum \mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571b}{pros\+::adi\+\_\+port\+\_\+config\+\_\+e}} \mbox{\hyperlink{namespacepros_a5ca06a22560160b3af6d1fe156471607}{adi\+\_\+port\+\_\+config\+\_\+e\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Represents the port type for an A\+DI port. \end{DoxyCompactList}\item 
 using \mbox{\hyperlink{namespacepros_a49b07257293eca610437130d01c47b89}{A\+D\+I\+Potentiometer}} = \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}}
 \item 
 using \mbox{\hyperlink{namespacepros_a70a7be425ae5e39c353db03e14d62e9a}{A\+D\+I\+Line\+Sensor}} = \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}}
@@ -60,10 +71,144 @@ using \mbox{\hyperlink{namespacepros_a105b1224da9401cb8b6949713841fed7}{A\+D\+I\
 using \mbox{\hyperlink{namespacepros_afb12c694dcb91a1aa04a6ba7cfd9b6c0}{A\+D\+I\+Accelerometer}} = \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}}
 \item 
 using \mbox{\hyperlink{namespacepros_a00d5ba20a966a15bf0276ffda24f2dcf}{A\+D\+I\+Button}} = \mbox{\hyperlink{classpros_1_1ADIDigitalIn}{A\+D\+I\+Digital\+In}}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{namespacepros_aeca9572965d05f633d9bb1c3587a2c75}{lcd\+\_\+btn\+\_\+cb\+\_\+fn\+\_\+t}}) (void)
+\item 
+typedef struct \mbox{\hyperlink{structpros_1_1lcd__s}{pros\+::lcd\+\_\+s}} \mbox{\hyperlink{namespacepros_a65209d3c6d98620cf5b4f2661846198d}{lcd\+\_\+s\+\_\+t}}
+\item 
+typedef void $\ast$ \mbox{\hyperlink{namespacepros_ac2b22d54e81fcd06fba2395d6640e958}{task\+\_\+t}}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{namespacepros_a93457b3592313310b54d748c88bc16ad}{task\+\_\+fn\+\_\+t}}) (void $\ast$)
+\item 
+typedef void $\ast$ \mbox{\hyperlink{namespacepros_a2a6f8a022854236dfda9b60a1b75a35b}{mutex\+\_\+t}}
+\item 
+typedef enum \mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466d}{pros\+::vision\+\_\+object\+\_\+type}} \mbox{\hyperlink{namespacepros_a4309df6a44eee3cd05e4eb327eb8ea7e}{vision\+\_\+object\+\_\+type\+\_\+e\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em This enumeration defines the different types of objects that can be detected by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor. \end{DoxyCompactList}\item 
+typedef uint16\+\_\+t \mbox{\hyperlink{namespacepros_ada1457d747f10a92d1123c743e7ad0f2}{vision\+\_\+color\+\_\+code\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Color codes are just signatures with multiple I\+Ds and a different type. \end{DoxyCompactList}\item 
+typedef enum \mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}{pros\+::vision\+\_\+zero}} \mbox{\hyperlink{namespacepros_abcdd1fcae4f2d68c8ad3dd0cd0bbb9da}{vision\+\_\+zero\+\_\+e\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571b}{adi\+\_\+port\+\_\+config\+\_\+e}} \{ \newline
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba6332da1b8421e5b416cde8153f2450c1}{E\+\_\+\+A\+D\+I\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}} = 0, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571bac29891b2d7336a0cdc6e9483dd897cea}{E\+\_\+\+A\+D\+I\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+O\+UT}} = 1, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba7d50e42f0506b41b07d89979d09b28e3}{E\+\_\+\+A\+D\+I\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN}} = 2, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571bad0317e71ed24d5bd814796607cd2eb5e}{E\+\_\+\+A\+D\+I\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+O\+UT}} = 3, 
+\newline
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\newline
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\newline
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba63c86436eab8a42def635f25497b13c7}{E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+G\+Y\+RO}} = 10, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}{\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN}}, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba42e703e65e48b739ad0dc281eb141ed0}{E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+S\+E\+R\+VO}} = 12, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba028c79eabab283faa48927ff7fc24d1a}{E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+P\+WM}} = 13, 
+\newline
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571baa72857ff3236fa3fbdb814164470fe71}{E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+E\+N\+C\+O\+D\+ER}} = 14, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571baff29d74f701506df70154f4cea79e49c}{E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+U\+L\+T\+R\+A\+S\+O\+N\+IC}} = 15, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571bab695b1c91bc9c45828927e7e8fd8f5d1}{E\+\_\+\+A\+D\+I\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+D\+E\+F\+I\+N\+ED}} = 255, 
+\mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571ba0658eca2aba899e936a253a3103b9caf}{E\+\_\+\+A\+D\+I\+\_\+\+E\+RR}} = P\+R\+O\+S\+\_\+\+E\+RR
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the port type for an A\+DI port. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacepros_afe6aa110be594cf00838bfaad7e74b97}{controller\+\_\+id\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{namespacepros_afe6aa110be594cf00838bfaad7e74b97a414e2935d8251d700c5ff0984913d637}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER}} = 0, 
+\mbox{\hyperlink{namespacepros_afe6aa110be594cf00838bfaad7e74b97a9b6d9cc03ad03ccf887c31bb7b84ebc3}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52}{controller\+\_\+analog\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a7b6dfb74a4d0f181e3f9beb7ff6060e7}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+X}} = 0, 
+\mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a8ec631edbbf240ca4077cc912674f69e}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+Y}}, 
+\mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a51483614df84242d84c8535aaa77c2a7}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+X}}, 
+\mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52aa692ff2d44c295b4dc42b5a6a6c214ee}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+Y}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbb}{controller\+\_\+digital\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbba198c46cfea6347708c09c6c7e89e0925}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L1}} = 6, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbba7ef03b99513580c93cd3ae4f7cf489f5}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L2}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbba0ae3eaa657ccb269af722a3eefc59dcb}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R1}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbaaa43af72d457ef46126db94645ee6fca}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R2}}, 
+\newline
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbba336430eeb4455e97024c7fb8945c968a}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+UP}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbab6bc5a590c6590684b790a2b32375158}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+D\+O\+WN}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbaf334935fb44c14aea2788a178469321f}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L\+E\+FT}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbaed7c77cb087185af10faac3257769716}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R\+I\+G\+HT}}, 
+\newline
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbba0b707a84b507c89267de710e2b0773c2}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+X}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbadcacb518eb1557949d8d183b3950e795}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+B}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbaafaeaec0717e509ded40a65d01aeac74}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+Y}}, 
+\mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbbafa41419fef9b113788e39eb4156e18db}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+A}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50}{task\+\_\+state\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50a34ce3b18d7dc8e83d61ab2ef9b63cfcb}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+NG}} = 0, 
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50a2bb9a9f41adafe98ea66169590cb3542}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+A\+DY}}, 
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50a6f2bebfbf112af0ea08ff9ba85be9cbf}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+B\+L\+O\+C\+K\+ED}}, 
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50aa69dc47f41a7e1af35fa20bca80f7092}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED}}, 
+\newline
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50a3e1b6b36cdfb359eda7ed8ed312cd6db}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+L\+E\+T\+ED}}, 
+\mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50af72b06277b3e055b36f9ff004f20899b}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027b}{notify\+\_\+action\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027baba1282d21721e91da21e4b5983e59492}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+NE}}, 
+\mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027baf4373d2afca983f8f215605ed4447b8d}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+B\+I\+TS}}, 
+\mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027ba2476aa6f2553264feb0ae8183558d984}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+CR}}, 
+\mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027babccc884b01d6d5f09f8fb08f78455766}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+O\+W\+R\+I\+TE}}, 
+\newline
+\mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027bae01904ac63a266c2880cc710889cd9bc}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+O\+W\+R\+I\+TE}}
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466d}{vision\+\_\+object\+\_\+type}} \{ \mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466dadcee4254a761282c8c6b62ed2fcf5157}{E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+N\+O\+R\+M\+AL}} = 0, 
+\mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466da9719f56143589b673159670df484d633}{E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+C\+O\+L\+O\+R\+\_\+\+C\+O\+DE}} = 1, 
+\mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466daeb6f529f27f55bd396d0c14b88b7c33c}{E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+NE}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em This enumeration defines the different types of objects that can be detected by the Vision Sensor. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}{vision\+\_\+zero}} \{ \mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0a5f564e11fbebec786a4ad063953aa669}{E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+Z\+E\+R\+O\+\_\+\+T\+O\+P\+L\+E\+FT}} = 0, 
+\mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0ab4b13b80c633f1e624701db0b4aabbfd}{E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+E\+N\+T\+ER}} = 1
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{namespacepros_a69a2fc200d55441496a9a04449abc21f}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((\+\_\+\+\_\+packed\+\_\+\+\_\+)) vision\+\_\+signature
+\begin{DoxyCompactList}\small\item\em This structure contains the parameters used by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor to detect objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespacepros_aaa1bd3064cd7cc2b49ed275ff8613594}{vision\+\_\+signature\+\_\+s\+\_\+t}}
+\item 
+\mbox{\hyperlink{namespacepros_a4cda7f01c0dd458d4ef3ee5bd769c8f1}{vision\+\_\+object\+\_\+s\+\_\+t}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Get the current status of the competition control. 
+
+V5 \mbox{\hyperlink{classpros_1_1Controller}{Controller}} ~\newline
+
+
+\begin{DoxyReturn}{Returns}
+The competition control status as a mask of bits with C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\{E\+N\+A\+B\+L\+ED,A\+U\+T\+O\+N\+O\+M\+O\+US,C\+O\+N\+N\+E\+C\+T\+ED\}. 
+\end{DoxyReturn}
+
+
 \doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{namespacepros_a5ca06a22560160b3af6d1fe156471607}\label{namespacepros_a5ca06a22560160b3af6d1fe156471607}} 
+\index{pros@{pros}!adi\_port\_config\_e\_t@{adi\_port\_config\_e\_t}}
+\index{adi\_port\_config\_e\_t@{adi\_port\_config\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{adi\_port\_config\_e\_t}{adi\_port\_config\_e\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571b}{pros\+::adi\+\_\+port\+\_\+config\+\_\+e}} \mbox{\hyperlink{namespacepros_a5ca06a22560160b3af6d1fe156471607}{pros\+::adi\+\_\+port\+\_\+config\+\_\+e\+\_\+t}}}
+
+
+
+Represents the port type for an A\+DI port. 
+
 \mbox{\Hypertarget{namespacepros_a49b07257293eca610437130d01c47b89}\label{namespacepros_a49b07257293eca610437130d01c47b89}} 
 \index{pros@{pros}!ADIPotentiometer@{ADIPotentiometer}}
 \index{ADIPotentiometer@{ADIPotentiometer}!pros@{pros}}
@@ -93,4 +238,379 @@ using \mbox{\hyperlink{namespacepros_a00d5ba20a966a15bf0276ffda24f2dcf}{A\+D\+I\
 \index{ADIButton@{ADIButton}!pros@{pros}}
 \doxysubsubsection{\texorpdfstring{ADIButton}{ADIButton}}
 {\footnotesize\ttfamily using \mbox{\hyperlink{namespacepros_a00d5ba20a966a15bf0276ffda24f2dcf}{pros\+::\+A\+D\+I\+Button}} = typedef \mbox{\hyperlink{classpros_1_1ADIDigitalIn}{A\+D\+I\+Digital\+In}}}
+
+\mbox{\Hypertarget{namespacepros_aeca9572965d05f633d9bb1c3587a2c75}\label{namespacepros_aeca9572965d05f633d9bb1c3587a2c75}} 
+\index{pros@{pros}!lcd\_btn\_cb\_fn\_t@{lcd\_btn\_cb\_fn\_t}}
+\index{lcd\_btn\_cb\_fn\_t@{lcd\_btn\_cb\_fn\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{lcd\_btn\_cb\_fn\_t}{lcd\_btn\_cb\_fn\_t}}
+{\footnotesize\ttfamily typedef void($\ast$ pros\+::lcd\+\_\+btn\+\_\+cb\+\_\+fn\+\_\+t) (void)}
+
+\mbox{\Hypertarget{namespacepros_a65209d3c6d98620cf5b4f2661846198d}\label{namespacepros_a65209d3c6d98620cf5b4f2661846198d}} 
+\index{pros@{pros}!lcd\_s\_t@{lcd\_s\_t}}
+\index{lcd\_s\_t@{lcd\_s\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{lcd\_s\_t}{lcd\_s\_t}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structpros_1_1lcd__s}{pros\+::lcd\+\_\+s}} \mbox{\hyperlink{namespacepros_a65209d3c6d98620cf5b4f2661846198d}{pros\+::lcd\+\_\+s\+\_\+t}}}
+
+\mbox{\Hypertarget{namespacepros_ac2b22d54e81fcd06fba2395d6640e958}\label{namespacepros_ac2b22d54e81fcd06fba2395d6640e958}} 
+\index{pros@{pros}!task\_t@{task\_t}}
+\index{task\_t@{task\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{task\_t}{task\_t}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{namespacepros_ac2b22d54e81fcd06fba2395d6640e958}{pros\+::task\+\_\+t}}}
+
+\mbox{\Hypertarget{namespacepros_a93457b3592313310b54d748c88bc16ad}\label{namespacepros_a93457b3592313310b54d748c88bc16ad}} 
+\index{pros@{pros}!task\_fn\_t@{task\_fn\_t}}
+\index{task\_fn\_t@{task\_fn\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{task\_fn\_t}{task\_fn\_t}}
+{\footnotesize\ttfamily typedef void($\ast$ pros\+::task\+\_\+fn\+\_\+t) (void $\ast$)}
+
+\mbox{\Hypertarget{namespacepros_a2a6f8a022854236dfda9b60a1b75a35b}\label{namespacepros_a2a6f8a022854236dfda9b60a1b75a35b}} 
+\index{pros@{pros}!mutex\_t@{mutex\_t}}
+\index{mutex\_t@{mutex\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{mutex\_t}{mutex\_t}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{namespacepros_a2a6f8a022854236dfda9b60a1b75a35b}{pros\+::mutex\+\_\+t}}}
+
+\mbox{\Hypertarget{namespacepros_a4309df6a44eee3cd05e4eb327eb8ea7e}\label{namespacepros_a4309df6a44eee3cd05e4eb327eb8ea7e}} 
+\index{pros@{pros}!vision\_object\_type\_e\_t@{vision\_object\_type\_e\_t}}
+\index{vision\_object\_type\_e\_t@{vision\_object\_type\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_object\_type\_e\_t}{vision\_object\_type\_e\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466d}{pros\+::vision\+\_\+object\+\_\+type}} \mbox{\hyperlink{namespacepros_a4309df6a44eee3cd05e4eb327eb8ea7e}{pros\+::vision\+\_\+object\+\_\+type\+\_\+e\+\_\+t}}}
+
+
+
+This enumeration defines the different types of objects that can be detected by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor. 
+
+\mbox{\Hypertarget{namespacepros_ada1457d747f10a92d1123c743e7ad0f2}\label{namespacepros_ada1457d747f10a92d1123c743e7ad0f2}} 
+\index{pros@{pros}!vision\_color\_code\_t@{vision\_color\_code\_t}}
+\index{vision\_color\_code\_t@{vision\_color\_code\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_color\_code\_t}{vision\_color\_code\_t}}
+{\footnotesize\ttfamily typedef uint16\+\_\+t \mbox{\hyperlink{namespacepros_ada1457d747f10a92d1123c743e7ad0f2}{pros\+::vision\+\_\+color\+\_\+code\+\_\+t}}}
+
+
+
+Color codes are just signatures with multiple I\+Ds and a different type. 
+
+\mbox{\Hypertarget{namespacepros_abcdd1fcae4f2d68c8ad3dd0cd0bbb9da}\label{namespacepros_abcdd1fcae4f2d68c8ad3dd0cd0bbb9da}} 
+\index{pros@{pros}!vision\_zero\_e\_t@{vision\_zero\_e\_t}}
+\index{vision\_zero\_e\_t@{vision\_zero\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_zero\_e\_t}{vision\_zero\_e\_t}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}{pros\+::vision\+\_\+zero}} \mbox{\hyperlink{namespacepros_abcdd1fcae4f2d68c8ad3dd0cd0bbb9da}{pros\+::vision\+\_\+zero\+\_\+e\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571b}\label{namespacepros_af934aaf7c76f7798b401281542bb571b}} 
+\index{pros@{pros}!adi\_port\_config\_e@{adi\_port\_config\_e}}
+\index{adi\_port\_config\_e@{adi\_port\_config\_e}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{adi\_port\_config\_e}{adi\_port\_config\_e}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_af934aaf7c76f7798b401281542bb571b}{pros\+::adi\+\_\+port\+\_\+config\+\_\+e}}}
+
+
+
+Represents the port type for an A\+DI port. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_ANALOG\_IN@{E\_ADI\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!E\_ADI\_ANALOG\_IN@{E\_ADI\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba6332da1b8421e5b416cde8153f2450c1}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba6332da1b8421e5b416cde8153f2450c1}} 
+E\+\_\+\+A\+D\+I\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_ANALOG\_OUT@{E\_ADI\_ANALOG\_OUT}!pros@{pros}}\index{pros@{pros}!E\_ADI\_ANALOG\_OUT@{E\_ADI\_ANALOG\_OUT}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571bac29891b2d7336a0cdc6e9483dd897cea}\label{namespacepros_af934aaf7c76f7798b401281542bb571bac29891b2d7336a0cdc6e9483dd897cea}} 
+E\+\_\+\+A\+D\+I\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+O\+UT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_DIGITAL\_IN@{E\_ADI\_DIGITAL\_IN}!pros@{pros}}\index{pros@{pros}!E\_ADI\_DIGITAL\_IN@{E\_ADI\_DIGITAL\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba7d50e42f0506b41b07d89979d09b28e3}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba7d50e42f0506b41b07d89979d09b28e3}} 
+E\+\_\+\+A\+D\+I\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_DIGITAL\_OUT@{E\_ADI\_DIGITAL\_OUT}!pros@{pros}}\index{pros@{pros}!E\_ADI\_DIGITAL\_OUT@{E\_ADI\_DIGITAL\_OUT}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571bad0317e71ed24d5bd814796607cd2eb5e}\label{namespacepros_af934aaf7c76f7798b401281542bb571bad0317e71ed24d5bd814796607cd2eb5e}} 
+E\+\_\+\+A\+D\+I\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+O\+UT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}\label{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}\label{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_DIGITAL\_IN@{\_DEPRECATE\_DIGITAL\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}\label{namespacepros_af934aaf7c76f7798b401281542bb571baeb1a3d02af1364849860830dc2992449}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_LEGACY\_GYRO@{E\_ADI\_LEGACY\_GYRO}!pros@{pros}}\index{pros@{pros}!E\_ADI\_LEGACY\_GYRO@{E\_ADI\_LEGACY\_GYRO}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba63c86436eab8a42def635f25497b13c7}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba63c86436eab8a42def635f25497b13c7}} 
+E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+G\+Y\+RO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}!pros@{pros}}\index{pros@{pros}!\_DEPRECATE\_ANALOG\_IN@{\_DEPRECATE\_ANALOG\_IN}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba32a12b64fb415f01aa3ecd42834d7fe0}} 
+\+\_\+\+D\+E\+P\+R\+E\+C\+A\+T\+E\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+IN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_LEGACY\_SERVO@{E\_ADI\_LEGACY\_SERVO}!pros@{pros}}\index{pros@{pros}!E\_ADI\_LEGACY\_SERVO@{E\_ADI\_LEGACY\_SERVO}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba42e703e65e48b739ad0dc281eb141ed0}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba42e703e65e48b739ad0dc281eb141ed0}} 
+E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+S\+E\+R\+VO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_LEGACY\_PWM@{E\_ADI\_LEGACY\_PWM}!pros@{pros}}\index{pros@{pros}!E\_ADI\_LEGACY\_PWM@{E\_ADI\_LEGACY\_PWM}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba028c79eabab283faa48927ff7fc24d1a}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba028c79eabab283faa48927ff7fc24d1a}} 
+E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+P\+WM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_LEGACY\_ENCODER@{E\_ADI\_LEGACY\_ENCODER}!pros@{pros}}\index{pros@{pros}!E\_ADI\_LEGACY\_ENCODER@{E\_ADI\_LEGACY\_ENCODER}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571baa72857ff3236fa3fbdb814164470fe71}\label{namespacepros_af934aaf7c76f7798b401281542bb571baa72857ff3236fa3fbdb814164470fe71}} 
+E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+E\+N\+C\+O\+D\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_LEGACY\_ULTRASONIC@{E\_ADI\_LEGACY\_ULTRASONIC}!pros@{pros}}\index{pros@{pros}!E\_ADI\_LEGACY\_ULTRASONIC@{E\_ADI\_LEGACY\_ULTRASONIC}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571baff29d74f701506df70154f4cea79e49c}\label{namespacepros_af934aaf7c76f7798b401281542bb571baff29d74f701506df70154f4cea79e49c}} 
+E\+\_\+\+A\+D\+I\+\_\+\+L\+E\+G\+A\+C\+Y\+\_\+\+U\+L\+T\+R\+A\+S\+O\+N\+IC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_TYPE\_UNDEFINED@{E\_ADI\_TYPE\_UNDEFINED}!pros@{pros}}\index{pros@{pros}!E\_ADI\_TYPE\_UNDEFINED@{E\_ADI\_TYPE\_UNDEFINED}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571bab695b1c91bc9c45828927e7e8fd8f5d1}\label{namespacepros_af934aaf7c76f7798b401281542bb571bab695b1c91bc9c45828927e7e8fd8f5d1}} 
+E\+\_\+\+A\+D\+I\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+D\+E\+F\+I\+N\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_ADI\_ERR@{E\_ADI\_ERR}!pros@{pros}}\index{pros@{pros}!E\_ADI\_ERR@{E\_ADI\_ERR}}}\mbox{\Hypertarget{namespacepros_af934aaf7c76f7798b401281542bb571ba0658eca2aba899e936a253a3103b9caf}\label{namespacepros_af934aaf7c76f7798b401281542bb571ba0658eca2aba899e936a253a3103b9caf}} 
+E\+\_\+\+A\+D\+I\+\_\+\+E\+RR&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_afe6aa110be594cf00838bfaad7e74b97}\label{namespacepros_afe6aa110be594cf00838bfaad7e74b97}} 
+\index{pros@{pros}!controller\_id\_e\_t@{controller\_id\_e\_t}}
+\index{controller\_id\_e\_t@{controller\_id\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{controller\_id\_e\_t}{controller\_id\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_afe6aa110be594cf00838bfaad7e74b97}{pros\+::controller\+\_\+id\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_MASTER@{E\_CONTROLLER\_MASTER}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_MASTER@{E\_CONTROLLER\_MASTER}}}\mbox{\Hypertarget{namespacepros_afe6aa110be594cf00838bfaad7e74b97a414e2935d8251d700c5ff0984913d637}\label{namespacepros_afe6aa110be594cf00838bfaad7e74b97a414e2935d8251d700c5ff0984913d637}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_PARTNER@{E\_CONTROLLER\_PARTNER}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_PARTNER@{E\_CONTROLLER\_PARTNER}}}\mbox{\Hypertarget{namespacepros_afe6aa110be594cf00838bfaad7e74b97a9b6d9cc03ad03ccf887c31bb7b84ebc3}\label{namespacepros_afe6aa110be594cf00838bfaad7e74b97a9b6d9cc03ad03ccf887c31bb7b84ebc3}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_aeca43e7a0e44301334f173fbf48a0c52}\label{namespacepros_aeca43e7a0e44301334f173fbf48a0c52}} 
+\index{pros@{pros}!controller\_analog\_e\_t@{controller\_analog\_e\_t}}
+\index{controller\_analog\_e\_t@{controller\_analog\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{controller\_analog\_e\_t}{controller\_analog\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_aeca43e7a0e44301334f173fbf48a0c52}{pros\+::controller\+\_\+analog\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_ANALOG\_LEFT\_X@{E\_CONTROLLER\_ANALOG\_LEFT\_X}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_ANALOG\_LEFT\_X@{E\_CONTROLLER\_ANALOG\_LEFT\_X}}}\mbox{\Hypertarget{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a7b6dfb74a4d0f181e3f9beb7ff6060e7}\label{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a7b6dfb74a4d0f181e3f9beb7ff6060e7}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_ANALOG\_LEFT\_Y@{E\_CONTROLLER\_ANALOG\_LEFT\_Y}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_ANALOG\_LEFT\_Y@{E\_CONTROLLER\_ANALOG\_LEFT\_Y}}}\mbox{\Hypertarget{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a8ec631edbbf240ca4077cc912674f69e}\label{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a8ec631edbbf240ca4077cc912674f69e}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_ANALOG\_RIGHT\_X@{E\_CONTROLLER\_ANALOG\_RIGHT\_X}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_ANALOG\_RIGHT\_X@{E\_CONTROLLER\_ANALOG\_RIGHT\_X}}}\mbox{\Hypertarget{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a51483614df84242d84c8535aaa77c2a7}\label{namespacepros_aeca43e7a0e44301334f173fbf48a0c52a51483614df84242d84c8535aaa77c2a7}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_ANALOG\_RIGHT\_Y@{E\_CONTROLLER\_ANALOG\_RIGHT\_Y}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_ANALOG\_RIGHT\_Y@{E\_CONTROLLER\_ANALOG\_RIGHT\_Y}}}\mbox{\Hypertarget{namespacepros_aeca43e7a0e44301334f173fbf48a0c52aa692ff2d44c295b4dc42b5a6a6c214ee}\label{namespacepros_aeca43e7a0e44301334f173fbf48a0c52aa692ff2d44c295b4dc42b5a6a6c214ee}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+Y&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbb}\label{namespacepros_a5a778514eb8ce6541261484394664bbb}} 
+\index{pros@{pros}!controller\_digital\_e\_t@{controller\_digital\_e\_t}}
+\index{controller\_digital\_e\_t@{controller\_digital\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{controller\_digital\_e\_t}{controller\_digital\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_a5a778514eb8ce6541261484394664bbb}{pros\+::controller\+\_\+digital\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_L1@{E\_CONTROLLER\_DIGITAL\_L1}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_L1@{E\_CONTROLLER\_DIGITAL\_L1}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbba198c46cfea6347708c09c6c7e89e0925}\label{namespacepros_a5a778514eb8ce6541261484394664bbba198c46cfea6347708c09c6c7e89e0925}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_L2@{E\_CONTROLLER\_DIGITAL\_L2}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_L2@{E\_CONTROLLER\_DIGITAL\_L2}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbba7ef03b99513580c93cd3ae4f7cf489f5}\label{namespacepros_a5a778514eb8ce6541261484394664bbba7ef03b99513580c93cd3ae4f7cf489f5}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_R1@{E\_CONTROLLER\_DIGITAL\_R1}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_R1@{E\_CONTROLLER\_DIGITAL\_R1}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbba0ae3eaa657ccb269af722a3eefc59dcb}\label{namespacepros_a5a778514eb8ce6541261484394664bbba0ae3eaa657ccb269af722a3eefc59dcb}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R1&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_R2@{E\_CONTROLLER\_DIGITAL\_R2}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_R2@{E\_CONTROLLER\_DIGITAL\_R2}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbaaa43af72d457ef46126db94645ee6fca}\label{namespacepros_a5a778514eb8ce6541261484394664bbbaaa43af72d457ef46126db94645ee6fca}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_UP@{E\_CONTROLLER\_DIGITAL\_UP}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_UP@{E\_CONTROLLER\_DIGITAL\_UP}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbba336430eeb4455e97024c7fb8945c968a}\label{namespacepros_a5a778514eb8ce6541261484394664bbba336430eeb4455e97024c7fb8945c968a}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_DOWN@{E\_CONTROLLER\_DIGITAL\_DOWN}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_DOWN@{E\_CONTROLLER\_DIGITAL\_DOWN}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbab6bc5a590c6590684b790a2b32375158}\label{namespacepros_a5a778514eb8ce6541261484394664bbbab6bc5a590c6590684b790a2b32375158}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+D\+O\+WN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_LEFT@{E\_CONTROLLER\_DIGITAL\_LEFT}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_LEFT@{E\_CONTROLLER\_DIGITAL\_LEFT}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbaf334935fb44c14aea2788a178469321f}\label{namespacepros_a5a778514eb8ce6541261484394664bbbaf334935fb44c14aea2788a178469321f}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L\+E\+FT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_RIGHT@{E\_CONTROLLER\_DIGITAL\_RIGHT}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_RIGHT@{E\_CONTROLLER\_DIGITAL\_RIGHT}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbaed7c77cb087185af10faac3257769716}\label{namespacepros_a5a778514eb8ce6541261484394664bbbaed7c77cb087185af10faac3257769716}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R\+I\+G\+HT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_X@{E\_CONTROLLER\_DIGITAL\_X}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_X@{E\_CONTROLLER\_DIGITAL\_X}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbba0b707a84b507c89267de710e2b0773c2}\label{namespacepros_a5a778514eb8ce6541261484394664bbba0b707a84b507c89267de710e2b0773c2}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_B@{E\_CONTROLLER\_DIGITAL\_B}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_B@{E\_CONTROLLER\_DIGITAL\_B}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbadcacb518eb1557949d8d183b3950e795}\label{namespacepros_a5a778514eb8ce6541261484394664bbbadcacb518eb1557949d8d183b3950e795}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+B&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_Y@{E\_CONTROLLER\_DIGITAL\_Y}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_Y@{E\_CONTROLLER\_DIGITAL\_Y}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbaafaeaec0717e509ded40a65d01aeac74}\label{namespacepros_a5a778514eb8ce6541261484394664bbbaafaeaec0717e509ded40a65d01aeac74}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_CONTROLLER\_DIGITAL\_A@{E\_CONTROLLER\_DIGITAL\_A}!pros@{pros}}\index{pros@{pros}!E\_CONTROLLER\_DIGITAL\_A@{E\_CONTROLLER\_DIGITAL\_A}}}\mbox{\Hypertarget{namespacepros_a5a778514eb8ce6541261484394664bbbafa41419fef9b113788e39eb4156e18db}\label{namespacepros_a5a778514eb8ce6541261484394664bbbafa41419fef9b113788e39eb4156e18db}} 
+E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+A&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50}} 
+\index{pros@{pros}!task\_state\_e\_t@{task\_state\_e\_t}}
+\index{task\_state\_e\_t@{task\_state\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{task\_state\_e\_t}{task\_state\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_a0130d477a02c09ea1299afde697dbc50}{pros\+::task\+\_\+state\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_RUNNING@{E\_TASK\_STATE\_RUNNING}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_RUNNING@{E\_TASK\_STATE\_RUNNING}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50a34ce3b18d7dc8e83d61ab2ef9b63cfcb}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50a34ce3b18d7dc8e83d61ab2ef9b63cfcb}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_READY@{E\_TASK\_STATE\_READY}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_READY@{E\_TASK\_STATE\_READY}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50a2bb9a9f41adafe98ea66169590cb3542}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50a2bb9a9f41adafe98ea66169590cb3542}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+A\+DY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_BLOCKED@{E\_TASK\_STATE\_BLOCKED}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_BLOCKED@{E\_TASK\_STATE\_BLOCKED}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50a6f2bebfbf112af0ea08ff9ba85be9cbf}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50a6f2bebfbf112af0ea08ff9ba85be9cbf}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+B\+L\+O\+C\+K\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_SUSPENDED@{E\_TASK\_STATE\_SUSPENDED}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_SUSPENDED@{E\_TASK\_STATE\_SUSPENDED}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50aa69dc47f41a7e1af35fa20bca80f7092}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50aa69dc47f41a7e1af35fa20bca80f7092}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_DELETED@{E\_TASK\_STATE\_DELETED}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_DELETED@{E\_TASK\_STATE\_DELETED}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50a3e1b6b36cdfb359eda7ed8ed312cd6db}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50a3e1b6b36cdfb359eda7ed8ed312cd6db}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+L\+E\+T\+ED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_INVALID@{E\_TASK\_STATE\_INVALID}!pros@{pros}}\index{pros@{pros}!E\_TASK\_STATE\_INVALID@{E\_TASK\_STATE\_INVALID}}}\mbox{\Hypertarget{namespacepros_a0130d477a02c09ea1299afde697dbc50af72b06277b3e055b36f9ff004f20899b}\label{namespacepros_a0130d477a02c09ea1299afde697dbc50af72b06277b3e055b36f9ff004f20899b}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027b}\label{namespacepros_a76845ed0ac5cea358543905530c8027b}} 
+\index{pros@{pros}!notify\_action\_e\_t@{notify\_action\_e\_t}}
+\index{notify\_action\_e\_t@{notify\_action\_e\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{notify\_action\_e\_t}{notify\_action\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_a76845ed0ac5cea358543905530c8027b}{pros\+::notify\+\_\+action\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_NONE@{E\_NOTIFY\_ACTION\_NONE}!pros@{pros}}\index{pros@{pros}!E\_NOTIFY\_ACTION\_NONE@{E\_NOTIFY\_ACTION\_NONE}}}\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027baba1282d21721e91da21e4b5983e59492}\label{namespacepros_a76845ed0ac5cea358543905530c8027baba1282d21721e91da21e4b5983e59492}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_BITS@{E\_NOTIFY\_ACTION\_BITS}!pros@{pros}}\index{pros@{pros}!E\_NOTIFY\_ACTION\_BITS@{E\_NOTIFY\_ACTION\_BITS}}}\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027baf4373d2afca983f8f215605ed4447b8d}\label{namespacepros_a76845ed0ac5cea358543905530c8027baf4373d2afca983f8f215605ed4447b8d}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+B\+I\+TS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_INCR@{E\_NOTIFY\_ACTION\_INCR}!pros@{pros}}\index{pros@{pros}!E\_NOTIFY\_ACTION\_INCR@{E\_NOTIFY\_ACTION\_INCR}}}\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027ba2476aa6f2553264feb0ae8183558d984}\label{namespacepros_a76845ed0ac5cea358543905530c8027ba2476aa6f2553264feb0ae8183558d984}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+CR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_OWRITE@{E\_NOTIFY\_ACTION\_OWRITE}!pros@{pros}}\index{pros@{pros}!E\_NOTIFY\_ACTION\_OWRITE@{E\_NOTIFY\_ACTION\_OWRITE}}}\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027babccc884b01d6d5f09f8fb08f78455766}\label{namespacepros_a76845ed0ac5cea358543905530c8027babccc884b01d6d5f09f8fb08f78455766}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+O\+W\+R\+I\+TE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_NO\_OWRITE@{E\_NOTIFY\_ACTION\_NO\_OWRITE}!pros@{pros}}\index{pros@{pros}!E\_NOTIFY\_ACTION\_NO\_OWRITE@{E\_NOTIFY\_ACTION\_NO\_OWRITE}}}\mbox{\Hypertarget{namespacepros_a76845ed0ac5cea358543905530c8027bae01904ac63a266c2880cc710889cd9bc}\label{namespacepros_a76845ed0ac5cea358543905530c8027bae01904ac63a266c2880cc710889cd9bc}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+O\+W\+R\+I\+TE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_a96ecb409cf0dabb168e164bea419466d}\label{namespacepros_a96ecb409cf0dabb168e164bea419466d}} 
+\index{pros@{pros}!vision\_object\_type@{vision\_object\_type}}
+\index{vision\_object\_type@{vision\_object\_type}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_object\_type}{vision\_object\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_a96ecb409cf0dabb168e164bea419466d}{pros\+::vision\+\_\+object\+\_\+type}}}
+
+
+
+This enumeration defines the different types of objects that can be detected by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_VISION\_OBJECT\_NORMAL@{E\_VISION\_OBJECT\_NORMAL}!pros@{pros}}\index{pros@{pros}!E\_VISION\_OBJECT\_NORMAL@{E\_VISION\_OBJECT\_NORMAL}}}\mbox{\Hypertarget{namespacepros_a96ecb409cf0dabb168e164bea419466dadcee4254a761282c8c6b62ed2fcf5157}\label{namespacepros_a96ecb409cf0dabb168e164bea419466dadcee4254a761282c8c6b62ed2fcf5157}} 
+E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+N\+O\+R\+M\+AL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_VISION\_OBJECT\_COLOR\_CODE@{E\_VISION\_OBJECT\_COLOR\_CODE}!pros@{pros}}\index{pros@{pros}!E\_VISION\_OBJECT\_COLOR\_CODE@{E\_VISION\_OBJECT\_COLOR\_CODE}}}\mbox{\Hypertarget{namespacepros_a96ecb409cf0dabb168e164bea419466da9719f56143589b673159670df484d633}\label{namespacepros_a96ecb409cf0dabb168e164bea419466da9719f56143589b673159670df484d633}} 
+E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+C\+O\+L\+O\+R\+\_\+\+C\+O\+DE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_VISION\_OBJECT\_LINE@{E\_VISION\_OBJECT\_LINE}!pros@{pros}}\index{pros@{pros}!E\_VISION\_OBJECT\_LINE@{E\_VISION\_OBJECT\_LINE}}}\mbox{\Hypertarget{namespacepros_a96ecb409cf0dabb168e164bea419466daeb6f529f27f55bd396d0c14b88b7c33c}\label{namespacepros_a96ecb409cf0dabb168e164bea419466daeb6f529f27f55bd396d0c14b88b7c33c}} 
+E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+NE&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}\label{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}} 
+\index{pros@{pros}!vision\_zero@{vision\_zero}}
+\index{vision\_zero@{vision\_zero}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_zero}{vision\_zero}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacepros_a3122e259ddb2a8c29897aca51e29acc0}{pros\+::vision\+\_\+zero}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_VISION\_ZERO\_TOPLEFT@{E\_VISION\_ZERO\_TOPLEFT}!pros@{pros}}\index{pros@{pros}!E\_VISION\_ZERO\_TOPLEFT@{E\_VISION\_ZERO\_TOPLEFT}}}\mbox{\Hypertarget{namespacepros_a3122e259ddb2a8c29897aca51e29acc0a5f564e11fbebec786a4ad063953aa669}\label{namespacepros_a3122e259ddb2a8c29897aca51e29acc0a5f564e11fbebec786a4ad063953aa669}} 
+E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+Z\+E\+R\+O\+\_\+\+T\+O\+P\+L\+E\+FT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_VISION\_ZERO\_CENTER@{E\_VISION\_ZERO\_CENTER}!pros@{pros}}\index{pros@{pros}!E\_VISION\_ZERO\_CENTER@{E\_VISION\_ZERO\_CENTER}}}\mbox{\Hypertarget{namespacepros_a3122e259ddb2a8c29897aca51e29acc0ab4b13b80c633f1e624701db0b4aabbfd}\label{namespacepros_a3122e259ddb2a8c29897aca51e29acc0ab4b13b80c633f1e624701db0b4aabbfd}} 
+E\+\_\+\+V\+I\+S\+I\+O\+N\+\_\+\+Z\+E\+R\+O\+\_\+\+C\+E\+N\+T\+ER&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespacepros_a69a2fc200d55441496a9a04449abc21f}\label{namespacepros_a69a2fc200d55441496a9a04449abc21f}} 
+\index{pros@{pros}!\_\_attribute\_\_@{\_\_attribute\_\_}}
+\index{\_\_attribute\_\_@{\_\_attribute\_\_}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{\_\_attribute\_\_()}{\_\_attribute\_\_()}}
+{\footnotesize\ttfamily struct pros\+::\+\_\+\+\_\+attribute\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{(\+\_\+\+\_\+packed\+\_\+\+\_\+)}]{ }\end{DoxyParamCaption})}
+
+
+
+This structure contains the parameters used by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor to detect objects. 
+
+This structure contains a descriptor of an object detected by the \mbox{\hyperlink{classpros_1_1Vision}{Vision}} Sensor. 
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{namespacepros_aaa1bd3064cd7cc2b49ed275ff8613594}\label{namespacepros_aaa1bd3064cd7cc2b49ed275ff8613594}} 
+\index{pros@{pros}!vision\_signature\_s\_t@{vision\_signature\_s\_t}}
+\index{vision\_signature\_s\_t@{vision\_signature\_s\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_signature\_s\_t}{vision\_signature\_s\_t}}
+{\footnotesize\ttfamily pros\+::vision\+\_\+signature\+\_\+s\+\_\+t}
+
+\mbox{\Hypertarget{namespacepros_a4cda7f01c0dd458d4ef3ee5bd769c8f1}\label{namespacepros_a4cda7f01c0dd458d4ef3ee5bd769c8f1}} 
+\index{pros@{pros}!vision\_object\_s\_t@{vision\_object\_s\_t}}
+\index{vision\_object\_s\_t@{vision\_object\_s\_t}!pros@{pros}}
+\doxysubsubsection{\texorpdfstring{vision\_object\_s\_t}{vision\_object\_s\_t}}
+{\footnotesize\ttfamily pros\+::vision\+\_\+object\+\_\+s\+\_\+t}
 

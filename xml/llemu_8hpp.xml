@@ -5,6 +5,7 @@
     <includes local="no">cstdint</includes>
     <includes local="no">string</includes>
     <includes refid="llemu_8h" local="yes">pros/llemu.h</includes>
+    <includedby refid="api_8h" local="yes">pros/include/api.h</includedby>
     <incdepgraph>
       <node id="6">
         <label>stdbool.h</label>
@@ -42,6 +43,44 @@
         </childnode>
       </node>
     </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>pros/include/pros/llemu.hpp</label>
+        <link refid="llemu_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>pros/include/kapi.h</label>
+        <link refid="kapi_8h"/>
+      </node>
+      <node id="6">
+        <label>pros/include/pros/api_legacy.h</label>
+        <link refid="api__legacy_8h"/>
+      </node>
+      <node id="4">
+        <label>pros/include/pros/apix.h</label>
+        <link refid="apix_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>pros/include/api.h</label>
+        <link refid="api_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>pros/include/main.h</label>
+        <link refid="main_8h"/>
+      </node>
+    </invincdepgraph>
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1lcd">pros::lcd</innernamespace>
       <sectiondef kind="typedef">
@@ -113,7 +152,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Calling this function will clear the entire display, and you will not be able to call any further LLEMU functions until another call to lcd_initialize.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="llemu_8h_1ae618494f080e95b506c0c18cb1ffb407" kindref="member">lcd_initialize()</ref> first.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first.</para>
 <para><simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
 </simplesect>
 </para>
@@ -150,7 +189,7 @@
 <para>Displays a formatted string on the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="llemu_8h_1ae618494f080e95b506c0c18cb1ffb407" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>line</parametername>
@@ -201,7 +240,7 @@
 <para>Displays a string on the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="llemu_8h_1ae618494f080e95b506c0c18cb1ffb407" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>line</parametername>
@@ -239,7 +278,7 @@
 <para>Clears the contents of the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="llemu_8h_1ae618494f080e95b506c0c18cb1ffb407" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
 </simplesect>
 </para>
@@ -261,7 +300,7 @@
 <para>Clears the contents of a line of the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="llemu_8h_1ae618494f080e95b506c0c18cb1ffb407" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>line</parametername>
@@ -285,7 +324,7 @@
         <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
         <name>register_btn0_cb</name>
         <param>
-          <type><ref refid="llemu_8h_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <type>lcd_btn_cb_fn_t</type>
           <declname>cb</declname>
         </param>
         <briefdescription>
@@ -314,7 +353,7 @@
         <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
         <name>register_btn1_cb</name>
         <param>
-          <type><ref refid="llemu_8h_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <type>lcd_btn_cb_fn_t</type>
           <declname>cb</declname>
         </param>
         <briefdescription>
@@ -343,7 +382,7 @@
         <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
         <name>register_btn2_cb</name>
         <param>
-          <type><ref refid="llemu_8h_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <type>lcd_btn_cb_fn_t</type>
           <declname>cb</declname>
         </param>
         <briefdescription>
