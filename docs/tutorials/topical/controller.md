@@ -2,9 +2,9 @@
 
 \note
 For a full list of functions for interacting with the V5 Controller, see its
-[C API](../../api/c/misc.html) and [C++ API](../../api/cpp/misc.html).
+[C API](@ref c-misc) and [C++ API](@ref cpp-misc).
 Feedback from the V5 Controller comes in two forms - analog and digital.
-The analog data comes from the [joysticks](https://en.wikipedia.org/wiki/Analog_stick), 
+The analog data comes from the [joysticks](https://en.wikipedia.org/wiki/Analog_stick),
 and the digital data comes from the buttons.
 
 The analog data is a value in the range of [-127,127], and digital data

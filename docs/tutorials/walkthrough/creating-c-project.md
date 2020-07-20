@@ -11,7 +11,7 @@ Do not change any of the PROS header files in this process. That will cause the 
 included in your project, and will likely prevent compilation. Only modify the extensions of the `.cpp` files.
 
 This will compile your PROS project as C code, and will give you access
-to the [C API](../../api/c/index.html).
+to the [C API](@ref c-index).
 
 If you're interested in combining C and C++, you should read through the
 @ref combining-c-cpp. Please

@@ -1,8 +1,8 @@
 \page adi ADI (3 Wire Ports)
 
-\note 
+\note
 For a full list of functions for interacting with the ADI, see its
-: [C API](../../api/c/adi.html) and [C++ API](../../api/cpp/adi.html).
+: [C API](@ref c-adi) and [C++ API](@ref cpp-adi).
 
 ## Analog Sensors
 
@@ -103,11 +103,12 @@ Encoders must be plugged into the ADI such that the top wire
 is in an odd numbered port (1, 3, 5, 7 or 'A', 'C', 'E', or 'G'),
 and then the bottom wire must be in the next highest port number.
 Encoders are initialized as such:
+
 ```{.c}
  void initialize() {
    encoder = adi_encoder_init(QUAD_TOP_PORT, QUAD_BOTTOM_PORT, false);
  }
- ```
+```
 
 And then used in the following manner:
 
@@ -122,10 +123,11 @@ Ultrasonic sensors must be plugged into the ADI such that the PING wire
 or 'A', 'C', 'E', or 'G'), and then the ECHO wire (the yellow
 INPUT cable) must be in the next highest port number.
 Ultrasonic sensors are initialized as such:
- ```{.c}
+
+```{.c}
 void initialize() {
-   ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
- }
+  ultrasonic = adi_ultrasonic_init(ULTRA_PING_PORT, ULTRA_ECHO_PORT);
+}
 ```
 
 And then used in the following manner:

@@ -2,7 +2,7 @@
 
 \note
 For a full list of functions for interacting with Tasks, see its
-[C API](../../api/c/rtos.html) and [C++ API](../../api/cpp/rtos.html).
+[C API](@ref c-rtos) and [C++ API](@ref cpp-rtos).
 Tasks are a great tool to do multiple things at once, but they can be
 difficult to use properly. The most important thing to remember when
 using tasks is that tasks aren't truly running in the background - they

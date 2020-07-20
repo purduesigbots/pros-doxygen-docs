@@ -2,7 +2,8 @@
 
 \note
 For a full list of functions for interacting with the LLEMU, see its
->[C API](../../api/c/llemu.html) and [C++ API](../../api/cpp/llemu.html).
+
+> [C API](@ref c-llemu) and [C++ API](@ref cpp-llemu).
 
 ## Initialization
 

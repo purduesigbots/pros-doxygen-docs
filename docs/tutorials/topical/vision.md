@@ -2,7 +2,7 @@
 
 \note
 For a full list of functions for interacting with the V5 Vision Sensor, see its
-[C API](../../api/c/vision.html) and [C++ API](../../api/cpp/vision.html).
+[C API](@ref c-vision) and [C++ API](@ref cpp-vision).
 
 ## Setting Signatures
 

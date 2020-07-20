@@ -2,8 +2,8 @@
 
 \note
 For a full list of functions for interacting with Tasks, see its
-[C API](../../api/c/rtos.html) and [C++ API](../../api/cpp/rtos.html).
- Task notifications are a powerful new feature in PROS 3 which allows
+[C API](@ref c-rtos) and [C++ API](@ref cpp-rtos).
+Task notifications are a powerful new feature in PROS 3 which allows
 direct-to-task synchronization. Each task has a 32-bit notification
 value. Each task can block on its own notification (wait for it to
 become non-zero) and any task can update the notification value. Task
