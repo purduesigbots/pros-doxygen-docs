@@ -25,6 +25,8 @@
 \#define \mbox{\hyperlink{misc_8h_a5601e15718be476d66ecaf2cdcbe061f}{competition\+\_\+is\+\_\+connected}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ae54538bebc289953e9238c59788a9649}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+ED}}) != 0)
 \item 
 \#define \mbox{\hyperlink{misc_8h_a6bbebf8507344dd452503249813923c8}{competition\+\_\+is\+\_\+autonomous}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+A\+U\+T\+O\+N\+O\+M\+O\+US}}) != 0)
+\item 
+\#define \mbox{\hyperlink{misc_8h_afe0c8d912448e3987f5a588dc8881da4}{C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+O\+R\+T\+\_\+\+M\+U\+T\+E\+X\+\_\+\+T\+A\+KE}}(id,  port)
 \end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -154,3 +156,28 @@ V5 Competition ~\newline
 \doxysubsubsection{\texorpdfstring{competition\_is\_autonomous}{competition\_is\_autonomous}}
 {\footnotesize\ttfamily \#define competition\+\_\+is\+\_\+autonomous(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+A\+U\+T\+O\+N\+O\+M\+O\+US}}) != 0)}
 
+\mbox{\Hypertarget{misc_8h_afe0c8d912448e3987f5a588dc8881da4}\label{misc_8h_afe0c8d912448e3987f5a588dc8881da4}} 
+\index{misc.h@{misc.h}!CONTROLLER\_PORT\_MUTEX\_TAKE@{CONTROLLER\_PORT\_MUTEX\_TAKE}}
+\index{CONTROLLER\_PORT\_MUTEX\_TAKE@{CONTROLLER\_PORT\_MUTEX\_TAKE}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{CONTROLLER\_PORT\_MUTEX\_TAKE}{CONTROLLER\_PORT\_MUTEX\_TAKE}}
+{\footnotesize\ttfamily \#define C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+O\+R\+T\+\_\+\+M\+U\+T\+E\+X\+\_\+\+T\+A\+KE(\begin{DoxyParamCaption}\item[{}]{id,  }\item[{}]{port }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{switch} (\textcolor{keywordtype}{id}) \{                           \(\backslash\)}
+\DoxyCodeLine{        case \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}}:            \(\backslash\)}
+\DoxyCodeLine{            port = V5\_PORT\_CONTROLLER\_1;    \(\backslash\)}
+\DoxyCodeLine{            break;                          \(\backslash\)}
+\DoxyCodeLine{        case \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a62d367ebc8ce395520d786f5c12614ac}{E\_CONTROLLER\_PARTNER}}:          \(\backslash\)}
+\DoxyCodeLine{            port = V5\_PORT\_CONTROLLER\_2;    \(\backslash\)}
+\DoxyCodeLine{            break;                          \(\backslash\)}
+\DoxyCodeLine{        default:                            \(\backslash\)}
+\DoxyCodeLine{            errno = EINVAL;                 \(\backslash\)}
+\DoxyCodeLine{            return \mbox{\hyperlink{api_8h_a8748a4dfbe487cedaafa15f1ff7f2f38}{PROS\_ERR}};                \(\backslash\)}
+\DoxyCodeLine{    \}                                       \(\backslash\)}
+\DoxyCodeLine{    if (!internal\_port\_mutex\_take(port)) \{  \(\backslash\)}
+\DoxyCodeLine{        errno = EACCES;                     \(\backslash\)}
+\DoxyCodeLine{        return \mbox{\hyperlink{api_8h_a8748a4dfbe487cedaafa15f1ff7f2f38}{PROS\_ERR}};                    \(\backslash\)}
+\DoxyCodeLine{    \}                                       \(\backslash\)}
+
+\end{DoxyCode}

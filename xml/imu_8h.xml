@@ -23,18 +23,18 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
+      <node id="5">
         <label>kapi.h</label>
         <link refid="kapi_8h"/>
       </node>
-      <node id="6">
+      <node id="8">
         <label>pros/api_legacy.h</label>
         <link refid="api__legacy_8h"/>
       </node>
-      <node id="4">
+      <node id="6">
         <label>pros/apix.h</label>
         <link refid="apix_8h"/>
-        <childnode refid="3" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -42,7 +42,13 @@
         <link refid="imu_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>pros/optical.hpp</label>
+        <link refid="optical_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -50,26 +56,49 @@
         <link refid="api_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
-      <node id="7">
+      <node id="9">
         <label>pros/imu.hpp</label>
         <link refid="imu_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="3">
+        <label>pros/optical.h</label>
+        <link refid="optical_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
         <label>main.h</label>
         <link refid="main_8h"/>
       </node>
     </invincdepgraph>
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="imu_8h_1a25e3767f95baf952241c93391c939702" prot="public" static="no">
+        <name>IMU_MINIMUM_DATA_RATE</name>
+        <initializer>5</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="59" column="9" bodyfile="pros/imu.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="namespacepros_1_1c_1a74af1f93aaa6112117b4436b4b1f230d" prot="public" static="no" strong="no">
         <type></type>
@@ -202,7 +231,52 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="75" column="9" declfile="pros/imu.h" declline="75" declcolumn="9"/>
+        <location file="pros/imu.h" line="77" column="9" declfile="pros/imu.h" declline="77" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a73029aa0aa910f9b740ffe6def05e830" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_data_rate</definition>
+        <argsstring>(uint8_t port, uint32_t rate)</argsstring>
+        <name>imu_set_data_rate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>rate</declname>
+        </param>
+        <briefdescription>
+<para>Set the Inertial Sensor&apos;s refresh interval in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</para>
+<para>As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor&apos;s values any faster. However, it will guarantee that the data is as recent as possible.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data refresh interval in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="104" column="9" declfile="pros/imu.h" declline="104" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1aa44bc46059f8aca47f3317320f1cd5bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -234,7 +308,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="95" column="8" declfile="pros/imu.h" declline="95" declcolumn="8"/>
+        <location file="pros/imu.h" line="124" column="8" declfile="pros/imu.h" declline="124" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1acca94d74756713e9ca0bd36490c6acc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -266,7 +340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="116" column="8" declfile="pros/imu.h" declline="116" declcolumn="8"/>
+        <location file="pros/imu.h" line="145" column="8" declfile="pros/imu.h" declline="145" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1afdacdac1c6beeed1cce3829b67ebe473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>quaternion_s_t</type>
@@ -297,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="133" column="16" declfile="pros/imu.h" declline="133" declcolumn="16"/>
+        <location file="pros/imu.h" line="162" column="16" declfile="pros/imu.h" declline="162" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a8d16738ae5c652c2c72479e793f4f09b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>euler_s_t</type>
@@ -328,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="150" column="11" declfile="pros/imu.h" declline="150" declcolumn="11"/>
+        <location file="pros/imu.h" line="179" column="11" declfile="pros/imu.h" declline="179" declcolumn="11"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a44a4f2d6c27854606ca35247b97dc68d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -359,7 +433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="166" column="8" declfile="pros/imu.h" declline="166" declcolumn="8"/>
+        <location file="pros/imu.h" line="195" column="8" declfile="pros/imu.h" declline="195" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1aa913785ee0bf907fafd049145f735e65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -390,7 +464,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="181" column="8" declfile="pros/imu.h" declline="181" declcolumn="8"/>
+        <location file="pros/imu.h" line="210" column="8" declfile="pros/imu.h" declline="210" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1aa1b43b44cf94a724d4917bf363db2299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -421,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="196" column="8" declfile="pros/imu.h" declline="196" declcolumn="8"/>
+        <location file="pros/imu.h" line="225" column="8" declfile="pros/imu.h" declline="225" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1afe88178fca4b6dd69cae69469bb58e8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>imu_gyro_s_t</type>
@@ -452,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="212" column="14" declfile="pros/imu.h" declline="212" declcolumn="14"/>
+        <location file="pros/imu.h" line="241" column="14" declfile="pros/imu.h" declline="241" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1aae2df998074e80a7531de57c1161f47d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>imu_accel_s_t</type>
@@ -483,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="228" column="15" declfile="pros/imu.h" declline="228" declcolumn="15"/>
+        <location file="pros/imu.h" line="257" column="15" declfile="pros/imu.h" declline="257" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a1ccf1cf41bf15e416c89d64093d63764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>imu_status_e_t</type>
@@ -514,7 +588,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="244" column="16" declfile="pros/imu.h" declline="244" declcolumn="16"/>
+        <location file="pros/imu.h" line="273" column="16" declfile="pros/imu.h" declline="273" declcolumn="16"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

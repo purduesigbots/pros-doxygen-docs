@@ -89,6 +89,11 @@ V5</span></a>
             </dt>
             <dd>Get the currently running <a href="classpros_1_1Task.html" class="m-doc">Task</a>.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">static std::uint32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a070827d25e8a07d2124578dcbd638dd0" class="m-doc-self">notify_take</a>(</span><span class="m-doc-wrap">bool clear_on_exit,
+              std::uint32_t timeout)</span></span>
+            </dt>
+            <dd>Waits for a notification to be nonzero.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">static void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afd19e4a13c12c607998bcfc56768ddbc" class="m-doc-self">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span></span>
             </dt>
             <dd>Delays a task for a given number of milliseconds.</dd>
@@ -148,7 +153,7 @@ V5</span></a>
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afff71f31e1cc7d18e78c499dbfa68ca1" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="namespacepros.html#a1d7e0825b8d8876e8cd8ece3f9115293" class="m-doc">task_<wbr />t</a> in)</span></span>
+              <span class="m-doc-wrap-bumper"><a href="classpros_1_1Task.html" class="m-doc">Task</a>&amp; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6511e9f551c6e751f3b553f6235e3080" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="namespacepros.html#a1d7e0825b8d8876e8cd8ece3f9115293" class="m-doc">task_<wbr />t</a> in)</span></span>
             </dt>
             <dd>Creates a new task and add it to the list of tasks that are ready to run.</dd>
             <dt>
@@ -190,11 +195,6 @@ V5</span></a>
             </dt>
             <dd>Sends a notification to a task, optionally performing some action.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">std::uint32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a38e1647cdfacc212a4c5e27771a0c531" class="m-doc-self">notify_take</a>(</span><span class="m-doc-wrap">bool clear_on_exit,
-              std::uint32_t timeout)</span></span>
-            </dt>
-            <dd>Waits for a notification to be nonzero.</dd>
-            <dt>
               <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52171b4725e8104845680ef6a579a078" class="m-doc-self">notify_clear</a>(</span><span class="m-doc-wrap">void)</span></span>
             </dt>
             <dd>Clears the notification for a task.</dd>
@@ -202,6 +202,35 @@ V5</span></a>
         </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="a070827d25e8a07d2124578dcbd638dd0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static std::uint32_t pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a070827d25e8a07d2124578dcbd638dd0" class="m-doc-self">notify_take</a>(</span><span class="m-doc-wrap">bool clear_on_exit,
+              std::uint32_t timeout)</span></span>
+            </h3>
+            <p>Waits for a notification to be nonzero.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">clear_on_exit</td>
+                  <td>If true (1), then the notification value is cleared. If false (0), then the notification value is decremented.</td>
+                </tr>
+                <tr>
+                  <td>timeout</td>
+                  <td>Specifies the amount of time to be spent waiting for a notification to occur.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The value of the task&#x27;s notification value before it is decremented or cleared</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p>
+          </div></section>
           <section class="m-doc-details" id="afd19e4a13c12c607998bcfc56768ddbc"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afd19e4a13c12c607998bcfc56768ddbc" class="m-doc-self">delay</a>(</span><span class="m-doc-wrap">const std::uint32_t milliseconds)</span></span>
@@ -403,9 +432,9 @@ V5</span></a>
               </tbody>
             </table>
           </div></section>
-          <section class="m-doc-details" id="afff71f31e1cc7d18e78c499dbfa68ca1"><div>
+          <section class="m-doc-details" id="a6511e9f551c6e751f3b553f6235e3080"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">void pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afff71f31e1cc7d18e78c499dbfa68ca1" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap">const <a href="namespacepros.html#a1d7e0825b8d8876e8cd8ece3f9115293" class="m-doc">task_<wbr />t</a> in)</span></span>
+              <span class="m-doc-wrap-bumper"><a href="classpros_1_1Task.html" class="m-doc">Task</a>&amp; pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a6511e9f551c6e751f3b553f6235e3080" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="namespacepros.html#a1d7e0825b8d8876e8cd8ece3f9115293" class="m-doc">task_<wbr />t</a> in)</span></span>
             </h3>
             <p>Creates a new task and add it to the list of tasks that are ready to run.</p>
             <table class="m-table m-fullwidth m-flat">
@@ -535,35 +564,6 @@ V5</span></a>
               </tfoot>
             </table>
 <p>Will also retrieve the value of the notification in the target task before modifying the notification value.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p>
-          </div></section>
-          <section class="m-doc-details" id="a38e1647cdfacc212a4c5e27771a0c531"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::uint32_t pros::<wbr />Task::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a38e1647cdfacc212a4c5e27771a0c531" class="m-doc-self">notify_take</a>(</span><span class="m-doc-wrap">bool clear_on_exit,
-              std::uint32_t timeout)</span></span>
-            </h3>
-            <p>Waits for a notification to be nonzero.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">clear_on_exit</td>
-                  <td>If true (1), then the notification value is cleared. If false (0), then the notification value is decremented.</td>
-                </tr>
-                <tr>
-                  <td>timeout</td>
-                  <td>Specifies the amount of time to be spent waiting for a notification to occur.</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>The value of the task&#x27;s notification value before it is decremented or cleared</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p>
           </div></section>
           <section class="m-doc-details" id="a52171b4725e8104845680ef6a579a078"><div>
             <h3>

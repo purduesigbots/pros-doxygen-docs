@@ -17,7 +17,7 @@
 \begin{DoxyCompactList}\small\item\em Creates a new task and add it to the list of tasks that are ready to run. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classpros_1_1Task_a966220f76c100aa2fbfdb221d032ddd9}{Task}} (\mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
 \begin{DoxyCompactList}\small\item\em Create a C++ task object from a task handle. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classpros_1_1Task_afff71f31e1cc7d18e78c499dbfa68ca1}{operator=}} (const \mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} in)
+\mbox{\hyperlink{classpros_1_1Task}{Task}} \& \mbox{\hyperlink{classpros_1_1Task_a6511e9f551c6e751f3b553f6235e3080}{operator=}} (\mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} in)
 \begin{DoxyCompactList}\small\item\em Creates a new task and add it to the list of tasks that are ready to run. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classpros_1_1Task_a1fcb45e5d2428352eb36b487d1d4eea3}{remove}} ()
 \begin{DoxyCompactList}\small\item\em Removes the \mbox{\hyperlink{classpros_1_1Task}{Task}} from the R\+T\+OS real time kernel\textquotesingle{}s management. \end{DoxyCompactList}\item 
@@ -39,8 +39,6 @@ std\+::uint32\+\_\+t \mbox{\hyperlink{classpros_1_1Task_a28c0bf81d14b00d44fbe300
 \begin{DoxyCompactList}\small\item\em Sends a simple notification to task and increments the notification counter. \end{DoxyCompactList}\item 
 std\+::uint32\+\_\+t \mbox{\hyperlink{classpros_1_1Task_a8416442a23f42ca38044c9b2dec99316}{notify\+\_\+ext}} (std\+::uint32\+\_\+t value, \mbox{\hyperlink{namespacepros_a42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}} action, std\+::uint32\+\_\+t $\ast$prev\+\_\+value)
 \begin{DoxyCompactList}\small\item\em Sends a notification to a task, optionally performing some action. \end{DoxyCompactList}\item 
-std\+::uint32\+\_\+t \mbox{\hyperlink{classpros_1_1Task_a38e1647cdfacc212a4c5e27771a0c531}{notify\+\_\+take}} (bool clear\+\_\+on\+\_\+exit, std\+::uint32\+\_\+t timeout)
-\begin{DoxyCompactList}\small\item\em Waits for a notification to be nonzero. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classpros_1_1Task_a52171b4725e8104845680ef6a579a078}{notify\+\_\+clear}} (void)
 \begin{DoxyCompactList}\small\item\em Clears the notification for a task. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
@@ -48,6 +46,8 @@ bool \mbox{\hyperlink{classpros_1_1Task_a52171b4725e8104845680ef6a579a078}{notif
 \item 
 static \mbox{\hyperlink{classpros_1_1Task}{Task}} \mbox{\hyperlink{classpros_1_1Task_a6bc440ea23792294f5f41f00b3e4b5cd}{current}} ()
 \begin{DoxyCompactList}\small\item\em Get the currently running \mbox{\hyperlink{classpros_1_1Task}{Task}}. \end{DoxyCompactList}\item 
+static std\+::uint32\+\_\+t \mbox{\hyperlink{classpros_1_1Task_a070827d25e8a07d2124578dcbd638dd0}{notify\+\_\+take}} (bool clear\+\_\+on\+\_\+exit, std\+::uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Waits for a notification to be nonzero. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classpros_1_1Task_afd19e4a13c12c607998bcfc56768ddbc}{delay}} (const std\+::uint32\+\_\+t milliseconds)
 \begin{DoxyCompactList}\small\item\em Delays a task for a given number of milliseconds. \end{DoxyCompactList}\item 
 static void \mbox{\hyperlink{classpros_1_1Task_afcfc4faff77d7ca1f4c080d1e8c508fa}{delay\+\_\+until}} (std\+::uint32\+\_\+t $\ast$const prev\+\_\+time, const std\+::uint32\+\_\+t delta)
@@ -173,11 +173,11 @@ Create a C++ task object from a task handle.
 
 Get the currently running \mbox{\hyperlink{classpros_1_1Task}{Task}}. 
 
-\mbox{\Hypertarget{classpros_1_1Task_afff71f31e1cc7d18e78c499dbfa68ca1}\label{classpros_1_1Task_afff71f31e1cc7d18e78c499dbfa68ca1}} 
+\mbox{\Hypertarget{classpros_1_1Task_a6511e9f551c6e751f3b553f6235e3080}\label{classpros_1_1Task_a6511e9f551c6e751f3b553f6235e3080}} 
 \index{Task@{Task}!operator=@{operator=}}
 \index{operator=@{operator=}!Task@{Task}}
 \doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
-{\footnotesize\ttfamily void operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{in }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1Task}{Task}}\& operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{in }\end{DoxyParamCaption})}
 
 
 
@@ -332,11 +332,11 @@ See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\t
 \begin{DoxyReturn}{Returns}
 Dependent on the notification action. For N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+W\+R\+I\+TE\+: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+ON values\+: always return 0 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1Task_a38e1647cdfacc212a4c5e27771a0c531}\label{classpros_1_1Task_a38e1647cdfacc212a4c5e27771a0c531}} 
+\mbox{\Hypertarget{classpros_1_1Task_a070827d25e8a07d2124578dcbd638dd0}\label{classpros_1_1Task_a070827d25e8a07d2124578dcbd638dd0}} 
 \index{Task@{Task}!notify\_take@{notify\_take}}
 \index{notify\_take@{notify\_take}!Task@{Task}}
 \doxysubsubsection{\texorpdfstring{notify\_take()}{notify\_take()}}
-{\footnotesize\ttfamily std\+::uint32\+\_\+t notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{std\+::uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily static std\+::uint32\+\_\+t notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{std\+::uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 

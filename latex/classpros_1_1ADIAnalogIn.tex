@@ -13,36 +13,56 @@ Inheritance diagram for A\+D\+I\+Analog\+In\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classpros_1_1ADIAnalogIn_a222dcb7a3b5dca6481232c63761bdf9c}{A\+D\+I\+Analog\+In}} (std\+::uint8\+\_\+t port)
+\mbox{\hyperlink{classpros_1_1ADIAnalogIn_a399da39531465667a539555d0afa953d}{A\+D\+I\+Analog\+In}} (std\+::uint8\+\_\+t adi\+\_\+port)
 \begin{DoxyCompactList}\small\item\em Configures an A\+DI port to act as an Analog Input. \end{DoxyCompactList}\item 
-std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2dfcd1a6242c9f517db2adb9a09c146f}{calibrate}} (void) const
+\mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2a26928e153eb08641528b46c1da1791}{A\+D\+I\+Analog\+In}} (\mbox{\hyperlink{namespacepros_aa8b90563c470741ebd760aeacfd90599}{ext\+\_\+adi\+\_\+port\+\_\+pair\+\_\+t}} port\+\_\+pair)
+\begin{DoxyCompactList}\small\item\em Configures an A\+DI port on an adi expander to act as an Analog Input. \end{DoxyCompactList}\item 
+std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2eb97b12f7be6fd44db629dcfe9a4fc4}{calibrate}} () const
 \begin{DoxyCompactList}\small\item\em Calibrates the analog sensor on the specified port and returns the new calibration value. \end{DoxyCompactList}\item 
-std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_af5557b0ce662f01e37e20c0f91a258a4}{get\+\_\+value\+\_\+calibrated}} (void) const
+std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a074cb99ddc5bcf9b461c204a5a5fad2c}{get\+\_\+value\+\_\+calibrated}} () const
 \begin{DoxyCompactList}\small\item\em Gets the 12 bit calibrated value of an analog input port. \end{DoxyCompactList}\item 
-std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a9d7e4d8301f7d5a0b4d5706762ae6b75}{get\+\_\+value\+\_\+calibrated\+\_\+\+HR}} (void) const
+std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2d4a70c5c23555ddf8ea24318d7a8731}{get\+\_\+value\+\_\+calibrated\+\_\+\+HR}} () const
 \begin{DoxyCompactList}\small\item\em Gets the 16 bit calibrated value of an analog input port. \end{DoxyCompactList}\item 
-std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_abd4f519da6ff7ea91ef0d9a55082e2c7}{get\+\_\+value}} (void) const
+std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a60987c8e4946650cf9aa40f8e8345f01}{get\+\_\+value}} () const
 \begin{DoxyCompactList}\small\item\em Gets the 12-\/bit value of the specified port. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a222dcb7a3b5dca6481232c63761bdf9c}\label{classpros_1_1ADIAnalogIn_a222dcb7a3b5dca6481232c63761bdf9c}} 
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a399da39531465667a539555d0afa953d}\label{classpros_1_1ADIAnalogIn_a399da39531465667a539555d0afa953d}} 
 \index{ADIAnalogIn@{ADIAnalogIn}!ADIAnalogIn@{ADIAnalogIn}}
 \index{ADIAnalogIn@{ADIAnalogIn}!ADIAnalogIn@{ADIAnalogIn}}
-\doxysubsubsection{\texorpdfstring{ADIAnalogIn()}{ADIAnalogIn()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}} (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{ADIAnalogIn()}{ADIAnalogIn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}} (\begin{DoxyParamCaption}\item[{std\+::uint8\+\_\+t}]{adi\+\_\+port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
 
 
 
 Configures an A\+DI port to act as an Analog Input. 
 
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of A\+DI Ports
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ Either the A\+DI port value or the smart port value is not within its valid range (A\+DI port\+: 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, or \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}; smart port\+: 1-\/21).
 
 
 \begin{DoxyParams}{Parameters}
-{\em port} & The A\+DI port number (from 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}) to configure \\
+{\em adi\+\_\+port} & The A\+DI port number (from 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}) to configure\\
 \hline
-{\em type} & The configuration type for the port\\
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a2a26928e153eb08641528b46c1da1791}\label{classpros_1_1ADIAnalogIn_a2a26928e153eb08641528b46c1da1791}} 
+\index{ADIAnalogIn@{ADIAnalogIn}!ADIAnalogIn@{ADIAnalogIn}}
+\index{ADIAnalogIn@{ADIAnalogIn}!ADIAnalogIn@{ADIAnalogIn}}
+\doxysubsubsection{\texorpdfstring{ADIAnalogIn()}{ADIAnalogIn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1ADIAnalogIn}{A\+D\+I\+Analog\+In}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespacepros_aa8b90563c470741ebd760aeacfd90599}{ext\+\_\+adi\+\_\+port\+\_\+pair\+\_\+t}}}]{port\+\_\+pair }\end{DoxyParamCaption})}
+
+
+
+Configures an A\+DI port on an adi expander to act as an Analog Input. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ Either the A\+DI port value or the smart port value is not within its valid range (A\+DI port\+: 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, or \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}; smart port\+: 1-\/21).
+
+
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+pair} & The pair of the smart port number (from 1-\/22) and the A\+DI port number (from 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}) to configure\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -51,17 +71,17 @@ This function uses the following values of errno when an error state is reached\
 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a2dfcd1a6242c9f517db2adb9a09c146f}\label{classpros_1_1ADIAnalogIn_a2dfcd1a6242c9f517db2adb9a09c146f}} 
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a2eb97b12f7be6fd44db629dcfe9a4fc4}\label{classpros_1_1ADIAnalogIn_a2eb97b12f7be6fd44db629dcfe9a4fc4}} 
 \index{ADIAnalogIn@{ADIAnalogIn}!calibrate@{calibrate}}
 \index{calibrate@{calibrate}!ADIAnalogIn@{ADIAnalogIn}}
 \doxysubsubsection{\texorpdfstring{calibrate()}{calibrate()}}
-{\footnotesize\ttfamily std\+::int32\+\_\+t calibrate (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::int32\+\_\+t calibrate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Calibrates the analog sensor on the specified port and returns the new calibration value. 
 
-This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.\+5 s period of calibration. The average value thus calculated is returned and stored for later calls to the \mbox{\hyperlink{classpros_1_1ADIAnalogIn_af5557b0ce662f01e37e20c0f91a258a4}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated()}} and \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a9d7e4d8301f7d5a0b4d5706762ae6b75}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated\+\_\+\+H\+R()}} functions. These functions will return the difference between this value and the current sensor value when called.
+This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.\+5 s period of calibration. The average value thus calculated is returned and stored for later calls to the \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a074cb99ddc5bcf9b461c204a5a5fad2c}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated()}} and \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2d4a70c5c23555ddf8ea24318d7a8731}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated\+\_\+\+H\+R()}} functions. These functions will return the difference between this value and the current sensor value when called.
 
 Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).
 
@@ -70,34 +90,34 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The average sensor value computed by this function 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_af5557b0ce662f01e37e20c0f91a258a4}\label{classpros_1_1ADIAnalogIn_af5557b0ce662f01e37e20c0f91a258a4}} 
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a074cb99ddc5bcf9b461c204a5a5fad2c}\label{classpros_1_1ADIAnalogIn_a074cb99ddc5bcf9b461c204a5a5fad2c}} 
 \index{ADIAnalogIn@{ADIAnalogIn}!get\_value\_calibrated@{get\_value\_calibrated}}
 \index{get\_value\_calibrated@{get\_value\_calibrated}!ADIAnalogIn@{ADIAnalogIn}}
 \doxysubsubsection{\texorpdfstring{get\_value\_calibrated()}{get\_value\_calibrated()}}
-{\footnotesize\ttfamily std\+::int32\+\_\+t get\+\_\+value\+\_\+calibrated (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::int32\+\_\+t get\+\_\+value\+\_\+calibrated (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Gets the 12 bit calibrated value of an analog input port. 
 
-The \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2dfcd1a6242c9f517db2adb9a09c146f}{pros\+::\+A\+D\+I\+Analog\+In\+::calibrate()}} function must be run first. This function is inappropriate for sensor values intended for integration, as round-\/off error can accumulate causing drift over time. Use \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a9d7e4d8301f7d5a0b4d5706762ae6b75}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated\+\_\+\+H\+R()}} instead.
+The \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2eb97b12f7be6fd44db629dcfe9a4fc4}{pros\+::\+A\+D\+I\+Analog\+In\+::calibrate()}} function must be run first. This function is inappropriate for sensor values intended for integration, as round-\/off error can accumulate causing drift over time. Use \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2d4a70c5c23555ddf8ea24318d7a8731}{pros\+::\+A\+D\+I\+Analog\+In\+::get\+\_\+value\+\_\+calibrated\+\_\+\+H\+R()}} instead.
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port is not configured as an analog input
 
 \begin{DoxyReturn}{Returns}
 The difference of the sensor value from its calibrated default from -\/4095 to 4095 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a9d7e4d8301f7d5a0b4d5706762ae6b75}\label{classpros_1_1ADIAnalogIn_a9d7e4d8301f7d5a0b4d5706762ae6b75}} 
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a2d4a70c5c23555ddf8ea24318d7a8731}\label{classpros_1_1ADIAnalogIn_a2d4a70c5c23555ddf8ea24318d7a8731}} 
 \index{ADIAnalogIn@{ADIAnalogIn}!get\_value\_calibrated\_HR@{get\_value\_calibrated\_HR}}
 \index{get\_value\_calibrated\_HR@{get\_value\_calibrated\_HR}!ADIAnalogIn@{ADIAnalogIn}}
 \doxysubsubsection{\texorpdfstring{get\_value\_calibrated\_HR()}{get\_value\_calibrated\_HR()}}
-{\footnotesize\ttfamily std\+::int32\+\_\+t get\+\_\+value\+\_\+calibrated\+\_\+\+HR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily std\+::int32\+\_\+t get\+\_\+value\+\_\+calibrated\+\_\+\+HR (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 
 
 Gets the 16 bit calibrated value of an analog input port. 
 
-The \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2dfcd1a6242c9f517db2adb9a09c146f}{pros\+::\+A\+D\+I\+Analog\+In\+::calibrate()}} function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-\/off, and should not be used on a sensor such as a line tracker or potentiometer.
+The \mbox{\hyperlink{classpros_1_1ADIAnalogIn_a2eb97b12f7be6fd44db629dcfe9a4fc4}{pros\+::\+A\+D\+I\+Analog\+In\+::calibrate()}} function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-\/off, and should not be used on a sensor such as a line tracker or potentiometer.
 
 The value returned actually has 16 bits of \char`\"{}precision\char`\"{}, even though the A\+DC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.
 
@@ -106,7 +126,7 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyReturn}{Returns}
 The difference of the sensor value from its calibrated default from -\/16384 to 16384 
 \end{DoxyReturn}
-\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_abd4f519da6ff7ea91ef0d9a55082e2c7}\label{classpros_1_1ADIAnalogIn_abd4f519da6ff7ea91ef0d9a55082e2c7}} 
+\mbox{\Hypertarget{classpros_1_1ADIAnalogIn_a60987c8e4946650cf9aa40f8e8345f01}\label{classpros_1_1ADIAnalogIn_a60987c8e4946650cf9aa40f8e8345f01}} 
 \index{ADIAnalogIn@{ADIAnalogIn}!get\_value@{get\_value}}
 \index{get\_value@{get\_value}!ADIAnalogIn@{ADIAnalogIn}}
 \doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
