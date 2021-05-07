@@ -5739,7 +5739,7 @@ This function uses the following values of errno when an error state is reached:
 <para>Get the Inertial Sensor&apos;s heading relative to the initial direction of its x-axis. </para>
         </briefdescription>
         <detaileddescription>
-<para>This value is bounded by (-360,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</para>
+<para>This value is bounded by [0,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -5830,7 +5830,7 @@ This function uses the following values of errno when an error state is reached:
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s pitch angle. </para>
+<para>Get the Inertial Sensor&apos;s pitch angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -5861,7 +5861,7 @@ This function uses the following values of errno when an error state is reached:
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s roll angle. </para>
+<para>Get the Inertial Sensor&apos;s roll angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -5892,7 +5892,7 @@ This function uses the following values of errno when an error state is reached:
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s yaw angle. </para>
+<para>Get the Inertial Sensor&apos;s yaw angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -6005,6 +6005,482 @@ This function uses the following values of errno when an error state is reached:
         <inbodydescription>
         </inbodydescription>
         <location file="pros/imu.h" line="273" column="16" declfile="pros/imu.h" declline="273" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a7613cb8ad7dbe92244f862f038040077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_heading</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s heading to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="294" column="9" declfile="pros/imu.h" declline="294" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a33ea7dacd1ee92bc6bf011cb109cadd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_rotation</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s rotation to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="310" column="9" declfile="pros/imu.h" declline="310" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a0ec5652dee78d7b6582436ca72753eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_pitch</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s pitch to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="326" column="9" declfile="pros/imu.h" declline="326" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a1c0d6e494b558d012fc29c2e0f565d55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_roll</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s roll to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="342" column="9" declfile="pros/imu.h" declline="342" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a8d220ae04071a4ac25be52108e561166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_yaw</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s yaw to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="358" column="9" declfile="pros/imu.h" declline="358" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aee27c5a8ea8e51afee3c80e4ef3d1e05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_euler</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Reset all 3 euler values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="374" column="9" declfile="pros/imu.h" declline="374" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a5ae349cec6a99b52cf632267f1c2c332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets all 5 values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="390" column="9" declfile="pros/imu.h" declline="390" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1abd5e3389b5026622463ccf5e9a9ee5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_euler</definition>
+        <argsstring>(uint8_t port, euler_s_t target)</argsstring>
+        <name>imu_set_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="namespacepros_1_1c_1a93e80020ec907b7e11ac7166e5d01c55" kindref="member">euler_s_t</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s euler values to target euler values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will default to +/- 180 if target exceeds +/- 180.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target euler values for the euler values to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="410" column="9" declfile="pros/imu.h" declline="410" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a33890996b538599d7c635a895e3da8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_rotation</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s rotation to target value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the rotation value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="428" column="9" declfile="pros/imu.h" declline="428" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a35127112436baa43237fc52c683a9e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_heading</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s heading to target value Target will default to 360 if above 360 and default to 0 if below 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the heading value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="447" column="9" declfile="pros/imu.h" declline="447" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a87a5b4f797d70c502fd862320ba733da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_pitch</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s pitch to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the pitch value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="466" column="9" declfile="pros/imu.h" declline="466" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a52386f7153795d5be0acda3352600834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_roll</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s roll to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the roll value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="485" column="9" declfile="pros/imu.h" declline="485" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aee4fcba55ec253943b6396c8c1e24c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_yaw</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s yaw to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the yaw value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="504" column="9" declfile="pros/imu.h" declline="504" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af43a5a9cea1850757c8f0cc180604705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -7510,7 +7986,7 @@ This function uses the following values of errno when an error state is reached:
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current position in centidegrees. </para>
+<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current angle in centidegrees (0-36000) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
@@ -7523,7 +7999,7 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The angle value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The angle value (0-36000) or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -7656,6 +8132,26 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/rtos.h" line="126" column="10" declfile="pros/rtos.h" declline="126" declcolumn="10"/>
       </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aea905a8de368ac9acc9ed04c66ebb84c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t pros::c::micros</definition>
+        <argsstring>(void)</argsstring>
+        <name>micros</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the number of microseconds since PROS initialized,. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of microseconds since PROS initialized </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="133" column="10" declfile="pros/rtos.h" declline="133" declcolumn="10"/>
+      </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ab7f6e243b717091fec2bac6405bd3d56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1a1d7e0825b8d8876e8cd8ece3f9115293" kindref="member">task_t</ref></type>
         <definition>task_t pros::c::task_create</definition>
@@ -7733,7 +8229,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="155" column="8" declfile="pros/rtos.h" declline="155" declcolumn="8"/>
+        <location file="pros/rtos.h" line="162" column="8" declfile="pros/rtos.h" declline="162" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a9f5bd026f982b738d8761c443af586da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7763,7 +8259,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="169" column="6" declfile="pros/rtos.h" declline="169" declcolumn="6"/>
+        <location file="pros/rtos.h" line="176" column="6" declfile="pros/rtos.h" declline="176" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a4954a1ed8e37fd9b758ff98bf3ecf7d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7792,7 +8288,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="181" column="6" declfile="pros/rtos.h" declline="181" declcolumn="6"/>
+        <location file="pros/rtos.h" line="188" column="6" declfile="pros/rtos.h" declline="188" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a6a62f5325d65f95436762552df547d73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7809,7 +8305,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="183" column="6" declfile="pros/rtos.h" declline="183" declcolumn="6"/>
+        <location file="pros/rtos.h" line="190" column="6" declfile="pros/rtos.h" declline="190" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a151eaf730a10d101bff15013a76b9aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7851,7 +8347,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="198" column="6" declfile="pros/rtos.h" declline="198" declcolumn="6"/>
+        <location file="pros/rtos.h" line="205" column="6" declfile="pros/rtos.h" declline="205" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ab49c228af50a4677d45e4622fb5f982b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -7881,7 +8377,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="208" column="10" declfile="pros/rtos.h" declline="208" declcolumn="10"/>
+        <location file="pros/rtos.h" line="215" column="10" declfile="pros/rtos.h" declline="215" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a6f4a1c359ab23c7811ed524aa8f71e06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7922,7 +8418,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="222" column="6" declfile="pros/rtos.h" declline="222" declcolumn="6"/>
+        <location file="pros/rtos.h" line="229" column="6" declfile="pros/rtos.h" declline="229" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a2e78836b08bab39de392cc6583383c5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1a23d5ffd47ed255206f177fe9d891335b" kindref="member">task_state_e_t</ref></type>
@@ -7952,7 +8448,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="232" column="16" declfile="pros/rtos.h" declline="232" declcolumn="16"/>
+        <location file="pros/rtos.h" line="239" column="16" declfile="pros/rtos.h" declline="239" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a03b6c85287d209a26f882813f3a29eee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -7980,7 +8476,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="240" column="6" declfile="pros/rtos.h" declline="240" declcolumn="6"/>
+        <location file="pros/rtos.h" line="247" column="6" declfile="pros/rtos.h" declline="247" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af44f1148d2f7ede99ebd023479812fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -8008,7 +8504,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="248" column="6" declfile="pros/rtos.h" declline="248" declcolumn="6"/>
+        <location file="pros/rtos.h" line="255" column="6" declfile="pros/rtos.h" declline="255" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1abb3a36bf47f6df9c981b1d585b922497" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -8029,7 +8525,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="258" column="10" declfile="pros/rtos.h" declline="258" declcolumn="10"/>
+        <location file="pros/rtos.h" line="265" column="10" declfile="pros/rtos.h" declline="265" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a1000d8e18af587837b65ab74b79d1cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -8059,7 +8555,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="268" column="6" declfile="pros/rtos.h" declline="268" declcolumn="6"/>
+        <location file="pros/rtos.h" line="275" column="6" declfile="pros/rtos.h" declline="275" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ace3de5c48a2d91b9843ac9bd62a62d91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1a1d7e0825b8d8876e8cd8ece3f9115293" kindref="member">task_t</ref></type>
@@ -8090,7 +8586,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="280" column="8" declfile="pros/rtos.h" declline="280" declcolumn="8"/>
+        <location file="pros/rtos.h" line="287" column="8" declfile="pros/rtos.h" declline="287" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a663301f01d0cc8ecfd238fbe1346fc4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1a1d7e0825b8d8876e8cd8ece3f9115293" kindref="member">task_t</ref></type>
@@ -8108,7 +8604,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="288" column="8" declfile="pros/rtos.h" declline="288" declcolumn="8"/>
+        <location file="pros/rtos.h" line="295" column="8" declfile="pros/rtos.h" declline="295" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af69af2a08ca85bd16fa3d1b75dbcf790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -8139,7 +8635,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="301" column="10" declfile="pros/rtos.h" declline="301" declcolumn="10"/>
+        <location file="pros/rtos.h" line="308" column="10" declfile="pros/rtos.h" declline="308" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af21b3326026e04f277e85236f4ff503a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -8207,7 +8703,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="327" column="10" declfile="pros/rtos.h" declline="327" declcolumn="10"/>
+        <location file="pros/rtos.h" line="334" column="10" declfile="pros/rtos.h" declline="334" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a15f1230bbc0fe029caf775a393b4a897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -8250,7 +8746,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="345" column="10" declfile="pros/rtos.h" declline="345" declcolumn="10"/>
+        <location file="pros/rtos.h" line="352" column="10" declfile="pros/rtos.h" declline="352" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a82a2d584952478f46b9bc766395bb8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -8281,7 +8777,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="358" column="6" declfile="pros/rtos.h" declline="358" declcolumn="6"/>
+        <location file="pros/rtos.h" line="365" column="6" declfile="pros/rtos.h" declline="365" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a92aa79cdc30ffd13f63a7ffeca64b06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1ab15ea84d90257d70b44e8e04519864d2" kindref="member">mutex_t</ref></type>
@@ -8302,7 +8798,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="369" column="9" declfile="pros/rtos.h" declline="369" declcolumn="9"/>
+        <location file="pros/rtos.h" line="376" column="9" declfile="pros/rtos.h" declline="376" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a49aa5444b488ff60fc458aea8172adc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -8345,7 +8841,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="389" column="6" declfile="pros/rtos.h" declline="389" declcolumn="6"/>
+        <location file="pros/rtos.h" line="396" column="6" declfile="pros/rtos.h" declline="396" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a7f20ed94cee8e04d491743b4b34feda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -8376,7 +8872,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="404" column="6" declfile="pros/rtos.h" declline="404" declcolumn="6"/>
+        <location file="pros/rtos.h" line="411" column="6" declfile="pros/rtos.h" declline="411" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -8404,7 +8900,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="412" column="6" declfile="pros/rtos.h" declline="412" declcolumn="6"/>
+        <location file="pros/rtos.h" line="419" column="6" declfile="pros/rtos.h" declline="419" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a3dfc8cbc0618e9a5f95467733cb95b39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>

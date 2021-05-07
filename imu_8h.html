@@ -82,7 +82,7 @@ V5</span></a>
             </li>
           </ul>
         </div>
-<p>Contains prototypes for functions related to the VEX Inertial sensor.</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/imu.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />imu.html</a> to learn more.</p><p>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</p><p>Copyright (c) 2017-2020, Purdue University ACM SIGBots.</p><p>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a href="http://mozilla.org/MPL/2.0/">http:/<wbr />/<wbr />mozilla.org/<wbr />MPL/<wbr />2.0/<wbr /></a>.</p>
+<p>Contains prototypes for functions related to the VEX Inertial sensor.</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/imu.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />imu.html</a> to learn more.</p><p>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</p><p>Copyright (c) 2017-2021, Purdue University ACM SIGBots.</p><p>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a href="http://mozilla.org/MPL/2.0/">http:/<wbr />/<wbr />mozilla.org/<wbr />MPL/<wbr />2.0/<wbr /></a>.</p>
         <section id="namespaces">
           <h2><a href="#namespaces">Namespaces</a></h2>
           <dl class="m-doc">
@@ -127,15 +127,15 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a44a4f2d6c27854606ca35247b97dc68d" class="m-doc-self">imu_get_pitch</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
-            <dd>Get the Inertial Sensor&#x27;s pitch angle.</dd>
+            <dd>Get the Inertial Sensor&#x27;s pitch angle bounded by (-180,180)</dd>
             <dt>
               <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa913785ee0bf907fafd049145f735e65" class="m-doc-self">imu_get_roll</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
-            <dd>Get the Inertial Sensor&#x27;s roll angle.</dd>
+            <dd>Get the Inertial Sensor&#x27;s roll angle bounded by (-180,180)</dd>
             <dt>
               <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aa1b43b44cf94a724d4917bf363db2299" class="m-doc-self">imu_get_yaw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
-            <dd>Get the Inertial Sensor&#x27;s yaw angle.</dd>
+            <dd>Get the Inertial Sensor&#x27;s yaw angle bounded by (-180,180)</dd>
             <dt>
               <span class="m-doc-wrap-bumper">imu_gyro_s_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#afe88178fca4b6dd69cae69469bb58e8e" class="m-doc-self">imu_get_gyro_rate</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
@@ -148,6 +148,64 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">imu_status_e_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1ccf1cf41bf15e416c89d64093d63764" class="m-doc-self">imu_get_status</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
             <dd>Get the Inertial Sensor&#x27;s status.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a7613cb8ad7dbe92244f862f038040077" class="m-doc-self">imu_tare_heading</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the current reading of the Inertial Sensor&#x27;s heading to zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33ea7dacd1ee92bc6bf011cb109cadd2" class="m-doc-self">imu_tare_rotation</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the current reading of the Inertial Sensor&#x27;s rotation to zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0ec5652dee78d7b6582436ca72753eef" class="m-doc-self">imu_tare_pitch</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the current reading of the Inertial Sensor&#x27;s pitch to zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a1c0d6e494b558d012fc29c2e0f565d55" class="m-doc-self">imu_tare_roll</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the current reading of the Inertial Sensor&#x27;s roll to zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8d220ae04071a4ac25be52108e561166" class="m-doc-self">imu_tare_yaw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the current reading of the Inertial Sensor&#x27;s yaw to zero.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee27c5a8ea8e51afee3c80e4ef3d1e05" class="m-doc-self">imu_tare_euler</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Reset all 3 euler values of the Inertial Sensor to 0.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a5ae349cec6a99b52cf632267f1c2c332" class="m-doc-self">imu_tare</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets all 5 values of the Inertial Sensor to 0.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abd5e3389b5026622463ccf5e9a9ee5a3" class="m-doc-self">imu_set_euler</a>(</span><span class="m-doc-wrap">uint8_t port,
+              euler_s_t target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s euler values to target euler values.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a33890996b538599d7c635a895e3da8e7" class="m-doc-self">imu_set_rotation</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s rotation to target value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a35127112436baa43237fc52c683a9e30" class="m-doc-self">imu_set_heading</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s heading to target value Target will default to 360 if above 360 and default to 0 if below 0.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a87a5b4f797d70c502fd862320ba733da" class="m-doc-self">imu_set_pitch</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s pitch to target value Will default to +/- 180 if target exceeds +/- 180.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a52386f7153795d5be0acda3352600834" class="m-doc-self">imu_set_roll</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s roll to target value Will default to +/- 180 if target exceeds +/- 180.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aee4fcba55ec253943b6396c8c1e24c8c" class="m-doc-self">imu_set_yaw</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double target)</span></span>
+            </dt>
+            <dd>Sets the current reading of the Inertial Sensor&#x27;s yaw to target value Will default to +/- 180 if target exceeds +/- 180.</dd>
           </dl>
         </section>
         <section id="enum-members">

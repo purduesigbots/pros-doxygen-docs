@@ -323,7 +323,7 @@
 <para>Get the Inertial Sensor&apos;s heading relative to the initial direction of its x-axis. </para>
         </briefdescription>
         <detaileddescription>
-<para>This value is bounded by (-360,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</para>
+<para>This value is bounded by [0,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -414,7 +414,7 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s pitch angle. </para>
+<para>Get the Inertial Sensor&apos;s pitch angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -445,7 +445,7 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s roll angle. </para>
+<para>Get the Inertial Sensor&apos;s roll angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -476,7 +476,7 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the Inertial Sensor&apos;s yaw angle. </para>
+<para>Get the Inertial Sensor&apos;s yaw angle bounded by (-180,180) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
@@ -590,6 +590,482 @@
         </inbodydescription>
         <location file="pros/imu.h" line="273" column="16" declfile="pros/imu.h" declline="273" declcolumn="16"/>
       </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a7613cb8ad7dbe92244f862f038040077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_heading</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s heading to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="294" column="9" declfile="pros/imu.h" declline="294" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a33ea7dacd1ee92bc6bf011cb109cadd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_rotation</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s rotation to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="310" column="9" declfile="pros/imu.h" declline="310" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a0ec5652dee78d7b6582436ca72753eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_pitch</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s pitch to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="326" column="9" declfile="pros/imu.h" declline="326" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a1c0d6e494b558d012fc29c2e0f565d55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_roll</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s roll to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="342" column="9" declfile="pros/imu.h" declline="342" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a8d220ae04071a4ac25be52108e561166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_yaw</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s yaw to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="358" column="9" declfile="pros/imu.h" declline="358" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aee27c5a8ea8e51afee3c80e4ef3d1e05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_euler</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Reset all 3 euler values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="374" column="9" declfile="pros/imu.h" declline="374" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a5ae349cec6a99b52cf632267f1c2c332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets all 5 values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="390" column="9" declfile="pros/imu.h" declline="390" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1abd5e3389b5026622463ccf5e9a9ee5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_euler</definition>
+        <argsstring>(uint8_t port, euler_s_t target)</argsstring>
+        <name>imu_set_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>euler_s_t</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s euler values to target euler values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will default to +/- 180 if target exceeds +/- 180.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target euler values for the euler values to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="410" column="9" declfile="pros/imu.h" declline="410" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a33890996b538599d7c635a895e3da8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_rotation</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s rotation to target value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the rotation value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="428" column="9" declfile="pros/imu.h" declline="428" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a35127112436baa43237fc52c683a9e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_heading</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s heading to target value Target will default to 360 if above 360 and default to 0 if below 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the heading value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="447" column="9" declfile="pros/imu.h" declline="447" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a87a5b4f797d70c502fd862320ba733da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_pitch</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s pitch to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the pitch value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="466" column="9" declfile="pros/imu.h" declline="466" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a52386f7153795d5be0acda3352600834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_roll</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s roll to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the roll value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="485" column="9" declfile="pros/imu.h" declline="485" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aee4fcba55ec253943b6396c8c1e24c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_yaw</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s yaw to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the yaw value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="504" column="9" declfile="pros/imu.h" declline="504" declcolumn="9"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
@@ -597,7 +1073,7 @@
 <para>Contains prototypes for functions related to the VEX Inertial sensor.</para>
 <para>Visit <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/imu.html">https://pros.cs.purdue.edu/v5/tutorials/topical/imu.html</ulink> to learn more.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
-<para>Copyright (c) 2017-2020, Purdue University ACM SIGBots.</para>
+<para>Copyright (c) 2017-2021, Purdue University ACM SIGBots.</para>
 <para>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
     </detaileddescription>
     <location file="pros/imu.h"/>
