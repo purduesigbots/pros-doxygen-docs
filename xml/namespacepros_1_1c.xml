@@ -4215,6 +4215,40 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/apix.h" line="418" column="5" declfile="pros/apix.h" declline="418" declcolumn="5"/>
       </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a0cd9577a7facb56ef145e9508849a395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>v5_device_e_t</type>
+        <definition>v5_device_e_t pros::c::registry_get_bound_type</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>registry_get_bound_type</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/apix.h" line="433" column="15" declfile="pros/apix.h" declline="433" declcolumn="15"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1af7b9f904f53cb888950c0e8752354937" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>v5_device_e_t</type>
+        <definition>v5_device_e_t pros::c::registry_get_plugged_type</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>registry_get_plugged_type</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/apix.h" line="448" column="15" declfile="pros/apix.h" declline="448" declcolumn="15"/>
+      </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a16d6c8a8a74f8445db83bedbcb2f35bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::serctl</definition>
@@ -4255,7 +4289,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="432" column="9" declfile="pros/apix.h" declline="432" declcolumn="9"/>
+        <location file="pros/apix.h" line="462" column="9" declfile="pros/apix.h" declline="462" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a01b62747fbed77dcd50879d4d557adfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -4323,7 +4357,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="459" column="9" declfile="pros/apix.h" declline="459" declcolumn="9"/>
+        <location file="pros/apix.h" line="489" column="9" declfile="pros/apix.h" declline="489" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -7838,7 +7872,51 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="47" column="9" declfile="pros/rotation.h" declline="47" declcolumn="9"/>
+        <location file="pros/rotation.h" line="49" column="9" declfile="pros/rotation.h" declline="49" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a31281a73c59f9dbeba897980c27ed103" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::rotation_set_data_rate</definition>
+        <argsstring>(uint8_t port, uint32_t rate)</argsstring>
+        <name>rotation_set_data_rate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>rate</declname>
+        </param>
+        <briefdescription>
+<para>Set the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s refresh interval in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data refresh interval in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rotation.h" line="69" column="9" declfile="pros/rotation.h" declline="69" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ad29fe5d6d6200ab893088998aa6ce2e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -7881,7 +7959,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="64" column="9" declfile="pros/rotation.h" declline="64" declcolumn="9"/>
+        <location file="pros/rotation.h" line="86" column="9" declfile="pros/rotation.h" declline="86" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ad198d62869c39045f6f76a2ea8eee09e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -7912,7 +7990,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="80" column="9" declfile="pros/rotation.h" declline="80" declcolumn="9"/>
+        <location file="pros/rotation.h" line="102" column="9" declfile="pros/rotation.h" declline="102" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af8845e58af42bda70c803c1975ee626d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -7943,7 +8021,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="95" column="9" declfile="pros/rotation.h" declline="95" declcolumn="9"/>
+        <location file="pros/rotation.h" line="117" column="9" declfile="pros/rotation.h" declline="117" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a67fad4961368a788999ebe244182567e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -7974,7 +8052,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="110" column="9" declfile="pros/rotation.h" declline="110" declcolumn="9"/>
+        <location file="pros/rotation.h" line="132" column="9" declfile="pros/rotation.h" declline="132" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a1fcb97ffd0b4f780291b6f31be759975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -8005,7 +8083,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="125" column="9" declfile="pros/rotation.h" declline="125" declcolumn="9"/>
+        <location file="pros/rotation.h" line="147" column="9" declfile="pros/rotation.h" declline="147" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1af9b37a6fc9d89f144c006c84f75fe890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -8048,7 +8126,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="143" column="9" declfile="pros/rotation.h" declline="143" declcolumn="9"/>
+        <location file="pros/rotation.h" line="165" column="9" declfile="pros/rotation.h" declline="165" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a709b419d6a78d1bf52ebb069315b4dc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -8079,7 +8157,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="159" column="9" declfile="pros/rotation.h" declline="159" declcolumn="9"/>
+        <location file="pros/rotation.h" line="181" column="9" declfile="pros/rotation.h" declline="181" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a8cebefc88493efb298f15e6f47eb7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -8110,7 +8188,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="175" column="9" declfile="pros/rotation.h" declline="175" declcolumn="9"/>
+        <location file="pros/rotation.h" line="197" column="9" declfile="pros/rotation.h" declline="197" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1aa247cd38039665b7ac4b0d0920b83c80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>

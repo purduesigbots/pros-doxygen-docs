@@ -11,6 +11,8 @@
 \item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1Rotation_af3ac11ae6daec3a4eb247f270a476b14}{reset}} ()
 \begin{DoxyCompactList}\small\item\em Reset the \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1Rotation_afb4e63f82dffc58b0fb0569f73250ff6}{set\+\_\+data\+\_\+rate}} (std\+::uint32\+\_\+t rate) const
+\begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor\textquotesingle{}s refresh interval in milliseconds. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1Rotation_ad020873b4dea4b626dd4b66581d32c68}{set\+\_\+position}} (std\+::uint32\+\_\+t position)
 \begin{DoxyCompactList}\small\item\em Set the \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor position reading to a desired rotation value. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1Rotation_a5ca85c5a070fd471f2fb88df81632305}{reset\+\_\+position}} (void)
@@ -53,6 +55,30 @@ Reset the current absolute position to be the same as the \mbox{\hyperlink{class
 
 This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor
 
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpros_1_1Rotation_afb4e63f82dffc58b0fb0569f73250ff6}\label{classpros_1_1Rotation_afb4e63f82dffc58b0fb0569f73250ff6}} 
+\index{Rotation@{Rotation}!set\_data\_rate@{set\_data\_rate}}
+\index{set\_data\_rate@{set\_data\_rate}!Rotation@{Rotation}}
+\doxysubsubsection{\texorpdfstring{set\_data\_rate()}{set\_data\_rate()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+data\+\_\+rate (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{rate }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Set the \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor\textquotesingle{}s refresh interval in milliseconds. 
+
+The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.
+
+As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor\textquotesingle{}s values any faster. However, it will guarantee that the data is as recent as possible.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{classpros_1_1Rotation}{Rotation}} Sensor
+
+
+\begin{DoxyParams}{Parameters}
+{\em rate} & The data refresh interval in milliseconds \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
 \end{DoxyReturn}
