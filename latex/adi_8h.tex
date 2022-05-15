@@ -43,7 +43,9 @@ typedef int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_adc7331a863ca648693c688
 typedef int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a642e06a44cad02177d4111261e17c3df}{adi\+\_\+ultrasonic\+\_\+t}}
 \begin{DoxyCompactList}\small\item\em Reference type for an initialized ultrasonic. \end{DoxyCompactList}\item 
 typedef int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a9c451728d4193f1a4e59d7dc489ac292}{adi\+\_\+gyro\+\_\+t}}
-\begin{DoxyCompactList}\small\item\em Reference type for an initialized gyroscope. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Reference type for an initialized gyroscope. \end{DoxyCompactList}\item 
+typedef int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a57a45eab54fec9fc2d0a16117a64ad96}{adi\+\_\+potentiometer\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Reference type for an initialized potentiometer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
@@ -73,7 +75,11 @@ enum \mbox{\hyperlink{namespacepros_ad5f9ddf0fd9de73c4b23fa5485144b7f}{adi\+\_\+
 \mbox{\hyperlink{namespacepros_ad5f9ddf0fd9de73c4b23fa5485144b7fa37e9d6ebc03d88c58db1904a7f2b7373}{E\+\_\+\+A\+D\+I\+\_\+\+T\+Y\+P\+E\+\_\+\+U\+N\+D\+E\+F\+I\+N\+ED}} = 255, 
 \mbox{\hyperlink{namespacepros_ad5f9ddf0fd9de73c4b23fa5485144b7fa33d9a21daeabc122fcef7259fa6602f2}{E\+\_\+\+A\+D\+I\+\_\+\+E\+RR}} = P\+R\+O\+S\+\_\+\+E\+RR
  \}
-\begin{DoxyCompactList}\small\item\em Represents the port type for an A\+DI port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents the port type for an A\+DI port. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacepros_a7034f9d1751c13d2c874a8ab2cad7cb4}{adi\+\_\+potentiometer\+\_\+type\+\_\+e}} \{ \mbox{\hyperlink{namespacepros_a7034f9d1751c13d2c874a8ab2cad7cb4a5cce3fb6b2c38616774bb4c71492053b}{E\+\_\+\+A\+D\+I\+\_\+\+P\+O\+T\+\_\+\+E\+DR}} = 0, 
+\mbox{\hyperlink{namespacepros_a7034f9d1751c13d2c874a8ab2cad7cb4a89436a293b1f0b560881b7278f4e03b8}{E\+\_\+\+A\+D\+I\+\_\+\+P\+O\+T\+\_\+\+V2}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the potentiometer version type. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -129,7 +135,13 @@ adi\+\_\+gyro\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a6ee6e73d3be33d0b2f5c4b
 int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a79a193e42f59415cf1f860812a7248d6}{adi\+\_\+gyro\+\_\+reset}} (adi\+\_\+gyro\+\_\+t gyro)
 \begin{DoxyCompactList}\small\item\em Resets the gyroscope value to zero. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a618baab8adbdec65f418f68cf98325d0}{adi\+\_\+gyro\+\_\+shutdown}} (adi\+\_\+gyro\+\_\+t gyro)
-\begin{DoxyCompactList}\small\item\em Disables the gyro and voids the configuration on its port. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Disables the gyro and voids the configuration on its port. \end{DoxyCompactList}\item 
+adi\+\_\+potentiometer\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a6c866c2d7e65da244268b94fa1ce131c}{adi\+\_\+potentiometer\+\_\+init}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Initializes a potentiometer on the given port of the original potentiometer. \end{DoxyCompactList}\item 
+adi\+\_\+potentiometer\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_adb7056020a04bc6988314deb0c787d89}{adi\+\_\+potentiometer\+\_\+type\+\_\+init}} (uint8\+\_\+t port, adi\+\_\+potentiometer\+\_\+type\+\_\+e\+\_\+t potentiometer\+\_\+type)
+\begin{DoxyCompactList}\small\item\em Initializes a potentiometer on the given port. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacepros_1_1c_a9cb484f9bc42af2cdd9904fd65c71224}{adi\+\_\+potentiometer\+\_\+get\+\_\+angle}} (adi\+\_\+potentiometer\+\_\+t potentiometer)
+\begin{DoxyCompactList}\small\item\em Gets the current potentiometer angle in tenths of a degree. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -139,7 +151,7 @@ Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/adi.html}{\texttt{ h
 
 This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.
 
-Copyright (c) 2017-\/2021, Purdue University A\+CM S\+I\+G\+Bots.
+Copyright (c) 2017-\/2022, Purdue University A\+CM S\+I\+G\+Bots.
 
 This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the M\+PL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+M\+P\+L/2.\+0/}}. 
 

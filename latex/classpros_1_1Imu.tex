@@ -83,9 +83,9 @@ virtual bool \mbox{\hyperlink{classpros_1_1Imu_ac58cd647360441bf82830bd17d2f6c82
 
 Calibrate I\+MU. 
 
-This takes approximately 2 seconds, and is a non-\/blocking operation.
+Calibration takes approximately 2 seconds, but this function only blocks until the I\+MU status flag is set properly to E\+\_\+\+I\+M\+U\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+I\+NG, with a minimum blocking time of 5ms.
 
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is already calibrating
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an Inertial Sensor E\+A\+G\+A\+IN -\/ The sensor is already calibrating, or time out setting the status flag.
 
 \begin{DoxyReturn}{Returns}
 1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
