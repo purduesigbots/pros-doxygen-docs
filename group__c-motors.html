@@ -197,6 +197,10 @@ V5</span></a>
             </dt>
             <dd>Sets the voltage for the motor from -127 to 127.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga75b0c81d3eeb120714d8a4b51c42e4cc" class="m-doc-self">motor_brake</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Stops the motor using the currently configured brake mode.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga490a367ce2fea03acaa1e817c0648916" class="m-doc-self">motor_move_absolute</a>(</span><span class="m-doc-wrap">uint8_t port,
               const double position,
               const int32_t velocity)</span></span>
@@ -926,6 +930,31 @@ V5</span></a>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga75b0c81d3eeb120714d8a4b51c42e4cc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga75b0c81d3eeb120714d8a4b51c42e4cc" class="m-doc-self">motor_brake</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motors_8h.html">&lt;pros/motors.h&gt;</a></div>
+            </h3>
+            <p>Stops the motor using the currently configured brake mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling motor_move_absolute(port, 0) or motor_move_relative(port, 0).</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong> <code class="m-code">code</code></p>
           </div></section>
           <section class="m-doc-details" id="ga490a367ce2fea03acaa1e817c0648916"><div>
             <h3>

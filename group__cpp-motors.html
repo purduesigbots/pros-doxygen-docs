@@ -169,6 +169,10 @@ V5</span></a>
             </dt>
             <dd>Sets the output voltage for the motor from -12000 to 12000 in millivolts.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga551a1bf2c0f4d64fa2fdc8e4c38bd346" class="m-doc-self">brake</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">virtual</span></span></span>
+            </dt>
+            <dd>Stops the motor using the currently configured brake mode.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaeaf01839c12cb7ac6c673079b1b7e07b" class="m-doc-self">modify_profiled_velocity</a>(</span><span class="m-doc-wrap">const std::int32_t velocity) const <span class="m-label m-warning">virtual</span></span></span>
             </dt>
             <dd>Changes the output velocity for a profiled movement (<a href="group__c-motors.html#ga490a367ce2fea03acaa1e817c0648916" class="m-doc">motor_<wbr />move_<wbr />absolute()</a> or <a href="group__c-motors.html#ga003028bf3f30c48559f442d7c0d74a9a" class="m-doc">motor_<wbr />move_<wbr />relative()</a>).</dd>
@@ -644,6 +648,22 @@ V5</span></a>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move at max voltage for 1 second</span>
 <span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga551a1bf2c0f4d64fa2fdc8e4c38bd346"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga551a1bf2c0f4d64fa2fdc8e4c38bd346" class="m-doc-self">brake</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">virtual</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motors_8hpp.html">&lt;pros/motors.hpp&gt;</a></div>
+            </h3>
+            <p>Stops the motor using the currently configured brake mode.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling move_absolute(0) or move_relative(0).</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gaeaf01839c12cb7ac6c673079b1b7e07b"><div>
             <h3>

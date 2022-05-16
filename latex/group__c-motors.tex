@@ -60,6 +60,8 @@ These functions allow programmers to make motors move \begin{DoxyCompactItemize}
 \item 
 int32\+\_\+t \mbox{\hyperlink{group__c-motors_gac14bccd595a812fff8c30d2d050844a9}{motor\+\_\+move}} (uint8\+\_\+t port, int32\+\_\+t voltage)
 \begin{DoxyCompactList}\small\item\em Sets the voltage for the motor from -\/127 to 127. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{group__c-motors_ga75b0c81d3eeb120714d8a4b51c42e4cc}{motor\+\_\+brake}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Stops the motor using the currently configured brake mode. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute}} (uint8\+\_\+t port, const double position, const int32\+\_\+t velocity)
 \begin{DoxyCompactList}\small\item\em Sets the target absolute position for the motor to move to. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative}} (uint8\+\_\+t port, const double position, const int32\+\_\+t velocity)
@@ -512,6 +514,32 @@ This function uses the following values of errno when an error state is reached\
 \DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{delay}}(2);}
 \DoxyCodeLine{  \}}
 \DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-motors_ga75b0c81d3eeb120714d8a4b51c42e4cc}\label{group__c-motors_ga75b0c81d3eeb120714d8a4b51c42e4cc}} 
+\index{Motors C API@{Motors C API}!motor\_brake@{motor\_brake}}
+\index{motor\_brake@{motor\_brake}!Motors C API@{Motors C API}}
+\doxysubsubsection{\texorpdfstring{motor\_brake()}{motor\_brake()}}
+{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::motor\+\_\+brake (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Stops the motor using the currently configured brake mode. 
+
+This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to M\+O\+T\+O\+R\+\_\+\+B\+R\+A\+K\+E\+\_\+\+H\+O\+LD, this function may behave differently than calling motor\+\_\+move\+\_\+absolute(port, 0) or motor\+\_\+move\+\_\+relative(port, 0).
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{code}
 \end{DoxyCode}
  \mbox{\Hypertarget{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}\label{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}} 
 \index{Motors C API@{Motors C API}!motor\_move\_absolute@{motor\_move\_absolute}}

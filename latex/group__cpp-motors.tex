@@ -44,6 +44,8 @@ virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga70b77a5b452fa26
 \begin{DoxyCompactList}\small\item\em Sets the velocity for the motor. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}{move\+\_\+voltage}} (const std\+::int32\+\_\+t voltage) const
 \begin{DoxyCompactList}\small\item\em Sets the output voltage for the motor from -\/12000 to 12000 in millivolts. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga551a1bf2c0f4d64fa2fdc8e4c38bd346}{brake}} (void) const
+\begin{DoxyCompactList}\small\item\em Stops the motor using the currently configured brake mode. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}{modify\+\_\+profiled\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
 \begin{DoxyCompactList}\small\item\em Changes the output velocity for a profiled movement (\mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute()}} or \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative()}}). \end{DoxyCompactList}\item 
 virtual double \mbox{\hyperlink{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}{get\+\_\+target\+\_\+position}} (void) const
@@ -176,6 +178,8 @@ virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga70b77a5b452fa26
 \begin{DoxyCompactList}\small\item\em Sets the velocity for the motor. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}{move\+\_\+voltage}} (const std\+::int32\+\_\+t voltage) const
 \begin{DoxyCompactList}\small\item\em Sets the output voltage for the motor from -\/12000 to 12000 in millivolts. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga551a1bf2c0f4d64fa2fdc8e4c38bd346}{brake}} (void) const
+\begin{DoxyCompactList}\small\item\em Stops the motor using the currently configured brake mode. \end{DoxyCompactList}\item 
 virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}{modify\+\_\+profiled\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
 \begin{DoxyCompactList}\small\item\em Changes the output velocity for a profiled movement (\mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute()}} or \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative()}}). \end{DoxyCompactList}\item 
 virtual double \mbox{\hyperlink{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}{get\+\_\+target\+\_\+position}} (void) const
@@ -546,7 +550,24 @@ This function uses the following values of errno when an error state is reached\
 \DoxyCodeLine{  motor.move\_voltage(0);}
 \DoxyCodeLine{\}}
 \end{DoxyCode}
- \mbox{\Hypertarget{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}\label{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}} 
+ \mbox{\Hypertarget{group__cpp-motors_ga551a1bf2c0f4d64fa2fdc8e4c38bd346}\label{group__cpp-motors_ga551a1bf2c0f4d64fa2fdc8e4c38bd346}} 
+\index{Motors C++ API@{Motors C++ API}!brake@{brake}}
+\index{brake@{brake}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{brake()}{brake()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t brake (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Stops the motor using the currently configured brake mode. 
+
+This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to M\+O\+T\+O\+R\+\_\+\+B\+R\+A\+K\+E\+\_\+\+H\+O\+LD, this function may behave differently than calling move\+\_\+absolute(0) or move\+\_\+relative(0).
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}\label{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}} 
 \index{Motors C++ API@{Motors C++ API}!modify\_profiled\_velocity@{modify\_profiled\_velocity}}
 \index{modify\_profiled\_velocity@{modify\_profiled\_velocity}!Motors C++ API@{Motors C++ API}}
 \doxysubsubsection{\texorpdfstring{modify\_profiled\_velocity()}{modify\_profiled\_velocity()}}
