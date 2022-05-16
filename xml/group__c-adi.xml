@@ -33,12 +33,18 @@
 </parameterlist>
 <simplesect kind="return"><para>The ADI configuration for the given port</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Port<sp/>Type:<sp/>%d\n&quot;,<sp/>adi_port_get_config(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="164" column="21" declfile="pros/adi.h" declline="164" declcolumn="21"/>
+        <location file="pros/adi.h" line="170" column="21" declfile="pros/adi.h" declline="170" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gabe2a3c30fa74bb9c4ba202d79e636d15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -65,12 +71,17 @@
 </parameterlist>
 <simplesect kind="return"><para>The value stored for the given port</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Port<sp/>Value:<sp/>%d\n&quot;,<sp/>adi_get_value(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="184" column="9" declfile="pros/adi.h" declline="184" declcolumn="9"/>
+        <location file="pros/adi.h" line="195" column="9" declfile="pros/adi.h" declline="195" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga280137f3b1ec70ac5d22462cdc7b715d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -109,12 +120,16 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="206" column="9" declfile="pros/adi.h" declline="206" declcolumn="9"/>
+        <location file="pros/adi.h" line="221" column="9" declfile="pros/adi.h" declline="221" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga2cf397ea5cb6d0927e5f5c93ec34bb3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -154,12 +169,17 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_port_set_config(DIGITAL_SENSOR_PORT,<sp/>E_ADI_DIGITAL_OUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_set_value(DIGITAL_SENSOR_PORT,<sp/>HIGH);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="232" column="9" declfile="pros/adi.h" declline="232" declcolumn="9"/>
+        <location file="pros/adi.h" line="252" column="9" declfile="pros/adi.h" declline="252" declcolumn="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -175,13 +195,11 @@
 <para>Reference type for an initialized encoder. </para>
         </briefdescription>
         <detaileddescription>
-<para>This merely contains the port number for the encoder, unlike its use as an object to store encoder data in PROS 2.</para>
-<para><bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
-</programlisting> </para>
+<para>This merely contains the port number for the encoder, unlike its use as an object to store encoder data in PROS 2. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="564" column="17" bodyfile="pros/adi.h" bodystart="564" bodyend="-1"/>
+        <location file="pros/adi.h" line="661" column="17" bodyfile="pros/adi.h" bodystart="661" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c-adi_1ga642e06a44cad02177d4111261e17c3df" prot="public" static="no">
         <type>int32_t</type>
@@ -192,13 +210,11 @@
 <para>Reference type for an initialized ultrasonic. </para>
         </briefdescription>
         <detaileddescription>
-<para>This merely contains the port number for the ultrasonic, unlike its use as an object to store ultrasonic data in PROS 2.</para>
-<para><bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
-</programlisting> </para>
+<para>This merely contains the port number for the ultrasonic, unlike its use as an object to store ultrasonic data in PROS 2. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="674" column="17" bodyfile="pros/adi.h" bodystart="674" bodyend="-1"/>
+        <location file="pros/adi.h" line="797" column="17" bodyfile="pros/adi.h" bodystart="797" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c-adi_1ga9c451728d4193f1a4e59d7dc489ac292" prot="public" static="no">
         <type>int32_t</type>
@@ -209,13 +225,11 @@
 <para>Reference type for an initialized gyroscope. </para>
         </briefdescription>
         <detaileddescription>
-<para>This merely contains the port number for the gyroscope, unlike its use as an object to store gyro data in PROS 2.</para>
-<para><bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
-</programlisting> </para>
+<para>This merely contains the port number for the gyroscope, unlike its use as an object to store gyro data in PROS 2. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="758" column="17" bodyfile="pros/adi.h" bodystart="758" bodyend="-1"/>
+        <location file="pros/adi.h" line="907" column="17" bodyfile="pros/adi.h" bodystart="907" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c-adi_1ga57a45eab54fec9fc2d0a16117a64ad96" prot="public" static="no">
         <type>int32_t</type>
@@ -226,13 +240,11 @@
 <para>Reference type for an initialized potentiometer. </para>
         </briefdescription>
         <detaileddescription>
-<para>This merely contains the port number for the potentiometer, unlike its use as an object to store gyro data in PROS 2.</para>
-<para><bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
-</programlisting> </para>
+<para>This merely contains the port number for the potentiometer, unlike its use as an object to store gyro data in PROS 2. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="867" column="17" bodyfile="pros/adi.h" bodystart="867" bodyend="-1"/>
+        <location file="pros/adi.h" line="1067" column="17" bodyfile="pros/adi.h" bodystart="1067" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gadebbf89bed5c3464bd77712c4c53edef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -249,7 +261,9 @@
         <detaileddescription>
 <para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__c-adi_1ga34a3205b4beecc2efb561a068ac869e7" kindref="member">adi_analog_read_calibrated()</ref> and <ref refid="group__c-adi_1ga0a62ec5516d617b8282f9f1c21e68e15" kindref="member">adi_analog_read_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para>
 <para>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para>
+<para><simplesect kind="note"><para>The ADI currently returns data at 10ms intervals, in constrast to the calibrate function’s 1ms sample rate. This sample rate was kept for the sake of being similar to PROS 2, and increasing the sample rate would not have a tangible difference in the function’s performance.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
@@ -261,12 +275,18 @@
 </parameterlist>
 <simplesect kind="return"><para>The average sensor value computed by this function</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_analog_calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Calibrated<sp/>Reading:<sp/>%d\n&quot;,<sp/>adi_analog_read_calibrated(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="300" column="9" declfile="pros/adi.h" declline="300" declcolumn="9"/>
+        <location file="pros/adi.h" line="331" column="9" declfile="pros/adi.h" declline="331" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gaaec9c097a2fb6ae1632954591eea35d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -294,12 +314,19 @@
 </parameterlist>
 <simplesect kind="return"><para>The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Sensor<sp/>Reading:<sp/>%d\n&quot;,<sp/>adi_analog_read(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="325" column="9" declfile="pros/adi.h" declline="325" declcolumn="9"/>
+        <location file="pros/adi.h" line="363" column="9" declfile="pros/adi.h" declline="363" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga34a3205b4beecc2efb561a068ac869e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -327,12 +354,19 @@
 </parameterlist>
 <simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Sensor<sp/>Reading:<sp/>%d\n&quot;,<sp/>adi_analog_read_calibrated(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="352" column="9" declfile="pros/adi.h" declline="352" declcolumn="9"/>
+        <location file="pros/adi.h" line="397" column="9" declfile="pros/adi.h" declline="397" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga0a62ec5516d617b8282f9f1c21e68e15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -361,12 +395,20 @@
 </parameterlist>
 <simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to 16384</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adi_analog_calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Sensor<sp/>Reading:<sp/>%d\n&quot;,<sp/>adi_analog_read_calibrated_HR(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="384" column="9" declfile="pros/adi.h" declline="384" declcolumn="9"/>
+        <location file="pros/adi.h" line="437" column="9" declfile="pros/adi.h" declline="437" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga4acc4110678a3f4ae8f6b793b2dc1793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -394,12 +436,19 @@
 </parameterlist>
 <simplesect kind="return"><para>True if the pin is HIGH, or false if it is LOW</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Sensor<sp/>Value:<sp/>%d\n&quot;,<sp/>adi_digital_read(DIGITAL_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="409" column="9" declfile="pros/adi.h" declline="409" declcolumn="9"/>
+        <location file="pros/adi.h" line="469" column="9" declfile="pros/adi.h" declline="469" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gaf67d01f4e0aad2806c699e249d869977" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -427,12 +476,21 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the button is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(adi_digital_get_new_press(DIGITAL_SENSOR_PORT))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>state<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="438" column="9" declfile="pros/adi.h" declline="438" declcolumn="9"/>
+        <location file="pros/adi.h" line="507" column="9" declfile="pros/adi.h" declline="507" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gadbbe71d4934bbe5218b33405207f5f39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -472,12 +530,21 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>state<sp/>=<sp/>LOW;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>!=<sp/>state;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adi_digital_write(DIGITAL_SENSOR_PORT,<sp/>state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);<sp/>//<sp/>toggle<sp/>the<sp/>sensor<sp/>value<sp/>every<sp/>50ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="464" column="9" declfile="pros/adi.h" declline="464" declcolumn="9"/>
+        <location file="pros/adi.h" line="542" column="9" declfile="pros/adi.h" declline="542" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga81c189bfd3e3d2c7dff5d26459ecd6b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -516,12 +583,16 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_pin_mode(ANALOG_SENSOR_PORT,<sp/>INPUT_ANALOG);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="486" column="9" declfile="pros/adi.h" declline="486" declcolumn="9"/>
+        <location file="pros/adi.h" line="568" column="9" declfile="pros/adi.h" declline="568" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga4f0f74ad94f8d1ea90581ed55674241c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -560,12 +631,18 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_set(MOTOR_PORT,<sp/>127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_set(MOTOR_PORT,<sp/>0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="510" column="9" declfile="pros/adi.h" declline="510" declcolumn="9"/>
+        <location file="pros/adi.h" line="598" column="9" declfile="pros/adi.h" declline="598" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gacff400470df9136fc1c05e51644e08c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -592,12 +669,19 @@
 </parameterlist>
 <simplesect kind="return"><para>The last set speed of the motor on the given port</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_set(MOTOR_PORT,<sp/>127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Commanded<sp/>Motor<sp/>Power:<sp/>%d\n&quot;,<sp/>adi_motor_get(MOTOR_PORT));<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_set(MOTOR_PORT,<sp/>0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="530" column="9" declfile="pros/adi.h" declline="530" declcolumn="9"/>
+        <location file="pros/adi.h" line="625" column="9" declfile="pros/adi.h" declline="625" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gabeb2cc7e1edda5a9370a1ae268db08ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -624,12 +708,19 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_set(MOTOR_PORT,<sp/>127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>adi_motor_set(MOTOR_PORT,<sp/>0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_motor_stop(MOTOR_PORT);<sp/>//<sp/>use<sp/>this<sp/>instead</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="551" column="9" declfile="pros/adi.h" declline="551" declcolumn="9"/>
+        <location file="pros/adi.h" line="653" column="9" declfile="pros/adi.h" declline="653" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga22e55a80b8f8e20bc8b787a92d9253f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -657,12 +748,21 @@
 </parameterlist>
 <simplesect kind="return"><para>The signed and cumulative number of counts since the last start or reset</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_t<sp/>enc<sp/>=<sp/>adi_encoder_init(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Encoder<sp/>Value:<sp/>%d\n&quot;,<sp/>adi_encoder_get(enc));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="588" column="9" declfile="pros/adi.h" declline="588" declcolumn="9"/>
+        <location file="pros/adi.h" line="693" column="9" declfile="pros/adi.h" declline="693" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gac21579276dee544ecfedd917cfef27e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_encoder_t</type>
@@ -713,12 +813,21 @@
 </parameterlist>
 <simplesect kind="return"><para>An adi_encoder_t object to be stored and used for later calls to encoder functions</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_t<sp/>enc<sp/>=<sp/>adi_encoder_init(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Encoder<sp/>Value:<sp/>%d\n&quot;,<sp/>adi_encoder_get(enc));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="615" column="15" declfile="pros/adi.h" declline="615" declcolumn="15"/>
+        <location file="pros/adi.h" line="729" column="15" declfile="pros/adi.h" declline="729" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga0aa1c29410c89a930400c779b9093ed8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -746,12 +855,19 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_t<sp/>enc<sp/>=<sp/>adi_encoder_init(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>the<sp/>encoder<sp/>around<sp/>in<sp/>this<sp/>time</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_reset(enc);<sp/>//<sp/>The<sp/>encoder<sp/>is<sp/>now<sp/>zero<sp/>again</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="640" column="9" declfile="pros/adi.h" declline="640" declcolumn="9"/>
+        <location file="pros/adi.h" line="761" column="9" declfile="pros/adi.h" declline="761" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gad9821a0243b2e14d0dac5099872129ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -778,12 +894,19 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_t<sp/>enc<sp/>=<sp/>adi_encoder_init(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>encoder</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_encoder_shutdown(enc);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="661" column="9" declfile="pros/adi.h" declline="661" declcolumn="9"/>
+        <location file="pros/adi.h" line="789" column="9" declfile="pros/adi.h" declline="789" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga65ac514a03673a535cdf43e7f57e2716" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -811,12 +934,22 @@
 </parameterlist>
 <simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_ultrasonic_t<sp/>ult<sp/>=<sp/>adi_ultrasonic_init(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance:<sp/>%d\n&quot;,<sp/>adi_ultrasonic_get(ult));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="699" column="9" declfile="pros/adi.h" declline="699" declcolumn="9"/>
+        <location file="pros/adi.h" line="832" column="9" declfile="pros/adi.h" declline="832" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga2bd844aa49e221c1e68c0b94d148c3b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_ultrasonic_t</type>
@@ -855,12 +988,22 @@
 </parameterlist>
 <simplesect kind="return"><para>An adi_ultrasonic_t object to be stored and used for later calls to ultrasonic functions</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_ultrasonic_t<sp/>ult<sp/>=<sp/>adi_ultrasonic_init(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance:<sp/>%d\n&quot;,<sp/>adi_ultrasonic_get(ult));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="724" column="18" declfile="pros/adi.h" declline="724" declcolumn="18"/>
+        <location file="pros/adi.h" line="867" column="18" declfile="pros/adi.h" declline="867" declcolumn="18"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga38f7e3b4d99f5dc21972a9f178f5908f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -887,12 +1030,23 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_ultrasonic_t<sp/>ult<sp/>=<sp/>adi_ultrasonic_init(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance:<sp/>%d\n&quot;,<sp/>adi_ultrasonic_get(ult));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_ultrasonic_shutdown(ult);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="745" column="9" declfile="pros/adi.h" declline="745" declcolumn="9"/>
+        <location file="pros/adi.h" line="899" column="9" declfile="pros/adi.h" declline="899" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga7ee7cf11c1a604af68b9373f4b7c8799" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -921,12 +1075,22 @@
 </parameterlist>
 <simplesect kind="return"><para>The gyro angle in degrees.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>GYRO_MULTIPLIER<sp/>1<sp/>//<sp/>Standard<sp/>behavior</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_gyro_t<sp/>gyro<sp/>=<sp/>adi_gyro_init(GYRO_PORT,<sp/>GYRO_MULTIPLIER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>gyro&apos;s<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Heading:<sp/>%lf\n&quot;,<sp/>adi_gyro_get(gyro));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="783" column="8" declfile="pros/adi.h" declline="783" declcolumn="8"/>
+        <location file="pros/adi.h" line="942" column="8" declfile="pros/adi.h" declline="942" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga6ee6e73d3be33d0b2f5c4bfbe37f2d4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_gyro_t</type>
@@ -967,12 +1131,22 @@
 </parameterlist>
 <simplesect kind="return"><para>An adi_gyro_t object containing the given port, or PROS_ERR if the initialization failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>GYRO_MULTIPLIER<sp/>1<sp/>//<sp/>Standard<sp/>behavior</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_gyro_t<sp/>gyro<sp/>=<sp/>adi_gyro_init(GYRO_PORT,<sp/>GYRO_MULTIPLIER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>gyro&apos;s<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Heading:<sp/>%lf\n&quot;,<sp/>adi_gyro_get(gyro));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="812" column="12" declfile="pros/adi.h" declline="812" declcolumn="12"/>
+        <location file="pros/adi.h" line="981" column="12" declfile="pros/adi.h" declline="981" declcolumn="12"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga79a193e42f59415cf1f860812a7248d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -999,12 +1173,30 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>GYRO_MULTIPLIER<sp/>1<sp/>//<sp/>Standard<sp/>behavior</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_gyro_t<sp/>gyro<sp/>=<sp/>adi_gyro_init(GYRO_PORT,<sp/>GYRO_MULTIPLIER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>gyro&apos;s<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Heading:<sp/>%lf\n&quot;,<sp/>adi_gyro_get(gyro));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(millis()<sp/>-<sp/>now<sp/>&gt;<sp/>2000)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>gyro<sp/>every<sp/>2<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>adi_gyro_reset(gyro);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="833" column="9" declfile="pros/adi.h" declline="833" declcolumn="9"/>
+        <location file="pros/adi.h" line="1020" column="9" declfile="pros/adi.h" declline="1020" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga618baab8adbdec65f418f68cf98325d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1031,12 +1223,30 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>GYRO_MULTIPLIER<sp/>1<sp/>//<sp/>Standard<sp/>behavior</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_gyro_t<sp/>gyro<sp/>=<sp/>adi_gyro_init(GYRO_PORT,<sp/>GYRO_MULTIPLIER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>gyro&apos;s<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Heading:<sp/>%lf\n&quot;,<sp/>adi_gyro_get(gyro));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(millis()<sp/>-<sp/>now<sp/>&gt;<sp/>2000)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>adi_gyro_shutdown(gyro);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Shut<sp/>down<sp/>the<sp/>gyro<sp/>after<sp/>two<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>break;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="854" column="9" declfile="pros/adi.h" declline="854" declcolumn="9"/>
+        <location file="pros/adi.h" line="1059" column="9" declfile="pros/adi.h" declline="1059" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga6c866c2d7e65da244268b94fa1ce131c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_potentiometer_t</type>
@@ -1063,12 +1273,21 @@
 </parameterlist>
 <simplesect kind="return"><para>An adi_potentiometer_t object containing the given port, or PROS_ERR if the initialization failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_potentiometer_t<sp/>potentiometer<sp/>=<sp/>adi_potentiometer_init(POTENTIOMETER_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>potentiometer&apos;s<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%lf\n&quot;,<sp/>adi_potentiometer_get_angle(potentiometer));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="888" column="21" declfile="pros/adi.h" declline="888" declcolumn="21"/>
+        <location file="pros/adi.h" line="1097" column="21" declfile="pros/adi.h" declline="1097" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1gadb7056020a04bc6988314deb0c787d89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_potentiometer_t</type>
@@ -1107,12 +1326,22 @@
 </parameterlist>
 <simplesect kind="return"><para>An adi_potentiometer_t object containing the given port, or PROS_ERR if the initialization failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_potentiometer_t<sp/>potentiometer<sp/>=<sp/>adi_potentiometer_type_init(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>potentiometer&apos;s<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%lf\n&quot;,<sp/>adi_potentiometer_get_angle(potentiometer));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="911" column="21" declfile="pros/adi.h" declline="911" declcolumn="21"/>
+        <location file="pros/adi.h" line="1130" column="21" declfile="pros/adi.h" declline="1130" declcolumn="21"/>
       </memberdef>
       <memberdef kind="function" id="group__c-adi_1ga9cb484f9bc42af2cdd9904fd65c71224" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -1140,12 +1369,21 @@
 </parameterlist>
 <simplesect kind="return"><para>The potentiometer angle in degrees.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>adi_potentiometer_t<sp/>potentiometer<sp/>=<sp/>adi_potentiometer_t(POTENTIOMETER_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>potnetiometer&apos;s<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%lf\n&quot;,<sp/>adi_potentiometer_get_angle(potentiometer));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="934" column="8" declfile="pros/adi.h" declline="934" declcolumn="8"/>
+        <location file="pros/adi.h" line="1162" column="8" declfile="pros/adi.h" declline="1162" declcolumn="8"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1ga5bb885982ff66a2e0a0a45a8ee9c35e2" prot="public" static="no">
         <name>HIGH</name>
@@ -1158,7 +1396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="246" column="9" bodyfile="pros/adi.h" bodystart="246" bodyend="-1"/>
+        <location file="pros/adi.h" line="266" column="9" bodyfile="pros/adi.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1gab811d8c6ff3a505312d3276590444289" prot="public" static="no">
         <name>LOW</name>
@@ -1171,7 +1409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="252" column="9" bodyfile="pros/adi.h" bodystart="252" bodyend="-1"/>
+        <location file="pros/adi.h" line="272" column="9" bodyfile="pros/adi.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1ga1bb283bd7893b9855e2f23013891fc82" prot="public" static="no">
         <name>INPUT</name>
@@ -1183,7 +1421,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="257" column="9" bodyfile="pros/adi.h" bodystart="257" bodyend="-1"/>
+        <location file="pros/adi.h" line="277" column="9" bodyfile="pros/adi.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1ga61a3c9a18380aafb6e430e79bf596557" prot="public" static="no">
         <name>OUTPUT</name>
@@ -1195,7 +1433,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="261" column="9" bodyfile="pros/adi.h" bodystart="261" bodyend="-1"/>
+        <location file="pros/adi.h" line="281" column="9" bodyfile="pros/adi.h" bodystart="281" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1ga877f7490feac007f3a904ece06afe87a" prot="public" static="no">
         <name>INPUT_ANALOG</name>
@@ -1207,7 +1445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="265" column="9" bodyfile="pros/adi.h" bodystart="265" bodyend="-1"/>
+        <location file="pros/adi.h" line="285" column="9" bodyfile="pros/adi.h" bodystart="285" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__c-adi_1gaf4be32f492e2bcaa4691e665df0592e7" prot="public" static="no">
         <name>OUTPUT_ANALOG</name>
@@ -1219,7 +1457,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.h" line="270" column="9" bodyfile="pros/adi.h" bodystart="270" bodyend="-1"/>
+        <location file="pros/adi.h" line="290" column="9" bodyfile="pros/adi.h" bodystart="290" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

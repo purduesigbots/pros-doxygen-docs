@@ -12,7 +12,7 @@
     <derivedcompoundref refid="classpros_1_1ADIUltrasonic" prot="private" virt="non-virtual">ADIUltrasonic</derivedcompoundref>
     <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classpros_1_1ADIPort_1a44a445eef95291c2673e57ed31106dd4" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="group__cpp-adi_1ga44a445eef95291c2673e57ed31106dd4" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
         <definition>std::uint8_t _smart_port</definition>
         <argsstring></argsstring>
@@ -23,9 +23,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="113" column="14" bodyfile="pros/adi.hpp" bodystart="113" bodyend="-1"/>
+        <location file="pros/adi.hpp" line="189" column="14" bodyfile="pros/adi.hpp" bodystart="189" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classpros_1_1ADIPort_1a4140268936472c65e97796860c95cc4a" prot="private" static="no" mutable="no">
+      <memberdef kind="variable" id="group__cpp-adi_1ga4140268936472c65e97796860c95cc4a" prot="private" static="no" mutable="no">
         <type>std::uint8_t</type>
         <definition>std::uint8_t _adi_port</definition>
         <argsstring></argsstring>
@@ -36,11 +36,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="114" column="14" bodyfile="pros/adi.hpp" bodystart="114" bodyend="-1"/>
+        <location file="pros/adi.hpp" line="190" column="14" bodyfile="pros/adi.hpp" bodystart="190" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1ADIPort_1a538a789ca89bc61ebf5fb95fa723951f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga538a789ca89bc61ebf5fb95fa723951f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIPort</definition>
         <argsstring>(std::uint8_t adi_port, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
@@ -72,17 +72,28 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The configuration type for the port </para>
+<para>The configuration type for the port</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="55" column="10"/>
+        <location file="pros/adi.hpp" line="77" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPort_1a97ca42fda4089b884e38867a2551d2c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga97ca42fda4089b884e38867a2551d2c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIPort</definition>
         <argsstring>(ext_adi_port_pair_t port_pair, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
@@ -114,17 +125,25 @@
 <parametername>type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The configuration type for the port </para>
+<para>The configuration type for the port</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>({{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/>ANALOG_SENSOR_PORT<sp/>}},<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Type:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_config();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="71" column="1"/>
+        <location file="pros/adi.hpp" line="105" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPort_1abc268911f1961b5389b71852e946f729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gabc268911f1961b5389b71852e946f729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t get_config</definition>
         <argsstring>() const</argsstring>
@@ -133,15 +152,21 @@
 <para>Gets the configuration for the given ADI port. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The ADI configuration for the given port </para>
+<para><simplesect kind="return"><para>The ADI configuration for the given port</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Port<sp/>Type:<sp/>%d\n&quot;,<sp/>adi_port_get_config(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="78" column="14"/>
+        <location file="pros/adi.hpp" line="122" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPort_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t get_value</definition>
         <argsstring>() const</argsstring>
@@ -150,15 +175,21 @@
 <para>Gets the value for the given ADI port. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The value stored for the given port </para>
+<para><simplesect kind="return"><para>The value stored for the given port</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Value:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="85" column="14"/>
+        <location file="pros/adi.hpp" line="139" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPort_1ae1418e3d7d46f72ea805789d6e511c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gae1418e3d7d46f72ea805789d6e511c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t set_config</definition>
         <argsstring>(adi_port_config_e_t type) const</argsstring>
@@ -180,15 +211,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_DIGITAL_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things<sp/>as<sp/>a<sp/>digital<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Digital<sp/>is<sp/>unplugged<sp/>and<sp/>an<sp/>analog<sp/>is<sp/>plugged<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_config(E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="96" column="14"/>
+        <location file="pros/adi.hpp" line="162" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPort_1a833ed782b711495035dae08cfce3e62e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t set_value</definition>
         <argsstring>(std::int32_t value) const</argsstring>
@@ -211,13 +250,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT,<sp/>E_ADI_DIGITAL_OUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_value(DIGITAL_SENSOR_PORT,<sp/>HIGH);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="110" column="14"/>
+        <location file="pros/adi.hpp" line="186" column="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -284,16 +329,16 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="pros/adi.hpp" line="40" column="14" bodyfile="pros/adi.hpp" bodystart="40" bodyend="115"/>
+    <location file="pros/adi.hpp" line="43" column="14" bodyfile="pros/adi.hpp" bodystart="43" bodyend="191"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIPort_1a4140268936472c65e97796860c95cc4a" prot="private" virt="non-virtual"><scope>pros::ADIPort</scope><name>_adi_port</name></member>
-      <member refid="classpros_1_1ADIPort_1a44a445eef95291c2673e57ed31106dd4" prot="private" virt="non-virtual"><scope>pros::ADIPort</scope><name>_smart_port</name></member>
-      <member refid="classpros_1_1ADIPort_1a538a789ca89bc61ebf5fb95fa723951f" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>ADIPort</name></member>
-      <member refid="classpros_1_1ADIPort_1a97ca42fda4089b884e38867a2551d2c2" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>ADIPort</name></member>
-      <member refid="classpros_1_1ADIPort_1abc268911f1961b5389b71852e946f729" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>get_config</name></member>
-      <member refid="classpros_1_1ADIPort_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIPort_1ae1418e3d7d46f72ea805789d6e511c50" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>set_config</name></member>
-      <member refid="classpros_1_1ADIPort_1a833ed782b711495035dae08cfce3e62e" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>set_value</name></member>
+      <member refid="group__cpp-adi_1ga4140268936472c65e97796860c95cc4a" prot="private" virt="non-virtual"><scope>pros::ADIPort</scope><name>_adi_port</name></member>
+      <member refid="group__cpp-adi_1ga44a445eef95291c2673e57ed31106dd4" prot="private" virt="non-virtual"><scope>pros::ADIPort</scope><name>_smart_port</name></member>
+      <member refid="group__cpp-adi_1ga538a789ca89bc61ebf5fb95fa723951f" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>ADIPort</name></member>
+      <member refid="group__cpp-adi_1ga97ca42fda4089b884e38867a2551d2c2" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>ADIPort</name></member>
+      <member refid="group__cpp-adi_1gabc268911f1961b5389b71852e946f729" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>get_config</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1gae1418e3d7d46f72ea805789d6e511c50" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>set_config</name></member>
+      <member refid="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="public" virt="non-virtual"><scope>pros::ADIPort</scope><name>set_value</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

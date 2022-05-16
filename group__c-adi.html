@@ -289,7 +289,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Displays the value of E_ADI_ANALOG_IN</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Port Type: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_port_get_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gabe2a3c30fa74bb9c4ba202d79e636d15"><div>
             <h3>
@@ -314,7 +320,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Port Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_get_value</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga280137f3b1ec70ac5d22462cdc7b715d"><div>
             <h3>
@@ -344,7 +355,11 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga2cf397ea5cb6d0927e5f5c93ec34bb3d"><div>
             <h3>
@@ -374,7 +389,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This only works on ports configured as outputs, and the behavior will change depending on the configuration of the port.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This only works on ports configured as outputs, and the behavior will change depending on the configuration of the port.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_port_set_config</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">E_ADI_DIGITAL_OUT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_set_value</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gadebbf89bed5c3464bd77712c4c53edef"><div>
             <h3>
@@ -399,7 +419,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <a href="group__c-adi.html#ga34a3205b4beecc2efb561a068ac869e7" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated()</a> and <a href="group__c-adi.html#ga0a62ec5516d617b8282f9f1c21e68e15" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated_<wbr />HR()</a> functions. These functions will return the difference between this value and the current sensor value when called.</p><p>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <a href="group__c-adi.html#ga34a3205b4beecc2efb561a068ac869e7" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated()</a> and <a href="group__c-adi.html#ga0a62ec5516d617b8282f9f1c21e68e15" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated_<wbr />HR()</a> functions. These functions will return the difference between this value and the current sensor value when called.</p><p>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</p><aside class="m-note m-info"><h4>Note</h4><p>The ADI currently returns data at 10ms intervals, in constrast to the calibrate function’s 1ms sample rate. This sample rate was kept for the sake of being similar to PROS 2, and increasing the sample rate would not have a tangible difference in the function’s performance.</p></aside><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_analog_calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Calibrated Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_analog_read_calibrated</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// All readings from then on will be calibrated</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaaec9c097a2fb6ae1632954591eea35d7"><div>
             <h3>
@@ -424,7 +450,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The value returned is undefined if the analog pin has been switched to a different mode.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>The value returned is undefined if the analog pin has been switched to a different mode.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_analog_read</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga34a3205b4beecc2efb561a068ac869e7"><div>
             <h3>
@@ -449,7 +482,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The <a href="group__c-adi.html#gadebbf89bed5c3464bd77712c4c53edef" class="m-doc">adi_<wbr />analog_<wbr />calibrate()</a> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <a href="group__c-adi.html#ga0a62ec5516d617b8282f9f1c21e68e15" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated_<wbr />HR()</a> instead.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>The <a href="group__c-adi.html#gadebbf89bed5c3464bd77712c4c53edef" class="m-doc">adi_<wbr />analog_<wbr />calibrate()</a> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <a href="group__c-adi.html#ga0a62ec5516d617b8282f9f1c21e68e15" class="m-doc">adi_<wbr />analog_<wbr />read_<wbr />calibrated_<wbr />HR()</a> instead.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_analog_read_calibrated</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0a62ec5516d617b8282f9f1c21e68e15"><div>
             <h3>
@@ -474,7 +514,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The <a href="group__c-adi.html#gadebbf89bed5c3464bd77712c4c53edef" class="m-doc">adi_<wbr />analog_<wbr />calibrate()</a> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</p><p>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>The <a href="group__c-adi.html#gadebbf89bed5c3464bd77712c4c53edef" class="m-doc">adi_<wbr />analog_<wbr />calibrate()</a> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</p><p>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an analog input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">adi_analog_calibrate</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Reading: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_analog_read_calibrated_HR</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4acc4110678a3f4ae8f6b793b2dc1793"><div>
             <h3>
@@ -499,7 +547,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If the port is configured as some other mode, the digital value which reflects the current state of the port is returned, which may or may not differ from the currently set value. The return value is undefined for ports configured as any mode other than a Digital Input.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>If the port is configured as some other mode, the digital value which reflects the current state of the port is returned, which may or may not differ from the currently set value. The return value is undefined for ports configured as any mode other than a Digital Input.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_digital_read</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf67d01f4e0aad2806c699e249d869977"><div>
             <h3>
@@ -524,7 +579,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">adi_digital_get_new_press</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Toggle pneumatics or other state operations</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gadbbe71d4934bbe5218b33405207f5f39"><div>
             <h3>
@@ -554,7 +618,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If the port is configured as some other mode, behavior is undefined.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital output</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>If the port is configured as some other mode, behavior is undefined.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a digital output</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">state</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">adi_digital_write</span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">state</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// toggle the sensor value every 50ms</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga81c189bfd3e3d2c7dff5d26459ecd6b9"><div>
             <h3>
@@ -584,7 +657,11 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_pin_mode</span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_ANALOG</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4f0f74ad94f8d1ea90581ed55674241c"><div>
             <h3>
@@ -614,7 +691,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gacff400470df9136fc1c05e51644e08c9"><div>
             <h3>
@@ -639,7 +722,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Commanded Motor Power: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_motor_get</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">));</span><span class="w"> </span><span class="c1">// Will display 127</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gabeb2cc7e1edda5a9370a1ae268db08ac"><div>
             <h3>
@@ -664,7 +754,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_motor_set</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// adi_motor_set(MOTOR_PORT, 0); // Stop the motor</span>
+<span class="w">  </span><span class="n">adi_motor_stop</span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span><span class="w"> </span><span class="c1">// use this instead</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga22e55a80b8f8e20bc8b787a92d9253f2"><div>
             <h3>
@@ -689,7 +786,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>There are 360 ticks in one revolution.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>There are 360 ticks in one revolution.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_encoder_t</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gac21579276dee544ecfedd917cfef27e0"><div>
             <h3>
@@ -724,7 +830,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_encoder_t</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0aa1c29410c89a930400c779b9093ed8"><div>
             <h3>
@@ -749,7 +864,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_encoder_t</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move the encoder around in this time</span>
+<span class="w">  </span><span class="n">adi_encoder_reset</span><span class="p">(</span><span class="n">enc</span><span class="p">);</span><span class="w"> </span><span class="c1">// The encoder is now zero again</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gad9821a0243b2e14d0dac5099872129ae"><div>
             <h3>
@@ -774,7 +896,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_encoder_t</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_encoder_init</span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Use the encoder</span>
+<span class="w">  </span><span class="n">adi_encoder_shutdown</span><span class="p">(</span><span class="n">enc</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga65ac514a03673a535cdf43e7f57e2716"><div>
             <h3>
@@ -799,7 +928,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_PING 1</span>
+<span class="cp">#define PORT_ECHO 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_ultrasonic_t</span><span class="w"> </span><span class="n">ult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_ultrasonic_init</span><span class="p">(</span><span class="n">PORT_PING</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_ECHO</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the distance read by the ultrasonic</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga2bd844aa49e221c1e68c0b94d148c3b4"><div>
             <h3>
@@ -829,7 +968,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_PING 1</span>
+<span class="cp">#define PORT_ECHO 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_ultrasonic_t</span><span class="w"> </span><span class="n">ult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_ultrasonic_init</span><span class="p">(</span><span class="n">PORT_PING</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_ECHO</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the distance read by the ultrasonic</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga38f7e3b4d99f5dc21972a9f178f5908f"><div>
             <h3>
@@ -854,7 +1003,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as an ultrasonic</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_PING 1</span>
+<span class="cp">#define PORT_ECHO 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_ultrasonic_t</span><span class="w"> </span><span class="n">ult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_ultrasonic_init</span><span class="p">(</span><span class="n">PORT_PING</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_ECHO</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the distance read by the ultrasonic</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_ultrasonic_get</span><span class="p">(</span><span class="n">ult</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_ultrasonic_shutdown</span><span class="p">(</span><span class="n">ult</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga7ee7cf11c1a604af68b9373f4b7c8799"><div>
             <h3>
@@ -879,7 +1039,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Unless a multiplier is applied to the gyro, the return value will be a whole number representing the number of degrees of rotation times 10.</p><p>There are 360 degrees in a circle, thus the gyro will return 3600 for one whole rotation.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>Unless a multiplier is applied to the gyro, the return value will be a whole number representing the number of degrees of rotation times 10.</p><p>There are 360 degrees in a circle, thus the gyro will return 3600 for one whole rotation.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_gyro_t</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">GYRO_MULTIPLIER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the gyro&#39;s heading</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6ee6e73d3be33d0b2f5c4bfbe37f2d4c"><div>
             <h3>
@@ -909,7 +1079,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If the given port has not previously been configured as a gyro, then this function starts a 1300 ms calibration period.</p><p>It is highly recommended that this function be called from <a href="main_8h.html#a9efe22aaead3a5e936b5df459de02eba" class="m-doc">initialize()</a> when the robot is stationary to ensure proper calibration.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>If the given port has not previously been configured as a gyro, then this function starts a 1300 ms calibration period.</p><p>It is highly recommended that this function be called from <a href="main_8h.html#a9efe22aaead3a5e936b5df459de02eba" class="m-doc">initialize()</a> when the robot is stationary to ensure proper calibration.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_gyro_t</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">GYRO_MULTIPLIER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the gyro&#39;s heading</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga79a193e42f59415cf1f860812a7248d6"><div>
             <h3>
@@ -934,7 +1114,25 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_gyro_t</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">GYRO_MULTIPLIER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the gyro&#39;s heading</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Reset the gyro every 2 seconds</span>
+<span class="w">      </span><span class="n">adi_gyro_reset</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga618baab8adbdec65f418f68cf98325d0"><div>
             <h3>
@@ -959,7 +1157,25 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
+<span class="cp">#define GYRO_MULTIPLIER 1 </span><span class="c1">// Standard behavior</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_gyro_t</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_gyro_init</span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">GYRO_MULTIPLIER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the gyro&#39;s heading</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Heading: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_gyro_get</span><span class="p">(</span><span class="n">gyro</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">adi_gyro_shutdown</span><span class="p">(</span><span class="n">gyro</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Shut down the gyro after two seconds</span>
+<span class="w">      </span><span class="k">break</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6c866c2d7e65da244268b94fa1ce131c"><div>
             <h3>
@@ -984,7 +1200,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define POTENTIOMETER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_potentiometer_t</span><span class="w"> </span><span class="n">potentiometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_potentiometer_init</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the potentiometer&#39;s angle</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Angle: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_potentiometer_get_angle</span><span class="p">(</span><span class="n">potentiometer</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gadb7056020a04bc6988314deb0c787d89"><div>
             <h3>
@@ -1014,7 +1239,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define POTENTIOMETER_PORT 1</span>
+<span class="cp">#define POTENTIOMETER_TYPE E_ADI_POT_EDR</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_potentiometer_t</span><span class="w"> </span><span class="n">potentiometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_potentiometer_type_init</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">POTENTIOMETER_TYPE</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the potentiometer&#39;s angle</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Angle: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_potentiometer_get_angle</span><span class="p">(</span><span class="n">potentiometer</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga9cb484f9bc42af2cdd9904fd65c71224"><div>
             <h3>
@@ -1039,7 +1274,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>The original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define POTENTIOMETER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">adi_potentiometer_t</span><span class="w"> </span><span class="n">potentiometer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adi_potentiometer_t</span><span class="p">(</span><span class="n">POTENTIOMETER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Print the potnetiometer&#39;s angle</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Angle: %lf</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">adi_potentiometer_get_angle</span><span class="p">(</span><span class="n">potentiometer</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
         </section>
         <section>
@@ -1050,7 +1294,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8h.html">&lt;pros/adi.h&gt;</a></div>
             </h3>
             <p>Reference type for an initialized encoder.</p>
-<p>This merely contains the port number for the encoder, unlike its use as an object to store encoder data in PROS 2.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This merely contains the port number for the encoder, unlike its use as an object to store encoder data in PROS 2.</p>
           </div></section>
           <section class="m-doc-details" id="ga642e06a44cad02177d4111261e17c3df"><div>
             <h3>
@@ -1058,7 +1302,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8h.html">&lt;pros/adi.h&gt;</a></div>
             </h3>
             <p>Reference type for an initialized ultrasonic.</p>
-<p>This merely contains the port number for the ultrasonic, unlike its use as an object to store ultrasonic data in PROS 2.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This merely contains the port number for the ultrasonic, unlike its use as an object to store ultrasonic data in PROS 2.</p>
           </div></section>
           <section class="m-doc-details" id="ga9c451728d4193f1a4e59d7dc489ac292"><div>
             <h3>
@@ -1066,7 +1310,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8h.html">&lt;pros/adi.h&gt;</a></div>
             </h3>
             <p>Reference type for an initialized gyroscope.</p>
-<p>This merely contains the port number for the gyroscope, unlike its use as an object to store gyro data in PROS 2.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This merely contains the port number for the gyroscope, unlike its use as an object to store gyro data in PROS 2.</p>
           </div></section>
           <section class="m-doc-details" id="ga57a45eab54fec9fc2d0a16117a64ad96"><div>
             <h3>
@@ -1074,7 +1318,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8h.html">&lt;pros/adi.h&gt;</a></div>
             </h3>
             <p>Reference type for an initialized potentiometer.</p>
-<p>This merely contains the port number for the potentiometer, unlike its use as an object to store gyro data in PROS 2.</p><p><strong>Example</strong> <code class="m-code">code</code></p>
+<p>This merely contains the port number for the potentiometer, unlike its use as an object to store gyro data in PROS 2.</p>
           </div></section>
         </section>
         <section>

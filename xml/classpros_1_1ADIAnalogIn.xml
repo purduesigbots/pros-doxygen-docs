@@ -6,7 +6,7 @@
     <derivedcompoundref refid="classpros_1_1ADIPotentiometer" prot="public" virt="non-virtual">ADIPotentiometer</derivedcompoundref>
     <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a399da39531465667a539555d0afa953d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga399da39531465667a539555d0afa953d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIAnalogIn</definition>
         <argsstring>(std::uint8_t adi_port)</argsstring>
@@ -29,15 +29,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="133" column="10"/>
+        <location file="pros/adi.hpp" line="227" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a2a26928e153eb08641528b46c1da1791" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga2a26928e153eb08641528b46c1da1791" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIAnalogIn</definition>
         <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
@@ -60,15 +68,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>({{EXT_ADI_SMART_PORT,<sp/>ADI_PORT}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="150" column="1"/>
+        <location file="pros/adi.hpp" line="257" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t calibrate</definition>
         <argsstring>() const</argsstring>
@@ -77,18 +94,28 @@
 <para>Calibrates the analog sensor on the specified port and returns the new calibration value. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="classpros_1_1ADIAnalogIn_1a074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIAnalogIn::get_value_calibrated()</ref> and <ref refid="classpros_1_1ADIAnalogIn_1a2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para>
+<para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIAnalogIn::get_value_calibrated()</ref> and <ref refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para>
 <para>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
-<para><simplesect kind="return"><para>The average sensor value computed by this function </para>
+<para><simplesect kind="note"><para>The ADI currently returns data at 10ms intervals, in contrast to the calibrate function’s 1ms sample rate. This sample rate was kept for the sake of being similar to PROS 2, and increasing the sample rate would not have a tangible difference in the function’s performance.</para>
 </simplesect>
-</para>
+This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
+<para><simplesect kind="return"><para>The average sensor value computed by this function</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="174" column="14"/>
+        <location file="pros/adi.hpp" line="298" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t get_value_calibrated</definition>
         <argsstring>() const</argsstring>
@@ -97,17 +124,25 @@
 <para>Gets the 12 bit calibrated value of an analog input port. </para>
         </briefdescription>
         <detaileddescription>
-<para>The <ref refid="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <ref refid="classpros_1_1ADIAnalogIn_1a2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> instead.</para>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <ref refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> instead.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
-<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095 </para>
+<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="191" column="14"/>
+        <location file="pros/adi.hpp" line="327" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a2d4a70c5c23555ddf8ea24318d7a8731" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t get_value_calibrated_HR</definition>
         <argsstring>() const</argsstring>
@@ -116,16 +151,24 @@
 <para>Gets the 16 bit calibrated value of an analog input port. </para>
         </briefdescription>
         <detaileddescription>
-<para>The <ref refid="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</para>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</para>
 <para>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
-<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to 16384 </para>
+<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="213" column="14"/>
+        <location file="pros/adi.hpp" line="361" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIAnalogIn_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -133,18 +176,25 @@
         <argsstring>() const</argsstring>
         <name>get_value</name>
         <briefdescription>
-<para>Gets the 12-bit value of the specified port. </para>
+<para>Reads an analog input channel and returns the 12-bit value. </para>
         </briefdescription>
         <detaileddescription>
-<para>The value returned is undefined if the analog pin has been switched to a different mode.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
-<para><simplesect kind="return"><para>The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V </para>
+<para>The value returned is undefined if the analog pin has been switched to a different mode. The meaning of the returned value varies depending on the sensor attached.</para>
+<para>Inherited from <ref refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" kindref="member">ADIPort::get_value</ref>.</para>
+<para>This function uses the following values of errno when an error state is reached: EADDRINUSE - The port is not configured as an analog input (e.g. the port has been reconfigured)</para>
+<para><simplesect kind="return"><para>The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Sensor<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="229" column="1"/>
+        <location file="pros/adi.hpp" line="387" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -181,15 +231,15 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="pros/adi.hpp" line="117" column="34" bodyfile="pros/adi.hpp" bodystart="117" bodyend="230"/>
+    <location file="pros/adi.hpp" line="195" column="34" bodyfile="pros/adi.hpp" bodystart="195" bodyend="388"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIAnalogIn_1a399da39531465667a539555d0afa953d" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>ADIAnalogIn</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2a26928e153eb08641528b46c1da1791" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>ADIAnalogIn</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>calibrate</name></member>
+      <member refid="group__cpp-adi_1ga399da39531465667a539555d0afa953d" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>ADIAnalogIn</name></member>
+      <member refid="group__cpp-adi_1ga2a26928e153eb08641528b46c1da1791" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>ADIAnalogIn</name></member>
+      <member refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>calibrate</name></member>
       <member refid="classpros_1_1ADIAnalogIn_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIPort_1a60987c8e4946650cf9aa40f8e8345f01" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIAnalogIn</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>get_value_calibrated</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2d4a70c5c23555ddf8ea24318d7a8731" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>get_value_calibrated_HR</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIAnalogIn</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>get_value_calibrated</name></member>
+      <member refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" prot="public" virt="non-virtual"><scope>pros::ADIAnalogIn</scope><name>get_value_calibrated_HR</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -5,7 +5,7 @@
     <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">ADIPort</basecompoundref>
     <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1ae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIUltrasonic</definition>
         <argsstring>(std::uint8_t adi_port_ping, std::uint8_t adi_port_echo)</argsstring>
@@ -36,17 +36,28 @@
 <parametername>port_echo</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping. </para>
+<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="552" column="1"/>
+        <location file="pros/adi.hpp" line="1001" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1a9e8d38b246266bb0be06168998855e68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga9e8d38b246266bb0be06168998855e68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIUltrasonic</definition>
         <argsstring>(ext_adi_port_tuple_t port_tuple)</argsstring>
@@ -65,17 +76,29 @@
 <parametername>port_tuple</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The tuple of the smart port number, the port connected to the orange OUTPUT cable (1, 3, 5, 7 or &apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;), and the port connected to the yellow INPUT cable (the next) highest port following port_ping). </para>
+<para>The tuple of the smart port number, the port connected to the orange OUTPUT cable (1, 3, 5, 7 or &apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;), and the port connected to the yellow INPUT cable (the next) highest port following port_ping).</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>&apos;A&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>&apos;B&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(<sp/>{{<sp/>SMART_PORT,<sp/>PORT_PING,<sp/>PORT_ECHO<sp/>}}<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="568" column="1"/>
+        <location file="pros/adi.hpp" line="1033" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t get_value</definition>
         <argsstring>() const</argsstring>
@@ -86,13 +109,24 @@
         <detaileddescription>
 <para>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an ultrasonic</para>
-<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points. </para>
+<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="584" column="14"/>
+        <location file="pros/adi.hpp" line="1064" column="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -123,11 +157,11 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="pros/adi.hpp" line="535" column="36" bodyfile="pros/adi.hpp" bodystart="535" bodyend="585"/>
+    <location file="pros/adi.hpp" line="965" column="36" bodyfile="pros/adi.hpp" bodystart="965" bodyend="1065"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIUltrasonic_1ae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
-      <member refid="classpros_1_1ADIUltrasonic_1a9e8d38b246266bb0be06168998855e68" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
-      <member refid="classpros_1_1ADIUltrasonic_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1gae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
+      <member refid="group__cpp-adi_1ga9e8d38b246266bb0be06168998855e68" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_value</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

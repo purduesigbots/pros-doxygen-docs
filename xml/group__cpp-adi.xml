@@ -4,6 +4,1409 @@
     <compoundname>cpp-adi</compoundname>
     <title>ADI (TriPort) C++ API</title>
     <innerfile refid="adi_8hpp">adi.hpp</innerfile>
+    <innerclass refid="classpros_1_1ADIPort" prot="public">pros::ADIPort</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__cpp-adi_1ga44a445eef95291c2673e57ed31106dd4" prot="private" static="no" mutable="no">
+        <type>std::uint8_t</type>
+        <definition>std::uint8_t _smart_port</definition>
+        <argsstring></argsstring>
+        <name>_smart_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="189" column="14" bodyfile="pros/adi.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__cpp-adi_1ga4140268936472c65e97796860c95cc4a" prot="private" static="no" mutable="no">
+        <type>std::uint8_t</type>
+        <definition>std::uint8_t _adi_port</definition>
+        <argsstring></argsstring>
+        <name>_adi_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="190" column="14" bodyfile="pros/adi.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__cpp-adi_1ga538a789ca89bc61ebf5fb95fa723951f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIPort</definition>
+        <argsstring>(std::uint8_t adi_port, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
+        <name>ADIPort</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+          <defval>E_ADI_TYPE_UNDEFINED</defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="77" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga97ca42fda4089b884e38867a2551d2c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIPort</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
+        <name>ADIPort</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+          <defval>E_ADI_TYPE_UNDEFINED</defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi expander to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>({{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/>ANALOG_SENSOR_PORT<sp/>}},<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Type:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_config();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="105" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gabc268911f1961b5389b71852e946f729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_config</definition>
+        <argsstring>() const</argsstring>
+        <name>get_config</name>
+        <briefdescription>
+<para>Gets the configuration for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The ADI configuration for the given port</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Port<sp/>Type:<sp/>%d\n&quot;,<sp/>adi_port_get_config(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="122" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the value for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The value stored for the given port</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Value:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="139" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gae1418e3d7d46f72ea805789d6e511c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_config</definition>
+        <argsstring>(adi_port_config_e_t type) const</argsstring>
+        <name>set_config</name>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_DIGITAL_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things<sp/>as<sp/>a<sp/>digital<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Digital<sp/>is<sp/>unplugged<sp/>and<sp/>an<sp/>analog<sp/>is<sp/>plugged<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_config(E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="162" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_value</definition>
+        <argsstring>(std::int32_t value) const</argsstring>
+        <name>set_value</name>
+        <param>
+          <type>std::int32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the value for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This only works on ports configured as outputs, and the behavior will change depending on the configuration of the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set the ADI port to</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPort<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT,<sp/>E_ADI_DIGITAL_OUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_value(DIGITAL_SENSOR_PORT,<sp/>HIGH);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="186" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga399da39531465667a539555d0afa953d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIAnalogIn</definition>
+        <argsstring>(std::uint8_t adi_port)</argsstring>
+        <name>ADIAnalogIn</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as an Analog Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="227" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga2a26928e153eb08641528b46c1da1791" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIAnalogIn</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
+        <name>ADIAnalogIn</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi expander to act as an Analog Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>({{EXT_ADI_SMART_PORT,<sp/>ADI_PORT}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="257" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t calibrate</definition>
+        <argsstring>() const</argsstring>
+        <name>calibrate</name>
+        <briefdescription>
+<para>Calibrates the analog sensor on the specified port and returns the new calibration value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method assumes that the true sensor value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIAnalogIn::get_value_calibrated()</ref> and <ref refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> functions. These functions will return the difference between this value and the current sensor value when called.</para>
+<para>Do not use this function when the sensor value might be unstable (gyro rotation, accelerometer movement).</para>
+<para><simplesect kind="note"><para>The ADI currently returns data at 10ms intervals, in contrast to the calibrate function’s 1ms sample rate. This sample rate was kept for the sake of being similar to PROS 2, and increasing the sample rate would not have a tangible difference in the function’s performance.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
+<para><simplesect kind="return"><para>The average sensor value computed by this function</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="298" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value_calibrated</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value_calibrated</name>
+        <briefdescription>
+<para>Gets the 12 bit calibrated value of an analog input port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This function is inappropriate for sensor values intended for integration, as round-off error can accumulate causing drift over time. Use <ref refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" kindref="member">pros::ADIAnalogIn::get_value_calibrated_HR()</ref> instead.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
+<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -4095 to 4095</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="327" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value_calibrated_HR</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value_calibrated_HR</name>
+        <briefdescription>
+<para>Gets the 16 bit calibrated value of an analog input port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIAnalogIn::calibrate()</ref> function must be run first. This is intended for integrated sensor values such as gyros and accelerometers to reduce drift due to round-off, and should not be used on a sensor such as a line tracker or potentiometer.</para>
+<para>The value returned actually has 16 bits of &quot;precision&quot;, even though the ADC only reads 12 bits, so that error induced by the average value being between two values when integrated over time is trivial. Think of the value as the true value times 16.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an analog input</para>
+<para><simplesect kind="return"><para>The difference of the sensor value from its calibrated default from -16384 to</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.calibrate(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Calibrated<sp/>Reading:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value_calibrated();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>All<sp/>readings<sp/>from<sp/>then<sp/>on<sp/>will<sp/>be<sp/>calibrated</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="361" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga546dce045cf7e1cf711dcfda1d0e6dd2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIAnalogOut</definition>
+        <argsstring>(std::uint8_t adi_port)</argsstring>
+        <name>ADIAnalogOut</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as an Analog Output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogOut<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="424" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga7605c713b2b8fd28f8154f66016c9323" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIAnalogOut</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
+        <name>ADIAnalogOut</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as an Analog Output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIAnalogOut<sp/>sensor<sp/>({{EXT_ADI_SMART_PORT,<sp/>ADI_PORT}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="449" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaace6711643eedf7f140d3af34da7bfa6" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIDigitalOut</definition>
+        <argsstring>(std::uint8_t adi_port, bool init_state=LOW)</argsstring>
+        <name>ADIDigitalOut</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>init_state</declname>
+          <defval><ref refid="group__c-adi_1gab811d8c6ff3a505312d3276590444289" kindref="member">LOW</ref></defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a Digital Output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>init_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial state for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>state<sp/>=<sp/>LOW;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIDigitalOut<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT,<sp/>state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>!=<sp/>state;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sensor.set_value(state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);<sp/>//<sp/>toggle<sp/>the<sp/>sensor<sp/>value<sp/>every<sp/>50ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="514" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gab2912f0fe6ad3c664391d90febe4fc98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIDigitalOut</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, bool init_state=LOW)</argsstring>
+        <name>ADIDigitalOut</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>init_state</declname>
+          <defval><ref refid="group__c-adi_1gab811d8c6ff3a505312d3276590444289" kindref="member">LOW</ref></defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as a Digital Output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>init_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The initial state for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>state<sp/>=<sp/>LOW;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIDigitalOut<sp/>sensor<sp/>(<sp/>{{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/>ADI_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>state<sp/>!=<sp/>state;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sensor.set_value(state);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);<sp/>//<sp/>toggle<sp/>the<sp/>sensor<sp/>value<sp/>every<sp/>50ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="546" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga55442b68e310a25fcc6d34ae5c9fc1a0" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIDigitalIn</definition>
+        <argsstring>(std::uint8_t adi_port)</argsstring>
+        <name>ADIDigitalIn</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a Digital Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIDigitalIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="609" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaf84801ff6a9b610a23f47bc54846cad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIDigitalIn</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
+        <name>ADIDigitalIn</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as a Digital Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIDigitalIn<sp/>sensor<sp/>({{EXT_ADI_SMART_PORT,<sp/>ADI_PORT}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="634" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaecb46342cef79b5e76b1725996088abe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_new_press</definition>
+        <argsstring>() const</argsstring>
+        <name>get_new_press</name>
+        <briefdescription>
+<para>Gets a rising-edge case for a digital button press. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <ref refid="classpros_1_1Task" kindref="compound">Task</ref> A calls this function for buttons 1 and 2. <ref refid="classpros_1_1Task" kindref="compound">Task</ref> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a digital input</para>
+<para><simplesect kind="return"><para>1 if the button is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIDigitalIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sensor.get_new_press())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>state<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="669" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga9f3196d588d522a1476ec0d8b3a4ecca" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIMotor</definition>
+        <argsstring>(std::uint8_t adi_port)</argsstring>
+        <name>ADIMotor</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a <ref refid="classpros_1_1Motor" kindref="compound">Motor</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="734" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga91ac2c0b6ed24367991104ea17b4ecfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIMotor</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
+        <name>ADIMotor</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as a <ref refid="classpros_1_1Motor" kindref="compound">Motor</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_MOTOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(<sp/>{{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/><sp/>ADI_MOTOR_PORT}}<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="762" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga0722135fc9e602e21043c879642c3fad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t stop</definition>
+        <argsstring>() const</argsstring>
+        <name>stop</name>
+        <briefdescription>
+<para>Stops the motor on the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.stop();<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="787" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga8e4997e865213b80c2b807f94d4f2d5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIEncoder</definition>
+        <argsstring>(std::uint8_t adi_port_top, std::uint8_t adi_port_bottom, bool reversed=false)</argsstring>
+        <name>ADIEncoder</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_top</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_bottom</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an Encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port_top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;top&quot; wire from the encoder sensor with the removable cover side up </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adi_port_bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in the opposite direction</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIEncoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="877" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga1866c137d27015ab24a4ba7554118353" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIEncoder</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple, bool reversed=false)</argsstring>
+        <name>ADIEncoder</name>
+        <param>
+          <type>ext_adi_port_tuple_t</type>
+          <declname>port_tuple</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an Encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the &quot;top&quot; wire from the encoder sensor with the removable cover side up, and the &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in theopposite direction</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>&apos;A&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>&apos;B&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIEncoder<sp/>sensor<sp/>({<sp/>SMART_PORT,<sp/>PORT_TOP,<sp/>PORT_BOTTOM<sp/>},<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="906" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac92589176d26914068b37bb9d6afba7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t reset</definition>
+        <argsstring>() const</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Sets the encoder value to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIEncoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>the<sp/>encoder<sp/>around<sp/>in<sp/>this<sp/>time</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.reset();<sp/>//<sp/>The<sp/>encoder<sp/>is<sp/>now<sp/>zero<sp/>again</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="933" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the number of ticks recorded by the encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>There are 360 ticks in one revolution.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>The signed and cumulative number of counts since the last start or</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIEncoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Encoder<sp/>Value:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="960" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIUltrasonic</definition>
+        <argsstring>(std::uint8_t adi_port_ping, std::uint8_t adi_port_echo)</argsstring>
+        <name>ADIUltrasonic</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_ping</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_echo</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an Ultrasonic sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_ping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the orange OUTPUT cable. This should be in port 1, 3, 5, or 7 (&apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port_echo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1001" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga9e8d38b246266bb0be06168998855e68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIUltrasonic</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple)</argsstring>
+        <name>ADIUltrasonic</name>
+        <param>
+          <type>ext_adi_port_tuple_t</type>
+          <declname>port_tuple</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an Ultrasonic sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the port connected to the orange OUTPUT cable (1, 3, 5, 7 or &apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;), and the port connected to the yellow INPUT cable (the next) highest port following port_ping).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>&apos;A&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>&apos;B&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(<sp/>{{<sp/>SMART_PORT,<sp/>PORT_PING,<sp/>PORT_ECHO<sp/>}}<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1033" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the current ultrasonic sensor value in centimeters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an ultrasonic</para>
+<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIUltrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1064" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaced0e2755dfa5514822759da5f37dc46" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIGyro</definition>
+        <argsstring>(std::uint8_t adi_port, double multiplier=1)</argsstring>
+        <name>ADIGyro</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Initializes a gyroscope on the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the given port has not previously been configured as a gyro, then this function starts a 1300ms calibration period.</para>
+<para>It is highly recommended that an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object be created in <ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize()</ref> when the robot is stationary to ensure proper calibration. If an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object is declared at the global scope, a hardcoded 1300ms delay at the beginning of initialize will be necessary to ensure that the gyro&apos;s returned values are correct at the beginning of autonomous/opcontrol.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port to initialize as a gyro (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar value that will be multiplied by the gyro heading value supplied by the</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIGyro<sp/>gyro<sp/>(GYRO_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>gyro<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1111" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gada250543373fa9fe687f5889bdf6365b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIGyro</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, double multiplier=1)</argsstring>
+        <name>ADIGyro</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+<para>Initializes a gyroscope on the given port of an adi expander. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the given port has not previously been configured as a gyro, then this function starts a 1300ms calibration period.</para>
+<para>It is highly recommended that an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object be created in <ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize()</ref> when the robot is stationary to ensure proper calibration. If an <ref refid="classpros_1_1ADIGyro" kindref="compound">ADIGyro</ref> object is declared at the global scope, a hardcoded 1300ms delay at the beginning of initialize will be necessary to ensure that the gyro&apos;s returned values are correct at the beginning of autonomous/opcontrol.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>multiplier</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A scalar value that will be multiplied by the gyro heading value supplied by the</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_GYRO_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIGyro<sp/>gyro<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_GYRO_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>gyro<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1151" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga8487ef9a8abbf5226130e0275ffa5331" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the current gyro angle in tenths of a degree. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Unless a multiplier is applied to the gyro, the return value will be a whole number representing the number of degrees of rotation times 10.</para>
+<para>There are 360 degrees in a circle, thus the gyro will return 3600 for one whole rotation.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</para>
+<para><simplesect kind="return"><para>The gyro angle in degrees.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIGyro<sp/>gyro<sp/>(GYRO_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Get<sp/>the<sp/>gyro<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1181" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac92589176d26914068b37bb9d6afba7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t reset</definition>
+        <argsstring>() const</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Resets the gyroscope value to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GYRO_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIGyro<sp/>gyro<sp/>(GYRO_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>gyro<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.get_value();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(pros::millis()<sp/>-<sp/>now<sp/>&gt;<sp/>2000)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>gyro<sp/>every<sp/>2<sp/>seconds</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gyro.reset();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1215" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga76a7947417e8f42766f4f22708bb8f3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIPotentiometer</definition>
+        <argsstring>(std::uint8_t adi_port, adi_potentiometer_type_e_t potentiometer_type=E_ADI_POT_EDR)</argsstring>
+        <name>ADIPotentiometer</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>adi_potentiometer_type_e_t</type>
+          <declname>potentiometer_type</declname>
+          <defval>E_ADI_POT_EDR</defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a Potentiometer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>potentiometer_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1254" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaae570f8f2cbb2afbb5b6a089f852d0ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIPotentiometer</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, adi_potentiometer_type_e_t potentiometer_type=E_ADI_POT_EDR)</argsstring>
+        <name>ADIPotentiometer</name>
+        <param>
+          <type>ext_adi_port_pair_t</type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>adi_potentiometer_type_e_t</type>
+          <declname>potentiometer_type</declname>
+          <defval>E_ADI_POT_EDR</defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as a Potentiometer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>potentiometer_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_POTENTIOMETER_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1285" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac3309c0161ad846ca5e08c6bd21cbc85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double get_angle</definition>
+        <argsstring>() const</argsstring>
+        <name>get_angle</name>
+        <briefdescription>
+<para>Gets the current potentiometer angle in tenths of a degree. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</para>
+<para><simplesect kind="return"><para>The potentiometer angle in degrees.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_POTENTIOMETER_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1315" column="8"/>
+      </memberdef>
+      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

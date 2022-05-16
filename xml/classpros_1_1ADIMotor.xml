@@ -5,7 +5,7 @@
     <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">ADIPort</basecompoundref>
     <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1ADIMotor_1a9f3196d588d522a1476ec0d8b3a4ecca" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga9f3196d588d522a1476ec0d8b3a4ecca" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIMotor</definition>
         <argsstring>(std::uint8_t adi_port)</argsstring>
@@ -24,17 +24,26 @@
 <parametername>adi_port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="413" column="10"/>
+        <location file="pros/adi.hpp" line="734" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIMotor_1a91ac2c0b6ed24367991104ea17b4ecfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga91ac2c0b6ed24367991104ea17b4ecfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIMotor</definition>
         <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
@@ -53,17 +62,27 @@
 <parametername>port_pair</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_MOTOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(<sp/>{{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/><sp/>ADI_MOTOR_PORT}}<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="427" column="1"/>
+        <location file="pros/adi.hpp" line="762" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIMotor_1a0722135fc9e602e21043c879642c3fad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga0722135fc9e602e21043c879642c3fad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
         <definition>std::int32_t stop</definition>
         <argsstring>() const</argsstring>
@@ -73,13 +92,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.stop();<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="439" column="14"/>
+        <location file="pros/adi.hpp" line="787" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIMotor_1a833ed782b711495035dae08cfce3e62e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -104,13 +132,22 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="455" column="1"/>
+        <location file="pros/adi.hpp" line="816" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIMotor_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -122,13 +159,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
-<para><simplesect kind="return"><para>The last set speed of the motor on the given port </para>
+<para><simplesect kind="return"><para>The last set speed of the motor on the given</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIMotor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>motor.set_value(0);<sp/>//<sp/>Stop<sp/>the<sp/>motor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="466" column="1"/>
+        <location file="pros/adi.hpp" line="840" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -159,15 +205,15 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="pros/adi.hpp" line="400" column="31" bodyfile="pros/adi.hpp" bodystart="400" bodyend="467"/>
+    <location file="pros/adi.hpp" line="704" column="31" bodyfile="pros/adi.hpp" bodystart="704" bodyend="841"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIMotor_1a9f3196d588d522a1476ec0d8b3a4ecca" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>ADIMotor</name></member>
-      <member refid="classpros_1_1ADIMotor_1a91ac2c0b6ed24367991104ea17b4ecfc" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>ADIMotor</name></member>
+      <member refid="group__cpp-adi_1ga9f3196d588d522a1476ec0d8b3a4ecca" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>ADIMotor</name></member>
+      <member refid="group__cpp-adi_1ga91ac2c0b6ed24367991104ea17b4ecfc" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>ADIMotor</name></member>
       <member refid="classpros_1_1ADIMotor_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIPort_1a60987c8e4946650cf9aa40f8e8345f01" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIMotor</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIMotor</scope><name>get_value</name></member>
       <member refid="classpros_1_1ADIMotor_1a833ed782b711495035dae08cfce3e62e" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>set_value</name></member>
-      <member refid="classpros_1_1ADIPort_1a833ed782b711495035dae08cfce3e62e" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIMotor</scope><name>set_value</name></member>
-      <member refid="classpros_1_1ADIMotor_1a0722135fc9e602e21043c879642c3fad" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>stop</name></member>
+      <member refid="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="private" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIMotor</scope><name>set_value</name></member>
+      <member refid="group__cpp-adi_1ga0722135fc9e602e21043c879642c3fad" prot="public" virt="non-virtual"><scope>pros::ADIMotor</scope><name>stop</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

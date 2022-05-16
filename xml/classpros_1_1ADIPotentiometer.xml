@@ -5,7 +5,7 @@
     <basecompoundref refid="classpros_1_1ADIAnalogIn" prot="public" virt="non-virtual">ADIAnalogIn</basecompoundref>
     <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1a76a7947417e8f42766f4f22708bb8f3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga76a7947417e8f42766f4f22708bb8f3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIPotentiometer</definition>
         <argsstring>(std::uint8_t adi_port, adi_potentiometer_type_e_t potentiometer_type=E_ADI_POT_EDR)</argsstring>
@@ -37,17 +37,28 @@
 <parametername>potentiometer_type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type </para>
+<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="682" column="1"/>
+        <location file="pros/adi.hpp" line="1254" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1aae570f8f2cbb2afbb5b6a089f852d0ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gaae570f8f2cbb2afbb5b6a089f852d0ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ADIPotentiometer</definition>
         <argsstring>(ext_adi_port_pair_t port_pair, adi_potentiometer_type_e_t potentiometer_type=E_ADI_POT_EDR)</argsstring>
@@ -79,17 +90,28 @@
 <parametername>potentiometer_type</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type </para>
+<para>An adi_potentiometer_type_e_t enum value specifying the potentiometer version type</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_POTENTIOMETER_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="698" column="1"/>
+        <location file="pros/adi.hpp" line="1285" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1ac3309c0161ad846ca5e08c6bd21cbc85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gac3309c0161ad846ca5e08c6bd21cbc85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double get_angle</definition>
         <argsstring>() const</argsstring>
@@ -100,13 +122,24 @@
         <detaileddescription>
 <para>The original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</para>
-<para><simplesect kind="return"><para>The potentiometer angle in degrees. </para>
+<para><simplesect kind="return"><para>The potentiometer angle in degrees.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_POTENTIOMETER_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="713" column="8"/>
+        <location file="pros/adi.hpp" line="1315" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -125,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="729" column="1"/>
+        <location file="pros/adi.hpp" line="1331" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1a2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -136,7 +169,7 @@
 <para>Calibrates the potentiometer on the specified port and returns the new calibration value. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="classpros_1_1ADIAnalogIn_1a074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIPotentiometer::get_value_calibrated()</ref> function. This function will return the difference between this value and the current sensor value when called.</para>
+<para>This method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIPotentiometer::get_value_calibrated()</ref> function. This function will return the difference between this value and the current sensor value when called.</para>
 <para>Do not use this function when the potentiometer value might be unstable (rotating the potentiometer)</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
 <para><simplesect kind="return"><para>The average potentiometer value computed by this function </para>
@@ -145,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="751" column="1"/>
+        <location file="pros/adi.hpp" line="1353" column="1"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1ADIPotentiometer_1a074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -156,7 +189,7 @@
 <para>Gets the 12 bit calibrated value of a potentiometer port. </para>
         </briefdescription>
         <detaileddescription>
-<para>The <ref refid="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIPotentiometer::calibrate()</ref> function must be run first.</para>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIPotentiometer::calibrate()</ref> function must be run first.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
 <para><simplesect kind="return"><para>The difference of the potentiometer value from its calibrated default from -4095 to 4095 </para>
 </simplesect>
@@ -164,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="765" column="1"/>
+        <location file="pros/adi.hpp" line="1367" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -207,20 +240,20 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="pros/adi.hpp" line="667" column="42" bodyfile="pros/adi.hpp" bodystart="667" bodyend="766"/>
+    <location file="pros/adi.hpp" line="1220" column="42" bodyfile="pros/adi.hpp" bodystart="1220" bodyend="1368"/>
     <listofallmembers>
-      <member refid="classpros_1_1ADIAnalogIn_1a399da39531465667a539555d0afa953d" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIAnalogIn</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2a26928e153eb08641528b46c1da1791" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIAnalogIn</name></member>
-      <member refid="classpros_1_1ADIPotentiometer_1a76a7947417e8f42766f4f22708bb8f3f" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIPotentiometer</name></member>
-      <member refid="classpros_1_1ADIPotentiometer_1aae570f8f2cbb2afbb5b6a089f852d0ad" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIPotentiometer</name></member>
+      <member refid="group__cpp-adi_1ga399da39531465667a539555d0afa953d" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIAnalogIn</name></member>
+      <member refid="group__cpp-adi_1ga2a26928e153eb08641528b46c1da1791" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIAnalogIn</name></member>
+      <member refid="group__cpp-adi_1ga76a7947417e8f42766f4f22708bb8f3f" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIPotentiometer</name></member>
+      <member refid="group__cpp-adi_1gaae570f8f2cbb2afbb5b6a089f852d0ad" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>ADIPotentiometer</name></member>
       <member refid="classpros_1_1ADIPotentiometer_1a2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>calibrate</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" virt="non-virtual" ambiguityscope="pros::ADIAnalogIn::"><scope>pros::ADIPotentiometer</scope><name>calibrate</name></member>
-      <member refid="classpros_1_1ADIPotentiometer_1ac3309c0161ad846ca5e08c6bd21cbc85" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_angle</name></member>
+      <member refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" prot="public" virt="non-virtual" ambiguityscope="pros::ADIAnalogIn::"><scope>pros::ADIPotentiometer</scope><name>calibrate</name></member>
+      <member refid="group__cpp-adi_1gac3309c0161ad846ca5e08c6bd21cbc85" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_angle</name></member>
       <member refid="classpros_1_1ADIPotentiometer_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_value</name></member>
-      <member refid="classpros_1_1ADIPort_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIPotentiometer</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual" ambiguityscope="pros::ADIPort::"><scope>pros::ADIPotentiometer</scope><name>get_value</name></member>
       <member refid="classpros_1_1ADIPotentiometer_1a074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_value_calibrated</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" virt="non-virtual" ambiguityscope="pros::ADIAnalogIn::"><scope>pros::ADIPotentiometer</scope><name>get_value_calibrated</name></member>
-      <member refid="classpros_1_1ADIAnalogIn_1a2d4a70c5c23555ddf8ea24318d7a8731" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_value_calibrated_HR</name></member>
+      <member refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" prot="public" virt="non-virtual" ambiguityscope="pros::ADIAnalogIn::"><scope>pros::ADIPotentiometer</scope><name>get_value_calibrated</name></member>
+      <member refid="group__cpp-adi_1ga2d4a70c5c23555ddf8ea24318d7a8731" prot="public" virt="non-virtual"><scope>pros::ADIPotentiometer</scope><name>get_value_calibrated_HR</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
