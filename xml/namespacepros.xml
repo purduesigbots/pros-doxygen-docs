@@ -35,48 +35,159 @@
       <header>Enumerated Values</header>
       <description><para>Enum indicating what the current touch status is for the touchscreen. </para>
 </description>
-      <memberdef kind="enum" id="group__c-screen_1ga1793008155ca135d61e68f63e1a77e0f" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="group__c-rtos_1ga23d5ffd47ed255206f177fe9d891335b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>task_state_e_t</name>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564" prot="public">
+          <name>E_TASK_STATE_RUNNING</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08" prot="public">
+          <name>E_TASK_STATE_READY</name>
+          <briefdescription>
+<para>The task is actively executing. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953" prot="public">
+          <name>E_TASK_STATE_BLOCKED</name>
+          <briefdescription>
+<para>The task exists and is available to run, but is not currently running. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c" prot="public">
+          <name>E_TASK_STATE_SUSPENDED</name>
+          <briefdescription>
+<para>The task is delayed or blocked by a mutex, semaphore, or I/O operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d" prot="public">
+          <name>E_TASK_STATE_DELETED</name>
+          <briefdescription>
+<para>The task is supended using task_suspend. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0" prot="public">
+          <name>E_TASK_STATE_INVALID</name>
+          <briefdescription>
+<para>The task has been deleted using task_delete. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>The task handle does not point to a current or past task. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="90" column="14" bodyfile="pros/rtos.h" bodystart="90" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-rtos_1ga42ea99b5e5d38da0b98154609cf6c570" prot="public" static="no" strong="no">
+        <type></type>
+        <name>notify_action_e_t</name>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f" prot="public">
+          <name>E_NOTIFY_ACTION_NONE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02" prot="public">
+          <name>E_NOTIFY_ACTION_BITS</name>
+          <briefdescription>
+<para>The task’s notification value will not be touched. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155" prot="public">
+          <name>E_NOTIFY_ACTION_INCR</name>
+          <briefdescription>
+<para>The task’s notification value will be bitwise ORed with the new value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89" prot="public">
+          <name>E_NOTIFY_ACTION_OWRITE</name>
+          <briefdescription>
+<para>The task’s notification value will be incremented by one, effectively using it as a notification counter. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5" prot="public">
+          <name>E_NOTIFY_ACTION_NO_OWRITE</name>
+          <briefdescription>
+<para>The task’s notification value will be unconditionally set to the new value. </para>
+          </briefdescription>
+          <detaileddescription>
+<para>The task’s notification value will be set to the new value if the task does not already have a pending notification. </para>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="99" column="14" bodyfile="pros/rtos.h" bodystart="99" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-rtos_1ga1793008155ca135d61e68f63e1a77e0f" prot="public" static="no" strong="no">
         <type></type>
         <name>text_format_e_t</name>
-        <enumvalue id="group__c-screen_1gga1793008155ca135d61e68f63e1a77e0fa1420d9a2d680d6b75be24db3f7c91a1f" prot="public">
+        <enumvalue id="group__c-rtos_1gga1793008155ca135d61e68f63e1a77e0fa1420d9a2d680d6b75be24db3f7c91a1f" prot="public">
           <name>E_TEXT_SMALL</name>
           <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga1793008155ca135d61e68f63e1a77e0faeba36f74589e9ba489e3db823dd4f8c1" prot="public">
+          <name>E_TEXT_MEDIUM</name>
           <briefdescription>
 <para>Small text font size. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="group__c-screen_1gga1793008155ca135d61e68f63e1a77e0faeba36f74589e9ba489e3db823dd4f8c1" prot="public">
-          <name>E_TEXT_MEDIUM</name>
+        <enumvalue id="group__c-rtos_1gga1793008155ca135d61e68f63e1a77e0fae5abef25575129786bd0eed837981692" prot="public">
+          <name>E_TEXT_LARGE</name>
           <briefdescription>
 <para>Normal/Medium text font size. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="group__c-screen_1gga1793008155ca135d61e68f63e1a77e0fae5abef25575129786bd0eed837981692" prot="public">
-          <name>E_TEXT_LARGE</name>
+        <enumvalue id="group__c-rtos_1gga1793008155ca135d61e68f63e1a77e0fad64d5ae2fb3be6df5070d9a0e3f245ab" prot="public">
+          <name>E_TEXT_MEDIUM_CENTER</name>
           <briefdescription>
 <para>Large text font size. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="group__c-screen_1gga1793008155ca135d61e68f63e1a77e0fad64d5ae2fb3be6df5070d9a0e3f245ab" prot="public">
-          <name>E_TEXT_MEDIUM_CENTER</name>
+        <enumvalue id="group__c-rtos_1gga1793008155ca135d61e68f63e1a77e0fa8b45e760f21eae2742e22bf0d6ee4bf2" prot="public">
+          <name>E_TEXT_LARGE_CENTER</name>
           <briefdescription>
 <para>Medium centered text. </para>
           </briefdescription>
           <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="group__c-screen_1gga1793008155ca135d61e68f63e1a77e0fa8b45e760f21eae2742e22bf0d6ee4bf2" prot="public">
-          <name>E_TEXT_LARGE_CENTER</name>
-          <briefdescription>
-<para>Large centered text. </para>
-          </briefdescription>
-          <detaileddescription>
+<para>Large centered text </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -87,40 +198,40 @@
         </inbodydescription>
         <location file="pros/screen.h" line="49" column="14" bodyfile="pros/screen.h" bodystart="49" bodyend="55"/>
       </memberdef>
-      <memberdef kind="enum" id="group__c-screen_1ga8b8f74db7628fd14444f3da9505d333e" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="group__c-rtos_1ga8b8f74db7628fd14444f3da9505d333e" prot="public" static="no" strong="no">
         <type></type>
         <name>last_touch_e_t</name>
-        <enumvalue id="group__c-screen_1gga8b8f74db7628fd14444f3da9505d333eac51cdc28392272fa9c60de2ee0716474" prot="public">
+        <enumvalue id="group__c-rtos_1gga8b8f74db7628fd14444f3da9505d333eac51cdc28392272fa9c60de2ee0716474" prot="public">
           <name>E_TOUCH_RELEASED</name>
           <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga8b8f74db7628fd14444f3da9505d333ea69e0a85308d29a97ea0de44acbcd76ae" prot="public">
+          <name>E_TOUCH_PRESSED</name>
           <briefdescription>
 <para>Last interaction with screen was a quick press. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="group__c-screen_1gga8b8f74db7628fd14444f3da9505d333ea69e0a85308d29a97ea0de44acbcd76ae" prot="public">
-          <name>E_TOUCH_PRESSED</name>
+        <enumvalue id="group__c-rtos_1gga8b8f74db7628fd14444f3da9505d333eaa84fff7f05937c11fd5ccef4dc22c5d6" prot="public">
+          <name>E_TOUCH_HELD</name>
           <briefdescription>
 <para>Last interaction with screen was a release. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="group__c-screen_1gga8b8f74db7628fd14444f3da9505d333eaa84fff7f05937c11fd5ccef4dc22c5d6" prot="public">
-          <name>E_TOUCH_HELD</name>
+        <enumvalue id="group__c-rtos_1gga8b8f74db7628fd14444f3da9505d333ea4512d5eccf96e4d80a87bf834544fa7d" prot="public">
+          <name>E_TOUCH_ERROR</name>
           <briefdescription>
 <para>User is holding screen down. </para>
           </briefdescription>
           <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="group__c-screen_1gga8b8f74db7628fd14444f3da9505d333ea4512d5eccf96e4d80a87bf834544fa7d" prot="public">
-          <name>E_TOUCH_ERROR</name>
-          <briefdescription>
-<para>An error occured while taking/returning the mutex. </para>
-          </briefdescription>
-          <detaileddescription>
+<para>An error occured while taking/returning the mutex </para>
           </detaileddescription>
         </enumvalue>
         <briefdescription>
@@ -168,6 +279,7 @@
           <name>E_VISION_ZERO_CENTER</name>
           <initializer>= 1</initializer>
           <briefdescription>
+<para>(0,0) coordinate is the top left of the FOV </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -179,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.h" line="123" column="25" bodyfile="pros/vision.h" bodystart="123" bodyend="126"/>
+        <location file="pros/vision.h" line="113" column="25" bodyfile="pros/vision.h" bodystart="113" bodyend="116"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c-vision_1ga71f2011a47e95558bb534b05c16c7f2b" prot="public" static="no">
         <type>uint16_t</type>
@@ -221,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.h" line="118" column="2" bodyfile="pros/vision.h" bodystart="118" bodyend="-1"/>
+        <location file="pros/vision.h" line="108" column="2" bodyfile="pros/vision.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="group__c-vision_1gae55a6efc231c3cf6ab009c08ae920a8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct</type>
@@ -238,6 +350,24 @@
 <para>This structure contains a descriptor of an object detected by the <ref refid="classpros_1_1Vision" kindref="compound">Vision</ref> Sensor. </para>
         </detaileddescription>
         <inbodydescription>
+<para>Object signature</para>
+<para>Object type, e.g. normal, color code, or line detection</para>
+<para>Left boundary coordinate of the object</para>
+<para>Top boundary coordinate of the object</para>
+<para>Width of the object</para>
+<para>Height of the object</para>
+<para>Angle of a color code object in 0.1 degree units (e.g. 10 -&gt; 1 degree, 155 -&gt; 15.5 degrees)</para>
+<para>Coordinates of the middle of the object (computed from the values above)</para>
+<para>Coordinates of the middle of the object (computed from the values above)</para>
+<para>Object signature</para>
+<para>Object type, e.g. normal, color code, or line detection</para>
+<para>Left boundary coordinate of the object</para>
+<para>Top boundary coordinate of the object</para>
+<para>Width of the object</para>
+<para>Height of the object</para>
+<para>Angle of a color code object in 0.1 degree units (e.g. 10 -&gt; 1 degree, 155 -&gt; 15.5 degrees)</para>
+<para>Coordinates of the middle of the object (computed from the values above)</para>
+<para>Coordinates of the middle of the object (computed from the values above)</para>
         </inbodydescription>
         <location file="pros/vision.h" line="1" column="0" bodyfile="pros/vision.h" bodystart="74" bodyend="86"/>
       </memberdef>
@@ -847,106 +977,6 @@
         </inbodydescription>
         <location file="pros/motors.h" line="892" column="29" bodyfile="pros/motors.h" bodystart="892" bodyend="897"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1a23d5ffd47ed255206f177fe9d891335b" prot="public" static="no" strong="no">
-        <type></type>
-        <name>task_state_e_t</name>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564" prot="public">
-          <name>E_TASK_STATE_RUNNING</name>
-          <initializer>= 0</initializer>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08" prot="public">
-          <name>E_TASK_STATE_READY</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953" prot="public">
-          <name>E_TASK_STATE_BLOCKED</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c" prot="public">
-          <name>E_TASK_STATE_SUSPENDED</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d" prot="public">
-          <name>E_TASK_STATE_DELETED</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0" prot="public">
-          <name>E_TASK_STATE_INVALID</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/rtos.h" line="65" column="14" bodyfile="pros/rtos.h" bodystart="65" bodyend="72"/>
-      </memberdef>
-      <memberdef kind="enum" id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570" prot="public" static="no" strong="no">
-        <type></type>
-        <name>notify_action_e_t</name>
-        <enumvalue id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f" prot="public">
-          <name>E_NOTIFY_ACTION_NONE</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02" prot="public">
-          <name>E_NOTIFY_ACTION_BITS</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155" prot="public">
-          <name>E_NOTIFY_ACTION_INCR</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89" prot="public">
-          <name>E_NOTIFY_ACTION_OWRITE</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <enumvalue id="namespacepros_1a42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5" prot="public">
-          <name>E_NOTIFY_ACTION_NO_OWRITE</name>
-          <briefdescription>
-          </briefdescription>
-          <detaileddescription>
-          </detaileddescription>
-        </enumvalue>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/rtos.h" line="74" column="14" bodyfile="pros/rtos.h" bodystart="74" bodyend="80"/>
-      </memberdef>
       <memberdef kind="enum" id="group__c-vision_1ga23584b6ec115e81fd6c715c462683970" prot="public" static="no" strong="no">
         <type></type>
         <name>vision_object_type</name>
@@ -1104,44 +1134,48 @@
         </inbodydescription>
         <location file="pros/llemu.h" line="44" column="9" bodyfile="pros/llemu.h" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1a1d7e0825b8d8876e8cd8ece3f9115293" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-rtos_1ga1d7e0825b8d8876e8cd8ece3f9115293" prot="public" static="no">
         <type>void *</type>
         <definition>typedef void* task_t</definition>
         <argsstring></argsstring>
         <name>task_t</name>
         <briefdescription>
+<para>Points to a task handle. </para>
         </briefdescription>
         <detaileddescription>
+<para>Used for referencing a task. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="62" column="14" bodyfile="pros/rtos.h" bodystart="62" bodyend="-1"/>
+        <location file="pros/rtos.h" line="79" column="14" bodyfile="pros/rtos.h" bodystart="79" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1aece0aa29b1f1538115228d2197239f98" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-rtos_1gaece0aa29b1f1538115228d2197239f98" prot="public" static="no">
         <type>void(*</type>
         <definition>typedef void(* task_fn_t) (void *)</definition>
         <argsstring>)(void *)</argsstring>
         <name>task_fn_t</name>
         <briefdescription>
+<para>Points to the function associated with a task. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="63" column="9" bodyfile="pros/rtos.h" bodystart="63" bodyend="-1"/>
+        <location file="pros/rtos.h" line="84" column="9" bodyfile="pros/rtos.h" bodystart="84" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1ab15ea84d90257d70b44e8e04519864d2" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-rtos_1gab15ea84d90257d70b44e8e04519864d2" prot="public" static="no">
         <type>void *</type>
         <definition>typedef void* mutex_t</definition>
         <argsstring></argsstring>
         <name>mutex_t</name>
         <briefdescription>
+<para>A <ref refid="multitasking" kindref="compound">mutex.</ref>. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="110" column="14" bodyfile="pros/rtos.h" bodystart="110" bodyend="-1"/>
+        <location file="pros/rtos.h" line="140" column="14" bodyfile="pros/rtos.h" bodystart="140" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
