@@ -23,13 +23,13 @@
 <para>Configures an ADI port to act as a Potentiometer. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>adi_port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="structThe" kindref="compound">The</ref> ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -76,13 +76,13 @@
 <para>Configures an ADI port on an adi_expander to act as a Potentiometer. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>adi_port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="structThe" kindref="compound">The</ref> pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -120,9 +120,9 @@
 <para>Gets the current potentiometer angle in tenths of a degree. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThe" kindref="compound">The</ref> original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</para>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of ADI Ports EADDRINUSE - <ref refid="structThe" kindref="compound">The</ref> port is not configured as a potentiometer</para>
-<para><simplesect kind="return"><para><ref refid="structThe" kindref="compound">The</ref> potentiometer angle in degrees.</para>
+<para>The original potentiometer rotates 250 degrees thus returning an angle between 0-250 degrees. Potentiometer V2 rotates 330 degrees thus returning an angle between 0-330 degrees.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports EADDRINUSE - The port is not configured as a potentiometer</para>
+<para><simplesect kind="return"><para>The potentiometer angle in degrees.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_POTENTIOMETER_PORT<sp/>&apos;a&apos;</highlight></codeline>
 <codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
@@ -150,9 +150,9 @@
 <para>Gets the 12-bit value of the specified port. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThe" kindref="compound">The</ref> value returned is undefined if the analog pin has been switched to a different mode.</para>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENODEV - <ref refid="structThe" kindref="compound">The</ref> port is not configured as a potentiometer</para>
-<para><simplesect kind="return"><para><ref refid="structThe" kindref="compound">The</ref> analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V </para>
+<para>The value returned is undefined if the analog pin has been switched to a different mode.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
+<para><simplesect kind="return"><para>The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -169,10 +169,10 @@
 <para>Calibrates the potentiometer on the specified port and returns the new calibration value. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThis" kindref="compound">This</ref> method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. <ref refid="structThe" kindref="compound">The</ref> average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIPotentiometer::get_value_calibrated()</ref> function. <ref refid="structThis" kindref="compound">This</ref> function will return the difference between this value and the current sensor value when called.</para>
+<para>This method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::ADIPotentiometer::get_value_calibrated()</ref> function. This function will return the difference between this value and the current sensor value when called.</para>
 <para>Do not use this function when the potentiometer value might be unstable (rotating the potentiometer)</para>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENODEV - <ref refid="structThe" kindref="compound">The</ref> port is not configured as a potentiometer</para>
-<para><simplesect kind="return"><para><ref refid="structThe" kindref="compound">The</ref> average potentiometer value computed by this function </para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
+<para><simplesect kind="return"><para>The average potentiometer value computed by this function </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -189,9 +189,9 @@
 <para>Gets the 12 bit calibrated value of a potentiometer port. </para>
         </briefdescription>
         <detaileddescription>
-<para><ref refid="structThe" kindref="compound">The</ref> <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIPotentiometer::calibrate()</ref> function must be run first.</para>
-<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENODEV - <ref refid="structThe" kindref="compound">The</ref> port is not configured as a potentiometer</para>
-<para><simplesect kind="return"><para><ref refid="structThe" kindref="compound">The</ref> difference of the potentiometer value from its calibrated default from -4095 to 4095 </para>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::ADIPotentiometer::calibrate()</ref> function must be run first.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
+<para><simplesect kind="return"><para>The difference of the potentiometer value from its calibrated default from -4095 to 4095 </para>
 </simplesect>
 </para>
         </detaileddescription>
