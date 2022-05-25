@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="38" column="9" bodyfile="pros/link.h" bodystart="38" bodyend="-1"/>
+        <location file="pros/link.h" line="43" column="9" bodyfile="pros/link.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -107,6 +107,7 @@
           <name>E_LINK_RECIEVER</name>
           <initializer>= 0</initializer>
           <briefdescription>
+<para>Indicating that the radio is a reciever. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -114,6 +115,7 @@
         <enumvalue id="namespacepros_1aeb9b97127da30edb91cc281b28f5e8dfa959bf4f7005bdf46615e47d59b1b551e" prot="public">
           <name>E_LINK_TRANSMITTER</name>
           <briefdescription>
+<para>Indicating that the radio is a transmitter. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -124,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="33" column="25" bodyfile="pros/link.h" bodystart="33" bodyend="36"/>
+        <location file="pros/link.h" line="36" column="25" bodyfile="pros/link.h" bodystart="36" bodyend="41"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -150,13 +152,13 @@
         </briefdescription>
         <detaileddescription>
 <para>There might be a 1 to 2 second delay from when this function is called to when the link is initializes.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -176,13 +178,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds. </para>
+<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LINK_ID<sp/>&quot;ROBOT1&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>link_init(LINK_TRANSMITTER_PORT,<sp/>LINK_ID,<sp/>E_LINK_TRANSMITTER);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="66" column="10" declfile="pros/link.h" declline="66" declcolumn="10"/>
+        <location file="pros/link.h" line="81" column="10" declfile="pros/link.h" declline="81" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a63e9104523a080995babfd88712bc756" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -206,13 +214,13 @@
         </briefdescription>
         <detaileddescription>
 <para>There might be a 1 to 2 second delay from when this function is called to when the link is initializes.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -232,13 +240,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds. </para>
+<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LINK_ID<sp/>&quot;ROBOT1&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>link_init(LINK_PORT,<sp/>LINK_ID,<sp/>E_LINK_TRANSMITTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>link_init_override(LINK_PORT,<sp/>LINK_ID,<sp/>E_LINK_TRANSMITTER);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="91" column="10" declfile="pros/link.h" declline="91" declcolumn="10"/>
+        <location file="pros/link.h" line="117" column="10" declfile="pros/link.h" declline="117" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a89910cd189b97e358568b117cbedbf05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -253,23 +268,33 @@
 <para>Checks if a radio link on a port is active or not. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link.</para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>If a radio is connected to a port and it&apos;s connected to a link. </para>
+<simplesect kind="return"><para>If a radio is connected to a port and it&apos;s connected to a link.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(link_connected(LINK_TRANSMITTER_PORT))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Link<sp/>connected!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="107" column="6" declfile="pros/link.h" declline="107" declcolumn="6"/>
+        <location file="pros/link.h" line="147" column="6" declfile="pros/link.h" declline="147" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a176c20419748c6e2b08467c585461376" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -285,23 +310,32 @@
  </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link.</para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link/radio, else the bytes available to be read by the user. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link/radio, else the bytes available to be read by the user.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_RECIVER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>receiveable_size<sp/>=<sp/>link_raw_receivable_size(LINK_RECIVER_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;link_raw_receiveable_size:<sp/>%d&quot;,<sp/>receiveable_size);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="124" column="10" declfile="pros/link.h" declline="124" declcolumn="10"/>
+        <location file="pros/link.h" line="177" column="10" declfile="pros/link.h" declline="177" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1ab4e3a75704ace5aaddc1de05d10b644a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -316,23 +350,32 @@
 <para>Returns the bytes of data available in transmission buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link.</para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link/radio, </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link/radio,</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>transmittable_size<sp/>=<sp/>link_raw_transmittable_size(LINK_TRANSMITTER_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;link_raw_transmittable_size:<sp/>%d&quot;,<sp/>transmittable_size);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="140" column="10" declfile="pros/link.h" declline="140" declcolumn="10"/>
+        <location file="pros/link.h" line="206" column="10" declfile="pros/link.h" declline="206" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a31012eb93b7684dcb2c2dfd54a61d8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -355,13 +398,13 @@
 <para>Send raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio. EBUSY - <ref refid="structThe" kindref="compound">The</ref> transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - <ref refid="structThe" kindref="compound">The</ref> data given is NULL</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -381,13 +424,22 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>data<sp/>=<sp/>&quot;Hello!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_transmit_raw(LINK_TRANSMITTER_PORT,<sp/>(void*)data,<sp/>sizeof(*data)<sp/>*<sp/>sizeof(data));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="164" column="10" declfile="pros/link.h" declline="164" declcolumn="10"/>
+        <location file="pros/link.h" line="243" column="10" declfile="pros/link.h" declline="243" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a5bf96e13a6b61a119b593f7f87613bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -410,13 +462,13 @@
 <para>Receive raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio. EINVAL - <ref refid="structThe" kindref="compound">The</ref> destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -436,13 +488,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_RECIVER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>expected<sp/>=<sp/>&quot;Hello!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_receive_raw(LINK_RECIVER_PORT,<sp/>(void*)result,<sp/>sizeof(*expected)<sp/>*<sp/>sizeof(expected));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="187" column="10" declfile="pros/link.h" declline="187" declcolumn="10"/>
+        <location file="pros/link.h" line="280" column="10" declfile="pros/link.h" declline="280" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a5a1917d551d4f890f2e3663597b72c6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -465,13 +527,13 @@
 <para>Send packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio. EBUSY - <ref refid="structThe" kindref="compound">The</ref> transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - <ref refid="structThe" kindref="compound">The</ref> data given is NULL</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -491,13 +553,22 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>data<sp/>=<sp/>&quot;Hello!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_transmit(LINK_TRANSMITTER_PORT,<sp/>(void*)data,<sp/>sizeof(*data)<sp/>*<sp/>sizeof(data));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="211" column="10" declfile="pros/link.h" declline="211" declcolumn="10"/>
+        <location file="pros/link.h" line="317" column="10" declfile="pros/link.h" declline="317" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1afbe6fd56ba883a85e6190097ff932154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -520,13 +591,13 @@
 <para>Receive packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio. EINVAL - <ref refid="structThe" kindref="compound">The</ref> destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link. </para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -546,13 +617,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link or protocol error, and the successfully transmitted data size if it succeeded. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link or protocol error, and the successfully transmitted data size if it succeeded.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_RECIVER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>result;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>expected<sp/>=<sp/>&quot;Hello!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_receive(LINK_RECIVER_PORT,<sp/>(void*)result,<sp/>sizeof(*expected)<sp/>*<sp/>sizeof(expected));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="235" column="10" declfile="pros/link.h" declline="235" declcolumn="10"/>
+        <location file="pros/link.h" line="355" column="10" declfile="pros/link.h" declline="355" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a63e09087ca422aa711ad3ad56934f2a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -567,23 +648,33 @@
 <para>Clear the receive buffer of the link, and discarding the data. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> function uses the following values of errno when an error state is reached: ENXIO - <ref refid="structThe" kindref="compound">The</ref> given value is not within the range of V5 ports (1-21). ENODEV - <ref refid="structThe" kindref="compound">The</ref> port cannot be configured as a radio. ENXIO - <ref refid="structThe" kindref="compound">The</ref> sensor is still calibrating, or no link is connected via the radio.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The port of the radio for the intended link.</para>
+<para><ref refid="structThe" kindref="compound">The</ref> port of the radio for the intended link.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded. </para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LINK_TRANSMITTER_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>data<sp/>=<sp/>&quot;Hello!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_transmit(LINK_TRANSMITTER_PORT,<sp/>(void*)data,<sp/>sizeof(*data)<sp/>*<sp/>sizeof(data));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>link_clear_receive_buf(LINK_TRANSMITTER_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="252" column="10" declfile="pros/link.h" declline="252" declcolumn="10"/>
+        <location file="pros/link.h" line="386" column="10" declfile="pros/link.h" declline="386" declcolumn="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -591,10 +682,10 @@
     <detaileddescription>
 <para>Contains prototypes for functions related to the robot to robot communications.</para>
 <para>Visit <ulink url="https://pros.cs.purdue.edu/v5/api/c/link.html">https://pros.cs.purdue.edu/v5/api/c/link.html</ulink> to learn more.</para>
-<para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
+<para><ref refid="structThis" kindref="compound">This</ref> file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
 <para><simplesect kind="copyright"><para>(c) 2017-2022, Purdue University ACM SIGBots.</para>
 </simplesect>
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
+<ref refid="structThis" kindref="compound">This</ref> Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
     </detaileddescription>
     <location file="pros/link.h"/>
   </compounddef>
