@@ -2606,6 +2606,615 @@ This function uses the following values of errno when an error state is reached:
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
+      <header>Value Reset Functions</header>
+      <memberdef kind="function" id="group__c-gps_1ga7613cb8ad7dbe92244f862f038040077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_heading</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s heading to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_heading(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="506" column="9" declfile="pros/imu.h" declline="506" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga33ea7dacd1ee92bc6bf011cb109cadd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_rotation</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s rotation to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_rotation(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="536" column="9" declfile="pros/imu.h" declline="536" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga0ec5652dee78d7b6582436ca72753eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_pitch</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s pitch to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_pitch(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="564" column="9" declfile="pros/imu.h" declline="564" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga1c0d6e494b558d012fc29c2e0f565d55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_roll</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s roll to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_roll(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="594" column="9" declfile="pros/imu.h" declline="594" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga8d220ae04071a4ac25be52108e561166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_yaw</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets the current reading of the Inertial Sensor&apos;s yaw to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_yaw(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="624" column="9" declfile="pros/imu.h" declline="624" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1gaee27c5a8ea8e51afee3c80e4ef3d1e05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare_euler</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Reset all 3 euler values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare_euler(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="654" column="9" declfile="pros/imu.h" declline="654" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga5ae349cec6a99b52cf632267f1c2c332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_tare</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>imu_tare</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Resets all 5 values of the Inertial Sensor to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_tare(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="684" column="9" declfile="pros/imu.h" declline="684" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Value Set Functions</header>
+      <memberdef kind="function" id="group__c-gps_1gabd5e3389b5026622463ccf5e9a9ee5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_euler</definition>
+        <argsstring>(uint8_t port, euler_s_t target)</argsstring>
+        <name>imu_set_euler</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="structeuler__s__t" kindref="compound">euler_s_t</ref></type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s euler values to target euler values. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will default to +/- 180 if target exceeds +/- 180.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target euler values for the euler values to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_set_euler(IMU_PORT,<sp/>{45,45,45});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="722" column="9" declfile="pros/imu.h" declline="722" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga33890996b538599d7c635a895e3da8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_rotation</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_rotation</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s rotation to target value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the rotation value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_set_rotation(IMU_PORT,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="754" column="9" declfile="pros/imu.h" declline="754" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga35127112436baa43237fc52c683a9e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_heading</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_heading</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s heading to target value Target will default to 360 if above 360 and default to 0 if below 0. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the heading value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_set_heading(IMU_PORT,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="787" column="9" declfile="pros/imu.h" declline="787" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga87a5b4f797d70c502fd862320ba733da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_pitch</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_pitch</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s pitch to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the pitch value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_set_pitch(IMU_PORT,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="820" column="9" declfile="pros/imu.h" declline="820" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1ga52386f7153795d5be0acda3352600834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_roll</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_roll</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s roll to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the roll value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>imu_set_roll(IMU_PORT,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="853" column="9" declfile="pros/imu.h" declline="853" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-gps_1gaee4fcba55ec253943b6396c8c1e24c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::imu_set_yaw</definition>
+        <argsstring>(uint8_t port, double target)</argsstring>
+        <name>imu_set_yaw</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+<para>Sets the current reading of the Inertial Sensor&apos;s yaw to target value Will default to +/- 180 if target exceeds +/- 180. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>target</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target value for the yaw value to be set to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu_set_yaw(IMU_PORT,<sp/>45);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/imu.h" line="885" column="9" declfile="pros/imu.h" declline="885" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
       <header>Functions</header>
       <memberdef kind="function" id="group__c-llemu_1gaf43a5a9cea1850757c8f0cc180604705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -8443,21 +9052,23 @@ This function uses the following values of errno when an error state is reached:
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
-      <memberdef kind="enum" id="namespacepros_1_1c_1a74af1f93aaa6112117b4436b4b1f230d" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="group__c-gps_1ga74af1f93aaa6112117b4436b4b1f230d" prot="public" static="no" strong="no">
         <type></type>
         <name>imu_status_e</name>
-        <enumvalue id="namespacepros_1_1c_1a74af1f93aaa6112117b4436b4b1f230da67fb53f117f53122424f7862cd150a60" prot="public">
+        <enumvalue id="group__c-gps_1gga74af1f93aaa6112117b4436b4b1f230da67fb53f117f53122424f7862cd150a60" prot="public">
           <name>E_IMU_STATUS_CALIBRATING</name>
           <initializer>= 0x01</initializer>
           <briefdescription>
+<para>The IMU is calibrating. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1_1c_1a74af1f93aaa6112117b4436b4b1f230da00266d26728436035f878ec88e6aba88" prot="public">
+        <enumvalue id="group__c-gps_1gga74af1f93aaa6112117b4436b4b1f230da00266d26728436035f878ec88e6aba88" prot="public">
           <name>E_IMU_STATUS_ERROR</name>
           <initializer>= 0xFF</initializer>
           <briefdescription>
+<para>Used to indicate that an error state was reached in the imu_get_status function,. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -8468,7 +9079,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="34" column="26" bodyfile="pros/imu.h" bodystart="34" bodyend="38"/>
+        <location file="pros/imu.h" line="47" column="26" bodyfile="pros/imu.h" bodystart="47" bodyend="53"/>
       </memberdef>
       <memberdef kind="enum" id="group__c-motors_1ga656ac13ffc5dd8f7289b47ac1a019409" prot="public" static="no" strong="no">
         <type></type>
@@ -8596,7 +9207,7 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/ext_adi.h" line="643" column="17" bodyfile="pros/ext_adi.h" bodystart="643" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1_1c_1a207fc83ba7d708bb8fe13855938469ef" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-gps_1ga207fc83ba7d708bb8fe13855938469ef" prot="public" static="no">
         <type>struct <ref refid="structpros_1_1c_1_1gps__raw__s" kindref="compound">gps_raw_s</ref></type>
         <definition>typedef struct gps_raw_s gps_accel_s_t</definition>
         <argsstring></argsstring>
@@ -8607,9 +9218,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="41" column="2" bodyfile="pros/gps.h" bodystart="49" bodyend="-1"/>
+        <location file="pros/gps.h" line="59" column="2" bodyfile="pros/gps.h" bodystart="78" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1_1c_1a67a9badd3682634a75ad506fd87f7903" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-gps_1ga67a9badd3682634a75ad506fd87f7903" prot="public" static="no">
         <type>struct <ref refid="structpros_1_1c_1_1gps__raw__s" kindref="compound">gps_raw_s</ref></type>
         <definition>typedef struct gps_raw_s gps_gyro_s_t</definition>
         <argsstring></argsstring>
@@ -8620,9 +9231,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="41" column="2" bodyfile="pros/gps.h" bodystart="50" bodyend="-1"/>
+        <location file="pros/gps.h" line="59" column="2" bodyfile="pros/gps.h" bodystart="84" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1_1c_1a5b9e240cfb181cce3c741e29efbbbf23" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-gps_1ga5b9e240cfb181cce3c741e29efbbbf23" prot="public" static="no">
         <type>struct <ref refid="structpros_1_1c_1_1imu__raw__s" kindref="compound">imu_raw_s</ref></type>
         <definition>typedef struct imu_raw_s imu_gyro_s_t</definition>
         <argsstring></argsstring>
@@ -8633,9 +9244,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="45" column="2" bodyfile="pros/imu.h" bodystart="53" bodyend="-1"/>
+        <location file="pros/imu.h" line="63" column="2" bodyfile="pros/imu.h" bodystart="79" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="namespacepros_1_1c_1a70eb3173193f4f46266eade4c243f662" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c-gps_1ga70eb3173193f4f46266eade4c243f662" prot="public" static="no">
         <type>struct <ref refid="structpros_1_1c_1_1imu__raw__s" kindref="compound">imu_raw_s</ref></type>
         <definition>typedef struct imu_raw_s imu_accel_s_t</definition>
         <argsstring></argsstring>
@@ -8646,11 +9257,11 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="45" column="2" bodyfile="pros/imu.h" bodystart="54" bodyend="-1"/>
+        <location file="pros/imu.h" line="63" column="2" bodyfile="pros/imu.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
-      <memberdef kind="variable" id="namespacepros_1_1c_1a0bebcb6a5be6dc96c165711cbe710aea" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="group__c-gps_1ga0bebcb6a5be6dc96c165711cbe710aea" prot="public" static="no" mutable="no">
         <type></type>
         <definition>gps_status_s_t</definition>
         <argsstring></argsstring>
@@ -8661,9 +9272,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="41" column="2" bodyfile="pros/gps.h" bodystart="41" bodyend="-1"/>
+        <location file="pros/gps.h" line="59" column="2" bodyfile="pros/gps.h" bodystart="59" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="namespacepros_1_1c_1a1f3d4bf4251e6ce7cb374297de6390a1" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="group__c-gps_1ga1f3d4bf4251e6ce7cb374297de6390a1" prot="public" static="no" mutable="no">
         <type></type>
         <definition>quaternion_s_t</definition>
         <argsstring></argsstring>
@@ -8674,9 +9285,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="45" column="2" bodyfile="pros/imu.h" bodystart="45" bodyend="-1"/>
+        <location file="pros/imu.h" line="63" column="2" bodyfile="pros/imu.h" bodystart="63" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="namespacepros_1_1c_1a93e80020ec907b7e11ac7166e5d01c55" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="group__c-gps_1ga93e80020ec907b7e11ac7166e5d01c55" prot="public" static="no" mutable="no">
         <type></type>
         <definition>euler_s_t</definition>
         <argsstring></argsstring>
@@ -8687,7 +9298,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="60" column="2" bodyfile="pros/imu.h" bodystart="60" bodyend="-1"/>
+        <location file="pros/imu.h" line="95" column="2" bodyfile="pros/imu.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="namespacepros_1_1c_1a6907b49f238205c8e09bcbc47d5c6d52" prot="public" static="no" mutable="no">
         <type>motor_pid_s_t double</type>
@@ -8795,7 +9406,7 @@ This function uses the following values of errno when an error state is reached:
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepros_1_1c_1a7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-distance_1ga7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -8818,15 +9429,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Value:<sp/>%d<sp/>mm\n&quot;,<sp/>distance_get(DISTANCE_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="46" column="9" declfile="pros/distance.h" declline="46" declcolumn="9"/>
+        <location file="pros/distance.h" line="67" column="9" declfile="pros/distance.h" declline="67" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a97b69852b0f1ec60cdac10ca20caabdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-distance_1ga97b69852b0f1ec60cdac10ca20caabdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get_confidence</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -8850,15 +9469,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The confidence value or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The confidence value or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Confidence<sp/>Value:<sp/>%d\n&quot;,<sp/>distance_get_confidence(DISTANCE_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="64" column="9" declfile="pros/distance.h" declline="64" declcolumn="9"/>
+        <location file="pros/distance.h" line="97" column="9" declfile="pros/distance.h" declline="97" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa87f08f6faaed31f3876d3980b1d3689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-distance_1gaa87f08f6faaed31f3876d3980b1d3689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get_object_size</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -8888,9 +9515,9 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="82" column="9" declfile="pros/distance.h" declline="82" declcolumn="9"/>
+        <location file="pros/distance.h" line="115" column="9" declfile="pros/distance.h" declline="115" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a744e01aa684d89ff70dd443dba4eea53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-distance_1ga744e01aa684d89ff70dd443dba4eea53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::distance_get_object_velocity</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -8913,13 +9540,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The velocity value or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The velocity value or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Size:<sp/>%d\n&quot;,<sp/>distance_get_object_size(DISTANCE_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="96" column="8" declfile="pros/distance.h" declline="96" declcolumn="8"/>
+        <location file="pros/distance.h" line="141" column="8" declfile="pros/distance.h" declline="141" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a529d923cac85867a1fc20e1b385bb8b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_port_config_e_t</type>
@@ -10150,7 +10785,7 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/ext_adi.h" line="679" column="8" declfile="pros/ext_adi.h" declline="679" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a180d5d84012c16d5d28c19d7607b931e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga180d5d84012c16d5d28c19d7607b931e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct</type>
         <definition>struct __attribute__</definition>
         <argsstring>((__packed__)) gps_status_s</argsstring>
@@ -10163,15 +10798,15 @@ This function uses the following values of errno when an error state is reached:
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
-<para>&lt; X Position (meters)</para>
-<para>&lt; Y Position (meters)</para>
-<para>&lt; Percieved Pitch based on GPS + IMU</para>
-<para>&lt; Percieved Roll based on GPS + IMU</para>
-<para>&lt; Percieved Yaw based on GPS + IMU</para>
+<para>X Position (meters)</para>
+<para>Y Position (meters)</para>
+<para>Percieved Pitch based on GPS + IMU</para>
+<para>Percieved Roll based on GPS + IMU</para>
+<para>Percieved Yaw based on GPS + IMU</para>
         </inbodydescription>
-        <location file="pros/gps.h" line="1" column="0" bodyfile="pros/gps.h" bodystart="35" bodyend="41"/>
+        <location file="pros/gps.h" line="1" column="0" bodyfile="pros/gps.h" bodystart="48" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aaacc1a85b6f91aeeac8ad61c4abc647e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gaaacc1a85b6f91aeeac8ad61c4abc647e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_initialize_full</definition>
         <argsstring>(uint8_t port, double xInitial, double yInitial, double headingInitial, double xOffset, double yOffset)</argsstring>
@@ -10254,15 +10889,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_OFFSET<sp/>.225</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_OFFSET<sp/>.223</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_INITIAL<sp/>1.54</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_INITIAL<sp/>1.14</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>HEADING_INITIAL<sp/>90</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_initialize_full(GPS_PORT,<sp/>X_OFFSET,<sp/>Y_OFFSET,<sp/>X_INITIAL,<sp/>Y_INITIAL,<sp/>HEADING_INITIAL);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="77" column="9" declfile="pros/gps.h" declline="77" declcolumn="9"/>
+        <location file="pros/gps.h" line="125" column="9" declfile="pros/gps.h" declline="125" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a9bb1c008e968001ab2bd0e3aa7e25464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga9bb1c008e968001ab2bd0e3aa7e25464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_set_offset</definition>
         <argsstring>(uint8_t port, double xOffset, double yOffset)</argsstring>
@@ -10309,15 +10954,22 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_OFFSET<sp/>-.225</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_OFFSET<sp/>.225</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_set_offset(GPS_PORT,<sp/>X_OFFSET,<sp/>Y_OFFSET);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="98" column="9" declfile="pros/gps.h" declline="98" declcolumn="9"/>
+        <location file="pros/gps.h" line="157" column="9" declfile="pros/gps.h" declline="157" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1ac12dc0dd4ea81c32740ef72a5d172736" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gac12dc0dd4ea81c32740ef72a5d172736" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_get_offset</definition>
         <argsstring>(uint8_t port, double *xOffset, double *yOffset)</argsstring>
@@ -10364,15 +11016,27 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>*x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>*y;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gps_get_offset(GPS_PORT,<sp/>x,<sp/>y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;X<sp/>Offset:<sp/>%4d,<sp/>Y<sp/>Offset:<sp/>%4d&quot;,<sp/>*x,<sp/>*y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="118" column="9" declfile="pros/gps.h" declline="118" declcolumn="9"/>
+        <location file="pros/gps.h" line="193" column="9" declfile="pros/gps.h" declline="193" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a292c2836a160552630507d2c3ce08113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga292c2836a160552630507d2c3ce08113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_set_position</definition>
         <argsstring>(uint8_t port, double xInitial, double yInitial, double headingInitial)</argsstring>
@@ -10431,15 +11095,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_INITIAL<sp/>-1.15</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_INITIAL<sp/>1.45</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>HEADING_INITIAL<sp/>90</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_set_position(GPS_PORT,<sp/>X_INITIAL,<sp/>Y_INITIAL,<sp/>HEADING_INITIAL);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="140" column="9" declfile="pros/gps.h" declline="140" declcolumn="9"/>
+        <location file="pros/gps.h" line="227" column="9" declfile="pros/gps.h" declline="227" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a9a6507b5e1e6668dbef5185fcf35d0ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga9a6507b5e1e6668dbef5185fcf35d0ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_set_data_rate</definition>
         <argsstring>(uint8_t port, uint32_t rate)</argsstring>
@@ -10474,15 +11146,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>GPS_DATA_RATE<sp/>5</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_set_data_rate(GPS_PORT,<sp/>GPS_DATA_RATE);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="158" column="9" declfile="pros/gps.h" declline="158" declcolumn="9"/>
+        <location file="pros/gps.h" line="255" column="9" declfile="pros/gps.h" declline="255" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1abcb755cae646e13f5ee452f4de7234fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gabcb755cae646e13f5ee452f4de7234fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::gps_get_error</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10505,16 +11183,22 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Possible RMS (Root Mean Squared) error in meters for GPS position. If the operation failed, returns PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>Possible RMS (Root Mean Squared) error in meters for GPS position. If the operation failed, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>error;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>error<sp/>=<sp/>gps_get_error(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="175" column="8" declfile="pros/gps.h" declline="175" declcolumn="8"/>
+        <location file="pros/gps.h" line="282" column="8" declfile="pros/gps.h" declline="282" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a19a09b05a19c584e740cabc3f1b2dbc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a0bebcb6a5be6dc96c165711cbe710aea" kindref="member">gps_status_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1ga19a09b05a19c584e740cabc3f1b2dbc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structgps__status__s__t" kindref="compound">gps_status_s_t</ref></type>
         <definition>gps_status_s_t pros::c::gps_get_status</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>gps_get_status</name>
@@ -10536,15 +11220,28 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A struct (gps_status_s_t) containing values mentioned above. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>A struct (<ref refid="structgps__status__s__t" kindref="compound">gps_status_s_t</ref>) containing values mentioned above. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>struct<sp/>gps_status_s_t<sp/>status;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>gps_get_status(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>pitch:<sp/>%3f&quot;,<sp/>status.x,<sp/>status.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>2,<sp/>&quot;yaw:<sp/>%3f,<sp/>roll:<sp/>%3f&quot;,<sp/>status.pitch,<sp/>status.yaw);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>3,<sp/>&quot;roll:<sp/>%3f&quot;,<sp/>status.roll);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="193" column="16" declfile="pros/gps.h" declline="193" declcolumn="16"/>
+        <location file="pros/gps.h" line="317" column="16" declfile="pros/gps.h" declline="317" declcolumn="16"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a6629794462b93c861c7f3b51fd603593" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga6629794462b93c861c7f3b51fd603593" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::gps_get_heading</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10567,15 +11264,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The heading in [0,360) degree values. If the operation failed, returns PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The heading in [0,360) degree values. If the operation failed, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>heading;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>heading<sp/>=<sp/>gps_get_heading(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="210" column="8" declfile="pros/gps.h" declline="210" declcolumn="8"/>
+        <location file="pros/gps.h" line="348" column="8" declfile="pros/gps.h" declline="348" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa9476b021e4105b9bc91dcedc4113672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gaa9476b021e4105b9bc91dcedc4113672" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::gps_get_heading_raw</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10598,15 +11305,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The heading in [DOUBLE_MIN, DOUBLE_MAX] values. If the operation fails, returns PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The heading in [DOUBLE_MIN, DOUBLE_MAX] values. If the operation fails, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>heading;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>heading<sp/>=<sp/>gps_get_heading_raw(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="227" column="8" declfile="pros/gps.h" declline="227" declcolumn="8"/>
+        <location file="pros/gps.h" line="379" column="8" declfile="pros/gps.h" declline="379" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a9ea3211fc1740e03294f59f979ee6c0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga9ea3211fc1740e03294f59f979ee6c0d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::gps_get_rotation</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10629,15 +11346,22 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The elased heading in degrees. If the operation fails, returns PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The elased heading in degrees. If the operation fails, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>elapsed_rotation;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>elapsed_rotation<sp/>=<sp/>gps_get_rotation(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="243" column="8" declfile="pros/gps.h" declline="243" declcolumn="8"/>
+        <location file="pros/gps.h" line="406" column="8" declfile="pros/gps.h" declline="406" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a40c00789db37acf3fc33c94d92a612e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga40c00789db37acf3fc33c94d92a612e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_set_rotation</definition>
         <argsstring>(uint8_t port, double target)</argsstring>
@@ -10672,15 +11396,20 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_set_rotation(GPS_PORT,<sp/>60);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="261" column="9" declfile="pros/gps.h" declline="261" declcolumn="9"/>
+        <location file="pros/gps.h" line="433" column="9" declfile="pros/gps.h" declline="433" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a9fc3c54c39cf2b95736654f1a299cb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga9fc3c54c39cf2b95736654f1a299cb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::gps_tare_rotation</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10703,16 +11432,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_tare_rotation(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="277" column="9" declfile="pros/gps.h" declline="277" declcolumn="9"/>
+        <location file="pros/gps.h" line="458" column="9" declfile="pros/gps.h" declline="458" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1adab19854551db9ba848f3f6a947c65cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a67a9badd3682634a75ad506fd87f7903" kindref="member">gps_gyro_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1gadab19854551db9ba848f3f6a947c65cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c-gps_1ga67a9badd3682634a75ad506fd87f7903" kindref="member">gps_gyro_s_t</ref></type>
         <definition>gps_gyro_s_t pros::c::gps_get_gyro_rate</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>gps_get_gyro_rate</name>
@@ -10734,16 +11468,27 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>struct<sp/>gps_gyro_s_t<sp/>gyro;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gyro<sp/>=<sp/>gps_get_gyro_rate(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;gyroscope-<sp/>x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>z:<sp/>%3f&quot;,<sp/>gyro.x,<sp/>gyro.y,<sp/>gyro.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="293" column="14" declfile="pros/gps.h" declline="293" declcolumn="14"/>
+        <location file="pros/gps.h" line="489" column="14" declfile="pros/gps.h" declline="489" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aad1a8d1d02da6ab10059bfe385122e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a207fc83ba7d708bb8fe13855938469ef" kindref="member">gps_accel_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1gaad1a8d1d02da6ab10059bfe385122e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c-gps_1ga207fc83ba7d708bb8fe13855938469ef" kindref="member">gps_accel_s_t</ref></type>
         <definition>gps_accel_s_t pros::c::gps_get_accel</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>gps_get_accel</name>
@@ -10765,15 +11510,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>struct<sp/>gps_accel_s_t<sp/>accel;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>accel<sp/>=<sp/>gps_get_accel(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;accleration-<sp/>x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>z:<sp/>%3f&quot;,<sp/>accel.x,<sp/>accel.y,<sp/>accel.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.h" line="309" column="15" declfile="pros/gps.h" declline="309" declcolumn="15"/>
+        <location file="pros/gps.h" line="519" column="15" declfile="pros/gps.h" declline="519" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a0ea1e99bb730db27d613f31a11e933c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga0ea1e99bb730db27d613f31a11e933c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::imu_reset</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10797,15 +11552,29 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>imu_reset(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>time<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>iter<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(imu_get_status(IMU_PORT)<sp/>&amp;<sp/>E_IMU_STATUS_CALIBRATING)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>calibrating...<sp/>%d\n&quot;,<sp/>iter);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>iter<sp/>+=<sp/>10;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>should<sp/>print<sp/>about<sp/>2000<sp/>ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;IMU<sp/>is<sp/>done<sp/>calibrating<sp/>(took<sp/>%d<sp/>ms)\n&quot;,<sp/>iter<sp/>-<sp/>time);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="82" column="9" declfile="pros/imu.h" declline="82" declcolumn="9"/>
+        <location file="pros/imu.h" line="139" column="9" declfile="pros/imu.h" declline="139" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a73029aa0aa910f9b740ffe6def05e830" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga73029aa0aa910f9b740ffe6def05e830" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::imu_set_data_rate</definition>
         <argsstring>(uint8_t port, uint32_t rate)</argsstring>
@@ -10842,15 +11611,15 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting></programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="109" column="9" declfile="pros/imu.h" declline="109" declcolumn="9"/>
+        <location file="pros/imu.h" line="170" column="9" declfile="pros/imu.h" declline="170" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa44bc46059f8aca47f3317320f1cd5bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gaa44bc46059f8aca47f3317320f1cd5bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::imu_get_rotation</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10874,15 +11643,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>get<sp/>rotation:<sp/>%f<sp/>degrees\n&quot;,<sp/>imu_get_rotation(IMU_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="129" column="8" declfile="pros/imu.h" declline="129" declcolumn="8"/>
+        <location file="pros/imu.h" line="202" column="8" declfile="pros/imu.h" declline="202" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1acca94d74756713e9ca0bd36490c6acc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gacca94d74756713e9ca0bd36490c6acc4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::imu_get_heading</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10906,16 +11683,24 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>get<sp/>heading:<sp/>%f<sp/>degrees\n&quot;,<sp/>imu_get_heading(IMU_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="150" column="8" declfile="pros/imu.h" declline="150" declcolumn="8"/>
+        <location file="pros/imu.h" line="235" column="8" declfile="pros/imu.h" declline="235" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1afdacdac1c6beeed1cce3829b67ebe473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a1f3d4bf4251e6ce7cb374297de6390a1" kindref="member">quaternion_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1gafdacdac1c6beeed1cce3829b67ebe473" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structquaternion__s__t" kindref="compound">quaternion_s_t</ref></type>
         <definition>quaternion_s_t pros::c::imu_get_quaternion</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>imu_get_quaternion</name>
@@ -10937,16 +11722,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The quaternion representing the sensor&apos;s orientation. If the operation failed, all the quaternion&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The quaternion representing the sensor&apos;s orientation. If the operation failed, all the quaternion&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>quaternion_s_t<sp/>qt<sp/>=<sp/>imu_get_quaternion(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>quaternion:<sp/>{x:<sp/>%f,<sp/>y:<sp/>%f,<sp/>z:<sp/>%f,<sp/>w:<sp/>%f}\n&quot;,<sp/>qt.x,<sp/>qt.y,<sp/>qt.z,<sp/>qt.w);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="167" column="16" declfile="pros/imu.h" declline="167" declcolumn="16"/>
+        <location file="pros/imu.h" line="265" column="16" declfile="pros/imu.h" declline="265" declcolumn="16"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a8d16738ae5c652c2c72479e793f4f09b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a93e80020ec907b7e11ac7166e5d01c55" kindref="member">euler_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1ga8d16738ae5c652c2c72479e793f4f09b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structeuler__s__t" kindref="compound">euler_s_t</ref></type>
         <definition>euler_s_t pros::c::imu_get_euler</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>imu_get_euler</name>
@@ -10968,15 +11762,24 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The Euler angles representing the sensor&apos;s orientation. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The Euler angles representing the sensor&apos;s orientation. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>euler_s_t<sp/>eu<sp/>=<sp/>imu_get_euler(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>euler<sp/>angles:<sp/>{pitch:<sp/>%f,<sp/>roll:<sp/>%f,<sp/>yaw:<sp/>%f}\n&quot;,<sp/>eu.pitch,<sp/>eu.roll,<sp/>eu.yaw);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="184" column="11" declfile="pros/imu.h" declline="184" declcolumn="11"/>
+        <location file="pros/imu.h" line="295" column="11" declfile="pros/imu.h" declline="295" declcolumn="11"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a44a4f2d6c27854606ca35247b97dc68d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga44a4f2d6c27854606ca35247b97dc68d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::imu_get_pitch</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -10999,15 +11802,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The pitch angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The pitch angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>pitch:<sp/>%f\n&quot;,<sp/>imu_get_pitch(IMU_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="200" column="8" declfile="pros/imu.h" declline="200" declcolumn="8"/>
+        <location file="pros/imu.h" line="323" column="8" declfile="pros/imu.h" declline="323" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa913785ee0bf907fafd049145f735e65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gaa913785ee0bf907fafd049145f735e65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::imu_get_roll</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -11030,15 +11841,23 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The roll angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The roll angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>roll:<sp/>%f\n&quot;,<sp/>imu_get_roll(IMU_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="215" column="8" declfile="pros/imu.h" declline="215" declcolumn="8"/>
+        <location file="pros/imu.h" line="350" column="8" declfile="pros/imu.h" declline="350" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa1b43b44cf94a724d4917bf363db2299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1gaa1b43b44cf94a724d4917bf363db2299" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::imu_get_yaw</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -11061,16 +11880,24 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The yaw angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The yaw angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>yaw:<sp/>%f\n&quot;,<sp/>imu_get_yaw(IMU_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="230" column="8" declfile="pros/imu.h" declline="230" declcolumn="8"/>
+        <location file="pros/imu.h" line="377" column="8" declfile="pros/imu.h" declline="377" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1afe88178fca4b6dd69cae69469bb58e8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a5b9e240cfb181cce3c741e29efbbbf23" kindref="member">imu_gyro_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1gafe88178fca4b6dd69cae69469bb58e8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c-gps_1ga5b9e240cfb181cce3c741e29efbbbf23" kindref="member">imu_gyro_s_t</ref></type>
         <definition>imu_gyro_s_t pros::c::imu_get_gyro_rate</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>imu_get_gyro_rate</name>
@@ -11092,16 +11919,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu_gyro_s_t<sp/>gyro<sp/>=<sp/>imu_get_gyro_rate(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>gyro<sp/>values:<sp/>{x:<sp/>%f,<sp/>y:<sp/>%f,<sp/>z:<sp/>%f}\n&quot;,<sp/>gyro.x,<sp/>gyro.y,<sp/>gyro.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="246" column="14" declfile="pros/imu.h" declline="246" declcolumn="14"/>
+        <location file="pros/imu.h" line="406" column="14" declfile="pros/imu.h" declline="406" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aae2df998074e80a7531de57c1161f47d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespacepros_1_1c_1a70eb3173193f4f46266eade4c243f662" kindref="member">imu_accel_s_t</ref></type>
+      <memberdef kind="function" id="group__c-gps_1gaae2df998074e80a7531de57c1161f47d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c-gps_1ga70eb3173193f4f46266eade4c243f662" kindref="member">imu_accel_s_t</ref></type>
         <definition>imu_accel_s_t pros::c::imu_get_accel</definition>
         <argsstring>(uint8_t port)</argsstring>
         <name>imu_get_accel</name>
@@ -11123,15 +11959,24 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu_accel_s_t<sp/>accel<sp/>=<sp/>imu_get_accel(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>accel<sp/>values:<sp/>{x:<sp/>%f,<sp/>y:<sp/>%f,<sp/>z:<sp/>%f}\n&quot;,<sp/>accel.x,<sp/>accel.y,<sp/>accel.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="262" column="15" declfile="pros/imu.h" declline="262" declcolumn="15"/>
+        <location file="pros/imu.h" line="435" column="15" declfile="pros/imu.h" declline="435" declcolumn="15"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a1ccf1cf41bf15e416c89d64093d63764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-gps_1ga1ccf1cf41bf15e416c89d64093d63764" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>imu_status_e_t</type>
         <definition>imu_status_e_t pros::c::imu_get_status</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -11154,489 +11999,27 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The Inertial Sensor&apos;s status code, or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The Inertial Sensor&apos;s status code, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>imu_reset(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>time<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>iter<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(imu_get_status(IMU_PORT)<sp/>&amp;<sp/>E_IMU_STATUS_CALIBRATING)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>calibrating...<sp/>%d\n&quot;,<sp/>iter);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>iter<sp/>+=<sp/>10;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>should<sp/>print<sp/>about<sp/>2000<sp/>ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;IMU<sp/>is<sp/>done<sp/>calibrating<sp/>(took<sp/>%d<sp/>ms)\n&quot;,<sp/>iter<sp/>-<sp/>time);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.h" line="278" column="16" declfile="pros/imu.h" declline="278" declcolumn="16"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a7613cb8ad7dbe92244f862f038040077" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_heading</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_heading</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets the current reading of the Inertial Sensor&apos;s heading to zero. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="299" column="9" declfile="pros/imu.h" declline="299" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a33ea7dacd1ee92bc6bf011cb109cadd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_rotation</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_rotation</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets the current reading of the Inertial Sensor&apos;s rotation to zero. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="315" column="9" declfile="pros/imu.h" declline="315" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a0ec5652dee78d7b6582436ca72753eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_pitch</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_pitch</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets the current reading of the Inertial Sensor&apos;s pitch to zero. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="331" column="9" declfile="pros/imu.h" declline="331" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a1c0d6e494b558d012fc29c2e0f565d55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_roll</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_roll</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets the current reading of the Inertial Sensor&apos;s roll to zero. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="347" column="9" declfile="pros/imu.h" declline="347" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a8d220ae04071a4ac25be52108e561166" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_yaw</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_yaw</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets the current reading of the Inertial Sensor&apos;s yaw to zero. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="363" column="9" declfile="pros/imu.h" declline="363" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aee27c5a8ea8e51afee3c80e4ef3d1e05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare_euler</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare_euler</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Reset all 3 euler values of the Inertial Sensor to 0. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="379" column="9" declfile="pros/imu.h" declline="379" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a5ae349cec6a99b52cf632267f1c2c332" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_tare</definition>
-        <argsstring>(uint8_t port)</argsstring>
-        <name>imu_tare</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Resets all 5 values of the Inertial Sensor to 0. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="395" column="9" declfile="pros/imu.h" declline="395" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1abd5e3389b5026622463ccf5e9a9ee5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_euler</definition>
-        <argsstring>(uint8_t port, euler_s_t target)</argsstring>
-        <name>imu_set_euler</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type><ref refid="namespacepros_1_1c_1a93e80020ec907b7e11ac7166e5d01c55" kindref="member">euler_s_t</ref></type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s euler values to target euler values. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Will default to +/- 180 if target exceeds +/- 180.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target euler values for the euler values to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="415" column="9" declfile="pros/imu.h" declline="415" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a33890996b538599d7c635a895e3da8e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_rotation</definition>
-        <argsstring>(uint8_t port, double target)</argsstring>
-        <name>imu_set_rotation</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s rotation to target value. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target value for the rotation value to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="433" column="9" declfile="pros/imu.h" declline="433" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a35127112436baa43237fc52c683a9e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_heading</definition>
-        <argsstring>(uint8_t port, double target)</argsstring>
-        <name>imu_set_heading</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s heading to target value Target will default to 360 if above 360 and default to 0 if below 0. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target value for the heading value to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="452" column="9" declfile="pros/imu.h" declline="452" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a87a5b4f797d70c502fd862320ba733da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_pitch</definition>
-        <argsstring>(uint8_t port, double target)</argsstring>
-        <name>imu_set_pitch</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s pitch to target value Will default to +/- 180 if target exceeds +/- 180. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target value for the pitch value to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="471" column="9" declfile="pros/imu.h" declline="471" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a52386f7153795d5be0acda3352600834" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_roll</definition>
-        <argsstring>(uint8_t port, double target)</argsstring>
-        <name>imu_set_roll</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s roll to target value Will default to +/- 180 if target exceeds +/- 180. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target value for the roll value to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="490" column="9" declfile="pros/imu.h" declline="490" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aee4fcba55ec253943b6396c8c1e24c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::imu_set_yaw</definition>
-        <argsstring>(uint8_t port, double target)</argsstring>
-        <name>imu_set_yaw</name>
-        <param>
-          <type>uint8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>target</declname>
-        </param>
-        <briefdescription>
-<para>Sets the current reading of the Inertial Sensor&apos;s yaw to target value Will default to +/- 180 if target exceeds +/- 180. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 Inertial Sensor port number from 1-21 </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>target</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Target value for the yaw value to be set to </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/imu.h" line="509" column="9" declfile="pros/imu.h" declline="509" declcolumn="9"/>
+        <location file="pros/imu.h" line="469" column="16" declfile="pros/imu.h" declline="469" declcolumn="16"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1c_1a4277232ad855f067803c1fcba9885b24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>

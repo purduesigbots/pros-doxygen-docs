@@ -73,6 +73,7 @@ V5</span></a>
               Reference
               <ul>
                 <li><a href="#files">Files</a></li>
+                <li><a href="#func-members">Functions</a></li>
               </ul>
             </li>
           </ul>
@@ -83,6 +84,151 @@ V5</span></a>
             <dt>file <a href="distance_8h.html" class="m-doc">distance.h</a></dt>
             <dd></dd>
           </dl>
+        </section>
+        <section id="func-members">
+          <h2><a href="#func-members">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7d24458fd388aaa7bee4fac208b47d3b" class="m-doc-self">distance_get</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the currently measured distance from the sensor in mm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga97b69852b0f1ec60cdac10ca20caabdc" class="m-doc-self">distance_get_confidence</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the confidence in the distance reading.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa87f08f6faaed31f3876d3980b1d3689" class="m-doc-self">distance_get_object_size</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the current guess at relative object size.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga744e01aa684d89ff70dd443dba4eea53" class="m-doc-self">distance_get_object_velocity</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the object velocity in m/s.</dd>
+          </dl>
+        </section>
+        <section>
+          <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ga7d24458fd388aaa7bee4fac208b47d3b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7d24458fd388aaa7bee4fac208b47d3b" class="m-doc-self">distance_get</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8h.html">&lt;pros/distance.h&gt;</a></div>
+            </h3>
+            <p>Get the currently measured distance from the sensor in mm.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The distance value or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance Value: %d mm</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance_get</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga97b69852b0f1ec60cdac10ca20caabdc"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga97b69852b0f1ec60cdac10ca20caabdc" class="m-doc-self">distance_get_confidence</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8h.html">&lt;pros/distance.h&gt;</a></div>
+            </h3>
+            <p>Get the confidence in the distance reading.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The confidence value or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is &gt; 200mm (the value 10 is returned in this scenario).</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance Confidence Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance_get_confidence</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="gaa87f08f6faaed31f3876d3980b1d3689"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa87f08f6faaed31f3876d3980b1d3689" class="m-doc-self">distance_get_object_size</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8h.html">&lt;pros/distance.h&gt;</a></div>
+            </h3>
+            <p>Get the current guess at relative object size.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The size value or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This is a value that has a range of 0 to 400. A 18&quot; x 30&quot; grey card will return a value of approximately 75 in typical room lighting.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor</p>
+          </div></section>
+          <section class="m-doc-details" id="ga744e01aa684d89ff70dd443dba4eea53"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga744e01aa684d89ff70dd443dba4eea53" class="m-doc-self">distance_get_object_velocity</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8h.html">&lt;pros/distance.h&gt;</a></div>
+            </h3>
+            <p>Get the object velocity in m/s.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The velocity value or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance Object Size: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance_get_object_size</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
         </section>
       </div>
     </div>
