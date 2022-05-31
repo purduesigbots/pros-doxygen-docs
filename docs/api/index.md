@@ -5,11 +5,18 @@ This document covers the main PROS API.
 ## C API Headers
 
 - \subpage c-adi
+- \subpage c-distance
+- \subpage c-gps
 - \subpage c-imu
+- \subpage c-link
 - \subpage c-llemu
 - \subpage c-misc
 - \subpage c-motors
+- \subpage c-optical
+- \subpage c-rotation
 - \subpage c-rtos
+- \subpage c-screen
+- \subpage c-serial
 - \subpage c-vision
 
 ## C++ API Headers
@@ -22,5 +29,7 @@ This document covers the main PROS API.
 - \subpage cpp-rtos
 - \subpage cpp-vision
 
-For additional RTOS-related features, check out the @ref extended-api. Be warned, these features
+To aid in transitioning from [PROS 2](https://pros.cs.purdue.edu/cortex/index.html) syntax to PROS 3, a [Legacy API Header](\subpage api-legacy) is provided. This header provides PROS 2 functionality in its original syntax.
+
+For additional RTOS-related features, check out the @ref apix. Be warned, these features
 are intended for advanced users only and may be very complex to use.
