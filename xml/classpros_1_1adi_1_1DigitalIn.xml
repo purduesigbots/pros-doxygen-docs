@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1DigitalIn" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::DigitalIn</compoundname>
+    <basecompoundref refid="classpros_1_1adi_1_1Port" prot="private" virt="non-virtual">Port</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1gae455419c73513dedb6a1a28d9719c82f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DigitalIn</definition>
+        <argsstring>(std::uint8_t adi_port)</argsstring>
+        <name>DigitalIn</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a Digital Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::DigitalIn<sp/>sensor<sp/>(ANALOG_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="611" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga602656e4bd49f4cf67b577a629b1e5f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DigitalIn</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair)</argsstring>
+        <name>DigitalIn</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" kindref="member">ext_adi_port_pair_t</ref></type>
+          <declname>port_pair</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi_expander to act as a Digital Input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ADI_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::DigitalIn<sp/>sensor<sp/>({{EXT_ADI_SMART_PORT,<sp/>ADI_PORT}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="636" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaecb46342cef79b5e76b1725996088abe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_new_press</definition>
+        <argsstring>() const</argsstring>
+        <name>get_new_press</name>
+        <briefdescription>
+<para>Gets a rising-edge case for a digital button press. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> A calls this function for buttons 1 and 2. <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a digital input</para>
+<para><simplesect kind="return"><para>1 if the button is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::DigitalIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(sensor.get_new_press())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>state<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="671" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1adi_1_1DigitalIn_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the digital value (1 or 0) of a pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Inherited from ADIPort::get_value.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>EADDRINUSE - The port is not configured as a digital input (e.g. the port has been reconfigured)</para>
+<para>Analogous to adi_digital_read.</para>
+<para><simplesect kind="return"><para>The value stored for the given port</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::DigitalIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Sensor<sp/>Value:&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="699" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>DigitalIn</label>
+        <link refid="classpros_1_1adi_1_1DigitalIn"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>DigitalIn</label>
+        <link refid="classpros_1_1adi_1_1DigitalIn"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="584" column="29" bodyfile="pros/adi.hpp" bodystart="584" bodyend="700"/>
+    <listofallmembers>
+      <member refid="group__cpp-adi_1gae455419c73513dedb6a1a28d9719c82f" prot="public" virt="non-virtual"><scope>pros::adi::DigitalIn</scope><name>DigitalIn</name></member>
+      <member refid="group__cpp-adi_1ga602656e4bd49f4cf67b577a629b1e5f8" prot="public" virt="non-virtual"><scope>pros::adi::DigitalIn</scope><name>DigitalIn</name></member>
+      <member refid="group__cpp-adi_1gaecb46342cef79b5e76b1725996088abe" prot="public" virt="non-virtual"><scope>pros::adi::DigitalIn</scope><name>get_new_press</name></member>
+      <member refid="classpros_1_1adi_1_1DigitalIn_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::adi::DigitalIn</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="private" virt="non-virtual" ambiguityscope="pros::adi::Port::"><scope>pros::adi::DigitalIn</scope><name>get_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

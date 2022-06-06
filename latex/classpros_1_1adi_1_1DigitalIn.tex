@@ -1,0 +1,64 @@
+\hypertarget{classpros_1_1adi_1_1DigitalIn}{}\doxysection{Digital\+In Class Reference}
+\label{classpros_1_1adi_1_1DigitalIn}\index{DigitalIn@{DigitalIn}}
+
+
+{\ttfamily \#include \char`\"{}adi.\+hpp\char`\"{}}
+
+Inheritance diagram for Digital\+In\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classpros_1_1adi_1_1DigitalIn}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__cpp-adi_gae455419c73513dedb6a1a28d9719c82f}{Digital\+In}} (std\+::uint8\+\_\+t adi\+\_\+port)
+\begin{DoxyCompactList}\small\item\em Configures an A\+DI port to act as a Digital Input. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__cpp-adi_ga602656e4bd49f4cf67b577a629b1e5f8}{Digital\+In}} (\mbox{\hyperlink{namespacepros_1_1adi_aa8b90563c470741ebd760aeacfd90599}{ext\+\_\+adi\+\_\+port\+\_\+pair\+\_\+t}} port\+\_\+pair)
+\begin{DoxyCompactList}\small\item\em Configures an A\+DI port on an adi\+\_\+expander to act as a Digital Input. \end{DoxyCompactList}\item 
+std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-adi_gaecb46342cef79b5e76b1725996088abe}{get\+\_\+new\+\_\+press}} () const
+\begin{DoxyCompactList}\small\item\em Gets a rising-\/edge case for a digital button press. \end{DoxyCompactList}\item 
+std\+::int32\+\_\+t \mbox{\hyperlink{classpros_1_1adi_1_1DigitalIn_a60987c8e4946650cf9aa40f8e8345f01}{get\+\_\+value}} () const
+\begin{DoxyCompactList}\small\item\em Gets the digital value (1 or 0) of a pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classpros_1_1adi_1_1DigitalIn_a60987c8e4946650cf9aa40f8e8345f01}\label{classpros_1_1adi_1_1DigitalIn_a60987c8e4946650cf9aa40f8e8345f01}} 
+\index{DigitalIn@{DigitalIn}!get\_value@{get\_value}}
+\index{get\_value@{get\_value}!DigitalIn@{DigitalIn}}
+\doxysubsubsection{\texorpdfstring{get\_value()}{get\_value()}}
+{\footnotesize\ttfamily std\+::int32\+\_\+t get\+\_\+value}
+
+
+
+Gets the digital value (1 or 0) of a pin. 
+
+Inherited from A\+D\+I\+Port\+::get\+\_\+value.
+
+This function uses the following values of errno when an error state is reached\+:
+
+E\+A\+D\+D\+R\+I\+N\+U\+SE -\/ The port is not configured as a digital input (e.\+g. the port has been reconfigured)
+
+Analogous to adi\+\_\+digital\+\_\+read.
+
+\begin{DoxyReturn}{Returns}
+The value stored for the given port
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DIGITAL\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  pros::DigitalIn sensor (DIGITAL\_SENSOR\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"Sensor Value:"} << sensor.get\_value();}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(10);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+pros/\mbox{\hyperlink{adi_8hpp}{adi.\+hpp}}\end{DoxyCompactItemize}
