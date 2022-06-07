@@ -22,11 +22,18 @@ This document covers the main PROS API.
 ## C++ API Headers
 
 - \subpage cpp-adi
+- \subpage cpp-distance
+- \subpage cpp-gps
 - \subpage cpp-imu
+- \subpage cpp-link
 - \subpage cpp-llemu
 - \subpage cpp-misc
 - \subpage cpp-motors
+- \subpage cpp-optical
+- \subpage cpp-rotation
 - \subpage cpp-rtos
+- \subpage cpp-screen
+- \subpage cpp-serial
 - \subpage cpp-vision
 
 To aid in transitioning from [PROS 2](https://pros.cs.purdue.edu/cortex/index.html) syntax to PROS 3, a \subpage api-legacy is provided. This header provides PROS 2 functionality in its original syntax.
