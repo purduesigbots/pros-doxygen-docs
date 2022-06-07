@@ -193,7 +193,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>There might be a 1 to 2 second delay from when this function is called to when the link is initializes.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p>
+<p>There might be a 1 to 2 second delay from when this function is called to when the link is initializes.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+<span class="cp">#define LINK_ID &quot;ROBOT1&quot;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_TRANSMITTER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">LINK_ID</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">E_LINK_TRANSMITTER</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga59fc494d53391b27e2fd75cb750690d9"><div>
             <h3>
@@ -209,7 +214,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_TRANSMITTER_PORT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">transmitter</span><span class="p">.</span><span class="n">connected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Link connected!&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga3e5a887fae00109fec9845322aa962c6"><div>
             <h3>
@@ -225,7 +241,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_RECIVER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">reciever</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">recieveable_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reciever</span><span class="p">.</span><span class="n">raw_receivable_size</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Link recieveable_size:&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">recieveable_size</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4647a3ca3ef53b4c91d9192ab40184f9"><div>
             <h3>
@@ -237,11 +260,18 @@ V5</span></a>
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>PROS_ERR if port is not a link/radio,</td>
+                  <td>PROS_ERR if port is not a link/radio</td>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">transmittable_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transmitter</span><span class="p">.</span><span class="n">raw_transmittable_size</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Link transmittable_size:&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">lcd</span><span class="o">::</span><span class="n">set_text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">transmittable_size</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gab363648b5e3ef80b53b277aed5fa4112"><div>
             <h3>
@@ -271,7 +301,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">transmitter</span><span class="p">.</span><span class="n">transmit_raw</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gab567141de181c7c1b00c32dc9655d8c2"><div>
             <h3>
@@ -301,7 +337,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_RECIVER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">reciever</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">reciever</span><span class="p">.</span><span class="n">reciever_raw</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga64c630547d0e9c66e515f2dd838e4341"><div>
             <h3>
@@ -331,7 +374,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">transmitter</span><span class="p">.</span><span class="n">transmit</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gafe8e1c1ce5a8a29aee2786adf14e8b5e"><div>
             <h3>
@@ -361,7 +411,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_RECIVER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">reciever</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">reciever</span><span class="p">.</span><span class="n">recieve</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga66acfc4fea58d38ae1e2fd263a55ccf5"><div>
             <h3>
@@ -377,7 +435,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define LINK_TRANSMITTER_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Link</span><span class="w"> </span><span class="n">transmitter</span><span class="p">(</span><span class="n">LINK_RECIVER_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello!&quot;</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">transmitter</span><span class="p">.</span><span class="n">transmit</span><span class="p">((</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">  </span><span class="n">transmitter</span><span class="p">.</span><span class="n">clear_receive_buf</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
         </section>
         <section>

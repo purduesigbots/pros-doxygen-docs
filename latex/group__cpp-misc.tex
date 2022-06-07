@@ -45,7 +45,17 @@ int32\+\_\+t \mbox{\hyperlink{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352
 double \mbox{\hyperlink{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}{get\+\_\+temperature}} (void)
 \begin{DoxyCompactList}\small\item\em Gets the current temperature of the battery, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}{get\+\_\+voltage}} (void)
-\begin{DoxyCompactList}\small\item\em Gets the current capacity of the battery in millivolts, as reported by V\+E\+Xos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the current capacity of the battery in millivolts, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
+std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-misc_gad75e0e06e0817959c08798358eaa8ab0}{get\+\_\+status}} (void)
+\begin{DoxyCompactList}\small\item\em Get the current status of the competition control. \end{DoxyCompactList}\item 
+std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-misc_ga88353a4f8e5e283558ee6504c54283af}{is\+\_\+autonomous}} (void)
+\item 
+std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-misc_gaaf36367a2369390657f6bc4285f68c64}{is\+\_\+connected}} (void)
+\item 
+std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-misc_ga2d4f4555af4c45f7f82ea75e1223899b}{is\+\_\+disabled}} (void)
+\item 
+std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-misc_ga2d7eecbe50533c0d753e82470dc2e6f3}{is\+\_\+installed}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if the SD card is installed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -104,15 +114,28 @@ std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-misc_gacb5f1e6485a4af89f3fce3ff6
 
 Creates a controller object for the given controller id. 
 
+This function uses the following values of errno when an error state is reached\+: E\+I\+N\+V\+AL -\/ A value other than E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER or E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER is given.
+
 
 \begin{DoxyParams}{Parameters}
-{\em id} & The ID of the controller (e.\+g. the master or partner controller). Must be one of C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER or C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER \\
+{\em id} & The ID of the controller (e.\+g. the master or partner controller). Must be one of C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER or C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{group__cpp-misc_ga74a04929bc60c72d8436cfb5b40461c0}\label{group__cpp-misc_ga74a04929bc60c72d8436cfb5b40461c0}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1v5_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    motor.move(master.get\_analog(\mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5ac73153bd6a186402cb8fad10c069ec55}{E\_CONTROLLER\_ANALOG\_LEFT\_X}}));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga74a04929bc60c72d8436cfb5b40461c0}\label{group__cpp-misc_ga74a04929bc60c72d8436cfb5b40461c0}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!is\_connected@{is\_connected}}
 \index{is\_connected@{is\_connected}!Miscellaneous C++ API@{Miscellaneous C++ API}}
-\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}}
+\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily std\+::int32\+\_\+t is\+\_\+connected (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 
@@ -122,9 +145,24 @@ Checks if the controller is connected.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
 
 \begin{DoxyReturn}{Returns}
-1 if the controller is connected, 0 otherwise 
+1 if the controller is connected, 0 otherwise
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga880820cec57dc2d47bb9cb27e18b4a0a}\label{group__cpp-misc_ga880820cec57dc2d47bb9cb27e18b4a0a}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} partner (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a62d367ebc8ce395520d786f5c12614ac}{E\_CONTROLLER\_PARTNER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (partner.is\_connected()) \{}
+\DoxyCodeLine{      \textcolor{comment}{// Use a two controller control scheme}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{      \textcolor{comment}{// Just use a single controller control scheme}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga880820cec57dc2d47bb9cb27e18b4a0a}\label{group__cpp-misc_ga880820cec57dc2d47bb9cb27e18b4a0a}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_analog@{get\_analog}}
 \index{get\_analog@{get\_analog}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_analog()}{get\_analog()}}
@@ -142,9 +180,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The current reading of the analog channel\+: \mbox{[}-\/127, 127\mbox{]}. If the controller was not connected, then 0 is returned 
+The current reading of the analog channel\+: \mbox{[}-\/127, 127\mbox{]}. If the controller was not connected, then 0 is returned
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga45fb617eafe5e07c279b0b4d2158503d}\label{group__cpp-misc_ga45fb617eafe5e07c279b0b4d2158503d}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1v5_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    motor.move(master.get\_analog(\mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5ac73153bd6a186402cb8fad10c069ec55}{E\_CONTROLLER\_ANALOG\_LEFT\_X}}));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga45fb617eafe5e07c279b0b4d2158503d}\label{group__cpp-misc_ga45fb617eafe5e07c279b0b4d2158503d}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_battery\_capacity@{get\_battery\_capacity}}
 \index{get\_battery\_capacity@{get\_battery\_capacity}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_battery\_capacity()}{get\_battery\_capacity()}}
@@ -157,9 +206,16 @@ Gets the battery capacity of the controller.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
 
 \begin{DoxyReturn}{Returns}
-The controller\textquotesingle{}s battery capacity 
+The controller\textquotesingle{}s battery capacity
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_gaea0f0813bb505219cd0e6a8d87922fca}\label{group__cpp-misc_gaea0f0813bb505219cd0e6a8d87922fca}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Battery Capacity: \%d\(\backslash\)n"}, master.get\_battery\_capacity());}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gaea0f0813bb505219cd0e6a8d87922fca}\label{group__cpp-misc_gaea0f0813bb505219cd0e6a8d87922fca}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_battery\_level@{get\_battery\_level}}
 \index{get\_battery\_level@{get\_battery\_level}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_battery\_level()}{get\_battery\_level()}}
@@ -172,9 +228,16 @@ Gets the battery level of the controller.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
 
 \begin{DoxyReturn}{Returns}
-The controller\textquotesingle{}s battery level 
+The controller\textquotesingle{}s battery level
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga360ac95a3f2da903f29d38e212aaf005}\label{group__cpp-misc_ga360ac95a3f2da903f29d38e212aaf005}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Battery Level: \%d\(\backslash\)n"}, master.get\_battery\_level());}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga360ac95a3f2da903f29d38e212aaf005}\label{group__cpp-misc_ga360ac95a3f2da903f29d38e212aaf005}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_digital@{get\_digital}}
 \index{get\_digital@{get\_digital}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_digital()}{get\_digital()}}
@@ -192,9 +255,25 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned 
+1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_gaae8fa80cfb5153c0b30221914742ee49}\label{group__cpp-misc_gaae8fa80cfb5153c0b30221914742ee49}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1v5_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (master.get\_digital(\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253edabf8d8d50802f9417ba1f1512d2822f98}{E\_CONTROLLER\_DIGITAL\_A}})) \{}
+\DoxyCodeLine{      motor.move(100);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{      motor.move(0);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gaae8fa80cfb5153c0b30221914742ee49}\label{group__cpp-misc_gaae8fa80cfb5153c0b30221914742ee49}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_digital\_new\_press@{get\_digital\_new\_press}}
 \index{get\_digital\_new\_press@{get\_digital\_new\_press}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_digital\_new\_press()}{get\_digital\_new\_press()}}
@@ -214,9 +293,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise. 
+1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga28aa7fefb62dcdf98555066756a6fbd5}\label{group__cpp-misc_ga28aa7fefb62dcdf98555066756a6fbd5}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (master.get\_digital\_new\_press(\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253edabf8d8d50802f9417ba1f1512d2822f98}{E\_CONTROLLER\_DIGITAL\_A}})) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Toggle pneumatics or other similar actions}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga28aa7fefb62dcdf98555066756a6fbd5}\label{group__cpp-misc_ga28aa7fefb62dcdf98555066756a6fbd5}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!convert\_args@{convert\_args}}
 \index{convert\_args@{convert\_args}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{convert\_args()}{convert\_args()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -239,7 +330,7 @@ This function uses the following values of errno when an error state is reached\
 Sets text to the controller L\+CD screen. 
 
 \begin{DoxyNote}{Note}
-\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is currently in beta, so continuous, fast updates will not work well.
+\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.
 \end{DoxyNote}
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
 
@@ -255,9 +346,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga3cd136d81be409f77263bf0c983058a8}\label{group__cpp-misc_ga3cd136d81be409f77263bf0c983058a8}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!(count \% 25)) \{}
+\DoxyCodeLine{      \textcolor{comment}{// Only print every 50ms, the controller text update rate is slow}}
+\DoxyCodeLine{      master.print(0, 0, \textcolor{stringliteral}{"Counter: \%d"}, count);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  count++;}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga3cd136d81be409f77263bf0c983058a8}\label{group__cpp-misc_ga3cd136d81be409f77263bf0c983058a8}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!set\_text@{set\_text}}
 \index{set\_text@{set\_text}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_text()}{set\_text()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
@@ -268,9 +374,9 @@ This function uses the following values of errno when an error state is reached\
 Sets text to the controller L\+CD screen. 
 
 \begin{DoxyNote}{Note}
-\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is currently in beta, so continuous, fast updates will not work well.
+\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.
 \end{DoxyNote}
-This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
+This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port. E\+A\+G\+A\+IN -\/ Could not send the text to the controller.
 
 
 \begin{DoxyParams}{Parameters}
@@ -282,9 +388,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga792642d2e8721a3ba27e0ba6b8f0755f}\label{group__cpp-misc_ga792642d2e8721a3ba27e0ba6b8f0755f}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!(count \% 25)) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Only print every 50ms, the controller text update rate is slow}}
+\DoxyCodeLine{    master.set\_text(0, 0, \textcolor{stringliteral}{"Example text"});}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    count++;}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga792642d2e8721a3ba27e0ba6b8f0755f}\label{group__cpp-misc_ga792642d2e8721a3ba27e0ba6b8f0755f}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!set\_text@{set\_text}}
 \index{set\_text@{set\_text}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_text()}{set\_text()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
@@ -301,9 +422,9 @@ This function uses the following values of errno when an error state is reached\
 Clears an individual line of the controller screen. 
 
 \begin{DoxyNote}{Note}
-\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is currently in beta, so continuous, fast updates will not work well.
+\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.
 \end{DoxyNote}
-This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
+This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port. E\+A\+G\+A\+IN -\/ Could not send the text to the controller.
 
 
 \begin{DoxyParams}{Parameters}
@@ -311,9 +432,18 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_gaa76da9849eb5dfde35588f2d08ac6f19}\label{group__cpp-misc_gaa76da9849eb5dfde35588f2d08ac6f19}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  master.set\_text(0, 0, \textcolor{stringliteral}{"Example"});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(100);}
+\DoxyCodeLine{  master.clear\_line(0);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gaa76da9849eb5dfde35588f2d08ac6f19}\label{group__cpp-misc_gaa76da9849eb5dfde35588f2d08ac6f19}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!rumble@{rumble}}
 \index{rumble@{rumble}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{rumble()}{rumble()}}
@@ -324,7 +454,7 @@ This function uses the following values of errno when an error state is reached\
 Rumble the controller. 
 
 \begin{DoxyNote}{Note}
-\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} rumble activation is currently in beta, so continuous, fast updates will not work well.
+\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} rumble activation is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.
 \end{DoxyNote}
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
 
@@ -334,9 +464,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_gacb5f1e6485a4af89f3fce3ff66895b56}\label{group__cpp-misc_gacb5f1e6485a4af89f3fce3ff66895b56}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{int} count = 0;}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (!(count \% 25)) \{}
+\DoxyCodeLine{      \textcolor{comment}{// Only print every 50ms, the controller text update rate is slow}}
+\DoxyCodeLine{      master.rumble(\textcolor{stringliteral}{". -\/ . -\/"});}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  count++;}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gacb5f1e6485a4af89f3fce3ff66895b56}\label{group__cpp-misc_gacb5f1e6485a4af89f3fce3ff66895b56}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!clear@{clear}}
 \index{clear@{clear}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{clear()}{clear()}}
@@ -347,14 +492,23 @@ This function uses the following values of errno when an error state is reached\
 Clears all of the lines on the controller screen. 
 
 \begin{DoxyNote}{Note}
-\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is currently in beta, so continuous, fast updates will not work well. On vex\+OS version 1.\+0.\+0 this function will block for 110ms.
+\mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{Controller}} text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller. On vex\+OS version 1.\+0.\+0 this function will block for 110 ms.
 \end{DoxyNote}
-This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port.
+This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the controller port. E\+A\+G\+A\+IN -\/ Could not send the text to the controller.
 
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga42876357c2ed5a047a535aca84f4458e}\label{group__cpp-misc_ga42876357c2ed5a047a535aca84f4458e}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-misc_classpros_1_1v5_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  master.set\_text(0, 0, \textcolor{stringliteral}{"Example"});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(100);}
+\DoxyCodeLine{  master.clear();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga42876357c2ed5a047a535aca84f4458e}\label{group__cpp-misc_ga42876357c2ed5a047a535aca84f4458e}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_capacity@{get\_capacity}}
 \index{get\_capacity@{get\_capacity}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_capacity()}{get\_capacity()}}
@@ -367,9 +521,15 @@ Gets the current voltage of the battery, as reported by V\+E\+Xos.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the battery port.
 
 \begin{DoxyReturn}{Returns}
-The current voltage of the battery 
+The current voltage of the battery
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352}\label{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"Battery Level:"} << \mbox{\hyperlink{group__cpp-misc_ga42876357c2ed5a047a535aca84f4458e}{pros::battery::get\_capacity}}();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352}\label{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_current@{get\_current}}
 \index{get\_current@{get\_current}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_current()}{get\_current()}}
@@ -382,9 +542,15 @@ Gets the current current of the battery in milliamps, as reported by V\+E\+Xos.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the battery port.
 
 \begin{DoxyReturn}{Returns}
-The current current of the battery 
+The current current of the battery
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}\label{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"Battery Current:"} << \mbox{\hyperlink{group__cpp-misc_gad0f092e6341126d68ae15d41b5dba352}{pros::battery::get\_current}}();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}\label{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_temperature@{get\_temperature}}
 \index{get\_temperature@{get\_temperature}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_temperature()}{get\_temperature()}}
@@ -397,9 +563,15 @@ Gets the current temperature of the battery, as reported by V\+E\+Xos.
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the battery port.
 
 \begin{DoxyReturn}{Returns}
-The current temperature of the battery 
+The current temperature of the battery
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}\label{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"Battery Temperature:"} << \mbox{\hyperlink{group__cpp-misc_ga33d1a503808ed06148a1884e3ccf88ae}{pros::battery::get\_temperature}}();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}\label{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}} 
 \index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_voltage@{get\_voltage}}
 \index{get\_voltage@{get\_voltage}!Miscellaneous C++ API@{Miscellaneous C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_voltage()}{get\_voltage()}}
@@ -412,5 +584,117 @@ Gets the current capacity of the battery in millivolts, as reported by V\+E\+Xos
 This function uses the following values of errno when an error state is reached\+: E\+A\+C\+C\+ES -\/ Another resource is currently trying to access the battery port.
 
 \begin{DoxyReturn}{Returns}
-The current capacity of the battery 
+The current capacity of the battery
 \end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  std::cout << \textcolor{stringliteral}{"Battery Voltage:"} << \mbox{\hyperlink{group__cpp-misc_ga2c325b346f66c15ca7e5a844a66b20d9}{pros::battery::get\_voltage}}();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gad75e0e06e0817959c08798358eaa8ab0}\label{group__cpp-misc_gad75e0e06e0817959c08798358eaa8ab0}} 
+\index{Miscellaneous C++ API@{Miscellaneous C++ API}!get\_status@{get\_status}}
+\index{get\_status@{get\_status}!Miscellaneous C++ API@{Miscellaneous C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_status()}{get\_status()}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t pros\+::competition\+::get\+\_\+status (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get the current status of the competition control. 
+
+\begin{DoxyReturn}{Returns}
+The competition control status as a mask of bits with C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\{E\+N\+A\+B\+L\+ED,A\+U\+T\+O\+N\+O\+M\+O\+US,C\+O\+N\+N\+E\+C\+T\+ED\}.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__cpp-misc_gad75e0e06e0817959c08798358eaa8ab0}{pros::competition::get\_status}}() \& \mbox{\hyperlink{group__c-misc_gae54538bebc289953e9238c59788a9649}{COMPETITION\_CONNECTED}} == \textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Field Control is Connected}}
+\DoxyCodeLine{    \textcolor{comment}{// Run LCD Selector code or similar}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga88353a4f8e5e283558ee6504c54283af}\label{group__cpp-misc_ga88353a4f8e5e283558ee6504c54283af}} 
+\index{Miscellaneous C++ API@{Miscellaneous C++ API}!is\_autonomous@{is\_autonomous}}
+\index{is\_autonomous@{is\_autonomous}!Miscellaneous C++ API@{Miscellaneous C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_autonomous()}{is\_autonomous()}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t pros\+::competition\+::is\+\_\+autonomous (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+True if the V5 Brain is in autonomous mode, false otherwise.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ignore) \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!\mbox{\hyperlink{group__cpp-misc_ga88353a4f8e5e283558ee6504c54283af}{pros::competition::is\_autonomous}}()) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Wait to do anything until autonomous starts}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\mbox{\hyperlink{group__cpp-misc_ga88353a4f8e5e283558ee6504c54283af}{pros::competition::is\_autonomous}}()) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Run whatever code is desired to just execute in autonomous}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-rtos_classpros_1_1rtos_1_1Task}{pros::Task}} my\_task (my\_task\_fn, NULL, TASK\_PRIO\_DEFAULT, \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_gaaf36367a2369390657f6bc4285f68c64}\label{group__cpp-misc_gaaf36367a2369390657f6bc4285f68c64}} 
+\index{Miscellaneous C++ API@{Miscellaneous C++ API}!is\_connected@{is\_connected}}
+\index{is\_connected@{is\_connected}!Miscellaneous C++ API@{Miscellaneous C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_connected()}{is\_connected()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t pros\+::competition\+::is\+\_\+connected (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+True if the V5 Brain is connected to competition control, false otherwise.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__cpp-misc_gaaf36367a2369390657f6bc4285f68c64}{pros::competition::is\_connected}}()) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Field Control is Connected}}
+\DoxyCodeLine{    \textcolor{comment}{// Run LCD Selector code or similar}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga2d4f4555af4c45f7f82ea75e1223899b}\label{group__cpp-misc_ga2d4f4555af4c45f7f82ea75e1223899b}} 
+\index{Miscellaneous C++ API@{Miscellaneous C++ API}!is\_disabled@{is\_disabled}}
+\index{is\_disabled@{is\_disabled}!Miscellaneous C++ API@{Miscellaneous C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_disabled()}{is\_disabled()}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t pros\+::competition\+::is\+\_\+disabled (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+True if the V5 Brain is disabled, false otherwise.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ignore) \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!\mbox{\hyperlink{group__cpp-misc_ga2d4f4555af4c45f7f82ea75e1223899b}{pros::competition::is\_disabled}}()) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Run competition tasks (like Lift Control or similar)}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-rtos_classpros_1_1rtos_1_1Task}{pros::Task}} my\_task (my\_task\_fn, NULL, TASK\_PRIO\_DEFAULT, \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-misc_ga2d7eecbe50533c0d753e82470dc2e6f3}\label{group__cpp-misc_ga2d7eecbe50533c0d753e82470dc2e6f3}} 
+\index{Miscellaneous C++ API@{Miscellaneous C++ API}!is\_installed@{is\_installed}}
+\index{is\_installed@{is\_installed}!Miscellaneous C++ API@{Miscellaneous C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_installed()}{is\_installed()}}
+{\footnotesize\ttfamily std\+::int32\+\_\+t pros\+::usd\+::is\+\_\+installed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the SD card is installed. 
+
+\begin{DoxyReturn}{Returns}
+1 if the SD card is installed, 0 otherwise
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  std::cout << \mbox{\hyperlink{group__cpp-misc_ga2d7eecbe50533c0d753e82470dc2e6f3}{pros::usd::is\_installed}}() << std::endl;}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ 

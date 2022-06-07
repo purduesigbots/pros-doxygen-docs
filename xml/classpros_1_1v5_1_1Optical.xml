@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="241" column="20" bodyfile="pros/optical.hpp" bodystart="241" bodyend="-1"/>
+        <location file="pros/optical.hpp" line="437" column="20" bodyfile="pros/optical.hpp" bodystart="437" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -38,15 +38,20 @@
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1-21</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="53" column="10"/>
+        <location file="pros/optical.hpp" line="62" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga172acf14d922023251daa9276adfa4a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -59,13 +64,22 @@
         <detaileddescription>
 <para>This is not available if gestures are being detected. Hue has a range of 0 to 359.999</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>hue value if the operation was successful or PROS_ERR_F if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>hue value if the operation was successful or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Hue<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>optical_sensor.get_hue());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="69" column="16"/>
+        <location file="pros/optical.hpp" line="91" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga2625290e9ed8b33d335bb25a5349bb6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -78,13 +92,22 @@
         <detaileddescription>
 <para>This is not available if gestures are being detected. Saturation has a range of 0 to 1.0</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>saturation value if the operation was successful or PROS_ERR_F if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>saturation value if the operation was successful or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Saturation<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>optical_sensor.get_saturation());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="85" column="16"/>
+        <location file="pros/optical.hpp" line="120" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gaf3e4b684d6ed14bdae1b79aa7e226ee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -97,13 +120,22 @@
         <detaileddescription>
 <para>This is not available if gestures are being detected. Brightness has a range of 0 to 1.0</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>brightness value if the operation was successful or PROS_ERR_F if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>brightness value if the operation was successful or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Brightness<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>optical_sensor.get_brightness());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="101" column="16"/>
+        <location file="pros/optical.hpp" line="149" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gaf2f75b8f8506931a5651bb48d7a8c01b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -116,13 +148,22 @@
         <detaileddescription>
 <para>This is not available if gestures are being detected. proximity has a range of 0 to 255.</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>poximity value if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>proximity value if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Proximity<sp/>value:<sp/>%ld<sp/>\n&quot;,<sp/>optical_sensor.get_proximity());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="117" column="22"/>
+        <location file="pros/optical.hpp" line="178" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga502513388196d8d7e78d6d6d311e8cc3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -139,13 +180,22 @@
         <detaileddescription>
 <para>value that ranges from 0 to 100</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>The Error code encountered </para>
+<para><simplesect kind="return"><para>The Error code encountered</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>optical_sensor.set_led_pwm(50);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="131" column="22"/>
+        <location file="pros/optical.hpp" line="205" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga2453d482804c781a8fd87bbc15b10097" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -158,13 +208,22 @@
         <detaileddescription>
 <para>value that ranges from 0 to 100</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>LED pwm value if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>LED pwm value if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;LED<sp/>PWM:<sp/>%d<sp/>\n&quot;,<sp/>optical_sensor.get_led_pwm());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="146" column="22"/>
+        <location file="pros/optical.hpp" line="233" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gae793476408af54601bb422474b82ca99" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>pros::c::optical_rgb_s_t</type>
@@ -176,13 +235,27 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>rgb value if the operation was successful or an <ref refid="structoptical__rgb__s__t" kindref="compound">optical_rgb_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>rgb value if the operation was successful or an <ref refid="structoptical__rgb__s__t" kindref="compound">optical_rgb_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::c::optical_rgb_s_t<sp/>rgb_value;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>rgb_value<sp/>=<sp/>optical_sensor.get_rgb();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Red<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>rgb_value.red);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Green<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>rgb_value.green);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Blue<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>rgb_value.blue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Clear<sp/>value:<sp/>%lf<sp/>\n&quot;,<sp/>rgb_value.clear);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="159" column="34"/>
+        <location file="pros/optical.hpp" line="264" column="34"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga2b2249e566062cd26c3e5ea7201a327e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>pros::c::optical_raw_s_t</type>
@@ -194,13 +267,27 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>raw rgb value if the operation was successful or an <ref refid="structoptical__raw__s__t" kindref="compound">optical_raw_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>raw rgb value if the operation was successful or an <ref refid="structoptical__raw__s__t" kindref="compound">optical_raw_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::c::optical_raw_s_t<sp/>raw_values;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raw_values<sp/>=<sp/>optical_sensor.get_raw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Red<sp/>value:<sp/>%ld<sp/>\n&quot;,<sp/>raw_values.red);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Green<sp/>value:<sp/>%ld<sp/>\n&quot;,<sp/>raw_values.green);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Blue<sp/>value:<sp/>%ld<sp/>\n&quot;,<sp/>raw_values.blue);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Clear<sp/>value:<sp/>%ld<sp/>\n&quot;,<sp/>raw_values.clear);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="172" column="34"/>
+        <location file="pros/optical.hpp" line="295" column="34"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga7970b59b09c9063a8a686cfcf9ffb5ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>pros::c::optical_direction_e_t</type>
@@ -211,15 +298,29 @@
 <para>Get the most recent gesture data from the sensor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gestures will be cleared after 500mS 0 = no gesture 1 = up (towards cable) 2 = down 3 = right 4 = left</para>
+<para>Gestures will be cleared after 500mS <linebreak/>
+ 0 = no gesture <linebreak/>
+ 1 = up (towards cable) <linebreak/>
+ 2 = down <linebreak/>
+ 3 = right <linebreak/>
+ 4 = left</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>gesture value if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>gesture value if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Direction:<sp/>%d<sp/>\n&quot;,<sp/>optical_sensor.get_gesture());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="192" column="40"/>
+        <location file="pros/optical.hpp" line="328" column="40"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gac8c6d23954aedd8f0557c5b3793bf805" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>pros::c::optical_gesture_s_t</type>
@@ -231,13 +332,30 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>gesture value if the operation was successful or an <ref refid="structoptical__gesture__s__t" kindref="compound">optical_gesture_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>gesture value if the operation was successful or an <ref refid="structoptical__gesture__s__t" kindref="compound">optical_gesture_s_t</ref> with all fields set to PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::c::optical_gesture_s_t<sp/>raw_gesture;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>raw_gesture<sp/>=<sp/>optical_sensor.get_gesture_raw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Up<sp/>data:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.udata);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Down<sp/>data:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.ddata);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Left<sp/>data:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.ldata);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Right<sp/>data:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.rdata);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Type:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.type);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Count:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.count);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Time:<sp/>%u<sp/>\n&quot;,<sp/>raw_gesture.time);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="205" column="38"/>
+        <location file="pros/optical.hpp" line="362" column="38"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gab1b631c44b7f27b45703a2456985674e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -249,13 +367,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>1 if the operation is successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation is successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>optical_sensor.enable_gesture();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="218" column="22"/>
+        <location file="pros/optical.hpp" line="388" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1ga6bad3c7e71be57013fa7f46d49f5612a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -267,13 +394,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor</para>
-<para><simplesect kind="return"><para>1 if the operation is successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation is successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>optical_sensor.disable_gesture();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="231" column="22"/>
+        <location file="pros/optical.hpp" line="414" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-optical_1gad8caf572fae785ec7482dd091d318ab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::uint8_t</type>
@@ -284,20 +420,29 @@
 <para>Gets the port number of the <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor&apos;s port number. </para>
+<para><simplesect kind="return"><para>The <ref refid="classpros_1_1v5_1_1Optical" kindref="compound">Optical</ref> Sensor&apos;s port number.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>OPTICAL_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Optical<sp/>optical_sensor(OPTICAL_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Port<sp/>number:<sp/>%u<sp/>\n&quot;,<sp/>optical_sensor.get_port());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/optical.hpp" line="238" column="22"/>
+        <location file="pros/optical.hpp" line="434" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/optical.hpp" line="36" column="14" bodyfile="pros/optical.hpp" bodystart="36" bodyend="243"/>
+    <location file="pros/optical.hpp" line="36" column="14" bodyfile="pros/optical.hpp" bodystart="36" bodyend="439"/>
     <listofallmembers>
       <member refid="group__cpp-optical_1ga16b806c98fffb4fd7235419ef22ac101" prot="private" virt="non-virtual"><scope>pros::v5::Optical</scope><name>_port</name></member>
       <member refid="group__cpp-optical_1ga6bad3c7e71be57013fa7f46d49f5612a" prot="public" virt="virtual"><scope>pros::v5::Optical</scope><name>disable_gesture</name></member>

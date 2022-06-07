@@ -102,7 +102,7 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac6f1a6d4484080397cb0c78eabea166b" class="m-doc-self">Imu</a>(</span><span class="m-doc-wrap">const std::uint8_t port)</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Construct a new <a href="classpros_1_1v5_1_1Imu.html" class="m-doc">Imu</a> object.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0e653310bbf7ecde3d2f58b019731a98" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-warning">virtual</span></span></span>
             </dt>
@@ -225,7 +225,24 @@ V5</span></a>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac6f1a6d4484080397cb0c78eabea166b" class="m-doc-self">Imu</a>(</span><span class="m-doc-wrap">const std::uint8_t port)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="imu_8hpp.html">&lt;pros/imu.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Construct a new <a href="classpros_1_1v5_1_1Imu.html" class="m-doc">Imu</a> object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 port number from 1-21</td>
+                </tr>
+              </tbody>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0e653310bbf7ecde3d2f58b019731a98"><div>
             <h3>
@@ -241,7 +258,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Calibration takes approximately 2 seconds, but this function only blocks until the IMU status flag is set properly to E_IMU_STATUS_CALIBRATING, with a minimum blocking time of 5ms.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is already calibrating, or time out setting the status flag.</p>
+<p>Calibration takes approximately 2 seconds, but this function only blocks until the IMU status flag is set properly to E_IMU_STATUS_CALIBRATING, with a minimum blocking time of 5ms.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is already calibrating, or time out setting the status flag.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">is_calibrating</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU calibrating... %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">iter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// should print about 2000 ms</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU is done calibrating (took %d ms)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">time</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gafb4e63f82dffc58b0fb0569f73250ff6"><div>
             <h3>
@@ -266,7 +299,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</p><p>As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor&#x27;s values any faster. However, it will guarantee that the data is as recent as possible.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</p><p>As values are copied into the shared memory buffer only at 10ms intervals, setting this value to less than 10ms does not mean that you can poll the sensor&#x27;s values any faster. However, it will guarantee that the data is as recent as possible.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">set_data_rate</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU get rotation: %f degrees</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_rotation</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga60630447c3ada8da63dd91e092eeb2fd"><div>
             <h3>
@@ -282,7 +326,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This value is theoretically unbounded. Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This value is theoretically unbounded. Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU get rotation: %f degrees</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_rotation</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga16a339b5f7729298dc79cf4971565043"><div>
             <h3>
@@ -298,7 +350,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This value is bounded by [0,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This value is bounded by [0,360). Clockwise rotations are represented with positive degree values, while counterclockwise rotations are represented with negative ones.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU get heading: %f degrees</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_heading</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga85c2835f1335fa5cab843d3bf98cfa15"><div>
             <h3>
@@ -314,7 +374,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">quaternion_s_t</span><span class="w"> </span><span class="n">qt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_quaternion</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU quaternion: {x: %f, y: %f, z: %f, w: %f}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">qt</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">qt</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">qt</span><span class="p">.</span><span class="n">z</span><span class="p">,</span><span class="w"> </span><span class="n">qt</span><span class="p">.</span><span class="n">w</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6776d4363caafc3eaa79e638e80ef2ef"><div>
             <h3>
@@ -330,7 +399,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">euler_s_t</span><span class="w"> </span><span class="n">eu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_euler</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU euler angles: {pitch: %f, roll: %f, yaw: %f}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">eu</span><span class="p">.</span><span class="n">pitch</span><span class="p">,</span><span class="w"> </span><span class="n">eu</span><span class="p">.</span><span class="n">roll</span><span class="p">,</span><span class="w"> </span><span class="n">eu</span><span class="p">.</span><span class="n">yaw</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga74b63ffbb1f1a31e6f1bb740b8c4f823"><div>
             <h3>
@@ -346,7 +424,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU pitch: %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_pitch</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga25b06e3629127c64370d43454b04696f"><div>
             <h3>
@@ -362,7 +448,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="err">\</span><span class="n">b</span><span class="w"> </span><span class="n">Example</span><span class="w"></span>
+<span class="err">\</span><span class="n">code</span><span class="w"></span>
+<span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="n">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="nf">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU roll: %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_roll</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga757ff3f4ff5e6646db7a158bdc951dc2"><div>
             <h3>
@@ -378,7 +474,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU yaw: %f</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_yaw</span><span class="p">());</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaaaa0cfbbaa188bbbf2813dfbfa3df251"><div>
             <h3>
@@ -394,7 +498,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">imu_gyro_s_t</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_gyro_rate</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU gyro values: {x: %f, y: %f, z: %f}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa0267b91c2766fc53e5d8d382b1e3ba2"><div>
             <h3>
@@ -410,7 +523,22 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare_rotation</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga66450ac36b71abf1637ed049544cf0e5"><div>
             <h3>
@@ -426,7 +554,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare_heading</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gafa1565cc9e7f3dba04399f15be7eb454"><div>
             <h3>
@@ -442,7 +586,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare_pitch</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf1e8a07f645b44fb970a9355a595ec41"><div>
             <h3>
@@ -458,7 +618,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare_yaw</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga7102b391456b5e4a87d54aa75e9367e8"><div>
             <h3>
@@ -474,7 +650,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare_roll</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga2e1d8770361636ce084f95b57df0c1d0"><div>
             <h3>
@@ -490,7 +682,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">tare</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga581438687c3b69e495dda3e145173d7b"><div>
             <h3>
@@ -506,7 +712,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu</span><span class="o">::</span><span class="n">tare</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga39d71c5e2bf21bc76aa40bdfa6384937"><div>
             <h3>
@@ -531,7 +751,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_heading</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,</span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1885d4e1d4cc150d55db862ce53ba209"><div>
             <h3>
@@ -556,7 +790,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_rotation</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,</span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga5f601df7e023e5e102d7d34ee60919f8"><div>
             <h3>
@@ -581,7 +829,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_yaw</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,</span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf5eaac02249d670303513e90d91de70a"><div>
             <h3>
@@ -606,7 +868,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_pitch</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,</span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gad42996e6b92cab819c3cb566ee809348"><div>
             <h3>
@@ -631,7 +907,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_roll</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,</span><span class="mi">45</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga12574af7ff9f563d6e3ecdca7c8278cc"><div>
             <h3>
@@ -656,7 +946,21 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Will default to +/- 180 if target exceeds +/- 180.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>Will default to +/- 180 if target exceeds +/- 180.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span><span class="w"></span>
+<span class="w">      </span><span class="n">imu_sensor</span><span class="o">::</span><span class="n">set_euler</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">,{</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">45</span><span class="p">});</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0873891d9b40c12e3c7715fd033a6658"><div>
             <h3>
@@ -672,7 +976,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">imu_accel_s_t</span><span class="w"> </span><span class="n">accel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_accel</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU accel values: {x: %f, y: %f, z: %f}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">accel</span><span class="p">.</span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf5c4fe4981b56fa1e4ae1cc1c2e29d76"><div>
             <h3>
@@ -688,7 +1001,24 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an Inertial Sensor EAGAIN - The sensor is still calibrating</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="w"> </span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">get_status</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">c</span><span class="o">::</span><span class="n">E_IMU_STATUS_CALIBRATING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU calibrating... %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">iter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// should print about 2000 ms</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;IMU is done calibrating (took %d ms)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">time</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gac58cd647360441bf82830bd17d2f6c82"><div>
             <h3>
@@ -704,6 +1034,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define IMU_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Imu</span><span class="w"> </span><span class="n">imu_sensor</span><span class="w"> </span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="p">(</span><span class="n">imu_sensor</span><span class="p">.</span><span class="n">is_calibrating</span><span class="p">()){</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;imu_sensor is calibrating&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
         </section>
         <section>

@@ -142,10 +142,19 @@ This function uses the following values of errno when an error state is reached\
 \begin{DoxyParams}{Parameters}
 {\em port} & The V5 port number from 1-\/21 \\
 \hline
-{\em zero\+\_\+point} & One of vision\+\_\+zero\+\_\+e\+\_\+t to set the (0,0) coordinate for the F\+OV \\
+{\em zero\+\_\+point} & One of vision\+\_\+zero\+\_\+e\+\_\+t to set the (0,0) coordinate for the F\+OV\\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{group__cpp-vision_ga76431ffd2012b88a7a32a629584b594a}\label{group__cpp-vision_ga76431ffd2012b88a7a32a629584b594a}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.clear\_led();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga76431ffd2012b88a7a32a629584b594a}\label{group__cpp-vision_ga76431ffd2012b88a7a32a629584b594a}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!clear\_led@{clear\_led}}
 \index{clear\_led@{clear\_led}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{clear\_led()}{clear\_led()}}
@@ -158,9 +167,18 @@ Clears the vision sensor L\+ED color, reseting it back to its default behavior, 
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a vision sensor
 
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga4f1fc5e12221451d7e244318cfe5bc04}\label{group__cpp-vision_ga4f1fc5e12221451d7e244318cfe5bc04}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.clear\_led();}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga4f1fc5e12221451d7e244318cfe5bc04}\label{group__cpp-vision_ga4f1fc5e12221451d7e244318cfe5bc04}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!signature\_from\_utility@{signature\_from\_utility}}
 \index{signature\_from\_utility@{signature\_from\_utility}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{signature\_from\_utility()}{signature\_from\_utility()}}
@@ -192,9 +210,30 @@ Creates a signature from the vision sensor utility.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A \mbox{\hyperlink{group__c-vision_structvision__signature__s__t}{vision\+\_\+signature\+\_\+s\+\_\+t}} that can be set using \mbox{\hyperlink{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}{Vision\+::set\+\_\+signature}} 
+A \mbox{\hyperlink{group__c-vision_structvision__signature__s__t}{vision\+\_\+signature\+\_\+s\+\_\+t}} that can be set using \mbox{\hyperlink{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}{Vision\+::set\+\_\+signature}}
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gaad39648fb027abf526d427fcd39ac850}\label{group__cpp-vision_gaad39648fb027abf526d427fcd39ac850}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} sensor(VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{comment}{// values acquired from the vision utility}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga135c729c7277f6cc019c2924088a5fd5}{pros::vision\_signature\_s\_t}} RED\_SIG =}
+\DoxyCodeLine{    \mbox{\hyperlink{group__cpp-vision_ga4f1fc5e12221451d7e244318cfe5bc04}{pros::Vision::signature\_from\_utility}}(EXAMPLE\_SIG, 8973, 11143, 10058, -\/2119, -\/1053, -\/1586, 5.4, 0);}
+\DoxyCodeLine{}
+\DoxyCodeLine{  sensor.set\_signature(EXAMPLE\_SIG, \&RED\_SIG);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-vision_ga135c729c7277f6cc019c2924088a5fd5}{pros::vision\_signature\_s\_t}} rtn = sensor.get\_by\_sig(VISION\_PORT, 0, EXAMPLE\_SIG);}
+\DoxyCodeLine{    \textcolor{comment}{// Gets the largest object of the EXAMPLE\_SIG signature}}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"sig: "} << rtn.signature << std::endl;}
+\DoxyCodeLine{    \textcolor{comment}{// Prints "sig: 1"}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gaad39648fb027abf526d427fcd39ac850}\label{group__cpp-vision_gaad39648fb027abf526d427fcd39ac850}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!create\_color\_code@{create\_color\_code}}
 \index{create\_color\_code@{create\_color\_code}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{create\_color\_code()}{create\_color\_code()}}
@@ -220,9 +259,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A vision\+\_\+color\+\_\+code\+\_\+t object containing the color code information. 
+A vision\+\_\+color\+\_\+code\+\_\+t object containing the color code information.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gaf4fa926cf28cf99a0818714f5f701187}\label{group__cpp-vision_gaf4fa926cf28cf99a0818714f5f701187}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define OTHER\_SIG 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga9e389c1c0197cdfd70e4935c2d22ee18}{pros::vision\_color\_code\_t}} code1 = vis.create\_color\_code(EXAMPLE\_SIG, OTHER\_SIG);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gaf4fa926cf28cf99a0818714f5f701187}\label{group__cpp-vision_gaf4fa926cf28cf99a0818714f5f701187}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_by\_size@{get\_by\_size}}
 \index{get\_by\_size@{get\_by\_size}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_by\_size()}{get\_by\_size()}}
@@ -240,9 +290,23 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given size id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred. 
+The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given size id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gaad2f7f19ea9d69ccbf82af9f5b55f419}\label{group__cpp-vision_gaad2f7f19ea9d69ccbf82af9f5b55f419}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\_object\_s\_t}} rtn = vision\_sensor.get\_by\_size(0);}
+\DoxyCodeLine{    \textcolor{comment}{// Gets the largest object}}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"sig: "} << rtn.signature;}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gaad2f7f19ea9d69ccbf82af9f5b55f419}\label{group__cpp-vision_gaad2f7f19ea9d69ccbf82af9f5b55f419}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_by\_sig@{get\_by\_sig}}
 \index{get\_by\_sig@{get\_by\_sig}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_by\_sig()}{get\_by\_sig()}}
@@ -262,9 +326,25 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given signature and size\+\_\+id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred. 
+The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given signature and size\+\_\+id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga0ee6adc0ac7836cc75195a65fd0dbaed}\label{group__cpp-vision_ga0ee6adc0ac7836cc75195a65fd0dbaed}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\_object\_s\_t}} rtn = vision\_sensor.get\_by\_sig(0, EXAMPLE\_SIG);}
+\DoxyCodeLine{    \textcolor{comment}{// Gets the largest object of the EXAMPLE\_SIG signature}}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"sig: "} << rtn.signature;}
+\DoxyCodeLine{    \textcolor{comment}{// Prints "sig: 1"}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga0ee6adc0ac7836cc75195a65fd0dbaed}\label{group__cpp-vision_ga0ee6adc0ac7836cc75195a65fd0dbaed}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_by\_code@{get\_by\_code}}
 \index{get\_by\_code@{get\_by\_code}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_by\_code()}{get\_by\_code()}}
@@ -284,9 +364,26 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given color code and size\+\_\+id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred. 
+The \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\+\_\+object\+\_\+s\+\_\+t}} object corresponding to the given color code and size\+\_\+id, or P\+R\+O\+S\+\_\+\+E\+RR if an error occurred.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gaf21a819740fe50fd73af70c41651cbae}\label{group__cpp-vision_gaf21a819740fe50fd73af70c41651cbae}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define OTHER\_SIG 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga9e389c1c0197cdfd70e4935c2d22ee18}{pros::vision\_color\_code\_t}} code1 = vis.create\_color\_code(EXAMPLE\_SIG, OTHER\_SIG);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-vision_gae619120558539c13e53b5a6f42fb4375}{pros::vision\_object\_s\_t}} rtn = vis.get\_by\_code(0, code1);}
+\DoxyCodeLine{    \textcolor{comment}{// Gets the largest object}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"sig: \%d"}, rtn.signature);}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gaf21a819740fe50fd73af70c41651cbae}\label{group__cpp-vision_gaf21a819740fe50fd73af70c41651cbae}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_exposure@{get\_exposure}}
 \index{get\_exposure@{get\_exposure}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_exposure()}{get\_exposure()}}
@@ -301,9 +398,19 @@ See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html\#exposure-
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a vision sensor
 
 \begin{DoxyReturn}{Returns}
-The current exposure parameter from \mbox{[}0,150\mbox{]}, P\+R\+O\+S\+\_\+\+E\+RR if an error occurred 
+The current exposure parameter from \mbox{[}0,150\mbox{]}, P\+R\+O\+S\+\_\+\+E\+RR if an error occurred
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga450dc055c2448fab6eb551231dde7071}\label{group__cpp-vision_ga450dc055c2448fab6eb551231dde7071}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (vision\_sensor.get\_exposure() < 50)}
+\DoxyCodeLine{    vision\_sensor.set\_exposure(50);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga450dc055c2448fab6eb551231dde7071}\label{group__cpp-vision_ga450dc055c2448fab6eb551231dde7071}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_object\_count@{get\_object\_count}}
 \index{get\_object\_count@{get\_object\_count}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_object\_count()}{get\_object\_count()}}
@@ -316,9 +423,19 @@ Gets the number of objects currently detected by the \mbox{\hyperlink{group__cpp
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a vision sensor
 
 \begin{DoxyReturn}{Returns}
-The number of objects detected on the specified vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid or an error occurred. 
+The number of objects detected on the specified vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid or an error occurred.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gafcbec69e9c0dc3bf13765441f9e9e659}\label{group__cpp-vision_gafcbec69e9c0dc3bf13765441f9e9e659}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"Number of Objects Detected: "} << vision\_sensor.get\_object\_count());}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gafcbec69e9c0dc3bf13765441f9e9e659}\label{group__cpp-vision_gafcbec69e9c0dc3bf13765441f9e9e659}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_signature@{get\_signature}}
 \index{get\_signature@{get\_signature}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_signature()}{get\_signature()}}
@@ -336,9 +453,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A \mbox{\hyperlink{group__c-vision_structvision__signature__s__t}{vision\+\_\+signature\+\_\+s\+\_\+t}} containing information about the signature. 
+A \mbox{\hyperlink{group__c-vision_structvision__signature__s__t}{vision\+\_\+signature\+\_\+s\+\_\+t}} containing information about the signature.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gabb5ece73e4caaa15a39f5e661c3ec5cd}\label{group__cpp-vision_gabb5ece73e4caaa15a39f5e661c3ec5cd}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga135c729c7277f6cc019c2924088a5fd5}{pros::vision\_signature\_s\_t}} sig = vis.get\_signature(EXAMPLE\_SIG);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}{pros::Vision::print\_signature}}(sig);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gabb5ece73e4caaa15a39f5e661c3ec5cd}\label{group__cpp-vision_gabb5ece73e4caaa15a39f5e661c3ec5cd}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_white\_balance@{get\_white\_balance}}
 \index{get\_white\_balance@{get\_white\_balance}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_white\_balance()}{get\_white\_balance()}}
@@ -351,9 +479,20 @@ Get the white balance parameter of the \mbox{\hyperlink{group__cpp-vision_classp
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a vision sensor
 
 \begin{DoxyReturn}{Returns}
-The current R\+GB white balance setting of the sensor 
+The current R\+GB white balance setting of the sensor
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga4c2a58a7c22b5eeca58ccb341a1c92be}\label{group__cpp-vision_ga4c2a58a7c22b5eeca58ccb341a1c92be}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_WHITE 0xff}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (vision\_sensor.get\_white\_balance() != VISION\_WHITE)}
+\DoxyCodeLine{    vision\_sensor.set\_white\_balance(VISION\_WHITE);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga4c2a58a7c22b5eeca58ccb341a1c92be}\label{group__cpp-vision_ga4c2a58a7c22b5eeca58ccb341a1c92be}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!get\_port@{get\_port}}
 \index{get\_port@{get\_port}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{get\_port()}{get\_port()}}
@@ -364,9 +503,18 @@ The current R\+GB white balance setting of the sensor
 Gets the port number of the \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{Vision}} Sensor. 
 
 \begin{DoxyReturn}{Returns}
-The vision sensor\textquotesingle{}s port number. 
+The vision sensor\textquotesingle{}s port number.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gab5b546c064555ccc94aa3efdcb62dbfd}\label{group__cpp-vision_gab5b546c064555ccc94aa3efdcb62dbfd}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  std::uint8\_t port = vision\_sensor.get\_port(); \textcolor{comment}{// returns 1}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gab5b546c064555ccc94aa3efdcb62dbfd}\label{group__cpp-vision_gab5b546c064555ccc94aa3efdcb62dbfd}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!read\_by\_size@{read\_by\_size}}
 \index{read\_by\_size@{read\_by\_size}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{read\_by\_size()}{read\_by\_size()}}
@@ -388,9 +536,25 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature. 
+The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga054480d0518c7368c4d9206b9cde25e0}\label{group__cpp-vision_ga054480d0518c7368c4d9206b9cde25e0}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define NUM\_VISION\_OBJECTS 4}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\_object\_s\_t}} object\_arr[NUM\_VISION\_OBJECTS];}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    vision\_sensor.read\_by\_size(0, NUM\_VISION\_OBJECTS, object\_arr);}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"sig: "} << object\_arr[0].signature;}
+\DoxyCodeLine{    \textcolor{comment}{// Prints the signature of the largest object found}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga054480d0518c7368c4d9206b9cde25e0}\label{group__cpp-vision_ga054480d0518c7368c4d9206b9cde25e0}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!read\_by\_sig@{read\_by\_sig}}
 \index{read\_by\_sig@{read\_by\_sig}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{read\_by\_sig()}{read\_by\_sig()}}
@@ -414,9 +578,26 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature. 
+The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga107dcaf6b54f1cb77e67998e5fef148f}\label{group__cpp-vision_ga107dcaf6b54f1cb77e67998e5fef148f}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define NUM\_VISION\_OBJECTS 4}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_structvision__object__s__t}{vision\_object\_s\_t}} object\_arr[NUM\_VISION\_OBJECTS];}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    vision\_sensor.read\_by\_sig(0, EXAMPLE\_SIG, NUM\_VISION\_OBJECTS, object\_arr);}
+\DoxyCodeLine{    std::cout << \textcolor{stringliteral}{"sig: "} << object\_arr[0].signature;}
+\DoxyCodeLine{    \textcolor{comment}{// Prints "sig: 1"}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga107dcaf6b54f1cb77e67998e5fef148f}\label{group__cpp-vision_ga107dcaf6b54f1cb77e67998e5fef148f}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!read\_by\_code@{read\_by\_code}}
 \index{read\_by\_code@{read\_by\_code}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{read\_by\_code()}{read\_by\_code()}}
@@ -440,9 +621,28 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature. 
+The number of object signatures copied. This number will be less than object\+\_\+count if there are fewer objects detected by the vision sensor. Returns P\+R\+O\+S\+\_\+\+E\+RR if the port was invalid, an error occurred, or fewer objects than size\+\_\+id were found. All objects in object\+\_\+arr that were not found are given V\+I\+S\+I\+O\+N\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+E\+R\+R\+\_\+\+S\+IG as their signature.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}\label{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define OTHER\_SIG 2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define NUM\_VISION\_OBJECTS 4}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_gae619120558539c13e53b5a6f42fb4375}{pros::vision\_object\_s\_t}} object\_arr[NUM\_VISION\_OBJECTS];}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga9e389c1c0197cdfd70e4935c2d22ee18}{pros::vision\_color\_code\_t}} code1 = vis.create\_color\_code(EXAMPLE\_SIG, OTHER\_SIG);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    vis.read\_by\_code(0, code1, NUM\_VISION\_OBJECTS, object\_arr);}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"sig: \%d"}, object\_arr[0].signature);}
+\DoxyCodeLine{    \textcolor{comment}{// Prints the signature of the largest object found}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}\label{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!print\_signature@{print\_signature}}
 \index{print\_signature@{print\_signature}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{print\_signature()}{print\_signature()}}
@@ -458,9 +658,20 @@ Prints the contents of the signature as an initializer list to the terminal.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if no errors occured, P\+R\+O\+S\+\_\+\+E\+RR otherwise 
+1 if no errors occured, P\+R\+O\+S\+\_\+\+E\+RR otherwise
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga3056945e74c922ee2a8d324fe136fac7}\label{group__cpp-vision_ga3056945e74c922ee2a8d324fe136fac7}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga135c729c7277f6cc019c2924088a5fd5}{pros::vision\_signature\_s\_t}} sig = vis.get\_signature(EXAMPLE\_SIG);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_gace530d71a4be7d2c1ab90dc31856f58b}{pros::Vision::print\_signature}}(sig);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga3056945e74c922ee2a8d324fe136fac7}\label{group__cpp-vision_ga3056945e74c922ee2a8d324fe136fac7}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_auto\_white\_balance@{set\_auto\_white\_balance}}
 \index{set\_auto\_white\_balance@{set\_auto\_white\_balance}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_auto\_white\_balance()}{set\_auto\_white\_balance()}}
@@ -478,9 +689,18 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga4c754824ad4dc5fbbe9afc45064b10a9}\label{group__cpp-vision_ga4c754824ad4dc5fbbe9afc45064b10a9}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.set\_auto\_white\_balance(\textcolor{keyword}{true});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga4c754824ad4dc5fbbe9afc45064b10a9}\label{group__cpp-vision_ga4c754824ad4dc5fbbe9afc45064b10a9}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_exposure@{set\_exposure}}
 \index{set\_exposure@{set\_exposure}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_exposure()}{set\_exposure()}}
@@ -500,9 +720,19 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gae3fe29fed597773781e7532275a93b22}\label{group__cpp-vision_gae3fe29fed597773781e7532275a93b22}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (vision\_sensor.get\_exposure() < 50)}
+\DoxyCodeLine{    vision\_sensor.set\_exposure(50);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gae3fe29fed597773781e7532275a93b22}\label{group__cpp-vision_gae3fe29fed597773781e7532275a93b22}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_led@{set\_led}}
 \index{set\_led@{set\_led}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_led()}{set\_led()}}
@@ -520,9 +750,18 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}\label{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.set\_led(\mbox{\hyperlink{colors_8h_a04baf682142dc3977053f6fcb78663ca}{COLOR\_BLANCHED\_ALMOND}});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}\label{group__cpp-vision_ga82489e0d344b86b031e45a7a549f6acd}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_signature@{set\_signature}}
 \index{set\_signature@{set\_signature}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_signature()}{set\_signature()}}
@@ -532,8 +771,9 @@ This function uses the following values of errno when an error state is reached\
 
 Stores the supplied object detection signature onto the vision sensor. 
 
-N\+O\+TE\+: This saves the signature in volatile memory, and the signature will be lost as soon as the sensor is powered down.
-
+\begin{DoxyNote}{Note}
+This saves the signature in volatile memory, and the signature will be lost as soon as the sensor is powered down.
+\end{DoxyNote}
 This function uses the following values of errno when an error state is reached\+: E\+N\+O\+D\+EV -\/ The port cannot be configured as a vision sensor E\+I\+N\+V\+AL -\/ sig\+\_\+id is outside the range \mbox{[}1-\/8\mbox{]}
 
 
@@ -544,9 +784,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if no errors occured, P\+R\+O\+S\+\_\+\+E\+RR otherwise 
+1 if no errors occured, P\+R\+O\+S\+\_\+\+E\+RR otherwise
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gac3307c30a25eebfba74911220d404a94}\label{group__cpp-vision_gac3307c30a25eebfba74911220d404a94}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define EXAMPLE\_SIG 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vis (VISION\_PORT);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-vision_ga135c729c7277f6cc019c2924088a5fd5}{pros::vision\_signature\_s\_t}} sig = vis.get\_signature(EXAMPLE\_SIG);}
+\DoxyCodeLine{  sig.range = 10.0;}
+\DoxyCodeLine{  vis.set\_signature(EXAMPLE\_SIG, \&sig);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gac3307c30a25eebfba74911220d404a94}\label{group__cpp-vision_gac3307c30a25eebfba74911220d404a94}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_white\_balance@{set\_white\_balance}}
 \index{set\_white\_balance@{set\_white\_balance}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_white\_balance()}{set\_white\_balance()}}
@@ -564,9 +816,19 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_gaf4949921bb01abcf430d48fa5532b5c8}\label{group__cpp-vision_gaf4949921bb01abcf430d48fa5532b5c8}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_WHITE 0xff}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.set\_white\_balance(VISION\_WHITE);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_gaf4949921bb01abcf430d48fa5532b5c8}\label{group__cpp-vision_gaf4949921bb01abcf430d48fa5532b5c8}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_zero\_point@{set\_zero\_point}}
 \index{set\_zero\_point@{set\_zero\_point}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_zero\_point()}{set\_zero\_point()}}
@@ -586,9 +848,18 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__cpp-vision_ga9d04ecf017d67e551ca413b0bfd8fcd7}\label{group__cpp-vision_ga9d04ecf017d67e551ca413b0bfd8fcd7}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.set\_zero\_point(\mbox{\hyperlink{group__c-vision_ggaef7c8269b3fb0dfbf4e597b2d8dd7af5ac4bfba95a9c18805da897280e18387c1}{pros::E\_VISION\_ZERO\_CENTER}});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-vision_ga9d04ecf017d67e551ca413b0bfd8fcd7}\label{group__cpp-vision_ga9d04ecf017d67e551ca413b0bfd8fcd7}} 
 \index{Vision Sensor C++ API@{Vision Sensor C++ API}!set\_wifi\_mode@{set\_wifi\_mode}}
 \index{set\_wifi\_mode@{set\_wifi\_mode}!Vision Sensor C++ API@{Vision Sensor C++ API}}
 \doxysubsubsection{\texorpdfstring{set\_wifi\_mode()}{set\_wifi\_mode()}}
@@ -606,5 +877,15 @@ This functions uses the following values of errno when an error state is reached
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define VISION\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-vision_classpros_1_1v5_1_1Vision}{pros::Vision}} vision\_sensor (VISION\_PORT);}
+\DoxyCodeLine{  vision\_sensor.set\_wifi\_mode(0);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ 

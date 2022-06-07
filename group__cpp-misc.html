@@ -176,6 +176,26 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2c325b346f66c15ca7e5a844a66b20d9" class="m-doc-self">get_voltage</a>(</span><span class="m-doc-wrap">void)</span></span>
             </dt>
             <dd>Gets the current capacity of the battery in millivolts, as reported by VEXos.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad75e0e06e0817959c08798358eaa8ab0" class="m-doc-self">get_status</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd>Get the current status of the competition control.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga88353a4f8e5e283558ee6504c54283af" class="m-doc-self">is_autonomous</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaf36367a2369390657f6bc4285f68c64" class="m-doc-self">is_connected</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2d4f4555af4c45f7f82ea75e1223899b" class="m-doc-self">is_disabled</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2d7eecbe50533c0d753e82470dc2e6f3" class="m-doc-self">is_installed</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd>Checks if the SD card is installed.</dd>
           </dl>
         </section>
         <section id="var-members">
@@ -206,6 +226,14 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
+<p>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_X</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga74a04929bc60c72d8436cfb5b40461c0"><div>
             <h3>
@@ -221,7 +249,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">partner</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_PARTNER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">partner</span><span class="p">.</span><span class="n">is_connected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Use a two controller control scheme</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Just use a single controller control scheme</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga880820cec57dc2d47bb9cb27e18b4a0a"><div>
             <h3>
@@ -246,7 +285,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_X</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga45fb617eafe5e07c279b0b4d2158503d"><div>
             <h3>
@@ -262,7 +308,10 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Capacity: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_battery_capacity</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaea0f0813bb505219cd0e6a8d87922fca"><div>
             <h3>
@@ -278,7 +327,10 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Battery Level: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_battery_level</span><span class="p">());</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga360ac95a3f2da903f29d38e212aaf005"><div>
             <h3>
@@ -303,7 +355,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaae8fa80cfb5153c0b30221914742ee49"><div>
             <h3>
@@ -328,7 +392,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital_new_press</span><span class="p">(</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Toggle pneumatics or other similar actions</span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga28aa7fefb62dcdf98555066756a6fbd5"><div>
             <h3>
@@ -388,7 +460,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">25</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+<span class="w">      </span><span class="n">master</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Counter: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga3cd136d81be409f77263bf0c983058a8"><div>
             <h3>
@@ -423,7 +506,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">25</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+<span class="w">    </span><span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example text&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga792642d2e8721a3ba27e0ba6b8f0755f"><div>
             <h3>
@@ -457,7 +551,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">master</span><span class="p">.</span><span class="n">clear_line</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa76da9849eb5dfde35588f2d08ac6f19"><div>
             <h3>
@@ -482,7 +581,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> rumble activation is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> rumble activation is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">25</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="c1">// Only print every 50ms, the controller text update rate is slow</span>
+<span class="w">      </span><span class="n">master</span><span class="p">.</span><span class="n">rumble</span><span class="p">(</span><span class="s">&quot;. - . -&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="n">count</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gacb5f1e6485a4af89f3fce3ff66895b56"><div>
             <h3>
@@ -498,7 +608,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well. On vexOS version 1.0.0 this function will block for 110ms.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller. On vexOS version 1.0.0 this function will block for 110 ms.</p></aside><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">master</span><span class="p">.</span><span class="n">set_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">master</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga42876357c2ed5a047a535aca84f4458e"><div>
             <h3>
@@ -514,7 +629,9 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Battery Level:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">battery</span><span class="o">::</span><span class="n">get_capacity</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gad0f092e6341126d68ae15d41b5dba352"><div>
             <h3>
@@ -530,7 +647,9 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Battery Current:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">battery</span><span class="o">::</span><span class="n">get_current</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga33d1a503808ed06148a1884e3ccf88ae"><div>
             <h3>
@@ -546,7 +665,9 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Battery Temperature:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">battery</span><span class="o">::</span><span class="n">get_temperature</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga2c325b346f66c15ca7e5a844a66b20d9"><div>
             <h3>
@@ -562,7 +683,118 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Battery Voltage:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">battery</span><span class="o">::</span><span class="n">get_voltage</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="gad75e0e06e0817959c08798358eaa8ab0"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad75e0e06e0817959c08798358eaa8ab0" class="m-doc-self">get_status</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <p>Get the current status of the competition control.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">competition</span><span class="o">::</span><span class="n">get_status</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">COMPETITION_CONNECTED</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Field Control is Connected</span>
+<span class="w">    </span><span class="c1">// Run LCD Selector code or similar</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga88353a4f8e5e283558ee6504c54283af"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga88353a4f8e5e283558ee6504c54283af" class="m-doc-self">is_autonomous</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if the V5 Brain is in autonomous mode, false otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ignore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pros</span><span class="o">::</span><span class="n">competition</span><span class="o">::</span><span class="n">is_autonomous</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Wait to do anything until autonomous starts</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">competition</span><span class="o">::</span><span class="n">is_autonomous</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Run whatever code is desired to just execute in autonomous</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIO_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="gaaf36367a2369390657f6bc4285f68c64"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaf36367a2369390657f6bc4285f68c64" class="m-doc-self">is_connected</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if the V5 Brain is connected to competition control, false otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">competition</span><span class="o">::</span><span class="n">is_connected</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Field Control is Connected</span>
+<span class="w">    </span><span class="c1">// Run LCD Selector code or similar</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga2d4f4555af4c45f7f82ea75e1223899b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::uint8_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2d4f4555af4c45f7f82ea75e1223899b" class="m-doc-self">is_disabled</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>True if the V5 Brain is disabled, false otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ignore</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">pros</span><span class="o">::</span><span class="n">competition</span><span class="o">::</span><span class="n">is_disabled</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Run competition tasks (like Lift Control or similar)</span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIO_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga2d7eecbe50533c0d753e82470dc2e6f3"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2d7eecbe50533c0d753e82470dc2e6f3" class="m-doc-self">is_installed</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <p>Checks if the SD card is installed.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>1 if the SD card is installed, 0 otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">usd</span><span class="o">::</span><span class="n">is_installed</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
         </section>
         <section>
