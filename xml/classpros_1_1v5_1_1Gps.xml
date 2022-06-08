@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="44" column="20" bodyfile="pros/gps.hpp" bodystart="44" bodyend="-1"/>
+        <location file="pros/gps.hpp" line="45" column="20" bodyfile="pros/gps.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -29,12 +29,28 @@
           <declname>port</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="classpros_1_1v5_1_1Gps" kindref="compound">Gps</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="47" column="1" bodyfile="pros/gps.hpp" bodystart="47" bodyend="47"/>
+        <location file="pros/gps.hpp" line="62" column="1" bodyfile="pros/gps.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gaa82632237daee7623ac933916d1c7407" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -58,12 +74,55 @@
           <declname>headingInitial</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="classpros_1_1v5_1_1Gps" kindref="compound">Gps</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial 4-Quadrant X Position, with (0,0) being at the center of the field (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial 4-Quadrant Y Position, with (0,0) being at the center of the field (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>headingInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Heading with 0 being north on the field, in degrees [0,360) going clockwise</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_X<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_Y<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_ANGLE<sp/>180</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT,<sp/>INIT_X,<sp/>INIT_Y,<sp/>INIT_ANGLE);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="49" column="1" bodyfile="pros/gps.hpp" bodystart="49" bodyend="51"/>
+        <location file="pros/gps.hpp" line="84" column="1" bodyfile="pros/gps.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga29c04631f27c1286f94a65325f41a644" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -83,12 +142,46 @@
           <declname>yOffset</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="classpros_1_1v5_1_1Gps" kindref="compound">Gps</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xOffset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cartesian 4-Quadrant X offset from center of turning (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yOffset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cartesian 4-Quadrant Y offset from center of turning (meters)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OFFSET_X<sp/>.5</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OFFSET_Y<sp/>.5</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT,<sp/>OFFSET_X,<sp/>OFFSET_Y);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="53" column="1" bodyfile="pros/gps.hpp" bodystart="53" bodyend="55"/>
+        <location file="pros/gps.hpp" line="106" column="1" bodyfile="pros/gps.hpp" bodystart="106" bodyend="108"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga47b6f08a37c3eb91a2b4bf89b22c346e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -120,12 +213,73 @@
           <declname>yOffset</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="classpros_1_1v5_1_1Gps" kindref="compound">Gps</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial 4-Quadrant X Position, with (0,0) being at the center of the field (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Initial 4-Quadrant Y Position, with (0,0) being at the center of the field (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>headingInitial</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Heading with 0 being north on the field, in degrees [0,360) going clockwise </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xOffset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cartesian 4-Quadrant X offset from center of turning (meters) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>yOffset</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cartesian 4-Quadrant Y offset from center of turning (meters)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_X<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_Y<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>INIT_ANGLE<sp/>180</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OFFSET_X<sp/>.5</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OFFSET_Y<sp/>.5</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT,<sp/>INIT_X,<sp/>INIT_Y,<sp/>INIT_ANGLE,<sp/>OFFSET_X,<sp/>OFFSET_Y);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="57" column="1" bodyfile="pros/gps.hpp" bodystart="57" bodyend="60"/>
+        <location file="pros/gps.hpp" line="134" column="1" bodyfile="pros/gps.hpp" bodystart="134" bodyend="137"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga781bfdd4f6f3c9a606a0e2a305d36d34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -200,11 +354,25 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_OFFSET<sp/>.225</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_OFFSET<sp/>.223</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_INITIAL<sp/>1.54</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_INITIAL<sp/>1.14</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>HEADING_INITIAL<sp/>90</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.initialize_full(X_OFFSET,<sp/>Y_OFFSET,<sp/>X_INITIAL,<sp/>Y_INITIAL,<sp/>HEADING_INITIAL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Gps<sp/>usage<sp/>here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="90" column="22"/>
+        <location file="pros/gps.hpp" line="175" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga48b81f1d12b0201c77ef1d78c546e0b4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -243,11 +411,22 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_OFFSET<sp/>-.225</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_OFFSET<sp/>.225</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.set_offset(X_OFFSET,<sp/>Y_OFFSET);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>GPS<sp/>Usage<sp/>Here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="114" column="22"/>
+        <location file="pros/gps.hpp" line="207" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gac92982de29de3e3645f5a4fac6ef3835" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -286,11 +465,23 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>*x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>*y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gps1.get_offset(x,<sp/>y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(&quot;Offset-<sp/>x:<sp/>%3f,<sp/>y:<sp/>%3f&quot;,<sp/>*x,<sp/>*y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="137" column="22"/>
+        <location file="pros/gps.hpp" line="239" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga3cc7f6e7185a2a59d545e0eefea126aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -341,11 +532,23 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>X_INITIAL<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>Y_INITIAL<sp/>0</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>HEADING_INITIAL<sp/>0</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.set_position(X_INITIAL,<sp/>Y_INITIAL,<sp/>HEADING_INITIAL);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>GPS<sp/>usage<sp/>here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="162" column="22"/>
+        <location file="pros/gps.hpp" line="272" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gafb4e63f82dffc58b0fb0569f73250ff6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -372,11 +575,21 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DATA_RATE<sp/>5</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.set_data_rate(DATA_RATE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>GPS<sp/>Usage<sp/>Here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="183" column="22"/>
+        <location file="pros/gps.hpp" line="301" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gaa0d4205475b9b1837a7a96bf81b895ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -390,11 +603,22 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>Possible RMS (Root Mean Squared) error in meters for GPS position. If the operation failed, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>error;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>error<sp/>=<sp/>gps1.get_error();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(pros::TEXT_MEDIUM,<sp/>1,<sp/>&quot;Error<sp/>(RMS):<sp/>%f&quot;,<sp/>error);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="202" column="16"/>
+        <location file="pros/gps.hpp" line="330" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga885a78875944f32679d0e708e0c19951" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-gps_1ga0bebcb6a5be6dc96c165711cbe710aea" kindref="member">pros::c::gps_status_s_t</ref></type>
@@ -408,11 +632,25 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>A struct (<ref refid="structgps__status__s__t" kindref="compound">gps_status_s_t</ref>) containing values mentioned above. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::gps_status_s_t<sp/>status;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>status<sp/>=<sp/>gps1.get_status();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>pitch:<sp/>%3f&quot;,<sp/>status.x,<sp/>status.y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>2,<sp/>&quot;yaw:<sp/>%3f,<sp/>roll:<sp/>%3f&quot;,<sp/>status.pitch,<sp/>status.yaw);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>3,<sp/>&quot;roll:<sp/>%3f&quot;,<sp/>status.roll);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="222" column="33"/>
+        <location file="pros/gps.hpp" line="363" column="33"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga16a339b5f7729298dc79cf4971565043" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -426,11 +664,23 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>The heading in [0,360) degree values. If the operation failed, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>heading;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>heading<sp/>=<sp/>gps1.get_heading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Rotation:<sp/>%3f&quot;,<sp/>heading);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="241" column="16"/>
+        <location file="pros/gps.hpp" line="393" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga7bd68d228dc3cbf251083b50284fa2f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -444,11 +694,23 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>The heading in [DOUBLE_MIN, DOUBLE_MAX] values. If the operation fails, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>heading<sp/>=<sp/>gps1.get_heading_raw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Heading:<sp/>%3f&quot;,<sp/>heading);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="260" column="16"/>
+        <location file="pros/gps.hpp" line="423" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga60630447c3ada8da63dd91e092eeb2fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -462,11 +724,22 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>The elased heading in degrees. If the operation fails, returns PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>double<sp/>elapsed_rotation;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>elapsed_rotation<sp/>=<sp/>gps1.get_rotation();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Rotation:<sp/>%3f&quot;,<sp/>elapsed_rotation);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="279" column="16"/>
+        <location file="pros/gps.hpp" line="452" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gadea479bb033bc10c5864a32ed8d7fe0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -493,11 +766,20 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.set_rotation(60);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>GPS<sp/>Usage<sp/>Here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="300" column="22"/>
+        <location file="pros/gps.hpp" line="481" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1gaa0267b91c2766fc53e5d8d382b1e3ba2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -511,11 +793,20 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps1.tare_rotation();<sp/>//<sp/>Initial<sp/>Tare<sp/>(unecessary)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>GPS<sp/>Usage<sp/>Here</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="319" column="22"/>
+        <location file="pros/gps.hpp" line="508" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga351a2088bde8e6a816eda8c063677cd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-gps_1ga67a9badd3682634a75ad506fd87f7903" kindref="member">pros::c::gps_gyro_s_t</ref></type>
@@ -529,11 +820,22 @@
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a GPS EAGAIN - The sensor is still calibrating</para>
 <para><simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gps_gyro_s_t<sp/>gyroRaw;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>gyroRaw<sp/>=<sp/>gps1.get_gyro_rate();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(&quot;gyroscope-<sp/>x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>z:<sp/>%3f&quot;,<sp/>gyroRaw.x,<sp/>gyroRaw.y,<sp/>gyroRaw.z&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="338" column="31"/>
+        <location file="pros/gps.hpp" line="537" column="31"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-gps_1ga7300cbcfcf8f43145042a8a11451c334" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-gps_1ga207fc83ba7d708bb8fe13855938469ef" kindref="member">pros::c::gps_accel_s_t</ref></type>
@@ -556,18 +858,29 @@
 </parameterlist>
 <simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>GPS_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Gps<sp/>gps1(GPS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::gps_accel_s_t<sp/>accel;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>accel<sp/>=<sp/>gps1.get_accel();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::screen::print(&quot;accleration-<sp/>x:<sp/>%3f,<sp/>y:<sp/>%3f,<sp/>z:<sp/>%3f&quot;,<sp/>accel.x,<sp/>accel.y,<sp/>accel.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/gps.hpp" line="359" column="32"/>
+        <location file="pros/gps.hpp" line="568" column="32"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/gps.hpp" line="39" column="10" bodyfile="pros/gps.hpp" bodystart="39" bodyend="361"/>
+    <location file="pros/gps.hpp" line="40" column="10" bodyfile="pros/gps.hpp" bodystart="40" bodyend="570"/>
     <listofallmembers>
       <member refid="group__cpp-gps_1ga16b806c98fffb4fd7235419ef22ac101" prot="private" virt="non-virtual"><scope>pros::v5::Gps</scope><name>_port</name></member>
       <member refid="group__cpp-gps_1ga7300cbcfcf8f43145042a8a11451c334" prot="public" virt="virtual"><scope>pros::v5::Gps</scope><name>get_accel</name></member>
