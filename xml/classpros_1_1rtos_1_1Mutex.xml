@@ -15,7 +15,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="536" column="17" bodyfile="pros/rtos.hpp" bodystart="536" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="730" column="17" bodyfile="pros/rtos.hpp" bodystart="730" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -25,12 +25,23 @@
         <argsstring>()</argsstring>
         <name>Mutex</name>
         <briefdescription>
+<para>Creates a mutex. </para>
         </briefdescription>
         <detaileddescription>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="539" column="1"/>
+        <location file="pros/rtos.hpp" line="751" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gab09ea253b1dc6a2cf2543f9069af47f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -46,7 +57,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="543" column="1"/>
+        <location file="pros/rtos.hpp" line="755" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gadd07188ea12392103ecbecf2215d603a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -62,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="544" column="1"/>
+        <location file="pros/rtos.hpp" line="756" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaf883e9f2816275bfb96356ebab8343a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> &amp;</type>
@@ -78,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="546" column="7"/>
+        <location file="pros/rtos.hpp" line="758" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga346fc4a9a9db604140fb5e77e4ecf793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> &amp;</type>
@@ -94,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="547" column="7"/>
+        <location file="pros/rtos.hpp" line="759" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga520dfb72e1768ce08292ca08662c66a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -105,14 +116,21 @@
 <para>Takes and locks a mutex indefinetly. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
-<para><simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken. </para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>does<sp/>not<sp/>time<sp/>out<sp/>if<sp/>parameter<sp/>not<sp/>specified.</highlight></codeline>
+<codeline><highlight class="normal">mutex.take();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="560" column="6"/>
+        <location file="pros/rtos.hpp" line="781" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga4ed04a4dfdab9c125ecd5b87e1d31ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -127,7 +145,7 @@
 <para>Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>timeout</parametername>
@@ -137,13 +155,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken. </para>
+<simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="579" column="6"/>
+        <location file="pros/rtos.hpp" line="810" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga89e3741a62333612b1a98074ec17c7bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -154,14 +180,22 @@
 <para>Unlocks a mutex. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
-<para><simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned. </para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="592" column="6"/>
+        <location file="pros/rtos.hpp" line="833" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa81aed607133209dade63a226818224d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -173,9 +207,8 @@
         </briefdescription>
         <detaileddescription>
 <para>Effectively equivalent to calling pros::Mutex::take with TIMEOUT_MAX as the parameter.</para>
-<para>Conforms to named requirment BasicLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_req/BasicLockable</ulink></para>
-</simplesect>
-<simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> directly.</para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</ulink></para>
+<para><simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> directly.</para>
 </simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
@@ -190,7 +223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="609" column="6"/>
+        <location file="pros/rtos.hpp" line="849" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga9278be8203e1c42e2619179882ae4403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -202,15 +235,14 @@
         </briefdescription>
         <detaileddescription>
 <para>Equivalent to calling pros::Mutex::give.</para>
-<para>Conforms to named requirement BasicLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_req/BasicLockable</ulink></para>
-</simplesect>
-<simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> direcly. </para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</ulink></para>
+<para><simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> direcly. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="622" column="6"/>
+        <location file="pros/rtos.hpp" line="861" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa24a64f788f142df670c3abc809d32b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -222,15 +254,14 @@
         </briefdescription>
         <detaileddescription>
 <para>Returns immediately if unsucessful.</para>
-<para>Conforms to named requirement Lockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/Lockable">https://en.cppreference.com/w/cpp/named_req/Lockable</ulink></para>
-</simplesect>
-<simplesect kind="return"><para>True when lock was acquired succesfully, or false otherwise. </para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><simplesect kind="return"><para>True when lock was acquired succesfully, or false otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="634" column="6"/>
+        <location file="pros/rtos.hpp" line="872" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga710a8b20e993bf1c74bf40f1ecce0a73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -254,9 +285,8 @@
         </briefdescription>
         <detaileddescription>
 <para>Equivalent to calling pros::Mutex::take with a duration specified in milliseconds.</para>
-<para>Conforms to named requirement TimedLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_req/TimedLockable</ulink></para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>rel_time</parametername>
 </parameternamelist>
@@ -271,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="649" column="6" bodyfile="pros/rtos.hpp" bodystart="649" bodyend="651"/>
+        <location file="pros/rtos.hpp" line="886" column="6" bodyfile="pros/rtos.hpp" bodystart="886" bodyend="888"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga41a3a30923d0f6c41a70812ef37db9bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -291,9 +321,8 @@
 <para>Takes and locks a mutex, waiting until a specified time. </para>
         </briefdescription>
         <detaileddescription>
-<para>Conforms to named requirement TimedLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_req/TimedLockable</ulink></para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>abs_time</parametername>
 </parameternamelist>
@@ -308,14 +337,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="663" column="6" bodyfile="pros/rtos.hpp" bodystart="663" bodyend="665"/>
+        <location file="pros/rtos.hpp" line="899" column="6" bodyfile="pros/rtos.hpp" bodystart="899" bodyend="901"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/rtos.hpp" line="535" column="12" bodyfile="pros/rtos.hpp" bodystart="535" bodyend="667"/>
+    <location file="pros/rtos.hpp" line="725" column="12" bodyfile="pros/rtos.hpp" bodystart="725" bodyend="903"/>
     <listofallmembers>
       <member refid="group__cpp-rtos_1ga89e3741a62333612b1a98074ec17c7bc" prot="public" virt="non-virtual"><scope>pros::rtos::Mutex</scope><name>give</name></member>
       <member refid="group__cpp-rtos_1gaa81aed607133209dade63a226818224d" prot="public" virt="non-virtual"><scope>pros::rtos::Mutex</scope><name>lock</name></member>

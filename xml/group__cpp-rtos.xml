@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="519" column="1" bodyfile="pros/rtos.hpp" bodystart="519" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="709" column="1" bodyfile="pros/rtos.hpp" bodystart="709" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1gad6157965fe82b633df8345db024717f3" prot="public" static="no">
         <type>std::milli</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="520" column="1" bodyfile="pros/rtos.hpp" bodystart="520" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="710" column="1" bodyfile="pros/rtos.hpp" bodystart="710" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1ga2b4de82f9ffc924d377f1392db0ba3ef" prot="public" static="no">
         <type>std::chrono::duration&lt; rep, period &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="521" column="1" bodyfile="pros/rtos.hpp" bodystart="521" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="711" column="1" bodyfile="pros/rtos.hpp" bodystart="711" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1ga9076c3be2e8fb8b43e02a0f9552290e7" prot="public" static="no">
         <type>std::chrono::time_point&lt; Clock &gt;</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="522" column="1" bodyfile="pros/rtos.hpp" bodystart="522" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="712" column="1" bodyfile="pros/rtos.hpp" bodystart="712" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="514" column="8" bodyfile="pros/rtos.hpp" bodystart="514" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="697" column="8" bodyfile="pros/rtos.hpp" bodystart="697" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-rtos_1ga530b9e30754c9d0ef499b6cf1864317a" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="523" column="12" bodyfile="pros/rtos.hpp" bodystart="523" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="713" column="12" bodyfile="pros/rtos.hpp" bodystart="713" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-rtos_1gabbacf876372ff9592f15777f84cb2663" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; std::remove_pointer_t&lt; <ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref> &gt; &gt;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="536" column="17" bodyfile="pros/rtos.hpp" bodystart="536" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="730" column="17" bodyfile="pros/rtos.hpp" bodystart="730" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -178,11 +178,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="77" column="1"/>
+        <location file="pros/rtos.hpp" line="85" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga8d6642f2de80d6445619fe395568085d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -231,11 +240,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_cpp_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="103" column="1"/>
+        <location file="pros/rtos.hpp" line="118" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga1d372f751d498ee7dc15b08700b70547" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -304,11 +321,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::unique_ptr&lt;int&gt;<sp/>data{new<sp/>int(7)};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_callable_task<sp/>([=]<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>*data<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="130" column="15" bodyfile="pros/rtos.hpp" bodystart="130" bodyend="139"/>
+        <location file="pros/rtos.hpp" line="151" column="15" bodyfile="pros/rtos.hpp" bodystart="151" bodyend="160"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga7eedd9988858633a57fd34b6059b07da" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -329,7 +353,7 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Creates a new task and add it to the list of tasks that are ready to run. </para>
+<para>Create a new task from any C++ <ulink url="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</ulink> object and add it to the list of tasks that are ready to run. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</para>
@@ -350,11 +374,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::unique_ptr&lt;int&gt;<sp/>data{new<sp/>int(7)};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_callable_task<sp/>([=]<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>*data<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>},<sp/>&quot;callable_task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="160" column="15" bodyfile="pros/rtos.hpp" bodystart="160" bodyend="162"/>
+        <location file="pros/rtos.hpp" line="188" column="15" bodyfile="pros/rtos.hpp" bodystart="188" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa1ffe37a99acadd8b2b750e9a9f0bf14" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -423,11 +454,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::unique_ptr&lt;int&gt;<sp/>data{new<sp/>int(7)};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_callable_task<sp/>([=]<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>*data<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>});</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="189" column="10" bodyfile="pros/rtos.hpp" bodystart="189" bodyend="198"/>
+        <location file="pros/rtos.hpp" line="223" column="10" bodyfile="pros/rtos.hpp" bodystart="223" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gacbd0c9af4689e81baec06af05a16d29f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -448,7 +486,7 @@
           <declname>name</declname>
         </param>
         <briefdescription>
-<para>Creates a new task and add it to the list of tasks that are ready to run. </para>
+<para>Create a new task from any C++ <ulink url="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</ulink> object and add it to the list of tasks that are ready to run. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</para>
@@ -457,7 +495,8 @@
 <parametername>function</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Callable object to use as entry function </para>
+<para>Callable object to use as entry function. Must also satisfy std::is_invocable_r_v&lt;void, F&gt;. <linebreak/>
+ </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -469,11 +508,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::unique_ptr&lt;int&gt;<sp/>data{new<sp/>int(7)};</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_callable_task<sp/>([=]<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>*data<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>},<sp/>&quot;callable_task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="219" column="1" bodyfile="pros/rtos.hpp" bodystart="219" bodyend="220"/>
+        <location file="pros/rtos.hpp" line="259" column="1" bodyfile="pros/rtos.hpp" bodystart="259" bodyend="260"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga966220f76c100aa2fbfdb221d032ddd9" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -501,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="234" column="10"/>
+        <location file="pros/rtos.hpp" line="274" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6bc440ea23792294f5f41f00b3e4b5cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Task</type>
@@ -509,14 +555,26 @@
         <argsstring>()</argsstring>
         <name>current</name>
         <briefdescription>
-<para>Get the currently running <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref>. </para>
+<para>Get a handle to the task which called this function. </para>
         </briefdescription>
         <detaileddescription>
-<para><bold>Example</bold> <programlisting></programlisting> </para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>this_task<sp/>=<sp/>pros::Task::current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(this_task.get_state()<sp/>==<sp/>pros::E_TASK_STATE_RUNNING)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;This<sp/>task<sp/>is<sp/>currently<sp/>running&quot;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="244" column="13"/>
+        <location file="pros/rtos.hpp" line="295" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6511e9f551c6e751f3b553f6235e3080" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Task &amp;</type>
@@ -540,11 +598,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_cpp_task<sp/>=<sp/>my_task;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="258" column="6"/>
+        <location file="pros/rtos.hpp" line="318" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga1fcb45e5d2428352eb36b487d1d4eea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -557,11 +625,23 @@
         <detaileddescription>
 <para>This task will be removed from all ready, blocked, suspended and event lists.</para>
 <para>Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.</para>
-<para><bold>Example</bold> <programlisting></programlisting> </para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.remove();<sp/>//<sp/>Delete<sp/>the<sp/>task</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Task<sp/>State:<sp/>&quot;<sp/>&lt;&lt;<sp/>my_task.get_state()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>the<sp/>value<sp/>of<sp/>E_TASK_STATE_DELETED</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="272" column="6"/>
+        <location file="pros/rtos.hpp" line="343" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga27921c9f94fc881b2a042320d8504731" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -574,11 +654,21 @@
         <detaileddescription>
 <para><simplesect kind="return"><para>The priority of the task</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Task<sp/>Priority:&quot;<sp/>&lt;&lt;<sp/>my_task.get_priority();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="284" column="15"/>
+        <location file="pros/rtos.hpp" line="364" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga685ad82d9352c7fe58deb1506ab6ab86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -603,11 +693,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.set_priority(TASK_PRIORITY_DEFAULT<sp/>+<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="301" column="6"/>
+        <location file="pros/rtos.hpp" line="389" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga200ea249e657b61dd6a31fe60cbfe7e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -618,13 +717,23 @@
 <para>Gets the state of the specified task. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The state of the task</para>
+<para><simplesect kind="return"><para>The state of the task. See task_state_e_t.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Task&apos;s<sp/>State:&quot;<sp/>&lt;&lt;<sp/>my_task.get_state();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="313" column="15"/>
+        <location file="pros/rtos.hpp" line="410" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga3605b58fb45d69d498721bc2f2a14b1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -635,11 +744,23 @@
 <para>Suspends the specified task, making it ineligible to be scheduled. </para>
         </briefdescription>
         <detaileddescription>
-<para><bold>Example</bold> <programlisting></programlisting> </para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.suspend();<sp/>//<sp/>The<sp/>task<sp/>will<sp/>no<sp/>longer<sp/>execute</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.resume();<sp/>//<sp/>The<sp/>task<sp/>will<sp/>resume<sp/>execution</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="323" column="6"/>
+        <location file="pros/rtos.hpp" line="431" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga41de8150eff044a237990c271d57ea27" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -659,11 +780,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.suspend();<sp/>//<sp/>The<sp/>task<sp/>will<sp/>no<sp/>longer<sp/>execute</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.resume();<sp/>//<sp/>The<sp/>task<sp/>will<sp/>resume<sp/>execution</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="336" column="6"/>
+        <location file="pros/rtos.hpp" line="455" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa37ab6a2f004bfa2c956115231072736" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const char *</type>
@@ -676,11 +809,21 @@
         <detaileddescription>
 <para><simplesect kind="return"><para>A pointer to the name of the task</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Task<sp/>Name:&quot;<sp/>&lt;&lt;<sp/>my_task.get_name();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="348" column="12"/>
+        <location file="pros/rtos.hpp" line="476" column="12"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaf68d7f3aeaf718187f2a74d80b1a669f" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
@@ -695,7 +838,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="358" column="10" bodyfile="pros/rtos.hpp" bodystart="358" bodyend="360"/>
+        <location file="pros/rtos.hpp" line="486" column="10" bodyfile="pros/rtos.hpp" bodystart="486" bodyend="488"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga3673829895566e7151ddbb6cdca82d99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -706,14 +849,30 @@
 <para>Sends a simple notification to task and increments the notification counter. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para>See <ref refid="notifications" kindref="compound">Task Notifications</ref> for details.</para>
 <para><simplesect kind="return"><para>Always returns true.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(my_task.notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;I<sp/>was<sp/>unblocked!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Notify<sp/>me!<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>my_task.notify(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="376" column="15"/>
+        <location file="pros/rtos.hpp" line="518" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6c7abfff648dad193674fc432ad4840d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -725,14 +884,25 @@
         </briefdescription>
         <detaileddescription>
 <para>Analogous to std::thread::join in C++.</para>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
-<para><simplesect kind="return"><para>void</para>
-</simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<para>See <ref refid="notifications" kindref="compound">Task Notifications</ref> for details.</para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Task<sp/>running&quot;<sp/>&lt;&lt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task::delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;End<sp/>of<sp/>task&quot;<sp/>&lt;&lt;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Task<sp/>One&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Before<sp/>task&quot;<sp/>&lt;&lt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.join();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;After<sp/>task&quot;<sp/>&lt;&lt;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="392" column="6"/>
+        <location file="pros/rtos.hpp" line="543" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga8416442a23f42ca38044c9b2dec99316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -756,7 +926,7 @@
         </briefdescription>
         <detaileddescription>
 <para>Will also retrieve the value of the notification in the target task before modifying the notification value.</para>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para>See <ref refid="notifications" kindref="compound">Task Notifications</ref> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>value</parametername>
@@ -784,11 +954,12 @@
 </parameterlist>
 <simplesect kind="return"><para>Dependent on the notification action. For NOTIFY_ACTION_NO_WRITE: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other NOTIFY_ACTION values: always return 0</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">TBA</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="421" column="15"/>
+        <location file="pros/rtos.hpp" line="571" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga070827d25e8a07d2124578dcbd638dd0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -807,7 +978,7 @@
 <para>Waits for a notification to be nonzero. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para>See <ref refid="notifications" kindref="compound">Task Notifications</ref> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>clear_on_exit</parametername>
@@ -827,11 +998,27 @@
 </parameterlist>
 <simplesect kind="return"><para>The value of the task&apos;s notification value before it is decremented or cleared</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(my_task.notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;I<sp/>was<sp/>unblocked!&quot;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Notify<sp/>me!<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>my_task.notify(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="444" column="22"/>
+        <location file="pros/rtos.hpp" line="608" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6b470af6702dc8031d6de86419c97b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -842,14 +1029,15 @@
 <para>Clears the notification for a task. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para>See <ref refid="notifications" kindref="compound">Task Notifications</ref> for details.</para>
 <para><simplesect kind="return"><para>False if there was not a notification waiting, true if there was</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">TBA</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="459" column="6"/>
+        <location file="pros/rtos.hpp" line="622" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafd19e4a13c12c607998bcfc56768ddbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -874,11 +1062,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="476" column="13"/>
+        <location file="pros/rtos.hpp" line="644" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafcfc4faff77d7ca1f4c080d1e8c508fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -916,11 +1110,18 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Task::delay_until(&amp;now,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="496" column="13"/>
+        <location file="pros/rtos.hpp" line="670" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gac7509321b5f36585f28da108d330b9ad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -934,11 +1135,21 @@
 <para>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</para>
 <para><simplesect kind="return"><para>The number of tasks that are currently being managed by the kernel.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Hello&quot;<sp/>&lt;&lt;<sp/>(char*)param;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Task<sp/>my_task<sp/>(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Number<sp/>of<sp/>Running<sp/>Tasks:&quot;<sp/>&lt;&lt;<sp/>pros::Task::get_count();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="511" column="22"/>
+        <location file="pros/rtos.hpp" line="694" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga1e90d26a2b528a402135160280637dbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>time_point</type>
@@ -956,7 +1167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="532" column="19"/>
+        <location file="pros/rtos.hpp" line="722" column="19"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga4b5dfbd24f5bc4c03b24b2da362f66d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -964,12 +1175,23 @@
         <argsstring>()</argsstring>
         <name>Mutex</name>
         <briefdescription>
+<para>Creates a mutex. </para>
         </briefdescription>
         <detaileddescription>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="539" column="1"/>
+        <location file="pros/rtos.hpp" line="751" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gab09ea253b1dc6a2cf2543f9069af47f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -985,7 +1207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="543" column="1"/>
+        <location file="pros/rtos.hpp" line="755" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gadd07188ea12392103ecbecf2215d603a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1001,7 +1223,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="544" column="1"/>
+        <location file="pros/rtos.hpp" line="756" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaf883e9f2816275bfb96356ebab8343a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__api-legacy_1ga112166962b6604119c700da6ee189e2d" kindref="member">Mutex</ref> &amp;</type>
@@ -1017,7 +1239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="546" column="7"/>
+        <location file="pros/rtos.hpp" line="758" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga346fc4a9a9db604140fb5e77e4ecf793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__api-legacy_1ga112166962b6604119c700da6ee189e2d" kindref="member">Mutex</ref> &amp;</type>
@@ -1033,7 +1255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="547" column="7"/>
+        <location file="pros/rtos.hpp" line="759" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga520dfb72e1768ce08292ca08662c66a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1044,14 +1266,21 @@
 <para>Takes and locks a mutex indefinetly. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
-<para><simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken. </para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>does<sp/>not<sp/>time<sp/>out<sp/>if<sp/>parameter<sp/>not<sp/>specified.</highlight></codeline>
+<codeline><highlight class="normal">mutex.take();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="560" column="6"/>
+        <location file="pros/rtos.hpp" line="781" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga4ed04a4dfdab9c125ecd5b87e1d31ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1066,7 +1295,7 @@
 <para>Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>timeout</parametername>
@@ -1076,13 +1305,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken. </para>
+<simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="579" column="6"/>
+        <location file="pros/rtos.hpp" line="810" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga89e3741a62333612b1a98074ec17c7bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1093,14 +1330,22 @@
 <para>Unlocks a mutex. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
-<para><simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned. </para>
+<para>See <ref refid="multitasking" kindref="compound">Multitasking</ref> for details.</para>
+<para><simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">Mutex<sp/>mutex;</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex.take(MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex.give();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="592" column="6"/>
+        <location file="pros/rtos.hpp" line="833" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa81aed607133209dade63a226818224d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1112,9 +1357,8 @@
         </briefdescription>
         <detaileddescription>
 <para>Effectively equivalent to calling pros::Mutex::take with TIMEOUT_MAX as the parameter.</para>
-<para>Conforms to named requirment BasicLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_req/BasicLockable</ulink></para>
-</simplesect>
-<simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> directly.</para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</ulink></para>
+<para><simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> directly.</para>
 </simplesect>
 <parameterlist kind="exception"><parameteritem>
 <parameternamelist>
@@ -1129,7 +1373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="609" column="6"/>
+        <location file="pros/rtos.hpp" line="849" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga9278be8203e1c42e2619179882ae4403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1141,15 +1385,14 @@
         </briefdescription>
         <detaileddescription>
 <para>Equivalent to calling pros::Mutex::give.</para>
-<para>Conforms to named requirement BasicLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_req/BasicLockable</ulink></para>
-</simplesect>
-<simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> direcly. </para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</ulink></para>
+<para><simplesect kind="note"><para>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> direcly. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="622" column="6"/>
+        <location file="pros/rtos.hpp" line="861" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa24a64f788f142df670c3abc809d32b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1161,15 +1404,14 @@
         </briefdescription>
         <detaileddescription>
 <para>Returns immediately if unsucessful.</para>
-<para>Conforms to named requirement Lockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/Lockable">https://en.cppreference.com/w/cpp/named_req/Lockable</ulink></para>
-</simplesect>
-<simplesect kind="return"><para>True when lock was acquired succesfully, or false otherwise. </para>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><simplesect kind="return"><para>True when lock was acquired succesfully, or false otherwise. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="634" column="6"/>
+        <location file="pros/rtos.hpp" line="872" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga710a8b20e993bf1c74bf40f1ecce0a73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1193,9 +1435,8 @@
         </briefdescription>
         <detaileddescription>
 <para>Equivalent to calling pros::Mutex::take with a duration specified in milliseconds.</para>
-<para>Conforms to named requirement TimedLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_req/TimedLockable</ulink></para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>rel_time</parametername>
 </parameternamelist>
@@ -1210,7 +1451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="649" column="6" bodyfile="pros/rtos.hpp" bodystart="649" bodyend="651"/>
+        <location file="pros/rtos.hpp" line="886" column="6" bodyfile="pros/rtos.hpp" bodystart="886" bodyend="888"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga41a3a30923d0f6c41a70812ef37db9bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1230,9 +1471,8 @@
 <para>Takes and locks a mutex, waiting until a specified time. </para>
         </briefdescription>
         <detaileddescription>
-<para>Conforms to named requirement TimedLockable <simplesect kind="see"><para><ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_req/TimedLockable</ulink></para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>Conforms to named requirement <ulink url="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</ulink></para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>abs_time</parametername>
 </parameternamelist>
@@ -1247,7 +1487,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="663" column="6" bodyfile="pros/rtos.hpp" bodystart="663" bodyend="665"/>
+        <location file="pros/rtos.hpp" line="899" column="6" bodyfile="pros/rtos.hpp" bodystart="899" bodyend="901"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

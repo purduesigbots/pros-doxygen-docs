@@ -127,7 +127,7 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">static <a href="kapi_8h.html#af4e78a5aaf6b45938ea1d203bbc5ad12" class="m-doc">task_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7eedd9988858633a57fd34b6059b07da" class="m-doc-self">create</a>(</span><span class="m-doc-wrap">F&amp;&amp; function,
               const char* name)</span></span>
             </dt>
-            <dd>Creates a new task and add it to the list of tasks that are ready to run.</dd>
+            <dd>Create a new task from any C++ <a href="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</a> object and add it to the list of tasks that are ready to run.</dd>
             <dt>
               <div class="m-doc-template">template&lt;class F&gt;</div>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa1ffe37a99acadd8b2b750e9a9f0bf14" class="m-doc-self">Task</a>(</span><span class="m-doc-wrap">F&amp;&amp; function,
@@ -141,7 +141,7 @@ V5</span></a>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacbd0c9af4689e81baec06af05a16d29f" class="m-doc-self">Task</a>(</span><span class="m-doc-wrap">F&amp;&amp; function,
               const char* name)</span></span>
             </dt>
-            <dd>Creates a new task and add it to the list of tasks that are ready to run.</dd>
+            <dd>Create a new task from any C++ <a href="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</a> object and add it to the list of tasks that are ready to run.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga966220f76c100aa2fbfdb221d032ddd9" class="m-doc-self">Task</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#af4e78a5aaf6b45938ea1d203bbc5ad12" class="m-doc">task_<wbr />t</a> task) <span class="m-label m-info">explicit</span> </span></span>
             </dt>
@@ -149,7 +149,7 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">static Task </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6bc440ea23792294f5f41f00b3e4b5cd" class="m-doc-self">current</a>(</span><span class="m-doc-wrap">)</span></span>
             </dt>
-            <dd>Get the currently running <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a>.</dd>
+            <dd>Get a handle to the task which called this function.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">Task&amp; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6511e9f551c6e751f3b553f6235e3080" class="m-doc-self">operator=</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#af4e78a5aaf6b45938ea1d203bbc5ad12" class="m-doc">task_<wbr />t</a> in)</span></span>
             </dt>
@@ -229,7 +229,7 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4b5dfbd24f5bc4c03b24b2da362f66d5" class="m-doc-self">Mutex</a>(</span><span class="m-doc-wrap">)</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Creates a mutex.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab09ea253b1dc6a2cf2543f9069af47f2" class="m-doc-self">Mutex</a>(</span><span class="m-doc-wrap">const <a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a>&amp;) <span class="m-label m-danger">deleted</span></span></span>
             </dt>
@@ -359,7 +359,15 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga8d6642f2de80d6445619fe395568085d"><div>
             <h3>
@@ -388,7 +396,14 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_cpp_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1d372f751d498ee7dc15b08700b70547"><div>
             <h3>
@@ -425,7 +440,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">{</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">7</span><span class="p">)};</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_callable_task</span><span class="w"> </span><span class="p">([</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga7eedd9988858633a57fd34b6059b07da"><div>
             <h3>
@@ -436,7 +457,7 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">static <a href="kapi_8h.html#af4e78a5aaf6b45938ea1d203bbc5ad12" class="m-doc">task_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7eedd9988858633a57fd34b6059b07da" class="m-doc-self">create</a>(</span><span class="m-doc-wrap">F&amp;&amp; function,
               const char* name)</span></span>
             </h3>
-            <p>Creates a new task and add it to the list of tasks that are ready to run.</p>
+            <p>Create a new task from any C++ <a href="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</a> object and add it to the list of tasks that are ready to run.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -452,7 +473,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">{</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">7</span><span class="p">)};</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_callable_task</span><span class="w"> </span><span class="p">([</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="s">&quot;callable_task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa1ffe37a99acadd8b2b750e9a9f0bf14"><div>
             <h3>
@@ -489,7 +516,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">{</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">7</span><span class="p">)};</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_callable_task</span><span class="w"> </span><span class="p">([</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">});</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gacbd0c9af4689e81baec06af05a16d29f"><div>
             <h3>
@@ -500,7 +533,7 @@ V5</span></a>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacbd0c9af4689e81baec06af05a16d29f" class="m-doc-self">Task</a>(</span><span class="m-doc-wrap">F&amp;&amp; function,
               const char* name)</span></span>
             </h3>
-            <p>Creates a new task and add it to the list of tasks that are ready to run.</p>
+            <p>Create a new task from any C++ <a href="https://en.cppreference.com/w/cpp/named_req/Callable">Callable</a> object and add it to the list of tasks that are ready to run.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>
@@ -508,7 +541,7 @@ V5</span></a>
               <tbody>
                 <tr>
                   <td style="width: 1%">function</td>
-                  <td>Callable object to use as entry function</td>
+                  <td>Callable object to use as entry function. Must also satisfy std::is_invocable_r_v&lt;void, F&gt;.<br /></td>
                 </tr>
                 <tr>
                   <td>name</td>
@@ -516,7 +549,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">{</span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">(</span><span class="mi">7</span><span class="p">)};</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">my_callable_task</span><span class="w"> </span><span class="p">([</span><span class="o">=</span><span class="p">]</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"> </span><span class="s">&quot;callable_task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga966220f76c100aa2fbfdb221d032ddd9"><div>
             <h3>
@@ -542,8 +581,19 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">static Task </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6bc440ea23792294f5f41f00b3e4b5cd" class="m-doc-self">current</a>(</span><span class="m-doc-wrap">)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
-            <p>Get the currently running <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a>.</p>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+            <p>Get a handle to the task which called this function.</p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">this_task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">current</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">this_task</span><span class="p">.</span><span class="n">get_state</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">E_TASK_STATE_RUNNING</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;This task is currently running&quot;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6511e9f551c6e751f3b553f6235e3080"><div>
             <h3>
@@ -562,7 +612,16 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">task_t</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_cpp_task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_task</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1fcb45e5d2428352eb36b487d1d4eea3"><div>
             <h3>
@@ -570,7 +629,18 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p>Removes the <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> from the RTOS real time kernel&#x27;s management.</p>
-<p>This task will be removed from all ready, blocked, suspended and event lists.</p><p>Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This task will be removed from all ready, blocked, suspended and event lists.</p><p>Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">remove</span><span class="p">();</span><span class="w"> </span><span class="c1">// Delete the task</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Task State: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_task</span><span class="p">.</span><span class="n">get_state</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Prints the value of E_TASK_STATE_DELETED</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga27921c9f94fc881b2a042320d8504731"><div>
             <h3>
@@ -586,7 +656,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Task Priority:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_task</span><span class="p">.</span><span class="n">get_priority</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga685ad82d9352c7fe58deb1506ab6ab86"><div>
             <h3>
@@ -605,7 +684,15 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>If the specified task&#x27;s state is available to be scheduled (e.g. not blocked) and new priority is higher than the currently running task, a context switch may occur.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>If the specified task&#x27;s state is available to be scheduled (e.g. not blocked) and new priority is higher than the currently running task, a context switch may occur.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">set_priority</span><span class="p">(</span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga200ea249e657b61dd6a31fe60cbfe7e5"><div>
             <h3>
@@ -617,11 +704,20 @@ V5</span></a>
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The state of the task</td>
+                  <td>The state of the task. See task_state_e_t.</td>
                 </tr>
               </tfoot>
             </table>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Task&#39;s State:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_task</span><span class="p">.</span><span class="n">get_state</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga3605b58fb45d69d498721bc2f2a14b1c"><div>
             <h3>
@@ -629,7 +725,18 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p>Suspends the specified task, making it ineligible to be scheduled.</p>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">suspend</span><span class="p">();</span><span class="w"> </span><span class="c1">// The task will no longer execute</span>
+<span class="w">  </span><span class="c1">// Do other things</span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">resume</span><span class="p">();</span><span class="w"> </span><span class="c1">// The task will resume execution</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga41de8150eff044a237990c271d57ea27"><div>
             <h3>
@@ -637,7 +744,18 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p>Resumes the specified task, making it eligible to be scheduled.</p>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do things</span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">suspend</span><span class="p">();</span><span class="w"> </span><span class="c1">// The task will no longer execute</span>
+<span class="w">  </span><span class="c1">// Do other things</span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">resume</span><span class="p">();</span><span class="w"> </span><span class="c1">// The task will resume execution</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa37ab6a2f004bfa2c956115231072736"><div>
             <h3>
@@ -653,7 +771,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p><strong>Example</strong> <code class="m-code"></code></p>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Task Name:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">my_task</span><span class="p">.</span><span class="n">get_name</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf68d7f3aeaf718187f2a74d80b1a669f"><div>
             <h3>
@@ -677,7 +804,22 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>See <a href="notifications.html" class="m-doc">Task Notifications</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">my_task</span><span class="p">.</span><span class="n">notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Notify me! Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">my_task</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6c7abfff648dad193674fc432ad4840d"><div>
             <h3>
@@ -685,15 +827,19 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p>Utilizes task notifications to wait until specified task is complete and deleted, then continues to execute the program.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>void</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Analogous to std::thread::join in C++.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>Analogous to std::thread::join in C++.</p><p>See <a href="notifications.html" class="m-doc">Task Notifications</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Task running&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;End of task&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Task One&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Before task&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="w">  </span><span class="n">my_task</span><span class="p">.</span><span class="n">join</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;After task&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga8416442a23f42ca38044c9b2dec99316"><div>
             <h3>
@@ -728,7 +874,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Will also retrieve the value of the notification in the target task before modifying the notification value.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>Will also retrieve the value of the notification in the target task before modifying the notification value.</p><p>See <a href="notifications.html" class="m-doc">Task Notifications</a> for details.</p><p><strong>Example</strong> <code class="m-code"><span class="n">TBA</span><span class="w"></span></code></p>
           </div></section>
           <section class="m-doc-details" id="ga070827d25e8a07d2124578dcbd638dd0"><div>
             <h3>
@@ -758,7 +904,22 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>See <a href="notifications.html" class="m-doc">Task Notifications</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">my_task</span><span class="p">.</span><span class="n">notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Notify me! Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="n">my_task</span><span class="p">.</span><span class="n">notify</span><span class="p">(</span><span class="n">my_task</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6b470af6702dc8031d6de86419c97b54"><div>
             <h3>
@@ -774,7 +935,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>See <a href="notifications.html" class="m-doc">Task Notifications</a> for details.</p><p><strong>Example</strong> <code class="m-code"><span class="n">TBA</span><span class="w"></span></code></p>
           </div></section>
           <section class="m-doc-details" id="gafd19e4a13c12c607998bcfc56768ddbc"><div>
             <h3>
@@ -793,7 +954,12 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <a href="group__c-llemu.html#ga151eaf730a10d101bff15013a76b9aa8" class="m-doc">task_<wbr />delay_<wbr />until()</a>.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <a href="group__c-llemu.html#ga151eaf730a10d101bff15013a76b9aa8" class="m-doc">task_<wbr />delay_<wbr />until()</a>.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Do opcontrol things</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gafcfc4faff77d7ca1f4c080d1e8c508fa"><div>
             <h3>
@@ -817,7 +983,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function can be used by periodic tasks to ensure a constant execution frequency.</p><p>The task will be woken up at the time *prev_time + delta, and *prev_time will be updated to reflect the time at which the task will unblock.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function can be used by periodic tasks to ensure a constant execution frequency.</p><p>The task will be woken up at the time *prev_time + delta, and *prev_time will be updated to reflect the time at which the task will unblock.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Do opcontrol things</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">delay_until</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gac7509321b5f36585f28da108d330b9ad"><div>
             <h3>
@@ -833,7 +1005,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">param</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">Task</span><span class="w"> </span><span class="n">my_task</span><span class="w"> </span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Number of Running Tasks:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="o">::</span><span class="n">get_count</span><span class="p">();</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1e90d26a2b528a402135160280637dbc"><div>
             <h3>
@@ -856,7 +1037,15 @@ V5</span></a>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4b5dfbd24f5bc4c03b24b2da362f66d5" class="m-doc-self">Mutex</a>(</span><span class="m-doc-wrap">)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Creates a mutex.</p>
+<p>See <a href="multitasking.html" class="m-doc">Multitasking</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">Mutex</span><span class="w"> </span><span class="n">mutex</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="n">MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">give</span><span class="p">();</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gab09ea253b1dc6a2cf2543f9069af47f2"><div>
             <h3>
@@ -900,7 +1089,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p>
+<p>See <a href="multitasking.html" class="m-doc">Multitasking</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">Mutex</span><span class="w"> </span><span class="n">mutex</span><span class="p">;</span><span class="w"></span>
+
+<span class="c1">// Acquire the mutex; does not time out if parameter not specified.</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">take</span><span class="p">();</span><span class="w"></span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">give</span><span class="p">();</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4ed04a4dfdab9c125ecd5b87e1d31ac7"><div>
             <h3>
@@ -925,7 +1120,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p>
+<p>See <a href="multitasking.html" class="m-doc">Multitasking</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">Mutex</span><span class="w"> </span><span class="n">mutex</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="n">MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">give</span><span class="p">();</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga89e3741a62333612b1a98074ec17c7bc"><div>
             <h3>
@@ -941,7 +1143,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p>
+<p>See <a href="multitasking.html" class="m-doc">Multitasking</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">Mutex</span><span class="w"> </span><span class="n">mutex</span><span class="p">;</span><span class="w"></span>
+<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
+<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
+<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">take</span><span class="p">(</span><span class="n">MAX_DELAY</span><span class="p">);</span><span class="w"></span>
+<span class="c1">// do some work</span>
+<span class="c1">// Release the mutex for other tasks</span>
+<span class="n">mutex</span><span class="p">.</span><span class="n">give</span><span class="p">();</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa81aed607133209dade63a226818224d"><div>
             <h3>
@@ -960,7 +1169,7 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>Effectively equivalent to calling pros::Mutex::take with TIMEOUT_MAX as the parameter.</p><p>Conforms to named requirment BasicLockable</p><aside class="m-note m-default"><h4>See also</h4><p><a href="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_<wbr />req/BasicLockable</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> directly.</p></aside>
+<p>Effectively equivalent to calling pros::Mutex::take with TIMEOUT_MAX as the parameter.</p><p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</a></p><aside class="m-note m-info"><h4>Note</h4><p>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> directly.</p></aside>
           </div></section>
           <section class="m-doc-details" id="ga9278be8203e1c42e2619179882ae4403"><div>
             <h3>
@@ -968,7 +1177,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p>Unlocks a mutex.</p>
-<p>Equivalent to calling pros::Mutex::give.</p><p>Conforms to named requirement BasicLockable</p><aside class="m-note m-default"><h4>See also</h4><p><a href="https://en.cppreference.com/w/cpp/named_req/BasicLockable">https://en.cppreference.com/w/cpp/named_<wbr />req/BasicLockable</a></p></aside><aside class="m-note m-info"><h4>Note</h4><p>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> direcly.</p></aside>
+<p>Equivalent to calling pros::Mutex::give.</p><p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/BasicLockable">BasicLockable</a></p><aside class="m-note m-info"><h4>Note</h4><p>Consider using a std::unique_lock, std::lock_guard, or std::scoped_lock instead of interacting with the <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> direcly.</p></aside>
           </div></section>
           <section class="m-doc-details" id="gaa24a64f788f142df670c3abc809d32b6"><div>
             <h3>
@@ -984,7 +1193,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Returns immediately if unsucessful.</p><p>Conforms to named requirement Lockable</p><aside class="m-note m-default"><h4>See also</h4><p><a href="https://en.cppreference.com/w/cpp/named_req/Lockable">https://en.cppreference.com/w/cpp/named_<wbr />req/Lockable</a></p></aside>
+<p>Returns immediately if unsucessful.</p><p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</a></p>
           </div></section>
           <section class="m-doc-details" id="ga710a8b20e993bf1c74bf40f1ecce0a73"><div>
             <h3>
@@ -1012,7 +1221,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Equivalent to calling pros::Mutex::take with a duration specified in milliseconds.</p><p>Conforms to named requirement TimedLockable</p><aside class="m-note m-default"><h4>See also</h4><p><a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_<wbr />req/TimedLockable</a></p></aside>
+<p>Equivalent to calling pros::Mutex::take with a duration specified in milliseconds.</p><p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</a></p>
           </div></section>
           <section class="m-doc-details" id="ga41a3a30923d0f6c41a70812ef37db9bb"><div>
             <h3>
@@ -1040,7 +1249,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Conforms to named requirement TimedLockable</p><aside class="m-note m-default"><h4>See also</h4><p><a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">https://en.cppreference.com/w/cpp/named_<wbr />req/TimedLockable</a></p></aside>
+<p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</a></p>
           </div></section>
         </section>
         <section>
