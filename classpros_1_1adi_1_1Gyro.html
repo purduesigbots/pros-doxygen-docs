@@ -84,12 +84,12 @@ V5</span></a>
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ad5b1d1b7d2bb2b7d31a96386d75dd8" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port,
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9ad5b1d1b7d2bb2b7d31a96386d75dd8" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port,
               double multiplier = 1) <span class="m-label m-info">explicit</span> </span></span>
             </dt>
             <dd>Initializes a gyroscope on the given port.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a449b02125049538fd3809ee64a69b367" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair,
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga449b02125049538fd3809ee64a69b367" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair,
               double multiplier = 1)</span></span>
             </dt>
             <dd>Initializes a gyroscope on the given port of an adi expander.</dd>
@@ -99,138 +99,14 @@ V5</span></a>
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8487ef9a8abbf5226130e0275ffa5331" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8487ef9a8abbf5226130e0275ffa5331" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
             </dt>
             <dd>Gets the current gyro angle in tenths of a degree.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
             </dt>
             <dd>Resets the gyroscope value to zero.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a9ad5b1d1b7d2bb2b7d31a96386d75dd8"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Gyro::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a9ad5b1d1b7d2bb2b7d31a96386d75dd8" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port,
-              double multiplier = 1) <span class="m-label m-info">explicit</span> </span></span>
-            </h3>
-            <p>Initializes a gyroscope on the given port.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">adi_port</td>
-                  <td>The ADI port to initialize as a gyro (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;)</td>
-                </tr>
-                <tr>
-                  <td>multiplier</td>
-                  <td>A scalar value that will be multiplied by the gyro heading value supplied by the</td>
-                </tr>
-              </tbody>
-            </table>
-<p>If the given port has not previously been configured as a gyro, then this function starts a 1300ms calibration period.</p><p>It is highly recommended that an <a href="classpros_1_1adi_1_1Gyro.html" class="m-doc">Gyro</a> object be created in <a href="main_8h.html#a9efe22aaead3a5e936b5df459de02eba" class="m-doc">initialize()</a> when the robot is stationary to ensure proper calibration. If an <a href="classpros_1_1adi_1_1Gyro.html" class="m-doc">Gyro</a> object is declared at the global scope, a hardcoded 1300ms delay at the beginning of initialize will be necessary to ensure that the gyro&#x27;s returned values are correct at the beginning of autonomous/opcontrol.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Get the gyro heading</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a449b02125049538fd3809ee64a69b367"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Gyro::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a449b02125049538fd3809ee64a69b367" class="m-doc-self">Gyro</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair,
-              double multiplier = 1)</span></span>
-            </h3>
-            <p>Initializes a gyroscope on the given port of an adi expander.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">port_pair</td>
-                  <td>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
-                </tr>
-                <tr>
-                  <td>multiplier</td>
-                  <td>A scalar value that will be multiplied by the gyro heading value supplied by the</td>
-                </tr>
-              </tbody>
-            </table>
-<p>If the given port has not previously been configured as a gyro, then this function starts a 1300ms calibration period.</p><p>It is highly recommended that an ADIGyro object be created in <a href="main_8h.html#a9efe22aaead3a5e936b5df459de02eba" class="m-doc">initialize()</a> when the robot is stationary to ensure proper calibration. If an ADIGyro object is declared at the global scope, a hardcoded 1300ms delay at the beginning of initialize will be necessary to ensure that the gyro&#x27;s returned values are correct at the beginning of autonomous/opcontrol.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_GYRO_PORT &#39;a&#39;</span>
-<span class="cp">#define SMART_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">({{</span><span class="w"> </span><span class="n">SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ADI_GYRO_PORT</span><span class="w"> </span><span class="p">}});</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Get the gyro heading</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a8487ef9a8abbf5226130e0275ffa5331"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">double pros::<wbr />adi::<wbr />Gyro::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a8487ef9a8abbf5226130e0275ffa5331" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Gets the current gyro angle in tenths of a degree.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The gyro angle in degrees.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Unless a multiplier is applied to the gyro, the return value will be a whole number representing the number of degrees of rotation times 10.</p><p>There are 360 degrees in a circle, thus the gyro will return 3600 for one whole rotation.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// Get the gyro heading</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="ac92589176d26914068b37bb9d6afba7b"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Gyro::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Resets the gyroscope value to zero.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a gyro</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define GYRO_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">(</span><span class="n">GYRO_PORT</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Get the gyro heading</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"></span>
-
-<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="c1">// Reset the gyro every 2 seconds</span>
-<span class="w">    </span><span class="n">gyro</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">millis</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
         </section>
       </div>
     </div>

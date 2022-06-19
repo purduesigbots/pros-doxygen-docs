@@ -84,13 +84,13 @@ V5</span></a>
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a25dffd7691902d766efb7116d20af056" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port_top,
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga25dffd7691902d766efb7116d20af056" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port_top,
               std::uint8_t adi_port_bottom,
               bool reversed = false)</span></span>
             </dt>
             <dd>Configures a set of ADI ports to act as an <a href="classpros_1_1adi_1_1Encoder.html" class="m-doc">Encoder</a>.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68013bea06d27362fe1b706da71ff043" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a1778872ef8ccef9dc910deae95ff9952" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> port_tuple,
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga68013bea06d27362fe1b706da71ff043" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a1778872ef8ccef9dc910deae95ff9952" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> port_tuple,
               bool reversed = false)</span></span>
             </dt>
             <dd>Configures a set of ADI ports on an adi_expander to act as an <a href="classpros_1_1adi_1_1Encoder.html" class="m-doc">Encoder</a>.</dd>
@@ -100,127 +100,14 @@ V5</span></a>
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
             </dt>
             <dd>Sets the encoder value to zero.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60987c8e4946650cf9aa40f8e8345f01" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga60987c8e4946650cf9aa40f8e8345f01" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
             </dt>
             <dd>Gets the number of ticks recorded by the encoder.</dd>
           </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a25dffd7691902d766efb7116d20af056"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Encoder::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a25dffd7691902d766efb7116d20af056" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port_top,
-              std::uint8_t adi_port_bottom,
-              bool reversed = false)</span></span>
-            </h3>
-            <p>Configures a set of ADI ports to act as an <a href="classpros_1_1adi_1_1Encoder.html" class="m-doc">Encoder</a>.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">adi_port_top</td>
-                  <td>The &quot;top&quot; wire from the encoder sensor with the removable cover side up</td>
-                </tr>
-                <tr>
-                  <td>adi_port_bottom</td>
-                  <td>The &quot;bottom&quot; wire from the encoder sensor</td>
-                </tr>
-                <tr>
-                  <td>reversed</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
-<span class="cp">#define PORT_BOTTOM 2</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// Use the sensor</span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a68013bea06d27362fe1b706da71ff043"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Encoder::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a68013bea06d27362fe1b706da71ff043" class="m-doc-self">Encoder</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a1778872ef8ccef9dc910deae95ff9952" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> port_tuple,
-              bool reversed = false)</span></span>
-            </h3>
-            <p>Configures a set of ADI ports on an adi_expander to act as an <a href="classpros_1_1adi_1_1Encoder.html" class="m-doc">Encoder</a>.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">port_tuple</td>
-                  <td>The tuple of the smart port number, the &quot;top&quot; wire from the encoder sensor with the removable cover side up, and the &quot;bottom&quot; wire from the encoder sensor</td>
-                </tr>
-                <tr>
-                  <td>reversed</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP &#39;A&#39;</span>
-<span class="cp">#define PORT_BOTTOM &#39;B&#39;</span>
-<span class="cp">#define SMART_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="n">SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="c1">// Use the sensor</span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="ac92589176d26914068b37bb9d6afba7b"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Encoder::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ac92589176d26914068b37bb9d6afba7b" class="m-doc-self">reset</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Sets the encoder value to zero.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
-<span class="cp">#define PORT_BOTTOM 2</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move the encoder around in this time</span>
-<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="c1">// The encoder is now zero again</span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a60987c8e4946650cf9aa40f8e8345f01"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Encoder::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60987c8e4946650cf9aa40f8e8345f01" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Gets the number of ticks recorded by the encoder.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The signed and cumulative number of counts since the last start or</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>There are 360 ticks in one revolution.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define PORT_TOP 1</span>
-<span class="cp">#define PORT_BOTTOM 2</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Encoder</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Encoder Value: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"></span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span></pre>
-          </div></section>
         </section>
       </div>
     </div>
