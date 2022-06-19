@@ -84,11 +84,11 @@ V5</span></a>
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaff0e259cdf8926b89b6da9eefd58571a" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff0e259cdf8926b89b6da9eefd58571a" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
             </dt>
             <dd>Configures an ADI port to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2e065574a8dd4a4b62070b0a132c633b" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e065574a8dd4a4b62070b0a132c633b" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
             </dt>
             <dd>Configures an ADI port on an adi_expander to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</dd>
           </dl>
@@ -97,7 +97,7 @@ V5</span></a>
           <h2><a href="#pub-methods">Public functions</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0722135fc9e602e21043c879642c3fad" class="m-doc-self">stop</a>(</span><span class="m-doc-wrap">) const</span></span>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0722135fc9e602e21043c879642c3fad" class="m-doc-self">stop</a>(</span><span class="m-doc-wrap">) const</span></span>
             </dt>
             <dd>Stops the motor on the given port.</dd>
             <dt>
@@ -112,6 +112,82 @@ V5</span></a>
         </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="aff0e259cdf8926b89b6da9eefd58571a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#aff0e259cdf8926b89b6da9eefd58571a" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Configures an ADI port to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">adi_port</td>
+                  <td>The ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="a2e065574a8dd4a4b62070b0a132c633b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2e065574a8dd4a4b62070b0a132c633b" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
+            </h3>
+            <p>Configures an ADI port on an adi_expander to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port_pair</td>
+                  <td>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define EXT_ADI_SMART_PORT 1</span>
+<span class="cp">#define ADI_MOTOR_PORT &#39;a&#39;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="n">EXT_ADI_SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w">  </span><span class="n">ADI_MOTOR_PORT</span><span class="p">}}</span><span class="w"> </span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="a0722135fc9e602e21043c879642c3fad"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0722135fc9e602e21043c879642c3fad" class="m-doc-self">stop</a>(</span><span class="m-doc-wrap">) const</span></span>
+            </h3>
+            <p>Stops the motor on the given port.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
           <section class="m-doc-details" id="a833ed782b711495035dae08cfce3e62e"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>

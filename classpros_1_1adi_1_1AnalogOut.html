@@ -84,11 +84,11 @@ V5</span></a>
           <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab7d03537eb962b32db90ac968fa28562" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab7d03537eb962b32db90ac968fa28562" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
             </dt>
             <dd>Configures an ADI port to act as an Analog Output.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4d631a179c67046d169b2c113bb462d5" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4d631a179c67046d169b2c113bb462d5" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
             </dt>
             <dd>Configures an ADI port on an adi_expander to act as an Analog Output.</dd>
           </dl>
@@ -104,6 +104,53 @@ V5</span></a>
         </section>
         <section>
           <h2>Function documentation</h2>
+          <section class="m-doc-details" id="ab7d03537eb962b32db90ac968fa28562"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />AnalogOut::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ab7d03537eb962b32db90ac968fa28562" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
+            </h3>
+            <p>Configures an ADI port to act as an Analog Output.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">adi_port</td>
+                  <td>The ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">AnalogOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Use the sensor</span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="a4d631a179c67046d169b2c113bb462d5"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> pros::<wbr />adi::<wbr />AnalogOut::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a4d631a179c67046d169b2c113bb462d5" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#a9b3fd3c73f06b023b3f9f819e1cd29f3" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair)</span></span>
+            </h3>
+            <p>Configures an ADI port on an adi_expander to act as an Analog Output.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port_pair</td>
+                  <td>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define EXT_ADI_SMART_PORT 1</span>
+<span class="cp">#define ADI_PORT &#39;a&#39;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">AnalogOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({{</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">}});</span><span class="w"></span>
+<span class="w">  </span><span class="c1">// Use the sensor</span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
           <section class="m-doc-details" id="a833ed782b711495035dae08cfce3e62e"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />AnalogOut::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>
