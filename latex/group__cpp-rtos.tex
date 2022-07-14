@@ -101,11 +101,30 @@ bool \mbox{\hyperlink{group__cpp-rtos_gaa24a64f788f142df670c3abc809d32b6}{try\+\
 {\footnotesize template$<$typename Rep , typename Period $>$ }\\bool \mbox{\hyperlink{group__cpp-rtos_ga710a8b20e993bf1c74bf40f1ecce0a73}{try\+\_\+lock\+\_\+for}} (const std\+::chrono\+::duration$<$ Rep, Period $>$ \&rel\+\_\+time)
 \begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting for a specified duration. \end{DoxyCompactList}\item 
 {\footnotesize template$<$typename Duration $>$ }\\bool \mbox{\hyperlink{group__cpp-rtos_ga41a3a30923d0f6c41a70812ef37db9bb}{try\+\_\+lock\+\_\+until}} (const std\+::chrono\+::time\+\_\+point$<$ \mbox{\hyperlink{structpros_1_1rtos_1_1Clock}{Clock}}, Duration $>$ \&abs\+\_\+time)
-\begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting until a specified time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting until a specified time. \end{DoxyCompactList}\item 
+constexpr Var \& \mbox{\hyperlink{group__cpp-rtos_ga6cf4c37d2fec1e06a43d8db94c8cb232}{operator$\ast$}} () const
+\begin{DoxyCompactList}\small\item\em Accesses the value of the mutex-\/protected variable. \end{DoxyCompactList}\item 
+constexpr Var $\ast$ \mbox{\hyperlink{group__cpp-rtos_ga9f9e8ece2b057b7a9eff8ea479477621}{operator-\/$>$}} () const
+\begin{DoxyCompactList}\small\item\em Accesses the value of the mutex-\/protected variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__cpp-rtos_ga8ecb4d06c7c8019c05f15e6971bbbb5d}{$\sim$\+Mutex\+Var\+Lock}} ()
+\item 
+{\footnotesize template$<$typename... Args$>$ }\\\mbox{\hyperlink{group__cpp-rtos_ga9b0f56bcfe012b9a9084b6790812106c}{Mutex\+Var}} (Args \&\&... args)
+\begin{DoxyCompactList}\small\item\em Creates a mutex-\/protected variable which is initialized with the given constructor arguments. \end{DoxyCompactList}\item 
+std\+::optional$<$ \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$ Var $>$ $>$ \mbox{\hyperlink{group__cpp-rtos_ga58ed9f1f6e6da87308feef7ec3a7a34d}{try\+\_\+lock}} (std\+::uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Try to lock the mutex-\/protected variable. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Rep , typename Period $>$ }\\std\+::optional$<$ \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$ Var $>$ $>$ \mbox{\hyperlink{group__cpp-rtos_gacd3bef91b2c35648f3c9cd41440d50a3}{try\+\_\+lock}} (const std\+::chrono\+::duration$<$ Rep, Period $>$ \&rel\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Try to lock the mutex-\/protected variable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$ Var $>$ \mbox{\hyperlink{group__cpp-rtos_ga6e111f3c307aa2c5b488301c1970fa7a}{lock}} ()
+\begin{DoxyCompactList}\small\item\em Lock the mutex-\/protected variable, waiting indefinitely. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 const bool \mbox{\hyperlink{group__cpp-rtos_ga530b9e30754c9d0ef499b6cf1864317a}{is\+\_\+steady}} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{group__cpp-rtos_ga9bbf34e1d28b21f16c66842dac3d767c}{Mutex\+Var$<$ Var $>$}}
 \end{DoxyCompactItemize}
 
 
@@ -1060,7 +1079,7 @@ True if the mutex was successfully returned, false otherwise. If false is return
  \mbox{\Hypertarget{group__cpp-rtos_gaa81aed607133209dade63a226818224d}\label{group__cpp-rtos_gaa81aed607133209dade63a226818224d}} 
 \index{RTOS Facilities C API@{RTOS Facilities C API}!lock@{lock}}
 \index{lock@{lock}!RTOS Facilities C API@{RTOS Facilities C API}}
-\doxysubsubsection{\texorpdfstring{lock()}{lock()}}
+\doxysubsubsection{\texorpdfstring{lock()}{lock()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
 {\footnotesize\ttfamily void lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -1099,7 +1118,7 @@ Consider using a std\+::unique\+\_\+lock, std\+::lock\+\_\+guard, or std\+::scop
 \mbox{\Hypertarget{group__cpp-rtos_gaa24a64f788f142df670c3abc809d32b6}\label{group__cpp-rtos_gaa24a64f788f142df670c3abc809d32b6}} 
 \index{RTOS Facilities C API@{RTOS Facilities C API}!try\_lock@{try\_lock}}
 \index{try\_lock@{try\_lock}!RTOS Facilities C API@{RTOS Facilities C API}}
-\doxysubsubsection{\texorpdfstring{try\_lock()}{try\_lock()}}
+\doxysubsubsection{\texorpdfstring{try\_lock()}{try\_lock()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
 {\footnotesize\ttfamily bool try\+\_\+lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
@@ -1155,6 +1174,96 @@ Conforms to named requirement \href{https://en.cppreference.com/w/cpp/named_req/
 \begin{DoxyReturn}{Returns}
 True if the lock was acquired succesfully, otherwise false. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-rtos_ga6cf4c37d2fec1e06a43d8db94c8cb232}\label{group__cpp-rtos_ga6cf4c37d2fec1e06a43d8db94c8cb232}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily constexpr Var\& operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accesses the value of the mutex-\/protected variable. 
+
+\mbox{\Hypertarget{group__cpp-rtos_ga9f9e8ece2b057b7a9eff8ea479477621}\label{group__cpp-rtos_ga9f9e8ece2b057b7a9eff8ea479477621}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily constexpr Var$\ast$ operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [constexpr]}}
+
+
+
+Accesses the value of the mutex-\/protected variable. 
+
+\mbox{\Hypertarget{group__cpp-rtos_ga8ecb4d06c7c8019c05f15e6971bbbb5d}\label{group__cpp-rtos_ga8ecb4d06c7c8019c05f15e6971bbbb5d}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!````~MutexVarLock@{$\sim$MutexVarLock}}
+\index{````~MutexVarLock@{$\sim$MutexVarLock}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{$\sim$MutexVarLock()}{~MutexVarLock()}}
+{\footnotesize\ttfamily $\sim$\mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{group__cpp-rtos_ga9b0f56bcfe012b9a9084b6790812106c}\label{group__cpp-rtos_ga9b0f56bcfe012b9a9084b6790812106c}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!MutexVar@{MutexVar}}
+\index{MutexVar@{MutexVar}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{MutexVar()}{MutexVar()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1MutexVar}{Mutex\+Var}} (\begin{DoxyParamCaption}\item[{Args \&\&...}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Creates a mutex-\/protected variable which is initialized with the given constructor arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & The arguments to provide to the Var constructor. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{group__cpp-rtos_ga58ed9f1f6e6da87308feef7ec3a7a34d}\label{group__cpp-rtos_ga58ed9f1f6e6da87308feef7ec3a7a34d}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!try\_lock@{try\_lock}}
+\index{try\_lock@{try\_lock}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{try\_lock()}{try\_lock()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily std\+::optional$<$\mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$Var$>$ $>$ try\+\_\+lock (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Try to lock the mutex-\/protected variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Time to wait before the mutex becomes available, in milliseconds. A timeout of 0 can be used to poll the mutex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A std\+::optional which contains a \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}} providing access to the protected variable if locking is successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-rtos_gacd3bef91b2c35648f3c9cd41440d50a3}\label{group__cpp-rtos_gacd3bef91b2c35648f3c9cd41440d50a3}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!try\_lock@{try\_lock}}
+\index{try\_lock@{try\_lock}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{try\_lock()}{try\_lock()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily std\+::optional$<$\mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$Var$>$ $>$ try\+\_\+lock (\begin{DoxyParamCaption}\item[{const std\+::chrono\+::duration$<$ Rep, Period $>$ \&}]{rel\+\_\+time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Try to lock the mutex-\/protected variable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Time to wait before the mutex becomes available. A timeout of 0 can be used to poll the mutex.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A std\+::optional which contains a \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}} providing access to the protected variable if locking is successful. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-rtos_ga6e111f3c307aa2c5b488301c1970fa7a}\label{group__cpp-rtos_ga6e111f3c307aa2c5b488301c1970fa7a}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!lock@{lock}}
+\index{lock@{lock}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{lock()}{lock()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}}$<$Var$>$ lock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Lock the mutex-\/protected variable, waiting indefinitely. 
+
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{classpros_1_1MutexVarLock}{Mutex\+Var\+Lock}} providing access to the protected variable. 
+\end{DoxyReturn}
 
 
 \doxysubsection{Variable Documentation}
@@ -1163,4 +1272,13 @@ True if the lock was acquired succesfully, otherwise false.
 \index{is\_steady@{is\_steady}!RTOS Facilities C API@{RTOS Facilities C API}}
 \doxysubsubsection{\texorpdfstring{is\_steady}{is\_steady}}
 {\footnotesize\ttfamily const bool is\+\_\+steady = true}
+
+
+
+\doxysubsection{Friends}
+\mbox{\Hypertarget{group__cpp-rtos_ga9bbf34e1d28b21f16c66842dac3d767c}\label{group__cpp-rtos_ga9bbf34e1d28b21f16c66842dac3d767c}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!MutexVar$<$ Var $>$@{MutexVar$<$ Var $>$}}
+\index{MutexVar$<$ Var $>$@{MutexVar$<$ Var $>$}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{MutexVar$<$ Var $>$}{MutexVar< Var >}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classpros_1_1MutexVar}{Mutex\+Var}}$<$ Var $>$\hspace{0.3cm}{\ttfamily [friend]}}
 

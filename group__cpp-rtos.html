@@ -280,6 +280,41 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga41a3a30923d0f6c41a70812ef37db9bb" class="m-doc-self">try_lock_until</a>(</span><span class="m-doc-wrap">const std::chrono::time_point&lt;Clock, Duration&gt;&amp; abs_time)</span></span>
             </dt>
             <dd>Takes and locks a mutex, waiting until a specified time.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaca6d9f04333182283c3c0a2408260abf" class="m-doc-self">MutexVarLock</a>(</span><span class="m-doc-wrap"><a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a>&amp; mutex,
+              Var&amp; var) <span class="m-label m-danger">private</span> <span class="m-label m-primary">constexpr</span></span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">Var&amp; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6cf4c37d2fec1e06a43d8db94c8cb232" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-primary">constexpr</span></span></span>
+            </dt>
+            <dd>Accesses the value of the mutex-protected variable.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">Var* </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9f9e8ece2b057b7a9eff8ea479477621" class="m-doc-self">operator-&gt;</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-primary">constexpr</span></span></span>
+            </dt>
+            <dd>Accesses the value of the mutex-protected variable.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8ecb4d06c7c8019c05f15e6971bbbb5d" class="m-doc-self">~MutexVarLock</a>(</span><span class="m-doc-wrap">)</span></span>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename... Args&gt;</div>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9b0f56bcfe012b9a9084b6790812106c" class="m-doc-self">MutexVar</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args)</span></span>
+            </dt>
+            <dd>Creates a mutex-protected variable which is initialized with the given constructor arguments.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::optional&lt;MutexVarLock&lt;Var&gt;&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga58ed9f1f6e6da87308feef7ec3a7a34d" class="m-doc-self">try_lock</a>(</span><span class="m-doc-wrap">std::uint32_t timeout)</span></span>
+            </dt>
+            <dd>Try to lock the mutex-protected variable.</dd>
+            <dt>
+              <div class="m-doc-template">template&lt;typename Rep, typename Period&gt;</div>
+              <span class="m-doc-wrap-bumper">std::optional&lt;MutexVarLock&lt;Var&gt;&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacd3bef91b2c35648f3c9cd41440d50a3" class="m-doc-self">try_lock</a>(</span><span class="m-doc-wrap">const std::chrono::duration&lt;Rep, Period&gt;&amp; rel_time)</span></span>
+            </dt>
+            <dd>Try to lock the mutex-protected variable.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">MutexVarLock&lt;Var&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6e111f3c307aa2c5b488301c1970fa7a" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">)</span></span>
+            </dt>
+            <dd>Lock the mutex-protected variable, waiting indefinitely.</dd>
           </dl>
         </section>
         <section id="typedef-members">
@@ -316,6 +351,22 @@ V5</span></a>
             <dd><span></span></dd>
             <dt>
               std::shared_ptr&lt;std::remove_pointer_t&lt;<a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a>&gt;&gt; <a href="#gabbacf876372ff9592f15777f84cb2663" class="m-doc">mutex</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a>&amp; <a href="#ga0de6e797e848c12913598ded0392b411" class="m-doc">mutex</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              Var&amp; <a href="#gad711758133b390300640f7f6827ae146" class="m-doc">var</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              <a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a> <a href="#gae8b85b4f519a4945ba9ea43e9b503531" class="m-doc">mutex</a>
+            </dt>
+            <dd><span></span></dd>
+            <dt>
+              Var <a href="#ga3707f75fceb41470afe4843f653e93ff" class="m-doc">var</a>
             </dt>
             <dd><span></span></dd>
           </dl>
@@ -1251,6 +1302,113 @@ V5</span></a>
             </table>
 <p>Conforms to named requirement <a href="https://en.cppreference.com/w/cpp/named_req/TimedLockable">TimedLockable</a></p>
           </div></section>
+          <section class="m-doc-details" id="gaca6d9f04333182283c3c0a2408260abf"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaca6d9f04333182283c3c0a2408260abf" class="m-doc-self">MutexVarLock</a>(</span><span class="m-doc-wrap"><a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a>&amp; mutex,
+              Var&amp; var) <span class="m-label m-danger">private</span> <span class="m-label m-primary">constexpr</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="ga6cf4c37d2fec1e06a43d8db94c8cb232"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Var&amp; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6cf4c37d2fec1e06a43d8db94c8cb232" class="m-doc-self">operator*</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-primary">constexpr</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p>Accesses the value of the mutex-protected variable.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga9f9e8ece2b057b7a9eff8ea479477621"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">Var* </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9f9e8ece2b057b7a9eff8ea479477621" class="m-doc-self">operator-&gt;</a>(</span><span class="m-doc-wrap">) const <span class="m-label m-primary">constexpr</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p>Accesses the value of the mutex-protected variable.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga8ecb4d06c7c8019c05f15e6971bbbb5d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8ecb4d06c7c8019c05f15e6971bbbb5d" class="m-doc-self">~MutexVarLock</a>(</span><span class="m-doc-wrap">)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="ga9b0f56bcfe012b9a9084b6790812106c"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename... Args&gt;
+              </div>
+              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9b0f56bcfe012b9a9084b6790812106c" class="m-doc-self">MutexVar</a>(</span><span class="m-doc-wrap">Args &amp;&amp; ... args)</span></span>
+            </h3>
+            <p>Creates a mutex-protected variable which is initialized with the given constructor arguments.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">args</td>
+                  <td>The arguments to provide to the Var constructor.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ga58ed9f1f6e6da87308feef7ec3a7a34d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::optional&lt;MutexVarLock&lt;Var&gt;&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga58ed9f1f6e6da87308feef7ec3a7a34d" class="m-doc-self">try_lock</a>(</span><span class="m-doc-wrap">std::uint32_t timeout)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p>Try to lock the mutex-protected variable.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">timeout</td>
+                  <td>Time to wait before the mutex becomes available, in milliseconds. A timeout of 0 can be used to poll the mutex.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A std::optional which contains a <a href="classpros_1_1MutexVarLock.html" class="m-doc">MutexVarLock</a> providing access to the protected variable if locking is successful.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="gacd3bef91b2c35648f3c9cd41440d50a3"><div>
+            <h3>
+              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+              <div class="m-doc-template">
+                template&lt;typename Rep, typename Period&gt;
+              </div>
+              <span class="m-doc-wrap-bumper">std::optional&lt;MutexVarLock&lt;Var&gt;&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacd3bef91b2c35648f3c9cd41440d50a3" class="m-doc-self">try_lock</a>(</span><span class="m-doc-wrap">const std::chrono::duration&lt;Rep, Period&gt;&amp; rel_time)</span></span>
+            </h3>
+            <p>Try to lock the mutex-protected variable.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A std::optional which contains a <a href="classpros_1_1MutexVarLock.html" class="m-doc">MutexVarLock</a> providing access to the protected variable if locking is successful.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
+          <section class="m-doc-details" id="ga6e111f3c307aa2c5b488301c1970fa7a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">MutexVarLock&lt;Var&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6e111f3c307aa2c5b488301c1970fa7a" class="m-doc-self">lock</a>(</span><span class="m-doc-wrap">)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p>Lock the mutex-protected variable, waiting indefinitely.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A <a href="classpros_1_1MutexVarLock.html" class="m-doc">MutexVarLock</a> providing access to the protected variable.</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div></section>
         </section>
         <section>
           <h2>Typedef documentation</h2>
@@ -1302,6 +1460,34 @@ V5</span></a>
           <section class="m-doc-details" id="gabbacf876372ff9592f15777f84cb2663"><div>
             <h3>
               std::shared_ptr&lt;std::remove_pointer_t&lt;<a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a>&gt;&gt; <a href="#gabbacf876372ff9592f15777f84cb2663" class="m-doc-self">mutex</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="ga0de6e797e848c12913598ded0392b411"><div>
+            <h3>
+              <a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a>&amp; <a href="#ga0de6e797e848c12913598ded0392b411" class="m-doc-self">mutex</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="gad711758133b390300640f7f6827ae146"><div>
+            <h3>
+              Var&amp; <a href="#gad711758133b390300640f7f6827ae146" class="m-doc-self">var</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="gae8b85b4f519a4945ba9ea43e9b503531"><div>
+            <h3>
+              <a href="group__api-legacy.html#ga112166962b6604119c700da6ee189e2d" class="m-doc">Mutex</a> <a href="#gae8b85b4f519a4945ba9ea43e9b503531" class="m-doc-self">mutex</a>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
+            </h3>
+            <p><span></span></p>
+          </div></section>
+          <section class="m-doc-details" id="ga3707f75fceb41470afe4843f653e93ff"><div>
+            <h3>
+              Var <a href="#ga3707f75fceb41470afe4843f653e93ff" class="m-doc-self">var</a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8hpp.html">&lt;pros/rtos.hpp&gt;</a></div>
             </h3>
             <p><span></span></p>

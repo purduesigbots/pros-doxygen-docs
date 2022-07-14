@@ -45,10 +45,10 @@
 <codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Potentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Potentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -98,7 +98,7 @@
 <codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Potentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Potentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
@@ -128,7 +128,7 @@
 <codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Potentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Potentiometer<sp/>potentiometer<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_POTENTIOMETER_PORT<sp/>}});</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potentiometer.get_angle();</highlight></codeline>
@@ -169,7 +169,7 @@
 <para>Calibrates the potentiometer on the specified port and returns the new calibration value. </para>
         </briefdescription>
         <detaileddescription>
-<para>This method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the pros::ADIPotentiometer::get_value_calibrated() function. This function will return the difference between this value and the current sensor value when called.</para>
+<para>This method assumes that the potentiometer value is not actively changing at this time and computes an average from approximately 500 samples, 1 ms apart, for a 0.5 s period of calibration. The average value thus calculated is returned and stored for later calls to the <ref refid="group__cpp-adi_1ga074cb99ddc5bcf9b461c204a5a5fad2c" kindref="member">pros::adi::Potentiometer::get_value_calibrated()</ref> function. This function will return the difference between this value and the current sensor value when called.</para>
 <para>Do not use this function when the potentiometer value might be unstable (rotating the potentiometer)</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
 <para><simplesect kind="return"><para>The average potentiometer value computed by this function </para>
@@ -189,7 +189,7 @@
 <para>Gets the 12 bit calibrated value of a potentiometer port. </para>
         </briefdescription>
         <detaileddescription>
-<para>The pros::ADIPotentiometer::calibrate() function must be run first.</para>
+<para>The <ref refid="group__cpp-adi_1ga2eb97b12f7be6fd44db629dcfe9a4fc4" kindref="member">pros::adi::Potentiometer::calibrate()</ref> function must be run first.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a potentiometer</para>
 <para><simplesect kind="return"><para>The difference of the potentiometer value from its calibrated default from -4095 to 4095 </para>
 </simplesect>
