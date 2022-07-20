@@ -3,7 +3,7 @@
   <compounddef id="namespacepros_1_1competition" kind="namespace" language="C++">
     <compoundname>pros::competition</compoundname>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepros_1_1competition_1ad75e0e06e0817959c08798358eaa8ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1gad75e0e06e0817959c08798358eaa8ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
         <definition>std::uint8_t pros::competition::get_status</definition>
         <argsstring>(void)</argsstring>
@@ -15,15 +15,21 @@
 <para>Get the current status of the competition control. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}. </para>
+<para><simplesect kind="return"><para>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(pros::competition::get_status()<sp/>&amp;<sp/>COMPETITION_CONNECTED<sp/>==<sp/>true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Field<sp/>Control<sp/>is<sp/>Connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>LCD<sp/>Selector<sp/>code<sp/>or<sp/>similar</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="315" column="14" declfile="pros/misc.hpp" declline="315" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="525" column="14" declfile="pros/misc.hpp" declline="525" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1competition_1a88353a4f8e5e283558ee6504c54283af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga88353a4f8e5e283558ee6504c54283af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
         <definition>std::uint8_t pros::competition::is_autonomous</definition>
         <argsstring>(void)</argsstring>
@@ -34,12 +40,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is in autonomous mode, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!pros::competition::is_autonomous())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>to<sp/>do<sp/>anything<sp/>until<sp/>autonomous<sp/>starts</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(pros::competition::is_autonomous())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>whatever<sp/>code<sp/>is<sp/>desired<sp/>to<sp/>just<sp/>execute<sp/>in<sp/>autonomous</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIO_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="316" column="14" declfile="pros/misc.hpp" declline="316" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="547" column="14" declfile="pros/misc.hpp" declline="547" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1competition_1aaf36367a2369390657f6bc4285f68c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1gaaf36367a2369390657f6bc4285f68c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
         <definition>std::uint8_t pros::competition::is_connected</definition>
         <argsstring>(void)</argsstring>
@@ -50,12 +72,21 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is connected to competition control, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(pros::competition::is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Field<sp/>Control<sp/>is<sp/>Connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>LCD<sp/>Selector<sp/>code<sp/>or<sp/>similar</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="317" column="14" declfile="pros/misc.hpp" declline="317" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="562" column="14" declfile="pros/misc.hpp" declline="562" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1competition_1a2d4f4555af4c45f7f82ea75e1223899b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga2d4f4555af4c45f7f82ea75e1223899b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
         <definition>std::uint8_t pros::competition::is_disabled</definition>
         <argsstring>(void)</argsstring>
@@ -66,16 +97,28 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is disabled, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!pros::competition::is_disabled())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>competition<sp/>tasks<sp/>(like<sp/>Lift<sp/>Control<sp/>or<sp/>similar)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task<sp/>(my_task_fn,<sp/>NULL,<sp/>TASK_PRIO_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="318" column="14" declfile="pros/misc.hpp" declline="318" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="580" column="14" declfile="pros/misc.hpp" declline="580" declcolumn="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/misc.hpp" line="308" column="21"/>
+    <location file="pros/misc.hpp" line="503" column="21"/>
   </compounddef>
 </doxygen>

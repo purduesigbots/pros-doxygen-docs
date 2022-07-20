@@ -1,0 +1,1330 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__c-rtos" kind="group">
+    <compoundname>c-rtos</compoundname>
+    <title>RTOS Facilities C API</title>
+    <innerfile refid="rtos_8h">rtos.h</innerfile>
+    <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
+      <sectiondef kind="user-defined">
+      <header>Functions</header>
+      <memberdef kind="function" id="group__c-llemu_1gaa247cd38039665b7ac4b0d0920b83c80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::millis</definition>
+        <argsstring>(void)</argsstring>
+        <name>millis</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the number of milliseconds since PROS initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of milliseconds since PROS initialized</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay_until(&amp;now,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="187" column="10" declfile="pros/rtos.h" declline="187" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gaea905a8de368ac9acc9ed04c66ebb84c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>uint64_t pros::c::micros</definition>
+        <argsstring>(void)</argsstring>
+        <name>micros</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the number of microseconds since PROS initialized,. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of microseconds since PROS initialized</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint64_t<sp/>now<sp/>=<sp/>micros();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay_until(&amp;now,<sp/>2000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="205" column="10" declfile="pros/rtos.h" declline="205" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gab7f6e243b717091fec2bac6405bd3d56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+        <definition>task_t pros::c::task_create</definition>
+        <argsstring>(task_fn_t function, void *const parameters, uint32_t prio, const uint16_t stack_depth, const char *const name)</argsstring>
+        <name>task_create</name>
+        <param>
+          <type><ref refid="kapi_8h_1afd273bc26dce33480b445457e89bfaeb" kindref="member">task_fn_t</ref></type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>void *const</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>prio</declname>
+        </param>
+        <param>
+          <type>const uint16_t</type>
+          <declname>stack_depth</declname>
+        </param>
+        <param>
+          <type>const char *const</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new task and add it to the list of tasks that are ready to run. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENOMEM - The stack cannot be used as the TCB was not created.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the task entry function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameters</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to memory that will be used as a parameter for the task being created. This memory should not typically come from stack, but rather from dynamically (i.e., malloc&apos;d) or statically allocated memory. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The priority at which the task should run. TASK_PRIO_DEFAULT plus/minus 1 or 2 is typically used. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stack_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of words (i.e. 4 * stack_depth) available on the task&apos;s stack. TASK_STACK_DEPTH_DEFAULT is typically sufficienct. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A descriptive name for the task. This is mainly used to facilitate debugging. The name may be up to 32 characters long.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A handle by which the newly created task can be referenced. If an error occurred, NULL will be returned and errno can be checked for hints as to why task_create failed.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="247" column="8" declfile="pros/rtos.h" declline="247" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga9f5bd026f982b738d8761c443af586da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_delete</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_delete</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Removes a task from the RTOS real time kernel&apos;s management. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The task being deleted will be removed from all ready, blocked, suspended and event lists.</para>
+<para>Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The handle of the task to be deleted. Passing NULL will cause the calling task to be deleted.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_delete(my_task);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="276" column="6" declfile="pros/rtos.h" declline="276" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga4954a1ed8e37fd9b758ff98bf3ecf7d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_delay</definition>
+        <argsstring>(const uint32_t milliseconds)</argsstring>
+        <name>task_delay</name>
+        <param>
+          <type>const uint32_t</type>
+          <declname>milliseconds</declname>
+        </param>
+        <briefdescription>
+<para>Delays a task for a given number of milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <ref refid="group__c-llemu_1ga151eaf730a10d101bff15013a76b9aa8" kindref="member">task_delay_until()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>milliseconds</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of milliseconds to wait (1000 milliseconds per second)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="298" column="6" declfile="pros/rtos.h" declline="298" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga6a62f5325d65f95436762552df547d73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::delay</definition>
+        <argsstring>(const uint32_t milliseconds)</argsstring>
+        <name>delay</name>
+        <param>
+          <type>const uint32_t</type>
+          <declname>milliseconds</declname>
+        </param>
+        <briefdescription>
+<para>Gets the number of milliseconds since PROS initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The number of milliseconds since PROS initialized</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay_until(&amp;now,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="300" column="6" declfile="pros/rtos.h" declline="300" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga151eaf730a10d101bff15013a76b9aa8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_delay_until</definition>
+        <argsstring>(uint32_t *const prev_time, const uint32_t delta)</argsstring>
+        <name>task_delay_until</name>
+        <param>
+          <type>uint32_t *const</type>
+          <declname>prev_time</declname>
+        </param>
+        <param>
+          <type>const uint32_t</type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+<para>Delays a task until a specified time. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function can be used by periodic tasks to ensure a constant execution frequency.</para>
+<para>The task will be woken up at the time *prev_time + delta, and *prev_time will be updated to reflect the time at which the task will unblock.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>prev_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to the location storing the setpoint time. This should typically be initialized to the return value of <ref refid="group__c-llemu_1gaa247cd38039665b7ac4b0d0920b83c80" kindref="member">millis()</ref>. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>delta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of milliseconds to wait (1000 milliseconds per second)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay_until(&amp;now,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="326" column="6" declfile="pros/rtos.h" declline="326" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gab49c228af50a4677d45e4622fb5f982b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::task_get_priority</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_get_priority</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Gets the priority of the specified task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to check</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The priority of the task</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Task<sp/>Priority:<sp/>%d\n&quot;,<sp/>task_get_priority(my_task));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="350" column="10" declfile="pros/rtos.h" declline="350" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga6f4a1c359ab23c7811ed524aa8f71e06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_set_priority</definition>
+        <argsstring>(task_t task, uint32_t prio)</argsstring>
+        <name>task_set_priority</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>prio</declname>
+        </param>
+        <briefdescription>
+<para>Sets the priority of the specified task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If the specified task&apos;s state is available to be scheduled (e.g. not blocked) and new priority is higher than the currently running task, a context switch may occur.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new priority of the task</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_set_priority(my_task,<sp/>TASK_PRIORITY_DEFAULT<sp/>+<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="377" column="6" declfile="pros/rtos.h" declline="377" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga2e78836b08bab39de392cc6583383c5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>task_state_e_t</type>
+        <definition>task_state_e_t pros::c::task_get_state</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_get_state</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Gets the state of the specified task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to check</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The state of the task</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Task&apos;s<sp/>State:<sp/>%d\n&quot;,<sp/>task_get_state(my_task));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="401" column="16" declfile="pros/rtos.h" declline="401" declcolumn="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga03b6c85287d209a26f882813f3a29eee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_suspend</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_suspend</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Suspends the specified task, making it ineligible to be scheduled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to suspend</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Notify<sp/>me!<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_suspend(my_task);<sp/>//<sp/>The<sp/>task<sp/>will<sp/>no<sp/>longer<sp/>execute</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_resume(my_task);<sp/>//<sp/>The<sp/>task<sp/>will<sp/>resume<sp/>execution</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="425" column="6" declfile="pros/rtos.h" declline="425" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gaf44f1148d2f7ede99ebd023479812fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_resume</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_resume</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Resumes the specified task, making it eligible to be scheduled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to resume</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_suspend(my_task);<sp/>//<sp/>The<sp/>task<sp/>will<sp/>no<sp/>longer<sp/>execute</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_resume(my_task);<sp/>//<sp/>The<sp/>task<sp/>will<sp/>resume<sp/>execution</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="449" column="6" declfile="pros/rtos.h" declline="449" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gabb3a36bf47f6df9c981b1d585b922497" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::task_get_count</definition>
+        <argsstring>(void)</argsstring>
+        <name>task_get_count</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</para>
+<para><simplesect kind="return"><para>The number of tasks that are currently being managed by the kernel.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Number<sp/>of<sp/>Running<sp/>Tasks:<sp/>%d\n&quot;,<sp/>task_get_count());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="473" column="10" declfile="pros/rtos.h" declline="473" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga1000d8e18af587837b65ab74b79d1cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>char* pros::c::task_get_name</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_get_name</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Gets the name of the specified task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to check</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pointer to the name of the task</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Task<sp/>Name:<sp/>%d\n&quot;,<sp/>task_get_name(my_task));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="497" column="6" declfile="pros/rtos.h" declline="497" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gace3de5c48a2d91b9843ac9bd62a62d91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+        <definition>task_t pros::c::task_get_by_name</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>task_get_by_name</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Gets a task handle from the specified name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The operation takes a relatively long time and should be used sparingly.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name to query</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A task handle with a matching name, or NULL if none were found.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>other<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_delete(task_get_by_name(&quot;My<sp/>Task&quot;));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="524" column="8" declfile="pros/rtos.h" declline="524" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga663301f01d0cc8ecfd238fbe1346fc4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+        <definition>task_t pros::c::task_get_current</definition>
+        <argsstring>()</argsstring>
+        <name>task_get_current</name>
+        <briefdescription>
+<para>Get the currently running task handle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This could be useful if a task wants to tell another task about itself.</para>
+<para><simplesect kind="return"><para>The currently running task handle.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>this_task<sp/>=<sp/>task_get_current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(task_get_state(this_take)<sp/>==<sp/>E_TASK_STATE_RUNNING)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;This<sp/>task<sp/>is<sp/>currently<sp/>running\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="548" column="8" declfile="pros/rtos.h" declline="548" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gaf69af2a08ca85bd16fa3d1b75dbcf790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::task_notify</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_notify</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Sends a simple notification to task and increments the notification counter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to notify</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Always returns true.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Notify<sp/>me!<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_notify(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="580" column="10" declfile="pros/rtos.h" declline="580" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga9fa0dd52656774090c0005eb43ef2827" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::task_join</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_join</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Utilizes task notifications to wait until specified task is complete and deleted, then continues to execute the program. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Analogous to std::thread::join in C++.</para>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The handle of the task to wait on.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(1,<sp/>&quot;%s<sp/>running&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(2,<sp/>&quot;End<sp/>of<sp/>%s&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(0,<sp/>&quot;Running<sp/>task.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_join(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(3,<sp/>&quot;Task<sp/>completed.&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="612" column="6" declfile="pros/rtos.h" declline="612" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gaf21b3326026e04f277e85236f4ff503a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::task_notify_ext</definition>
+        <argsstring>(task_t task, uint32_t value, notify_action_e_t action, uint32_t *prev_value)</argsstring>
+        <name>task_notify_ext</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>notify_action_e_t</type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>prev_value</declname>
+        </param>
+        <briefdescription>
+<para>Sends a notification to a task, optionally performing some action. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will also retrieve the value of the notification in the target task before modifying the notification value.</para>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to notify </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value used in performing the action </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An action to optionally perform on the receiving task&apos;s notification value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>prev_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to store the previous value of the target task&apos;s notification, may be NULL</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Dependent on the notification action. For NOTIFY_ACTION_NO_WRITE: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other NOTIFY_ACTION values: always return 0</para>
+</simplesect>
+<bold>Example</bold> <programlisting></programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="643" column="10" declfile="pros/rtos.h" declline="643" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga15f1230bbc0fe029caf775a393b4a897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t pros::c::task_notify_take</definition>
+        <argsstring>(bool clear_on_exit, uint32_t timeout)</argsstring>
+        <name>task_notify_take</name>
+        <param>
+          <type>bool</type>
+          <declname>clear_on_exit</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Waits for a notification to be nonzero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>clear_on_exit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true (1), then the notification value is cleared. If false (0), then the notification value is decremented. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Specifies the amount of time to be spent waiting for a notification to occur.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The value of the task&apos;s notification value before it is decremented or cleared</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Notify<sp/>me!<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_notify(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="680" column="10" declfile="pros/rtos.h" declline="680" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga82a2d584952478f46b9bc766395bb8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::task_notify_clear</definition>
+        <argsstring>(task_t task)</argsstring>
+        <name>task_notify_clear</name>
+        <param>
+          <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
+          <declname>task</declname>
+        </param>
+        <briefdescription>
+<para>Clears the notification for a task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>task</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The task to clear</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>False if there was not a notification waiting, true if there was</para>
+</simplesect>
+<bold>Example</bold> <programlisting></programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="698" column="6" declfile="pros/rtos.h" declline="698" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga92aa79cdc30ffd13f63a7ffeca64b06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+        <definition>mutex_t pros::c::mutex_create</definition>
+        <argsstring>(void)</argsstring>
+        <name>mutex_create</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Creates a mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
+<para><simplesect kind="return"><para>A handle to a newly created mutex. If an error occurred, NULL will be returned and errno can be checked for hints as to why mutex_create failed.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex_take(mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="721" column="9" declfile="pros/rtos.h" declline="721" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga49aa5444b488ff60fc458aea8172adc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_take</definition>
+        <argsstring>(mutex_t mutex, uint32_t timeout)</argsstring>
+        <name>mutex_take</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> to attempt to lock. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to wait before the mutex becomes available. A timeout of 0 can be used to poll the mutex. TIMEOUT_MAX can be used to block indefinitely.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex_take(mutex,<sp/>timeout);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="753" column="6" declfile="pros/rtos.h" declline="753" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1ga7f20ed94cee8e04d491743b4b34feda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_give</definition>
+        <argsstring>(mutex_t mutex)</argsstring>
+        <name>mutex_give</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <briefdescription>
+<para>Unlocks a mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> to unlock.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex_take(mutex,<sp/>timeout);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="780" column="6" declfile="pros/rtos.h" declline="780" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-llemu_1gaf5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::mutex_delete</definition>
+        <argsstring>(mutex_t mutex)</argsstring>
+        <name>mutex_delete</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <briefdescription>
+<para>Deletes a mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> to unlock.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
+<codeline><highlight class="normal">mutex_take(mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
+<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Delete<sp/>the<sp/>mutex</highlight></codeline>
+<codeline><highlight class="normal">mutex_delete(mutex);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="802" column="6" declfile="pros/rtos.h" declline="802" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Macros</header>
+      <memberdef kind="define" id="group__c-rtos_1ga87892f18571e88eba7fbe758759cac05" prot="public" static="no">
+        <name>TASK_PRIORITY_MAX</name>
+        <initializer>16</initializer>
+        <briefdescription>
+<para>The highest priority that can be assigned to a task. Beware of deadlock. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="49" column="9" bodyfile="pros/rtos.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1gae35baef65db45cef90a74266acb31b10" prot="public" static="no">
+        <name>TASK_PRIORITY_MIN</name>
+        <initializer>1</initializer>
+        <briefdescription>
+<para>The lowest priority that can be assigned to a task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This may cause severe performance problems and is generally not recommended. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="53" column="9" bodyfile="pros/rtos.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1ga3082a7e8f15691441dba683711bb823f" prot="public" static="no">
+        <name>TASK_PRIORITY_DEFAULT</name>
+        <initializer>8</initializer>
+        <briefdescription>
+<para>The default task priority, which should be used for most tasks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Default tasks such as <ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous()</ref> inherit this priority. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="57" column="9" bodyfile="pros/rtos.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1ga9ffb33b9e3714ca949d9f45dde3cbf8f" prot="public" static="no">
+        <name>TASK_STACK_DEPTH_DEFAULT</name>
+        <initializer>0x2000</initializer>
+        <briefdescription>
+<para>The recommended stack size for a new task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This stack size is used for default tasks such as <ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous()</ref>. This equates to 32,768 bytes, or 128 times the default stack size for a task in PROS 2. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="62" column="9" bodyfile="pros/rtos.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1gafa551bbf9a2333b9241b2e99530a8767" prot="public" static="no">
+        <name>TASK_STACK_DEPTH_MIN</name>
+        <initializer>0x200</initializer>
+        <briefdescription>
+<para>The minimal stack size for a task. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This equates to 2048 bytes, or 8 times the default stack size for a task in PROS 2. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="66" column="9" bodyfile="pros/rtos.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1ga6d22565b4bdfe36c8f8a0a376e565460" prot="public" static="no">
+        <name>TASK_NAME_MAX_LEN</name>
+        <initializer>32</initializer>
+        <briefdescription>
+<para>The maximum number of characters allowed in a task&apos;s name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="69" column="9" bodyfile="pros/rtos.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__c-rtos_1ga9146d5b264ff64b573607d62fc479c3f" prot="public" static="no">
+        <name>TIMEOUT_MAX</name>
+        <initializer>((uint32_t)0xffffffffUL)</initializer>
+        <briefdescription>
+<para>The maximum timeout value that can be given to, for instance, a mutex grab. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="72" column="9" bodyfile="pros/rtos.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__c-rtos_1ga23d5ffd47ed255206f177fe9d891335b" prot="public" static="no" strong="no">
+        <type></type>
+        <name>task_state_e_t</name>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564" prot="public">
+          <name>E_TASK_STATE_RUNNING</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The task is actively executing. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08" prot="public">
+          <name>E_TASK_STATE_READY</name>
+          <briefdescription>
+<para>The task exists and is available to run, but is not currently running. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953" prot="public">
+          <name>E_TASK_STATE_BLOCKED</name>
+          <briefdescription>
+<para>The task is delayed or blocked by a mutex, semaphore, or I/O operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c" prot="public">
+          <name>E_TASK_STATE_SUSPENDED</name>
+          <briefdescription>
+<para>The task is supended using task_suspend. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d" prot="public">
+          <name>E_TASK_STATE_DELETED</name>
+          <briefdescription>
+<para>The task has been deleted using task_delete. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0" prot="public">
+          <name>E_TASK_STATE_INVALID</name>
+          <briefdescription>
+<para>The task handle does not point to a current or past task. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="91" column="14" bodyfile="pros/rtos.h" bodystart="91" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-rtos_1ga42ea99b5e5d38da0b98154609cf6c570" prot="public" static="no" strong="no">
+        <type></type>
+        <name>notify_action_e_t</name>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f" prot="public">
+          <name>E_NOTIFY_ACTION_NONE</name>
+          <briefdescription>
+<para>The task’s notification value will not be touched. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02" prot="public">
+          <name>E_NOTIFY_ACTION_BITS</name>
+          <briefdescription>
+<para>The task’s notification value will be bitwise ORed with the new value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155" prot="public">
+          <name>E_NOTIFY_ACTION_INCR</name>
+          <briefdescription>
+<para>The task’s notification value will be incremented by one, effectively using it as a notification counter. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89" prot="public">
+          <name>E_NOTIFY_ACTION_OWRITE</name>
+          <briefdescription>
+<para>The task’s notification value will be unconditionally set to the new value. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-rtos_1gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5" prot="public">
+          <name>E_NOTIFY_ACTION_NO_OWRITE</name>
+          <briefdescription>
+<para>The task’s notification value will be set to the new value if the task does not already have a pending notification. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="109" column="14" bodyfile="pros/rtos.h" bodystart="109" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__c-rtos_1ga1d7e0825b8d8876e8cd8ece3f9115293" prot="public" static="no">
+        <type>void *</type>
+        <definition>typedef void* task_t</definition>
+        <argsstring></argsstring>
+        <name>task_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="80" column="14" bodyfile="pros/rtos.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__c-rtos_1gaece0aa29b1f1538115228d2197239f98" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* task_fn_t) (void *)</definition>
+        <argsstring>)(void *)</argsstring>
+        <name>task_fn_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="86" column="9" bodyfile="pros/rtos.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__c-rtos_1gab15ea84d90257d70b44e8e04519864d2" prot="public" static="no">
+        <type>void *</type>
+        <definition>typedef void* mutex_t</definition>
+        <argsstring></argsstring>
+        <name>mutex_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="153" column="14" bodyfile="pros/rtos.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__c-rtos_1gad028cb03c935557184a71a6c53915065" prot="public" static="no">
+        <name>CURRENT_TASK</name>
+        <initializer>((<ref refid="group__c-rtos_1ga1d7e0825b8d8876e8cd8ece3f9115293" kindref="member">pros::task_t</ref>)NULL)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="159" column="9" bodyfile="pros/rtos.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Additional example code for this module can be found in its <ref refid="multitasking" kindref="compound">Tutorial.</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
