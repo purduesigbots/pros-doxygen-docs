@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1ADIEncoder" kind="class" language="C++" prot="public">
+    <compoundname>pros::ADIEncoder</compoundname>
+    <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">ADIPort</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpros_1_1ADIEncoder_1a8e4997e865213b80c2b807f94d4f2d5c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIEncoder</definition>
+        <argsstring>(std::uint8_t adi_port_top, std::uint8_t adi_port_bottom, bool reversed=false)</argsstring>
+        <name>ADIEncoder</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_top</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_bottom</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an Encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port_top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;top&quot; wire from the encoder sensor with the removable cover side up </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adi_port_bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in the opposite direction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="481" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIEncoder_1a1866c137d27015ab24a4ba7554118353" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIEncoder</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple, bool reversed=false)</argsstring>
+        <name>ADIEncoder</name>
+        <param>
+          <type><ref refid="namespacepros_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+          <declname>port_tuple</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an Encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the &quot;top&quot; wire from the encoder sensor with the removable cover side up, and the &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in theopposite direction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="498" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIEncoder_1ac92589176d26914068b37bb9d6afba7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t reset</definition>
+        <argsstring>() const</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Sets the encoder value to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="513" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIEncoder_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the number of ticks recorded by the encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>There are 360 ticks in one revolution.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>The signed and cumulative number of counts since the last start or reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="527" column="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+      <node id="1">
+        <label>ADIEncoder</label>
+        <link refid="classpros_1_1ADIEncoder"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+      <node id="1">
+        <label>ADIEncoder</label>
+        <link refid="classpros_1_1ADIEncoder"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="464" column="33" bodyfile="pros/adi.hpp" bodystart="464" bodyend="528"/>
+    <listofallmembers>
+      <member refid="classpros_1_1ADIEncoder_1a8e4997e865213b80c2b807f94d4f2d5c" prot="public" virt="non-virtual"><scope>pros::ADIEncoder</scope><name>ADIEncoder</name></member>
+      <member refid="classpros_1_1ADIEncoder_1a1866c137d27015ab24a4ba7554118353" prot="public" virt="non-virtual"><scope>pros::ADIEncoder</scope><name>ADIEncoder</name></member>
+      <member refid="classpros_1_1ADIEncoder_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIEncoder</scope><name>get_value</name></member>
+      <member refid="classpros_1_1ADIEncoder_1ac92589176d26914068b37bb9d6afba7b" prot="public" virt="non-virtual"><scope>pros::ADIEncoder</scope><name>reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
