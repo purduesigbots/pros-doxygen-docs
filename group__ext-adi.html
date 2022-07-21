@@ -164,11 +164,17 @@ V5</span></a>
             </dt>
             <dd>Sets the digital value (1 or 0) of a port configured as a digital output.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gafbc569ddf47381965a0abdecfcd927bf" class="m-doc-self">ext_adi_pin_mode</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
+              uint8_t adi_port,
+              uint8_t mode)</span></span>
+            </dt>
+            <dd>Configures the port as an input or output with a variety of settings.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga730496b89cb6864e53ade872dfbe479e" class="m-doc-self">ext_adi_motor_set</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
               uint8_t adi_port,
               int8_t speed)</span></span>
             </dt>
-            <dd>Configures the port as an input or output with a variety of settings.</dd>
+            <dd>Sets the speed of the motor on the given port.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga50b5f4f2d806d8725ec6feb59a13d2b2" class="m-doc-self">ext_adi_motor_get</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
               uint8_t adi_port)</span></span>
@@ -332,7 +338,7 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">ext_adi_port_set_config</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span><span class="w"></span>
-<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Port Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_get_value</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Port Value: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_get_value</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0a0ac030c3de3ac6374ef6c5ca9e4bc3"><div>
@@ -598,11 +604,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If the port is configured as some other mode, the digital value which reflects the current state of the port is returned, which may or may not differ from the currently set value. The return value is undefined for ports configured as any mode other than a Digital Input.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">define</span><span class="w"> </span><span class="n">ADI_EXPANDER_PORT</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="err">#</span><span class="n">define</span><span class="w"> </span><span class="n">DIGITAL_SENSOR_PORT</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<p>If the port is configured as some other mode, the digital value which reflects the current state of the port is returned, which may or may not differ from the currently set value. The return value is undefined for ports configured as any mode other than a Digital Input.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as a digital input</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20</span>
+<span class="cp">#define DIGITAL_SENSOR_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="n">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Sensor</span><span class="w"> </span><span class="n">Value</span><span class="o">:</span><span class="w"> </span><span class="o">%</span><span class="n">dn</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_digital_read</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Value: %dn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_digital_read</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">));</span><span class="w"></span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
@@ -693,11 +700,11 @@ V5</span></a>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
           </div></section>
-          <section class="m-doc-details" id="ga730496b89cb6864e53ade872dfbe479e"><div>
+          <section class="m-doc-details" id="gafbc569ddf47381965a0abdecfcd927bf"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga730496b89cb6864e53ade872dfbe479e" class="m-doc-self">ext_adi_motor_set</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gafbc569ddf47381965a0abdecfcd927bf" class="m-doc-self">ext_adi_pin_mode</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
               uint8_t adi_port,
-              int8_t speed)</span></span>
+              uint8_t mode)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="ext__adi_8h.html">&lt;pros/ext_adi.h&gt;</a></div>
             </h3>
             <p>Configures the port as an input or output with a variety of settings.</p>
@@ -715,8 +722,8 @@ V5</span></a>
                   <td>The ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
                 </tr>
                 <tr>
-                  <td>speed</td>
-                  <td></td>
+                  <td>mode</td>
+                  <td>One of INPUT, INPUT_ANALOG, INPUT_FLOATING, OUTPUT, or OUTPUT_OD</td>
                 </tr>
               </tbody>
               <tfoot>
@@ -726,47 +733,54 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="w">   </span><span class="cp">#define ADI_EXPANDER_PORT 20</span>
-<span class="w">   </span><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
-<span class="w">  </span>
-<span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">     </span><span class="n">ext_adi_pin_mode</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_ANALOG</span><span class="p">);</span><span class="w"></span>
-<span class="w">   </span><span class="p">}</span><span class="w"></span>
-<span class="w">   </span><span class="err">\</span><span class="n">encode</span><span class="w"></span>
-<span class="w">  </span><span class="o">/</span><span class="w"></span>
-<span class="kt">int32_t</span><span class="w"> </span><span class="n">ext_adi_pin_mode</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">smart_port</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">adi_port</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span><span class="w"></span>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20</span>
+<span class="cp">#define ANALOG_SENSOR_PORT 1</span>
 
-<span class="cm">/**</span>
-<span class="cm"> * Sets the speed of the motor on the given port.</span>
-<span class="cm"> *</span>
-<span class="cm"> * This function uses the following values of errno when an error state is</span>
-<span class="cm"> * reached:</span>
-<span class="cm"> * ENXIO - Either the ADI port value or the smart port value is not within its</span>
-<span class="cm"> *     valid range (ADI port: 1-8, &#39;a&#39;-&#39;h&#39;, or &#39;A&#39;-&#39;H&#39;; smart port: 1-21).</span>
-<span class="cm"> * EADDRINUSE - The port is not configured as an motor</span>
-<span class="cm"> *</span>
-<span class="cm"> * \param smart_port</span>
-<span class="cm"> *        The smart port number that the ADI Expander is in</span>
-<span class="cm"> * \param adi_port</span>
-<span class="cm"> *        The ADI port number (from 1-8, &#39;a&#39;-&#39;h&#39;, &#39;A&#39;-&#39;H&#39;) to configure</span>
-<span class="cm"> * \param speed</span>
-<span class="cm"> *        The new signed speed; -127 is full reverse and 127 is full forward,</span>
-<span class="cm"> *        with 0 being off</span>
-<span class="cm"> *</span>
-<span class="cm"> * \return 1 if the operation was successful or PROS_ERR if the operation</span>
-<span class="cm"> * failed, setting errno.</span>
-<span class="cm"> *</span>
-<span class="cm"> * \b Example</span>
-<span class="cm"> * \code</span>
-<span class="cm"> * #define ADI_EXPANDER_PORT 20</span>
-<span class="cm"> * #define MOTOR_PORT 1</span>
-<span class="cm"> *</span>
-<span class="cm"> * void opcontrol() {</span>
-<span class="cm"> *   ext_adi_motor_set(ADI_EXPANDER_PORT, MOTOR_PORT, 127); // Go full speed forward</span>
-<span class="cm"> *   delay(1000);</span>
-<span class="cm"> *   ext_adi_motor_set(ADI_EXPANDER_PORT, MOTOR_PORT, 0); // Stop the motor</span>
-<span class="cm"> * }</span>
-<span class="cm"> * </span></pre>
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ext_adi_pin_mode</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT_ANALOG</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga730496b89cb6864e53ade872dfbe479e"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga730496b89cb6864e53ade872dfbe479e" class="m-doc-self">ext_adi_motor_set</a>(</span><span class="m-doc-wrap">uint8_t smart_port,
+              uint8_t adi_port,
+              int8_t speed)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="ext__adi_8h.html">&lt;pros/ext_adi.h&gt;</a></div>
+            </h3>
+            <p>Sets the speed of the motor on the given port.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">smart_port</td>
+                  <td>The smart port number that the ADI Expander is in</td>
+                </tr>
+                <tr>
+                  <td>adi_port</td>
+                  <td>The ADI port number (from 1-8, &#x27;a&#x27;-&#x27;h&#x27;, &#x27;A&#x27;-&#x27;H&#x27;) to configure</td>
+                </tr>
+                <tr>
+                  <td>speed</td>
+                  <td>The new signed speed; -127 is full reverse and 127 is full forward, with 0 being off</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20</span>
+<span class="cp">#define MOTOR_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">ext_adi_motor_set</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">ext_adi_motor_set</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
+<span class="p">}</span><span class="w"></span></pre>
           </div></section>
           <section class="m-doc-details" id="ga50b5f4f2d806d8725ec6feb59a13d2b2"><div>
             <h3>
@@ -796,11 +810,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20 #define MOTOR_PORT 1</span>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as an motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20</span>
+<span class="cp">#define MOTOR_PORT 1</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">ext_adi_motor_set</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Commanded</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">Power</span><span class="o">:</span><span class="w"> </span><span class="o">%</span><span class="n">dn</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_motor_get</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">));</span><span class="w"> </span><span class="c1">// Will display 127</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Commanded Motor Power: %dn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_motor_get</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">));</span><span class="w"> </span><span class="c1">// Will display 127</span>
 <span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="n">ext_adi_motor_set</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">MOTOR_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
 <span class="p">}</span><span class="w"></span></pre>
@@ -866,12 +881,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>There are 360 ticks in one revolution.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20 #define PORT_TOP 1 #define PORT_BOTTOM 2</span>
+<p>There are 360 ticks in one revolution.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &#x27;a&#x27;-&#x27;h&#x27;, or &#x27;A&#x27;-&#x27;H&#x27;; smart port: 1-21). EADDRINUSE - The port is not configured as an encoder</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ADI_EXPANDER_PORT 20</span>
+<span class="cp">#define PORT_TOP 1</span>
+<span class="cp">#define PORT_BOTTOM 2</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">  </span><span class="n">ext_adi_encoder_t</span><span class="w"> </span><span class="n">enc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ext_adi_encoder_init</span><span class="p">(</span><span class="n">ADI_EXPANDER_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_TOP</span><span class="p">,</span><span class="w"> </span><span class="n">PORT_BOTTOM</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="err">“</span><span class="n">Encoder</span><span class="w"> </span><span class="n">Value</span><span class="o">:</span><span class="w"> </span><span class="o">%</span><span class="n">dn</span><span class="err">”</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Encoder Value: %dn&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ext_adi_encoder_get</span><span class="p">(</span><span class="n">enc</span><span class="p">));</span><span class="w"></span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
 <span class="w">  </span><span class="p">}</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span></pre>
