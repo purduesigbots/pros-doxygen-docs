@@ -39,10 +39,8 @@ int32\+\_\+t \mbox{\hyperlink{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}
 \begin{DoxyCompactList}\small\item\em Gets a rising-\/edge case for a digital button press. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}{ext\+\_\+adi\+\_\+digital\+\_\+write}} (uint8\+\_\+t smart\+\_\+port, uint8\+\_\+t adi\+\_\+port, bool value)
 \begin{DoxyCompactList}\small\item\em Sets the digital value (1 or 0) of a port configured as a digital output. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__ext-adi_gafbc569ddf47381965a0abdecfcd927bf}{ext\+\_\+adi\+\_\+pin\+\_\+mode}} (uint8\+\_\+t smart\+\_\+port, uint8\+\_\+t adi\+\_\+port, uint8\+\_\+t mode)
-\begin{DoxyCompactList}\small\item\em Configures the port as an input or output with a variety of settings. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}{ext\+\_\+adi\+\_\+motor\+\_\+set}} (uint8\+\_\+t smart\+\_\+port, uint8\+\_\+t adi\+\_\+port, int8\+\_\+t speed)
-\begin{DoxyCompactList}\small\item\em Sets the speed of the motor on the given port. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Configures the port as an input or output with a variety of settings. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}{ext\+\_\+adi\+\_\+motor\+\_\+get}} (uint8\+\_\+t smart\+\_\+port, uint8\+\_\+t adi\+\_\+port)
 \begin{DoxyCompactList}\small\item\em Gets the last set speed of the motor on the given port. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}{ext\+\_\+adi\+\_\+motor\+\_\+stop}} (uint8\+\_\+t smart\+\_\+port, uint8\+\_\+t adi\+\_\+port)
@@ -155,9 +153,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The A\+DI configuration for the given port 
+The A\+DI configuration for the given port
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga69502c412a1939551aab0f764ef14ebe}\label{group__ext-adi_ga69502c412a1939551aab0f764ef14ebe}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}{ext\_adi\_port\_set\_config}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ggad5f9ddf0fd9de73c4b23fa5485144b7fad0a7bcc9cc1afab74574c968e398218e}{E\_ADI\_ANALOG\_IN}});}
+\DoxyCodeLine{  \textcolor{comment}{// Displays the value of E\_ADI\_ANALOG\_IN}}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Port Type: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga529d923cac85867a1fc20e1b385bb8b2}{ext\_adi\_port\_get\_config}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga69502c412a1939551aab0f764ef14ebe}\label{group__ext-adi_ga69502c412a1939551aab0f764ef14ebe}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_port\_get\_value@{ext\_adi\_port\_get\_value}}
 \index{ext\_adi\_port\_get\_value@{ext\_adi\_port\_get\_value}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_port\_get\_value()}{ext\_adi\_port\_get\_value()}}
@@ -177,9 +186,19 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The value stored for the given port 
+The value stored for the given port
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}\label{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}{ext\_adi\_port\_set\_config}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ggad5f9ddf0fd9de73c4b23fa5485144b7fad0a7bcc9cc1afab74574c968e398218e}{E\_ADI\_ANALOG\_IN}});}
+\DoxyCodeLine{ printf(\textcolor{stringliteral}{"Port Value: \%d\(\backslash\)n"}, ext\_adi\_get\_value(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}\label{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_port\_set\_config@{ext\_adi\_port\_set\_config}}
 \index{ext\_adi\_port\_set\_config@{ext\_adi\_port\_set\_config}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_port\_set\_config()}{ext\_adi\_port\_set\_config()}}
@@ -201,9 +220,18 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga66bcb742f80b237401eebce4e6f509e8}\label{group__ext-adi_ga66bcb742f80b237401eebce4e6f509e8}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}{ext\_adi\_port\_set\_config}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ggad5f9ddf0fd9de73c4b23fa5485144b7fad0a7bcc9cc1afab74574c968e398218e}{E\_ADI\_ANALOG\_IN}});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga66bcb742f80b237401eebce4e6f509e8}\label{group__ext-adi_ga66bcb742f80b237401eebce4e6f509e8}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_port\_set\_value@{ext\_adi\_port\_set\_value}}
 \index{ext\_adi\_port\_set\_value@{ext\_adi\_port\_set\_value}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_port\_set\_value()}{ext\_adi\_port\_set\_value()}}
@@ -227,9 +255,19 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}\label{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DIGITAL\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga0a0ac030c3de3ac6374ef6c5ca9e4bc3}{ext\_adi\_port\_set\_config}}(ADI\_EXPANDER\_PORT, DIGITAL\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ggad5f9ddf0fd9de73c4b23fa5485144b7fa291cfb590ab68d822095e2047d0c6b19}{E\_ADI\_DIGITAL\_OUT}});}
+\DoxyCodeLine{  ext\_adi\_set\_value(ADI\_EXPANDER\_PORT, DIGITAL\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ga5bb885982ff66a2e0a0a45a8ee9c35e2}{HIGH}});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}\label{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_analog\_calibrate@{ext\_adi\_analog\_calibrate}}
 \index{ext\_adi\_analog\_calibrate@{ext\_adi\_analog\_calibrate}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_analog\_calibrate()}{ext\_adi\_analog\_calibrate()}}
@@ -253,9 +291,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The average sensor value computed by this function 
+The average sensor value computed by this function
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gad23c527e73c2008d5bf49030efa255ef}\label{group__ext-adi_gad23c527e73c2008d5bf49030efa255ef}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}{ext\_adi\_analog\_calibrate}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT);}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Calibrated Reading: \%d\(\backslash\)n"},}
+\DoxyCodeLine{        \mbox{\hyperlink{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}{ext\_adi\_analog\_read\_calibrated}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{  \textcolor{comment}{// All readings from then on will be calibrated}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gad23c527e73c2008d5bf49030efa255ef}\label{group__ext-adi_gad23c527e73c2008d5bf49030efa255ef}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_analog\_read@{ext\_adi\_analog\_read}}
 \index{ext\_adi\_analog\_read@{ext\_adi\_analog\_read}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_analog\_read()}{ext\_adi\_analog\_read()}}
@@ -277,9 +327,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V 
+The analog sensor value, where a value of 0 reflects an input voltage of nearly 0 V and a value of 4095 reflects an input voltage of nearly 5 V
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}\label{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Sensor Reading: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_gad23c527e73c2008d5bf49030efa255ef}{ext\_adi\_analog\_read}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}\label{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_analog\_read\_calibrated@{ext\_adi\_analog\_read\_calibrated}}
 \index{ext\_adi\_analog\_read\_calibrated@{ext\_adi\_analog\_read\_calibrated}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_analog\_read\_calibrated()}{ext\_adi\_analog\_read\_calibrated()}}
@@ -301,9 +363,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The difference of the sensor value from its calibrated default from -\/4095 to 4095 
+The difference of the sensor value from its calibrated default from -\/4095 to 4095
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga4e1d85f2e166adf83743b9fde5c504e8}\label{group__ext-adi_ga4e1d85f2e166adf83743b9fde5c504e8}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Sensor Reading: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga2dd9e7a9e761ed80088bcf7f44920a42}{ext\_adi\_analog\_read\_calibrated}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga4e1d85f2e166adf83743b9fde5c504e8}\label{group__ext-adi_ga4e1d85f2e166adf83743b9fde5c504e8}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_analog\_read\_calibrated\_HR@{ext\_adi\_analog\_read\_calibrated\_HR}}
 \index{ext\_adi\_analog\_read\_calibrated\_HR@{ext\_adi\_analog\_read\_calibrated\_HR}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_analog\_read\_calibrated\_HR()}{ext\_adi\_analog\_read\_calibrated\_HR()}}
@@ -327,9 +401,23 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The difference of the sensor value from its calibrated default from -\/16384 to 16384 
+The difference of the sensor value from its calibrated default from -\/16384 to 16384
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gad030dfc04f9d5adb0861f940472974f0}\label{group__ext-adi_gad030dfc04f9d5adb0861f940472974f0}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__ext-adi_gac7ce5918ef247fbfbebadb8b87417ced}{ext\_adi\_analog\_calibrate}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Sensor Reading: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga4e1d85f2e166adf83743b9fde5c504e8}{ext\_adi\_analog\_read\_calibrated\_HR}}(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gad030dfc04f9d5adb0861f940472974f0}\label{group__ext-adi_gad030dfc04f9d5adb0861f940472974f0}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_digital\_read@{ext\_adi\_digital\_read}}
 \index{ext\_adi\_digital\_read@{ext\_adi\_digital\_read}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_digital\_read()}{ext\_adi\_digital\_read()}}
@@ -351,9 +439,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the pin is H\+I\+GH, or false if it is L\+OW 
+True if the pin is H\+I\+GH, or false if it is L\+OW
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}\label{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{define ADI\_EXPANDER\_PORT 20 \#define DIGITAL\_SENSOR\_PORT 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(“Sensor Value: \%dn”, \mbox{\hyperlink{group__ext-adi_gad030dfc04f9d5adb0861f940472974f0}{ext\_adi\_digital\_read}}(ADI\_EXPANDER\_PORT, DIGITAL\_SENSOR\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}\label{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_digital\_get\_new\_press@{ext\_adi\_digital\_get\_new\_press}}
 \index{ext\_adi\_digital\_get\_new\_press@{ext\_adi\_digital\_get\_new\_press}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_digital\_get\_new\_press()}{ext\_adi\_digital\_get\_new\_press()}}
@@ -375,9 +474,23 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the button is pressed and had not been pressed the last time this function was called, 0 otherwise. 
+1 if the button is pressed and had not been pressed the last time this function was called, 0 otherwise.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}\label{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DIGITAL\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__ext-adi_gac5b25457c1f1277dd545b6fab326299c}{ext\_adi\_digital\_get\_new\_press}}(ADI\_EXPANDER\_PORT, DIGITAL\_SENSOR\_PORT)) \{}
+\DoxyCodeLine{      \textcolor{comment}{// Toggle pneumatics or other state operations}}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}\label{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_digital\_write@{ext\_adi\_digital\_write}}
 \index{ext\_adi\_digital\_write@{ext\_adi\_digital\_write}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_digital\_write()}{ext\_adi\_digital\_write()}}
@@ -401,13 +514,28 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gafbc569ddf47381965a0abdecfcd927bf}\label{group__ext-adi_gafbc569ddf47381965a0abdecfcd927bf}} 
-\index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_pin\_mode@{ext\_adi\_pin\_mode}}
-\index{ext\_adi\_pin\_mode@{ext\_adi\_pin\_mode}!ADI Expander C API@{ADI Expander C API}}
-\doxysubsubsection{\texorpdfstring{ext\_adi\_pin\_mode()}{ext\_adi\_pin\_mode()}}
-{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::ext\+\_\+adi\+\_\+pin\+\_\+mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{smart\+\_\+port,  }\item[{uint8\+\_\+t}]{adi\+\_\+port,  }\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DIGITAL\_SENSOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{bool} state = \mbox{\hyperlink{group__c-adi_gab811d8c6ff3a505312d3276590444289}{LOW}};}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    state != state;}
+\DoxyCodeLine{    \mbox{\hyperlink{group__ext-adi_ga638e7d47bbdde4b545be396d4cb20eea}{ext\_adi\_digital\_write}}(ADI\_EXPANDER\_PORT, DIGITAL\_SENSOR\_PORT, state);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5); \textcolor{comment}{// toggle the sensor value every 50ms}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}\label{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}} 
+\index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_motor\_set@{ext\_adi\_motor\_set}}
+\index{ext\_adi\_motor\_set@{ext\_adi\_motor\_set}!ADI Expander C API@{ADI Expander C API}}
+\doxysubsubsection{\texorpdfstring{ext\_adi\_motor\_set()}{ext\_adi\_motor\_set()}}
+{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::ext\+\_\+adi\+\_\+motor\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{smart\+\_\+port,  }\item[{uint8\+\_\+t}]{adi\+\_\+port,  }\item[{int8\+\_\+t}]{speed }\end{DoxyParamCaption})}
 
 
 
@@ -425,33 +553,53 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}\label{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}} 
-\index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_motor\_set@{ext\_adi\_motor\_set}}
-\index{ext\_adi\_motor\_set@{ext\_adi\_motor\_set}!ADI Expander C API@{ADI Expander C API}}
-\doxysubsubsection{\texorpdfstring{ext\_adi\_motor\_set()}{ext\_adi\_motor\_set()}}
-{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::ext\+\_\+adi\+\_\+motor\+\_\+set (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{smart\+\_\+port,  }\item[{uint8\+\_\+t}]{adi\+\_\+port,  }\item[{int8\+\_\+t}]{speed }\end{DoxyParamCaption})}
-
-
-
-Sets the speed of the motor on the given port. 
-
-This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ Either the A\+DI port value or the smart port value is not within its valid range (A\+DI port\+: 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, or \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}; smart port\+: 1-\/21). E\+A\+D\+D\+R\+I\+N\+U\+SE -\/ The port is not configured as an motor
-
-
-\begin{DoxyParams}{Parameters}
-{\em smart\+\_\+port} & The smart port number that the A\+DI Expander is in \\
-\hline
-{\em adi\+\_\+port} & The A\+DI port number (from 1-\/8, \textquotesingle{}a\textquotesingle{}-\/\textquotesingle{}h\textquotesingle{}, \textquotesingle{}A\textquotesingle{}-\/\textquotesingle{}H\textquotesingle{}) to configure \\
-\hline
-{\em speed} & The new signed speed; -\/127 is full reverse and 127 is full forward, with 0 being off\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
-\end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}\label{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{   \#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{   \#define ANALOG\_SENSOR\_PORT 1}}
+\DoxyCodeLine{  }
+\DoxyCodeLine{   \textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{     ext\_adi\_pin\_mode(ADI\_EXPANDER\_PORT, ANALOG\_SENSOR\_PORT, \mbox{\hyperlink{group__c-adi_ga877f7490feac007f3a904ece06afe87a}{INPUT\_ANALOG}});}
+\DoxyCodeLine{   \}}
+\DoxyCodeLine{   \(\backslash\)encode}
+\DoxyCodeLine{  /}
+\DoxyCodeLine{int32\_t ext\_adi\_pin\_mode(uint8\_t smart\_port, uint8\_t adi\_port, uint8\_t mode);}
+\DoxyCodeLine{\textcolor{comment}{}}
+\DoxyCodeLine{\textcolor{comment}{/**}}
+\DoxyCodeLine{\textcolor{comment}{ * Sets the speed of the motor on the given port.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * This function uses the following values of errno when an error state is}}
+\DoxyCodeLine{\textcolor{comment}{ * reached:}}
+\DoxyCodeLine{\textcolor{comment}{ * ENXIO -\/ Either the ADI port value or the smart port value is not within its}}
+\DoxyCodeLine{\textcolor{comment}{ *     valid range (ADI port: 1-\/8, 'a'-\/'h', or 'A'-\/'H'; smart port: 1-\/21).}}
+\DoxyCodeLine{\textcolor{comment}{ * EADDRINUSE -\/ The port is not configured as an motor}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)param smart\_port}}
+\DoxyCodeLine{\textcolor{comment}{ *        The smart port number that the ADI Expander is in}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)param adi\_port}}
+\DoxyCodeLine{\textcolor{comment}{ *        The ADI port number (from 1-\/8, 'a'-\/'h', 'A'-\/'H') to configure}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)param speed}}
+\DoxyCodeLine{\textcolor{comment}{ *        The new signed speed; -\/127 is full reverse and 127 is full forward,}}
+\DoxyCodeLine{\textcolor{comment}{ *        with 0 being off}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)return 1 if the operation was successful or PROS\_ERR if the operation}}
+\DoxyCodeLine{\textcolor{comment}{ * failed, setting errno.}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)b Example}}
+\DoxyCodeLine{\textcolor{comment}{ * \(\backslash\)code}}
+\DoxyCodeLine{\textcolor{comment}{ * \#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{comment}{ * \#define MOTOR\_PORT 1}}
+\DoxyCodeLine{\textcolor{comment}{ *}}
+\DoxyCodeLine{\textcolor{comment}{ * void opcontrol() \{}}
+\DoxyCodeLine{\textcolor{comment}{ *   ext\_adi\_motor\_set(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 127); // Go full speed forward}}
+\DoxyCodeLine{\textcolor{comment}{ *   delay(1000);}}
+\DoxyCodeLine{\textcolor{comment}{ *   ext\_adi\_motor\_set(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 0); // Stop the motor}}
+\DoxyCodeLine{\textcolor{comment}{ * \}}}
+\DoxyCodeLine{\textcolor{comment}{ * }}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}\label{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_motor\_get@{ext\_adi\_motor\_get}}
 \index{ext\_adi\_motor\_get@{ext\_adi\_motor\_get}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_motor\_get()}{ext\_adi\_motor\_get()}}
@@ -471,9 +619,20 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The last set speed of the motor on the given port 
+The last set speed of the motor on the given port
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}\label{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20 \#define MOTOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}{ext\_adi\_motor\_set}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 127); \textcolor{comment}{// Go full speed forward}}
+\DoxyCodeLine{  printf(“Commanded Motor Power: \%dn”, \mbox{\hyperlink{group__ext-adi_ga50b5f4f2d806d8725ec6feb59a13d2b2}{ext\_adi\_motor\_get}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT)); \textcolor{comment}{// Will display 127}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(1000);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}{ext\_adi\_motor\_set}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 0); \textcolor{comment}{// Stop the motor}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}\label{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_motor\_stop@{ext\_adi\_motor\_stop}}
 \index{ext\_adi\_motor\_stop@{ext\_adi\_motor\_stop}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_motor\_stop()}{ext\_adi\_motor\_stop()}}
@@ -493,9 +652,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga63487c255370a2176334af8895ae188c}\label{group__ext-adi_ga63487c255370a2176334af8895ae188c}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define MOTOR\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}{ext\_adi\_motor\_set}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 127); \textcolor{comment}{// Go full speed forward}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(1000);}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga730496b89cb6864e53ade872dfbe479e}{ext\_adi\_motor\_set}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT, 0); \textcolor{comment}{// Stop the motor}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga3bcee559e95f3f4cb64e74521b5735d6}{ext\_adi\_motor\_stop}}(ADI\_EXPANDER\_PORT, MOTOR\_PORT); \textcolor{comment}{// use this instead}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga63487c255370a2176334af8895ae188c}\label{group__ext-adi_ga63487c255370a2176334af8895ae188c}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_encoder\_get@{ext\_adi\_encoder\_get}}
 \index{ext\_adi\_encoder\_get@{ext\_adi\_encoder\_get}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_encoder\_get()}{ext\_adi\_encoder\_get()}}
@@ -515,9 +686,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The signed and cumulative number of counts since the last start or reset 
+The signed and cumulative number of counts since the last start or reset
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gad5aecf207806976751067f9b0014d44d}\label{group__ext-adi_gad5aecf207806976751067f9b0014d44d}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20 \#define PORT\_TOP 1 \#define PORT\_BOTTOM 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga819f455cfd280a0a3f2489ee88aa19ac}{ext\_adi\_encoder\_t}} enc = \mbox{\hyperlink{group__ext-adi_gad5aecf207806976751067f9b0014d44d}{ext\_adi\_encoder\_init}}(ADI\_EXPANDER\_PORT, PORT\_TOP, PORT\_BOTTOM, \textcolor{keyword}{false});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(“Encoder Value: \%dn”, \mbox{\hyperlink{group__ext-adi_ga63487c255370a2176334af8895ae188c}{ext\_adi\_encoder\_get}}(enc));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gad5aecf207806976751067f9b0014d44d}\label{group__ext-adi_gad5aecf207806976751067f9b0014d44d}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_encoder\_init@{ext\_adi\_encoder\_init}}
 \index{ext\_adi\_encoder\_init@{ext\_adi\_encoder\_init}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_encoder\_init()}{ext\_adi\_encoder\_init()}}
@@ -541,9 +724,23 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An adi\+\_\+encoder\+\_\+t object to be stored and used for later calls to encoder functions 
+An adi\+\_\+encoder\+\_\+t object to be stored and used for later calls to encoder functions
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga8c631b2f466307d44407d3b5a1bdf021}\label{group__ext-adi_ga8c631b2f466307d44407d3b5a1bdf021}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_TOP 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_BOTTOM 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga819f455cfd280a0a3f2489ee88aa19ac}{ext\_adi\_encoder\_t}} enc = \mbox{\hyperlink{group__ext-adi_gad5aecf207806976751067f9b0014d44d}{ext\_adi\_encoder\_init}}(ADI\_EXPANDER\_PORT, PORT\_TOP, PORT\_BOTTOM, \textcolor{keyword}{false});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Encoder Value: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga63487c255370a2176334af8895ae188c}{ext\_adi\_encoder\_get}}(enc));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga8c631b2f466307d44407d3b5a1bdf021}\label{group__ext-adi_ga8c631b2f466307d44407d3b5a1bdf021}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_encoder\_reset@{ext\_adi\_encoder\_reset}}
 \index{ext\_adi\_encoder\_reset@{ext\_adi\_encoder\_reset}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_encoder\_reset()}{ext\_adi\_encoder\_reset()}}
@@ -563,9 +760,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gac393c5a6907b482311b430ab0fd01464}\label{group__ext-adi_gac393c5a6907b482311b430ab0fd01464}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_TOP 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_BOTTOM 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga819f455cfd280a0a3f2489ee88aa19ac}{ext\_adi\_encoder\_t}} enc = \mbox{\hyperlink{group__ext-adi_gad5aecf207806976751067f9b0014d44d}{ext\_adi\_encoder\_init}}(ADI\_EXPANDER\_PORT, PORT\_TOP, PORT\_BOTTOM, \textcolor{keyword}{false});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(1000); \textcolor{comment}{// Move the encoder around in this time}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga8c631b2f466307d44407d3b5a1bdf021}{ext\_adi\_encoder\_reset}}(enc); \textcolor{comment}{// The encoder is now zero again}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gac393c5a6907b482311b430ab0fd01464}\label{group__ext-adi_gac393c5a6907b482311b430ab0fd01464}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_encoder\_shutdown@{ext\_adi\_encoder\_shutdown}}
 \index{ext\_adi\_encoder\_shutdown@{ext\_adi\_encoder\_shutdown}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_encoder\_shutdown()}{ext\_adi\_encoder\_shutdown()}}
@@ -583,9 +792,21 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga39da3e5809db13079605708f18156fb7}\label{group__ext-adi_ga39da3e5809db13079605708f18156fb7}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_TOP 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_BOTTOM 2}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga819f455cfd280a0a3f2489ee88aa19ac}{ext\_adi\_encoder\_t}} enc = \mbox{\hyperlink{group__ext-adi_gad5aecf207806976751067f9b0014d44d}{ext\_adi\_encoder\_init}}(ADI\_EXPANDER\_PORT, PORT\_TOP, PORT\_BOTTOM, \textcolor{keyword}{false});}
+\DoxyCodeLine{  \textcolor{comment}{// Use the encoder}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gac393c5a6907b482311b430ab0fd01464}{ext\_adi\_encoder\_shutdown}}(enc);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga39da3e5809db13079605708f18156fb7}\label{group__ext-adi_ga39da3e5809db13079605708f18156fb7}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_ultrasonic\_get@{ext\_adi\_ultrasonic\_get}}
 \index{ext\_adi\_ultrasonic\_get@{ext\_adi\_ultrasonic\_get}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_ultrasonic\_get()}{ext\_adi\_ultrasonic\_get()}}
@@ -605,9 +826,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The distance to the nearest object in m$^\wedge$-\/4 (10000 indicates 1 meter), measured from the sensor\textquotesingle{}s mounting points. 
+The distance to the nearest object in m$^\wedge$-\/4 (10000 indicates 1 meter), measured from the sensor\textquotesingle{}s mounting points.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}\label{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_PING 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_ECHO 2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga628d2ba74a77b5d590e4b865e3f4a7aa}{ext\_adi\_ultrasonic\_t}} ult = \mbox{\hyperlink{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}{ext\_adi\_ultrasonic\_init}}(ADI\_EXPANDER\_PORT, PORT\_PING, PORT\_ECHO);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the distance read by the ultrasonic}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga39da3e5809db13079605708f18156fb7}{ext\_adi\_ultrasonic\_get}}(ult));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}\label{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_ultrasonic\_init@{ext\_adi\_ultrasonic\_init}}
 \index{ext\_adi\_ultrasonic\_init@{ext\_adi\_ultrasonic\_init}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_ultrasonic\_init()}{ext\_adi\_ultrasonic\_init()}}
@@ -629,9 +865,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An adi\+\_\+ultrasonic\+\_\+t object to be stored and used for later calls to ultrasonic functions 
+An adi\+\_\+ultrasonic\+\_\+t object to be stored and used for later calls to ultrasonic functions
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga43715ce7b1d8b4b2b3d09f2a04c14c0d}\label{group__ext-adi_ga43715ce7b1d8b4b2b3d09f2a04c14c0d}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_PING 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_ECHO 2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga628d2ba74a77b5d590e4b865e3f4a7aa}{ext\_adi\_ultrasonic\_t}} ult = \mbox{\hyperlink{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}{ext\_adi\_ultrasonic\_init}}(ADI\_EXPANDER\_PORT, PORT\_PING, PORT\_ECHO);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the distance read by the ultrasonic}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga39da3e5809db13079605708f18156fb7}{ext\_adi\_ultrasonic\_get}}(ult));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga43715ce7b1d8b4b2b3d09f2a04c14c0d}\label{group__ext-adi_ga43715ce7b1d8b4b2b3d09f2a04c14c0d}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_ultrasonic\_shutdown@{ext\_adi\_ultrasonic\_shutdown}}
 \index{ext\_adi\_ultrasonic\_shutdown@{ext\_adi\_ultrasonic\_shutdown}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_ultrasonic\_shutdown()}{ext\_adi\_ultrasonic\_shutdown()}}
@@ -649,9 +900,25 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}\label{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_PING 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define PORT\_ECHO 2}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga628d2ba74a77b5d590e4b865e3f4a7aa}{ext\_adi\_ultrasonic\_t}} ult = \mbox{\hyperlink{group__ext-adi_gaa9c9828dbd73694315c1b1cf5cdb59d8}{ext\_adi\_ultrasonic\_init}}(ADI\_EXPANDER\_PORT, PORT\_PING, PORT\_ECHO);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the distance read by the ultrasonic}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga39da3e5809db13079605708f18156fb7}{ext\_adi\_ultrasonic\_get}}(ult));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_ga43715ce7b1d8b4b2b3d09f2a04c14c0d}{ext\_adi\_ultrasonic\_shutdown}}(ult);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}\label{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_gyro\_get@{ext\_adi\_gyro\_get}}
 \index{ext\_adi\_gyro\_get@{ext\_adi\_gyro\_get}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_gyro\_get()}{ext\_adi\_gyro\_get()}}
@@ -673,9 +940,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The gyro angle in degrees. 
+The gyro angle in degrees.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}\label{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_MULTIPLIER 1 // Standard behavior}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gaeb1fda9da4589cd3cd2e9efe5693f308}{ext\_adi\_gyro\_t}} gyro = \mbox{\hyperlink{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}{ext\_adi\_gyro\_init}}(ADI\_EXPANDER\_PORT, GYRO\_PORT, GYRO\_MULTIPLIER);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the gyro's heading}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Heading: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}{ext\_adi\_gyro\_get}}(gyro));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}\label{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_gyro\_init@{ext\_adi\_gyro\_init}}
 \index{ext\_adi\_gyro\_init@{ext\_adi\_gyro\_init}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_gyro\_init()}{ext\_adi\_gyro\_init()}}
@@ -701,9 +983,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An adi\+\_\+gyro\+\_\+t object containing the given port, or P\+R\+O\+S\+\_\+\+E\+RR if the initialization failed. 
+An adi\+\_\+gyro\+\_\+t object containing the given port, or P\+R\+O\+S\+\_\+\+E\+RR if the initialization failed.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga91d5a238cdf4fcde887bbb88e3a7ecb0}\label{group__ext-adi_ga91d5a238cdf4fcde887bbb88e3a7ecb0}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_MULTIPLIER 1 // Standard behavior}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gaeb1fda9da4589cd3cd2e9efe5693f308}{ext\_adi\_gyro\_t}} gyro = \mbox{\hyperlink{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}{ext\_adi\_gyro\_init}}(ADI\_EXPANDER\_PORT, GYRO\_PORT, GYRO\_MULTIPLIER);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the gyro's heading}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Heading: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}{ext\_adi\_gyro\_get}}(gyro));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga91d5a238cdf4fcde887bbb88e3a7ecb0}\label{group__ext-adi_ga91d5a238cdf4fcde887bbb88e3a7ecb0}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_gyro\_reset@{ext\_adi\_gyro\_reset}}
 \index{ext\_adi\_gyro\_reset@{ext\_adi\_gyro\_reset}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_gyro\_reset()}{ext\_adi\_gyro\_reset()}}
@@ -721,9 +1018,32 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_ga30f807700f54ac3365a4a069f8b76747}\label{group__ext-adi_ga30f807700f54ac3365a4a069f8b76747}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_MULTIPLIER 1 // Standard behavior}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gaeb1fda9da4589cd3cd2e9efe5693f308}{ext\_adi\_gyro\_t}} gyro = \mbox{\hyperlink{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}{ext\_adi\_gyro\_init}}(ADI\_EXPANDER\_PORT, GYRO\_PORT, GYRO\_MULTIPLIER);}
+\DoxyCodeLine{  uint32\_t now = \mbox{\hyperlink{group__c-llemu_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the gyro's heading}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Heading: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}{ext\_adi\_gyro\_get}}(gyro));}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__c-llemu_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}() -\/ now > 2000) \{}
+\DoxyCodeLine{      \textcolor{comment}{// Reset the gyro every 2 seconds}}
+\DoxyCodeLine{      \mbox{\hyperlink{group__ext-adi_ga91d5a238cdf4fcde887bbb88e3a7ecb0}{ext\_adi\_gyro\_reset}}(gyro);}
+\DoxyCodeLine{      now = \mbox{\hyperlink{group__c-llemu_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_ga30f807700f54ac3365a4a069f8b76747}\label{group__ext-adi_ga30f807700f54ac3365a4a069f8b76747}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_gyro\_shutdown@{ext\_adi\_gyro\_shutdown}}
 \index{ext\_adi\_gyro\_shutdown@{ext\_adi\_gyro\_shutdown}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_gyro\_shutdown()}{ext\_adi\_gyro\_shutdown()}}
@@ -741,9 +1061,32 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+1 if the operation was successful or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}\label{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define GYRO\_MULTIPLIER 1 // Standard behavior}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gaeb1fda9da4589cd3cd2e9efe5693f308}{ext\_adi\_gyro\_t}} gyro = \mbox{\hyperlink{group__ext-adi_ga62cddb9a1858256f0fa03effc89ddb20}{ext\_adi\_gyro\_init}}(ADI\_EXPANDER\_PORT, GYRO\_PORT, GYRO\_MULTIPLIER);}
+\DoxyCodeLine{  uint32\_t now = \mbox{\hyperlink{group__c-llemu_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the gyro's heading}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Heading: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_ga0d75771553832ae16e7b45833fb095fd}{ext\_adi\_gyro\_get}}(gyro));}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__c-llemu_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}() -\/ now > 2000) \{}
+\DoxyCodeLine{      \mbox{\hyperlink{group__ext-adi_ga30f807700f54ac3365a4a069f8b76747}{ext\_adi\_gyro\_shutdown}}(gyro);}
+\DoxyCodeLine{      \textcolor{comment}{// Shut down the gyro after two seconds}}
+\DoxyCodeLine{      \textcolor{keywordflow}{break};}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}\label{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_potentiometer\_init@{ext\_adi\_potentiometer\_init}}
 \index{ext\_adi\_potentiometer\_init@{ext\_adi\_potentiometer\_init}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_potentiometer\_init()}{ext\_adi\_potentiometer\_init()}}
@@ -763,9 +1106,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-An adi\+\_\+potentiometer\+\_\+t object containing the given port, or P\+R\+O\+S\+\_\+\+E\+RR if the initialization failed. 
+An adi\+\_\+potentiometer\+\_\+t object containing the given port, or P\+R\+O\+S\+\_\+\+E\+RR if the initialization failed.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}\label{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define POTENTIOMETER\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define POTENTIOMETER\_TYPE E\_ADI\_POT\_EDR}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}{ext\_adi\_potentiometer\_init}} potentiometer = \mbox{\hyperlink{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}{ext\_adi\_potentiometer\_init}}(ADI\_EXPANDER\_PORT, POTENTIOMETER\_PORT, POTENTIOMETER\_TYPE);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the potentiometer's angle}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Angle: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}{ext\_adi\_potentiometer\_get\_angle}}(potentiometer));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}\label{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}} 
 \index{ADI Expander C API@{ADI Expander C API}!ext\_adi\_potentiometer\_get\_angle@{ext\_adi\_potentiometer\_get\_angle}}
 \index{ext\_adi\_potentiometer\_get\_angle@{ext\_adi\_potentiometer\_get\_angle}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{ext\_adi\_potentiometer\_get\_angle()}{ext\_adi\_potentiometer\_get\_angle()}}
@@ -785,9 +1143,24 @@ This function uses the following values of errno when an error state is reached\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-The potentiometer angle in degrees. 
+The potentiometer angle in degrees.
 \end{DoxyReturn}
-\mbox{\Hypertarget{group__ext-adi_gab1441b4f7106ca07eabeb274a94d5e2b}\label{group__ext-adi_gab1441b4f7106ca07eabeb274a94d5e2b}} 
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define POTENTIOMETER\_PORT 1}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define POTENTIOMETER\_TYPE E\_ADI\_POT\_EDR}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define ADI\_EXPANDER\_PORT 20}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}{ext\_adi\_potentiometer\_init}} potentiometer = \mbox{\hyperlink{group__ext-adi_gae2bf52ad57d33a38a267e8290af69d4a}{ext\_adi\_potentiometer\_init}}(ADI\_EXPANDER\_PORT, POTENTIOMETER\_PORT, POTENTIOMETER\_TYPE);}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Print the potentiometer's angle}}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Angle: \%lf\(\backslash\)n"}, \mbox{\hyperlink{group__ext-adi_gac01c2a7c6135326444bb2c057da534fa}{ext\_adi\_potentiometer\_get\_angle}}(potentiometer));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-llemu_ga6a62f5325d65f95436762552df547d73}{delay}}(5);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__ext-adi_gab1441b4f7106ca07eabeb274a94d5e2b}\label{group__ext-adi_gab1441b4f7106ca07eabeb274a94d5e2b}} 
 \index{ADI Expander C API@{ADI Expander C API}!adi\_port\_get\_config@{adi\_port\_get\_config}}
 \index{adi\_port\_get\_config@{adi\_port\_get\_config}!ADI Expander C API@{ADI Expander C API}}
 \doxysubsubsection{\texorpdfstring{adi\_port\_get\_config()}{adi\_port\_get\_config()}}
