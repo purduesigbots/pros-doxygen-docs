@@ -1,3 +1,5 @@
+\page pros-faq PROS FAQ
+
 # PROS FAQ
 
 \note
