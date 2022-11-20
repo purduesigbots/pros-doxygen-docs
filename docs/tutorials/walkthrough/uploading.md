@@ -18,4 +18,4 @@
 
 ## Wireless Upload
 
-To see more details on how to wireless upload see \subpage wireless-upload
+To see more details on how to wireless upload see \ref wireless-upload
