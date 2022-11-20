@@ -13,8 +13,8 @@ we recommend that you check out C tutorials on the following topics:
 
 - [Functions](http://www.studytonight.com/c/user-defined-functions-in-c.php).
   C is a language that heavily emphasizes functions, and knowing how
-  they work is essential to using PROS. The [PROS
-  API](../api/index.html) is a set of functions, so any time that you
+  they work is essential to using PROS. The PROS
+  API (\subpage api) is a set of functions, so any time that you
   want to interact with a sensor or motor, you're using functions.
 - [Header
   Files](https://www.tutorialspoint.com/cprogramming/c_header_files.htm).
@@ -22,8 +22,8 @@ we recommend that you check out C tutorials on the following topics:
   start a PROS project) contains a couple of header files, and it's
   recommended that you make additional header files as you develop
   your code. Header files contain the declarations for functions and
-  global variables (among other things), which is why the [PROS
-  API](../api/index.html) can be found in `include/pros/api.h`.
+  global variables (among other things), which is why the PROS
+  API (\subpage api) can be found in `include/pros/api.h`.
   Knowing what code should go in a header file (`.h`, `.hpp`) or a
   source file (`.c`, `.cpp`) can be difficult to determine at first,
   but it is a very useful skill to learn.
@@ -35,7 +35,7 @@ we recommend that you check out C tutorials on the following topics:
   can be used for viewing sensor values or your own variables' values.
   The output from these `printf()` statements can be viewed in the
   terminal by running `pros terminal`.
-- [Tasks](../tutorials/topical/multitasking.html). One common mistake
+- \subpage multitasking. One common mistake
   that new PROS users make is forgetting to include a `delay()`
   statement in their tasks (this includes `opcontrol()` too), starving
   the processor of resources and preventing the PROS kernel from
@@ -59,11 +59,10 @@ sample PROS project. Once you are ready to branch out and create your
 own custom project, looking through the following tutorials is
 recommended:
 
-- [PROS Project
-  Structure](../tutorials/general/project-structure.html)
-- [Uploading Code](../tutorials/walkthrough/uploading.html)
-- [Debugging](../tutorials/general/debugging.html)
-- [Coding FAQs](./faq.html)
+- \subpage project-structure
+- \subpage uploading
+- \subpage debugging
+- \subpage faq
 
 And then you can find tutorials for specific subjects from [the
 ADI](../tutorials/topical/adi.html) to [tasks and
