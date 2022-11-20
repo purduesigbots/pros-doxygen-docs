@@ -7,3 +7,4 @@ step by step through the process of writing a PROS program.
 
 - \subpage clawbot
 - \subpage creating-c-project
+- \subpage uploading
