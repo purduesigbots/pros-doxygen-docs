@@ -36,6 +36,16 @@ This document covers the main PROS API.
 - \subpage cpp-serial   "C++ API for generic serial devices"
 - \subpage cpp-vision   "C++ API for vision sensors"
 
+## LVGL
+
+PROS also includes LVGL, a graphics library that enables users to create advanced
+user interfaces on the V5's screen. For LVGL's features, please refer to LVGL's documentation:
+ - [Official LVGL 8.3.x Documentation](https://docs.lvgl.io/master/index.html)
+ - [Archive of the LVGL 5.3.x Documentation](https://gcec-2918.github.io/LVGL_v5-3_Documentation_Archive/)
+
+
+## MISC.
+
 To aid in transitioning from [PROS 2](https://pros.cs.purdue.edu/cortex/index.html) syntax to PROS 3, a \subpage api-legacy is provided. This header provides PROS 2 functionality in its original syntax.
 
 For additional RTOS-related features, check out the @ref apix. Be warned, these features
