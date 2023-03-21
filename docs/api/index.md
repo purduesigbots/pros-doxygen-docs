@@ -4,37 +4,37 @@ This document covers the main PROS API.
 
 ## C API Headers
 
-- \subpage c-adi
-- \subpage c-distance
-- \subpage c-gps
-- \subpage c-imu
-- \subpage c-link
-- \subpage c-llemu
-- \subpage c-misc
-- \subpage c-motors
-- \subpage c-optical
-- \subpage c-rotation
-- \subpage c-rtos
-- \subpage c-screen
-- \subpage c-serial
-- \subpage c-vision
+- \subpage c-adi        "C API for ADI Devices"
+- \subpage c-distance   "C API for distance sensors"
+- \subpage c-gps        "C API for GPS sensors"
+- \subpage c-imu        "C API for IMU sensors"
+- \subpage c-link       "C API for VEXLink"
+- \subpage c-llemu      "C API for LLEMU (Legacy Lcd EMUlator)"
+- \subpage c-misc       "C API for miscellaneous features"
+- \subpage c-motors     "C API for motors"
+- \subpage c-optical    "C API for optical sensors"
+- \subpage c-rotation   "C API for rotation sensors"
+- \subpage c-rtos       "C Real Time Operating System API"
+- \subpage c-screen     "C API for the screen"
+- \subpage c-serial     "C API for generic serial devices"
+- \subpage c-vision     "C API for vision sensors"
 
 ## C++ API Headers
 
-- \subpage cpp-adi
-- \subpage cpp-distance
-- \subpage cpp-gps
-- \subpage cpp-imu
-- \subpage cpp-link
-- \subpage cpp-llemu
-- \subpage cpp-misc
-- \subpage cpp-motors
-- \subpage cpp-optical
-- \subpage cpp-rotation
-- \subpage cpp-rtos
-- \subpage cpp-screen
-- \subpage cpp-serial
-- \subpage cpp-vision
+- \subpage cpp-adi      "C++ API for ADI Devices"
+- \subpage cpp-distance "C++ API for distance sensors"
+- \subpage cpp-gps      "C++ API for GPS sensors"
+- \subpage cpp-imu      "C++ API for IMU sensors"
+- \subpage cpp-link     "C++ API for VEXLink"
+- \subpage cpp-llemu    "C++ API for LLEMU (Legacy Lcd EMUlator)"
+- \subpage cpp-misc     "C++ API for miscellaneous features"
+- \subpage cpp-motors   "C++ API for motors"
+- \subpage cpp-optical  "C++ API for optical sensors"
+- \subpage cpp-rotation "C++ API for rotation sensors"
+- \subpage cpp-rtos     "C++ Real Time Operating System API"
+- \subpage cpp-screen   "C++ API for the V5 screen"
+- \subpage cpp-serial   "C++ API for generic serial devices"
+- \subpage cpp-vision   "C++ API for vision sensors"
 
 To aid in transitioning from [PROS 2](https://pros.cs.purdue.edu/cortex/index.html) syntax to PROS 3, a \subpage api-legacy is provided. This header provides PROS 2 functionality in its original syntax.
 
