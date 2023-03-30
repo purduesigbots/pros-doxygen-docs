@@ -1,121 +1,188 @@
 \hypertarget{misc_8h}{}\doxysection{pros/misc.h File Reference}
 \label{misc_8h}\index{pros/misc.h@{pros/misc.h}}
+
+
+Contains prototypes for miscellaneous functions pertaining to the controller, battery, and competition control.  
+
+
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 \doxysubsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \mbox{\hyperlink{namespacepros}{pros}}
-\item 
+\begin{DoxyCompactList}\small\item\em Get the current status of the competition control. \end{DoxyCompactList}\item 
  \mbox{\hyperlink{namespacepros_1_1c}{pros\+::c}}
 \end{DoxyCompactItemize}
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{misc_8h_acceaccd4cf9a93ef86e8f21206a6645a}{N\+U\+M\+\_\+\+V5\+\_\+\+P\+O\+R\+TS}}~(22)
+\#define \mbox{\hyperlink{misc_8h_acceaccd4cf9a93ef86e8f21206a6645a}{NUM\+\_\+\+V5\+\_\+\+PORTS}}~(22)
 \item 
-\#define \mbox{\hyperlink{group__c-misc_gafe0c8d912448e3987f5a588dc8881da4}{C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+O\+R\+T\+\_\+\+M\+U\+T\+E\+X\+\_\+\+T\+A\+KE}}(id,  port)
+\#define \mbox{\hyperlink{misc_8h_adefb84e79d34a20dc8dc91813f289323}{COMPETITION\+\_\+\+DISABLED}}~(1 $<$$<$ 0)
+\begin{DoxyCompactList}\small\item\em V5 Competition ~\newline
+ \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}{COMPETITION\+\_\+\+AUTONOMOUS}}~(1 $<$$<$ 1)
+\item 
+\#define \mbox{\hyperlink{misc_8h_ae54538bebc289953e9238c59788a9649}{COMPETITION\+\_\+\+CONNECTED}}~(1 $<$$<$ 2)
+\item 
+\#define \mbox{\hyperlink{misc_8h_a1577cfc36f0d2d6f73a26263e9b518ce}{competition\+\_\+is\+\_\+disabled}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_adefb84e79d34a20dc8dc91813f289323}{COMPETITION\+\_\+\+DISABLED}}) != 0)
+\item 
+\#define \mbox{\hyperlink{misc_8h_a5601e15718be476d66ecaf2cdcbe061f}{competition\+\_\+is\+\_\+connected}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ae54538bebc289953e9238c59788a9649}{COMPETITION\+\_\+\+CONNECTED}}) != 0)
+\item 
+\#define \mbox{\hyperlink{misc_8h_a6bbebf8507344dd452503249813923c8}{competition\+\_\+is\+\_\+autonomous}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}{COMPETITION\+\_\+\+AUTONOMOUS}}) != 0)
+\item 
+\#define \mbox{\hyperlink{misc_8h_afe0c8d912448e3987f5a588dc8881da4}{CONTROLLER\+\_\+\+PORT\+\_\+\+MUTEX\+\_\+\+TAKE}}(id,  port)
 \end{DoxyCompactItemize}
-\begin{Indent}\textbf{ V5 Competition}\par
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{group__c-misc_gadefb84e79d34a20dc8dc91813f289323}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+D\+I\+S\+A\+B\+L\+ED}}~(1 $<$$<$ 0)
-\item 
-\#define \mbox{\hyperlink{group__c-misc_gab1963437a4b6f9561d57f7e7e44bc853}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+A\+U\+T\+O\+N\+O\+M\+O\+US}}~(1 $<$$<$ 1)
-\item 
-\#define \mbox{\hyperlink{group__c-misc_gae54538bebc289953e9238c59788a9649}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+ED}}~(1 $<$$<$ 2)
-\item 
-\#define \mbox{\hyperlink{group__c-misc_gaf3f09030b1285ede2e9a6182cbdf0133}{competition\+\_\+is\+\_\+disabled}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{group__c-misc_gadefb84e79d34a20dc8dc91813f289323}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+D\+I\+S\+A\+B\+L\+ED}}) != 0)
-\item 
-\#define \mbox{\hyperlink{group__c-misc_ga5601e15718be476d66ecaf2cdcbe061f}{competition\+\_\+is\+\_\+connected}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{group__c-misc_gae54538bebc289953e9238c59788a9649}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+C\+O\+N\+N\+E\+C\+T\+ED}}) != 0)
-\item 
-\#define \mbox{\hyperlink{group__c-misc_ga6bbebf8507344dd452503249813923c8}{competition\+\_\+is\+\_\+autonomous}}()~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{group__c-misc_gab1963437a4b6f9561d57f7e7e44bc853}{C\+O\+M\+P\+E\+T\+I\+T\+I\+O\+N\+\_\+\+A\+U\+T\+O\+N\+O\+M\+O\+US}}) != 0)
-\end{DoxyCompactItemize}
-\end{Indent}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{group__c-misc_gaf1323f00203099060d46f722b1fbd460}{controller\+\_\+id\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+M\+A\+S\+T\+ER}} = 0, 
-\mbox{\hyperlink{group__c-misc_ggaf1323f00203099060d46f722b1fbd460a62d367ebc8ce395520d786f5c12614ac}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+P\+A\+R\+T\+N\+ER}}
+enum \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460}{controller\+\_\+id\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\+\_\+\+CONTROLLER\+\_\+\+MASTER}} = 0
+, \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a62d367ebc8ce395520d786f5c12614ac}{E\+\_\+\+CONTROLLER\+\_\+\+PARTNER}}
  \}
 \item 
-enum \mbox{\hyperlink{group__c-misc_ga8bdd0963e2bc0d4fbe03435eee8a5ca5}{controller\+\_\+analog\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5ac73153bd6a186402cb8fad10c069ec55}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+X}} = 0, 
-\mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5ac68939b7adc180b25b95367fd0098e99}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+L\+E\+F\+T\+\_\+Y}}, 
-\mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5a1881009d58a89b01179876a44a768774}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+X}}, 
-\mbox{\hyperlink{group__c-misc_gga8bdd0963e2bc0d4fbe03435eee8a5ca5a3954a2f3b6de53400df445cc144a67ca}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+R\+I\+G\+H\+T\+\_\+Y}}
+enum \mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5}{controller\+\_\+analog\+\_\+e\+\_\+t}} \{ \mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5ac73153bd6a186402cb8fad10c069ec55}{E\+\_\+\+CONTROLLER\+\_\+\+ANALOG\+\_\+\+LEFT\+\_\+X}} = 0
+, \mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5ac68939b7adc180b25b95367fd0098e99}{E\+\_\+\+CONTROLLER\+\_\+\+ANALOG\+\_\+\+LEFT\+\_\+Y}}
+, \mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5a1881009d58a89b01179876a44a768774}{E\+\_\+\+CONTROLLER\+\_\+\+ANALOG\+\_\+\+RIGHT\+\_\+X}}
+, \mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5a3954a2f3b6de53400df445cc144a67ca}{E\+\_\+\+CONTROLLER\+\_\+\+ANALOG\+\_\+\+RIGHT\+\_\+Y}}
  \}
 \item 
-enum \mbox{\hyperlink{group__c-misc_ga8c380ff02828ee53954bc0ce274253ed}{controller\+\_\+digital\+\_\+e\+\_\+t}} \{ \newline
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda6152392f863b995bc682e6a7129dbdae}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L1}} = 6, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253edab0b7af86329d2806c7e52b8396ca3a76}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L2}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253edae3ae971723bd1d263b7661264df420fc}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R1}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda982e210433ab2a7ba149c4008ad73851}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R2}}, 
-\newline
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda092df532483a0b27281748df9d226772}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+UP}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda4290d3c38ae937a54b8409c7567be50d}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+D\+O\+WN}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda83537ab72f80c74cb4c06a195b885b6c}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+L\+E\+FT}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda6311765554410202cc2c099695640d91}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+\+R\+I\+G\+HT}}, 
-\newline
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda1ba98d2c4900c0ad3123f15090779fad}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+X}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda3b8c6ebc62fb8133413bb7090814ed54}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+B}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253eda89dfc687cc16e2e7b1ad022b47a698c4}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+Y}}, 
-\mbox{\hyperlink{group__c-misc_gga8c380ff02828ee53954bc0ce274253edabf8d8d50802f9417ba1f1512d2822f98}{E\+\_\+\+C\+O\+N\+T\+R\+O\+L\+L\+E\+R\+\_\+\+D\+I\+G\+I\+T\+A\+L\+\_\+A}}
+enum \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253ed}{controller\+\_\+digital\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda6152392f863b995bc682e6a7129dbdae}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+L1}} = 6
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253edab0b7af86329d2806c7e52b8396ca3a76}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+L2}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253edae3ae971723bd1d263b7661264df420fc}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+R1}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda982e210433ab2a7ba149c4008ad73851}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+R2}}
+, \newline
+\mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda092df532483a0b27281748df9d226772}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+UP}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda4290d3c38ae937a54b8409c7567be50d}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+DOWN}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda83537ab72f80c74cb4c06a195b885b6c}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+LEFT}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda6311765554410202cc2c099695640d91}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+\+RIGHT}}
+, \newline
+\mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda1ba98d2c4900c0ad3123f15090779fad}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+X}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda3b8c6ebc62fb8133413bb7090814ed54}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+B}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253eda89dfc687cc16e2e7b1ad022b47a698c4}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+Y}}
+, \mbox{\hyperlink{namespacepros_a8c380ff02828ee53954bc0ce274253edabf8d8d50802f9417ba1f1512d2822f98}{E\+\_\+\+CONTROLLER\+\_\+\+DIGITAL\+\_\+A}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{group__c-misc_ga464d2c47de8b3b726b1e50c7538e4459}{competition\+\_\+get\+\_\+status}} (void)
+uint8\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_aeb04d3a78a7596b89366603a0068763b}{competition\+\_\+get\+\_\+status}} (void)
 \item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga1a381afe1cabb7c9b5dd5a734a5ee4a3}{controller\+\_\+is\+\_\+connected}} (controller\+\_\+id\+\_\+e\+\_\+t id)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a1a381afe1cabb7c9b5dd5a734a5ee4a3}{controller\+\_\+is\+\_\+connected}} (controller\+\_\+id\+\_\+e\+\_\+t id)
 \begin{DoxyCompactList}\small\item\em Checks if the controller is connected. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga1a7c4e6bcb39260bf7ce5b1a58638753}{controller\+\_\+get\+\_\+analog}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+analog\+\_\+e\+\_\+t channel)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a1a7c4e6bcb39260bf7ce5b1a58638753}{controller\+\_\+get\+\_\+analog}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+analog\+\_\+e\+\_\+t channel)
 \begin{DoxyCompactList}\small\item\em Gets the value of an analog channel (joystick) on a controller. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga3708b3194feeb243710d0fa2079e57b6}{controller\+\_\+get\+\_\+battery\+\_\+capacity}} (controller\+\_\+id\+\_\+e\+\_\+t id)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a3708b3194feeb243710d0fa2079e57b6}{controller\+\_\+get\+\_\+battery\+\_\+capacity}} (controller\+\_\+id\+\_\+e\+\_\+t id)
 \begin{DoxyCompactList}\small\item\em Gets the battery capacity of the given controller. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga35f22987a76d5a3c9117755b0abc2548}{controller\+\_\+get\+\_\+battery\+\_\+level}} (controller\+\_\+id\+\_\+e\+\_\+t id)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a35f22987a76d5a3c9117755b0abc2548}{controller\+\_\+get\+\_\+battery\+\_\+level}} (controller\+\_\+id\+\_\+e\+\_\+t id)
 \begin{DoxyCompactList}\small\item\em Gets the battery level of the given controller. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga764da856ff7fcb710b10daa1a2fe4519}{controller\+\_\+get\+\_\+digital}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+digital\+\_\+e\+\_\+t button)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a764da856ff7fcb710b10daa1a2fe4519}{controller\+\_\+get\+\_\+digital}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+digital\+\_\+e\+\_\+t button)
 \begin{DoxyCompactList}\small\item\em Checks if a digital channel (button) on the controller is currently pressed. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_gac98088451005003975c19dda4e20a1f8}{controller\+\_\+get\+\_\+digital\+\_\+new\+\_\+press}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+digital\+\_\+e\+\_\+t button)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_ac98088451005003975c19dda4e20a1f8}{controller\+\_\+get\+\_\+digital\+\_\+new\+\_\+press}} (controller\+\_\+id\+\_\+e\+\_\+t id, controller\+\_\+digital\+\_\+e\+\_\+t button)
 \begin{DoxyCompactList}\small\item\em Returns a rising-\/edge case for a controller button press. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga7bdcfd084f96b7eda87867de947997b8}{controller\+\_\+print}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line, uint8\+\_\+t col, const char $\ast$fmt,...)
-\begin{DoxyCompactList}\small\item\em Sets text to the controller L\+CD screen. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga9e301c0fb1fe773010f0f63c07f0ff30}{controller\+\_\+set\+\_\+text}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line, uint8\+\_\+t col, const char $\ast$str)
-\begin{DoxyCompactList}\small\item\em Sets text to the controller L\+CD screen. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga57f585f20ca272ce035390e9a7ba8cdc}{controller\+\_\+clear\+\_\+line}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a7bdcfd084f96b7eda87867de947997b8}{controller\+\_\+print}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line, uint8\+\_\+t col, const char $\ast$fmt,...)
+\begin{DoxyCompactList}\small\item\em Sets text to the controller LCD screen. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a9e301c0fb1fe773010f0f63c07f0ff30}{controller\+\_\+set\+\_\+text}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line, uint8\+\_\+t col, const char $\ast$str)
+\begin{DoxyCompactList}\small\item\em Sets text to the controller LCD screen. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a57f585f20ca272ce035390e9a7ba8cdc}{controller\+\_\+clear\+\_\+line}} (controller\+\_\+id\+\_\+e\+\_\+t id, uint8\+\_\+t line)
 \begin{DoxyCompactList}\small\item\em Clears an individual line of the controller screen. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga9ccf53b8954bc4033abebec9a79da0c4}{controller\+\_\+clear}} (controller\+\_\+id\+\_\+e\+\_\+t id)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a9ccf53b8954bc4033abebec9a79da0c4}{controller\+\_\+clear}} (controller\+\_\+id\+\_\+e\+\_\+t id)
 \begin{DoxyCompactList}\small\item\em Clears all of the lines on the controller screen. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga6a2fde9e8c3eec3dc88cb00235a1df7d}{controller\+\_\+rumble}} (controller\+\_\+id\+\_\+e\+\_\+t id, const char $\ast$rumble\+\_\+pattern)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a6a2fde9e8c3eec3dc88cb00235a1df7d}{controller\+\_\+rumble}} (controller\+\_\+id\+\_\+e\+\_\+t id, const char $\ast$rumble\+\_\+pattern)
 \begin{DoxyCompactList}\small\item\em Rumble the controller. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga9d34cbe2b17dc9daec083fdaf8c10a1e}{battery\+\_\+get\+\_\+voltage}} (void)
-\begin{DoxyCompactList}\small\item\em Gets the current voltage of the battery, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_ga6cd34d4960ca5193d70626bc59094505}{battery\+\_\+get\+\_\+current}} (void)
-\begin{DoxyCompactList}\small\item\em Gets the current current of the battery, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group__c-misc_ga79dd0288c3ac547c75c25e374087f91b}{battery\+\_\+get\+\_\+temperature}} (void)
-\begin{DoxyCompactList}\small\item\em Gets the current temperature of the battery, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
-double \mbox{\hyperlink{group__c-misc_gaa5e755785c93c5cafe6b0d98695d7c20}{battery\+\_\+get\+\_\+capacity}} (void)
-\begin{DoxyCompactList}\small\item\em Gets the current capacity of the battery, as reported by V\+E\+Xos. \end{DoxyCompactList}\item 
-int32\+\_\+t \mbox{\hyperlink{group__c-misc_gafa370f223e76f68f27bdfed38724724e}{usd\+\_\+is\+\_\+installed}} (void)
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a9d34cbe2b17dc9daec083fdaf8c10a1e}{battery\+\_\+get\+\_\+voltage}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current voltage of the battery, as reported by VEXos. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_a6cd34d4960ca5193d70626bc59094505}{battery\+\_\+get\+\_\+current}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current current of the battery, as reported by VEXos. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacepros_1_1c_a79dd0288c3ac547c75c25e374087f91b}{battery\+\_\+get\+\_\+temperature}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current temperature of the battery, as reported by VEXos. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{namespacepros_1_1c_aa5e755785c93c5cafe6b0d98695d7c20}{battery\+\_\+get\+\_\+capacity}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the current capacity of the battery, as reported by VEXos. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{namespacepros_1_1c_afa370f223e76f68f27bdfed38724724e}{usd\+\_\+is\+\_\+installed}} (void)
 \begin{DoxyCompactList}\small\item\em Checks if the SD card is installed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Contains prototypes for miscellaneous functions pertaining to the controller, battery, and competition control.
+Contains prototypes for miscellaneous functions pertaining to the controller, battery, and competition control. 
 
 Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/controller.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/controller.\+html}} to learn more.
 
 This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.
 
-\begin{DoxyCopyright}{Copyright}
-(c) 2017-\/2022, Purdue University A\+CM S\+I\+G\+Bots. All rights reservered.
-\end{DoxyCopyright}
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the M\+PL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+M\+P\+L/2.\+0/}}. 
+Copyright (c) 2017-\/2021, Purdue University ACM SIGBots. All rights reservered.
+
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the MPL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+MPL/2.\+0/}}. 
 
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{misc_8h_acceaccd4cf9a93ef86e8f21206a6645a}\label{misc_8h_acceaccd4cf9a93ef86e8f21206a6645a}} 
 \index{misc.h@{misc.h}!NUM\_V5\_PORTS@{NUM\_V5\_PORTS}}
 \index{NUM\_V5\_PORTS@{NUM\_V5\_PORTS}!misc.h@{misc.h}}
 \doxysubsubsection{\texorpdfstring{NUM\_V5\_PORTS}{NUM\_V5\_PORTS}}
-{\footnotesize\ttfamily \#define N\+U\+M\+\_\+\+V5\+\_\+\+P\+O\+R\+TS~(22)}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+V5\+\_\+\+PORTS~(22)}
 
+\mbox{\Hypertarget{misc_8h_adefb84e79d34a20dc8dc91813f289323}\label{misc_8h_adefb84e79d34a20dc8dc91813f289323}} 
+\index{misc.h@{misc.h}!COMPETITION\_DISABLED@{COMPETITION\_DISABLED}}
+\index{COMPETITION\_DISABLED@{COMPETITION\_DISABLED}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{COMPETITION\_DISABLED}{COMPETITION\_DISABLED}}
+{\footnotesize\ttfamily \#define COMPETITION\+\_\+\+DISABLED~(1 $<$$<$ 0)}
+
+
+
+V5 Competition ~\newline
+ 
+
+\mbox{\Hypertarget{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}\label{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}} 
+\index{misc.h@{misc.h}!COMPETITION\_AUTONOMOUS@{COMPETITION\_AUTONOMOUS}}
+\index{COMPETITION\_AUTONOMOUS@{COMPETITION\_AUTONOMOUS}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{COMPETITION\_AUTONOMOUS}{COMPETITION\_AUTONOMOUS}}
+{\footnotesize\ttfamily \#define COMPETITION\+\_\+\+AUTONOMOUS~(1 $<$$<$ 1)}
+
+\mbox{\Hypertarget{misc_8h_ae54538bebc289953e9238c59788a9649}\label{misc_8h_ae54538bebc289953e9238c59788a9649}} 
+\index{misc.h@{misc.h}!COMPETITION\_CONNECTED@{COMPETITION\_CONNECTED}}
+\index{COMPETITION\_CONNECTED@{COMPETITION\_CONNECTED}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{COMPETITION\_CONNECTED}{COMPETITION\_CONNECTED}}
+{\footnotesize\ttfamily \#define COMPETITION\+\_\+\+CONNECTED~(1 $<$$<$ 2)}
+
+\mbox{\Hypertarget{misc_8h_a1577cfc36f0d2d6f73a26263e9b518ce}\label{misc_8h_a1577cfc36f0d2d6f73a26263e9b518ce}} 
+\index{misc.h@{misc.h}!competition\_is\_disabled@{competition\_is\_disabled}}
+\index{competition\_is\_disabled@{competition\_is\_disabled}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{competition\_is\_disabled}{competition\_is\_disabled}}
+{\footnotesize\ttfamily \#define competition\+\_\+is\+\_\+disabled(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_adefb84e79d34a20dc8dc91813f289323}{COMPETITION\+\_\+\+DISABLED}}) != 0)}
+
+\mbox{\Hypertarget{misc_8h_a5601e15718be476d66ecaf2cdcbe061f}\label{misc_8h_a5601e15718be476d66ecaf2cdcbe061f}} 
+\index{misc.h@{misc.h}!competition\_is\_connected@{competition\_is\_connected}}
+\index{competition\_is\_connected@{competition\_is\_connected}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{competition\_is\_connected}{competition\_is\_connected}}
+{\footnotesize\ttfamily \#define competition\+\_\+is\+\_\+connected(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ae54538bebc289953e9238c59788a9649}{COMPETITION\+\_\+\+CONNECTED}}) != 0)}
+
+\mbox{\Hypertarget{misc_8h_a6bbebf8507344dd452503249813923c8}\label{misc_8h_a6bbebf8507344dd452503249813923c8}} 
+\index{misc.h@{misc.h}!competition\_is\_autonomous@{competition\_is\_autonomous}}
+\index{competition\_is\_autonomous@{competition\_is\_autonomous}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{competition\_is\_autonomous}{competition\_is\_autonomous}}
+{\footnotesize\ttfamily \#define competition\+\_\+is\+\_\+autonomous(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~((competition\+\_\+get\+\_\+status() \& \mbox{\hyperlink{misc_8h_ab1963437a4b6f9561d57f7e7e44bc853}{COMPETITION\+\_\+\+AUTONOMOUS}}) != 0)}
+
+\mbox{\Hypertarget{misc_8h_afe0c8d912448e3987f5a588dc8881da4}\label{misc_8h_afe0c8d912448e3987f5a588dc8881da4}} 
+\index{misc.h@{misc.h}!CONTROLLER\_PORT\_MUTEX\_TAKE@{CONTROLLER\_PORT\_MUTEX\_TAKE}}
+\index{CONTROLLER\_PORT\_MUTEX\_TAKE@{CONTROLLER\_PORT\_MUTEX\_TAKE}!misc.h@{misc.h}}
+\doxysubsubsection{\texorpdfstring{CONTROLLER\_PORT\_MUTEX\_TAKE}{CONTROLLER\_PORT\_MUTEX\_TAKE}}
+{\footnotesize\ttfamily \#define CONTROLLER\+\_\+\+PORT\+\_\+\+MUTEX\+\_\+\+TAKE(\begin{DoxyParamCaption}\item[{}]{id,  }\item[{}]{port }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{switch} (\textcolor{keywordtype}{id}) \{                           \(\backslash\)}
+\DoxyCodeLine{        case \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}}:            \(\backslash\)}
+\DoxyCodeLine{            port = V5\_PORT\_CONTROLLER\_1;    \(\backslash\)}
+\DoxyCodeLine{            break;                          \(\backslash\)}
+\DoxyCodeLine{        case \mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a62d367ebc8ce395520d786f5c12614ac}{E\_CONTROLLER\_PARTNER}}:          \(\backslash\)}
+\DoxyCodeLine{            port = V5\_PORT\_CONTROLLER\_2;    \(\backslash\)}
+\DoxyCodeLine{            break;                          \(\backslash\)}
+\DoxyCodeLine{        default:                            \(\backslash\)}
+\DoxyCodeLine{            errno = EINVAL;                 \(\backslash\)}
+\DoxyCodeLine{            return \mbox{\hyperlink{api_8h_a8748a4dfbe487cedaafa15f1ff7f2f38}{PROS\_ERR}};                \(\backslash\)}
+\DoxyCodeLine{    \}                                       \(\backslash\)}
+\DoxyCodeLine{    if (!internal\_port\_mutex\_take(port)) \{  \(\backslash\)}
+\DoxyCodeLine{        errno = EACCES;                     \(\backslash\)}
+\DoxyCodeLine{        return \mbox{\hyperlink{api_8h_a8748a4dfbe487cedaafa15f1ff7f2f38}{PROS\_ERR}};                    \(\backslash\)}
+\DoxyCodeLine{    \}                                       \(\backslash\)}
+
+\end{DoxyCode}

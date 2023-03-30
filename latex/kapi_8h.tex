@@ -1,39 +1,44 @@
 \hypertarget{kapi_8h}{}\doxysection{kapi.\+h File Reference}
 \label{kapi_8h}\index{kapi.h@{kapi.h}}
+
+
+Kernel API header.  
+
+
 {\ttfamily \#include \char`\"{}api.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}pros/apix.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}rtos/\+Free\+R\+T\+O\+S.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rtos/\+Free\+RTOS.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}rtos/stream\+\_\+buffer.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}}~\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}}
+\#define \mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}}~\mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}}
 \item 
 \#define \mbox{\hyperlink{kapi_8h_afd273bc26dce33480b445457e89bfaeb}{task\+\_\+fn\+\_\+t}}~pros\+::task\+\_\+fn\+\_\+t
 \item 
-\#define \mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}}~\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{pros\+::mutex\+\_\+t}}
+\#define \mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}}~\mbox{\hyperlink{namespacepros_ab15ea84d90257d70b44e8e04519864d2}{pros\+::mutex\+\_\+t}}
 \item 
-\#define \mbox{\hyperlink{kapi_8h_ab41e0251d1181d4d91b70a583a372ef2}{sem\+\_\+t}}~\mbox{\hyperlink{group__apix_gabc53a59ab4c3c8f2d7660e63990be7a7}{pros\+::c\+::sem\+\_\+t}}
+\#define \mbox{\hyperlink{kapi_8h_ab41e0251d1181d4d91b70a583a372ef2}{sem\+\_\+t}}~\mbox{\hyperlink{namespacepros_1_1c_abc53a59ab4c3c8f2d7660e63990be7a7}{pros\+::c\+::sem\+\_\+t}}
 \item 
-\#define \mbox{\hyperlink{kapi_8h_a5a6f19dc156a45653f8ff36d7beaa168}{queue\+\_\+t}}~\mbox{\hyperlink{group__apix_ga2d363eefb03348f96e985eadcfb184ab}{pros\+::c\+::queue\+\_\+t}}
+\#define \mbox{\hyperlink{kapi_8h_a5a6f19dc156a45653f8ff36d7beaa168}{queue\+\_\+t}}~\mbox{\hyperlink{namespacepros_1_1c_a2d363eefb03348f96e985eadcfb184ab}{pros\+::c\+::queue\+\_\+t}}
 \item 
-\#define \mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{K\+D\+B\+G\+\_\+\+F\+I\+L\+E\+NO}}~3
+\#define \mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{KDBG\+\_\+\+FILENO}}~3
 \item 
-\#define \mbox{\hyperlink{kapi_8h_ae722946254739175acaf8b570e77e510}{warn\+\_\+printf}}(fmt, ...)~dprintf(S\+T\+D\+E\+R\+R\+\_\+\+F\+I\+L\+E\+NO, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{kapi_8h_ae722946254739175acaf8b570e77e510}{warn\+\_\+printf}}(fmt, ...)~dprintf(STDERR\+\_\+\+FILENO, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
 \item 
 \#define \mbox{\hyperlink{kapi_8h_aa56805b96562808390c620b9a60dec05}{warn\+\_\+wprint}}(str)~wprintf(\char`\"{}\%s\char`\"{}, str)
 \item 
-\#define \mbox{\hyperlink{kapi_8h_ad6e5f3a8fac274076a837a26e508ffb7}{kprintf}}(fmt, ...)~dprintf(\mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{K\+D\+B\+G\+\_\+\+F\+I\+L\+E\+NO}}, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)
+\#define \mbox{\hyperlink{kapi_8h_ad6e5f3a8fac274076a837a26e508ffb7}{kprintf}}(fmt, ...)~dprintf(\mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{KDBG\+\_\+\+FILENO}}, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)
 \item 
 \#define \mbox{\hyperlink{kapi_8h_a9cdf245d9d4255125fe917cb04da49af}{kprint}}(str)~\mbox{\hyperlink{kapi_8h_ad6e5f3a8fac274076a837a26e508ffb7}{kprintf}}(\char`\"{}\%s\char`\"{}, str)
 \item 
 \#define \mbox{\hyperlink{kapi_8h_a5c5fecd69dde4a2e5298d6702073c547}{kassert}}(cond)
 \item 
-\#define \mbox{\hyperlink{kapi_8h_a0cad071ca127a35df93166e9ed5b6ada}{task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED}}~((int32\+\_\+t)0)
+\#define \mbox{\hyperlink{kapi_8h_a0cad071ca127a35df93166e9ed5b6ada}{task\+SCHEDULER\+\_\+\+SUSPENDED}}~((int32\+\_\+t)0)
 \item 
-\#define \mbox{\hyperlink{kapi_8h_a0923fdaae1bfe42ac5cccd9e9ddca9ed}{task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+ED}}~((int32\+\_\+t)1)
+\#define \mbox{\hyperlink{kapi_8h_a0923fdaae1bfe42ac5cccd9e9ddca9ed}{task\+SCHEDULER\+\_\+\+NOT\+\_\+\+STARTED}}~((int32\+\_\+t)1)
 \item 
-\#define \mbox{\hyperlink{kapi_8h_acbb675035741787d29da475b5a887545}{task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+U\+N\+N\+I\+NG}}~((int32\+\_\+t)2)
+\#define \mbox{\hyperlink{kapi_8h_acbb675035741787d29da475b5a887545}{task\+SCHEDULER\+\_\+\+RUNNING}}~((int32\+\_\+t)2)
 \end{DoxyCompactItemize}
 \doxysubsection*{Typedefs}
 \begin{DoxyCompactItemize}
@@ -56,9 +61,9 @@ int32\+\_\+t \mbox{\hyperlink{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}{rtos\+\
 \mbox{\hyperlink{kapi_8h_a5a6f19dc156a45653f8ff36d7beaa168}{queue\+\_\+t}} \mbox{\hyperlink{kapi_8h_a25237b68d7e177a3b32ece8b36bff9ef}{queue\+\_\+create\+\_\+static}} (uint32\+\_\+t length, uint32\+\_\+t item\+\_\+size, uint8\+\_\+t $\ast$storage\+\_\+buffer, static\+\_\+queue\+\_\+s\+\_\+t $\ast$queue\+\_\+buffer)
 \begin{DoxyCompactList}\small\item\em Creates a statically allocated queue. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{kapi_8h_abc782ea27c8020a7181f1d9620d22d7c}{display\+\_\+error}} (const char $\ast$text)
-\begin{DoxyCompactList}\small\item\em Display a non-\/fatal error to the built-\/in L\+C\+D/touch screen. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Display a non-\/fatal error to the built-\/in LCD/touch screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{kapi_8h_a0070639864e6a77a016b6262a1eb5e7c}{display\+\_\+fatal\+\_\+error}} (const char $\ast$text)
-\begin{DoxyCompactList}\small\item\em Display a fatal error to the built-\/in L\+C\+D/touch screen. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Display a fatal error to the built-\/in LCD/touch screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{kapi_8h_ae1fae740005d8465ab94006b6ba8629e}{kprint\+\_\+hex}} (uint8\+\_\+t $\ast$s, size\+\_\+t len)
 \begin{DoxyCompactList}\small\item\em Prints hex characters to the terminal. \end{DoxyCompactList}\item 
 int32\+\_\+t \mbox{\hyperlink{kapi_8h_a26e0cd9a9907be72f7d3028164380cda}{x\+Task\+Get\+Scheduler\+State}} ()
@@ -66,20 +71,20 @@ int32\+\_\+t \mbox{\hyperlink{kapi_8h_a26e0cd9a9907be72f7d3028164380cda}{x\+Task
 
 
 \doxysubsection{Detailed Description}
-Kernel A\+PI header
+Kernel API header. 
 
-Contains additional declarations for use internally within kernel development. This file includes the Free\+R\+T\+OS header, which allows for creation of statically allocated Free\+R\+T\+OS primitives like tasks, semaphores, and queues.
+Contains additional declarations for use internally within kernel development. This file includes the Free\+RTOS header, which allows for creation of statically allocated Free\+RTOS primitives like tasks, semaphores, and queues.
 
-Copyright (c) 2017-\/2022, Purdue University A\+CM S\+I\+G\+Bots. All rights reserved.
+Copyright (c) 2017-\/2021, Purdue University ACM SIGBots. All rights reserved.
 
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the M\+PL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+M\+P\+L/2.\+0/}}. 
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the MPL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+MPL/2.\+0/}}. 
 
 \doxysubsection{Macro Definition Documentation}
 \mbox{\Hypertarget{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}\label{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}} 
 \index{kapi.h@{kapi.h}!task\_t@{task\_t}}
 \index{task\_t@{task\_t}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{task\_t}{task\_t}}
-{\footnotesize\ttfamily \#define task\+\_\+t~\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}}}
+{\footnotesize\ttfamily \#define task\+\_\+t~\mbox{\hyperlink{namespacepros_a1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}}}
 
 \mbox{\Hypertarget{kapi_8h_afd273bc26dce33480b445457e89bfaeb}\label{kapi_8h_afd273bc26dce33480b445457e89bfaeb}} 
 \index{kapi.h@{kapi.h}!task\_fn\_t@{task\_fn\_t}}
@@ -91,31 +96,31 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \index{kapi.h@{kapi.h}!mutex\_t@{mutex\_t}}
 \index{mutex\_t@{mutex\_t}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{mutex\_t}{mutex\_t}}
-{\footnotesize\ttfamily \#define mutex\+\_\+t~\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{pros\+::mutex\+\_\+t}}}
+{\footnotesize\ttfamily \#define mutex\+\_\+t~\mbox{\hyperlink{namespacepros_ab15ea84d90257d70b44e8e04519864d2}{pros\+::mutex\+\_\+t}}}
 
 \mbox{\Hypertarget{kapi_8h_ab41e0251d1181d4d91b70a583a372ef2}\label{kapi_8h_ab41e0251d1181d4d91b70a583a372ef2}} 
 \index{kapi.h@{kapi.h}!sem\_t@{sem\_t}}
 \index{sem\_t@{sem\_t}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{sem\_t}{sem\_t}}
-{\footnotesize\ttfamily \#define sem\+\_\+t~\mbox{\hyperlink{group__apix_gabc53a59ab4c3c8f2d7660e63990be7a7}{pros\+::c\+::sem\+\_\+t}}}
+{\footnotesize\ttfamily \#define sem\+\_\+t~\mbox{\hyperlink{namespacepros_1_1c_abc53a59ab4c3c8f2d7660e63990be7a7}{pros\+::c\+::sem\+\_\+t}}}
 
 \mbox{\Hypertarget{kapi_8h_a5a6f19dc156a45653f8ff36d7beaa168}\label{kapi_8h_a5a6f19dc156a45653f8ff36d7beaa168}} 
 \index{kapi.h@{kapi.h}!queue\_t@{queue\_t}}
 \index{queue\_t@{queue\_t}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{queue\_t}{queue\_t}}
-{\footnotesize\ttfamily \#define queue\+\_\+t~\mbox{\hyperlink{group__apix_ga2d363eefb03348f96e985eadcfb184ab}{pros\+::c\+::queue\+\_\+t}}}
+{\footnotesize\ttfamily \#define queue\+\_\+t~\mbox{\hyperlink{namespacepros_1_1c_a2d363eefb03348f96e985eadcfb184ab}{pros\+::c\+::queue\+\_\+t}}}
 
 \mbox{\Hypertarget{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}\label{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}} 
 \index{kapi.h@{kapi.h}!KDBG\_FILENO@{KDBG\_FILENO}}
 \index{KDBG\_FILENO@{KDBG\_FILENO}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{KDBG\_FILENO}{KDBG\_FILENO}}
-{\footnotesize\ttfamily \#define K\+D\+B\+G\+\_\+\+F\+I\+L\+E\+NO~3}
+{\footnotesize\ttfamily \#define KDBG\+\_\+\+FILENO~3}
 
 \mbox{\Hypertarget{kapi_8h_ae722946254739175acaf8b570e77e510}\label{kapi_8h_ae722946254739175acaf8b570e77e510}} 
 \index{kapi.h@{kapi.h}!warn\_printf@{warn\_printf}}
 \index{warn\_printf@{warn\_printf}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{warn\_printf}{warn\_printf}}
-{\footnotesize\ttfamily \#define warn\+\_\+printf(\begin{DoxyParamCaption}\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})~dprintf(S\+T\+D\+E\+R\+R\+\_\+\+F\+I\+L\+E\+NO, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+{\footnotesize\ttfamily \#define warn\+\_\+printf(\begin{DoxyParamCaption}\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})~dprintf(STDERR\+\_\+\+FILENO, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
 
 \mbox{\Hypertarget{kapi_8h_aa56805b96562808390c620b9a60dec05}\label{kapi_8h_aa56805b96562808390c620b9a60dec05}} 
 \index{kapi.h@{kapi.h}!warn\_wprint@{warn\_wprint}}
@@ -127,7 +132,7 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \index{kapi.h@{kapi.h}!kprintf@{kprintf}}
 \index{kprintf@{kprintf}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{kprintf}{kprintf}}
-{\footnotesize\ttfamily \#define kprintf(\begin{DoxyParamCaption}\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})~dprintf(\mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{K\+D\+B\+G\+\_\+\+F\+I\+L\+E\+NO}}, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+F\+I\+L\+E\+\_\+\+\_\+, \+\_\+\+\_\+\+L\+I\+N\+E\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+V\+A\+\_\+\+A\+R\+G\+S\+\_\+\+\_\+)}
+{\footnotesize\ttfamily \#define kprintf(\begin{DoxyParamCaption}\item[{}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})~dprintf(\mbox{\hyperlink{kapi_8h_a7cb5988f848e9a61b6f81576ef4fda8a}{KDBG\+\_\+\+FILENO}}, \char`\"{}\%s\+:\%d -\/-\/ \char`\"{} fmt \char`\"{}\textbackslash{}n\char`\"{}, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \#\#\+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+)}
 
 \mbox{\Hypertarget{kapi_8h_a9cdf245d9d4255125fe917cb04da49af}\label{kapi_8h_a9cdf245d9d4255125fe917cb04da49af}} 
 \index{kapi.h@{kapi.h}!kprint@{kprint}}
@@ -145,7 +150,7 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{    \textcolor{keywordflow}{do} \{                                    \(\backslash\)}
 \DoxyCodeLine{        if (!(cond)) \{                        \(\backslash\)}
-\DoxyCodeLine{            kprint(\textcolor{stringliteral}{"Assertion failed: "} \#cond); \(\backslash\)}
+\DoxyCodeLine{            kprint(\textcolor{stringliteral}{"{}Assertion failed: "{}} \#cond); \(\backslash\)}
 \DoxyCodeLine{        \}                                     \(\backslash\)}
 \DoxyCodeLine{    \} \textcolor{keywordflow}{while} (0)}
 
@@ -154,19 +159,19 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 \index{kapi.h@{kapi.h}!taskSCHEDULER\_SUSPENDED@{taskSCHEDULER\_SUSPENDED}}
 \index{taskSCHEDULER\_SUSPENDED@{taskSCHEDULER\_SUSPENDED}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{taskSCHEDULER\_SUSPENDED}{taskSCHEDULER\_SUSPENDED}}
-{\footnotesize\ttfamily \#define task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED~((int32\+\_\+t)0)}
+{\footnotesize\ttfamily \#define task\+SCHEDULER\+\_\+\+SUSPENDED~((int32\+\_\+t)0)}
 
 \mbox{\Hypertarget{kapi_8h_a0923fdaae1bfe42ac5cccd9e9ddca9ed}\label{kapi_8h_a0923fdaae1bfe42ac5cccd9e9ddca9ed}} 
 \index{kapi.h@{kapi.h}!taskSCHEDULER\_NOT\_STARTED@{taskSCHEDULER\_NOT\_STARTED}}
 \index{taskSCHEDULER\_NOT\_STARTED@{taskSCHEDULER\_NOT\_STARTED}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{taskSCHEDULER\_NOT\_STARTED}{taskSCHEDULER\_NOT\_STARTED}}
-{\footnotesize\ttfamily \#define task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+ED~((int32\+\_\+t)1)}
+{\footnotesize\ttfamily \#define task\+SCHEDULER\+\_\+\+NOT\+\_\+\+STARTED~((int32\+\_\+t)1)}
 
 \mbox{\Hypertarget{kapi_8h_acbb675035741787d29da475b5a887545}\label{kapi_8h_acbb675035741787d29da475b5a887545}} 
 \index{kapi.h@{kapi.h}!taskSCHEDULER\_RUNNING@{taskSCHEDULER\_RUNNING}}
 \index{taskSCHEDULER\_RUNNING@{taskSCHEDULER\_RUNNING}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{taskSCHEDULER\_RUNNING}{taskSCHEDULER\_RUNNING}}
-{\footnotesize\ttfamily \#define task\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+U\+N\+N\+I\+NG~((int32\+\_\+t)2)}
+{\footnotesize\ttfamily \#define task\+SCHEDULER\+\_\+\+RUNNING~((int32\+\_\+t)2)}
 
 
 
@@ -190,9 +195,9 @@ This Source Code Form is subject to the terms of the Mozilla Public License, v. 
 
 Suspends the scheduler without disabling interrupts. 
 
-context switches will not occur while the scheduler is suspended. R\+T\+OS ticks that occur while the scheduler is suspended will be held pending until the scheduler has been unsuspended with \mbox{\hyperlink{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}{rtos\+\_\+resume\+\_\+all()}}
+context switches will not occur while the scheduler is suspended. RTOS ticks that occur while the scheduler is suspended will be held pending until the scheduler has been unsuspended with \mbox{\hyperlink{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}{rtos\+\_\+resume\+\_\+all()}}
 
-When used correctly, this function ensures that operations occur atomically w.\+r.\+t. multitasking. Functions like task\+\_\+delay, queue\+\_\+send, and other functions M\+U\+ST N\+OT be called while the scheduler is disabled. \mbox{\Hypertarget{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}\label{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}} 
+When used correctly, this function ensures that operations occur atomically w.\+r.\+t. multitasking. Functions like task\+\_\+delay, queue\+\_\+send, and other functions MUST NOT be called while the scheduler is disabled. \mbox{\Hypertarget{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}\label{kapi_8h_a1db72fd4961113c9255cce71d169cbfa}} 
 \index{kapi.h@{kapi.h}!rtos\_resume\_all@{rtos\_resume\_all}}
 \index{rtos\_resume\_all@{rtos\_resume\_all}!kapi.h@{kapi.h}}
 \doxysubsubsection{\texorpdfstring{rtos\_resume\_all()}{rtos\_resume\_all()}}
@@ -217,7 +222,7 @@ True if a context switch is necessary.
 
 Creates a task using statically allocated buffers. 
 
-All tasks used by the P\+R\+OS system must use statically allocated buffers. This function uses the following values of errno when an error state is reached\+: E\+N\+O\+M\+EM -\/ The stack cannot be used as the T\+CB was not created.
+All tasks used by the PROS system must use statically allocated buffers. This function uses the following values of errno when an error state is reached\+: ENOMEM -\/ The stack cannot be used as the TCB was not created.
 
 
 \begin{DoxyParams}{Parameters}
@@ -225,15 +230,15 @@ All tasks used by the P\+R\+OS system must use statically allocated buffers. Thi
 \hline
 {\em parameters} & Pointer to memory that will be used as a parameter for the task being created. This memory should not typically come from stack, but rather from dynamically (i.\+e., malloc\textquotesingle{}d) or statically allocated memory. \\
 \hline
-{\em prio} & The priority at which the task should run. T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+\_\+\+D\+E\+F\+A\+U\+LT plus/minus 1 or 2 is typically used. \\
+{\em prio} & The priority at which the task should run. TASK\+\_\+\+PRIO\+\_\+\+DEFAULT plus/minus 1 or 2 is typically used. \\
 \hline
-{\em stack\+\_\+depth} & The number of words (i.\+e. 4 $\ast$ stack\+\_\+depth) available on the task\textquotesingle{}s stack. T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+D\+E\+F\+A\+U\+LT is typically sufficienct. \\
+{\em stack\+\_\+depth} & The number of words (i.\+e. 4 $\ast$ stack\+\_\+depth) available on the task\textquotesingle{}s stack. TASK\+\_\+\+STACK\+\_\+\+DEPTH\+\_\+\+DEFAULT is typically sufficienct. \\
 \hline
 {\em name} & A descriptive name for the task. This is mainly used to facilitate debugging. The name may be up to 32 characters long.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A handle by which the newly created task can be referenced. If an error occurred, N\+U\+LL will be returned and errno can be checked for hints as to why task\+\_\+create failed. 
+A handle by which the newly created task can be referenced. If an error occurred, NULL will be returned and errno can be checked for hints as to why task\+\_\+create failed. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{kapi_8h_a81b28a183397697dc8dfb94f96f875f2}\label{kapi_8h_a81b28a183397697dc8dfb94f96f875f2}} 
 \index{kapi.h@{kapi.h}!mutex\_create\_static@{mutex\_create\_static}}
@@ -245,7 +250,7 @@ A handle by which the newly created task can be referenced. If an error occurred
 
 Creates a statically allocated mutex. 
 
-All Free\+R\+T\+OS primitives must be created statically if they are required for operation of the kernel.
+All Free\+RTOS primitives must be created statically if they are required for operation of the kernel.
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -253,7 +258,7 @@ All Free\+R\+T\+OS primitives must be created statically if they are required fo
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A handle to a newly created mutex. If an error occurred, N\+U\+LL will be returned and errno can be checked for hints as to why mutex\+\_\+create failed. 
+A handle to a newly created mutex. If an error occurred, NULL will be returned and errno can be checked for hints as to why mutex\+\_\+create failed. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{kapi_8h_a00d5fa4e33897eebbb15fced79d92c15}\label{kapi_8h_a00d5fa4e33897eebbb15fced79d92c15}} 
 \index{kapi.h@{kapi.h}!sem\_create\_static@{sem\_create\_static}}
@@ -265,7 +270,7 @@ A handle to a newly created mutex. If an error occurred, N\+U\+LL will be return
 
 Creates a statically allocated semaphore. 
 
-All Free\+R\+T\+OS primitives must be created statically if they are required for operation of the kernel.
+All Free\+RTOS primitives must be created statically if they are required for operation of the kernel.
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -277,7 +282,7 @@ All Free\+R\+T\+OS primitives must be created statically if they are required fo
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A newly created semaphore. If an error occurred, N\+U\+LL will be returned and errno can be checked for hints as to why sem\+\_\+create failed. 
+A newly created semaphore. If an error occurred, NULL will be returned and errno can be checked for hints as to why sem\+\_\+create failed. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{kapi_8h_a25237b68d7e177a3b32ece8b36bff9ef}\label{kapi_8h_a25237b68d7e177a3b32ece8b36bff9ef}} 
 \index{kapi.h@{kapi.h}!queue\_create\_static@{queue\_create\_static}}
@@ -289,7 +294,7 @@ A newly created semaphore. If an error occurred, N\+U\+LL will be returned and e
 
 Creates a statically allocated queue. 
 
-All Free\+R\+T\+OS primitives must be created statically if they are required for operation of the kernel.
+All Free\+RTOS primitives must be created statically if they are required for operation of the kernel.
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -303,7 +308,7 @@ All Free\+R\+T\+OS primitives must be created statically if they are required fo
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-A handle to a newly created queue, or N\+U\+LL if the queue cannot be created. 
+A handle to a newly created queue, or NULL if the queue cannot be created. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{kapi_8h_abc782ea27c8020a7181f1d9620d22d7c}\label{kapi_8h_abc782ea27c8020a7181f1d9620d22d7c}} 
 \index{kapi.h@{kapi.h}!display\_error@{display\_error}}
@@ -313,7 +318,7 @@ A handle to a newly created queue, or N\+U\+LL if the queue cannot be created.
 
 
 
-Display a non-\/fatal error to the built-\/in L\+C\+D/touch screen. 
+Display a non-\/fatal error to the built-\/in LCD/touch screen. 
 
 Note that this function is thread-\/safe, which requires that the scheduler be in a functioning state. For situations in which it is unclear whether the scheduler is working, use {\ttfamily display\+\_\+fatal\+\_\+error} instead.
 
@@ -330,9 +335,9 @@ Note that this function is thread-\/safe, which requires that the scheduler be i
 
 
 
-Display a fatal error to the built-\/in L\+C\+D/touch screen. 
+Display a fatal error to the built-\/in LCD/touch screen. 
 
-This function is intended to be used when the integrity of the R\+T\+OS cannot be trusted. No thread-\/safety mechanisms are used and this function only relies on the use of the libv5rts.
+This function is intended to be used when the integrity of the RTOS cannot be trusted. No thread-\/safety mechanisms are used and this function only relies on the use of the libv5rts.
 
 
 \begin{DoxyParams}[1]{Parameters}
