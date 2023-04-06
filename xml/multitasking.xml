@@ -16,7 +16,7 @@ The PROS task scheduler is a preemptive, priority-based, round-robin scheduler. 
 </listitem></itemizedlist>
 </para>
 </blockquote></para>
-<sect2 id="multitasking_1autotoc_md58">
+<sect2 id="multitasking_1autotoc_md59">
 <title>On the Abuse of Tasks</title>
 <para>Tasks are very often misused and abused in ways that make the PROS kernel behave in unintended ways. The following list are some commonly made mistakes and guidelines for using Tasks in PROS.</para>
 <para><blockquote><para><itemizedlist>
@@ -26,14 +26,14 @@ The PROS task scheduler is a preemptive, priority-based, round-robin scheduler. 
 </listitem></itemizedlist>
 </para>
 </blockquote></para>
-<sect3 id="multitasking_1autotoc_md59">
+<sect3 id="multitasking_1autotoc_md60">
 <title>Task Management</title>
 <para>Tasks in PROS are simple to create:</para>
 <para>The <ulink url="../../api/c/rtos.html#task_create">task_create</ulink> function takes in a function where the task starts, an argument to the function, a priority for the task, and two new fields not yet discussed: stack size and name.</para>
 <para>Stack size describes the amount of stack space that is allocated for the task. The stack is an area for your program to store variables, return addresses for functions, and more. Real-time operating systems like PROS work in limited-memory situations and do not allow for a dynamically resizable stack. Modern desktop operating systems do not need to worry about stack space as much as you would in a RTOS. The good news is that most tasks should opt to use <computeroutput>TASK_STACK_DEPTH_DEFAULT</computeroutput>, which should provide ample stack space for nearly any task. Very rudimentary and simple tasks (e.g. not many nested functions, no floating point context, few variables, only C) may be able to use <computeroutput>TASK_STACK_DEPTH_MIN</computeroutput>.</para>
 <para>The last parameter is the task name. The task name allows you to give a task a human-friendly name for the task. It is primarily for debugging purposes and allows you (the human) to easily identify tasks if performing advanced task management. Task names may be up to 32 characters long, and you may pass NULL or an empty string into the function. In API2, <ulink url="../../../cortex/api/index.html#taskCreate">taskCreate</ulink> will automatically make the task name an empty string.</para>
 </sect3>
-<sect3 id="multitasking_1autotoc_md60">
+<sect3 id="multitasking_1autotoc_md61">
 <title>Synchronization</title>
 <para>One problem which one often runs into when dealing with tasks is the problem of synchronization. If two tasks try to read the same sensor or control the same motor at the same time, unexpected behavior may occur since two tasks are trying to write to the same piece of data or variable (i.e. <ulink url="https://en.wikipedia.org/wiki/Race_condition#Software">race conditions</ulink>). The concept of writing code which has protections against race conditions is called thread safety. There are many different ways to implement thread safety, and PROS has several facilities to help maintain thread safety.</para>
 <para>The simplest way to ensure thread safety is to design tasks which will never access the same variables or data. You may design your code to have each subsystem of your robot in its own task. Ensuring that tasks never write to the same variables is called division of responsibility or separation of domain.</para>
@@ -52,12 +52,12 @@ The PROS task scheduler is a preemptive, priority-based, round-robin scheduler. 
 <para>Sometimes this is impossible: suppose you wanted to write a PID controller on its own task and you wanted to change the target of the PID controller. PROS features two types of synchronization structures, <emphasis>mutexes</emphasis> and <emphasis>notifications</emphasis> that can be used to coordinate tasks.</para>
 </sect3>
 </sect2>
-<sect2 id="multitasking_1autotoc_md61">
+<sect2 id="multitasking_1autotoc_md62">
 <title>Mutexes</title>
 <para>Mutexes stand for mutual exclusion; only one task can hold a mutex at any given time. Other tasks must wait for the first task to finish (and release the mutex) before they may continue.</para>
 <para>Mutexes do not magically prevent concurrent writing, but provide the ability for tasks to create &quot;contracts&quot; with each other. You can write your code such that a variable is never written to unless the task owns a mutex designated for that variable.</para>
 </sect2>
-<sect2 id="multitasking_1autotoc_md62">
+<sect2 id="multitasking_1autotoc_md63">
 <title>Notifications</title>
 <para>Task notifications are a powerful new feature in PROS 3 which allows direct-to-task synchronization. A full tutorial on task notifications can be found <ref refid="notifications" kindref="compound">Task Notifications</ref>. </para>
 </sect2>
