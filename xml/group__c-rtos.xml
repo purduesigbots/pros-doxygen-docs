@@ -731,11 +731,11 @@
 <codeline><highlight class="normal"><sp/><sp/>task_t<sp/>task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>counter_mutex.take();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex_take(counter_mutex,<sp/>TIMEOUT_MAX);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(counter<sp/>&gt;<sp/>100)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task_suspepend(task);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>counter_mutex.give();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(counter_mutex);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -770,30 +770,36 @@
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>stuff</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">pros::Task<sp/>task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal">task_t<sp/>task;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task.resume();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_resume(task);</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Run<sp/>autonomous<sp/>,<sp/>then<sp/>suspend<sp/>the<sp/>task<sp/>so<sp/>it<sp/>doesn&apos;t<sp/>interfere<sp/>run</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>outside<sp/>of<sp/>autonomous<sp/>or<sp/>opcontrol</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task.suspend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_suspend(task);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task.resume();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_resume(task);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Opctonrol<sp/>code<sp/>here</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task.suspend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_suspend(task);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="531" column="6" declfile="pros/rtos.h" declline="531" declcolumn="6"/>
+        <location file="pros/rtos.h" line="537" column="6" declfile="pros/rtos.h" declline="537" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gabb3a36bf47f6df9c981b1d585b922497" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -824,7 +830,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="555" column="10" declfile="pros/rtos.h" declline="555" declcolumn="10"/>
+        <location file="pros/rtos.h" line="561" column="10" declfile="pros/rtos.h" declline="561" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga1000d8e18af587837b65ab74b79d1cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>char *</type>
@@ -864,7 +870,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="579" column="6" declfile="pros/rtos.h" declline="579" declcolumn="6"/>
+        <location file="pros/rtos.h" line="585" column="6" declfile="pros/rtos.h" declline="585" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gace3de5c48a2d91b9843ac9bd62a62d91" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
@@ -906,7 +912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="606" column="8" declfile="pros/rtos.h" declline="606" declcolumn="8"/>
+        <location file="pros/rtos.h" line="612" column="8" declfile="pros/rtos.h" declline="612" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga663301f01d0cc8ecfd238fbe1346fc4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="kapi_8h_1af4e78a5aaf6b45938ea1d203bbc5ad12" kindref="member">task_t</ref></type>
@@ -936,7 +942,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="630" column="8" declfile="pros/rtos.h" declline="630" declcolumn="8"/>
+        <location file="pros/rtos.h" line="636" column="8" declfile="pros/rtos.h" declline="636" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf69af2a08ca85bd16fa3d1b75dbcf790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -964,7 +970,8 @@
 <simplesect kind="return"><para>Always returns true.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Code<sp/>while<sp/>waiting</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -982,7 +989,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="662" column="10" declfile="pros/rtos.h" declline="662" declcolumn="10"/>
+        <location file="pros/rtos.h" line="669" column="10" declfile="pros/rtos.h" declline="669" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga9fa0dd52656774090c0005eb43ef2827" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1027,7 +1034,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="694" column="6" declfile="pros/rtos.h" declline="694" declcolumn="6"/>
+        <location file="pros/rtos.h" line="701" column="6" declfile="pros/rtos.h" declline="701" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf21b3326026e04f277e85236f4ff503a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -1122,7 +1129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="751" column="10" declfile="pros/rtos.h" declline="751" declcolumn="10"/>
+        <location file="pros/rtos.h" line="758" column="10" declfile="pros/rtos.h" declline="758" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga15f1230bbc0fe029caf775a393b4a897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -1180,7 +1187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="788" column="10" declfile="pros/rtos.h" declline="788" declcolumn="10"/>
+        <location file="pros/rtos.h" line="795" column="10" declfile="pros/rtos.h" declline="795" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga82a2d584952478f46b9bc766395bb8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1211,7 +1218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="806" column="6" declfile="pros/rtos.h" declline="806" declcolumn="6"/>
+        <location file="pros/rtos.h" line="813" column="6" declfile="pros/rtos.h" declline="813" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga92aa79cdc30ffd13f63a7ffeca64b06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
@@ -1240,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="829" column="9" declfile="pros/rtos.h" declline="829" declcolumn="9"/>
+        <location file="pros/rtos.h" line="836" column="9" declfile="pros/rtos.h" declline="836" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga49aa5444b488ff60fc458aea8172adc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1291,7 +1298,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="861" column="6" declfile="pros/rtos.h" declline="861" declcolumn="6"/>
+        <location file="pros/rtos.h" line="868" column="6" declfile="pros/rtos.h" declline="868" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga7f20ed94cee8e04d491743b4b34feda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1330,7 +1337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="888" column="6" declfile="pros/rtos.h" declline="888" declcolumn="6"/>
+        <location file="pros/rtos.h" line="895" column="6" declfile="pros/rtos.h" declline="895" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1368,7 +1375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="910" column="6" declfile="pros/rtos.h" declline="910" declcolumn="6"/>
+        <location file="pros/rtos.h" line="917" column="6" declfile="pros/rtos.h" declline="917" declcolumn="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">

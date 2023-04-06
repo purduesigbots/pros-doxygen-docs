@@ -99,8 +99,6 @@ V5</span></a>
           <dl class="m-doc">
             <dt>file <a href="motors_8hpp.html" class="m-doc">motors.hpp</a></dt>
             <dd></dd>
-            <dt>file <a href="motors_8hpp.html" class="m-doc">motors.hpp</a></dt>
-            <dd></dd>
           </dl>
         </section>
         <section id="nested-classes">
@@ -120,7 +118,7 @@ V5</span></a>
               const <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8d" class="m-doc">pros::<wbr />v5::<wbr />MotorGears</a> gearset = <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8da9f27410725ab8cc8854a2769c7a516b8" class="m-doc">pros::<wbr />v5::<wbr />MotorGears::<wbr />green</a>,
               const <a href="namespacepros_1_1v5.html#ab231d92d02eadc905cd4fb268568d9b2" class="m-doc">pros::<wbr />v5::<wbr />MotorUnits</a> encoder_units = pros::v5::MotorUnits::degrees) <span class="m-label m-info">explicit</span> </span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Constructs a new <a href="classpros_1_1v5_1_1Motor.html" class="m-doc">Motor</a> object.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab4c65b212768e191e450b2ed272ea68f" class="m-doc-self">MotorGroup</a>(</span><span class="m-doc-wrap">const std::vector&lt;std::int8_t&gt;&amp; ports,
               const <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8d" class="m-doc">pros::<wbr />v5::<wbr />MotorGears</a> gearset = <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8da9f27410725ab8cc8854a2769c7a516b8" class="m-doc">pros::<wbr />v5::<wbr />MotorGears::<wbr />green</a>,
@@ -868,7 +866,32 @@ V5</span></a>
               const <a href="namespacepros_1_1v5.html#ab231d92d02eadc905cd4fb268568d9b2" class="m-doc">pros::<wbr />v5::<wbr />MotorUnits</a> encoder_units = pros::v5::MotorUnits::degrees) <span class="m-label m-info">explicit</span> </span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motor__group_8hpp.html">&lt;pros/motor_group.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Constructs a new <a href="classpros_1_1v5_1_1Motor.html" class="m-doc">Motor</a> object.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">gearset</td>
+                  <td>= <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8da9f27410725ab8cc8854a2769c7a516b8" class="m-doc">pros::<wbr />v5::<wbr />MotorGears::<wbr />green</a> Optional parameter for the gearset for the motors. set to <a href="namespacepros_1_1v5.html#a3bad47afb79fa112f199d2c5f54eec8da9f27410725ab8cc8854a2769c7a516b8" class="m-doc">pros::<wbr />v5::<wbr />MotorGears::<wbr />green</a> if not specifed.</td>
+                </tr>
+                <tr>
+                  <td>encoder_units</td>
+                  <td>= pros::v5::MotorUnits::degrees Optional parameter for the encoder units of the motors set to pros::v5::MotorUnits::degrees if not specified by the user</td>
+                </tr>
+              </tbody>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">first_motor_group</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">-2</span><span class="p">});</span><span class="w"> </span><span class="c1">//Creates a motorgroup with a motor on port 1 </span>
+<span class="w"> </span><span class="c1">// and a reversed motor on port 2 with green gearset and degrees as the encoder units</span>
+<span class="w"> </span>
+<span class="n">MotorGroup</span><span class="w"> </span><span class="n">second_motor_group</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">},</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorUnits</span><span class="o">::</span><span class="n">blue</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a motorgroup with a motor on port 1 </span>
+<span class="w"> </span><span class="c1">// and a motor on port 4 with blue gearset and degrees as the encoder units</span>
+<span class="n">MotorGroup</span><span class="w"> </span><span class="n">third_motor_group</span><span class="p">({</span><span class="mi">-5</span><span class="p">,</span><span class="w"> </span><span class="mi">-6</span><span class="p">},</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorUnits</span><span class="o">::</span><span class="n">blue</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorGears</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a motorgroup with a motor on port 1 </span>
+<span class="w"> </span><span class="c1">// and a motor on port 4 with blue gearset and degrees as the encoder units</span>
+<span class="w"> </span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gab4c65b212768e191e450b2ed272ea68f"><div>
             <h3>
@@ -915,7 +938,7 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">Motor</span><span class="w"> </span><span class="n">first_motor</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a motor on port 1 with green gearset and degrees as the encoder units</span>
-<span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">reversed_motor</span><span class="p">(</span><span class="mi">-2</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a reversed motor on port 1 with standard gearset and encoder units</span>
+<span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">reversed_motor</span><span class="p">(</span><span class="mi">-2</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a reversed motor on port 2 with standard gearset and encoder units</span>
 <span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">blue_motor</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorGears</span><span class="o">::</span><span class="n">blue</span><span class="p">);</span><span class="w"> </span><span class="c1">//Creates a motor on port 3 with blue gear set and degrees</span>
 <span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">rotations_motor</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorGears</span><span class="o">::</span><span class="n">green</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">v5</span><span class="o">::</span><span class="n">MotorUnits</span><span class="o">::</span><span class="n">rotations</span><span class="p">);</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="n">rotations</span>
 <span class="w"> </span>
