@@ -1,0 +1,142 @@
+\hypertarget{group__c-distance}{}\doxysection{V\+EX Distance Sensor C A\+PI}
+\label{group__c-distance}\index{VEX Distance Sensor C API@{VEX Distance Sensor C API}}
+\doxysubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{distance_8h}{distance.\+h}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int32\+\_\+t \mbox{\hyperlink{group__c-distance_ga7d24458fd388aaa7bee4fac208b47d3b}{distance\+\_\+get}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Get the currently measured distance from the sensor in mm. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{group__c-distance_ga97b69852b0f1ec60cdac10ca20caabdc}{distance\+\_\+get\+\_\+confidence}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Get the confidence in the distance reading. \end{DoxyCompactList}\item 
+int32\+\_\+t \mbox{\hyperlink{group__c-distance_gaa87f08f6faaed31f3876d3980b1d3689}{distance\+\_\+get\+\_\+object\+\_\+size}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Get the current guess at relative object size. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{group__c-distance_ga744e01aa684d89ff70dd443dba4eea53}{distance\+\_\+get\+\_\+object\+\_\+velocity}} (uint8\+\_\+t port)
+\begin{DoxyCompactList}\small\item\em Get the object velocity in m/s. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__c-distance_ga7d24458fd388aaa7bee4fac208b47d3b}\label{group__c-distance_ga7d24458fd388aaa7bee4fac208b47d3b}} 
+\index{VEX Distance Sensor C API@{VEX Distance Sensor C API}!distance\_get@{distance\_get}}
+\index{distance\_get@{distance\_get}!VEX Distance Sensor C API@{VEX Distance Sensor C API}}
+\doxysubsubsection{\texorpdfstring{distance\_get()}{distance\_get()}}
+{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::distance\+\_\+get (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the currently measured distance from the sensor in mm. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance value or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DISTANCE\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance Value: \%d mm\(\backslash\)n"}, \mbox{\hyperlink{group__c-distance_ga7d24458fd388aaa7bee4fac208b47d3b}{distance\_get}}(DISTANCE\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga6a62f5325d65f95436762552df547d73}{delay}}(20);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-distance_ga97b69852b0f1ec60cdac10ca20caabdc}\label{group__c-distance_ga97b69852b0f1ec60cdac10ca20caabdc}} 
+\index{VEX Distance Sensor C API@{VEX Distance Sensor C API}!distance\_get\_confidence@{distance\_get\_confidence}}
+\index{distance\_get\_confidence@{distance\_get\_confidence}!VEX Distance Sensor C API@{VEX Distance Sensor C API}}
+\doxysubsubsection{\texorpdfstring{distance\_get\_confidence()}{distance\_get\_confidence()}}
+{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::distance\+\_\+get\+\_\+confidence (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the confidence in the distance reading. 
+
+This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is $>$ 200mm (the value 10 is returned in this scenario).
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The confidence value or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DISTANCE\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance Confidence Value: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-distance_ga97b69852b0f1ec60cdac10ca20caabdc}{distance\_get\_confidence}}(DISTANCE\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga6a62f5325d65f95436762552df547d73}{delay}}(20);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-distance_gaa87f08f6faaed31f3876d3980b1d3689}\label{group__c-distance_gaa87f08f6faaed31f3876d3980b1d3689}} 
+\index{VEX Distance Sensor C API@{VEX Distance Sensor C API}!distance\_get\_object\_size@{distance\_get\_object\_size}}
+\index{distance\_get\_object\_size@{distance\_get\_object\_size}!VEX Distance Sensor C API@{VEX Distance Sensor C API}}
+\doxysubsubsection{\texorpdfstring{distance\_get\_object\_size()}{distance\_get\_object\_size()}}
+{\footnotesize\ttfamily int32\+\_\+t pros\+::c\+::distance\+\_\+get\+\_\+object\+\_\+size (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the current guess at relative object size. 
+
+This is a value that has a range of 0 to 400. A 18\char`\"{} x 30\char`\"{} grey card will return a value of approximately 75 in typical room lighting.
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size value or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__c-distance_ga744e01aa684d89ff70dd443dba4eea53}\label{group__c-distance_ga744e01aa684d89ff70dd443dba4eea53}} 
+\index{VEX Distance Sensor C API@{VEX Distance Sensor C API}!distance\_get\_object\_velocity@{distance\_get\_object\_velocity}}
+\index{distance\_get\_object\_velocity@{distance\_get\_object\_velocity}!VEX Distance Sensor C API@{VEX Distance Sensor C API}}
+\doxysubsubsection{\texorpdfstring{distance\_get\_object\_velocity()}{distance\_get\_object\_velocity()}}
+{\footnotesize\ttfamily double pros\+::c\+::distance\+\_\+get\+\_\+object\+\_\+velocity (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{port }\end{DoxyParamCaption})}
+
+
+
+Get the object velocity in m/s. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+X\+IO -\/ The given value is not within the range of V5 ports (1-\/21). E\+N\+O\+D\+EV -\/ The port cannot be configured as an \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 \mbox{\hyperlink{group__cpp-distance_classpros_1_1v5_1_1Distance}{Distance}} Sensor port number from 1-\/21 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The velocity value or P\+R\+O\+S\+\_\+\+E\+RR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define DISTANCE\_PORT 1}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"Distance Object Size: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-distance_gaa87f08f6faaed31f3876d3980b1d3689}{distance\_get\_object\_size}}(DISTANCE\_PORT));}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga6a62f5325d65f95436762552df547d73}{delay}}(20);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ 

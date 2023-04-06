@@ -1,0 +1,89 @@
+\hypertarget{motors_8hpp}{}\doxysection{pros/motors.hpp File Reference}
+\label{motors_8hpp}\index{pros/motors.hpp@{pros/motors.hpp}}
+{\ttfamily \#include $<$cstdint$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}pros/device.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pros/motors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rtos.\+hpp\char`\"{}}\newline
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{group__cpp-motors_classpros_1_1v5_1_1Motor__Group}{Motor\+\_\+\+Group}}
+\item 
+class \mbox{\hyperlink{classpros_1_1v5_1_1Motor}{Motor}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacepros}{pros}}
+\item 
+ \mbox{\hyperlink{namespacepros_1_1v5}{pros\+::v5}}
+\item 
+ \mbox{\hyperlink{namespacepros_1_1v5_1_1literals}{pros\+::v5\+::literals}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{namespacepros_1_1v5_a1a3c88abb787264bf75df4bf8005bfe9}{Motor\+\_\+\+Units}} = Motor\+\_\+\+Encoder\+\_\+\+Units
+\item 
+using \mbox{\hyperlink{namespacepros_1_1v5_a01ff08f4f0af980a841c2856f68b1b42}{Motor\+\_\+\+Gearset}} = Motor\+\_\+\+Gears
+\item 
+using \mbox{\hyperlink{namespacepros_1_1v5_abd0d89f2237dbfd1ca17b41e7a1bd529}{Motor\+\_\+\+Cart}} = Motor\+\_\+\+Gears
+\item 
+using \mbox{\hyperlink{namespacepros_1_1v5_a5aa791dfec45857bd1297f1b7b24d4b8}{Motor\+\_\+\+Cartridge}} = Motor\+\_\+\+Gears
+\item 
+using \mbox{\hyperlink{namespacepros_1_1v5_af84d4c9125dd55f0beb259a0a2b01567}{Motor\+\_\+\+Gear}} = Motor\+\_\+\+Gears
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacepros_1_1v5_ab2148aa2bceb0c2e94321c24c9b0fd67}{Motor\+\_\+\+Brake}} \{ \mbox{\hyperlink{namespacepros_1_1v5_ab2148aa2bceb0c2e94321c24c9b0fd67a756d153ba898e1be8218d4651009e981}{coast}} = 0, 
+\mbox{\hyperlink{namespacepros_1_1v5_ab2148aa2bceb0c2e94321c24c9b0fd67ab4628ac934a343cc5df197f6a709633b}{brake}} = 1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ab2148aa2bceb0c2e94321c24c9b0fd67aaf1d8213f4a22b0f9803fec9259ff7a8}{hold}} = 2, 
+\mbox{\hyperlink{namespacepros_1_1v5_ab2148aa2bceb0c2e94321c24c9b0fd67afedb2d84cafe20862cb4399751a8a7e3}{invalid}} = I\+N\+T32\+\_\+\+M\+AX
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817}{Motor\+\_\+\+Encoder\+\_\+\+Units}} \{ \newline
+\mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817a18daee01fc6e54aacd7f4c2eef60ff4d}{degrees}} = 0, 
+\mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817a3e9eb617073a0597ec590d7bd0f2a407}{deg}} = 0, 
+\mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817ad52e30a99086786b005c11c05b280215}{rotations}} = 1, 
+\mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817a0700cd3e2cd8b37ef510dd5aa2c81fc6}{counts}} = 2, 
+\newline
+\mbox{\hyperlink{namespacepros_1_1v5_a9d601c278c32b1e46d6dd506eebc0817afedb2d84cafe20862cb4399751a8a7e3}{invalid}} = I\+N\+T32\+\_\+\+M\+AX
+ \}
+\item 
+enum \mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870}{Motor\+\_\+\+Gears}} \{ \newline
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870a5974b2d1685dec0dff9eb27b64d94f32}{ratio\+\_\+36\+\_\+to\+\_\+1}} = 0, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870abda9643ac6601722a28f238714274da4}{red}} = ratio\+\_\+36\+\_\+to\+\_\+1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870ac58a2ad7324d7a1876f3211b655fe6eb}{rpm\+\_\+100}} = ratio\+\_\+36\+\_\+to\+\_\+1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870a2c1b301022b4357432cb1c28d2cd50f5}{ratio\+\_\+18\+\_\+to\+\_\+1}} = 1, 
+\newline
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870a9f27410725ab8cc8854a2769c7a516b8}{green}} = ratio\+\_\+18\+\_\+to\+\_\+1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870abff9499134353837c826a92313b1199b}{rpm\+\_\+200}} = ratio\+\_\+18\+\_\+to\+\_\+1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870a3670a4362efabb20bbefb81e18e42c38}{ratio\+\_\+6\+\_\+to\+\_\+1}} = 2, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870a48d6215903dff56238e52e8891380c8f}{blue}} = ratio\+\_\+6\+\_\+to\+\_\+1, 
+\newline
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870af33bb6db6d708dcc1fc10dc93a90960d}{rpm\+\_\+600}} = ratio\+\_\+6\+\_\+to\+\_\+1, 
+\mbox{\hyperlink{namespacepros_1_1v5_ac34565743ac140efe50a681e99d1d870afedb2d84cafe20862cb4399751a8a7e3}{invalid}} = I\+N\+T32\+\_\+\+M\+AX
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{classpros_1_1v5_1_1Motor}{pros\+::\+Motor}} \mbox{\hyperlink{group__cpp-motors_ga68d85bff75a4da45a9019e0449e1703b}{operator\char`\"{}\char`\"{}\+\_\+mtr}} (const unsigned long long int m)
+\item 
+const \mbox{\hyperlink{classpros_1_1v5_1_1Motor}{pros\+::\+Motor}} \mbox{\hyperlink{group__cpp-motors_gada0f69d38dd1f1e8af907dccaf48afb7}{operator\char`\"{}\char`\"{}\+\_\+rmtr}} (const unsigned long long int m)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains prototypes for the V5 Motor-\/related functions.
+
+Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/motors.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/motors.\+html}} to learn more.
+
+This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.
+
+\begin{DoxyCopyright}{Copyright}
+(c) 2017-\/2023, Purdue University A\+CM S\+I\+G\+Bots.
+\end{DoxyCopyright}
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the M\+PL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+M\+P\+L/2.\+0/}}. 

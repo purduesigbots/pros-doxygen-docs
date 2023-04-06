@@ -6,14 +6,14 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect2 id="faq_1autotoc_md21">
+<sect2 id="faq_1autotoc_md19">
 <title>Coding FAQ</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>&quot;main.h&quot; file not found</computeroutput>: This error occurs when the compilation database <computeroutput>compile_commands.json</computeroutput> is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the CLI without the <computeroutput>–compile-after</computeroutput> flag, or there was a hang-up in the editor after creating the project. Regardless of when this issue appears, running <computeroutput>pros make all</computeroutput> in the CLI or running <computeroutput>PROS -&gt; Build -&gt; All</computeroutput> in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors.</para>
 </listitem></itemizedlist>
 </para>
 </sect2>
-<sect2 id="faq_1autotoc_md22">
+<sect2 id="faq_1autotoc_md20">
 <title>Compile-Time Issues</title>
 <para><itemizedlist>
 <listitem><para><computeroutput>undefined reference to ...</computeroutput> or <computeroutput>implicit declaration of function ...</computeroutput>: A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in <computeroutput><ref refid="main_8h" kindref="compound">main.h</ref></computeroutput> or in the file in which they are used.</para>
@@ -22,7 +22,7 @@
 </listitem></itemizedlist>
 </para>
 </sect2>
-<sect2 id="faq_1autotoc_md23">
+<sect2 id="faq_1autotoc_md21">
 <title>Run-Time Issues</title>
 <para><itemizedlist>
 <listitem><para><bold>Some tasks are running, others are not:</bold> A task is not waiting using <computeroutput>delay &lt;../../api/c/rtos.html#delay&gt;</computeroutput>_ or <computeroutput>task_delay_until &lt;../../api/c/rtos.html#task-delay-until&gt;</computeroutput>_. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as <computeroutput>starvation &lt;<ulink url="https://en.wikipedia.org/wiki/Starvation_(computer_science)">https://en.wikipedia.org/wiki/Starvation_(computer_science)</ulink>&gt;</computeroutput>_. See <computeroutput>Tasks/Multithreading &lt;/tutorials/topical/multitasking&gt;</computeroutput>_ for more information.</para>

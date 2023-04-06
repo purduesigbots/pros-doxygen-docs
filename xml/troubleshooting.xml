@@ -6,7 +6,7 @@
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect2 id="troubleshooting_1autotoc_md30">
+<sect2 id="troubleshooting_1autotoc_md28">
 <title>Why do I get a &quot;Could not open port&quot; error when flashing?</title>
 <para>You might have seen an error like this:</para>
 <para><programlisting filename=".none"><codeline><highlight class="normal">Uploading<sp/>bin/output.bin<sp/>to<sp/>v5<sp/>device<sp/>on<sp/>COM11<sp/>as<sp/>hello<sp/>to<sp/>slot<sp/>1</highlight></codeline>
@@ -17,7 +17,7 @@
 </programlisting></para>
 <para>That means that some other resource is using the port. If you also have the V5 Utility open, that would cause this error to occur. Close the V5 Utility if you want to flash.</para>
 </sect2>
-<sect2 id="troubleshooting_1autotoc_md31">
+<sect2 id="troubleshooting_1autotoc_md29">
 <title>Compile-Time Issues</title>
 <para><blockquote><para><itemizedlist>
 <listitem><para><computeroutput>&quot;main.h&quot; file not found</computeroutput>: : This error occurs when the compilation database <computeroutput>compile_commands.json</computeroutput> is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the CLI without the after creating the project. Regardless of when this issue after creating the project. Regardless of when this issue appears, running <computeroutput>pros make all</computeroutput> in the CLI or running <computeroutput>PROS -&gt; Build -&gt; All</computeroutput> in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors. </para>
@@ -32,7 +32,7 @@
 </para>
 </blockquote></para>
 </sect2>
-<sect2 id="troubleshooting_1autotoc_md32">
+<sect2 id="troubleshooting_1autotoc_md30">
 <title>Run-Time Issues</title>
 <para><blockquote><para><itemizedlist>
 <listitem><para><bold>Some tasks are running, others are not:</bold> : A task is not waiting using <ulink url="../../api/c/rtos.html#delay">delay</ulink> or <ulink url="../../api/c/rtos.html#task-delay-until">task_delay_until</ulink>. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as <ulink url="https://en.wikipedia.org/wiki/Starvation_(computer_science)">starvation</ulink>. See <ulink url="/tutorials/topical/multitasking">Tasks/Multithreading</ulink> for more information.</para>

@@ -6,7 +6,7 @@
     <innerfile refid="link_8hpp">link.hpp</innerfile>
     <innerclass refid="classpros_1_1Link" prot="public">pros::Link</innerclass>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group__cpp-link_1gacd35a052ca4a07438ac54dc0a8b6a383" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-link_1gacd35a052ca4a07438ac54dc0a8b6a383" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Link</definition>
         <argsstring>(const std::uint8_t port, const std::string link_id, link_type_e_t type, bool ov=false)</argsstring>
@@ -33,9 +33,8 @@
         </briefdescription>
         <detaileddescription>
 <para>There might be a 1 to 2 second delay from when this function is called to when the link is initializes.</para>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -68,14 +67,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds.</para>
+<simplesect kind="return"><para>PROS_ERR if initialization fails, 1 if the initialization succeeds. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="72" column="10"/>
+        <location file="pros/link.hpp" line="67" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1ga59fc494d53391b27e2fd75cb750690d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -86,19 +84,14 @@
 <para>Checks if a radio link on a port is active or not. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><simplesect kind="return"><para>If a radio is connected to a port and it&apos;s connected to a link. </para>
 </simplesect>
-<simplesect kind="return"><para>If a radio is connected to a port and it&apos;s connected to a link.</para>
-</simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal">if<sp/>(link.connected())<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>do<sp/>something</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="93" column="6"/>
+        <location file="pros/link.hpp" line="80" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1ga3e5a887fae00109fec9845322aa962c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -109,19 +102,32 @@
 <para>Returns the bytes of data number of without protocol available to be read. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><simplesect kind="return"><para>PROS_ERR if port is not a link/radio, else the bytes available to be read by the user. </para>
 </simplesect>
-<simplesect kind="return"><para>PROS_ERR if port is not a link/radio, else the bytes available to be read by the user.</para>
-</simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Bytes<sp/>available<sp/>to<sp/>read:<sp/>%d&quot;,<sp/>link.receivable_size());</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="115" column="15"/>
+        <location file="pros/link.hpp" line="94" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-link_1ga4647a3ca3ef53b4c91d9192ab40184f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::uint32_t</type>
+        <definition>std::uint32_t raw_transmittable_size</definition>
+        <argsstring>()</argsstring>
+        <name>raw_transmittable_size</name>
+        <briefdescription>
+<para>Returns the bytes of data available in transmission buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><simplesect kind="return"><para>PROS_ERR if port is not a link/radio, </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/link.hpp" line="107" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1gab363648b5e3ef80b53b277aed5fa4112" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -137,54 +143,34 @@
           <declname>data_size</declname>
         </param>
         <briefdescription>
-<para>Returns the bytes of data available in transmission buffer. </para>
+<para>Send raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer with data to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer with data to send</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded. </para>
 </simplesect>
-<simplesect kind="return"><para>PROS_ERR if port is not a link/radio, else the bytes available to be transmitted by the user.</para>
-</simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/>void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Bytes<sp/>available<sp/>to<sp/>transmit:<sp/>%d&quot;,<sp/>link.transmittable_size());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
-<codeline><highlight class="normal">std::uint32_t<sp/>raw_transmittable_size();</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">/**</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>Send<sp/>raw<sp/>serial<sp/>data<sp/>through<sp/>vexlink.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\note<sp/>This<sp/>function<sp/>uses<sp/>the<sp/>following<sp/>values<sp/>of<sp/>errno<sp/>when<sp/>an<sp/>error<sp/>state<sp/>is</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>reached:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>ENXIO<sp/>-<sp/>The<sp/>given<sp/>value<sp/>is<sp/>not<sp/>within<sp/>the<sp/>range<sp/>of<sp/>V5<sp/>ports<sp/>(1-21).</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>ENODEV<sp/>-<sp/>The<sp/>port<sp/>cannot<sp/>be<sp/>configured<sp/>as<sp/>a<sp/>radio.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>ENXIO<sp/>-<sp/>The<sp/>sensor<sp/>is<sp/>still<sp/>calibrating,<sp/>or<sp/>no<sp/>link<sp/>is<sp/>connected<sp/>via<sp/>the<sp/>radio.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>EBUSY<sp/>-<sp/>The<sp/>transmitter<sp/>buffer<sp/>is<sp/>still<sp/>busy<sp/>with<sp/>a<sp/>previous<sp/>transmission,<sp/>and<sp/>there<sp/>is<sp/>no</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>room<sp/>in<sp/>the<sp/>FIFO<sp/>buffer<sp/>(queue)<sp/>to<sp/>transmit<sp/>the<sp/>data.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>EINVAL<sp/>-<sp/>The<sp/>data<sp/>given<sp/>is<sp/>NULL</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\param<sp/>data</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Buffer<sp/>with<sp/>data<sp/>to<sp/>send</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\param<sp/>data_size</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/>Buffer<sp/>with<sp/>data<sp/>to<sp/>send</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\return<sp/>PROS_ERR<sp/>if<sp/>port<sp/>is<sp/>not<sp/>a<sp/>link,<sp/>and<sp/>the<sp/>successfully<sp/>transmitted<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>data<sp/>size<sp/>if<sp/>it<sp/>succeeded.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\b<sp/>Example:</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>\code</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[4]<sp/>=<sp/>{0x01,<sp/>0x02,<sp/>0x03,<sp/>0x04};</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/><sp/>link.transmit_raw(data,<sp/>4);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>*<sp/></highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="168" column="15"/>
+        <location file="pros/link.hpp" line="129" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1gab567141de181c7c1b00c32dc9655d8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -203,9 +189,8 @@
 <para>Receive raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>dest</parametername>
 </parameternamelist>
@@ -222,18 +207,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded.</para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[4];</highlight></codeline>
-<codeline><highlight class="normal"><sp/>link.receive_raw(data,<sp/>4);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="198" column="15"/>
+        <location file="pros/link.hpp" line="150" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1ga64c630547d0e9c66e515f2dd838e4341" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -252,9 +232,8 @@
 <para>Send packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>data</parametername>
 </parameternamelist>
@@ -271,18 +250,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded.</para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully transmitted data size if it succeeded. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[4]<sp/>=<sp/>{0x01,<sp/>0x02,<sp/>0x03,<sp/>0x04};</highlight></codeline>
-<codeline><highlight class="normal"><sp/>link.transmit(data,<sp/>4);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="229" column="15"/>
+        <location file="pros/link.hpp" line="172" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1gafe8e1c1ce5a8a29aee2786adf14e8b5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -301,9 +275,8 @@
 <para>Receive packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
+<para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>dest</parametername>
 </parameternamelist>
@@ -320,18 +293,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded.</para>
+<simplesect kind="return"><para>PROS_ERR if port is not a link, and the successfully received data size if it succeeded. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>data[4];</highlight></codeline>
-<codeline><highlight class="normal"><sp/>link.receive(data,<sp/>4);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="260" column="15"/>
+        <location file="pros/link.hpp" line="194" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-link_1ga66acfc4fea58d38ae1e2fd263a55ccf5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -342,19 +310,28 @@
 <para>Clear the receive buffer of the link, and discarding the data. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+<para><simplesect kind="return"><para>PROS_ERR if port is not a link, 1 if the operation succeeded. </para>
 </simplesect>
-<simplesect kind="return"><para>PROS_ERR if port is not a link, 1 if the operation succeeded.</para>
-</simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Link<sp/>link(1,<sp/>&quot;my_link&quot;,<sp/>pros::E_LINK_TX);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>link.clear_receive_buf();</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.hpp" line="281" column="15"/>
+        <location file="pros/link.hpp" line="207" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-link_1gabfb87cfad20a0316415fddff116a1e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepros_1ad258d4c51629346fceac4679b3209ad9" kindref="member">pros::DeviceType</ref></type>
+        <definition>pros::DeviceType get_type</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type</name>
+        <briefdescription>
+<para>Returns the type of device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/link.hpp" line="213" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

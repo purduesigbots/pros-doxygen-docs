@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Home &raquo; Tutorials &raquo; Topical Tutorials &raquo; Wireless Upload and Hot/Cold Linking | PROS forV5</title>
+  <title>Home &raquo; Tutorials &raquo; Topical Tutorials &raquo; Wireless Upload and Hot/Cold Linking | PROS for
+V5</title>
   <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
   <link rel="stylesheet" href="pros-custom.css" />
@@ -15,7 +16,8 @@
 <header><nav id="navigation">
   <div class="m-container">
     <div class="m-row">
-      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="logo.png" alt="" />PROS <span class="m-thin">forV5</span></a>
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="logo.png" alt="" />PROS <span class="m-thin">for
+V5</span></a>
       <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
         <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
           <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
@@ -69,7 +71,7 @@
         </h1>
 <aside class="m-note m-info"><h4>Note</h4><p>Wireless Upload requires at least CLI 3.1.4, Kernel 3.1.6, VEXos 1.0.5, and OkapiLib 3.3.12 (if used).</p></aside><p>PROS supports wireless upload to the V5 Brain via a V5 Controller. Although there are no special requirements to enable PROS to do this, file transfer speeds are typically unacceptably slow. To make them more reasonable, PROS has a different method of compiling your project so that the PROS kernel and other infrequently modified code are uploaded once and only the code you regularly modify (e.g. opcontrol.cpp, autonomous.cpp, and initialize.cpp) gets transferred to the V5 wirelessly. We call the code you upload once and never change the &quot;cold
 image&quot; and the code that changes frequently and gets uploaded every time the &quot;hot image.&quot;</p><p>To enable this compilation mode, you should open your project&#x27;s Makefile and edit the line:</p><pre class="m-code"># Set to 1 to enable hot/cold linking
-USE_PACKAGE:=0</pre><p>so that <code>USE_PACKAGE:=1</code>. Re-build and upload your project and PROS will automatically use the new files. PROS will automatically detect when you&#x27;re using the same combination of libraries and decide not to re-upload the &quot;cold&quot; code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.</p><section id="autotoc_md69"><h3><a href="#autotoc_md69">Large Projects</a></h3><p>Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project&#x27;s Makefile:</p><pre class="m-code"># Set this to 1 to add additional rules to compile your project as a PROS library template
+USE_PACKAGE:=0</pre><p>so that <code>USE_PACKAGE:=1</code>. Re-build and upload your project and PROS will automatically use the new files. PROS will automatically detect when you&#x27;re using the same combination of libraries and decide not to re-upload the &quot;cold&quot; code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.</p><section id="autotoc_md67"><h3><a href="#autotoc_md67">Large Projects</a></h3><p>Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project&#x27;s Makefile:</p><pre class="m-code"># Set this to 1 to add additional rules to compile your project as a PROS library template
 IS_LIBRARY:=0
 # TODO: CHANGE THIS!
 LIBNAME:=libbest
@@ -85,7 +87,7 @@ VERSION:=1.0.0
 # this line excludes opcontrol.c and similar files
 EXCLUDE_SRC_FROM_LIB+=$(foreach file, $(SRCDIR)/opcontrol $(SRCDIR)/initialize $(SRCDIR)/autonomous,$(foreach cext,$(CEXTS),$(file).$(cext)) $(foreach cxxext,$(CXXEXTS),$(file).$(cxxext)))
 EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/scripts             # exclude any files in the src/scripts directory
-EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp</pre></section><section id="autotoc_md70"><h3><a href="#autotoc_md70">Hot/Cold Linking Troubleshooting</a></h3><p>Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime issues running in this mode. This section serves as a guide for debugging these sorts of issues.</p><p>Generally, if the program appears to be running correctly (i.e. the screen shows), then the compilation mode worked correctly and the error you&#x27;re experiencing is likely related to your code&#x27;s logic. If your code&#x27;s logic runs correctly when not using hot/cold linking, contact us so we may assist in troubleshooting.</p><p>If you see a black scren, then PROS did not boot correctly.</p><ul><li>A global constructor is in an infinite loop or raised an exception.</li><li>See also troubleshooting steps below</li></ul><p>If you see a grey screen, then PROS booted correctly, but is not running your hot image.</p><ul><li>Delete all user programs, perform a clean build, and upload</li></ul><p>If you&#x27;re having issues, contact us so we may assist in troubleshooting.</p></section>
+EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cpp</pre></section><section id="autotoc_md68"><h3><a href="#autotoc_md68">Hot/Cold Linking Troubleshooting</a></h3><p>Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime issues running in this mode. This section serves as a guide for debugging these sorts of issues.</p><p>Generally, if the program appears to be running correctly (i.e. the screen shows), then the compilation mode worked correctly and the error you&#x27;re experiencing is likely related to your code&#x27;s logic. If your code&#x27;s logic runs correctly when not using hot/cold linking, contact us so we may assist in troubleshooting.</p><p>If you see a black scren, then PROS did not boot correctly.</p><ul><li>A global constructor is in an infinite loop or raised an exception.</li><li>See also troubleshooting steps below</li></ul><p>If you see a grey screen, then PROS booted correctly, but is not running your hot image.</p><ul><li>Delete all user programs, perform a clean build, and upload</li></ul><p>If you&#x27;re having issues, contact us so we may assist in troubleshooting.</p></section>
       </div>
     </div>
   </div>
@@ -130,7 +132,8 @@ EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp     # exclude src/lcdselector.cp
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
-        <p>PROS forV5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+        <p>PROS for
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

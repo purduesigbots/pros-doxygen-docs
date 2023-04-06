@@ -1,0 +1,133 @@
+\hypertarget{rtos_8h}{}\doxysection{pros/rtos.h File Reference}
+\label{rtos_8h}\index{pros/rtos.h@{pros/rtos.h}}
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacepros}{pros}}
+\item 
+ \mbox{\hyperlink{namespacepros_1_1c}{pros\+::c}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__c-rtos_gad028cb03c935557184a71a6c53915065}{C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK}}~((\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}})N\+U\+LL)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Macros}\par
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga87892f18571e88eba7fbe758759cac05}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+AX}}~16
+\begin{DoxyCompactList}\small\item\em The highest priority that can be assigned to a task. Beware of deadlock. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_gae35baef65db45cef90a74266acb31b10}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+IN}}~1
+\begin{DoxyCompactList}\small\item\em The lowest priority that can be assigned to a task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+D\+E\+F\+A\+U\+LT}}~8
+\begin{DoxyCompactList}\small\item\em The default task priority, which should be used for most tasks. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+D\+E\+F\+A\+U\+LT}}~0x2000
+\begin{DoxyCompactList}\small\item\em The recommended stack size for a new task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_gafa551bbf9a2333b9241b2e99530a8767}{T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+M\+IN}}~0x200
+\begin{DoxyCompactList}\small\item\em The minimal stack size for a task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga6d22565b4bdfe36c8f8a0a376e565460}{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN}}~32
+\begin{DoxyCompactList}\small\item\em The maximum number of characters allowed in a task\textquotesingle{}s name. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+M\+AX}}~((uint32\+\_\+t)0xffffffff\+UL)
+\begin{DoxyCompactList}\small\item\em The maximum timeout value that can be given to, for instance, a mutex grab. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void $\ast$ \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t}}) (void $\ast$)
+\item 
+typedef void $\ast$ \mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+NG}} = 0, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+A\+DY}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+B\+L\+O\+C\+K\+ED}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED}}, 
+\newline
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+L\+E\+T\+ED}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID}}
+ \}
+\item 
+enum \mbox{\hyperlink{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+NE}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+B\+I\+TS}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+CR}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+O\+W\+R\+I\+TE}}, 
+\newline
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+O\+W\+R\+I\+TE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{Indent}\textbf{ Functions}\par
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of milliseconds since P\+R\+OS initialized. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{group__c-optical_gaea905a8de368ac9acc9ed04c66ebb84c}{micros}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of microseconds since P\+R\+OS initialized,. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\+\_\+create}} (\mbox{\hyperlink{kapi_8h_afd273bc26dce33480b445457e89bfaeb}{task\+\_\+fn\+\_\+t}} function, void $\ast$const parameters, uint32\+\_\+t prio, const uint16\+\_\+t stack\+\_\+depth, const char $\ast$const name)
+\begin{DoxyCompactList}\small\item\em Creates a new task and add it to the list of tasks that are ready to run. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga9f5bd026f982b738d8761c443af586da}{task\+\_\+delete}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}{task\+\_\+delay}} (const uint32\+\_\+t milliseconds)
+\begin{DoxyCompactList}\small\item\em Delays a task for a given number of milliseconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga6a62f5325d65f95436762552df547d73}{delay}} (const uint32\+\_\+t milliseconds)
+\begin{DoxyCompactList}\small\item\em Gets the number of milliseconds since P\+R\+OS initialized. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\+\_\+delay\+\_\+until}} (uint32\+\_\+t $\ast$const prev\+\_\+time, const uint32\+\_\+t delta)
+\begin{DoxyCompactList}\small\item\em Delays a task until a specified time. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gab49c228af50a4677d45e4622fb5f982b}{task\+\_\+get\+\_\+priority}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the priority of the specified task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga6f4a1c359ab23c7811ed524aa8f71e06}{task\+\_\+set\+\_\+priority}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task, uint32\+\_\+t prio)
+\begin{DoxyCompactList}\small\item\em Sets the priority of the specified task. \end{DoxyCompactList}\item 
+task\+\_\+state\+\_\+e\+\_\+t \mbox{\hyperlink{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}{task\+\_\+get\+\_\+state}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the state of the specified task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}{task\+\_\+suspend}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Suspends the specified task, making it ineligible to be scheduled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}{task\+\_\+resume}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Resumes the specified task, making it eligible to be scheduled. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gabb3a36bf47f6df9c981b1d585b922497}{task\+\_\+get\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}{task\+\_\+get\+\_\+name}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the name of the specified task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_gace3de5c48a2d91b9843ac9bd62a62d91}{task\+\_\+get\+\_\+by\+\_\+name}} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Gets a task handle from the specified name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_ga663301f01d0cc8ecfd238fbe1346fc4d}{task\+\_\+get\+\_\+current}} ()
+\begin{DoxyCompactList}\small\item\em Get the currently running task handle. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}{task\+\_\+notify}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Sends a simple notification to task and increments the notification counter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga9fa0dd52656774090c0005eb43ef2827}{task\+\_\+join}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Utilizes task notifications to wait until specified task is complete and deleted, then continues to execute the program. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaf21b3326026e04f277e85236f4ff503a}{task\+\_\+notify\+\_\+ext}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task, uint32\+\_\+t value, notify\+\_\+action\+\_\+e\+\_\+t action, uint32\+\_\+t $\ast$prev\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sends a notification to a task, optionally performing some action. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}{task\+\_\+notify\+\_\+take}} (bool clear\+\_\+on\+\_\+exit, uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Waits for a notification to be nonzero. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga82a2d584952478f46b9bc766395bb8c2}{task\+\_\+notify\+\_\+clear}} (\mbox{\hyperlink{kapi_8h_af4e78a5aaf6b45938ea1d203bbc5ad12}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Clears the notification for a task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}} \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\+\_\+create}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a mutex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\+\_\+take}} (\mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}} mutex, uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\+\_\+give}} (\mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}} mutex)
+\begin{DoxyCompactList}\small\item\em Unlocks a mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_gaf5995c8132175bc8e76904ccd1f6e39a}{mutex\+\_\+delete}} (\mbox{\hyperlink{kapi_8h_a93e65d556f878c762685fae603d1f95d}{mutex\+\_\+t}} mutex)
+\begin{DoxyCompactList}\small\item\em Deletes a mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Contains declarations for the P\+R\+OS R\+T\+OS kernel for use by typical V\+EX programmers.
+
+Visit \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html}} to learn more.
+
+This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.
+
+\begin{DoxyCopyright}{Copyright}
+(c) 2017-\/2023, Purdue University A\+CM S\+I\+G\+Bots. All rights reserved.
+\end{DoxyCopyright}
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the M\+PL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+M\+P\+L/2.\+0/}}. 

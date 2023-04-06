@@ -37,16 +37,15 @@
 <parametername>baudrate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The baudrate to run the port at</para>
+<para>The baudrate to run the port at </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1,<sp/>9600);</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="58" column="10"/>
+        <location file="pros/serial.hpp" line="53" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gae3a4d83e68ba8d52ee5b6325b7ebdc8c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -58,25 +57,12 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Creates a <ref refid="classpros_1_1Serial" kindref="compound">Serial</ref> object for the given port without a set baudrate. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
-</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="76" column="10"/>
+        <location file="pros/serial.hpp" line="55" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gab1abb2da4d95668bc4676f3bfe6d9823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -104,15 +90,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal">serial.set_baudrate(9600);</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="104" column="22"/>
+        <location file="pros/serial.hpp" line="77" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gac9bc8885aae50a580b81c4aa7ba4d0c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -127,15 +111,13 @@
 <para><simplesect kind="note"><para>This function does not cause the data in the output buffer to be written, it simply clears the internal buffers. Unlike stdout, generic serial does not use buffered IO (the FIFO buffers are written as soon as possible).</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal">serial.flush();</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="132" column="22"/>
+        <location file="pros/serial.hpp" line="99" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1ga7c8834e366baf9d952e02acc6207d30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -149,19 +131,13 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="note"><para>This function does not actually read any bytes, is simply returns the number of bytes available to be read.</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The number of bytes avaliable to be read or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>The number of bytes avaliable to be read or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.get_read_avail()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>std::uint8_t<sp/>byte<sp/>=<sp/>serial.read_byte();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="159" column="22"/>
+        <location file="pros/serial.hpp" line="116" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1ga0e5d59953d04d311664fcf1350ce811a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -175,20 +151,13 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="note"><para>This function does not actually write any bytes, is simply returns the number of bytes free in the port&apos;s buffer.</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The number of bytes free or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>The number of bytes free or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.get_write_free()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serial.write_byte(0x01);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="186" column="22"/>
+        <location file="pros/serial.hpp" line="132" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1ga381db98d8d974e958591b4372db01def" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -200,19 +169,13 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.peek_byte()<sp/>==<sp/>0x01)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serial.read_byte();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="209" column="22"/>
+        <location file="pros/serial.hpp" line="145" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gaa1aab0fd9f25fdad8cd00b298ff2d696" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -224,19 +187,13 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.read_byte()<sp/>==<sp/>0x01)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="232" column="22"/>
+        <location file="pros/serial.hpp" line="158" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gac445067dd822a3e075ed904782334e89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -275,18 +232,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes read or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The number of bytes read or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>buffer[10];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.read(buffer,<sp/>10);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="263" column="22"/>
+        <location file="pros/serial.hpp" line="180" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1ga39d1bd8d3f51282397ecd816c6ef11d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -313,17 +265,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.write_byte(0x01);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="291" column="22"/>
+        <location file="pros/serial.hpp" line="200" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-serial_1gad2230964ecffe14e7a57aa3078be9cce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -362,18 +310,27 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>buffer[10];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.write(buffer,<sp/>10);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="323" column="22"/>
+        <location file="pros/serial.hpp" line="223" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-serial_1gabfb87cfad20a0316415fddff116a1e8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepros_1ad258d4c51629346fceac4679b3209ad9" kindref="member">pros::DeviceType</ref></type>
+        <definition>pros::DeviceType get_type</definition>
+        <argsstring>() const</argsstring>
+        <name>get_type</name>
+        <briefdescription>
+<para>Returns the type of device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.hpp" line="229" column="18"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

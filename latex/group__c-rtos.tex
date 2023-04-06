@@ -1,0 +1,1054 @@
+\hypertarget{group__c-rtos}{}\doxysection{R\+T\+OS Facilities C A\+PI}
+\label{group__c-rtos}\index{RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{rtos_8h}{rtos.\+h}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacepros_1_1c}{pros\+::c}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__c-rtos_gad028cb03c935557184a71a6c53915065}{C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK}}~((\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}})N\+U\+LL)
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void $\ast$ \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}
+\item 
+typedef void($\ast$ \mbox{\hyperlink{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t}}) (void $\ast$)
+\item 
+typedef void $\ast$ \mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+NG}} = 0, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+A\+DY}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+B\+L\+O\+C\+K\+ED}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED}}, 
+\newline
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+L\+E\+T\+ED}}, 
+\mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0}{E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID}}
+ \}
+\item 
+enum \mbox{\hyperlink{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}} \{ \newline
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+NE}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+B\+I\+TS}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+CR}}, 
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+O\+W\+R\+I\+TE}}, 
+\newline
+\mbox{\hyperlink{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5}{E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+O\+W\+R\+I\+TE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of milliseconds since P\+R\+OS initialized. \end{DoxyCompactList}\item 
+uint64\+\_\+t \mbox{\hyperlink{group__c-optical_gaea905a8de368ac9acc9ed04c66ebb84c}{micros}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of microseconds since P\+R\+OS initialized,. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\+\_\+create}} (\mbox{\hyperlink{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t}} function, void $\ast$const parameters, uint32\+\_\+t prio, const uint16\+\_\+t stack\+\_\+depth, const char $\ast$const name)
+\begin{DoxyCompactList}\small\item\em Creates a new task and add it to the list of tasks that are ready to run. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga9f5bd026f982b738d8761c443af586da}{task\+\_\+delete}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}{task\+\_\+delay}} (const uint32\+\_\+t milliseconds)
+\begin{DoxyCompactList}\small\item\em Delays a task for a given number of milliseconds. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga6a62f5325d65f95436762552df547d73}{delay}} (const uint32\+\_\+t milliseconds)
+\begin{DoxyCompactList}\small\item\em Gets the number of milliseconds since P\+R\+OS initialized. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\+\_\+delay\+\_\+until}} (uint32\+\_\+t $\ast$const prev\+\_\+time, const uint32\+\_\+t delta)
+\begin{DoxyCompactList}\small\item\em Delays a task until a specified time. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gab49c228af50a4677d45e4622fb5f982b}{task\+\_\+get\+\_\+priority}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the priority of the specified task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga6f4a1c359ab23c7811ed524aa8f71e06}{task\+\_\+set\+\_\+priority}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task, uint32\+\_\+t prio)
+\begin{DoxyCompactList}\small\item\em Sets the priority of the specified task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t}} \mbox{\hyperlink{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}{task\+\_\+get\+\_\+state}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the state of the specified task. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}{task\+\_\+suspend}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Suspends the specified task, making it ineligible to be scheduled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}{task\+\_\+resume}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Resumes the specified task, making it eligible to be scheduled. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gabb3a36bf47f6df9c981b1d585b922497}{task\+\_\+get\+\_\+count}} (void)
+\begin{DoxyCompactList}\small\item\em Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}{task\+\_\+get\+\_\+name}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Gets the name of the specified task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_gace3de5c48a2d91b9843ac9bd62a62d91}{task\+\_\+get\+\_\+by\+\_\+name}} (const char $\ast$name)
+\begin{DoxyCompactList}\small\item\em Gets a task handle from the specified name. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} \mbox{\hyperlink{group__c-optical_ga663301f01d0cc8ecfd238fbe1346fc4d}{task\+\_\+get\+\_\+current}} ()
+\begin{DoxyCompactList}\small\item\em Get the currently running task handle. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}{task\+\_\+notify}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Sends a simple notification to task and increments the notification counter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_ga9fa0dd52656774090c0005eb43ef2827}{task\+\_\+join}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Utilizes task notifications to wait until specified task is complete and deleted, then continues to execute the program. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_gaf21b3326026e04f277e85236f4ff503a}{task\+\_\+notify\+\_\+ext}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task, uint32\+\_\+t value, \mbox{\hyperlink{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}} action, uint32\+\_\+t $\ast$prev\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Sends a notification to a task, optionally performing some action. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}{task\+\_\+notify\+\_\+take}} (bool clear\+\_\+on\+\_\+exit, uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Waits for a notification to be nonzero. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga82a2d584952478f46b9bc766395bb8c2}{task\+\_\+notify\+\_\+clear}} (\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} task)
+\begin{DoxyCompactList}\small\item\em Clears the notification for a task. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}} \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\+\_\+create}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a mutex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\+\_\+take}} (\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}} mutex, uint32\+\_\+t timeout)
+\begin{DoxyCompactList}\small\item\em Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\+\_\+give}} (\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}} mutex)
+\begin{DoxyCompactList}\small\item\em Unlocks a mutex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group__c-optical_gaf5995c8132175bc8e76904ccd1f6e39a}{mutex\+\_\+delete}} (\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}} mutex)
+\begin{DoxyCompactList}\small\item\em Deletes a mutex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga87892f18571e88eba7fbe758759cac05}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+AX}}~16
+\begin{DoxyCompactList}\small\item\em The highest priority that can be assigned to a task. Beware of deadlock. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_gae35baef65db45cef90a74266acb31b10}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+IN}}~1
+\begin{DoxyCompactList}\small\item\em The lowest priority that can be assigned to a task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+D\+E\+F\+A\+U\+LT}}~8
+\begin{DoxyCompactList}\small\item\em The default task priority, which should be used for most tasks. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+D\+E\+F\+A\+U\+LT}}~0x2000
+\begin{DoxyCompactList}\small\item\em The recommended stack size for a new task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_gafa551bbf9a2333b9241b2e99530a8767}{T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+M\+IN}}~0x200
+\begin{DoxyCompactList}\small\item\em The minimal stack size for a task. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga6d22565b4bdfe36c8f8a0a376e565460}{T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN}}~32
+\begin{DoxyCompactList}\small\item\em The maximum number of characters allowed in a task\textquotesingle{}s name. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}{T\+I\+M\+E\+O\+U\+T\+\_\+\+M\+AX}}~((uint32\+\_\+t)0xffffffff\+UL)
+\begin{DoxyCompactList}\small\item\em The maximum timeout value that can be given to, for instance, a mutex grab. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyNote}{Note}
+Additional example code for this module can be found in its \mbox{\hyperlink{multitasking}{Tutorial.}} 
+\end{DoxyNote}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{group__c-rtos_ga87892f18571e88eba7fbe758759cac05}\label{group__c-rtos_ga87892f18571e88eba7fbe758759cac05}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_PRIORITY\_MAX@{TASK\_PRIORITY\_MAX}}
+\index{TASK\_PRIORITY\_MAX@{TASK\_PRIORITY\_MAX}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_PRIORITY\_MAX}{TASK\_PRIORITY\_MAX}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+AX~16}
+
+
+
+The highest priority that can be assigned to a task. Beware of deadlock. 
+
+\mbox{\Hypertarget{group__c-rtos_gae35baef65db45cef90a74266acb31b10}\label{group__c-rtos_gae35baef65db45cef90a74266acb31b10}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_PRIORITY\_MIN@{TASK\_PRIORITY\_MIN}}
+\index{TASK\_PRIORITY\_MIN@{TASK\_PRIORITY\_MIN}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_PRIORITY\_MIN}{TASK\_PRIORITY\_MIN}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+M\+IN~1}
+
+
+
+The lowest priority that can be assigned to a task. 
+
+This may cause severe performance problems and is generally not recommended. \mbox{\Hypertarget{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}\label{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_PRIORITY\_DEFAULT@{TASK\_PRIORITY\_DEFAULT}}
+\index{TASK\_PRIORITY\_DEFAULT@{TASK\_PRIORITY\_DEFAULT}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_PRIORITY\_DEFAULT}{TASK\_PRIORITY\_DEFAULT}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+R\+I\+T\+Y\+\_\+\+D\+E\+F\+A\+U\+LT~8}
+
+
+
+The default task priority, which should be used for most tasks. 
+
+Default tasks such as \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous()}} inherit this priority. \mbox{\Hypertarget{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}\label{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_STACK\_DEPTH\_DEFAULT@{TASK\_STACK\_DEPTH\_DEFAULT}}
+\index{TASK\_STACK\_DEPTH\_DEFAULT@{TASK\_STACK\_DEPTH\_DEFAULT}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_STACK\_DEPTH\_DEFAULT}{TASK\_STACK\_DEPTH\_DEFAULT}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+D\+E\+F\+A\+U\+LT~0x2000}
+
+
+
+The recommended stack size for a new task. 
+
+This stack size is used for default tasks such as \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous()}}. This equates to 32,768 bytes, or 128 times the default stack size for a task in P\+R\+OS 2. \mbox{\Hypertarget{group__c-rtos_gafa551bbf9a2333b9241b2e99530a8767}\label{group__c-rtos_gafa551bbf9a2333b9241b2e99530a8767}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_STACK\_DEPTH\_MIN@{TASK\_STACK\_DEPTH\_MIN}}
+\index{TASK\_STACK\_DEPTH\_MIN@{TASK\_STACK\_DEPTH\_MIN}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_STACK\_DEPTH\_MIN}{TASK\_STACK\_DEPTH\_MIN}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+M\+IN~0x200}
+
+
+
+The minimal stack size for a task. 
+
+This equates to 2048 bytes, or 8 times the default stack size for a task in P\+R\+OS 2. \mbox{\Hypertarget{group__c-rtos_ga6d22565b4bdfe36c8f8a0a376e565460}\label{group__c-rtos_ga6d22565b4bdfe36c8f8a0a376e565460}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TASK\_NAME\_MAX\_LEN@{TASK\_NAME\_MAX\_LEN}}
+\index{TASK\_NAME\_MAX\_LEN@{TASK\_NAME\_MAX\_LEN}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TASK\_NAME\_MAX\_LEN}{TASK\_NAME\_MAX\_LEN}}
+{\footnotesize\ttfamily \#define T\+A\+S\+K\+\_\+\+N\+A\+M\+E\+\_\+\+M\+A\+X\+\_\+\+L\+EN~32}
+
+
+
+The maximum number of characters allowed in a task\textquotesingle{}s name. 
+
+\mbox{\Hypertarget{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}\label{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!TIMEOUT\_MAX@{TIMEOUT\_MAX}}
+\index{TIMEOUT\_MAX@{TIMEOUT\_MAX}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{TIMEOUT\_MAX}{TIMEOUT\_MAX}}
+{\footnotesize\ttfamily \#define T\+I\+M\+E\+O\+U\+T\+\_\+\+M\+AX~((uint32\+\_\+t)0xffffffff\+UL)}
+
+
+
+The maximum timeout value that can be given to, for instance, a mutex grab. 
+
+\mbox{\Hypertarget{group__c-rtos_gad028cb03c935557184a71a6c53915065}\label{group__c-rtos_gad028cb03c935557184a71a6c53915065}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!CURRENT\_TASK@{CURRENT\_TASK}}
+\index{CURRENT\_TASK@{CURRENT\_TASK}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{CURRENT\_TASK}{CURRENT\_TASK}}
+{\footnotesize\ttfamily \#define C\+U\+R\+R\+E\+N\+T\+\_\+\+T\+A\+SK~((\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{pros\+::task\+\_\+t}})N\+U\+LL)}
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}\label{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_t@{task\_t}}
+\index{task\_t@{task\_t}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_t}{task\_t}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}
+
+\mbox{\Hypertarget{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}\label{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_fn\_t@{task\_fn\_t}}
+\index{task\_fn\_t@{task\_fn\_t}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_fn\_t}{task\_fn\_t}}
+{\footnotesize\ttfamily typedef void($\ast$ task\+\_\+fn\+\_\+t) (void $\ast$)}
+
+\mbox{\Hypertarget{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}\label{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!mutex\_t@{mutex\_t}}
+\index{mutex\_t@{mutex\_t}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{mutex\_t}{mutex\_t}}
+{\footnotesize\ttfamily typedef void$\ast$ \mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}\label{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_state\_e\_t@{task\_state\_e\_t}}
+\index{task\_state\_e\_t@{task\_state\_e\_t}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_state\_e\_t}{task\_state\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_RUNNING@{E\_TASK\_STATE\_RUNNING}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_RUNNING@{E\_TASK\_STATE\_RUNNING}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+NG&The task is actively executing. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_READY@{E\_TASK\_STATE\_READY}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_READY@{E\_TASK\_STATE\_READY}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba7a9b05db250161908d541259cc9b6c08}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+E\+A\+DY&The task exists and is available to run, but is not currently running. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_BLOCKED@{E\_TASK\_STATE\_BLOCKED}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_BLOCKED@{E\_TASK\_STATE\_BLOCKED}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba833a2009d6613fe7f3357551c525e953}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+B\+L\+O\+C\+K\+ED&The task is delayed or blocked by a mutex, semaphore, or I/O operation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_SUSPENDED@{E\_TASK\_STATE\_SUSPENDED}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_SUSPENDED@{E\_TASK\_STATE\_SUSPENDED}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba1c6ab831f17838fb926088f3353cb13c}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+ED&The task is supended using task\+\_\+suspend. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_DELETED@{E\_TASK\_STATE\_DELETED}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_DELETED@{E\_TASK\_STATE\_DELETED}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba521c1585b4d885ca38cc463d74d1fa4d}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+D\+E\+L\+E\+T\+ED&The task has been deleted using task\+\_\+delete. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_TASK\_STATE\_INVALID@{E\_TASK\_STATE\_INVALID}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_TASK\_STATE\_INVALID@{E\_TASK\_STATE\_INVALID}}}\mbox{\Hypertarget{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0}\label{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba4b91d8b231764bb6556618bdb78c34a0}} 
+E\+\_\+\+T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+I\+N\+V\+A\+L\+ID&The task handle does not point to a current or past task. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}\label{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!notify\_action\_e\_t@{notify\_action\_e\_t}}
+\index{notify\_action\_e\_t@{notify\_action\_e\_t}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{notify\_action\_e\_t}{notify\_action\_e\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_NONE@{E\_NOTIFY\_ACTION\_NONE}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_NOTIFY\_ACTION\_NONE@{E\_NOTIFY\_ACTION\_NONE}}}\mbox{\Hypertarget{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f}\label{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a8ef04ba61995d97d82fd7bf1ff4d772f}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+NE&The task’s notification value will not be touched. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_BITS@{E\_NOTIFY\_ACTION\_BITS}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_NOTIFY\_ACTION\_BITS@{E\_NOTIFY\_ACTION\_BITS}}}\mbox{\Hypertarget{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02}\label{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570adc1fa6911e0d71db6404d3c8b7276e02}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+B\+I\+TS&The task’s notification value will be bitwise O\+Red with the new value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_INCR@{E\_NOTIFY\_ACTION\_INCR}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_NOTIFY\_ACTION\_INCR@{E\_NOTIFY\_ACTION\_INCR}}}\mbox{\Hypertarget{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155}\label{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570ab9b6a7e40e7b9553e8b1782b2c0bc155}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+I\+N\+CR&The task’s notification value will be incremented by one, effectively using it as a notification counter. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_OWRITE@{E\_NOTIFY\_ACTION\_OWRITE}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_NOTIFY\_ACTION\_OWRITE@{E\_NOTIFY\_ACTION\_OWRITE}}}\mbox{\Hypertarget{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89}\label{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a11be52cd9271cd1504f7555b73e5bd89}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+O\+W\+R\+I\+TE&The task’s notification value will be unconditionally set to the new value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{E\_NOTIFY\_ACTION\_NO\_OWRITE@{E\_NOTIFY\_ACTION\_NO\_OWRITE}!RTOS Facilities C API@{RTOS Facilities C API}}\index{RTOS Facilities C API@{RTOS Facilities C API}!E\_NOTIFY\_ACTION\_NO\_OWRITE@{E\_NOTIFY\_ACTION\_NO\_OWRITE}}}\mbox{\Hypertarget{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5}\label{group__c-rtos_gga42ea99b5e5d38da0b98154609cf6c570a735b4ce042c8998c9432449b5f7efdc5}} 
+E\+\_\+\+N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+O\+W\+R\+I\+TE&The task’s notification value will be set to the new value if the task does not already have a pending notification. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}\label{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!millis@{millis}}
+\index{millis@{millis}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{millis()}{millis()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::millis (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of milliseconds since P\+R\+OS initialized. 
+
+\begin{DoxyReturn}{Returns}
+The number of milliseconds since P\+R\+OS initialized
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  uint32\_t now = \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Do opcontrol things}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\_delay\_until}}(\&now, 2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gaea905a8de368ac9acc9ed04c66ebb84c}\label{group__c-optical_gaea905a8de368ac9acc9ed04c66ebb84c}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!micros@{micros}}
+\index{micros@{micros}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{micros()}{micros()}}
+{\footnotesize\ttfamily uint64\+\_\+t pros\+::c\+::micros (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of microseconds since P\+R\+OS initialized,. 
+
+\begin{DoxyReturn}{Returns}
+The number of microseconds since P\+R\+OS initialized
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  uint64\_t now = \mbox{\hyperlink{group__c-optical_gaea905a8de368ac9acc9ed04c66ebb84c}{micros}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Do opcontrol things}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\_delay\_until}}(\&now, 2000);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}\label{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_create@{task\_create}}
+\index{task\_create@{task\_create}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_create()}{task\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} pros\+::c\+::task\+\_\+create (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_gaece0aa29b1f1538115228d2197239f98}{task\+\_\+fn\+\_\+t}}}]{function,  }\item[{void $\ast$const}]{parameters,  }\item[{uint32\+\_\+t}]{prio,  }\item[{const uint16\+\_\+t}]{stack\+\_\+depth,  }\item[{const char $\ast$const}]{name }\end{DoxyParamCaption})}
+
+
+
+Creates a new task and add it to the list of tasks that are ready to run. 
+
+This function uses the following values of errno when an error state is reached\+: E\+N\+O\+M\+EM -\/ The stack cannot be used as the T\+CB was not created.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & Pointer to the task entry function \\
+\hline
+{\em parameters} & Pointer to memory that will be used as a parameter for the task being created. This memory should not typically come from stack, but rather from dynamically (i.\+e., malloc\textquotesingle{}d) or statically allocated memory. \\
+\hline
+{\em prio} & The priority at which the task should run. T\+A\+S\+K\+\_\+\+P\+R\+I\+O\+\_\+\+D\+E\+F\+A\+U\+LT plus/minus 1 or 2 is typically used. \\
+\hline
+{\em stack\+\_\+depth} & The number of words (i.\+e. 4 $\ast$ stack\+\_\+depth) available on the task\textquotesingle{}s stack. T\+A\+S\+K\+\_\+\+S\+T\+A\+C\+K\+\_\+\+D\+E\+P\+T\+H\+\_\+\+D\+E\+F\+A\+U\+LT is typically sufficienct. \\
+\hline
+{\em name} & A descriptive name for the task. This is mainly used to facilitate debugging. The name may be up to 32 characters long.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A handle by which the newly created task can be referenced. If an error occurred, N\+U\+LL will be returned and errno can be checked for hints as to why task\+\_\+create failed.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                              \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga9f5bd026f982b738d8761c443af586da}\label{group__c-optical_ga9f5bd026f982b738d8761c443af586da}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_delete@{task\_delete}}
+\index{task\_delete@{task\_delete}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_delete()}{task\_delete()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Removes a task from the R\+T\+OS real time kernel\textquotesingle{}s management. 
+
+The task being deleted will be removed from all ready, blocked, suspended and event lists.
+
+Memory dynamically allocated by the task is not automatically freed, and should be freed before the task is deleted.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The handle of the task to be deleted. Passing N\+U\+LL will cause the calling task to be deleted.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  \textcolor{comment}{// Do other things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga9f5bd026f982b738d8761c443af586da}{task\_delete}}(my\_task);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}\label{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_delay@{task\_delay}}
+\index{task\_delay@{task\_delay}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_delay()}{task\_delay()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+delay (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Delays a task for a given number of milliseconds. 
+
+This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\+\_\+delay\+\_\+until()}}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em milliseconds} & The number of milliseconds to wait (1000 milliseconds per second)\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{\textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{  \textcolor{comment}{// Do opcontrol things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}{task\_delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga6a62f5325d65f95436762552df547d73}\label{group__c-optical_ga6a62f5325d65f95436762552df547d73}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!delay@{delay}}
+\index{delay@{delay}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{delay()}{delay()}}
+{\footnotesize\ttfamily void pros\+::c\+::delay (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Gets the number of milliseconds since P\+R\+OS initialized. 
+
+\begin{DoxyReturn}{Returns}
+The number of milliseconds since P\+R\+OS initialized
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  uint32\_t now = \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Do opcontrol things}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\_delay\_until}}(\&now, 2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}\label{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_delay\_until@{task\_delay\_until}}
+\index{task\_delay\_until@{task\_delay\_until}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_delay\_until()}{task\_delay\_until()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+delay\+\_\+until (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$const}]{prev\+\_\+time,  }\item[{const uint32\+\_\+t}]{delta }\end{DoxyParamCaption})}
+
+
+
+Delays a task until a specified time. 
+
+This function can be used by periodic tasks to ensure a constant execution frequency.
+
+The task will be woken up at the time $\ast$prev\+\_\+time + delta, and $\ast$prev\+\_\+time will be updated to reflect the time at which the task will unblock.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prev\+\_\+time} & A pointer to the location storing the setpoint time. This should typically be initialized to the return value of \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis()}}. \\
+\hline
+{\em delta} & The number of milliseconds to wait (1000 milliseconds per second)\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  uint32\_t now = \mbox{\hyperlink{group__c-optical_gaa247cd38039665b7ac4b0d0920b83c80}{millis}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Do opcontrol things}}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_ga151eaf730a10d101bff15013a76b9aa8}{task\_delay\_until}}(\&now, 2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gab49c228af50a4677d45e4622fb5f982b}\label{group__c-optical_gab49c228af50a4677d45e4622fb5f982b}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_priority@{task\_get\_priority}}
+\index{task\_get\_priority@{task\_get\_priority}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_priority()}{task\_get\_priority()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::task\+\_\+get\+\_\+priority (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Gets the priority of the specified task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The priority of the task
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Task Priority: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-optical_gab49c228af50a4677d45e4622fb5f982b}{task\_get\_priority}}(my\_task));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga6f4a1c359ab23c7811ed524aa8f71e06}\label{group__c-optical_ga6f4a1c359ab23c7811ed524aa8f71e06}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_set\_priority@{task\_set\_priority}}
+\index{task\_set\_priority@{task\_set\_priority}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_set\_priority()}{task\_set\_priority()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+set\+\_\+priority (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task,  }\item[{uint32\+\_\+t}]{prio }\end{DoxyParamCaption})}
+
+
+
+Sets the priority of the specified task. 
+
+If the specified task\textquotesingle{}s state is available to be scheduled (e.\+g. not blocked) and new priority is higher than the currently running task, a context switch may occur.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to set \\
+\hline
+{\em prio} & The new priority of the task\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  \textcolor{comment}{// Do things}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Example Task"});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga6f4a1c359ab23c7811ed524aa8f71e06}{task\_set\_priority}}(my\_task, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}} + 1);}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}\label{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_state@{task\_get\_state}}
+\index{task\_get\_state@{task\_get\_state}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_state()}{task\_get\_state()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__c-rtos_ga23d5ffd47ed255206f177fe9d891335b}{task\+\_\+state\+\_\+e\+\_\+t}} pros\+::c\+::task\+\_\+get\+\_\+state (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Gets the state of the specified task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The state of the task
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Task's State: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}{task\_get\_state}}(my\_task));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}\label{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_suspend@{task\_suspend}}
+\index{task\_suspend@{task\_suspend}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_suspend()}{task\_suspend()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+suspend (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Suspends the specified task, making it ineligible to be scheduled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to suspend\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  \textcolor{comment}{// Do things}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Notify me! Task"});}
+\DoxyCodeLine{  \textcolor{comment}{// Do things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}{task\_suspend}}(my\_task); \textcolor{comment}{// The task will no longer execute}}
+\DoxyCodeLine{  \textcolor{comment}{// Do other things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}{task\_resume}}(my\_task); \textcolor{comment}{// The task will resume execution}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}\label{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_resume@{task\_resume}}
+\index{task\_resume@{task\_resume}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_resume()}{task\_resume()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+resume (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Resumes the specified task, making it eligible to be scheduled. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to resume\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  \textcolor{comment}{// Do things}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Example Task"});}
+\DoxyCodeLine{  \textcolor{comment}{// Do things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga03b6c85287d209a26f882813f3a29eee}{task\_suspend}}(my\_task); \textcolor{comment}{// The task will no longer execute}}
+\DoxyCodeLine{  \textcolor{comment}{// Do other things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_gaf44f1148d2f7ede99ebd023479812fba}{task\_resume}}(my\_task); \textcolor{comment}{// The task will resume execution}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gabb3a36bf47f6df9c981b1d585b922497}\label{group__c-optical_gabb3a36bf47f6df9c981b1d585b922497}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_count@{task\_get\_count}}
+\index{task\_get\_count@{task\_get\_count}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_count()}{task\_get\_count()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::task\+\_\+get\+\_\+count (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of tasks the kernel is currently managing, including all ready, blocked, or suspended tasks. 
+
+A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.
+
+\begin{DoxyReturn}{Returns}
+The number of tasks that are currently being managed by the kernel.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Number of Running Tasks: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-optical_gabb3a36bf47f6df9c981b1d585b922497}{task\_get\_count}}());}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}\label{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_name@{task\_get\_name}}
+\index{task\_get\_name@{task\_get\_name}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_name()}{task\_get\_name()}}
+{\footnotesize\ttfamily char$\ast$ pros\+::c\+::task\+\_\+get\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the specified task. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to check\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the name of the task
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Task Name: \%d\(\backslash\)n"}, \mbox{\hyperlink{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}{task\_get\_name}}(my\_task));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gace3de5c48a2d91b9843ac9bd62a62d91}\label{group__c-optical_gace3de5c48a2d91b9843ac9bd62a62d91}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_by\_name@{task\_get\_by\_name}}
+\index{task\_get\_by\_name@{task\_get\_by\_name}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_by\_name()}{task\_get\_by\_name()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} pros\+::c\+::task\+\_\+get\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{const char $\ast$}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets a task handle from the specified name. 
+
+The operation takes a relatively long time and should be used sparingly.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name to query\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A task handle with a matching name, or N\+U\+LL if none were found.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  printf(\textcolor{stringliteral}{"Hello \%s\(\backslash\)n"}, (\textcolor{keywordtype}{char}*)param);}
+\DoxyCodeLine{  \textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{  \textcolor{comment}{// Do other things}}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga9f5bd026f982b738d8761c443af586da}{task\_delete}}(\mbox{\hyperlink{group__c-optical_gace3de5c48a2d91b9843ac9bd62a62d91}{task\_get\_by\_name}}(\textcolor{stringliteral}{"My Task"}));}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga663301f01d0cc8ecfd238fbe1346fc4d}\label{group__c-optical_ga663301f01d0cc8ecfd238fbe1346fc4d}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_get\_current@{task\_get\_current}}
+\index{task\_get\_current@{task\_get\_current}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_get\_current()}{task\_get\_current()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}} pros\+::c\+::task\+\_\+get\+\_\+current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the currently running task handle. 
+
+This could be useful if a task wants to tell another task about itself.
+
+\begin{DoxyReturn}{Returns}
+The currently running task handle.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* param) \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} this\_task = \mbox{\hyperlink{group__c-optical_ga663301f01d0cc8ecfd238fbe1346fc4d}{task\_get\_current}}();}
+\DoxyCodeLine{  \textcolor{keywordflow}{if} (\mbox{\hyperlink{group__c-optical_ga2e78836b08bab39de392cc6583383c5c}{task\_get\_state}}(this\_take) == \mbox{\hyperlink{group__c-rtos_gga23d5ffd47ed255206f177fe9d891335ba3b7873566c73fb17191451f641f3f564}{E\_TASK\_STATE\_RUNNING}}) \{}
+\DoxyCodeLine{    printf(\textcolor{stringliteral}{"This task is currently running\(\backslash\)n"});}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\textcolor{comment}{// ...}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a9efe22aaead3a5e936b5df459de02eba}{initialize}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, (\textcolor{keywordtype}{void}*)\textcolor{stringliteral}{"PROS"}, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                           \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"My Task"});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}\label{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_notify@{task\_notify}}
+\index{task\_notify@{task\_notify}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_notify()}{task\_notify()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::task\+\_\+notify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Sends a simple notification to task and increments the notification counter. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to notify\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always returns true.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while}(\mbox{\hyperlink{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}{task\_notify\_take}}(\textcolor{keyword}{true}, \mbox{\hyperlink{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}{TIMEOUT\_MAX}})) \{}
+\DoxyCodeLine{  puts(\textcolor{stringliteral}{"I was unblocked!"});}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Notify me! Task"});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while}(\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if}(\mbox{\hyperlink{group__c-misc_ga764da856ff7fcb710b10daa1a2fe4519}{controller\_get\_digital}}(CONTROLLER\_MASTER, DIGITAL\_L1)) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}{task\_notify}}(my\_task);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga9fa0dd52656774090c0005eb43ef2827}\label{group__c-optical_ga9fa0dd52656774090c0005eb43ef2827}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_join@{task\_join}}
+\index{task\_join@{task\_join}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_join()}{task\_join()}}
+{\footnotesize\ttfamily void pros\+::c\+::task\+\_\+join (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Utilizes task notifications to wait until specified task is complete and deleted, then continues to execute the program. 
+
+Analogous to std\+::thread\+::join in C++.
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The handle of the task to wait on.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  lcd\_print(1, \textcolor{stringliteral}{"\%s running"}, \mbox{\hyperlink{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}{task\_get\_name}}(NULL));}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga4954a1ed8e37fd9b758ff98bf3ecf7d4}{task\_delay}}(1000);}
+\DoxyCodeLine{  lcd\_print(2, \textcolor{stringliteral}{"End of \%s"}, \mbox{\hyperlink{group__c-optical_ga1000d8e18af587837b65ab74b79d1cc8}{task\_get\_name}}(NULL));}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Example Task"});}
+\DoxyCodeLine{  lcd\_set\_text(0, \textcolor{stringliteral}{"Running task."});}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-optical_ga9fa0dd52656774090c0005eb43ef2827}{task\_join}}(my\_task);}
+\DoxyCodeLine{  lcd\_set\_text(3, \textcolor{stringliteral}{"Task completed."});}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gaf21b3326026e04f277e85236f4ff503a}\label{group__c-optical_gaf21b3326026e04f277e85236f4ff503a}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_notify\_ext@{task\_notify\_ext}}
+\index{task\_notify\_ext@{task\_notify\_ext}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_notify\_ext()}{task\_notify\_ext()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::task\+\_\+notify\+\_\+ext (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task,  }\item[{uint32\+\_\+t}]{value,  }\item[{\mbox{\hyperlink{group__c-rtos_ga42ea99b5e5d38da0b98154609cf6c570}{notify\+\_\+action\+\_\+e\+\_\+t}}}]{action,  }\item[{uint32\+\_\+t $\ast$}]{prev\+\_\+value }\end{DoxyParamCaption})}
+
+
+
+Sends a notification to a task, optionally performing some action. 
+
+Will also retrieve the value of the notification in the target task before modifying the notification value.
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to notify \\
+\hline
+{\em value} & The value used in performing the action \\
+\hline
+{\em action} & An action to optionally perform on the receiving task\textquotesingle{}s notification value \\
+\hline
+{\em prev\+\_\+value} & A pointer to store the previous value of the target task\textquotesingle{}s notification, may be N\+U\+LL\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Dependent on the notification action. For N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+O\+N\+\_\+\+N\+O\+\_\+\+W\+R\+I\+TE\+: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other N\+O\+T\+I\+F\+Y\+\_\+\+A\+C\+T\+I\+ON values\+: always return 0
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}\label{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_notify\_take@{task\_notify\_take}}
+\index{task\_notify\_take@{task\_notify\_take}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_notify\_take()}{task\_notify\_take()}}
+{\footnotesize\ttfamily uint32\+\_\+t pros\+::c\+::task\+\_\+notify\+\_\+take (\begin{DoxyParamCaption}\item[{bool}]{clear\+\_\+on\+\_\+exit,  }\item[{uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits for a notification to be nonzero. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em clear\+\_\+on\+\_\+exit} & If true (1), then the notification value is cleared. If false (0), then the notification value is decremented. \\
+\hline
+{\em timeout} & Specifies the amount of time to be spent waiting for a notification to occur.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the task\textquotesingle{}s notification value before it is decremented or cleared
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} my\_task\_fn(\textcolor{keywordtype}{void}* ign) \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{while}(\mbox{\hyperlink{group__c-optical_ga15f1230bbc0fe029caf775a393b4a897}{task\_notify\_take}}(\textcolor{keyword}{true}, \mbox{\hyperlink{group__c-rtos_ga9146d5b264ff64b573607d62fc479c3f}{TIMEOUT\_MAX}})) \{}
+\DoxyCodeLine{  puts(\textcolor{stringliteral}{"I was unblocked!"});}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\_t}} my\_task = \mbox{\hyperlink{group__c-optical_gab7f6e243b717091fec2bac6405bd3d56}{task\_create}}(my\_task\_fn, NULL, \mbox{\hyperlink{group__c-rtos_ga3082a7e8f15691441dba683711bb823f}{TASK\_PRIORITY\_DEFAULT}},}
+\DoxyCodeLine{                            \mbox{\hyperlink{group__c-rtos_ga9ffb33b9e3714ca949d9f45dde3cbf8f}{TASK\_STACK\_DEPTH\_DEFAULT}}, \textcolor{stringliteral}{"Notify me! Task"});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while}(\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{  \textcolor{keywordflow}{if}(\mbox{\hyperlink{group__c-misc_ga764da856ff7fcb710b10daa1a2fe4519}{controller\_get\_digital}}(CONTROLLER\_MASTER, DIGITAL\_L1)) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{group__c-optical_gaf69af2a08ca85bd16fa3d1b75dbcf790}{task\_notify}}(my\_task);}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga82a2d584952478f46b9bc766395bb8c2}\label{group__c-optical_ga82a2d584952478f46b9bc766395bb8c2}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!task\_notify\_clear@{task\_notify\_clear}}
+\index{task\_notify\_clear@{task\_notify\_clear}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{task\_notify\_clear()}{task\_notify\_clear()}}
+{\footnotesize\ttfamily bool pros\+::c\+::task\+\_\+notify\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_ga1d7e0825b8d8876e8cd8ece3f9115293}{task\+\_\+t}}}]{task }\end{DoxyParamCaption})}
+
+
+
+Clears the notification for a task. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/notifications.\+html}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & The task to clear\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if there was not a notification waiting, true if there was
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}\label{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!mutex\_create@{mutex\_create}}
+\index{mutex\_create@{mutex\_create}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{mutex\_create()}{mutex\_create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}} pros\+::c\+::mutex\+\_\+create (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates a mutex. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html\#mutexes}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes}} for details.
+
+\begin{DoxyReturn}{Returns}
+A handle to a newly created mutex. If an error occurred, N\+U\+LL will be returned and errno can be checked for hints as to why mutex\+\_\+create failed.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\_t}} mutex = \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\_create}}();}
+\DoxyCodeLine{\textcolor{comment}{// Acquire the mutex; other tasks using this command will wait until the mutex is released}}
+\DoxyCodeLine{\textcolor{comment}{// timeout can specify the maximum time to wait, or MAX\_DELAY to wait forever}}
+\DoxyCodeLine{\textcolor{comment}{// If the timeout expires, "false" will be returned, otherwise "true"}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\_take}}(mutex, MAX\_DELAY);}
+\DoxyCodeLine{\textcolor{comment}{// do some work}}
+\DoxyCodeLine{\textcolor{comment}{// Release the mutex for other tasks}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\_give}}(mutex);}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}\label{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!mutex\_take@{mutex\_take}}
+\index{mutex\_take@{mutex\_take}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{mutex\_take()}{mutex\_take()}}
+{\footnotesize\ttfamily bool pros\+::c\+::mutex\+\_\+take (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}}]{mutex,  }\item[{uint32\+\_\+t}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Takes and locks a mutex, waiting for up to a certain number of milliseconds before timing out. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html\#mutexes}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \mbox{\hyperlink{classpros_1_1rtos_1_1Mutex}{Mutex}} to attempt to lock. \\
+\hline
+{\em timeout} & Time to wait before the mutex becomes available. A timeout of 0 can be used to poll the mutex. T\+I\+M\+E\+O\+U\+T\+\_\+\+M\+AX can be used to block indefinitely.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn\textquotesingle{}t be taken.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\_t}} mutex = \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\_create}}();}
+\DoxyCodeLine{\textcolor{comment}{// Acquire the mutex; other tasks using this command will wait until the mutex is released}}
+\DoxyCodeLine{\textcolor{comment}{// timeout can specify the maximum time to wait, or MAX\_DELAY to wait forever}}
+\DoxyCodeLine{\textcolor{comment}{// If the timeout expires, "false" will be returned, otherwise "true"}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\_take}}(mutex, timeout);}
+\DoxyCodeLine{\textcolor{comment}{// do some work}}
+\DoxyCodeLine{\textcolor{comment}{// Release the mutex for other tasks}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\_give}}(mutex);}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}\label{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!mutex\_give@{mutex\_give}}
+\index{mutex\_give@{mutex\_give}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{mutex\_give()}{mutex\_give()}}
+{\footnotesize\ttfamily bool pros\+::c\+::mutex\+\_\+give (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}}]{mutex }\end{DoxyParamCaption})}
+
+
+
+Unlocks a mutex. 
+
+See \href{https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html\#mutexes}{\texttt{ https\+://pros.\+cs.\+purdue.\+edu/v5/tutorials/topical/multitasking.\+html\#mutexes}} for details.
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \mbox{\hyperlink{classpros_1_1rtos_1_1Mutex}{Mutex}} to unlock.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn\textquotesingle{}t be returned.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\_t}} mutex = \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\_create}}();}
+\DoxyCodeLine{\textcolor{comment}{// Acquire the mutex; other tasks using this command will wait until the mutex is released}}
+\DoxyCodeLine{\textcolor{comment}{// timeout can specify the maximum time to wait, or MAX\_DELAY to wait forever}}
+\DoxyCodeLine{\textcolor{comment}{// If the timeout expires, "false" will be returned, otherwise "true"}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\_take}}(mutex, timeout);}
+\DoxyCodeLine{\textcolor{comment}{// do some work}}
+\DoxyCodeLine{\textcolor{comment}{// Release the mutex for other tasks}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\_give}}(mutex);}
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__c-optical_gaf5995c8132175bc8e76904ccd1f6e39a}\label{group__c-optical_gaf5995c8132175bc8e76904ccd1f6e39a}} 
+\index{RTOS Facilities C API@{RTOS Facilities C API}!mutex\_delete@{mutex\_delete}}
+\index{mutex\_delete@{mutex\_delete}!RTOS Facilities C API@{RTOS Facilities C API}}
+\doxysubsubsection{\texorpdfstring{mutex\_delete()}{mutex\_delete()}}
+{\footnotesize\ttfamily void pros\+::c\+::mutex\+\_\+delete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\+\_\+t}}}]{mutex }\end{DoxyParamCaption})}
+
+
+
+Deletes a mutex. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mutex} & \mbox{\hyperlink{classpros_1_1rtos_1_1Mutex}{Mutex}} to unlock.\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-rtos_gab15ea84d90257d70b44e8e04519864d2}{mutex\_t}} mutex = \mbox{\hyperlink{group__c-optical_ga92aa79cdc30ffd13f63a7ffeca64b06f}{mutex\_create}}();}
+\DoxyCodeLine{\textcolor{comment}{// Acquire the mutex; other tasks using this command will wait until the mutex is released}}
+\DoxyCodeLine{\textcolor{comment}{// timeout can specify the maximum time to wait, or MAX\_DELAY to wait forever}}
+\DoxyCodeLine{\textcolor{comment}{// If the timeout expires, "false" will be returned, otherwise "true"}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga49aa5444b488ff60fc458aea8172adc2}{mutex\_take}}(mutex, MAX\_DELAY);}
+\DoxyCodeLine{\textcolor{comment}{// do some work}}
+\DoxyCodeLine{\textcolor{comment}{// Release the mutex for other tasks}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_ga7f20ed94cee8e04d491743b4b34feda1}{mutex\_give}}(mutex);}
+\DoxyCodeLine{\textcolor{comment}{// Delete the mutex}}
+\DoxyCodeLine{\mbox{\hyperlink{group__c-optical_gaf5995c8132175bc8e76904ccd1f6e39a}{mutex\_delete}}(mutex);}
+\end{DoxyCode}
+ 
