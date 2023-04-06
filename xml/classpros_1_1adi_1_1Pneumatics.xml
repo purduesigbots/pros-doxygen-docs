@@ -1,0 +1,273 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1Pneumatics" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::Pneumatics</compoundname>
+    <basecompoundref refid="classpros_1_1adi_1_1DigitalOut" prot="public" virt="non-virtual">DigitalOut</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="group__cpp-adi_1gaefa451efd5a405dc96dd4f0a4293dcc4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool active_low</definition>
+        <argsstring></argsstring>
+        <name>active_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1886" column="6" bodyfile="pros/adi.hpp" bodystart="1886" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__cpp-adi_1gab30ba07e2a0bd07a15e45a92c32db9c5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool state</definition>
+        <argsstring></argsstring>
+        <name>state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1887" column="6" bodyfile="pros/adi.hpp" bodystart="1887" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1ga31b72ad99ad86fa4031994615dedf776" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pneumatics</definition>
+        <argsstring>(std::uint8_t adi_port, bool start_extended, bool active_low=false)</argsstring>
+        <name>Pneumatics</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>start_extended</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>active_low</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classpros_1_1adi_1_1Pneumatics" kindref="compound">Pneumatics</ref> object for the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_extended</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, the pneumatic will start the match extended </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_low</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, a value of false corresponds to the pneumatic&apos;s wire being set to high.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_PNEUMATICS_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>pneumatics<sp/>(ADI_PNEUMATICS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>pneumatic<sp/>solenoid<sp/>to<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pneumatics.set_value(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1760" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gaf151de9b4a5d40407619e780a2fca5bf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Pneumatics</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, bool start_extended, bool active_low=false)</argsstring>
+        <name>Pneumatics</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" kindref="member">ext_adi_port_pair_t</ref></type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>start_extended</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>active_low</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classpros_1_1adi_1_1Pneumatics" kindref="compound">Pneumatics</ref> object for the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_extended</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, the pneumatic will start the match extended </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_low</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, a value of false corresponds to the pneumatic&apos;s wire being set to high.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_PNEUMATICS_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>pneumatics<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_PNEUMATICS_PORT<sp/>}});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>pneumatic<sp/>solenoid<sp/>to<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pneumatics.set_value(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1793" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga978e7aa4645a66a7d4f9f33302a641e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t extend</definition>
+        <argsstring>()</argsstring>
+        <name>extend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1815" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga576c02db9db2b629570917b0835ebb9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t retract</definition>
+        <argsstring>()</argsstring>
+        <name>retract</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1837" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gadd7b300c1e148a1cb09a5686442eb157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t toggle</definition>
+        <argsstring>()</argsstring>
+        <name>toggle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1860" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga797b2b095a8dff0b40fffca0907cc7bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool get_state</definition>
+        <argsstring>() const</argsstring>
+        <name>get_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1883" column="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>DigitalOut</label>
+        <link refid="classpros_1_1adi_1_1DigitalOut"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Pneumatics</label>
+        <link refid="classpros_1_1adi_1_1Pneumatics"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>DigitalOut</label>
+        <link refid="classpros_1_1adi_1_1DigitalOut"/>
+        <childnode refid="3" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Pneumatics</label>
+        <link refid="classpros_1_1adi_1_1Pneumatics"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="1725" column="35" bodyfile="pros/adi.hpp" bodystart="1725" bodyend="1888"/>
+    <listofallmembers>
+      <member refid="group__cpp-adi_1gaefa451efd5a405dc96dd4f0a4293dcc4" prot="private" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>active_low</name></member>
+      <member refid="group__cpp-adi_1ga518bf7290ceecc89abfbc432f01a61f7" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>DigitalOut</name></member>
+      <member refid="group__cpp-adi_1gaaf823856d3dbc7c7a8406cc1a8e47d36" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>DigitalOut</name></member>
+      <member refid="group__cpp-adi_1ga978e7aa4645a66a7d4f9f33302a641e7" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>extend</name></member>
+      <member refid="group__cpp-adi_1ga797b2b095a8dff0b40fffca0907cc7bc" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>get_state</name></member>
+      <member refid="group__cpp-adi_1ga31b72ad99ad86fa4031994615dedf776" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>Pneumatics</name></member>
+      <member refid="group__cpp-adi_1gaf151de9b4a5d40407619e780a2fca5bf" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>Pneumatics</name></member>
+      <member refid="group__cpp-adi_1ga576c02db9db2b629570917b0835ebb9a" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>retract</name></member>
+      <member refid="classpros_1_1adi_1_1DigitalOut_1a833ed782b711495035dae08cfce3e62e" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>set_value</name></member>
+      <member refid="group__cpp-adi_1gab30ba07e2a0bd07a15e45a92c32db9c5" prot="private" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>state</name></member>
+      <member refid="group__cpp-adi_1gadd7b300c1e148a1cb09a5686442eb157" prot="public" virt="non-virtual"><scope>pros::adi::Pneumatics</scope><name>toggle</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

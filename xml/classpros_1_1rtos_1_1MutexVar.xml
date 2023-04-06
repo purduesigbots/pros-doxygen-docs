@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1rtos_1_1MutexVar" kind="class" language="C++" prot="public">
+    <compoundname>pros::rtos::MutexVar</compoundname>
+    <includes refid="rtos_8hpp" local="yes">rtos.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Var</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classpros_1_1rtos_1_1MutexVar_1ae8b85b4f519a4945ba9ea43e9b503531" prot="private" static="no" mutable="no">
+        <type><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref></type>
+        <definition>Mutex mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="585" column="7" bodyfile="pros/rtos.hpp" bodystart="585" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classpros_1_1rtos_1_1MutexVar_1a3707f75fceb41470afe4843f653e93ff" prot="private" static="no" mutable="no">
+        <type>Var</type>
+        <definition>Var var</definition>
+        <argsstring></argsstring>
+        <name>var</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="586" column="5" bodyfile="pros/rtos.hpp" bodystart="586" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a9b0f56bcfe012b9a9084b6790812106c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>MutexVar</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>MutexVar</name>
+        <param>
+          <type>Args &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Creates a mutex-protected variable which is initialized with the given constructor arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The arguments to provide to the Var constructor. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="597" column="1" bodyfile="pros/rtos.hpp" bodystart="597" bodyend="597"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a58ed9f1f6e6da87308feef7ec3a7a34d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt; &gt;</type>
+        <definition>std::optional&lt;MutexVarLock&lt;Var&gt; &gt; try_lock</definition>
+        <argsstring>(std::uint32_t timeout)</argsstring>
+        <name>try_lock</name>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Try to lock the mutex-protected variable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to wait before the mutex becomes available, in milliseconds. A timeout of 0 can be used to poll the mutex.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A std::optional which contains a <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable if locking is successful. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="609" column="15" bodyfile="pros/rtos.hpp" bodystart="609" bodyend="615"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1acd3bef91b2c35648f3c9cd41440d50a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Rep</type>
+          </param>
+          <param>
+            <type>typename Period</type>
+          </param>
+        </templateparamlist>
+        <type>std::optional&lt; <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt; &gt;</type>
+        <definition>std::optional&lt;MutexVarLock&lt;Var&gt; &gt; try_lock</definition>
+        <argsstring>(const std::chrono::duration&lt; Rep, Period &gt; &amp;rel_time)</argsstring>
+        <name>try_lock</name>
+        <param>
+          <type>const std::chrono::duration&lt; Rep, Period &gt; &amp;</type>
+          <declname>rel_time</declname>
+        </param>
+        <briefdescription>
+<para>Try to lock the mutex-protected variable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time to wait before the mutex becomes available. A timeout of 0 can be used to poll the mutex.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A std::optional which contains a <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable if locking is successful. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="628" column="15" bodyfile="pros/rtos.hpp" bodystart="628" bodyend="630"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a6e111f3c307aa2c5b488301c1970fa7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt;</type>
+        <definition>MutexVarLock&lt;Var&gt; lock</definition>
+        <argsstring>()</argsstring>
+        <name>lock</name>
+        <briefdescription>
+<para>Lock the mutex-protected variable, waiting indefinitely. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.hpp" line="637" column="14" bodyfile="pros/rtos.hpp" bodystart="637" bodyend="641"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="pros/rtos.hpp" line="552" column="1" bodyfile="pros/rtos.hpp" bodystart="552" bodyend="-1"/>
+    <listofallmembers>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a6e111f3c307aa2c5b488301c1970fa7a" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1ae8b85b4f519a4945ba9ea43e9b503531" prot="private" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>mutex</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a9b0f56bcfe012b9a9084b6790812106c" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>MutexVar</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a58ed9f1f6e6da87308feef7ec3a7a34d" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1acd3bef91b2c35648f3c9cd41440d50a3" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a3707f75fceb41470afe4843f653e93ff" prot="private" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>var</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

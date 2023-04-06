@@ -1,25 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="classpros_1_1Serial" kind="class" language="C++" prot="public">
     <compoundname>pros::Serial</compoundname>
+    <basecompoundref refid="classpros_1_1v5_1_1Device" prot="public" virt="non-virtual">Device</basecompoundref>
     <includes refid="serial_8hpp" local="yes">serial.hpp</includes>
-      <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classpros_1_1Serial_1a16b806c98fffb4fd7235419ef22ac101" prot="private" static="no" mutable="no">
-        <type>const std::uint8_t</type>
-        <definition>const std::uint8_t _port</definition>
-        <argsstring></argsstring>
-        <name>_port</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/serial.hpp" line="221" column="20" bodyfile="pros/serial.hpp" bodystart="221" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="classpros_1_1Serial_1aaaa8797c93e7c2cc67cab525db7500e1" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gaaaa8797c93e7c2cc67cab525db7500e1" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>Serial</definition>
         <argsstring>(std::uint8_t port, std::int32_t baudrate)</argsstring>
@@ -50,17 +36,18 @@
 <parametername>baudrate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The baudrate to run the port at </para>
+<para>The baudrate to run the port at</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1,<sp/>9600);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="41" column="10"/>
+        <location file="pros/serial.hpp" line="58" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1ae3a4d83e68ba8d52ee5b6325b7ebdc8c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gae3a4d83e68ba8d52ee5b6325b7ebdc8c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>Serial</definition>
         <argsstring>(std::uint8_t port)</argsstring>
@@ -70,14 +57,27 @@
           <declname>port</declname>
         </param>
         <briefdescription>
+<para>Creates a <ref refid="classpros_1_1Serial" kindref="compound">Serial</ref> object for the given port without a set baudrate. </para>
         </briefdescription>
         <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="43" column="10"/>
+        <location file="pros/serial.hpp" line="76" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1ab1abb2da4d95668bc4676f3bfe6d9823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gab1abb2da4d95668bc4676f3bfe6d9823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t set_baudrate</definition>
         <argsstring>(std::int32_t baudrate) const</argsstring>
@@ -103,15 +103,17 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal">serial.set_baudrate(9600);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="65" column="22"/>
+        <location file="pros/serial.hpp" line="104" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1ac9bc8885aae50a580b81c4aa7ba4d0c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gac9bc8885aae50a580b81c4aa7ba4d0c3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t flush</definition>
         <argsstring>() const</argsstring>
@@ -124,15 +126,17 @@
 <para><simplesect kind="note"><para>This function does not cause the data in the output buffer to be written, it simply clears the internal buffers. Unlike stdout, generic serial does not use buffered IO (the FIFO buffers are written as soon as possible).</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal">serial.flush();</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="87" column="22"/>
+        <location file="pros/serial.hpp" line="132" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1a7c8834e366baf9d952e02acc6207d30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1ga7c8834e366baf9d952e02acc6207d30a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t get_read_avail</definition>
         <argsstring>() const</argsstring>
@@ -144,15 +148,21 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="note"><para>This function does not actually read any bytes, is simply returns the number of bytes available to be read.</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The number of bytes avaliable to be read or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>The number of bytes avaliable to be read or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.get_read_avail()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>std::uint8_t<sp/>byte<sp/>=<sp/>serial.read_byte();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="104" column="22"/>
+        <location file="pros/serial.hpp" line="159" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1a0e5d59953d04d311664fcf1350ce811a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1ga0e5d59953d04d311664fcf1350ce811a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t get_write_free</definition>
         <argsstring>() const</argsstring>
@@ -164,32 +174,22 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="note"><para>This function does not actually write any bytes, is simply returns the number of bytes free in the port&apos;s buffer.</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The number of bytes free or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>The number of bytes free or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.get_write_free()<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serial.write_byte(0x01);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="120" column="22"/>
+        <location file="pros/serial.hpp" line="186" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1a4b1f34f89e0f448750a682c1fd957556" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::uint8_t</type>
-        <definition>std::uint8_t get_port</definition>
-        <argsstring>() const</argsstring>
-        <name>get_port</name>
-        <briefdescription>
-<para>Gets the port number of the serial port. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="return"><para>The serial port&apos;s port number. </para>
-</simplesect>
-</para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/serial.hpp" line="127" column="14"/>
-      </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1a381db98d8d974e958591b4372db01def" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1ga381db98d8d974e958591b4372db01def" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t peek_byte</definition>
         <argsstring>() const</argsstring>
@@ -199,15 +199,21 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.peek_byte()<sp/>==<sp/>0x01)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>serial.read_byte();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="140" column="22"/>
+        <location file="pros/serial.hpp" line="209" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1aa1aab0fd9f25fdad8cd00b298ff2d696" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gaa1aab0fd9f25fdad8cd00b298ff2d696" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t read_byte</definition>
         <argsstring>() const</argsstring>
@@ -217,15 +223,21 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
-<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(serial.read_byte()<sp/>==<sp/>0x01)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="153" column="22"/>
+        <location file="pros/serial.hpp" line="232" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1ac445067dd822a3e075ed904782334e89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gac445067dd822a3e075ed904782334e89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t read</definition>
         <argsstring>(std::uint8_t *buffer, std::int32_t length) const</argsstring>
@@ -262,15 +274,20 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes read or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The number of bytes read or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>buffer[10];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.read(buffer,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="175" column="22"/>
+        <location file="pros/serial.hpp" line="263" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1a39d1bd8d3f51282397ecd816c6ef11d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1ga39d1bd8d3f51282397ecd816c6ef11d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t write_byte</definition>
         <argsstring>(std::uint8_t buffer) const</argsstring>
@@ -295,15 +312,19 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.write_byte(0x01);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="195" column="22"/>
+        <location file="pros/serial.hpp" line="291" column="22"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1Serial_1ad2230964ecffe14e7a57aa3078be9cce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="group__cpp-serial_1gad2230964ecffe14e7a57aa3078be9cce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
         <definition>virtual std::int32_t write</definition>
         <argsstring>(std::uint8_t *buffer, std::int32_t length) const</argsstring>
@@ -340,34 +361,65 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Serial<sp/>serial(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::uint8_t<sp/>buffer[10];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>serial.write(buffer,<sp/>10);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/serial.hpp" line="218" column="22"/>
+        <location file="pros/serial.hpp" line="323" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/serial.hpp" line="26" column="1" bodyfile="pros/serial.hpp" bodystart="26" bodyend="222"/>
+    <inheritancegraph>
+      <node id="2">
+        <label>Device</label>
+        <link refid="classpros_1_1v5_1_1Device"/>
+      </node>
+      <node id="1">
+        <label>Serial</label>
+        <link refid="classpros_1_1Serial"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Device</label>
+        <link refid="classpros_1_1v5_1_1Device"/>
+      </node>
+      <node id="1">
+        <label>Serial</label>
+        <link refid="classpros_1_1Serial"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pros/serial.hpp" line="34" column="27" bodyfile="pros/serial.hpp" bodystart="34" bodyend="327"/>
     <listofallmembers>
-      <member refid="classpros_1_1Serial_1a16b806c98fffb4fd7235419ef22ac101" prot="private" virt="non-virtual"><scope>pros::Serial</scope><name>_port</name></member>
-      <member refid="classpros_1_1Serial_1ac9bc8885aae50a580b81c4aa7ba4d0c3" prot="public" virt="virtual"><scope>pros::Serial</scope><name>flush</name></member>
-      <member refid="classpros_1_1Serial_1a4b1f34f89e0f448750a682c1fd957556" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>get_port</name></member>
-      <member refid="classpros_1_1Serial_1a7c8834e366baf9d952e02acc6207d30a" prot="public" virt="virtual"><scope>pros::Serial</scope><name>get_read_avail</name></member>
-      <member refid="classpros_1_1Serial_1a0e5d59953d04d311664fcf1350ce811a" prot="public" virt="virtual"><scope>pros::Serial</scope><name>get_write_free</name></member>
-      <member refid="classpros_1_1Serial_1a381db98d8d974e958591b4372db01def" prot="public" virt="virtual"><scope>pros::Serial</scope><name>peek_byte</name></member>
-      <member refid="classpros_1_1Serial_1ac445067dd822a3e075ed904782334e89" prot="public" virt="virtual"><scope>pros::Serial</scope><name>read</name></member>
-      <member refid="classpros_1_1Serial_1aa1aab0fd9f25fdad8cd00b298ff2d696" prot="public" virt="virtual"><scope>pros::Serial</scope><name>read_byte</name></member>
-      <member refid="classpros_1_1Serial_1aaaa8797c93e7c2cc67cab525db7500e1" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>Serial</name></member>
-      <member refid="classpros_1_1Serial_1ae3a4d83e68ba8d52ee5b6325b7ebdc8c" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>Serial</name></member>
-      <member refid="classpros_1_1Serial_1ab1abb2da4d95668bc4676f3bfe6d9823" prot="public" virt="virtual"><scope>pros::Serial</scope><name>set_baudrate</name></member>
-      <member refid="classpros_1_1Serial_1ad2230964ecffe14e7a57aa3078be9cce" prot="public" virt="virtual"><scope>pros::Serial</scope><name>write</name></member>
-      <member refid="classpros_1_1Serial_1a39d1bd8d3f51282397ecd816c6ef11d9" prot="public" virt="virtual"><scope>pros::Serial</scope><name>write_byte</name></member>
+      <member refid="classpros_1_1v5_1_1Device_1a8176a1cb598ccc924caa19a6d669b396" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>Device</name></member>
+      <member refid="group__cpp-serial_1gac9bc8885aae50a580b81c4aa7ba4d0c3" prot="public" virt="virtual"><scope>pros::Serial</scope><name>flush</name></member>
+      <member refid="classpros_1_1v5_1_1Device_1ad5b1efc698f196a0d4fd0f795550b703" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>get_plugged_type</name></member>
+      <member refid="classpros_1_1v5_1_1Device_1a33b5263b936248a074f77f1b5ec4fa45" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>get_port</name></member>
+      <member refid="group__cpp-serial_1ga7c8834e366baf9d952e02acc6207d30a" prot="public" virt="virtual"><scope>pros::Serial</scope><name>get_read_avail</name></member>
+      <member refid="group__cpp-serial_1ga0e5d59953d04d311664fcf1350ce811a" prot="public" virt="virtual"><scope>pros::Serial</scope><name>get_write_free</name></member>
+      <member refid="classpros_1_1v5_1_1Device_1aaf5448d59f0bc980c4490e97964cfb42" prot="public" virt="virtual"><scope>pros::Serial</scope><name>is_installed</name></member>
+      <member refid="group__cpp-serial_1ga381db98d8d974e958591b4372db01def" prot="public" virt="virtual"><scope>pros::Serial</scope><name>peek_byte</name></member>
+      <member refid="group__cpp-serial_1gac445067dd822a3e075ed904782334e89" prot="public" virt="virtual"><scope>pros::Serial</scope><name>read</name></member>
+      <member refid="group__cpp-serial_1gaa1aab0fd9f25fdad8cd00b298ff2d696" prot="public" virt="virtual"><scope>pros::Serial</scope><name>read_byte</name></member>
+      <member refid="group__cpp-serial_1gaaaa8797c93e7c2cc67cab525db7500e1" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>Serial</name></member>
+      <member refid="group__cpp-serial_1gae3a4d83e68ba8d52ee5b6325b7ebdc8c" prot="public" virt="non-virtual"><scope>pros::Serial</scope><name>Serial</name></member>
+      <member refid="group__cpp-serial_1gab1abb2da4d95668bc4676f3bfe6d9823" prot="public" virt="virtual"><scope>pros::Serial</scope><name>set_baudrate</name></member>
+      <member refid="group__cpp-serial_1gad2230964ecffe14e7a57aa3078be9cce" prot="public" virt="virtual"><scope>pros::Serial</scope><name>write</name></member>
+      <member refid="group__cpp-serial_1ga39d1bd8d3f51282397ecd816c6ef11d9" prot="public" virt="virtual"><scope>pros::Serial</scope><name>write_byte</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>
