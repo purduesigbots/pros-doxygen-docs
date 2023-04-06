@@ -3,7 +3,7 @@
   <compounddef id="namespacepros_1_1lcd" kind="namespace" language="C++">
     <compoundname>pros::lcd</compoundname>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="group__cpp-screen_1ga22ffa85cc6287c5c366fe0cb2416e28a" prot="public" static="no">
+      <memberdef kind="typedef" id="namespacepros_1_1lcd_1a22ffa85cc6287c5c366fe0cb2416e28a" prot="public" static="no">
         <type>void(*)(void)</type>
         <definition>using lcd_btn_cb_fn_t =  void (*)(void)</definition>
         <argsstring></argsstring>
@@ -14,11 +14,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.hpp" line="403" column="3" bodyfile="pros/screen.hpp" bodystart="403" bodyend="-1"/>
+        <location file="pros/llemu.hpp" line="66" column="5" bodyfile="pros/llemu.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group__cpp-screen_1ga9ad5209075696f6a8c4576179d8b1be4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1lcd_1a9ad5209075696f6a8c4576179d8b1be4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>__attribute__((weak)) bool set_text(std __attribute__((weak)) bool clear_line(std</type>
         <definition>__attribute__</definition>
         <argsstring>((weak)) bool initialize(void)</argsstring>
@@ -27,10 +27,9 @@
           <type>(weak)</type>
         </param>
         <briefdescription>
-<para>Displays a string on the emulated three-button LCD screen. </para>
+<para>Displays a formatted string on the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>Gets the button status from the emulated three-button LCD.</para>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call lcd_initialize() first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -42,58 +41,102 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>text</parametername>
+<parametername>fmt</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The text to display</para>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional list of arguments for the format string</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. Clears the contents of a line of the emulated three-button LCD screen.</para>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
 </simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call lcd_initialize() first. EINVAL - The line number specified is not in the range [0-7]</para>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/llemu.hpp" line="78" column="12" bodyfile="pros/screen.hpp" bodystart="428" bodyend="428" declfile="pros/llemu.hpp" declline="78" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-llemu_1gaead67d10b420308d58883135f0d28099" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename...</type>
+            <declname>Params</declname>
+            <defname>Params</defname>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool pros::lcd::print</definition>
+        <argsstring>(std::int16_t line, const char *fmt, Params... args)</argsstring>
+        <name>print</name>
+        <param>
+          <type>std::int16_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>Params...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Displays a formatted string on the emulated three-button LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call lcd_initialize() first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>line</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The line to clear</para>
+<para>The line on which to display the text [0-7] </para>
 </parameterdescription>
 </parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. Creates an emulation of the three-button, UART-based VEX LCD on the display.</para>
-</simplesect>
-<simplesect kind="return"><para>True if the LCD was successfully initialized, or false if it has already been initialized.</para>
-</simplesect>
-The value returned is a 3-bit integer where 1 0 0 indicates the left button is pressed, 0 1 0 indicates the center button is pressed, and 0 0 1 indicates the right button is pressed. 0 is returned if no buttons are currently being pressed.</para>
-<para>Note that this function is provided for legacy API compatibility purposes, with the caveat that the V5 touch screen does not actually support pressing multiple points on the screen at the same time.</para>
-<para><simplesect kind="return"><para>The buttons pressed as a bit mask Registers a callback function for the rightmost button.</para>
-</simplesect>
-When the rightmost button on the emulated three-button LCD is pressed, the user-provided callback function will be invoked.</para>
-<para><parameterlist kind="param"><parameteritem>
+<parameteritem>
 <parameternamelist>
-<parametername>cb</parametername>
+<parametername>fmt</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>A callback function of type lcd_btn_cb_fn_t(void (*cb)(void)) </para>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional list of arguments for the format string</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#include<sp/>&quot;pros/llemu.hpp&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::initialize();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::print(0,<sp/>&quot;My<sp/>formatted<sp/>text:<sp/>%d!&quot;,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.hpp" line="445" column="10" bodyfile="pros/screen.hpp" bodystart="509" bodyend="509" declfile="pros/screen.hpp" declline="445" declcolumn="10"/>
+        <location file="pros/llemu.hpp" line="121" column="10" bodyfile="pros/llemu.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>LLEMU Weak Stubs <linebreak/>
- </para>
     </briefdescription>
     <detaileddescription>
-<para>These functions allow main.cpp to be compiled without LVGL present <linebreak/>
- </para>
     </detaileddescription>
-    <location file="pros/screen.hpp" line="402" column="13"/>
+    <location file="pros/llemu.hpp" line="52" column="13"/>
   </compounddef>
 </doxygen>

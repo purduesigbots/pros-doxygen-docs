@@ -25,16 +25,18 @@
 <para>Sets the voltage for the motor from -127 to 127. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" kindref="member">motor_move_voltage()</ref>, or <ref refid="group__api-legacy_1ga59a0d6bd050cd259ad488e68f856ae81" kindref="member">motorSet()</ref> from the PROS 2 API.</para>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" kindref="member">motor_move_voltage()</ref>, or motorSet() from the PROS 2 API.</para>
 <para><simplesect kind="note"><para>This function will not respect brake modes, and simply sets the voltage to the desired value.</para>
 </simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<simplesect kind="note"><para>A negative port will negate the input voltage</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -58,7 +60,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="80" column="9" declfile="pros/motors.h" declline="80" declcolumn="9"/>
+        <location file="pros/motors.h" line="82" column="9" declfile="pros/motors.h" declline="82" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gaa5f42cf9767315e3bf2f465cf64faf80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -74,36 +76,40 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling motor_move_absolute(port, 0) or motor_move_relative(port, 0).</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting filename=".language-id"><codeline><highlight class="normal">code</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_move(1,<sp/>127);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_break(1);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="106" column="9" declfile="pros/motors.h" declline="106" declcolumn="9"/>
+        <location file="pros/motors.h" line="112" column="9" declfile="pros/motors.h" declline="112" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga75e7ed194eba3e78d281c40fcd10763f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gaeab0d89347dae23cfb25a0c3c4e8b55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::motor_move_absolute</definition>
-        <argsstring>(int8_t port, const double position, const int32_t velocity)</argsstring>
+        <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
         <name>motor_move_absolute</name>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
         </param>
         <param>
-          <type>const double</type>
+          <type>double</type>
           <declname>position</declname>
         </param>
         <param>
@@ -117,13 +123,15 @@ This function uses the following values of errno when an error state is reached:
 <para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="namespacepros_1_1c_1a4aec20e889c09650f066f4e28048c19b" kindref="member">motor_set_zero_position()</ref>.</para>
 <para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
 </simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<simplesect kind="note"><para>A negative port number will negate the target position</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -166,19 +174,19 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="153" column="9" declfile="pros/motors.h" declline="153" declcolumn="9"/>
+        <location file="pros/motors.h" line="161" column="9" declfile="pros/motors.h" declline="161" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gad62eb0085dbb0aad697487a1b2c00bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gab51091352630168597e8e30bde079eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::motor_move_relative</definition>
-        <argsstring>(int8_t port, const double position, const int32_t velocity)</argsstring>
+        <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
         <name>motor_move_relative</name>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
         </param>
         <param>
-          <type>const double</type>
+          <type>double</type>
           <declname>position</declname>
         </param>
         <param>
@@ -192,13 +200,15 @@ This function uses the following values of errno when an error state is reached:
 <para>This movement is relative to the current position of the motor as given in <ref refid="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" kindref="member">motor_get_position()</ref>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
 <para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
 </simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<simplesect kind="note"><para>A negative port will negate the target position</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -236,7 +246,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="198" column="9" declfile="pros/motors.h" declline="198" declcolumn="9"/>
+        <location file="pros/motors.h" line="208" column="9" declfile="pros/motors.h" declline="208" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gaa33296eaa7d7bddef72e9606e72bcc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -256,13 +266,15 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&apos;s voltage.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port will negate the velocity</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -285,7 +297,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="232" column="9" declfile="pros/motors.h" declline="232" declcolumn="9"/>
+        <location file="pros/motors.h" line="244" column="9" declfile="pros/motors.h" declline="244" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -304,7 +316,9 @@ This function uses the following values of errno when an error state is reached:
 <para>Sets the output voltage for the motor from -12000 to 12000 in millivolts. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port negates the voltage</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><simplesect kind="note"><para>This function will not respect brake modes, and simply sets the voltage to the desired value.</para>
 </simplesect>
 <parameterlist kind="param"><parameteritem>
@@ -312,7 +326,7 @@ This function uses the following values of errno when an error state is reached:
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -335,7 +349,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="262" column="9" declfile="pros/motors.h" declline="262" declcolumn="9"/>
+        <location file="pros/motors.h" line="276" column="9" declfile="pros/motors.h" declline="276" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga8815309c8900190c036e43c223afc0b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -355,13 +369,15 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This will have no effect if the motor is not following a profiled movement.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port negates the velocity</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -384,7 +400,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="292" column="9" declfile="pros/motors.h" declline="292" declcolumn="9"/>
+        <location file="pros/motors.h" line="308" column="9" declfile="pros/motors.h" declline="308" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga1d612333c59cacac2b6daf8085605213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -399,13 +415,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the target position set for the motor by the user. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port negates the return value</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -420,7 +438,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="317" column="8" declfile="pros/motors.h" declline="317" declcolumn="8"/>
+        <location file="pros/motors.h" line="335" column="8" declfile="pros/motors.h" declline="335" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga14476b124c9072efc14ad2cbcf6481ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -435,13 +453,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the velocity commanded to the motor by the user. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port negates the return value</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -458,7 +478,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="344" column="9" declfile="pros/motors.h" declline="344" declcolumn="9"/>
+        <location file="pros/motors.h" line="364" column="9" declfile="pros/motors.h" declline="364" declcolumn="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -478,13 +498,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the actual velocity of the motor. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port negates the return value</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -501,7 +523,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="377" column="8" declfile="pros/motors.h" declline="377" declcolumn="8"/>
+        <location file="pros/motors.h" line="399" column="8" declfile="pros/motors.h" declline="399" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga42567d532e2ca7c25ea54c17ac3c7742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -516,13 +538,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the current drawn by the motor in mA. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -539,7 +561,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="404" column="9" declfile="pros/motors.h" declline="404" declcolumn="9"/>
+        <location file="pros/motors.h" line="426" column="9" declfile="pros/motors.h" declline="426" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga0f9c29ae5adda0f2d753b8e7c2af5c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -554,13 +576,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the direction of movement for the motor. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port number negates the return value.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -577,7 +601,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="431" column="9" declfile="pros/motors.h" declline="431" declcolumn="9"/>
+        <location file="pros/motors.h" line="455" column="9" declfile="pros/motors.h" declline="455" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga7a974a7c9626135e8fc19525623d3a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -593,13 +617,13 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -616,7 +640,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="462" column="8" declfile="pros/motors.h" declline="462" declcolumn="8"/>
+        <location file="pros/motors.h" line="486" column="8" declfile="pros/motors.h" declline="486" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga155b9e37b6dba8e0530cc153cdb5c55e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -631,13 +655,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Checks if the motor is drawing over its current limit. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -654,7 +678,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="489" column="9" declfile="pros/motors.h" declline="489" declcolumn="9"/>
+        <location file="pros/motors.h" line="513" column="9" declfile="pros/motors.h" declline="513" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gad47d180d2620885f1d2b3a1b0d867da2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -669,13 +693,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Checks if the motor&apos;s temperature is above its limit. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -692,46 +716,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="516" column="9" declfile="pros/motors.h" declline="516" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga7a93f3046d69b0d740b83faabc2b604d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_is_stopped</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_is_stopped</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Checks if the motor is stopped. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS_ERR with errno set to ENOSYS.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the motor is not moving, 0 if the motor is moving, or PROS_ERR if the operation failed, setting errno</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Is<sp/>the<sp/>motor<sp/>stopped?<sp/>%d\n&quot;,<sp/>motor_is_stopped(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="542" column="9" declfile="pros/motors.h" declline="542" declcolumn="9"/>
+        <location file="pros/motors.h" line="540" column="9" declfile="pros/motors.h" declline="540" declcolumn="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -772,7 +757,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="611" column="10" declfile="pros/motors.h" declline="611" declcolumn="10"/>
+        <location file="pros/motors.h" line="610" column="10" declfile="pros/motors.h" declline="610" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga29a31e20d6203737a15b77d7b2479da8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -788,13 +773,13 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>Compare this bitfield to the bitmasks in motor_flag_e_t.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -811,7 +796,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="676" column="10" declfile="pros/motors.h" declline="676" declcolumn="10"/>
+        <location file="pros/motors.h" line="675" column="10" declfile="pros/motors.h" declline="675" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gae7399c7b8bde6a7c371e5a67e85b1d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -830,13 +815,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the raw encoder count of the motor at a given timestamp. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port value negates the return value</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21 </para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -862,7 +849,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="708" column="9" declfile="pros/motors.h" declline="708" declcolumn="9"/>
+        <location file="pros/motors.h" line="709" column="9" declfile="pros/motors.h" declline="709" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -877,13 +864,15 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the absolute position of the motor in its encoder units. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="note"><para>A negative port value negates the return value</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -900,7 +889,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="735" column="8" declfile="pros/motors.h" declline="735" declcolumn="8"/>
+        <location file="pros/motors.h" line="738" column="8" declfile="pros/motors.h" declline="738" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gaaaf993792ce15b7b025b8177b3af01c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -915,13 +904,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the power drawn by the motor in Watts. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -939,7 +928,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="763" column="8" declfile="pros/motors.h" declline="763" declcolumn="8"/>
+        <location file="pros/motors.h" line="766" column="8" declfile="pros/motors.h" declline="766" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga22a0f1bb6100680ea52d32f9053ec5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -954,13 +943,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the temperature of the motor in degrees Celsius. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -977,7 +966,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="790" column="8" declfile="pros/motors.h" declline="790" declcolumn="8"/>
+        <location file="pros/motors.h" line="793" column="8" declfile="pros/motors.h" declline="793" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1gaea02a297a5d59b4ca640a038e2a90edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -992,13 +981,13 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the torque generated by the motor in Newton Meters (Nm). </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1015,7 +1004,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="817" column="8" declfile="pros/motors.h" declline="817" declcolumn="8"/>
+        <location file="pros/motors.h" line="820" column="8" declfile="pros/motors.h" declline="820" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga5d1e2d0ca02dfe1b53bc577f8b9a1ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1036,7 +1025,7 @@ This function uses the following values of errno when an error state is reached:
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -1053,7 +1042,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="844" column="9" declfile="pros/motors.h" declline="844" declcolumn="9"/>
+        <location file="pros/motors.h" line="847" column="9" declfile="pros/motors.h" declline="847" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

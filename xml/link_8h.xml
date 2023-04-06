@@ -27,17 +27,13 @@
         <label>kapi.h</label>
         <link refid="kapi_8h"/>
       </node>
-      <node id="6">
-        <label>pros/api_legacy.h</label>
-        <link refid="api__legacy_8h"/>
-      </node>
       <node id="4">
         <label>pros/apix.h</label>
         <link refid="apix_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="7">
+      <node id="6">
         <label>pros/link.hpp</label>
         <link refid="link_8hpp"/>
         <childnode refid="2" relation="include">
@@ -48,7 +44,7 @@
         <link refid="link_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -59,8 +55,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -75,12 +69,13 @@
         <name>LINK_BUFFER_SIZE</name>
         <initializer>512</initializer>
         <briefdescription>
+<para>The maximum size of a link buffer. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="67" column="9" bodyfile="pros/link.h" bodystart="67" bodyend="-1"/>
+        <location file="pros/link.h" line="69" column="9" bodyfile="pros/link.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="enum">
@@ -91,7 +86,7 @@
           <name>E_LINK_RECIEVER</name>
           <initializer>= 0</initializer>
           <briefdescription>
-<para>Indicating that the radio is a reciever. </para>
+<para>Indicates that the radio is a reciever. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -99,6 +94,7 @@
         <enumvalue id="group__c-link_1ggaeb9b97127da30edb91cc281b28f5e8dfa959bf4f7005bdf46615e47d59b1b551e" prot="public">
           <name>E_LINK_TRANSMITTER</name>
           <briefdescription>
+<para>Indicates that the link is a transmitter. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -107,6 +103,7 @@
           <name>E_LINK_RX</name>
           <initializer>= E_LINK_RECIEVER</initializer>
           <briefdescription>
+<para>Alias for E_LINK_RECIEVER. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -115,6 +112,7 @@
           <name>E_LINK_TX</name>
           <initializer>= E_LINK_TRANSMITTER</initializer>
           <briefdescription>
+<para>Alias for E_LINK_TRANSMITTER. </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
@@ -125,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="45" column="25" bodyfile="pros/link.h" bodystart="45" bodyend="51"/>
+        <location file="pros/link.h" line="46" column="25" bodyfile="pros/link.h" bodystart="46" bodyend="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -151,8 +149,9 @@
         </briefdescription>
         <detaileddescription>
 <para>There might be a 1 to 2 second delay from when this function is called to when the link is initializes. PROS currently only supports the use of one radio per brain.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -189,7 +188,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="106" column="10" declfile="pros/link.h" declline="106" declcolumn="10"/>
+        <location file="pros/link.h" line="108" column="10" declfile="pros/link.h" declline="108" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga63e9104523a080995babfd88712bc756" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -213,8 +212,9 @@
         </briefdescription>
         <detaileddescription>
 <para>There might be a 1 to 2 second delay from when this function is called to when the link is initializes. PROS currently only supports the use of one radio per brain.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="143" column="10" declfile="pros/link.h" declline="143" declcolumn="10"/>
+        <location file="pros/link.h" line="145" column="10" declfile="pros/link.h" declline="145" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga89910cd189b97e358568b117cbedbf05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -267,8 +267,9 @@
 <para>Checks if a radio link on a port is active or not. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -293,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="173" column="6" declfile="pros/link.h" declline="173" declcolumn="6"/>
+        <location file="pros/link.h" line="175" column="6" declfile="pros/link.h" declline="175" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga176c20419748c6e2b08467c585461376" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -308,8 +309,9 @@
 <para>Returns the bytes of data available to be read. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -333,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="203" column="10" declfile="pros/link.h" declline="203" declcolumn="10"/>
+        <location file="pros/link.h" line="205" column="10" declfile="pros/link.h" declline="205" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1gab4e3a75704ace5aaddc1de05d10b644a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -348,8 +350,9 @@
 <para>Returns the bytes of data available in transmission buffer. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -373,7 +376,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="232" column="10" declfile="pros/link.h" declline="232" declcolumn="10"/>
+        <location file="pros/link.h" line="234" column="10" declfile="pros/link.h" declline="234" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga31012eb93b7684dcb2c2dfd54a61d8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -396,8 +399,9 @@
 <para>Send raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -437,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="269" column="10" declfile="pros/link.h" declline="269" declcolumn="10"/>
+        <location file="pros/link.h" line="271" column="10" declfile="pros/link.h" declline="271" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga5bf96e13a6b61a119b593f7f87613bc6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -460,8 +464,9 @@
 <para>Receive raw serial data through vexlink. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -502,7 +507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="306" column="10" declfile="pros/link.h" declline="306" declcolumn="10"/>
+        <location file="pros/link.h" line="308" column="10" declfile="pros/link.h" declline="308" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga5a1917d551d4f890f2e3663597b72c6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -525,8 +530,9 @@
 <para>Send packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EBUSY - The transmitter buffer is still busy with a previous transmission, and there is no room in the FIFO buffer (queue) to transmit the data. EINVAL - The data given is NULL</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -566,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="343" column="10" declfile="pros/link.h" declline="343" declcolumn="10"/>
+        <location file="pros/link.h" line="345" column="10" declfile="pros/link.h" declline="345" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1gafbe6fd56ba883a85e6190097ff932154" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -589,8 +595,9 @@
 <para>Receive packeted message through vexlink, with a checksum and start byte. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio. EINVAL - The destination given is NULL, or the size given is larger than the FIFO buffer or destination buffer. EBADMSG - Protocol error related to start byte, data size, or checksum.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -631,7 +638,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="381" column="10" declfile="pros/link.h" declline="381" declcolumn="10"/>
+        <location file="pros/link.h" line="383" column="10" declfile="pros/link.h" declline="383" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-link_1ga63e09087ca422aa711ad3ad56934f2a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -646,8 +653,9 @@
 <para>Clear the receive buffer of the link, and discarding the data. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
-<para><parameterlist kind="param"><parameteritem>
+<para><simplesect kind="note"><para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a radio. ENXIO - The sensor is still calibrating, or no link is connected via the radio.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
@@ -672,7 +680,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/link.h" line="412" column="10" declfile="pros/link.h" declline="412" declcolumn="10"/>
+        <location file="pros/link.h" line="414" column="10" declfile="pros/link.h" declline="414" declcolumn="10"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
