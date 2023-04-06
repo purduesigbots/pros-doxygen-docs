@@ -32,21 +32,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1},<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="132" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="121" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga2affe67be5ec0f6c6ac406176777128c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -74,21 +66,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="163" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="140" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga6d274aaeea2b1f0eacd4199a607c5460" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -130,30 +114,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.tare_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="208" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="164" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga570e69a0d12d8f7c2fa372cf3889d1e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -195,25 +162,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_relative(100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor.get_position()<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor.get_position()<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="249" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="189" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1gaf9e6c6b881edf9a214f7beb9a65016e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -241,19 +196,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(0);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="281" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="211" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1gaa624ba8db4d6f6bfef33a6310a962ec6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -288,18 +237,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_voltage(12000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_voltage(0);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="307" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="228" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1gacd632653366f285fcadaeef24874f50b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -312,35 +256,15 @@ This function uses the following values of errno when an error state is reached:
           <type>void</type>
         </param>
         <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
+<para>Stops the motor using the currently configured brake mode. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__cpp-motor-movement_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1},<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+<para>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling move_absolute(0) or motor_move_relative(0).</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="309" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="242" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga4969d7ec9d84d6abda496a684fbdfcfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -354,35 +278,27 @@ This function uses the following values of errno when an error state is reached:
           <declname>velocity</declname>
         </param>
         <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
+<para>Changes the output velocity for a profiled movement (motor_move_absolute or motor_move_relative). </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__cpp-motor-movement_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
+<para>This will have no effect if the motor is not following a profiled movement.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>voltage</parametername>
+<parametername>velocity</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
+<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1},<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="310" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="260" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga270586ebcfe29081d91e1e1888c1cea5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -406,23 +322,17 @@ This function uses the following values of errno when an error state is reached:
 <parametername>index</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The index of the motor to get the target position of.</para>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Target:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_target_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>100</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="334" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="277" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga3372e3eeb8f9713158cf7533d9f22fdd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -435,35 +345,17 @@ This function uses the following values of errno when an error state is reached:
           <type>void</type>
         </param>
         <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
+<para>Gets a vector containing the target position(s) set for the motor(s) by the user. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__cpp-motor-movement_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>A vector containing the target position(s) in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1},<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="335" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="290" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1gad432481d905cf4b1184e989fc6435223" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -482,23 +374,22 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move_velocity(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Velocity:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_target_velocity();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>value<sp/>of<sp/>E_CONTROLLER_ANALOG_LEFT_Y</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="361" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="306" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-movement_1ga6712354fb8815453799295cf595dadb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -511,35 +402,17 @@ This function uses the following values of errno when an error state is reached:
           <type>void</type>
         </param>
         <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
+<para>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__cpp-motor-movement_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref>, or motorSet from the PROS 2 API.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>A vector containing the commanded motor velocity/velocities from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1},<sp/>E_MOTOR_GEARSET_18);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="362" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="318" column="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

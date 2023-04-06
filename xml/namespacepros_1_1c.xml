@@ -1537,8 +1537,8 @@
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu_gyro_s_t<sp/>gyro<sp/>=<sp/>imu_get_gyro_rate(IMU_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>gyro<sp/>values:<sp/>{x:<sp/>%f,<sp/>y:<sp/>%f,<sp/>z:<sp/>%f}\n&quot;,<sp/>gyro.x,<sp/>gyro.y,<sp/>gyro.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>int32_t<sp/>val<sp/>=<sp/>imu_set_euler(IMU_PORT,<sp/>{45,<sp/>60,<sp/>90});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;IMU<sp/>:<sp/>{gyro<sp/>vals:<sp/>%d}\n&quot;,<sp/>val);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -9514,13 +9514,22 @@ This function uses the following values of errno when an error state is reached:
 <para>Gets the type of device on given port. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The device type as an enum. </para>
+<para><simplesect kind="return"><para>The device type as an enum.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>v5_device_e_t<sp/>pt<sp/>=<sp/>get_plugged_type(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{plugged<sp/>type:<sp/>%d}\n&quot;,<sp/>pt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.h" line="55" column="15" declfile="pros/device.h" declline="55" declcolumn="15"/>
+        <location file="pros/device.h" line="68" column="15" declfile="pros/device.h" declline="68" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="group__c-distance_1ga7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -9625,13 +9634,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The size value or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The size value or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Size:<sp/>%d\n&quot;,<sp/>distance_get_object_size(DISTANCE_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="115" column="9" declfile="pros/distance.h" declline="115" declcolumn="9"/>
+        <location file="pros/distance.h" line="127" column="9" declfile="pros/distance.h" declline="127" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-distance_1ga744e01aa684d89ff70dd443dba4eea53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -9662,7 +9679,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Size:<sp/>%d\n&quot;,<sp/>distance_get_object_size(DISTANCE_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Velocity:<sp/>%d\n&quot;,<sp/>distance_get_object_velocity(DISTANCE_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -9670,7 +9687,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="141" column="8" declfile="pros/distance.h" declline="141" declcolumn="8"/>
+        <location file="pros/distance.h" line="153" column="8" declfile="pros/distance.h" declline="153" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__ext-adi_1ga529d923cac85867a1fc20e1b385bb8b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>adi_port_config_e_t</type>
@@ -15084,7 +15101,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Position:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_position(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Position:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_position(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -15123,7 +15140,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Velocity:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_velocity(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Velocity:<sp/>%d<sp/>centidegrees<sp/>per<sp/>second<sp/>\n&quot;,<sp/>rotation_get_velocity(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -15162,7 +15179,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_angle(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_angle(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -15216,7 +15233,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_reversed(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_reversed(ROTATION_PORT,<sp/>true);<sp/>//<sp/>Reverses<sp/>the<sp/>Rotation<sp/>Sensor<sp/>on<sp/>ROTATION_PORT</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -15307,11 +15324,24 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>reverse_flag<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_init_reverse(ROTATION_PORT,<sp/>reverse_flag);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="339" column="9" declfile="pros/rotation.h" declline="339" declcolumn="9"/>
+        <location file="pros/rotation.h" line="351" column="9" declfile="pros/rotation.h" declline="351" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rotation_1ga8cebefc88493efb298f15e6f47eb7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -15354,7 +15384,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="371" column="9" declfile="pros/rotation.h" declline="371" declcolumn="9"/>
+        <location file="pros/rotation.h" line="383" column="9" declfile="pros/rotation.h" declline="383" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaa247cd38039665b7ac4b0d0920b83c80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>

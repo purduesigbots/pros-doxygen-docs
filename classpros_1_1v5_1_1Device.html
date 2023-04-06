@@ -172,6 +172,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;device plugged type: {port: %d}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">get_port</span><span class="p">());</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="aaf5448d59f0bc980c4490e97964cfb42"><div>
             <h3>
@@ -182,10 +188,16 @@ V5</span></a>
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>true if the corresponding device is installed, false otherwise.</td>
+                  <td>true if the corresponding device is installed, false otherwise. <strong>Example</strong></td>
                 </tr>
               </tfoot>
             </table>
+<pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;device plugged type: {is_installed: %d}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">is_installed</span><span class="p">());</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ad5b1efc698f196a0d4fd0f795550b703"><div>
             <h3>
@@ -200,7 +212,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EACCES - <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> of port cannot be taken (access denied).</p>
+<p>This function uses the following values of errno when an error state is reached: EACCES - <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> of port cannot be taken (access denied).</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">v5_device_e_t</span><span class="w"> </span><span class="n">pt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_plugged_type</span><span class="p">(</span><span class="n">IMU_PORT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;device plugged type: {plugged type: %d}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pt</span><span class="p">);</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
         </section>
       </div>

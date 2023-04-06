@@ -23,21 +23,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="393" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="341" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga438c6abbee42ff9c8f7e78760a598b72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -50,25 +51,17 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the actual velocity/velocities of the motor(s) </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; actual velocity/velocities in RPM or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="394" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="353" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gad4f59ac98c0207e4fd2d70781f308c89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -87,22 +80,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Current<sp/>Draw:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_current_draw();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="419" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="369" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga7bd04f923910b767c00c46ddb9e7a04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -115,25 +108,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the current(s) drawn by the motor(s) in mA. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector conatining the motor&apos;s/motors&apos; current(s) in mA or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="420" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="383" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga7fedbc5979e60dc4abf68cb43ad7aeb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -152,22 +138,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Direction:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_direction();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="445" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="399" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga1056fa3bf38bd7c6b7bd43ebfa990999" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -180,25 +166,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the direction(s) of movement for the motor(s). </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing 1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="446" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="414" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga30c1f2c5cef4e488faf1df295bf82ad1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -218,22 +197,22 @@
         <detaileddescription>
 <para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Efficiency:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_efficiency();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="475" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="434" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gac29928ead5ce1c1b7feb83354fe25f1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -246,25 +225,19 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the efficiency/efficiencies of the motor(s) in percent. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; efficiency/efficiencies in percent or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="476" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="452" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gaa18b24c5db5590ea01b89bcb5eac211c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -286,28 +259,20 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>port</parametername>
+<parametername>index</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s faults.</para>
+<simplesect kind="return"><para>A bitfield containing the motor&apos;s faults. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Faults:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_faults();pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="504" column="23"/>
+        <location file="pros/abstract_motor.hpp" line="469" column="23"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga0ce7428e0087f7e1a1c11bcae4ec9020" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::uint32_t &gt;</type>
@@ -320,25 +285,19 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the faults experienced by the motor(s). </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>Compare this bitfield to the bitmasks in pros::motor_fault_e_t.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A bitfield containing the motor&apos;s/motors&apos; faults. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="505" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="483" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gae86ff2f9e792299f74e168b711f7f7c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::uint32_t</type>
@@ -360,29 +319,20 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername>port</parametername>
+<parametername>index</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 port number from 1-21</para>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s flags.</para>
+<simplesect kind="return"><para>A bitfield containing the motor&apos;s flags. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Faults:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_faults();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="533" column="23"/>
+        <location file="pros/abstract_motor.hpp" line="499" column="23"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gae51d95442747f6a63dc569dd0a302e38" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::uint32_t &gt;</type>
@@ -395,25 +345,19 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the flags set by the motor&apos;s/motors&apos; operation. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>Compare this bitfield to the bitmasks in pros::motor_flag_e_t.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A bitfield containing the motor&apos;s/motors&apos; flags. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="534" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="514" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga466b41cb785216638b51257d0950cad8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -432,22 +376,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Position:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="559" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="530" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga719cdc008b41b3dd7946e3f113c582cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -460,25 +404,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the absolute position(s) of the motor(s) in its encoder units. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; absolute position(s) in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="560" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="544" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gaa08338d400876e155bb3b88ba9059f68" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -497,22 +434,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_power();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="585" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="560" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga524b20db8715aa56014a501e7173366c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -525,25 +462,18 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector containing the power(s) drawn by the motor(s) in Watts. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; power draw in Watts or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="586" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="573" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga4c917fc7e8b3f92a5511923c8d8c9e35" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -574,24 +504,22 @@
 <para>A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied</para>
 </parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed.</para>
+<simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Position:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_raw_position(&amp;now);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="616" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="594" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gabf650661a11b19e69b743a34a71b0027" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -605,25 +533,27 @@
           <declname>timestamp</declname>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the raw encoder count(s) of the motor(s) at a given timestamp. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timestamp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing the raw encoder count(s) at the given timestamp or PROS_ERR if the operation failed. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="617" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="613" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga3ed2e114d755fc8a24b6e42bdd5ea4bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -642,22 +572,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Temperature:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_temperature();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="642" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="629" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gabfc62ae07e7452f8af3ab62e78363c76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -670,25 +600,26 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the temperature(s) of the motor(s) in degrees Celsius. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; temperature(s) in degrees Celsius or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="643" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="645" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga7cca2d5eb09b2341b5afffbc26dae635" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>double</type>
@@ -707,22 +638,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Torque:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_torque();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="667" column="16"/>
+        <location file="pros/abstract_motor.hpp" line="660" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gaa4225a5f22a6b10a9b4c1532d395b4ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; double &gt;</type>
@@ -735,25 +666,26 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the torque(s) generated by the motor(s) in Newton Meters (Nm). </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; torque(s) in Nm or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="668" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="676" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gaeeec095b765765c43c22578dc44bd7b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -772,22 +704,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Voltage:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_voltage();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="692" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="691" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gaf4f1030a9b7adc003bfe46325da6d2d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -800,25 +732,26 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the voltage(s) delivered to the motor(s) in millivolts. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector containing the motor&apos;s/motors&apos; voltage(s) in mV or PROS_ERR_F if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="693" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="707" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga75daf190cb506dbfe807c672fd61a9f1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -837,22 +770,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>current<sp/>limit?:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.is_over_current();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="719" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="724" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga93ed616f0597a8367dc9e0419bdc78df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -865,25 +798,26 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of whether each motor is drawing over its current limit. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="720" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="741" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1gad6c9b66f689819d5a27af242623fcc37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::int32_t</type>
@@ -902,22 +836,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>temperature<sp/>limit?:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.is_over_temp();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="745" column="22"/>
+        <location file="pros/abstract_motor.hpp" line="757" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-telemetry_1ga945be8a01f60dbc29247097c0aea81c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; std::int32_t &gt;</type>
@@ -930,25 +864,26 @@
           <type>void</type>
         </param>
         <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
+<para>Gets a vector of the temperature limit flag(s) for the motor(s). </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/>motor<sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor<sp/>=<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="746" column="21"/>
+        <location file="pros/abstract_motor.hpp" line="773" column="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

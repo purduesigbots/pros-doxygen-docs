@@ -296,7 +296,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Position:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_position(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Position:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_position(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -335,7 +335,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Velocity:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_velocity(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Velocity:<sp/>%d<sp/>centidegrees<sp/>per<sp/>second<sp/>\n&quot;,<sp/>rotation_get_velocity(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -374,7 +374,7 @@
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%d<sp/>Ticks<sp/>\n&quot;,<sp/>rotation_get_angle(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_angle(ROTATION_PORT));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -428,7 +428,7 @@
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_reversed(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_reversed(ROTATION_PORT,<sp/>true);<sp/>//<sp/>Reverses<sp/>the<sp/>Rotation<sp/>Sensor<sp/>on<sp/>ROTATION_PORT</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -519,11 +519,24 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>reverse_flag<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_init_reverse(ROTATION_PORT,<sp/>reverse_flag);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="339" column="9" declfile="pros/rotation.h" declline="339" declcolumn="9"/>
+        <location file="pros/rotation.h" line="351" column="9" declfile="pros/rotation.h" declline="351" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rotation_1ga8cebefc88493efb298f15e6f47eb7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -566,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="371" column="9" declfile="pros/rotation.h" declline="371" declcolumn="9"/>
+        <location file="pros/rotation.h" line="383" column="9" declfile="pros/rotation.h" declline="383" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

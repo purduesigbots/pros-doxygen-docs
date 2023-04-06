@@ -322,7 +322,7 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Position: %d Ticks </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_position</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Position: %d centidegrees </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_position</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
@@ -354,7 +354,7 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Velocity: %d Ticks </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_velocity</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Velocity: %d centidegrees per second </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_velocity</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
@@ -386,7 +386,7 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Angle: %d Ticks </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_angle</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Angle: %d centidegrees </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rotation_get_angle</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">));</span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
@@ -426,7 +426,7 @@ V5</span></a>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span>
-<span class="w">      </span><span class="n">rotation_set_reversed</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">);</span>
+<span class="w">      </span><span class="n">rotation_set_reversed</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Reverses the Rotation Sensor on ROTATION_PORT</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
@@ -496,7 +496,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Rotation.html" class="m-doc">Rotation</a> Sensor</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Rotation.html" class="m-doc">Rotation</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ROTATION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Rotation</span><span class="w"> </span><span class="n">rotation_sensor</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">reverse_flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_X</span><span class="p">)){</span>
+<span class="w">      </span><span class="n">rotation_init_reverse</span><span class="p">(</span><span class="n">ROTATION_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">reverse_flag</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga8cebefc88493efb298f15e6f47eb7992"><div>
             <h3>

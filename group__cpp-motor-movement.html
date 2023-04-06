@@ -118,11 +118,11 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacd632653366f285fcadaeef24874f50b" class="m-doc-self">brake</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Sets the voltage for the motor from -127 to 127.</dd>
+            <dd>Stops the motor using the currently configured brake mode.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4969d7ec9d84d6abda496a684fbdfcfe" class="m-doc-self">modify_profiled_velocity</a>(</span><span class="m-doc-wrap">const std::int32_t velocity) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Sets the voltage for the motor from -127 to 127.</dd>
+            <dd>Changes the output velocity for a profiled movement (motor_move_absolute or motor_move_relative).</dd>
             <dt>
               <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga270586ebcfe29081d91e1e1888c1cea5" class="m-doc-self">get_target_position</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
@@ -130,7 +130,7 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3372e3eeb8f9713158cf7533d9f22fdd" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Sets the voltage for the motor from -127 to 127.</dd>
+            <dd>Gets a vector containing the target position(s) set for the motor(s) by the user.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad432481d905cf4b1184e989fc6435223" class="m-doc-self">get_target_velocity</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
@@ -138,7 +138,7 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6712354fb8815453799295cf595dadb3" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Sets the voltage for the motor from -127 to 127.</dd>
+            <dd>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user.</dd>
           </dl>
         </section>
         <section>
@@ -166,14 +166,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga2affe67be5ec0f6c6ac406176777128c"><div>
             <h3>
@@ -198,14 +191,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__c-motors.html#gac76e46064191f91bf2546335caccf6b5" class="m-doc">motor_<wbr />move()</a>, or motorSet() from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">});</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="p">.</span><span class="n">move</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__c-motors.html#gac76e46064191f91bf2546335caccf6b5" class="m-doc">motor_<wbr />move()</a>, or motorSet() from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga6d274aaeea2b1f0eacd4199a607c5460"><div>
             <h3>
@@ -235,23 +221,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <a href="group__cpp-motor-configuration.html#gaef47e9be34d06e6a1dc536454838f600" class="m-doc">pros::<wbr />Motor::<wbr />set_zero_position()</a>.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">autonomous</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_absolute</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Moves 100 units forward</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">105</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">95</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_absolute</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// This does not cause a movement</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">105</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">95</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">tare_position</span><span class="p">();</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_absolute</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Moves 100 units forward</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">105</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">95</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <a href="group__cpp-motor-configuration.html#gaef47e9be34d06e6a1dc536454838f600" class="m-doc">pros::<wbr />Motor::<wbr />set_zero_position()</a>.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga570e69a0d12d8f7c2fa372cf3889d1e5"><div>
             <h3>
@@ -281,18 +251,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This movement is relative to the current position of the motor as given in <a href="group__c-motors.html#ga113fbf1950304b3a56705722b283c3a1" class="m-doc">pros::<wbr />Motor::<wbr />motor_get_position()</a>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">autonomous</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_relative</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Moves 100 units forward</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">105</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">95</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Continue running this loop as long as the motor is not within +-5 units of its goal</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_relative</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c1">// Also moves 100 units forward</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">205</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">motor</span><span class="p">.</span><span class="n">get_position</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">195</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This movement is relative to the current position of the motor as given in <a href="group__c-motors.html#ga113fbf1950304b3a56705722b283c3a1" class="m-doc">pros::<wbr />Motor::<wbr />motor_get_position()</a>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gaf9e6c6b881edf9a214f7beb9a65016e2"><div>
             <h3>
@@ -317,12 +276,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&#x27;s voltage.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">autonomous</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move at 100 RPM for 1 second</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span></pre>
+<p>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&#x27;s voltage.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gaa624ba8db4d6f6bfef33a6310a962ec6"><div>
             <h3>
@@ -347,57 +301,40 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">autonomous</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_voltage</span><span class="p">(</span><span class="mi">12000</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">// Move at max voltage for 1 second</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_voltage</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="p">}</span></pre>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gacd632653366f285fcadaeef24874f50b"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gacd632653366f285fcadaeef24874f50b" class="m-doc-self">brake</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Sets the voltage for the motor from -127 to 127.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+            <p>Stops the motor using the currently configured brake mode.</p>
+<p>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling move_absolute(0) or motor_move_relative(0).</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga4969d7ec9d84d6abda496a684fbdfcfe"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4969d7ec9d84d6abda496a684fbdfcfe" class="m-doc-self">modify_profiled_velocity</a>(</span><span class="m-doc-wrap">const std::int32_t velocity) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Sets the voltage for the motor from -127 to 127.</p>
+            <p>Changes the output velocity for a profiled movement (motor_move_absolute or motor_move_relative).</p>
             <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">velocity</td>
+                  <td>The new motor velocity from +-100, +-200, or +-600 depending on the motor&#x27;s gearset</td>
+                </tr>
+              </tbody>
               <tfoot>
                 <tr>
-                  <th style="width: 1%">Returns</th>
+                  <th>Returns</th>
                   <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This will have no effect if the motor is not following a profiled movement.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga270586ebcfe29081d91e1e1888c1cea5"><div>
             <h3>
@@ -412,7 +349,7 @@ V5</span></a>
               <tbody>
                 <tr>
                   <td style="width: 1%">index</td>
-                  <td>The index of the motor to get the target position of.</td>
+                  <td>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</td>
                 </tr>
               </tbody>
               <tfoot>
@@ -422,35 +359,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">autonomous</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">move_absolute</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Motor Target: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_target_position</span><span class="p">();</span>
-<span class="w">  </span><span class="c1">// Prints 100</span>
-<span class="p">}</span></pre>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga3372e3eeb8f9713158cf7533d9f22fdd"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3372e3eeb8f9713158cf7533d9f22fdd" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Sets the voltage for the motor from -127 to 127.</p>
+            <p>Gets a vector containing the target position(s) set for the motor(s) by the user.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                  <td>A vector containing the target position(s) in its encoder units or PROS_ERR_F if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gad432481d905cf4b1184e989fc6435223"><div>
             <h3>
@@ -459,46 +384,39 @@ V5</span></a>
             </h3>
             <p>Gets the velocity commanded to the motor by the user.</p>
             <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</td>
+                </tr>
+              </tbody>
               <tfoot>
                 <tr>
-                  <th style="width: 1%">Returns</th>
+                  <th>Returns</th>
                   <td>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="p">.</span><span class="n">move_velocity</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">));</span>
-<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Motor Velocity: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_target_velocity</span><span class="p">();</span>
-<span class="w">    </span><span class="c1">// Prints the value of E_CONTROLLER_ANALOG_LEFT_Y</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga6712354fb8815453799295cf595dadb3"><div>
             <h3>
               <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6712354fb8815453799295cf595dadb3" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Sets the voltage for the motor from -127 to 127.</p>
+            <p>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
+                  <td>A vector containing the commanded motor velocity/velocities from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</td>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__cpp-motor-movement.html#ga2affe67be5ec0f6c6ac406176777128c" class="m-doc">pros::<wbr />Motor::<wbr />move()</a>, or motorSet from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">MotorGroup</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_18</span><span class="p">);</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="w"> </span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">motor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">master</span><span class="p">.</span><span class="n">get_analog</span><span class="p">(</span><span class="n">E_CONTROLLER_ANALOG_LEFT_Y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
         </section>
       </div>
