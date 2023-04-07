@@ -15,12 +15,33 @@
           <declname>port</declname>
         </param>
         <briefdescription>
+<para>Creates an <ref refid="classpros_1_1v5_1_1Imu" kindref="compound">Imu</ref> object for the given port. </para>
         </briefdescription>
         <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 Inertial Sensor port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>the<sp/>sensor<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="65" column="10" bodyfile="pros/imu.hpp" bodystart="65" bodyend="65"/>
+        <location file="pros/imu.hpp" line="85" column="10" bodyfile="pros/imu.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gac52642244bf571d7551cd72db472b6be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -47,13 +68,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>imu.calibrate();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Block<sp/>until<sp/>calibration<sp/>is<sp/>complete</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>imu.reset(true);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="87" column="22"/>
+        <location file="pros/imu.hpp" line="120" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gafb4e63f82dffc58b0fb0569f73250ff6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -80,13 +109,31 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>refresh<sp/>rate<sp/>to<sp/>5ms</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::int32_t<sp/>status<sp/>=<sp/>imu.set_data_rate(5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Check<sp/>if<sp/>the<sp/>operation<sp/>was<sp/>successful</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(status<sp/>==<sp/>PROS_ERR)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>the<sp/>error</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>the<sp/>sensor<sp/>data</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="110" column="22"/>
+        <location file="pros/imu.hpp" line="166" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga60630447c3ada8da63dd91e092eeb2fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -108,13 +155,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>total<sp/>number<sp/>of<sp/>degrees<sp/>the<sp/>sensor<sp/>has<sp/>spun</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>printf(&quot;Total<sp/>rotation:<sp/>%f\n&quot;,<sp/>imu.get_rotation());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="129" column="16"/>
+        <location file="pros/imu.hpp" line="201" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga16a339b5f7729298dc79cf4971565043" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -136,13 +194,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The degree value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>heading</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Heading:<sp/>%f\n&quot;,<sp/>imu.get_heading());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="149" column="16"/>
+        <location file="pros/imu.hpp" line="237" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga0775873d5815e585727e6b3978f242f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-imu_1ga1f3d4bf4251e6ce7cb374297de6390a1" kindref="member">pros::quaternion_s_t</ref></type>
@@ -163,13 +232,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The quaternion representing the sensor&apos;s orientation. If the operation failed, all the quaternion&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The quaternion representing the sensor&apos;s orientation. If the operation failed, all the quaternion&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>quaternion</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::quaternion_s_t<sp/>quat<sp/>=<sp/>imu.get_quaternion();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;Quaternion:<sp/>&quot;<sp/>&lt;&lt;<sp/>quat.w<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>quat.x<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>quat.y<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>quat.z<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="165" column="30"/>
+        <location file="pros/imu.hpp" line="270" column="30"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gac2bf7777fcebe495e7e615bd4d2da7af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-imu_1ga93e80020ec907b7e11ac7166e5d01c55" kindref="member">pros::euler_s_t</ref></type>
@@ -190,13 +271,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The Euler angles representing the sensor&apos;s orientation. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The Euler angles representing the sensor&apos;s orientation. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>Euler<sp/>angles</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::euler_s_t<sp/>euler<sp/>=<sp/>imu.get_euler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;Euler:<sp/>&quot;<sp/>&lt;&lt;<sp/>euler.roll<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>euler.pitch<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>euler.yaw<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="181" column="25"/>
+        <location file="pros/imu.hpp" line="303" column="25"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga74b63ffbb1f1a31e6f1bb740b8c4f823" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -217,13 +310,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The pitch angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The pitch angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>pitch</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Pitch:<sp/>%f\n&quot;,<sp/>imu.get_pitch());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="196" column="16"/>
+        <location file="pros/imu.hpp" line="334" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga25b06e3629127c64370d43454b04696f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -244,13 +348,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The roll angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The roll angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>roll</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Roll:<sp/>%f\n&quot;,<sp/>imu.get_roll());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="210" column="16"/>
+        <location file="pros/imu.hpp" line="364" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga757ff3f4ff5e6646db7a158bdc951dc2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>double</type>
@@ -271,13 +386,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The yaw angle, or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The yaw angle, or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>yaw</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Yaw:<sp/>%f\n&quot;,<sp/>imu.get_yaw());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="224" column="16"/>
+        <location file="pros/imu.hpp" line="394" column="16"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga2f7de75365d00f78dfc73f82c410065e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-imu_1ga5b9e240cfb181cce3c741e29efbbbf23" kindref="member">pros::imu_gyro_s_t</ref></type>
@@ -298,13 +424,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw gyroscope values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>raw<sp/>gyroscope<sp/>values</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::imu_gyro_s_t<sp/>gyro<sp/>=<sp/>imu.get_gyro_rate();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;Gyro:<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.x<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.y<sp/>&lt;&lt;<sp/>&quot;,<sp/>&quot;<sp/>&lt;&lt;<sp/>gyro.z<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="239" column="28"/>
+        <location file="pros/imu.hpp" line="426" column="28"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gaa0267b91c2766fc53e5d8d382b1e3ba2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -325,13 +463,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>rotation<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_rotation(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>sensor&apos;s<sp/>rotation<sp/>value<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_rotation();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="254" column="22"/>
+        <location file="pros/imu.hpp" line="463" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga66450ac36b71abf1637ed049544cf0e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -352,13 +507,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>heading<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_heading(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>sensor&apos;s<sp/>heading<sp/>value<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_heading();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="269" column="22"/>
+        <location file="pros/imu.hpp" line="500" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gafa1565cc9e7f3dba04399f15be7eb454" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -379,13 +551,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>pitch<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_pitch(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>sensor&apos;s<sp/>pitch<sp/>value<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_pitch();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="284" column="22"/>
+        <location file="pros/imu.hpp" line="537" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gaf1e8a07f645b44fb970a9355a595ec41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -406,13 +595,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>yaw<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_yaw(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>sensor&apos;s<sp/>yaw<sp/>value<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_yaw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="299" column="22"/>
+        <location file="pros/imu.hpp" line="574" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga7102b391456b5e4a87d54aa75e9367e8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -433,13 +639,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>roll<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_roll(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>sensor&apos;s<sp/>roll<sp/>value<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_roll();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="314" column="22"/>
+        <location file="pros/imu.hpp" line="611" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga2e1d8770361636ce084f95b57df0c1d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -460,13 +683,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>all<sp/>values<sp/>of<sp/>the<sp/>sensor<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="329" column="22"/>
+        <location file="pros/imu.hpp" line="642" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga581438687c3b69e495dda3e145173d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -487,13 +721,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>all<sp/>euler<sp/>values<sp/>of<sp/>the<sp/>sensor<sp/>to<sp/>0</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.tare_euler();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="344" column="22"/>
+        <location file="pros/imu.hpp" line="673" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga39d71c5e2bf21bc76aa40bdfa6384937" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -526,13 +771,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>heading<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_heading(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="362" column="22"/>
+        <location file="pros/imu.hpp" line="709" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga1885d4e1d4cc150d55db862ce53ba209" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -565,13 +823,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>rotation<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_rotation(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="379" column="22"/>
+        <location file="pros/imu.hpp" line="744" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga5f601df7e023e5e102d7d34ee60919f8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -604,13 +875,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>yaw<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_yaw(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="397" column="22"/>
+        <location file="pros/imu.hpp" line="780" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gaf5eaac02249d670303513e90d91de70a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -643,13 +927,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>pitch<sp/>value<sp/>to<sp/>10</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_pitch(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="414" column="22"/>
+        <location file="pros/imu.hpp" line="815" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gad42996e6b92cab819c3cb566ee809348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -682,13 +979,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>roll<sp/>value<sp/>to<sp/>100</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_roll(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="432" column="22"/>
+        <location file="pros/imu.hpp" line="851" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga23f999199acce579127ffe5582eb8c89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -722,13 +1032,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>sensor&apos;s<sp/>euler<sp/>values<sp/>to<sp/>50</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.set_euler(50);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="450" column="22"/>
+        <location file="pros/imu.hpp" line="887" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga7ce63efa119789a8886a4819ee3c0443" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__c-imu_1ga70eb3173193f4f46266eade4c243f662" kindref="member">pros::imu_accel_s_t</ref></type>
@@ -749,13 +1072,27 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set. </para>
+<simplesect kind="return"><para>The raw accelerometer values. If the operation failed, all the structure&apos;s members are filled with PROS_ERR_F and errno is set.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>raw<sp/>accelerometer<sp/>values</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::imu_accel_s_t<sp/>accel<sp/>=<sp/>imu.get_accel();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;x:<sp/>%f,<sp/>y:<sp/>%f,<sp/>z:<sp/>%f\n&quot;,<sp/>accel.x,<sp/>accel.y,<sp/>accel.z);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="465" column="29"/>
+        <location file="pros/imu.hpp" line="921" column="29"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1ga86823263dabc96d9dbdf08a6217380aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__cpp-imu_1gab0742c208423893382bf252026c79176" kindref="member">pros::ImuStatus</ref></type>
@@ -776,13 +1113,27 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The Inertial Sensor&apos;s status code, or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The Inertial Sensor&apos;s status code, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>sensor&apos;s<sp/>status</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::ImuStatus<sp/>status<sp/>=<sp/>imu.get_status();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>cout<sp/>&lt;&lt;<sp/>&quot;Status:<sp/>&quot;<sp/>&lt;&lt;<sp/>status<sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="480" column="25"/>
+        <location file="pros/imu.hpp" line="955" column="25"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-imu_1gac58cd647360441bf82830bd17d2f6c82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -793,13 +1144,31 @@
 <para>Check whether the IMU is calibrating. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>true if the V5 Inertial Sensor is calibrating or false false if it is not. </para>
+<para><simplesect kind="return"><para>true if the V5 Inertial Sensor is calibrating or false false if it is not.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Imu<sp/>imu(IMU_PORT);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Calibrate<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>imu.calibrate();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Check<sp/>if<sp/>the<sp/>sensor<sp/>is<sp/>calibrating</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(imu.is_calibrating())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Calibrating...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>something<sp/>with<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="487" column="14"/>
+        <location file="pros/imu.hpp" line="985" column="14"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="friend">
@@ -824,7 +1193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/imu.hpp" line="497" column="8"/>
+        <location file="pros/imu.hpp" line="995" column="8"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -855,7 +1224,7 @@
         <link refid="classpros_1_1v5_1_1Device"/>
       </node>
     </collaborationgraph>
-    <location file="pros/imu.hpp" line="57" column="24" bodyfile="pros/imu.hpp" bodystart="57" bodyend="500"/>
+    <location file="pros/imu.hpp" line="54" column="24" bodyfile="pros/imu.hpp" bodystart="54" bodyend="998"/>
     <listofallmembers>
       <member refid="classpros_1_1v5_1_1Device_1a8176a1cb598ccc924caa19a6d669b396" prot="public" virt="non-virtual"><scope>pros::v5::Imu</scope><name>Device</name></member>
       <member refid="group__cpp-imu_1ga7ce63efa119789a8886a4819ee3c0443" prot="public" virt="virtual"><scope>pros::v5::Imu</scope><name>get_accel</name></member>

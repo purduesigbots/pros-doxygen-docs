@@ -159,17 +159,11 @@ V5</span></a>
             </dt>
             <dd>Creates a queue.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf9cc8a3a8c3ce36dcd31ead2a0c3f4cf" class="m-doc-self">queue_prepend</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
-              const void* item,
-              uint32_t timeout)</span></span>
-            </dt>
-            <dd>Posts an item to the front of a queue.</dd>
-            <dt>
               <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa42af929135978ccfd393931ec464980" class="m-doc-self">queue_append</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
               const void* item,
               uint32_t timeout)</span></span>
             </dt>
-            <dd>Posts an item to the end of a queue.</dd>
+            <dd>Posts an item to the front of a queue.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf9b0095a2b8ba4e68b45cebb7105af34" class="m-doc-self">queue_peek</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
               void*const buffer,
@@ -226,16 +220,11 @@ V5</span></a>
           <h2><a href="#filesystem">Filesystem</a></h2>
           <dl class="m-doc">
             <dt>
-              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga16d6c8a8a74f8445db83bedbcb2f35bd" class="m-doc-self">serctl</a>(</span><span class="m-doc-wrap">const uint32_t action,
-              void*const extra_arg)</span></span>
-            </dt>
-            <dd>Control settings of the serial driver.</dd>
-            <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga01b62747fbed77dcd50879d4d557adfd" class="m-doc-self">fdctl</a>(</span><span class="m-doc-wrap">int file,
               const uint32_t action,
               void*const extra_arg)</span></span>
             </dt>
-            <dd>Control settings of the microSD card driver.</dd>
+            <dd>Control settings of the serial driver.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaad01c082a5899e0ab42abdda37d3d425" class="m-doc-self">motor_set_reversed</a>(</span><span class="m-doc-wrap">int8_t port,
               const bool reverse)</span></span>
@@ -572,7 +561,7 @@ V5</span></a>
 <p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
 <span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">sem_take</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// critical section</span>
@@ -650,7 +639,32 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>If the value is already greater than 0, this function immediately returns.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />multitasking.html#semaphores</a> for details.</p>
+<p>If the value is already greater than 0, this function immediately returns.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="n">sem_wait</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed to take semaphore&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">      </span><span class="k">continue</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sem_wait</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Semaphore is available&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1224c0d9b29e68b15971b90d2fdb6f98"><div>
             <h3>
@@ -675,7 +689,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />multitasking.html#semaphores</a> for details.</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />multitasking.html#semaphores</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem_post</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span><span class="w"> </span><span class="c1">// increments, mimicking to &quot;claim&quot;</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="gae41c284e8d4047254e20c4d5f41a6d5a"><div>
             <h3>
@@ -696,7 +722,16 @@ V5</span></a>
               <tfoot>
                 <tr>
                   <th>Returns</th>
-                  <td>The current value of the semaphore (e.g. the number of resources available)</td>
+                  <td><p>The current value of the semaphore (e.g. the number of resources available) <strong>Example</strong> of sem_get_count:</p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;semaphore count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sem_get_count</span><span class="p">(</span><span class="n">sem</span><span class="p">));</span>
+<span class="w"> </span><span class="c1">// semaphore count: 0</span>
+<span class="n">sem_take</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;semaphore count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sem_get_count</span><span class="p">(</span><span class="n">sem</span><span class="p">));</span>
+<span class="w"> </span><span class="c1">// semaphore count: 1</span>
+<span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;semaphore count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sem_get_count</span><span class="p">(</span><span class="n">sem</span><span class="p">));</span>
+<span class="w"> </span><span class="c1">// semaphore count: 0</span></pre></td>
                 </tr>
               </tfoot>
             </table>
@@ -730,11 +765,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;queue length: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queue_get_length</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span>
+<span class="p">}</span></pre>
           </div></section>
-          <section class="m-doc-details" id="gaf9cc8a3a8c3ce36dcd31ead2a0c3f4cf"><div>
+          <section class="m-doc-details" id="gaa42af929135978ccfd393931ec464980"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf9cc8a3a8c3ce36dcd31ead2a0c3f4cf" class="m-doc-self">queue_prepend</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
+              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa42af929135978ccfd393931ec464980" class="m-doc-self">queue_append</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
               const void* item,
               uint32_t timeout)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
@@ -765,42 +806,44 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>The item is queued by copy, not by reference.</p><p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
-          </div></section>
-          <section class="m-doc-details" id="gaa42af929135978ccfd393931ec464980"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa42af929135978ccfd393931ec464980" class="m-doc-self">queue_append</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a5a6f19dc156a45653f8ff36d7beaa168" class="m-doc">queue_<wbr />t</a> queue,
-              const void* item,
-              uint32_t timeout)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
-            </h3>
-            <p>Posts an item to the end of a queue.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">queue</td>
-                  <td>The queue handle</td>
-                </tr>
-                <tr>
-                  <td>item</td>
-                  <td>A pointer to the item that will be placed on the queue.</td>
-                </tr>
-                <tr>
-                  <td>timeout</td>
-                  <td>Time to wait for space to become available. A timeout of 0 can be used to attempt to post without blocking. TIMEOUT_MAX can be used to block indefinitely.</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>True if the item was preprended, false otherwise.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>The item is queued by copy, not by reference.</p><p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p>The item is queued by copy, not by reference.</p><p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">     </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">     </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;queue length: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queue_get_length</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">  </span><span class="o">/</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timeout</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Posts an item to the end of a queue. The item is queued by copy, not by</span>
+<span class="cm"> * reference.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues for</span>
+<span class="cm"> * details.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param queue</span>
+<span class="cm"> *        The queue handle</span>
+<span class="cm"> * \param item</span>
+<span class="cm"> *        A pointer to the item that will be placed on the queue.</span>
+<span class="cm"> * \param timeout</span>
+<span class="cm"> *        Time to wait for space to become available. A timeout of 0 can be used</span>
+<span class="cm"> *        to attempt to post without blocking. TIMEOUT_MAX can be used to block</span>
+<span class="cm"> *        indefinitely.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \return True if the item was preprended, false otherwise.</span>
+<span class="cm"> * </span>
+<span class="cm"> * \b Example:</span>
+<span class="cm"> * \code</span>
+<span class="cm"> * void opcontrol(void) {</span>
+<span class="cm"> *   queue_t queue = queue_create(10, sizeof(int));</span>
+<span class="cm"> *   int item[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};</span>
+<span class="cm"> *   queue_prepend(queue, item, 1000);</span>
+<span class="cm"> *   queue_append(queue, item, 1000);</span>
+<span class="cm"> *   printf(&quot;queue length: %d&quot;, queue_get_length(queue));</span>
+<span class="cm"> * }</span>
+<span class="cm"> * </span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf9b0095a2b8ba4e68b45cebb7105af34"><div>
             <h3>
@@ -835,7 +878,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello! this is a test&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">recv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="s">&quot;Hello! this is a test&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">queue_peek</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Queue: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">recv</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga8f80179b408b88dcc17e472816fa89d6"><div>
             <h3>
@@ -870,7 +922,16 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Hello! this is a test&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">recv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="s">&quot;Hello! this is a test&quot;</span><span class="p">));</span>
+<span class="w">  </span><span class="n">queue_recv</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Queue: %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">);</span>
+<span class="w">  </span><span class="n">free</span><span class="p">(</span><span class="n">recv</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga96ad85640c15b62c066ed406be70970b"><div>
             <h3>
@@ -895,7 +956,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;queue waiting: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queue_get_waiting</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga1b26a8014aaedc3b376c0a2ec3cfc42a"><div>
             <h3>
@@ -920,7 +988,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;queue available: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">queue_get_available</span><span class="p">(</span><span class="n">queue</span><span class="p">));</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga9d976079962026303ca54ec5b6b56ee8"><div>
             <h3>
@@ -939,7 +1014,10 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#queues">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#queues</a> for details.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">  </span><span class="n">queue_delete</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga65b42a22f90764318ef6ed0f13eeda42"><div>
             <h3>
@@ -958,6 +1036,13 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">queue_t</span><span class="w"> </span><span class="n">queue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">queue_create</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">item</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">};</span>
+<span class="w">  </span><span class="n">queue_prepend</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_append</span><span class="p">(</span><span class="n">queue</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">queue_reset</span><span class="p">(</span><span class="n">queue</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga553905fad6df994d7e2ede7cf53b9f83"><div>
             <h3>
@@ -987,7 +1072,9 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Registers a device of the given type in the given port into the registry, if that type of device is detected to be plugged in to that port.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20), or a a different device than specified is plugged in. EADDRINUSE - The port is already registered to another device.</p>
+<p>Registers a device of the given type in the given port into the registry, if that type of device is detected to be plugged in to that port.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20), or a a different device than specified is plugged in. EADDRINUSE - The port is already registered to another device.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">registry_bind_port</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaac4da3ecf327e9d3b68283735650274f"><div>
             <h3>
@@ -1012,7 +1099,10 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Removes the device registed in the given port, if there is one.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p>
+<p>Removes the device registed in the given port, if there is one.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">registry_bind_port</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="w">  </span><span class="n">registry_unbind_port</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0cd9577a7facb56ef145e9508849a395"><div>
             <h3>
@@ -1037,7 +1127,10 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">registry_bind_port</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;port 1 is registered to a motor: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">registry_get_bound_type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf7b9f904f53cb888950c0e8752354937"><div>
             <h3>
@@ -1062,11 +1155,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (0-20).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">registry_bind_port</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;port 1 is registered to a motor: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">registry_get_plugged_type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
-          <section class="m-doc-details" id="ga16d6c8a8a74f8445db83bedbcb2f35bd"><div>
+          <section class="m-doc-details" id="ga01b62747fbed77dcd50879d4d557adfd"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga16d6c8a8a74f8445db83bedbcb2f35bd" class="m-doc-self">serctl</a>(</span><span class="m-doc-wrap">const uint32_t action,
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga01b62747fbed77dcd50879d4d557adfd" class="m-doc-self">fdctl</a>(</span><span class="m-doc-wrap">int file,
+              const uint32_t action,
               void*const extra_arg)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
@@ -1077,7 +1174,11 @@ V5</span></a>
               </thead>
               <tbody>
                 <tr>
-                  <td style="width: 1%">action</td>
+                  <td style="width: 1%">file</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>action</td>
                   <td>An action to perform on the serial driver. See the SERCTL_* macros for details on the different actions.</td>
                 </tr>
                 <tr>
@@ -1086,34 +1187,44 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-          </div></section>
-          <section class="m-doc-details" id="ga01b62747fbed77dcd50879d4d557adfd"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga01b62747fbed77dcd50879d4d557adfd" class="m-doc-self">fdctl</a>(</span><span class="m-doc-wrap">int file,
-              const uint32_t action,
-              void*const extra_arg)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
-            </h3>
-            <p>Control settings of the microSD card driver.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">file</td>
-                  <td>A valid file descriptor number</td>
-                </tr>
-                <tr>
-                  <td>action</td>
-                  <td>An action to perform on the file&#x27;s driver. See the <em>CTL_</em> macros for details on the different actions. Note that the action passed in must match the correct driver (e.g. don&#x27;t perform a SERCTL_* action on a microSD card file)</td>
-                </tr>
-                <tr>
-                  <td>extra_arg</td>
-                  <td>An argument to pass in based on the action</td>
-                </tr>
-              </tbody>
-            </table>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">serctl</span><span class="p">(</span><span class="n">SERCTL_SET_BAUDRATE</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="mi">9600</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w">  </span><span class="o">/</span>
+<span class="kt">int32_t</span><span class="w"> </span><span class="n">serctl</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">extra_arg</span><span class="p">);</span>
+
+<span class="cm">/*</span>
+<span class="cm"> * Control settings of the microSD card driver.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param action</span>
+<span class="cm"> *          An action to perform on the microSD card driver. See the USDCTL_* macros</span>
+<span class="cm"> *      for details on the different actions.</span>
+<span class="cm"> * \param extra_arg</span>
+<span class="cm"> *          An argument to pass in based on the action</span>
+<span class="cm"> */</span>
+<span class="c1">// Not yet implemented</span>
+<span class="c1">// int32_t usdctl(const uint32_t action, void* const extra_arg);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Control settings of the way the file&#39;s driver treats the file</span>
+<span class="cm"> *</span>
+<span class="cm"> * \param file</span>
+<span class="cm"> *          A valid file descriptor number</span>
+<span class="cm"> * \param action</span>
+<span class="cm"> *          An action to perform on the file&#39;s driver. See the *CTL_* macros for</span>
+<span class="cm"> *          details on the different actions. Note that the action passed in must</span>
+<span class="cm"> *      match the correct driver (e.g. don&#39;t perform a SERCTL_* action on a</span>
+<span class="cm"> *      microSD card file)</span>
+<span class="cm"> * \param extra_arg</span>
+<span class="cm"> *          An argument to pass in based on the action</span>
+<span class="cm"> *</span>
+<span class="cm"> * \b Example:</span>
+<span class="cm"> * \code</span>
+<span class="cm"> * void opcontrol(void) {</span>
+<span class="cm"> *   int32_t fd = open(&quot;serial&quot;, O_RDWR);</span>
+<span class="cm"> *   fdctl(fd, SERCTL_SET_BAUDRATE, (void*) 9600);</span>
+<span class="cm"> * }</span>
+<span class="cm"> * </span></pre>
           </div></section>
           <section class="m-doc-details" id="gaad01c082a5899e0ab42abdda37d3d425"><div>
             <h3>
@@ -1212,7 +1323,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into serctl or fdctl that activates the stream identifier.</p>
-<p>When used with serctl, the extra argument must be the little endian representation of the stream identifier (e.g. &quot;sout&quot; -&gt; 0x74756f73)</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>When used with serctl, the extra argument must be the little endian representation of the stream identifier (e.g. &quot;sout&quot; -&gt; 0x74756f73)</p>
           </div></section>
           <section class="m-doc-details" id="gaa07c3d6750babcc306ece8dd1b18ec26"><div>
             <h3>
@@ -1220,7 +1331,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into serctl or fdctl that deactivates the stream identifier.</p>
-<p>When used with serctl, the extra argument must be the little endian representation of the stream identifier (e.g. &quot;sout&quot; -&gt; 0x74756f73)</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>When used with serctl, the extra argument must be the little endian representation of the stream identifier (e.g. &quot;sout&quot; -&gt; 0x74756f73)</p>
           </div></section>
           <section class="m-doc-details" id="ga487ad68591182ba67ceb987f59f31fab"><div>
             <h3>
@@ -1228,7 +1339,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into fdctl that enables blocking writes for the file.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="ga48765184fb0f8084d9cebf9dcbc27da7"><div>
             <h3>
@@ -1236,7 +1347,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into fdctl that makes writes non-blocking for the file.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="ga20c46bffd0ef8939413f671a5ac92252"><div>
             <h3>
@@ -1244,7 +1355,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into serctl that enables advanced stream multiplexing capabilities.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="ga9a50f0ab303c00138f09df10358b01c4"><div>
             <h3>
@@ -1252,7 +1363,7 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to pass into serctl that disables advanced stream multiplexing capabilities.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p><p>Visit <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/filesystem.html#serial">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />filesystem.html#serial</a> to learn more.</p>
+<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="gad7e4ecbf8e36a784cdf4d245cd3c7d1d"><div>
             <h3>
@@ -1260,7 +1371,6 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to check if there is data available from the Generic Serial Device.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="ga0089c4b06b9b75f4995256ca740f8ee2"><div>
             <h3>
@@ -1268,7 +1378,6 @@ V5</span></a>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
             </h3>
             <p>Action macro to check if there is space available in the Generic Serial Device&#x27;s output buffer.</p>
-<p>The extra argument is not used with this action, provide any value (e.g. NULL) instead</p>
           </div></section>
           <section class="m-doc-details" id="ga5ac3b151b46b5bfce1ec424b5fdc773b"><div>
             <h3>
