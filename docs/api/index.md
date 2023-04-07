@@ -2,7 +2,7 @@
 
 This document covers the main PROS API.
 
-## C++ API Headers
+# C++ API Headers
 The C++ API is designed for those who want to take an object oreinted approach to robot programming.
 
 ### C++ Motor Classes
@@ -39,7 +39,7 @@ The C++ API is designed for those who want to take an object oreinted approach t
 - \subpage cpp-abstract-motor       "C++ API for Abstract Motors"
 
 
-## C API Headers
+# C API Headers
 The C API is designed for more advanced users who would rather program functionally than object oreinted. 
 
 ### C Motor Functions
