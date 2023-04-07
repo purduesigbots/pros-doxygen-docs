@@ -13750,7 +13750,7 @@ This function uses the following values of errno when an error state is reached:
 <para>Displays a formatted string on the emulated three-button LCD screen. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call lcd_initialize() first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>line</parametername>
@@ -17167,6 +17167,365 @@ This function uses the following values of errno when an error state is reached:
         <inbodydescription>
         </inbodydescription>
         <location file="pros/rtos.h" line="1107" column="6" declfile="pros/rtos.h" declline="1107" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1af43a5a9cea1850757c8f0cc180604705" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_is_initialized</definition>
+        <argsstring>(void)</argsstring>
+        <name>lcd_is_initialized</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Checks whether the emulated three-button LCD has already been initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the LCD has been initialized or false if not. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="72" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="72" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_initialize</definition>
+        <argsstring>(void)</argsstring>
+        <name>lcd_initialize</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Creates an emulation of the three-button, UART-based VEX LCD on the display. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the LCD was successfully initialized, or false if it has already been initialized. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="80" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="80" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aa0195c987d4c988cf9c9b8f6f6d40504" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_shutdown</definition>
+        <argsstring>(void)</argsstring>
+        <name>lcd_shutdown</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Turns off the Legacy LCD Emulator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Calling this function will clear the entire display, and you will not be able to call any further LLEMU functions until another call to lcd_initialize.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first.</para>
+<para><simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="95" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="95" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1adb97914cdf57d801b60962f9be046c8f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_print</definition>
+        <argsstring>(int16_t line, const char *fmt,...)</argsstring>
+        <name>lcd_print</name>
+        <param>
+          <type>int16_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Displays a formatted string on the emulated three-button LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line on which to display the text [0-7] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional list of arguments for the format string</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="115" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="115" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aac6e7a4915acb7b67424a56ee38e72b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_set_text</definition>
+        <argsstring>(int16_t line, const char *text)</argsstring>
+        <name>lcd_set_text</name>
+        <param>
+          <type>int16_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Displays a string on the emulated three-button LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line on which to display the text [0-7] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The text to display</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="133" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="133" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1accbddef45caac238401cb65a464ed306" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_clear</definition>
+        <argsstring>(void)</argsstring>
+        <name>lcd_clear</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Clears the contents of the emulated three-button LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para><simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="146" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="146" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a054b2c7b5c134f6e495e02e6b289416a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_clear_line</definition>
+        <argsstring>(int16_t line)</argsstring>
+        <name>lcd_clear_line</name>
+        <param>
+          <type>int16_t</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Clears the contents of a line of the emulated three-button LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first. EINVAL - The line number specified is not in the range [0-7]</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line to clear</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="162" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="162" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a15de5b08e88b129028b094a1bc96e446" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_register_btn0_cb</definition>
+        <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
+        <name>lcd_register_btn0_cb</name>
+        <param>
+          <type><ref refid="namespacepros_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Registers a callback function for the leftmost button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When the leftmost button on the emulated three-button LCD is pressed, the user-provided callback function will be invoked.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A callback function of type lcd_btn_cb_fn_t (void (*cb)(void))</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="180" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="180" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1aad5b65ea0cb13a9166b6d078839cf9ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_register_btn1_cb</definition>
+        <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
+        <name>lcd_register_btn1_cb</name>
+        <param>
+          <type><ref refid="namespacepros_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Registers a callback function for the center button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When the center button on the emulated three-button LCD is pressed, the user-provided callback function will be invoked.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A callback function of type lcd_btn_cb_fn_t (void (*cb)(void))</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="198" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="198" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a6987d7b3dae61fd87cc66e63772e1595" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::lcd_register_btn2_cb</definition>
+        <argsstring>(lcd_btn_cb_fn_t cb)</argsstring>
+        <name>lcd_register_btn2_cb</name>
+        <param>
+          <type><ref refid="namespacepros_1a0f5bb2a3264a6ad95973f9c8e6b3198e" kindref="member">lcd_btn_cb_fn_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <briefdescription>
+<para>Registers a callback function for the rightmost button. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>When the rightmost button on the emulated three-button LCD is pressed, the user-provided callback function will be invoked.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <ref refid="namespacepros_1_1c_1a36a50f90e2186a37abce6cf36d5df6a3" kindref="member">lcd_initialize()</ref> first.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A callback function of type lcd_btn_cb_fn_t (void (*cb)(void))</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the operation was successful, or false otherwise, setting errno values as specified above. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="216" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="216" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a7dd4fea9a022783060e9c69fb4d9dc7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t pros::c::lcd_read_buttons</definition>
+        <argsstring>(void)</argsstring>
+        <name>lcd_read_buttons</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the button status from the emulated three-button LCD. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The value returned is a 3-bit integer where 1 0 0 indicates the left button is pressed, 0 1 0 indicates the center button is pressed, and 0 0 1 indicates the right button is pressed. 0 is returned if no buttons are currently being pressed.</para>
+<para>Note that this function is provided for legacy API compatibility purposes, with the caveat that the V5 touch screen does not actually support pressing multiple points on the screen at the same time.</para>
+<para><simplesect kind="return"><para>The buttons pressed as a bit mask </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="232" column="9" declfile="liblvgl/include/liblvgl/llemu.h" declline="232" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1c_1a3fae6a5bd78be5152b6827d2bf4b0657" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void pros::c::lcd_set_text_align</definition>
+        <argsstring>(text_align_e_t alignment)</argsstring>
+        <name>lcd_set_text_align</name>
+        <param>
+          <type>text_align_e_t</type>
+          <declname>alignment</declname>
+        </param>
+        <briefdescription>
+<para>Changes the alignment of text on the LCD background. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>alignment</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>An enum specifying the alignment. Available alignments are: TEXT_ALIGN_LEFT TEXT_ALIGN_RIGHT TEXT_ALIGN_CENTER</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>void </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="liblvgl/include/liblvgl/llemu.h" line="244" column="6" declfile="liblvgl/include/liblvgl/llemu.h" declline="244" declcolumn="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
