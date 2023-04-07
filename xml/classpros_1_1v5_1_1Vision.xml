@@ -37,15 +37,18 @@
 <parametername>zero_point</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>One of vision_zero_e_t to set the (0,0) coordinate for the FOV </para>
+<para>One of vision_zero_e_t to set the (0,0) coordinate for the FOV</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(1);<sp/>//<sp/>Creates<sp/>a<sp/>vision<sp/>sensor<sp/>on<sp/>port<sp/>one,<sp/>with<sp/>the<sp/>zero<sp/>point<sp/>set<sp/>to<sp/>top<sp/>left</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="55" column="10"/>
+        <location file="pros/vision.hpp" line="62" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga76431ffd2012b88a7a32a629584b594a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -60,13 +63,17 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.clear_led();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="68" column="14"/>
+        <location file="pros/vision.hpp" line="83" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gaad39648fb027abf526d427fcd39ac850" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__c-vision_1ga9e389c1c0197cdfd70e4935c2d22ee18" kindref="member">vision_color_code_t</ref></type>
@@ -142,13 +149,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A vision_color_code_t object containing the color code information. </para>
+<simplesect kind="return"><para>A vision_color_code_t object containing the color code information.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="122" column="21"/>
+        <location file="pros/vision.hpp" line="170" column="21"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gaf4fa926cf28cf99a0818714f5f701187" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref></type>
@@ -173,13 +188,24 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given size id, or PROS_ERR if an error occurred. </para>
+<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given size id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_size(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="142" column="19"/>
+        <location file="pros/vision.hpp" line="205" column="19"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gaad2f7f19ea9d69ccbf82af9f5b55f419" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref></type>
@@ -216,13 +242,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given signature and size_id, or PROS_ERR if an error occurred. </para>
+<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given signature and size_id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(0,<sp/>EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="164" column="19"/>
+        <location file="pros/vision.hpp" line="244" column="19"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga0ee6adc0ac7836cc75195a65fd0dbaed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref></type>
@@ -259,13 +298,27 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given color code and size_id, or PROS_ERR if an error occurred. </para>
+<simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given color code and size_id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_code(0,<sp/>code1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="183" column="19"/>
+        <location file="pros/vision.hpp" line="281" column="19"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gaf21a819740fe50fd73af70c41651cbae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -281,13 +334,20 @@
         <detaileddescription>
 <para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting">https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting</ulink> for more detials.</para>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
-<para><simplesect kind="return"><para>The current exposure parameter from [0,150], PROS_ERR if an error occurred </para>
+<para><simplesect kind="return"><para>The current exposure parameter from [0,150], PROS_ERR if an error occurred</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_exposure(50);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="197" column="14"/>
+        <location file="pros/vision.hpp" line="306" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga450dc055c2448fab6eb551231dde7071" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -302,13 +362,22 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
-<para><simplesect kind="return"><para>The number of objects detected on the specified vision sensor. Returns PROS_ERR if the port was invalid or an error occurred. </para>
+<para><simplesect kind="return"><para>The number of objects detected on the specified vision sensor. Returns PROS_ERR if the port was invalid or an error occurred.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Number<sp/>of<sp/>Objects<sp/>Detected:<sp/>%d\n&quot;,<sp/>vision_sensor.get_object_count());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="209" column="14"/>
+        <location file="pros/vision.hpp" line="331" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gafcbec69e9c0dc3bf13765441f9e9e659" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref></type>
@@ -333,13 +402,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> containing information about the signature. </para>
+<simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> containing information about the signature.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.print_signature(sig);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="223" column="22"/>
+        <location file="pros/vision.hpp" line="357" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gabb5ece73e4caaa15a39f5e661c3ec5cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -354,13 +431,21 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
-<para><simplesect kind="return"><para>The current RGB white balance setting of the sensor </para>
+<para><simplesect kind="return"><para>The current RGB white balance setting of the sensor</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>VISION_WHITE<sp/>0xff</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_white_balance()<sp/>!=<sp/>VISION_WHITE)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_white_balance(VISION_WHITE);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="234" column="14"/>
+        <location file="pros/vision.hpp" line="380" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gab5b546c064555ccc94aa3efdcb62dbfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -409,13 +494,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature. </para>
+<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/>#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_size(0,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="260" column="14"/>
+        <location file="pros/vision.hpp" line="423" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga054480d0518c7368c4d9206b9cde25e0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -476,13 +574,27 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature. </para>
+<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_sig(0,<sp/>EXAMPLE_SIG,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="290" column="14"/>
+        <location file="pros/vision.hpp" line="471" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga107dcaf6b54f1cb77e67998e5fef148f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -543,13 +655,29 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature. </para>
+<simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_code(0,<sp/>code1,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="318" column="9"/>
+        <location file="pros/vision.hpp" line="519" column="9"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga3056945e74c922ee2a8d324fe136fac7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -574,13 +702,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_auto_white_balance(true);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="344" column="14"/>
+        <location file="pros/vision.hpp" line="567" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga4c754824ad4dc5fbbe9afc45064b10a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -606,13 +740,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_exposure(50);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="361" column="14"/>
+        <location file="pros/vision.hpp" line="595" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gae3fe29fed597773781e7532275a93b22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -637,13 +778,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_led(COLOR_BLANCHED_ALMOND);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="376" column="14"/>
+        <location file="pros/vision.hpp" line="620" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga82489e0d344b86b031e45a7a549f6acd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -681,13 +828,22 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise </para>
+<simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sig.range<sp/>=<sp/>10.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_signature(EXAMPLE_SIG,<sp/>&amp;sig);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="396" column="14"/>
+        <location file="pros/vision.hpp" line="653" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gac3307c30a25eebfba74911220d404a94" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -712,13 +868,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>VISION_WHITE<sp/>0xff</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_white_balance(VISION_WHITE);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="411" column="14"/>
+        <location file="pros/vision.hpp" line="679" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gaf4949921bb01abcf430d48fa5532b5c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -744,13 +907,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_zero_point(E_VISION_ZERO_CENTER);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="430" column="14"/>
+        <location file="pros/vision.hpp" line="708" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1ga9d04ecf017d67e551ca413b0bfd8fcd7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -775,13 +944,19 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_wifi_mode(0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="445" column="14"/>
+        <location file="pros/vision.hpp" line="733" column="14"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -903,13 +1078,30 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> that can be set using <ref refid="group__cpp-vision_1ga82489e0d344b86b031e45a7a549f6acd" kindref="member">Vision::set_signature</ref> </para>
+<simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> that can be set using <ref refid="group__cpp-vision_1ga82489e0d344b86b031e45a7a549f6acd" kindref="member">Vision::set_signature</ref></para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>values<sp/>acquired<sp/>from<sp/>the<sp/>vision<sp/>utility</highlight></codeline>
+<codeline><highlight class="normal">vision_signature_s_t<sp/>RED_SIG<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_signature_from_utility(EXAMPLE_SIG,<sp/>8973,<sp/>11143,<sp/>10058,<sp/>-2119,<sp/>-1053,<sp/>-1586,<sp/>5.4,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">vision_sensor.set_signature(EXAMPLE_SIG,<sp/>&amp;RED_SIG);</highlight></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(VISION_PORT,<sp/>0,<sp/>EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="94" column="29"/>
+        <location file="pros/vision.hpp" line="130" column="29"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-vision_1gace530d71a4be7d2c1ab90dc31856f58b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -933,13 +1125,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise </para>
+<simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>visionsensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_print_signature(sig);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/vision.hpp" line="329" column="21"/>
+        <location file="pros/vision.hpp" line="542" column="21"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -970,7 +1170,7 @@
         <link refid="classpros_1_1v5_1_1Device"/>
       </node>
     </collaborationgraph>
-    <location file="pros/vision.hpp" line="36" column="27" bodyfile="pros/vision.hpp" bodystart="36" bodyend="449"/>
+    <location file="pros/vision.hpp" line="36" column="27" bodyfile="pros/vision.hpp" bodystart="36" bodyend="737"/>
     <listofallmembers>
       <member refid="group__cpp-vision_1ga76431ffd2012b88a7a32a629584b594a" prot="public" virt="non-virtual"><scope>pros::v5::Vision</scope><name>clear_led</name></member>
       <member refid="group__cpp-vision_1gaad39648fb027abf526d427fcd39ac850" prot="public" virt="non-virtual"><scope>pros::v5::Vision</scope><name>create_color_code</name></member>

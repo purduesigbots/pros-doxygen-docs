@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="124" column="20" bodyfile="pros/device.hpp" bodystart="124" bodyend="-1"/>
+        <location file="pros/device.hpp" line="132" column="20" bodyfile="pros/device.hpp" bodystart="132" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classpros_1_1v5_1_1Device_1af4d433a0f9520be750fae39848de394a" prot="private" static="no" mutable="no">
         <type>enum <ref refid="namespacepros_1_1v5_1ad258d4c51629346fceac4679b3209ad9" kindref="member">DeviceType</ref></type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="124" column="20" bodyfile="pros/device.hpp" bodystart="125" bodyend="-1"/>
+        <location file="pros/device.hpp" line="132" column="20" bodyfile="pros/device.hpp" bodystart="133" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -83,8 +83,10 @@
 <para><simplesect kind="return"><para>The smart device&apos;s port number.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DEVICE_PORT<sp/>1</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{port:<sp/>%d}\n&quot;,<sp/>get_port());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>Device<sp/>device(DEVICE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{port:<sp/>%d}\n&quot;,<sp/>device.get_port());</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -92,7 +94,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="69" column="14"/>
+        <location file="pros/device.hpp" line="71" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1v5_1_1Device_1aaf5448d59f0bc980c4490e97964cfb42" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -105,9 +107,12 @@
         <detaileddescription>
 <para><simplesect kind="return"><para>true if the corresponding device is installed, false otherwise. <bold>Example</bold> </para>
 </simplesect>
-<programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<programlisting><codeline><highlight class="normal">#define<sp/>DEVICE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Device<sp/>device(DEVICE_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{is_installed:<sp/>%d}\n&quot;,<sp/>is_installed());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{is_installed:<sp/>%d}\n&quot;,<sp/>device.is_installed());</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -115,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="86" column="14"/>
+        <location file="pros/device.hpp" line="91" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classpros_1_1v5_1_1Device_1ad5b1efc698f196a0d4fd0f795550b703" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespacepros_1_1v5_1ad258d4c51629346fceac4679b3209ad9" kindref="member">pros::DeviceType</ref></type>
@@ -129,10 +134,13 @@
 <para>This function uses the following values of errno when an error state is reached: EACCES - <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> of port cannot be taken (access denied).</para>
 <para><simplesect kind="return"><para>The device type as an enum.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>v5_device_e_t<sp/>pt<sp/>=<sp/>get_plugged_type(IMU_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{plugged<sp/>type:<sp/>%d}\n&quot;,<sp/>pt);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DEVICE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Device<sp/>device(DEVICE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DeviceType<sp/>dt<sp/>=<sp/>device.get_plugged_type();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{plugged<sp/>type:<sp/>%d}\n&quot;,<sp/>dt);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -140,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="108" column="18"/>
+        <location file="pros/device.hpp" line="116" column="18"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -182,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="119" column="1" bodyfile="pros/device.hpp" bodystart="119" bodyend="121"/>
+        <location file="pros/device.hpp" line="127" column="1" bodyfile="pros/device.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -237,7 +245,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="pros/device.hpp" line="45" column="13" bodyfile="pros/device.hpp" bodystart="45" bodyend="126"/>
+    <location file="pros/device.hpp" line="45" column="13" bodyfile="pros/device.hpp" bodystart="45" bodyend="134"/>
     <listofallmembers>
       <member refid="classpros_1_1v5_1_1Device_1af4d433a0f9520be750fae39848de394a" prot="private" virt="non-virtual"><scope>pros::v5::Device</scope><name>_deviceType</name></member>
       <member refid="classpros_1_1v5_1_1Device_1a16b806c98fffb4fd7235419ef22ac101" prot="private" virt="non-virtual"><scope>pros::v5::Device</scope><name>_port</name></member>

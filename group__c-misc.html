@@ -630,7 +630,11 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is currently in beta, so continuous, fast updates will not work well.</p></aside><p>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">controller_set_text</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">controller_clear_line</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga9ccf53b8954bc4033abebec9a79da0c4"><div>
             <h3>
@@ -658,7 +662,7 @@ V5</span></a>
 <aside class="m-note m-info"><h4>Note</h4><p><a href="classpros_1_1v5_1_1Controller.html" class="m-doc">Controller</a> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</p></aside><p>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">controller_set_text</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Example&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
-<span class="w">  </span><span class="n">controller_clear_line</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">controller_clear</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga6a2fde9e8c3eec3dc88cb00235a1df7d"><div>

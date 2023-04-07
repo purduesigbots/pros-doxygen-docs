@@ -825,10 +825,10 @@ V5</span></a>
               </tfoot>
             </table>
 <p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Code while waiting</span>
-<span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>

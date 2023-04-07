@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="681" column="8" bodyfile="pros/rtos.hpp" bodystart="681" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="680" column="8" bodyfile="pros/rtos.hpp" bodystart="680" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -689,23 +689,22 @@
 <para><simplesect kind="return"><para>void</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_print(1,<sp/>&quot;%s<sp/>running&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(1,<sp/>&quot;%s<sp/>running&quot;,<sp/>pros::Task::current_task().get_name());</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>task_delay(1000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_print(2,<sp/>&quot;End<sp/>of<sp/>%s&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(2,<sp/>&quot;End<sp/>of<sp/>%s&quot;,<sp/>pros::Task::current_task().get_name());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(0,<sp/>&quot;Running<sp/>task.&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task_join(my_task);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(3,<sp/>&quot;Task<sp/>completed.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::set_text(0,<sp/>&quot;Running<sp/>task.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.join();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::lcd_set_text(3,<sp/>&quot;Task<sp/>completed.&quot;);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="589" column="6"/>
+        <location file="pros/rtos.hpp" line="588" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga8416442a23f42ca38044c9b2dec99316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -761,7 +760,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="613" column="15"/>
+        <location file="pros/rtos.hpp" line="612" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6b470af6702dc8031d6de86419c97b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -779,7 +778,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="641" column="6"/>
+        <location file="pros/rtos.hpp" line="640" column="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -983,7 +982,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="631" column="22"/>
+        <location file="pros/rtos.hpp" line="630" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafd19e4a13c12c607998bcfc56768ddbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1012,7 +1011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="653" column="13"/>
+        <location file="pros/rtos.hpp" line="652" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafcfc4faff77d7ca1f4c080d1e8c508fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1054,7 +1053,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="668" column="13"/>
+        <location file="pros/rtos.hpp" line="667" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gac7509321b5f36585f28da108d330b9ad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -1072,14 +1071,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="678" column="22"/>
+        <location file="pros/rtos.hpp" line="677" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/rtos.hpp" line="43" column="11" bodyfile="pros/rtos.hpp" bodystart="43" bodyend="682"/>
+    <location file="pros/rtos.hpp" line="43" column="11" bodyfile="pros/rtos.hpp" bodystart="43" bodyend="681"/>
     <listofallmembers>
       <member refid="group__cpp-rtos_1ga1d372f751d498ee7dc15b08700b70547" prot="public" virt="non-virtual"><scope>pros::rtos::Task</scope><name>create</name></member>
       <member refid="group__cpp-rtos_1ga7eedd9988858633a57fd34b6059b07da" prot="public" virt="non-virtual"><scope>pros::rtos::Task</scope><name>create</name></member>

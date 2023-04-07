@@ -30,6 +30,7 @@
 <bold>Example:</bold> <programlisting><codeline><highlight class="normal">task_t<sp/>task<sp/>=<sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
 <codeline><highlight class="normal">task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>in<sp/>another<sp/>task<sp/>somewhere<sp/>else,<sp/>this<sp/>will<sp/>abort<sp/>the<sp/>task_delay<sp/>bove:</highlight></codeline>
 <codeline><highlight class="normal">task_abort_delay(task);</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -61,6 +62,7 @@
 <bold>Example:</bold> <programlisting><codeline><highlight class="normal">task_t<sp/>task<sp/>=<sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
 <codeline><highlight class="normal">task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>in<sp/>another<sp/>task<sp/>somewhere<sp/>else,<sp/>this<sp/>will<sp/>abort<sp/>the<sp/>task_delay<sp/>bove:</highlight></codeline>
 <codeline><highlight class="normal">task_abort_delay(task);</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -96,12 +98,13 @@
 <bold>Example:</bold> <programlisting><codeline><highlight class="normal">task_t<sp/>task<sp/>=<sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
 <codeline><highlight class="normal">task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>in<sp/>another<sp/>task<sp/>somewhere<sp/>else,<sp/>this<sp/>will<sp/>abort<sp/>the<sp/>task_delay<sp/>bove:</highlight></codeline>
 <codeline><highlight class="normal">task_abort_delay(task);</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="76" column="6" declfile="pros/apix.h" declline="76" declcolumn="6"/>
+        <location file="pros/apix.h" line="77" column="6" declfile="pros/apix.h" declline="77" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga8e451f518ac641b2aba0dad90ba12a28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -128,7 +131,6 @@
 <para>Notify a task when a target task is being deleted. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function will configure the PROS kernel to call task_notify_ext(task_to_notify, value, action, NULL) when target_task is deleted.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>target_task</parametername>
@@ -158,15 +160,24 @@
 <parametername>notify_action</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The action to supply to task_notify_ext </para>
+<para>The action to supply to task_notify_ext</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">task_t<sp/>task_to_delete<sp/>=<sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+<codeline><highlight class="normal">task_t<sp/>task_to_notify<sp/>=<sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn2&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">task_notify_ext(task_to_notify,<sp/>0,<sp/>NOTIFY_ACTION_INCREMENT,<sp/>NULL);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">task_notify_when_deleting(task_to_delete,<sp/>task_get_current(),<sp/>0,<sp/>NOTIFY_ACTION_NONE);</highlight></codeline>
+<codeline><highlight class="normal">task_delete(task_to_delete);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="95" column="6" declfile="pros/apix.h" declline="95" declcolumn="6"/>
+        <location file="pros/apix.h" line="104" column="6" declfile="pros/apix.h" declline="104" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga4eef1a2598a22cbf8000fe03633d0b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__c-rtos_1gab15ea84d90257d70b44e8e04519864d2" kindref="member">mutex_t</ref></type>
@@ -180,14 +191,25 @@
 <para>Creates a recursive mutex which can be locked recursively by the owner. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes</ulink> for details.</para>
-<para><simplesect kind="return"><para>A newly created recursive mutex. </para>
+<para><simplesect kind="return"><para>A newly created recursive mutex.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="107" column="9" declfile="pros/apix.h" declline="107" declcolumn="9"/>
+        <location file="pros/apix.h" line="129" column="9" declfile="pros/apix.h" declline="129" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga960dac0c60f0f13331f14325d56d7506" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -206,7 +228,6 @@
 <para>Takes a recursive mutex. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes</ulink> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>mutex</parametername>
@@ -224,13 +245,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise </para>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="123" column="6" declfile="pros/apix.h" declline="123" declcolumn="6"/>
+        <location file="pros/apix.h" line="158" column="6" declfile="pros/apix.h" declline="158" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga0366fbae5b45a13bb3d76ba963fde37b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -245,7 +278,6 @@
 <para>Gives a recursive mutex. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes</ulink> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>mutex</parametername>
@@ -255,13 +287,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise </para>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="137" column="6" declfile="pros/apix.h" declline="137" declcolumn="6"/>
+        <location file="pros/apix.h" line="185" column="6" declfile="pros/apix.h" declline="185" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga35e2514c392ad052f702c7c6a3ed5ae2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__c-rtos_1ga1d7e0825b8d8876e8cd8ece3f9115293" kindref="member">task_t</ref></type>
@@ -276,7 +320,6 @@
 <para>Returns a handle to the current owner of a mutex. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking.html#extra">https://pros.cs.purdue.edu/v5/extended/multitasking.html#extra</ulink> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>mutex</parametername>
@@ -286,13 +329,39 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A handle to the current task that owns the mutex, or NULL if the mutex isn&apos;t owned. </para>
+<simplesect kind="return"><para>A handle to the current task that owns the mutex, or NULL if the mutex isn&apos;t owned.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal"><sp/>mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>mutex_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>mutex_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>void<sp/>opcontrol(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(joystick_get_digital(1,<sp/>7,<sp/>JOY_UP))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task_t<sp/>owner<sp/>=<sp/>mutex_get_owner(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(owner<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Mutex<sp/>is<sp/>owned<sp/>by<sp/>task<sp/>%s&quot;,<sp/>task_get_name(owner));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Mutex<sp/>is<sp/>not<sp/>owned&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="151" column="8" declfile="pros/apix.h" declline="151" declcolumn="8"/>
+        <location file="pros/apix.h" line="226" column="8" declfile="pros/apix.h" declline="226" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga5a6c741414670ea06a33a740e00a6fb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__apix_1gabc53a59ab4c3c8f2d7660e63990be7a7" kindref="member">sem_t</ref></type>
@@ -311,7 +380,6 @@
 <para>Creates a counting sempahore. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores">https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores</ulink> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>max_count</parametername>
@@ -329,13 +397,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>A newly created semaphore. If an error occurred, NULL will be returned and errno can be checked for hints as to why sem_create failed. </para>
+<simplesect kind="return"><para>A newly created semaphore. If an error occurred, NULL will be returned and errno can be checked for hints as to why sem_create failed.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">//<sp/>Binary<sp/>semaphore<sp/>acts<sp/>as<sp/>a<sp/>mutex</highlight></codeline>
+<codeline><highlight class="normal">sem_t<sp/>sem<sp/>=<sp/>sem_create(1,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_take(sem,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_give(sem);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="167" column="7" declfile="pros/apix.h" declline="167" declcolumn="7"/>
+        <location file="pros/apix.h" line="257" column="7" declfile="pros/apix.h" declline="257" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gab5d0d18da11c1a8787a22def530943ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -350,21 +431,44 @@
 <para>Deletes a semaphore (or binary semaphore) </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking.html#semaphores">https://pros.cs.purdue.edu/v5/extended/multitasking.html#semaphores</ulink> for details.</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>sem</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Semaphore to delete </para>
+<para>Semaphore to delete</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">//<sp/>Binary<sp/>semaphore<sp/>acts<sp/>as<sp/>a<sp/>mutex</highlight></codeline>
+<codeline><highlight class="normal">sem_t<sp/>sem<sp/>=<sp/>sem_create(1,<sp/>0);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_take(sem,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_give(sem);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol(void)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(joystick_get_digital(1,<sp/>7,<sp/>JOY_UP))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>honestly<sp/>this<sp/>is<sp/>a<sp/>bad<sp/>example<sp/>because<sp/>you<sp/>should<sp/>never<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>delete<sp/>a<sp/>semaphore<sp/>like<sp/>this</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>sem_delete(sem);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="178" column="6" declfile="pros/apix.h" declline="178" declcolumn="6"/>
+        <location file="pros/apix.h" line="294" column="6" declfile="pros/apix.h" declline="294" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gab60398e0ab4ac65a8556dbf67907ad64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__apix_1gabc53a59ab4c3c8f2d7660e63990be7a7" kindref="member">sem_t</ref></type>
@@ -378,14 +482,26 @@
 <para>Creates a binary semaphore. </para>
         </briefdescription>
         <detaileddescription>
-<para>See <ulink url="https://pros.cs.purdue.edu/v5/extended/multitasking#.htmlbinary_semaphores">https://pros.cs.purdue.edu/v5/extended/multitasking#.htmlbinary_semaphores</ulink> for details.</para>
-<para><simplesect kind="return"><para>A newly created semaphore. </para>
+<para><simplesect kind="return"><para>A newly created semaphore.</para>
 </simplesect>
-</para>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">//<sp/>Binary<sp/>semaphore<sp/>acts<sp/>as<sp/>a<sp/>mutex</highlight></codeline>
+<codeline><highlight class="normal">sem_t<sp/>sem<sp/>=<sp/>sem_binary_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_take(sem,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>sem_give(sem);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="189" column="7" declfile="pros/apix.h" declline="189" declcolumn="7"/>
+        <location file="pros/apix.h" line="319" column="7" declfile="pros/apix.h" declline="319" declcolumn="7"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga29a092d6f1b15aed15a76a79b027ab89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -429,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="209" column="6" declfile="pros/apix.h" declline="209" declcolumn="6"/>
+        <location file="pros/apix.h" line="339" column="6" declfile="pros/apix.h" declline="339" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga1224c0d9b29e68b15971b90d2fdb6f98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -460,7 +576,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="224" column="6" declfile="pros/apix.h" declline="224" declcolumn="6"/>
+        <location file="pros/apix.h" line="354" column="6" declfile="pros/apix.h" declline="354" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gae41c284e8d4047254e20c4d5f41a6d5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -491,7 +607,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="238" column="10" declfile="pros/apix.h" declline="238" declcolumn="10"/>
+        <location file="pros/apix.h" line="368" column="10" declfile="pros/apix.h" declline="368" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gae60412052d83e6c9b62ff02398547518" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__apix_1ga2d363eefb03348f96e985eadcfb184ab" kindref="member">queue_t</ref></type>
@@ -534,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="254" column="9" declfile="pros/apix.h" declline="254" declcolumn="9"/>
+        <location file="pros/apix.h" line="384" column="9" declfile="pros/apix.h" declline="384" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaf9cc8a3a8c3ce36dcd31ead2a0c3f4cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -590,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="274" column="6" declfile="pros/apix.h" declline="274" declcolumn="6"/>
+        <location file="pros/apix.h" line="404" column="6" declfile="pros/apix.h" declline="404" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaa42af929135978ccfd393931ec464980" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -646,7 +762,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="294" column="6" declfile="pros/apix.h" declline="294" declcolumn="6"/>
+        <location file="pros/apix.h" line="424" column="6" declfile="pros/apix.h" declline="424" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaf9b0095a2b8ba4e68b45cebb7105af34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -701,7 +817,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="312" column="6" declfile="pros/apix.h" declline="312" declcolumn="6"/>
+        <location file="pros/apix.h" line="442" column="6" declfile="pros/apix.h" declline="442" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga8f80179b408b88dcc17e472816fa89d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -756,7 +872,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="332" column="6" declfile="pros/apix.h" declline="332" declcolumn="6"/>
+        <location file="pros/apix.h" line="462" column="6" declfile="pros/apix.h" declline="462" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga96ad85640c15b62c066ed406be70970b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -787,7 +903,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="345" column="10" declfile="pros/apix.h" declline="345" declcolumn="10"/>
+        <location file="pros/apix.h" line="475" column="10" declfile="pros/apix.h" declline="475" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga1b26a8014aaedc3b376c0a2ec3cfc42a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -818,7 +934,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="358" column="10" declfile="pros/apix.h" declline="358" declcolumn="10"/>
+        <location file="pros/apix.h" line="488" column="10" declfile="pros/apix.h" declline="488" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga9d976079962026303ca54ec5b6b56ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -847,7 +963,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="369" column="6" declfile="pros/apix.h" declline="369" declcolumn="6"/>
+        <location file="pros/apix.h" line="499" column="6" declfile="pros/apix.h" declline="499" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga65b42a22f90764318ef6ed0f13eeda42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -875,7 +991,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="377" column="6" declfile="pros/apix.h" declline="377" declcolumn="6"/>
+        <location file="pros/apix.h" line="507" column="6" declfile="pros/apix.h" declline="507" declcolumn="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -922,7 +1038,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="403" column="5" declfile="pros/apix.h" declline="403" declcolumn="5"/>
+        <location file="pros/apix.h" line="533" column="5" declfile="pros/apix.h" declline="533" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaac4da3ecf327e9d3b68283735650274f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -954,7 +1070,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="419" column="5" declfile="pros/apix.h" declline="419" declcolumn="5"/>
+        <location file="pros/apix.h" line="549" column="5" declfile="pros/apix.h" declline="549" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga0cd9577a7facb56ef145e9508849a395" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>v5_device_e_t</type>
@@ -985,7 +1101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="434" column="15" declfile="pros/apix.h" declline="434" declcolumn="15"/>
+        <location file="pros/apix.h" line="564" column="15" declfile="pros/apix.h" declline="564" declcolumn="15"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaf7b9f904f53cb888950c0e8752354937" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>v5_device_e_t</type>
@@ -1016,7 +1132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="449" column="15" declfile="pros/apix.h" declline="449" declcolumn="15"/>
+        <location file="pros/apix.h" line="579" column="15" declfile="pros/apix.h" declline="579" declcolumn="15"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1059,7 +1175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="465" column="9" declfile="pros/apix.h" declline="465" declcolumn="9"/>
+        <location file="pros/apix.h" line="595" column="9" declfile="pros/apix.h" declline="595" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga01b62747fbed77dcd50879d4d557adfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1127,7 +1243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="492" column="9" declfile="pros/apix.h" declline="492" declcolumn="9"/>
+        <location file="pros/apix.h" line="622" column="9" declfile="pros/apix.h" declline="622" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaad01c082a5899e0ab42abdda37d3d425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1175,7 +1291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="520" column="9" declfile="pros/apix.h" declline="520" declcolumn="9"/>
+        <location file="pros/apix.h" line="650" column="9" declfile="pros/apix.h" declline="650" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gad78caa8efd1b34a316037a036f1f2ba6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1210,7 +1326,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="544" column="9" declfile="pros/apix.h" declline="544" declcolumn="9"/>
+        <location file="pros/apix.h" line="674" column="9" declfile="pros/apix.h" declline="674" declcolumn="9"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -4384,7 +4500,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline><highlight class="normal"><sp/><sp/>int<sp/>iter<sp/>=<sp/>0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while(1){</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>should<sp/>print<sp/>in<sp/>red.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print_line(TEXT_MEDIUM,<sp/>1,<sp/>&quot;%d&quot;,<sp/>iter++);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;%d&quot;,<sp/>iter++);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -4481,7 +4597,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>The current eraser color in the form of a value from the enum defined in <ref refid="colors_8h" kindref="compound">colors.h</ref>, or PROS_ERR if there was an error taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>screen_set_eraser(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
@@ -4638,7 +4754,7 @@ This function uses the following values of errno when an error state is reached:
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Line<sp/>Here&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Scrolls<sp/>area<sp/>of<sp/>screen<sp/>upwards<sp/>slightly.<sp/>including<sp/>line<sp/>of<sp/>text</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>screen_scroll(0,0,<sp/>400,<sp/>200,<sp/>3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>screen_scroll_area(0,0,<sp/>400,<sp/>200,<sp/>3);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -4751,13 +4867,6 @@ This function uses the following values of errno when an error state is reached:
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The (x,y) coordinates of the pixel </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername>y</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -4779,7 +4888,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="377" column="10" declfile="pros/screen.h" declline="377" declcolumn="10"/>
+        <location file="pros/screen.h" line="376" column="10" declfile="pros/screen.h" declline="376" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gaa7815c66ed6d99cccb79c68d92f4b6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -4826,7 +4935,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="406" column="10" declfile="pros/screen.h" declline="406" declcolumn="10"/>
+        <location file="pros/screen.h" line="405" column="10" declfile="pros/screen.h" declline="405" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga4dc1379a3cd3fb351f56d48a994c5427" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -4876,6 +4985,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if there were no errors, or PROS_ERR if an error occured taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Draw<sp/>line<sp/>down<sp/>the<sp/>screen<sp/>at<sp/>x<sp/>=<sp/>100</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_draw_line(100,0,100,200);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -4993,7 +5103,6 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if there were no errors, or PROS_ERR if an error occured taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Color<sp/>the<sp/>Screen<sp/>in<sp/>Red</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_draw_rect(1,1,480,200);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -5001,7 +5110,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="479" column="10" declfile="pros/screen.h" declline="479" declcolumn="10"/>
+        <location file="pros/screen.h" line="478" column="10" declfile="pros/screen.h" declline="478" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gaff45f2b8356f9a109450d976407eb3cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5059,7 +5168,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="503" column="10" declfile="pros/screen.h" declline="503" declcolumn="10"/>
+        <location file="pros/screen.h" line="502" column="10" declfile="pros/screen.h" declline="502" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga03fc49294b8f59b266416fe02e3e82be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5117,7 +5226,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="528" column="10" declfile="pros/screen.h" declline="528" declcolumn="10"/>
+        <location file="pros/screen.h" line="527" column="10" declfile="pros/screen.h" declline="527" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gae50f44cc8353ecd86b4a2f4bf2c11486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5170,7 +5279,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="552" column="10" declfile="pros/screen.h" declline="552" declcolumn="10"/>
+        <location file="pros/screen.h" line="551" column="10" declfile="pros/screen.h" declline="551" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga8bd9e289968087aca262d3b103f705b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5225,7 +5334,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="578" column="10" declfile="pros/screen.h" declline="578" declcolumn="10"/>
+        <location file="pros/screen.h" line="577" column="10" declfile="pros/screen.h" declline="577" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gae22682b7250e24a2356e59c64d57d682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5280,7 +5389,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="605" column="10" declfile="pros/screen.h" declline="605" declcolumn="10"/>
+        <location file="pros/screen.h" line="604" column="10" declfile="pros/screen.h" declline="604" declcolumn="10"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -5361,7 +5470,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="639" column="10" declfile="pros/screen.h" declline="639" declcolumn="10"/>
+        <location file="pros/screen.h" line="638" column="10" declfile="pros/screen.h" declline="638" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga2b5405f7234ed31b3a9926bfe939518d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -5450,7 +5559,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="671" column="10" declfile="pros/screen.h" declline="671" declcolumn="10"/>
+        <location file="pros/screen.h" line="670" column="10" declfile="pros/screen.h" declline="670" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga8cd03ca39124708f7904013435e7e5c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -7744,7 +7853,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="728" column="19" declfile="pros/misc.h" declline="728" declcolumn="19"/>
+        <location file="pros/misc.h" line="733" column="19" declfile="pros/misc.h" declline="733" declcolumn="19"/>
       </memberdef>
       <memberdef kind="variable" id="group__c-misc_1ga33aa244a3bbfcc84286cfa8999805cf2" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -7757,7 +7866,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="729" column="19" declfile="pros/misc.h" declline="729" declcolumn="19"/>
+        <location file="pros/misc.h" line="734" column="19" declfile="pros/misc.h" declline="734" declcolumn="19"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -9516,11 +9625,11 @@ This function uses the following values of errno when an error state is reached:
         <detaileddescription>
 <para><simplesect kind="return"><para>The device type as an enum.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>IMU_PORT<sp/>1</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DEVICE_PORT<sp/>1</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>v5_device_e_t<sp/>pt<sp/>=<sp/>get_plugged_type(IMU_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>v5_device_e_t<sp/>pt<sp/>=<sp/>get_plugged_type(DEVICE_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{plugged<sp/>type:<sp/>%d}\n&quot;,<sp/>pt);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -14089,11 +14198,16 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_set_text(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_clear_line(E_CONTROLLER_MASTER,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="565" column="9" declfile="pros/misc.h" declline="565" declcolumn="9"/>
+        <location file="pros/misc.h" line="570" column="9" declfile="pros/misc.h" declline="570" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1ga9ccf53b8954bc4033abebec9a79da0c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -14125,13 +14239,13 @@ This function uses the following values of errno when an error state is reached:
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>controller_set_text(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>controller_clear_line(E_CONTROLLER_MASTER,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_clear(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="596" column="9" declfile="pros/misc.h" declline="596" declcolumn="9"/>
+        <location file="pros/misc.h" line="601" column="9" declfile="pros/misc.h" declline="601" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1ga6a2fde9e8c3eec3dc88cb00235a1df7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -14187,7 +14301,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="636" column="9" declfile="pros/misc.h" declline="636" declcolumn="9"/>
+        <location file="pros/misc.h" line="641" column="9" declfile="pros/misc.h" declline="641" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1ga9d34cbe2b17dc9daec083fdaf8c10a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -14211,7 +14325,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="654" column="9" declfile="pros/misc.h" declline="654" declcolumn="9"/>
+        <location file="pros/misc.h" line="659" column="9" declfile="pros/misc.h" declline="659" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1ga6cd34d4960ca5193d70626bc59094505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -14235,7 +14349,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="672" column="9" declfile="pros/misc.h" declline="672" declcolumn="9"/>
+        <location file="pros/misc.h" line="677" column="9" declfile="pros/misc.h" declline="677" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1ga79dd0288c3ac547c75c25e374087f91b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -14259,7 +14373,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="690" column="8" declfile="pros/misc.h" declline="690" declcolumn="8"/>
+        <location file="pros/misc.h" line="695" column="8" declfile="pros/misc.h" declline="695" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1gaa5e755785c93c5cafe6b0d98695d7c20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -14283,7 +14397,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="708" column="8" declfile="pros/misc.h" declline="708" declcolumn="8"/>
+        <location file="pros/misc.h" line="713" column="8" declfile="pros/misc.h" declline="713" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__c-misc_1gafa370f223e76f68f27bdfed38724724e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -14306,7 +14420,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.h" line="722" column="9" declfile="pros/misc.h" declline="722" declcolumn="9"/>
+        <location file="pros/misc.h" line="727" column="9" declfile="pros/misc.h" declline="727" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-motors_1ga2cbdf023d7dfb10606b70422fe698616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -16370,10 +16484,10 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>Always returns true.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Code<sp/>while<sp/>waiting</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>

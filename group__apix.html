@@ -311,6 +311,7 @@ V5</span></a>
 <p>waiting for a delay, on a semaphore, etc.).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="n">task_t</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
 <span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="c1">// in another task somewhere else, this will abort the task_delay bove:</span>
 <span class="n">task_abort_delay</span><span class="p">(</span><span class="n">task</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga8e451f518ac641b2aba0dad90ba12a28"><div>
@@ -345,7 +346,15 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function will configure the PROS kernel to call task_notify_ext(task_to_notify, value, action, NULL) when target_task is deleted.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">task_t</span><span class="w"> </span><span class="n">task_to_delete</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
+<span class="n">task_t</span><span class="w"> </span><span class="n">task_to_notify</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn2&quot;</span><span class="p">);</span>
+
+<span class="n">task_notify_ext</span><span class="p">(</span><span class="n">task_to_notify</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NOTIFY_ACTION_INCREMENT</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+
+<span class="n">task_notify_when_deleting</span><span class="p">(</span><span class="n">task_to_delete</span><span class="p">,</span><span class="w"> </span><span class="n">task_get_current</span><span class="p">(),</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NOTIFY_ACTION_NONE</span><span class="p">);</span>
+<span class="n">task_delete</span><span class="p">(</span><span class="n">task_to_delete</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4eef1a2598a22cbf8000fe03633d0b13"><div>
             <h3>
@@ -361,7 +370,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_<wbr />mutexes</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga960dac0c60f0f13331f14325d56d7506"><div>
             <h3>
@@ -391,7 +411,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_<wbr />mutexes</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0366fbae5b45a13bb3d76ba963fde37b"><div>
             <h3>
@@ -416,7 +447,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_mutexes">https://pros.cs.purdue.edu/v5/extended/multitasking.html#recursive_<wbr />mutexes</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga35e2514c392ad052f702c7c6a3ed5ae2"><div>
             <h3>
@@ -441,7 +483,32 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#extra">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#extra</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="w"> </span><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">     </span><span class="c1">// critical section</span>
+<span class="w">     </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">     </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
+
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">joystick_get_digital</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">JOY_UP</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">task_t</span><span class="w"> </span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_get_owner</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">owner</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Mutex is owned by task %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">task_get_name</span><span class="p">(</span><span class="n">owner</span><span class="p">));</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Mutex is not owned&quot;</span><span class="p">);</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga5a6c741414670ea06a33a740e00a6fb6"><div>
             <h3>
@@ -471,7 +538,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/multitasking.html#semaphores">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />multitasking.html#semaphores</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem_take</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="gab5d0d18da11c1a8787a22def530943ae"><div>
             <h3>
@@ -490,7 +569,30 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking.html#semaphores">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />extended/<wbr />multitasking.html#semaphores</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_create</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem_take</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">joystick_get_digital</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">JOY_UP</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// honestly this is a bad example because you should never </span>
+<span class="w">      </span><span class="c1">// delete a semaphore like this</span>
+<span class="w">      </span><span class="n">sem_delete</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gab60398e0ab4ac65a8556dbf67907ad64"><div>
             <h3>
@@ -506,7 +608,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/extended/multitasking#.htmlbinary_semaphores">https://pros.cs.purdue.edu/v5/extended/multitasking#.htmlbinary_<wbr />semaphores</a> for details.</p>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="c1">// Binary semaphore acts as a mutex</span>
+<span class="n">sem_t</span><span class="w"> </span><span class="n">sem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sem_binary_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sem_take</span><span class="p">(</span><span class="n">sem</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">sem_give</span><span class="p">(</span><span class="n">sem</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga29a092d6f1b15aed15a76a79b027ab89"><div>
             <h3>
@@ -1074,6 +1188,7 @@ V5</span></a>
 <p>waiting for a delay, on a semaphore, etc.).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="n">task_t</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
 <span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="c1">// in another task somewhere else, this will abort the task_delay bove:</span>
 <span class="n">task_abort_delay</span><span class="p">(</span><span class="n">task</span><span class="p">);</span></pre>
           </div></section>
           <section class="m-doc-details" id="gabc53a59ab4c3c8f2d7660e63990be7a7"><div>
@@ -1085,6 +1200,7 @@ V5</span></a>
 <p>waiting for a delay, on a semaphore, etc.).</p><p><strong>Example:</strong></p><pre class="m-code"><span class="n">task_t</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
 <span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span>
 <span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="c1">// in another task somewhere else, this will abort the task_delay bove:</span>
 <span class="n">task_abort_delay</span><span class="p">(</span><span class="n">task</span><span class="p">);</span></pre>
           </div></section>
         </section>

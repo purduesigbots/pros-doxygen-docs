@@ -236,7 +236,9 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// Creates a vision sensor on port one, with the zero point set to top left</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga76431ffd2012b88a7a32a629584b594a"><div>
             <h3>
@@ -252,7 +254,10 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">clear_led</span><span class="p">();</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4f1fc5e12221451d7e244318cfe5bc04"><div>
             <h3>
@@ -317,6 +322,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="c1">// values acquired from the vision utility</span>
+<span class="n">vision_signature_s_t</span><span class="w"> </span><span class="n">RED_SIG</span><span class="w"> </span><span class="o">=</span>
+<span class="w">  </span><span class="n">vision_signature_from_utility</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="mi">8973</span><span class="p">,</span><span class="w"> </span><span class="mi">11143</span><span class="p">,</span><span class="w"> </span><span class="mi">10058</span><span class="p">,</span><span class="w"> </span><span class="mi">-2119</span><span class="p">,</span><span class="w"> </span><span class="mi">-1053</span><span class="p">,</span><span class="w"> </span><span class="mi">-1586</span><span class="p">,</span><span class="w"> </span><span class="mf">5.4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_signature</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">RED_SIG</span><span class="p">);</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">vision_signature_s_t</span><span class="w"> </span><span class="n">rtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_by_sig</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Gets the largest object of the EXAMPLE_SIG signature</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rtn</span><span class="p">.</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Prints &quot;sig: 1&quot;</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaad39648fb027abf526d427fcd39ac850"><div>
             <h3>
@@ -361,7 +383,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EINVAL - Fewer than two signatures have been provided or one of the signatures is out of its [1-7] range (or 0 when omitted).</p>
+<p>This function uses the following values of errno when an error state is reached: EINVAL - Fewer than two signatures have been provided or one of the signatures is out of its [1-7] range (or 0 when omitted).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define OTHER_SIG 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_color_code_t</span><span class="w"> </span><span class="n">code1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">create_color_code</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="n">OTHER_SIG</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf4fa926cf28cf99a0818714f5f701187"><div>
             <h3>
@@ -386,7 +415,17 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EAGAIN - Reading the vision sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EAGAIN - Reading the vision sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">rtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_by_size</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Gets the largest object</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rtn</span><span class="p">.</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaad2f7f19ea9d69ccbf82af9f5b55f419"><div>
             <h3>
@@ -416,7 +455,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EINVAL - sig_id is outside the range [1-8] EAGAIN - Reading the vision sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EINVAL - sig_id is outside the range [1-8] EAGAIN - Reading the vision sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">rtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_by_sig</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Gets the largest object of the EXAMPLE_SIG signature</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rtn</span><span class="p">.</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Prints &quot;sig: 1&quot;</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga0ee6adc0ac7836cc75195a65fd0dbaed"><div>
             <h3>
@@ -446,7 +497,20 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EAGAIN - Reading the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EAGAIN - Reading the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define OTHER_SIG 2</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_color_code_t</span><span class="w"> </span><span class="n">code1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">create_color_code</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="n">OTHER_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">rtn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_by_code</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">code1</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Gets the largest object</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rtn</span><span class="p">.</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf21a819740fe50fd73af70c41651cbae"><div>
             <h3>
@@ -462,7 +526,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />vision.html#exposure-setting</a> for more detials.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />vision.html#exposure-setting</a> for more detials.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_exposure</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_exposure</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga450dc055c2448fab6eb551231dde7071"><div>
             <h3>
@@ -478,7 +548,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Number of Objects Detected: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_object_count</span><span class="p">());</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gafcbec69e9c0dc3bf13765441f9e9e659"><div>
             <h3>
@@ -503,7 +581,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_signature_s_t</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_signature</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gabb5ece73e4caaa15a39f5e661c3ec5cd"><div>
             <h3>
@@ -519,7 +604,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define VISION_WHITE 0xff</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_white_balance</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">VISION_WHITE</span><span class="p">)</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_white_balance</span><span class="p">(</span><span class="n">VISION_WHITE</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gab5b546c064555ccc94aa3efdcb62dbfd"><div>
             <h3>
@@ -554,7 +646,19 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EAGAIN - Reading the vision sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EAGAIN - Reading the vision sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="w"> </span><span class="cp">#define NUM_VISION_OBJECTS 4</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="n">NUM_VISION_OBJECTS</span><span class="p">];</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">read_by_size</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_VISION_OBJECTS</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Prints the signature of the largest object found</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga054480d0518c7368c4d9206b9cde25e0"><div>
             <h3>
@@ -594,7 +698,20 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EINVAL - sig_id is outside the range [1-8] EAGAIN - Reading the vision sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EDOM - size_id is greater than the number of available objects. EINVAL - sig_id is outside the range [1-8] EAGAIN - Reading the vision sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define NUM_VISION_OBJECTS 4</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="n">NUM_VISION_OBJECTS</span><span class="p">];</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">read_by_sig</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_VISION_OBJECTS</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Prints &quot;sig: 1&quot;</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga107dcaf6b54f1cb77e67998e5fef148f"><div>
             <h3>
@@ -634,7 +751,22 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: EDOM - size_id is greater than the number of available objects. ENODEV - The port cannot be configured as a vision sensor EAGAIN - Reading the vision sensor failed for an unknown reason.</p>
+<p>This function uses the following values of errno when an error state is reached: EDOM - size_id is greater than the number of available objects. ENODEV - The port cannot be configured as a vision sensor EAGAIN - Reading the vision sensor failed for an unknown reason.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+<span class="cp">#define OTHER_SIG 2</span>
+<span class="cp">#define NUM_VISION_OBJECTS 4</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_object_s_t</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="n">NUM_VISION_OBJECTS</span><span class="p">];</span>
+<span class="w">  </span><span class="n">vision_color_code_t</span><span class="w"> </span><span class="n">code1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">create_color_code</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="n">OTHER_SIG</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">read_by_code</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">code1</span><span class="p">,</span><span class="w"> </span><span class="n">NUM_VISION_OBJECTS</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sig: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">signature</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Prints the signature of the largest object found</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gace530d71a4be7d2c1ab90dc31856f58b"><div>
             <h3>
@@ -659,6 +791,14 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_signature_s_t</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">visionsensor</span><span class="p">.</span><span class="n">get_signature</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_print_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga3056945e74c922ee2a8d324fe136fac7"><div>
             <h3>
@@ -674,7 +814,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_auto_white_balance</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4c754824ad4dc5fbbe9afc45064b10a9"><div>
             <h3>
@@ -690,7 +835,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />vision.html#exposure-setting</a> for more detials.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/vision.html#exposure-setting">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />vision.html#exposure-setting</a> for more detials.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_exposure</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_exposure</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gae3fe29fed597773781e7532275a93b22"><div>
             <h3>
@@ -715,7 +866,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_led</span><span class="p">(</span><span class="n">COLOR_BLANCHED_ALMOND</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga82489e0d344b86b031e45a7a549f6acd"><div>
             <h3>
@@ -745,7 +901,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>NOTE: This saves the signature in volatile memory, and the signature will be lost as soon as the sensor is powered down.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EINVAL - sig_id is outside the range [1-8]</p>
+<p>NOTE: This saves the signature in volatile memory, and the signature will be lost as soon as the sensor is powered down.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor EINVAL - sig_id is outside the range [1-8]</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define EXAMPLE_SIG 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_signature_s_t</span><span class="w"> </span><span class="n">sig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">get_signature</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sig</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_signature</span><span class="p">(</span><span class="n">EXAMPLE_SIG</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sig</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gac3307c30a25eebfba74911220d404a94"><div>
             <h3>
@@ -770,7 +934,13 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+<span class="cp">#define VISION_WHITE 0xff</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_white_balance</span><span class="p">(</span><span class="n">VISION_WHITE</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf4949921bb01abcf430d48fa5532b5c8"><div>
             <h3>
@@ -795,7 +965,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This will affect the coordinates returned for each request for a <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> from the sensor, so it is recommended that this function only be used to configure the sensor at the beginning of its use.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This will affect the coordinates returned for each request for a <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> from the sensor, so it is recommended that this function only be used to configure the sensor at the beginning of its use.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_zero_point</span><span class="p">(</span><span class="n">E_VISION_ZERO_CENTER</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga9d04ecf017d67e551ca413b0bfd8fcd7"><div>
             <h3>
@@ -820,7 +995,12 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This functions uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p>
+<p>This functions uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define VISION_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Vision</span><span class="w"> </span><span class="n">vision_sensor</span><span class="p">(</span><span class="n">VISION_PORT</span><span class="p">);</span>
+<span class="w">  </span><span class="n">vision_sensor</span><span class="p">.</span><span class="n">set_wifi_mode</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
         </section>
       </div>

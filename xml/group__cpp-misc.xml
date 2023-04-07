@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="272" column="19" bodyfile="pros/misc.hpp" bodystart="272" bodyend="-1"/>
+        <location file="pros/misc.hpp" line="407" column="19" bodyfile="pros/misc.hpp" bodystart="407" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -61,13 +61,19 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
-<para><simplesect kind="return"><para>1 if the controller is connected, 0 otherwise </para>
+<para><simplesect kind="return"><para>1 if the controller is connected, 0 otherwise</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>status_display_controller(){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if(!master.is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(0,<sp/>&quot;Main<sp/>controller<sp/>is<sp/>not<sp/>connected!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="64" column="14"/>
+        <location file="pros/misc.hpp" line="74" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga880820cec57dc2d47bb9cb27e18b4a0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -92,13 +98,20 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The current reading of the analog channel: [-127, 127]. If the controller was not connected, then 0 is returned </para>
+<simplesect kind="return"><para>The current reading of the analog channel: [-127, 127]. If the controller was not connected, then 0 is returned</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="82" column="14"/>
+        <location file="pros/misc.hpp" line="103" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga45fb617eafe5e07c279b0b4d2158503d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -113,13 +126,17 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
-<para><simplesect kind="return"><para>The controller&apos;s battery capacity </para>
+<para><simplesect kind="return"><para>The controller&apos;s battery capacity</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Capacity:<sp/>%d\n&quot;,<sp/>master.get_battery_capacity());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="94" column="14"/>
+        <location file="pros/misc.hpp" line="123" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaea0f0813bb505219cd0e6a8d87922fca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -134,13 +151,17 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
-<para><simplesect kind="return"><para>The controller&apos;s battery level </para>
+<para><simplesect kind="return"><para>The controller&apos;s battery level</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%d\n&quot;,<sp/>master.get_battery_level());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="106" column="14"/>
+        <location file="pros/misc.hpp" line="143" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga360ac95a3f2da903f29d38e212aaf005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -165,13 +186,25 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned </para>
+<simplesect kind="return"><para>1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(master.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="124" column="14"/>
+        <location file="pros/misc.hpp" line="177" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaae8fa80cfb5153c0b30221914742ee49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -197,13 +230,23 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise. </para>
+<simplesect kind="return"><para>1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>similar<sp/>actions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="149" column="14"/>
+        <location file="pros/misc.hpp" line="216" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga28aa7fefb62dcdf98555066756a6fbd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -225,7 +268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="154" column="3" bodyfile="pros/misc.hpp" bodystart="154" bodyend="156"/>
+        <location file="pros/misc.hpp" line="221" column="3" bodyfile="pros/misc.hpp" bodystart="221" bodyend="223"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga157a634f89e6ec862d929edeaa529cff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -242,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="157" column="12" bodyfile="pros/misc.hpp" bodystart="157" bodyend="159"/>
+        <location file="pros/misc.hpp" line="224" column="12" bodyfile="pros/misc.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaffd382a2e5b4b50fbbc7b9799637b0a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -312,13 +355,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.print(0,<sp/>0,<sp/>&quot;Counter:<sp/>%d&quot;,<sp/>count);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="186" column="14" bodyfile="pros/misc.hpp" bodystart="186" bodyend="188"/>
+        <location file="pros/misc.hpp" line="269" column="14" bodyfile="pros/misc.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga3cd136d81be409f77263bf0c983058a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -369,13 +424,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example<sp/>text&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="211" column="14"/>
+        <location file="pros/misc.hpp" line="310" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga792642d2e8721a3ba27e0ba6b8f0755f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -400,7 +467,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="212" column="14"/>
+        <location file="pros/misc.hpp" line="311" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga65549b3a6f5f7af9d68684a2813b5d2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -427,13 +494,19 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.clear_line(0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="231" column="14"/>
+        <location file="pros/misc.hpp" line="340" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaa76da9849eb5dfde35588f2d08ac6f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -460,13 +533,25 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>send<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.rumble(&quot;.<sp/>-<sp/>.<sp/>-&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="252" column="14"/>
+        <location file="pros/misc.hpp" line="377" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gacb5f1e6485a4af89f3fce3ff66895b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -483,13 +568,19 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> text setting is currently in beta, so continuous, fast updates will not work well. On vexOS version 1.0.0 this function will block for 110ms.</para>
 </simplesect>
 This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.clear();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="269" column="14"/>
+        <location file="pros/misc.hpp" line="404" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga42876357c2ed5a047a535aca84f4458e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -504,13 +595,16 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current voltage of the battery </para>
+<para><simplesect kind="return"><para>The current voltage of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%.2f\n&quot;,<sp/>get_capacity());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="291" column="8" declfile="pros/misc.hpp" declline="291" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="433" column="8" declfile="pros/misc.hpp" declline="433" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gad0f092e6341126d68ae15d41b5dba352" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -525,13 +619,16 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current current of the battery </para>
+<para><simplesect kind="return"><para>The current current of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Current:<sp/>%d\n&quot;,<sp/>get_current());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="302" column="9" declfile="pros/misc.hpp" declline="302" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="451" column="9" declfile="pros/misc.hpp" declline="451" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga33d1a503808ed06148a1884e3ccf88ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -546,13 +643,16 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current temperature of the battery </para>
+<para><simplesect kind="return"><para>The current temperature of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Temperature:<sp/>%.2f\n&quot;,<sp/>get_temperature());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="313" column="8" declfile="pros/misc.hpp" declline="313" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="469" column="8" declfile="pros/misc.hpp" declline="469" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga2c325b346f66c15ca7e5a844a66b20d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -567,13 +667,16 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current capacity of the battery </para>
+<para><simplesect kind="return"><para>The current capacity of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Voltage:<sp/>%d\n&quot;,<sp/>get_voltage());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="324" column="9" declfile="pros/misc.hpp" declline="324" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="487" column="9" declfile="pros/misc.hpp" declline="487" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

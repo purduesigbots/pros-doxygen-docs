@@ -361,7 +361,7 @@ V5</span></a>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
 <span class="w">    </span><span class="c1">// This should print in red.</span>
-<span class="w">    </span><span class="n">screen_print_line</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="n">screen_print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -439,7 +439,7 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">screen_set_pen</span><span class="p">(</span><span class="n">COLOR_RED</span><span class="p">);</span>
+<span class="w">  </span><span class="n">screen_set_eraser</span><span class="p">(</span><span class="n">COLOR_RED</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -554,7 +554,7 @@ V5</span></a>
 <p>This function behaves in the same way as <code>screen_scroll</code>, except that you specify a rectangular region within which to scroll lines instead of a start line.</p><p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">screen_print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Scrolls area of screen upwards slightly. including line of text</span>
-<span class="w">  </span><span class="n">screen_scroll</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="n">screen_scroll_area</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga9c7e679921b09aa5bd7ce8f0c0dba8b5"><div>
@@ -729,6 +729,7 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">screen_set_pen</span><span class="p">(</span><span class="n">COLOR_RED</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Draw line down the screen at x = 100</span>
 <span class="w">  </span><span class="n">screen_draw_line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
@@ -818,7 +819,6 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Color the Screen in Red</span>
 <span class="w">  </span><span class="n">screen_set_pen</span><span class="p">(</span><span class="n">COLOR_RED</span><span class="p">);</span>
 <span class="w">  </span><span class="n">screen_draw_rect</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">480</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>

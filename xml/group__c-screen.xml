@@ -44,7 +44,7 @@
 <codeline><highlight class="normal"><sp/><sp/>int<sp/>iter<sp/>=<sp/>0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while(1){</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>This<sp/>should<sp/>print<sp/>in<sp/>red.</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print_line(TEXT_MEDIUM,<sp/>1,<sp/>&quot;%d&quot;,<sp/>iter++);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;%d&quot;,<sp/>iter++);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -141,7 +141,7 @@
 <para><simplesect kind="return"><para>The current eraser color in the form of a value from the enum defined in <ref refid="colors_8h" kindref="compound">colors.h</ref>, or PROS_ERR if there was an error taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>screen_set_eraser(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
@@ -298,7 +298,7 @@
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_print(TEXT_MEDIUM,<sp/>1,<sp/>&quot;Line<sp/>Here&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Scrolls<sp/>area<sp/>of<sp/>screen<sp/>upwards<sp/>slightly.<sp/>including<sp/>line<sp/>of<sp/>text</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>screen_scroll(0,0,<sp/>400,<sp/>200,<sp/>3);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>screen_scroll_area(0,0,<sp/>400,<sp/>200,<sp/>3);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -411,13 +411,6 @@
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>x</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The (x,y) coordinates of the pixel </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername>y</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -439,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="377" column="10" declfile="pros/screen.h" declline="377" declcolumn="10"/>
+        <location file="pros/screen.h" line="376" column="10" declfile="pros/screen.h" declline="376" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gaa7815c66ed6d99cccb79c68d92f4b6b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -486,7 +479,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="406" column="10" declfile="pros/screen.h" declline="406" declcolumn="10"/>
+        <location file="pros/screen.h" line="405" column="10" declfile="pros/screen.h" declline="405" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga4dc1379a3cd3fb351f56d48a994c5427" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -536,6 +529,7 @@
 <simplesect kind="return"><para>1 if there were no errors, or PROS_ERR if an error occured taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Draw<sp/>line<sp/>down<sp/>the<sp/>screen<sp/>at<sp/>x<sp/>=<sp/>100</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_draw_line(100,0,100,200);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -653,7 +647,6 @@
 <simplesect kind="return"><para>1 if there were no errors, or PROS_ERR if an error occured taking or returning the screen mutex.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Color<sp/>the<sp/>Screen<sp/>in<sp/>Red</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_set_pen(COLOR_RED);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>screen_draw_rect(1,1,480,200);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -661,7 +654,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="479" column="10" declfile="pros/screen.h" declline="479" declcolumn="10"/>
+        <location file="pros/screen.h" line="478" column="10" declfile="pros/screen.h" declline="478" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gaff45f2b8356f9a109450d976407eb3cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -719,7 +712,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="503" column="10" declfile="pros/screen.h" declline="503" declcolumn="10"/>
+        <location file="pros/screen.h" line="502" column="10" declfile="pros/screen.h" declline="502" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga03fc49294b8f59b266416fe02e3e82be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -777,7 +770,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="528" column="10" declfile="pros/screen.h" declline="528" declcolumn="10"/>
+        <location file="pros/screen.h" line="527" column="10" declfile="pros/screen.h" declline="527" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gae50f44cc8353ecd86b4a2f4bf2c11486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -830,7 +823,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="552" column="10" declfile="pros/screen.h" declline="552" declcolumn="10"/>
+        <location file="pros/screen.h" line="551" column="10" declfile="pros/screen.h" declline="551" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga8bd9e289968087aca262d3b103f705b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -885,7 +878,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="578" column="10" declfile="pros/screen.h" declline="578" declcolumn="10"/>
+        <location file="pros/screen.h" line="577" column="10" declfile="pros/screen.h" declline="577" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1gae22682b7250e24a2356e59c64d57d682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -940,7 +933,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="605" column="10" declfile="pros/screen.h" declline="605" declcolumn="10"/>
+        <location file="pros/screen.h" line="604" column="10" declfile="pros/screen.h" declline="604" declcolumn="10"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
@@ -1021,7 +1014,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="639" column="10" declfile="pros/screen.h" declline="639" declcolumn="10"/>
+        <location file="pros/screen.h" line="638" column="10" declfile="pros/screen.h" declline="638" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga2b5405f7234ed31b3a9926bfe939518d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -1110,7 +1103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/screen.h" line="671" column="10" declfile="pros/screen.h" declline="671" declcolumn="10"/>
+        <location file="pros/screen.h" line="670" column="10" declfile="pros/screen.h" declline="670" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-screen_1ga8cd03ca39124708f7904013435e7e5c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>

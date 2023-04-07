@@ -178,13 +178,16 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current voltage of the battery </para>
+<para><simplesect kind="return"><para>The current voltage of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%.2f\n&quot;,<sp/>get_capacity());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="291" column="8" declfile="pros/misc.hpp" declline="291" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="433" column="8" declfile="pros/misc.hpp" declline="433" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gad0f092e6341126d68ae15d41b5dba352" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -199,13 +202,16 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current current of the battery </para>
+<para><simplesect kind="return"><para>The current current of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Current:<sp/>%d\n&quot;,<sp/>get_current());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="302" column="9" declfile="pros/misc.hpp" declline="302" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="451" column="9" declfile="pros/misc.hpp" declline="451" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga33d1a503808ed06148a1884e3ccf88ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -220,13 +226,16 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current temperature of the battery </para>
+<para><simplesect kind="return"><para>The current temperature of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Temperature:<sp/>%.2f\n&quot;,<sp/>get_temperature());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="313" column="8" declfile="pros/misc.hpp" declline="313" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="469" column="8" declfile="pros/misc.hpp" declline="469" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga2c325b346f66c15ca7e5a844a66b20d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -241,13 +250,16 @@
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
-<para><simplesect kind="return"><para>The current capacity of the battery </para>
+<para><simplesect kind="return"><para>The current capacity of the battery</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Voltage:<sp/>%d\n&quot;,<sp/>get_voltage());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="324" column="9" declfile="pros/misc.hpp" declline="324" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="487" column="9" declfile="pros/misc.hpp" declline="487" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1competition_1ad75e0e06e0817959c08798358eaa8ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
@@ -261,13 +273,23 @@
 <para>Get the current status of the competition control. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}. </para>
+<para><simplesect kind="return"><para>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>status_display_task(){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(!is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(0,<sp/>&quot;V5<sp/>Brain<sp/>is<sp/>not<sp/>connected!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>if(is_autonomous())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(0,<sp/>&quot;V5<sp/>Brain<sp/>is<sp/>in<sp/>autonomous<sp/>mode!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>if(!is_disabled())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(0,<sp/>&quot;V5<sp/>Brain<sp/>is<sp/>disabled!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="335" column="14" declfile="pros/misc.hpp" declline="335" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="512" column="14" declfile="pros/misc.hpp" declline="512" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1competition_1a88353a4f8e5e283558ee6504c54283af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
@@ -283,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="336" column="14" declfile="pros/misc.hpp" declline="336" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="513" column="14" declfile="pros/misc.hpp" declline="513" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1competition_1aaf36367a2369390657f6bc4285f68c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
@@ -299,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="337" column="14" declfile="pros/misc.hpp" declline="337" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="514" column="14" declfile="pros/misc.hpp" declline="514" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1competition_1a2d4f4555af4c45f7f82ea75e1223899b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint8_t</type>
@@ -315,7 +337,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="338" column="14" declfile="pros/misc.hpp" declline="338" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="515" column="14" declfile="pros/misc.hpp" declline="515" declcolumn="14"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1_1usd_1a2d7eecbe50533c0d753e82470dc2e6f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -329,13 +351,16 @@
 <para>Checks if the SD card is installed. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise </para>
+<para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;%i&quot;,<sp/>is_installed());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="347" column="14" declfile="pros/misc.hpp" declline="347" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="531" column="14" declfile="pros/misc.hpp" declline="531" declcolumn="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

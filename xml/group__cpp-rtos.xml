@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="686" column="1" bodyfile="pros/rtos.hpp" bodystart="686" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="685" column="1" bodyfile="pros/rtos.hpp" bodystart="685" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1gad6157965fe82b633df8345db024717f3" prot="public" static="no">
         <type>std::milli</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="687" column="1" bodyfile="pros/rtos.hpp" bodystart="687" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="686" column="1" bodyfile="pros/rtos.hpp" bodystart="686" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1ga2b4de82f9ffc924d377f1392db0ba3ef" prot="public" static="no">
         <type>std::chrono::duration&lt; rep, period &gt;</type>
@@ -43,7 +43,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="688" column="1" bodyfile="pros/rtos.hpp" bodystart="688" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="687" column="1" bodyfile="pros/rtos.hpp" bodystart="687" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__cpp-rtos_1ga9076c3be2e8fb8b43e02a0f9552290e7" prot="public" static="no">
         <type>std::chrono::time_point&lt; Clock &gt;</type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="689" column="1" bodyfile="pros/rtos.hpp" bodystart="689" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="688" column="1" bodyfile="pros/rtos.hpp" bodystart="688" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="681" column="8" bodyfile="pros/rtos.hpp" bodystart="681" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="680" column="8" bodyfile="pros/rtos.hpp" bodystart="680" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-rtos_1ga530b9e30754c9d0ef499b6cf1864317a" prot="public" static="no" mutable="no">
         <type>const bool</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="690" column="12" bodyfile="pros/rtos.hpp" bodystart="690" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="689" column="12" bodyfile="pros/rtos.hpp" bodystart="689" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-rtos_1gabbacf876372ff9592f15777f84cb2663" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; std::remove_pointer_t&lt; <ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref> &gt; &gt;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="703" column="17" bodyfile="pros/rtos.hpp" bodystart="703" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="702" column="17" bodyfile="pros/rtos.hpp" bodystart="702" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -931,23 +931,22 @@
 <para><simplesect kind="return"><para>void</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_print(1,<sp/>&quot;%s<sp/>running&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(1,<sp/>&quot;%s<sp/>running&quot;,<sp/>pros::Task::current_task().get_name());</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>task_delay(1000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_print(2,<sp/>&quot;End<sp/>of<sp/>%s&quot;,<sp/>task_get_name(NULL));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>lcd_print(2,<sp/>&quot;End<sp/>of<sp/>%s&quot;,<sp/>pros::Task::current_task().get_name());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Example<sp/>Task&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(0,<sp/>&quot;Running<sp/>task.&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task_join(my_task);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>lcd_set_text(3,<sp/>&quot;Task<sp/>completed.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::set_text(0,<sp/>&quot;Running<sp/>task.&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>my_task.join();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::lcd::lcd_set_text(3,<sp/>&quot;Task<sp/>completed.&quot;);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="589" column="6"/>
+        <location file="pros/rtos.hpp" line="588" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga8416442a23f42ca38044c9b2dec99316" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -1003,7 +1002,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="613" column="15"/>
+        <location file="pros/rtos.hpp" line="612" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga070827d25e8a07d2124578dcbd638dd0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -1046,7 +1045,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="631" column="22"/>
+        <location file="pros/rtos.hpp" line="630" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6b470af6702dc8031d6de86419c97b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1064,7 +1063,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="641" column="6"/>
+        <location file="pros/rtos.hpp" line="640" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafd19e4a13c12c607998bcfc56768ddbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1093,7 +1092,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="653" column="13"/>
+        <location file="pros/rtos.hpp" line="652" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafcfc4faff77d7ca1f4c080d1e8c508fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1135,7 +1134,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="668" column="13"/>
+        <location file="pros/rtos.hpp" line="667" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gac7509321b5f36585f28da108d330b9ad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -1153,7 +1152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="678" column="22"/>
+        <location file="pros/rtos.hpp" line="677" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga1e90d26a2b528a402135160280637dbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>time_point</type>
@@ -1171,7 +1170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="699" column="19"/>
+        <location file="pros/rtos.hpp" line="698" column="19"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga4b5dfbd24f5bc4c03b24b2da362f66d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1184,7 +1183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="706" column="1"/>
+        <location file="pros/rtos.hpp" line="705" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gab09ea253b1dc6a2cf2543f9069af47f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1200,7 +1199,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="710" column="1"/>
+        <location file="pros/rtos.hpp" line="709" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gadd07188ea12392103ecbecf2215d603a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1216,7 +1215,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="711" column="1"/>
+        <location file="pros/rtos.hpp" line="710" column="1"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaf883e9f2816275bfb96356ebab8343a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Mutex &amp;</type>
@@ -1232,7 +1231,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="713" column="7"/>
+        <location file="pros/rtos.hpp" line="712" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga346fc4a9a9db604140fb5e77e4ecf793" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Mutex &amp;</type>
@@ -1248,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="714" column="7"/>
+        <location file="pros/rtos.hpp" line="713" column="7"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga520dfb72e1768ce08292ca08662c66a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1266,7 +1265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="727" column="6"/>
+        <location file="pros/rtos.hpp" line="726" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga4ed04a4dfdab9c125ecd5b87e1d31ac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1297,7 +1296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="746" column="6"/>
+        <location file="pros/rtos.hpp" line="745" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga89e3741a62333612b1a98074ec17c7bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1315,7 +1314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="759" column="6"/>
+        <location file="pros/rtos.hpp" line="758" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa81aed607133209dade63a226818224d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1344,7 +1343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="776" column="6"/>
+        <location file="pros/rtos.hpp" line="775" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga9278be8203e1c42e2619179882ae4403" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1364,7 +1363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="789" column="6"/>
+        <location file="pros/rtos.hpp" line="788" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gaa24a64f788f142df670c3abc809d32b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1384,7 +1383,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="801" column="6"/>
+        <location file="pros/rtos.hpp" line="800" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga710a8b20e993bf1c74bf40f1ecce0a73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1425,7 +1424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="816" column="6" bodyfile="pros/rtos.hpp" bodystart="816" bodyend="818"/>
+        <location file="pros/rtos.hpp" line="815" column="6" bodyfile="pros/rtos.hpp" bodystart="815" bodyend="817"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga41a3a30923d0f6c41a70812ef37db9bb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -1462,7 +1461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="830" column="6" bodyfile="pros/rtos.hpp" bodystart="830" bodyend="832"/>
+        <location file="pros/rtos.hpp" line="829" column="6" bodyfile="pros/rtos.hpp" bodystart="829" bodyend="831"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
