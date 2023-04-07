@@ -21,7 +21,7 @@ The C++ API is designed for those who want to take an object oreinted approach t
 
 ### C++ Screen Related Classes
 
-- \subpage cpp-color                "C++ API for Color Values"
+- \subpage cpp-colors               "C++ API for Color Values"
 - \subpage cpp-llemu                "C++ API for LLEMU (Legacy Lcd EMUlator)"
 - \subpage cpp-screen               "C++ API for the V5 Screen"
 
@@ -57,7 +57,7 @@ The C API is designed for more advanced users who would rather program functiona
 
 ### C Screen API
 
-- \subpage c-color      "C API for Color Values"
+- \subpage c-colors     "C API for Color Values"
 - \subpage c-llemu      "C API for LLEMU (Legacy Lcd EMUlator)"
 - \subpage c-screen     "C API for the V5 Screen"
 
