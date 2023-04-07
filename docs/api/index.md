@@ -21,21 +21,22 @@ This document covers the main PROS API.
 
 ## C++ API Headers
 
-- \subpage cpp-adi          "C++ API for ADI Devices"
-- \subpage cpp-distance     "C++ API for distance sensors"
-- \subpage cpp-gps          "C++ API for GPS sensors"
-- \subpage cpp-imu          "C++ API for IMU sensors"
-- \subpage cpp-link         "C++ API for VEXLink"
-- \subpage cpp-llemu        "C++ API for LLEMU (Legacy Lcd EMUlator)"
-- \subpage cpp-misc         "C++ API for miscellaneous features"
-- \subpage cpp-motors       "C++ API for motors"
-- \subpage cpp-motor-group  "C++ API for motor groups"
-- \subpage cpp-optical      "C++ API for optical sensors"
-- \subpage cpp-rotation     "C++ API for rotation sensors"
-- \subpage cpp-rtos         "C++ Real Time Operating System API"
-- \subpage cpp-screen       "C++ API for the V5 screen"
-- \subpage cpp-serial       "C++ API for generic serial devices"
-- \subpage cpp-vision       "C++ API for vision sensors"
+- \subpage cpp-adi                  "C++ API for ADI Devices"
+- \subpage cpp-distance             "C++ API for distance sensors"
+- \subpage cpp-gps                  "C++ API for GPS sensors"
+- \subpage cpp-imu                  "C++ API for IMU sensors"
+- \subpage cpp-link                 "C++ API for VEXLink"
+- \subpage cpp-llemu                "C++ API for LLEMU (Legacy Lcd EMUlator)"
+- \subpage cpp-misc                 "C++ API for miscellaneous features"
+- \subpage cpp-motors               "C++ API for motors"
+- \subpage cpp-motor-group          "C++ API for motor groups"
+- \subpage cpp-abstract-motor       "C++ API for abstract motors"
+- \subpage cpp-optical              "C++ API for optical sensors"
+- \subpage cpp-rotation             "C++ API for rotation sensors"
+- \subpage cpp-rtos                 "C++ Real Time Operating System API"
+- \subpage cpp-screen               "C++ API for the V5 screen"
+- \subpage cpp-serial               "C++ API for generic serial devices"
+- \subpage cpp-vision               "C++ API for vision sensors"
 
 ## LVGL
 
