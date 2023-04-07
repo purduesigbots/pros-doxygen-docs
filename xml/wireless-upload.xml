@@ -15,7 +15,7 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 <codeline><highlight class="normal">USE_PACKAGE:=0</highlight></codeline>
 </programlisting></para>
 <para>so that <computeroutput>USE_PACKAGE:=1</computeroutput>. Re-build and upload your project and PROS will automatically use the new files. PROS will automatically detect when you&apos;re using the same combination of libraries and decide not to re-upload the &quot;cold&quot; code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.</para>
-<sect2 id="wireless-upload_1autotoc_md81">
+<sect2 id="wireless-upload_1autotoc_md82">
 <title>Large Projects</title>
 <para>Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project&apos;s Makefile:</para>
 <para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>this<sp/>to<sp/>1<sp/>to<sp/>add<sp/>additional<sp/>rules<sp/>to<sp/>compile<sp/>your<sp/>project<sp/>as<sp/>a<sp/>PROS<sp/>library<sp/>template</highlight></codeline>
@@ -43,7 +43,7 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 <codeline><highlight class="normal">EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp<sp/><sp/><sp/><sp/><sp/>#<sp/>exclude<sp/>src/lcdselector.cpp</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="wireless-upload_1autotoc_md82">
+<sect2 id="wireless-upload_1autotoc_md83">
 <title>Hot/Cold Linking Troubleshooting</title>
 <para>Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime issues running in this mode. This section serves as a guide for debugging these sorts of issues.</para>
 <para>Generally, if the program appears to be running correctly (i.e. the screen shows), then the compilation mode worked correctly and the error you&apos;re experiencing is likely related to your code&apos;s logic. If your code&apos;s logic runs correctly when not using hot/cold linking, contact us so we may assist in troubleshooting.</para>
