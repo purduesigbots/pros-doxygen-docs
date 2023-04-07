@@ -824,7 +824,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Code while waiting</span>
 <span class="w">  </span><span class="p">}</span>
@@ -864,7 +864,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Analogous to std::thread::join in C++.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>Analogous to std::thread::join in C++.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">lcd_print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%s running&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">task_get_name</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
 <span class="w">  </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="w">  </span><span class="n">lcd_print</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;End of %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">task_get_name</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
@@ -916,7 +916,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>Will also retrieve the value of the notification in the target task before modifying the notification value.</p><p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p>Will also retrieve the value of the notification in the target task before modifying the notification value.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Wait until we have been notified 20 times before running the code</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
