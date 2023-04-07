@@ -13,3 +13,4 @@ and more detail about using the PROS API.
 - \subpage notifications
 - \subpage vision
 - \subpage wireless-upload
+- \subpage user-literals
