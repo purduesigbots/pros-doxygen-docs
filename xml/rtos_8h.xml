@@ -640,9 +640,9 @@
 </parameteritem>
 </parameterlist>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>task_delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1292,7 +1292,7 @@
 <codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task_notify_ext(task,<sp/>1,<sp/>NOTIFY_ACTION_INCREMENT,<sp/>&amp;count);</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1341,7 +1341,8 @@
 <simplesect kind="return"><para>The value of the task&apos;s notification value before it is decremented or cleared</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>current_task<sp/>=<sp/>task_get_current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task_notify_take(current_task,<sp/>true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1359,7 +1360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="792" column="10" declfile="pros/rtos.h" declline="792" declcolumn="10"/>
+        <location file="pros/rtos.h" line="793" column="10" declfile="pros/rtos.h" declline="793" declcolumn="10"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga82a2d584952478f46b9bc766395bb8c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1386,11 +1387,33 @@
 </parameterlist>
 <simplesect kind="return"><para>False if there was not a notification waiting, true if there was</para>
 </simplesect>
-<bold>Example</bold> <programlisting></programlisting> </para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>task<sp/>=<sp/>task_get_current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Waiting<sp/>for<sp/>notification...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Got<sp/>a<sp/>notification:<sp/>%d\n&quot;,<sp/>task_notify_take(task,<sp/>false,<sp/>TIMEOUT_MAX));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>task_notify_clear(task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>task_t<sp/>task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task_notify(task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="810" column="6" declfile="pros/rtos.h" declline="810" declcolumn="6"/>
+        <location file="pros/rtos.h" line="832" column="6" declfile="pros/rtos.h" declline="832" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga92aa79cdc30ffd13f63a7ffeca64b06f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
@@ -1407,19 +1430,76 @@
 <para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes</ulink> for details.</para>
 <para><simplesect kind="return"><para>A handle to a newly created mutex. If an error occurred, NULL will be returned and errno can be checked for hints as to why mutex_create failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
-<codeline><highlight class="normal">mutex_take(mutex,<sp/>MAX_DELAY);</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
-<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">//<sp/>Global<sp/>variables<sp/>for<sp/>the<sp/>robot&apos;s<sp/>odometry,<sp/>which<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>robot&apos;s</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>subsystems<sp/>will<sp/>utilize</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_heading<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>mutex<sp/>protects<sp/>the<sp/>odometry<sp/>data.<sp/>Whenever<sp/>we<sp/>read<sp/>or<sp/>write<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>odometry<sp/>data,<sp/>we<sp/>should<sp/>make<sp/>copies<sp/>into<sp/>the<sp/>local<sp/>variables,<sp/>and<sp/>read</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>all<sp/>3<sp/>values<sp/>at<sp/>once<sp/>to<sp/>avoid<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal">mutex_t<sp/>odom_mutex;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>odom_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>First<sp/>we<sp/>fetch<sp/>the<sp/>odom<sp/>coordinates<sp/>from<sp/>the<sp/>previous<sp/>iteration<sp/>of<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>odometry<sp/>task.<sp/>These<sp/>are<sp/>put<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that<sp/>we<sp/>can</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>keep<sp/>the<sp/>size<sp/>of<sp/>the<sp/>critical<sp/>section<sp/>as<sp/>small<sp/>as<sp/>possible.<sp/>This<sp/>lets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>other<sp/>tasks<sp/>that<sp/>need<sp/>to<sp/>use<sp/>the<sp/>odometry<sp/>data<sp/>run<sp/>until<sp/>we<sp/>need<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>update<sp/>it<sp/>again.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_old<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_old<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_old<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>---<sp/>Calculate<sp/>new<sp/>pose<sp/>for<sp/>the<sp/>robot<sp/>here<sp/>---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>new<sp/>pose,<sp/>we<sp/>can<sp/>update<sp/>the<sp/>global<sp/>variables</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_x<sp/>=<sp/>x_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_y<sp/>=<sp/>y_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_heading<sp/>=<sp/>heading_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>chassis_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Here<sp/>we<sp/>copy<sp/>the<sp/>current<sp/>odom<sp/>values<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>we<sp/>can<sp/>use<sp/>them<sp/>without<sp/>worrying<sp/>about<sp/>the<sp/>odometry<sp/>task<sp/>changing<sp/>say,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>the<sp/>y<sp/>value<sp/>right<sp/>after<sp/>we&apos;ve<sp/>read<sp/>the<sp/>x.<sp/>This<sp/>ensures<sp/>our<sp/>values<sp/>are</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>sound.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_x<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_y<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_heading<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>----<sp/>Move<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>current<sp/>locations<sp/>goes<sp/>here<sp/>----</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>odom_mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(odom_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Odometry<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(chassis_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Chassis<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="833" column="9" declfile="pros/rtos.h" declline="833" declcolumn="9"/>
+        <location file="pros/rtos.h" line="912" column="9" declfile="pros/rtos.h" declline="912" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga49aa5444b488ff60fc458aea8172adc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1458,19 +1538,76 @@
 </parameterlist>
 <simplesect kind="return"><para>True if the mutex was successfully taken, false otherwise. If false is returned, then errno is set with a hint about why the the mutex couldn&apos;t be taken.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
-<codeline><highlight class="normal">mutex_take(mutex,<sp/>timeout);</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
-<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">//<sp/>Global<sp/>variables<sp/>for<sp/>the<sp/>robot&apos;s<sp/>odometry,<sp/>which<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>robot&apos;s</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>subsystems<sp/>will<sp/>utilize</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_heading<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>mutex<sp/>protects<sp/>the<sp/>odometry<sp/>data.<sp/>Whenever<sp/>we<sp/>read<sp/>or<sp/>write<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>odometry<sp/>data,<sp/>we<sp/>should<sp/>make<sp/>copies<sp/>into<sp/>the<sp/>local<sp/>variables,<sp/>and<sp/>read</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>all<sp/>3<sp/>values<sp/>at<sp/>once<sp/>to<sp/>avoid<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal">mutex_t<sp/>odom_mutex;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>odom_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>First<sp/>we<sp/>fetch<sp/>the<sp/>odom<sp/>coordinates<sp/>from<sp/>the<sp/>previous<sp/>iteration<sp/>of<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>odometry<sp/>task.<sp/>These<sp/>are<sp/>put<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that<sp/>we<sp/>can</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>keep<sp/>the<sp/>size<sp/>of<sp/>the<sp/>critical<sp/>section<sp/>as<sp/>small<sp/>as<sp/>possible.<sp/>This<sp/>lets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>other<sp/>tasks<sp/>that<sp/>need<sp/>to<sp/>use<sp/>the<sp/>odometry<sp/>data<sp/>run<sp/>until<sp/>we<sp/>need<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>update<sp/>it<sp/>again.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_old<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_old<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_old<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>---<sp/>Calculate<sp/>new<sp/>pose<sp/>for<sp/>the<sp/>robot<sp/>here<sp/>---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>new<sp/>pose,<sp/>we<sp/>can<sp/>update<sp/>the<sp/>global<sp/>variables</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_x<sp/>=<sp/>x_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_y<sp/>=<sp/>y_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_heading<sp/>=<sp/>heading_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>chassis_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Here<sp/>we<sp/>copy<sp/>the<sp/>current<sp/>odom<sp/>values<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>we<sp/>can<sp/>use<sp/>them<sp/>without<sp/>worrying<sp/>about<sp/>the<sp/>odometry<sp/>task<sp/>changing<sp/>say,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>the<sp/>y<sp/>value<sp/>right<sp/>after<sp/>we&apos;ve<sp/>read<sp/>the<sp/>x.<sp/>This<sp/>ensures<sp/>our<sp/>values<sp/>are</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>sound.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_x<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_y<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_heading<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>----<sp/>Move<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>current<sp/>locations<sp/>goes<sp/>here<sp/>----</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>odom_mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(odom_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Odometry<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(chassis_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Chassis<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="865" column="6" declfile="pros/rtos.h" declline="865" declcolumn="6"/>
+        <location file="pros/rtos.h" line="1001" column="6" declfile="pros/rtos.h" declline="1001" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1ga7f20ed94cee8e04d491743b4b34feda1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -1497,19 +1634,76 @@
 </parameterlist>
 <simplesect kind="return"><para>True if the mutex was successfully returned, false otherwise. If false is returned, then errno is set with a hint about why the mutex couldn&apos;t be returned.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Acquire<sp/>the<sp/>mutex;<sp/>other<sp/>tasks<sp/>using<sp/>this<sp/>command<sp/>will<sp/>wait<sp/>until<sp/>the<sp/>mutex<sp/>is<sp/>released</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>timeout<sp/>can<sp/>specify<sp/>the<sp/>maximum<sp/>time<sp/>to<sp/>wait,<sp/>or<sp/>MAX_DELAY<sp/>to<sp/>wait<sp/>forever</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>If<sp/>the<sp/>timeout<sp/>expires,<sp/>&quot;false&quot;<sp/>will<sp/>be<sp/>returned,<sp/>otherwise<sp/>&quot;true&quot;</highlight></codeline>
-<codeline><highlight class="normal">mutex_take(mutex,<sp/>timeout);</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>do<sp/>some<sp/>work</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>Release<sp/>the<sp/>mutex<sp/>for<sp/>other<sp/>tasks</highlight></codeline>
-<codeline><highlight class="normal">mutex_give(mutex);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">//<sp/>Global<sp/>variables<sp/>for<sp/>the<sp/>robot&apos;s<sp/>odometry,<sp/>which<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>robot&apos;s</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>subsystems<sp/>will<sp/>utilize</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_y<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal">double<sp/>odom_heading<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>This<sp/>mutex<sp/>protects<sp/>the<sp/>odometry<sp/>data.<sp/>Whenever<sp/>we<sp/>read<sp/>or<sp/>write<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>odometry<sp/>data,<sp/>we<sp/>should<sp/>make<sp/>copies<sp/>into<sp/>the<sp/>local<sp/>variables,<sp/>and<sp/>read</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>all<sp/>3<sp/>values<sp/>at<sp/>once<sp/>to<sp/>avoid<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal">mutex_t<sp/>odom_mutex;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>odom_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>First<sp/>we<sp/>fetch<sp/>the<sp/>odom<sp/>coordinates<sp/>from<sp/>the<sp/>previous<sp/>iteration<sp/>of<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>odometry<sp/>task.<sp/>These<sp/>are<sp/>put<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that<sp/>we<sp/>can</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>keep<sp/>the<sp/>size<sp/>of<sp/>the<sp/>critical<sp/>section<sp/>as<sp/>small<sp/>as<sp/>possible.<sp/>This<sp/>lets</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>other<sp/>tasks<sp/>that<sp/>need<sp/>to<sp/>use<sp/>the<sp/>odometry<sp/>data<sp/>run<sp/>until<sp/>we<sp/>need<sp/>to</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>update<sp/>it<sp/>again.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_old<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_old<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_old<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>x_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>y_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>heading_new<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>---<sp/>Calculate<sp/>new<sp/>pose<sp/>for<sp/>the<sp/>robot<sp/>here<sp/>---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>new<sp/>pose,<sp/>we<sp/>can<sp/>update<sp/>the<sp/>global<sp/>variables</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_x<sp/>=<sp/>x_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_y<sp/>=<sp/>y_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>odom_heading<sp/>=<sp/>heading_new;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>chassis_task(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Here<sp/>we<sp/>copy<sp/>the<sp/>current<sp/>odom<sp/>values<sp/>into<sp/>local<sp/>variables<sp/>so<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>we<sp/>can<sp/>use<sp/>them<sp/>without<sp/>worrying<sp/>about<sp/>the<sp/>odometry<sp/>task<sp/>changing<sp/>say,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>the<sp/>y<sp/>value<sp/>right<sp/>after<sp/>we&apos;ve<sp/>read<sp/>the<sp/>x.<sp/>This<sp/>ensures<sp/>our<sp/>values<sp/>are</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>sound.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_take(odom_mutex,<sp/>MAX_DELAY);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_x<sp/>=<sp/>odom_x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_y<sp/>=<sp/>odom_y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>double<sp/>current_heading<sp/>=<sp/>odom_heading;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_give(odom_mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>----<sp/>Move<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>current<sp/>locations<sp/>goes<sp/>here<sp/>----</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>odom_mutex<sp/>=<sp/>mutex_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(odom_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Odometry<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_create(chassis_task,<sp/>NULL,<sp/>TASK_PRIORITY_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;Chassis<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="892" column="6" declfile="pros/rtos.h" declline="892" declcolumn="6"/>
+        <location file="pros/rtos.h" line="1085" column="6" declfile="pros/rtos.h" declline="1085" declcolumn="6"/>
       </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1547,7 +1741,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="914" column="6" declfile="pros/rtos.h" declline="914" declcolumn="6"/>
+        <location file="pros/rtos.h" line="1107" column="6" declfile="pros/rtos.h" declline="1107" declcolumn="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

@@ -131,6 +131,51 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="c1">// We create a pose class to contain all our odometry data in a single</span>
+<span class="c1">// variable that can be protected by a MutexVar. Otherwise, we would have</span>
+<span class="c1">// three seperate variables which could not be protected in a single </span>
+<span class="c1">// MutexVar</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Pose</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="n">heading</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">odom_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Pose</span><span class="w"> </span><span class="n">old_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">odom_pose</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">Pose</span><span class="w"> </span><span class="n">new_pose</span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">};</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// --- Calculate new pose for the robot here ---</span>
+
+<span class="w">    </span><span class="c1">// Now that we have the new pose, we can update the global variables</span>
+
+<span class="w">    </span><span class="o">*</span><span class="n">odom_pose</span><span class="p">.</span><span class="n">take</span><span class="p">()</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_pose</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">chassis_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">Pose</span><span class="w"> </span><span class="n">cur_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">odom_pose</span><span class="p">.</span><span class="n">take</span><span class="p">();</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// ---- Move the robot using the current locations goes here ----</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">odom_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Mutex</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">odom_task</span><span class="p">(</span><span class="n">odom_task</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Odometry Task&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Task</span><span class="w"> </span><span class="n">chassis_task</span><span class="p">(</span><span class="n">odom_task</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chassis Control Task&quot;</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="a58ed9f1f6e6da87308feef7ec3a7a34d"><div>
             <h3>
@@ -157,6 +202,22 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">cur_pose_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">.</span><span class="n">try_lock</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">cur_pose_opt</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Pose</span><span class="o">*</span><span class="w"> </span><span class="n">cur_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">**</span><span class="n">cur_pose_opt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Could not lock the mutex var!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="acd3bef91b2c35648f3c9cd41440d50a3"><div>
             <h3>
@@ -175,6 +236,23 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">milli</span><span class="o">&gt;</span><span class="w"> </span><span class="n">timeout</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">optional</span><span class="o">&lt;</span><span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">cur_pose_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">.</span><span class="n">try_lock</span><span class="p">(</span><span class="n">timeout</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">cur_pose_opt</span><span class="p">.</span><span class="n">has_value</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Pose</span><span class="o">*</span><span class="w"> </span><span class="n">cur_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">**</span><span class="n">cur_pose_opt</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Could not lock the mutex var!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="a6e111f3c307aa2c5b488301c1970fa7a"><div>
             <h3>
@@ -192,6 +270,18 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="n">pros</span><span class="o">::</span><span class="n">MutexVar</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">my_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">MutexVarLock</span><span class="o">&lt;</span><span class="n">Pose</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cur_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_pose</span><span class="p">.</span><span class="n">lock</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Pose</span><span class="w"> </span><span class="n">cur_pose</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">cur_pose</span><span class="p">;</span>
+<span class="w">     </span>
+<span class="w">    </span><span class="c1">// do stuff with cur_pose</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
         </section>
       </div>

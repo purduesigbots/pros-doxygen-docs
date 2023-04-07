@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="677" column="8" bodyfile="pros/rtos.hpp" bodystart="677" bodyend="-1"/>
+        <location file="pros/rtos.hpp" line="783" column="8" bodyfile="pros/rtos.hpp" bodystart="783" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -754,13 +754,41 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Dependent on the notification action. For NOTIFY_ACTION_NO_WRITE: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other NOTIFY_ACTION values: always return 0 </para>
+<simplesect kind="return"><para>Dependent on the notification action. For NOTIFY_ACTION_NO_WRITE: return 0 if the value could be written without needing to overwrite, 1 otherwise. For all other NOTIFY_ACTION values: always return 0</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task<sp/>=<sp/>pros::Task::current();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>until<sp/>we<sp/>have<sp/>been<sp/>notified<sp/>20<sp/>times<sp/>before<sp/>running<sp/>the<sp/>code</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(task.notify_take(false,<sp/>TIMEOUT_MAX)<sp/>==<sp/>20)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>...<sp/>Code<sp/>to<sp/>do<sp/>stuff<sp/>here<sp/>...</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Reset<sp/>the<sp/>notification<sp/>counter</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task.notify_clear();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task.notify_ext(1,<sp/>NOTIFY_ACTION_INCREMENT,<sp/>&amp;count);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="609" column="15"/>
+        <location file="pros/rtos.hpp" line="641" column="15"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1ga6b470af6702dc8031d6de86419c97b54" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -772,13 +800,33 @@
         </briefdescription>
         <detaileddescription>
 <para>See <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html</ulink> for details.</para>
-<para><simplesect kind="return"><para>False if there was not a notification waiting, true if there was </para>
+<para><simplesect kind="return"><para>False if there was not a notification waiting, true if there was <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task<sp/>=<sp/>pros::Task::current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Waiting<sp/>for<sp/>notification...\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Got<sp/>a<sp/>notification:<sp/>%d\n&quot;,<sp/>task.notify_take(false,<sp/>TIMEOUT_MAX));</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tasK_notify(task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10):</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task.notify();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="637" column="6"/>
+        <location file="pros/rtos.hpp" line="711" column="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
@@ -976,13 +1024,28 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The value of the task&apos;s notification value before it is decremented or cleared </para>
+<simplesect kind="return"><para>The value of the task&apos;s notification value before it is decremented or cleared</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ign)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task<sp/>=<sp/>pros::task::current();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(task.notify_take(true,<sp/>TIMEOUT_MAX))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>puts(&quot;I<sp/>was<sp/>unblocked!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>task.notify(my_task);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="627" column="22"/>
+        <location file="pros/rtos.hpp" line="678" column="22"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafd19e4a13c12c607998bcfc56768ddbc" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -994,7 +1057,7 @@
           <declname>milliseconds</declname>
         </param>
         <briefdescription>
-<para>Delays a task for a given number of milliseconds. </para>
+<para>Delays the current task for a specified number of milliseconds. </para>
         </briefdescription>
         <detaileddescription>
 <para>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <ref refid="group__c-rtos_1ga151eaf730a10d101bff15013a76b9aa8" kindref="member">task_delay_until()</ref>.</para>
@@ -1003,15 +1066,20 @@
 <parametername>milliseconds</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The number of milliseconds to wait (1000 milliseconds per second) </para>
+<para>The number of milliseconds to wait (1000 milliseconds per second)</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Task::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="649" column="13"/>
+        <location file="pros/rtos.hpp" line="732" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gafcfc4faff77d7ca1f4c080d1e8c508fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1027,7 +1095,7 @@
           <declname>delta</declname>
         </param>
         <briefdescription>
-<para>Delays a task until a specified time. </para>
+<para>Delays the current <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> until a specified time. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function can be used by periodic tasks to ensure a constant execution frequency.</para>
@@ -1045,15 +1113,21 @@
 <parametername>delta</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The number of milliseconds to wait (1000 milliseconds per second) </para>
+<para>The number of milliseconds to wait (1000 milliseconds per second)</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Do<sp/>opcontrol<sp/>things</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Task::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="664" column="13"/>
+        <location file="pros/rtos.hpp" line="757" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-rtos_1gac7509321b5f36585f28da108d330b9ad" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::uint32_t</type>
@@ -1065,20 +1139,29 @@
         </briefdescription>
         <detaileddescription>
 <para>A task that has been deleted, but not yet reaped by the idle task will also be included in the count. Tasks recently created may take one context switch to be counted.</para>
-<para><simplesect kind="return"><para>The number of tasks that are currently being managed by the kernel. </para>
+<para><simplesect kind="return"><para>The number of tasks that are currently being managed by the kernel.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Hello<sp/>%s\n&quot;,<sp/>(char*)param);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>...</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>my_task(my_task_fn);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;There<sp/>are<sp/>%d<sp/>tasks<sp/>running\n&quot;,<sp/>pros::Task::get_count());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.hpp" line="674" column="22"/>
+        <location file="pros/rtos.hpp" line="780" column="22"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/rtos.hpp" line="40" column="11" bodyfile="pros/rtos.hpp" bodystart="40" bodyend="678"/>
+    <location file="pros/rtos.hpp" line="40" column="11" bodyfile="pros/rtos.hpp" bodystart="40" bodyend="784"/>
     <listofallmembers>
       <member refid="group__cpp-rtos_1ga1d372f751d498ee7dc15b08700b70547" prot="public" virt="non-virtual"><scope>pros::rtos::Task</scope><name>create</name></member>
       <member refid="group__cpp-rtos_1ga7eedd9988858633a57fd34b6059b07da" prot="public" virt="non-virtual"><scope>pros::rtos::Task</scope><name>create</name></member>

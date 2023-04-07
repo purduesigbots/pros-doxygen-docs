@@ -432,9 +432,9 @@ V5</span></a>
               </tbody>
             </table>
 <p>This is not the best method to have a task execute code at predefined intervals, as the delay time is measured from when the delay is requested. To delay cyclically, use <a href="group__c-rtos.html#ga151eaf730a10d101bff15013a76b9aa8" class="m-doc">task_<wbr />delay_<wbr />until()</a>.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// Do opcontrol things</span>
-<span class="w">  </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Do opcontrol things</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -938,7 +938,7 @@ V5</span></a>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">task_notify_ext</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">NOTIFY_ACTION_INCREMENT</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span>
-
+<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span>
 <span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
@@ -973,7 +973,8 @@ V5</span></a>
               </tfoot>
             </table>
 <p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">ign</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">task_t</span><span class="w"> </span><span class="n">current_task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_get_current</span><span class="p">();</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">task_notify_take</span><span class="p">(</span><span class="n">current_task</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;I was unblocked!&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
@@ -1011,7 +1012,28 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong> <code class="m-code"></code></p>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/notifications.html">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />notifications.html</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">my_task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">task_t</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_get_current</span><span class="p">();</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Waiting for notification...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">       </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Got a notification: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">task_notify_take</span><span class="p">(</span><span class="n">task</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">TIMEOUT_MAX</span><span class="p">));</span>
+
+<span class="w">       </span><span class="n">task_notify_clear</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">task_t</span><span class="w"> </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">task_create</span><span class="p">(</span><span class="n">my_task_fn</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                           </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;My Task&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">controller_get_digital</span><span class="p">(</span><span class="n">CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">task_notify</span><span class="p">(</span><span class="n">task</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga92aa79cdc30ffd13f63a7ffeca64b06f"><div>
             <h3>
@@ -1027,14 +1049,71 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
-<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
-<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
-<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
-<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
-<span class="c1">// do some work</span>
-<span class="c1">// Release the mutex for other tasks</span>
-<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span></pre>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="c1">// Global variables for the robot&#39;s odometry, which the rest of the robot&#39;s</span>
+<span class="c1">// subsystems will utilize</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="c1">// This mutex protects the odometry data. Whenever we read or write to the</span>
+<span class="c1">// odometry data, we should make copies into the local variables, and read</span>
+<span class="c1">// all 3 values at once to avoid errors.</span>
+<span class="n">mutex_t</span><span class="w"> </span><span class="n">odom_mutex</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">odom_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// First we fetch the odom coordinates from the previous iteration of the</span>
+<span class="w">    </span><span class="c1">// odometry task. These are put into local variables so that we can</span>
+<span class="w">    </span><span class="c1">// keep the size of the critical section as small as possible. This lets</span>
+<span class="w">    </span><span class="c1">// other tasks that need to use the odometry data run until we need to</span>
+<span class="w">    </span><span class="c1">// update it again.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">       </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// --- Calculate new pose for the robot here ---</span>
+
+<span class="w">    </span><span class="c1">// Now that we have the new pose, we can update the global variables</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heading_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">chassis_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Here we copy the current odom values into local variables so that</span>
+<span class="w">    </span><span class="c1">// we can use them without worrying about the odometry task changing say,</span>
+<span class="w">    </span><span class="c1">// the y value right after we&#39;ve read the x. This ensures our values are</span>
+<span class="w">    </span><span class="c1">// sound.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// ---- Move the robot using the current locations goes here ----</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">odom_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">odom_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Odometry Task&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">chassis_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chassis Task&quot;</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga49aa5444b488ff60fc458aea8172adc2"><div>
             <h3>
@@ -1064,14 +1143,71 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
-<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
-<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
-<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
-<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="n">timeout</span><span class="p">);</span>
-<span class="c1">// do some work</span>
-<span class="c1">// Release the mutex for other tasks</span>
-<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span></pre>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="c1">// Global variables for the robot&#39;s odometry, which the rest of the robot&#39;s</span>
+<span class="c1">// subsystems will utilize</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="c1">// This mutex protects the odometry data. Whenever we read or write to the</span>
+<span class="c1">// odometry data, we should make copies into the local variables, and read</span>
+<span class="c1">// all 3 values at once to avoid errors.</span>
+<span class="n">mutex_t</span><span class="w"> </span><span class="n">odom_mutex</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">odom_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// First we fetch the odom coordinates from the previous iteration of the</span>
+<span class="w">    </span><span class="c1">// odometry task. These are put into local variables so that we can</span>
+<span class="w">    </span><span class="c1">// keep the size of the critical section as small as possible. This lets</span>
+<span class="w">    </span><span class="c1">// other tasks that need to use the odometry data run until we need to</span>
+<span class="w">    </span><span class="c1">// update it again.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">       </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// --- Calculate new pose for the robot here ---</span>
+
+<span class="w">    </span><span class="c1">// Now that we have the new pose, we can update the global variables</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heading_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">chassis_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Here we copy the current odom values into local variables so that</span>
+<span class="w">    </span><span class="c1">// we can use them without worrying about the odometry task changing say,</span>
+<span class="w">    </span><span class="c1">// the y value right after we&#39;ve read the x. This ensures our values are</span>
+<span class="w">    </span><span class="c1">// sound.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// ---- Move the robot using the current locations goes here ----</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">odom_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">odom_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Odometry Task&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">chassis_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chassis Task&quot;</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga7f20ed94cee8e04d491743b4b34feda1"><div>
             <h3>
@@ -1096,14 +1232,71 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
-<span class="c1">// Acquire the mutex; other tasks using this command will wait until the mutex is released</span>
-<span class="c1">// timeout can specify the maximum time to wait, or MAX_DELAY to wait forever</span>
-<span class="c1">// If the timeout expires, &quot;false&quot; will be returned, otherwise &quot;true&quot;</span>
-<span class="n">mutex_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="n">timeout</span><span class="p">);</span>
-<span class="c1">// do some work</span>
-<span class="c1">// Release the mutex for other tasks</span>
-<span class="n">mutex_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span></pre>
+<p>See <a href="https://pros.cs.purdue.edu/v5/tutorials/topical/multitasking.html#mutexes">https:/<wbr />/<wbr />pros.cs.purdue.edu/<wbr />v5/<wbr />tutorials/<wbr />topical/<wbr />multitasking.html#mutexes</a> for details.</p><p><strong>Example</strong></p><pre class="m-code"><span class="c1">// Global variables for the robot&#39;s odometry, which the rest of the robot&#39;s</span>
+<span class="c1">// subsystems will utilize</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+
+<span class="c1">// This mutex protects the odometry data. Whenever we read or write to the</span>
+<span class="c1">// odometry data, we should make copies into the local variables, and read</span>
+<span class="c1">// all 3 values at once to avoid errors.</span>
+<span class="n">mutex_t</span><span class="w"> </span><span class="n">odom_mutex</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">odom_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// First we fetch the odom coordinates from the previous iteration of the</span>
+<span class="w">    </span><span class="c1">// odometry task. These are put into local variables so that we can</span>
+<span class="w">    </span><span class="c1">// keep the size of the critical section as small as possible. This lets</span>
+<span class="w">    </span><span class="c1">// other tasks that need to use the odometry data run until we need to</span>
+<span class="w">    </span><span class="c1">// update it again.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_old</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">       </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">heading_new</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// --- Calculate new pose for the robot here ---</span>
+
+<span class="w">    </span><span class="c1">// Now that we have the new pose, we can update the global variables</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="n">odom_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">odom_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">heading_new</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">chassis_task</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Here we copy the current odom values into local variables so that</span>
+<span class="w">    </span><span class="c1">// we can use them without worrying about the odometry task changing say,</span>
+<span class="w">    </span><span class="c1">// the y value right after we&#39;ve read the x. This ensures our values are</span>
+<span class="w">    </span><span class="c1">// sound.</span>
+<span class="w">    </span><span class="n">mutex_take</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_DELAY</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_x</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_y</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">current_heading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odom_heading</span><span class="p">;</span>
+<span class="w">    </span><span class="n">mutex_give</span><span class="p">(</span><span class="n">odom_mutex</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c1">// ---- Move the robot using the current locations goes here ----</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">odom_mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_create</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">odom_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Odometry Task&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">chassis_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chassis Task&quot;</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf5995c8132175bc8e76904ccd1f6e39a"><div>
             <h3>
