@@ -30,13 +30,16 @@ This document covers the main PROS API.
 - \subpage cpp-misc                 "C++ API for Miscellaneous Features"
 - \subpage cpp-motors               "C++ API for Motors"
 - \subpage cpp-motor-group          "C++ API for Motor Groups"
-- \subpage cpp-abstract-motor       "C++ API for Abstract Motors"
-- \subpage cpp-optical              "C++ API for Pptical Sensors"
+- \subpage cpp-optical              "C++ API for Optical Sensors"
 - \subpage cpp-rotation             "C++ API for Rotation Sensors"
 - \subpage cpp-rtos                 "C++ Real Time Operating System API"
 - \subpage cpp-screen               "C++ API for the V5 Screen"
 - \subpage cpp-serial               "C++ API for Generic Serial Devices"
 - \subpage cpp-vision               "C++ API for Vision Sensors"
+
+## C++ Abstract Classes (For Template/Library Writers)
+
+- \subpage cpp-abstract-motor       "C++ API for Abstract Motors"
 
 ## LVGL
 
