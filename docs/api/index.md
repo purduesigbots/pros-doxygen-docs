@@ -71,10 +71,15 @@ The C API is designed for more advanced users who would rather program functiona
 - \subpage c-serial     "C API for Generic Serial Devices"
 
 
-## LVGL
+# LVGL
 
-PROS also includes LVGL, a graphics library that enables users to create advanced
+PROS also includes LVGL installed as a default template, a graphics library that enables users to create advanced
 user interfaces on the V5's screen. For LVGL's features, please refer to LVGL's documentation:
  - [Official LVGL 8.3.x Documentation](https://docs.lvgl.io/master/index.html)
  - [Archive of the LVGL 5.3.x Documentation](https://gcec-2918.github.io/LVGL_v5-3_Documentation_Archive/)
 
+# Okapi
+
+Bundled with PROS as a default templateis also Okapi, a powerful motion control library for advanced users. 
+For Okapi's API, please check Okapi's documentation:
+ - [Official Okapi Documentation](https://okapilib.github.io/OkapiLib/index.html)
