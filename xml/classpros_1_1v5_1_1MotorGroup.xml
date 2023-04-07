@@ -80,7 +80,7 @@
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>MotorGroup<sp/>({1,3});</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mg.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -242,9 +242,9 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_velocity(100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_velocity(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_velocity(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -279,9 +279,9 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_voltage(12000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_voltage(12000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_voltage(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_voltage(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -309,7 +309,7 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/>void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>Motor<sp/>motor(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_voltage(12000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_voltage(12000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>motor.brake();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -386,7 +386,7 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>get<sp/>the<sp/>target<sp/>position<sp/>from<sp/>motor<sp/>at<sp/>index<sp/>1.<sp/>(port<sp/>3)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Target:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_target_position(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>100</highlight></codeline>
@@ -415,7 +415,7 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Motor<sp/>Target:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_target_position_all()[0];</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>100</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -2730,10 +2730,61 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets the voltage limit for the motor in Volts. </para>
+<para>Sets the voltage limit for a motor in the motor group in millivolts. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new voltage limit in Volts</para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.set_voltage_limit(10000,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mg<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>motor<sp/>on<sp/>at<sp/>index<sp/>1<sp/>(port<sp/>3)<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/motor_group.hpp" line="2108" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-motor-group_1ga929a8dd819a0a9c0c8dd56c1bd13d459" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_voltage_limit_all</definition>
+        <argsstring>(const std::int32_t limit) const</argsstring>
+        <name>set_voltage_limit_all</name>
+        <reimplements refid="group__cpp-motor-configuration_1ga0b31dce13a5183f5837eaa42f54a934d">set_voltage_limit_all</reimplements>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voltage limit for every motor in the motor group in millivolts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>limit</parametername>
@@ -2749,7 +2800,7 @@ This function uses the following values of errno when an error state is reached:
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_voltage_limit(10000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.set_voltage_limit_all(10000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mg<sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>motor<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight></codeline>
@@ -2760,44 +2811,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2103" column="14"/>
-      </memberdef>
-      <memberdef kind="function" id="group__cpp-motor-group_1ga929a8dd819a0a9c0c8dd56c1bd13d459" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>std::int32_t set_voltage_limit_all</definition>
-        <argsstring>(const std::int32_t limit) const</argsstring>
-        <name>set_voltage_limit_all</name>
-        <reimplements refid="group__cpp-motor-configuration_1ga0b31dce13a5183f5837eaa42f54a934d">set_voltage_limit_all</reimplements>
-        <param>
-          <type>const std::int32_t</type>
-          <declname>limit</declname>
-        </param>
-        <briefdescription>
-<para>Gets the brake mode that was set for a motor in the motor group. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>index</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>One of Motor_Brake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Brake<sp/>Mode:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_brake_mode();</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2104" column="14"/>
+        <location file="pros/motor_group.hpp" line="2139" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1ga61f0f94aa4680c4d17708d0dcfbbf06a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -2815,11 +2829,60 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets the position for the motor in its encoder units. </para>
+<para>Sets the position for a motor in the motor group in its encoder units. </para>
         </briefdescription>
         <detaileddescription>
 <para>This will be the future reference point for the motor&apos;s &quot;absolute&quot; position.</para>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new reference position in its encoder units </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.set_zero_position(80);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.set_zero_position(80,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/motor_group.hpp" line="2174" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-motor-group_1gae58fdf485731e60b4a0624ceea40c8fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_zero_position_all</definition>
+        <argsstring>(const double position) const</argsstring>
+        <name>set_zero_position_all</name>
+        <reimplements refid="group__cpp-motor-configuration_1ga0ad12cb55da3c56f7fdd9999cc02c7d3">set_zero_position_all</reimplements>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <briefdescription>
+<para>Sets the position for every motor in the motor group in its encoder units. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will be the future reference point for the motor&apos;s &quot;absolute&quot; position.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>position</parametername>
@@ -2833,54 +2896,17 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_zero_position(80);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.set_zero_position_all(80);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2135" column="14"/>
-      </memberdef>
-      <memberdef kind="function" id="group__cpp-motor-group_1gae58fdf485731e60b4a0624ceea40c8fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>std::int32_t set_zero_position_all</definition>
-        <argsstring>(const double position) const</argsstring>
-        <name>set_zero_position_all</name>
-        <reimplements refid="group__cpp-motor-configuration_1ga0ad12cb55da3c56f7fdd9999cc02c7d3">set_zero_position_all</reimplements>
-        <param>
-          <type>const double</type>
-          <declname>position</declname>
-        </param>
-        <briefdescription>
-<para>Gets the brake mode that was set for a motor in the motor group. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>index</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>One of Motor_Brake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Brake<sp/>Mode:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_brake_mode();</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2136" column="14"/>
+        <location file="pros/motor_group.hpp" line="2205" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1ga34dd566945ba585c9ddc7ea4eec5cf45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int32_t</type>
@@ -2894,37 +2920,7 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets the &quot;absolute&quot; zero position of the motor to its current position. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.tare_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2160" column="14"/>
-      </memberdef>
-      <memberdef kind="function" id="group__cpp-motor-group_1gab0fa2fe74ab0c7da760c252e7c7f7a71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::int32_t</type>
-        <definition>std::int32_t tare_position_all</definition>
-        <argsstring>(void) const</argsstring>
-        <name>tare_position_all</name>
-        <reimplements refid="group__cpp-motor-configuration_1ga8add269f5b6158f6d84d97a3dacbffca">tare_position_all</reimplements>
-        <param>
-          <type>void</type>
-        </param>
-        <briefdescription>
-<para>Gets the brake mode that was set for a motor in the motor group. </para>
+<para>Sets the &quot;absolute&quot; zero position of a motor in the motor group to its current position. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
@@ -2937,18 +2933,52 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>One of Motor_Brake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Brake<sp/>Mode:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_brake_mode();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.tare_position();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.tare_position(1);<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2161" column="14"/>
+        <location file="pros/motor_group.hpp" line="2236" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-motor-group_1gab0fa2fe74ab0c7da760c252e7c7f7a71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t tare_position_all</definition>
+        <argsstring>(void) const</argsstring>
+        <name>tare_position_all</name>
+        <reimplements refid="group__cpp-motor-configuration_1ga8add269f5b6158f6d84d97a3dacbffca">tare_position_all</reimplements>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Sets the &quot;absolute&quot; zero position of every motor in the motor group to its current position. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.tare_position_all();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>mg.move_absolute(100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/motor_group.hpp" line="2259" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int8_t</type>
@@ -2960,16 +2990,16 @@ This function uses the following values of errno when an error state is reached:
           <type>void</type>
         </param>
         <briefdescription>
-<para>Returns the number of objects. </para>
+<para>Returns the number of motors in the motor group. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>std::int8_t </para>
+<para><simplesect kind="return"><para>the number of motors in the motor group </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2168" column="13"/>
+        <location file="pros/motor_group.hpp" line="2266" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1ga58fa63da3d1dcbc00dd616bbff0ac16e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::int8_t</type>
@@ -2983,31 +3013,19 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Gets the brake mode that was set for a motor in the motor group. </para>
+<para>Gets the port of a motor in the motor group. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <ref refid="group__cpp-motor-group_1gaea6e734c75989d4f96734d5c70d39d5b" kindref="member">MotorGroup::size()</ref></para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>index</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>One of Motor_Brake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
+<para><verbatim> * \param index Optional parameter, 0 by default.
+            The zero indexed index of the motor in the motor group
+</verbatim></para>
+<para><simplesect kind="return"><para>The port of the motor at the specified index. The return value is negative if the corresponding motor is reversed </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::MotorGroup<sp/>mg({1,3});</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>mg.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Brake<sp/>Mode:<sp/>&quot;<sp/>&lt;&lt;<sp/>mg.get_brake_mode();</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2169" column="13"/>
+        <location file="pros/motor_group.hpp" line="2277" column="13"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1gab244261fee2f43ccf660e81159478e5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3018,13 +3036,14 @@ This function uses the following values of errno when an error state is reached:
           <type><ref refid="classpros_1_1v5_1_1MotorGroup" kindref="compound">MotorGroup</ref> &amp;</type>
         </param>
         <briefdescription>
-<para>Appends the other motor group reference to this motor group. </para>
+<para>Appends all the motors in the other motor group reference to this motor group. </para>
         </briefdescription>
         <detaileddescription>
+<para>Maintains the order of the other motor group </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2175" column="6"/>
+        <location file="pros/motor_group.hpp" line="2285" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1ga824610f7b75010e540f69c8ebc4db3c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3035,13 +3054,14 @@ This function uses the following values of errno when an error state is reached:
           <type><ref refid="classpros_1_1v5_1_1MotorGroup" kindref="compound">MotorGroup</ref> &amp;</type>
         </param>
         <briefdescription>
-<para>Appends the other motor group reference to this motor group. </para>
+<para>Appends all the motors in the other motor group reference to this motor group. </para>
         </briefdescription>
         <detaileddescription>
+<para>Maintains the order of the other motor group </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2181" column="6"/>
+        <location file="pros/motor_group.hpp" line="2293" column="6"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-motor-group_1ga62f3c8a7e1902ae2cb2f4121fe5800eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -3053,7 +3073,7 @@ This function uses the following values of errno when an error state is reached:
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Removes the port (regardless of regeral) </para>
+<para>Removes the all motors on the port (regardless of reversal) from the motor group. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -3061,7 +3081,7 @@ This function uses the following values of errno when an error state is reached:
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para></para>
+<para>The port to remove from the motor group </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
@@ -3069,7 +3089,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2188" column="6"/>
+        <location file="pros/motor_group.hpp" line="2301" column="6"/>
       </memberdef>
       <memberdef kind="friend" id="group__cpp-motor-group_1ga54691276bd59f42e4f69676ed40e0a0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
@@ -3092,7 +3112,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2200" column="8"/>
+        <location file="pros/motor_group.hpp" line="2313" column="8"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-attrib">
@@ -3102,12 +3122,13 @@ This function uses the following values of errno when an error state is reached:
         <argsstring></argsstring>
         <name>_ports</name>
         <briefdescription>
+<para>The ordered vector of ports used by the motor group. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2203" column="13" bodyfile="pros/motor_group.hpp" bodystart="2203" bodyend="-1"/>
+        <location file="pros/motor_group.hpp" line="2319" column="13" bodyfile="pros/motor_group.hpp" bodystart="2319" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-motor-group_1ga07ee9da7c8a60505543b6416ad4896dc" prot="private" static="no" mutable="yes">
         <type><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">pros::Mutex</ref></type>
@@ -3120,7 +3141,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motor_group.hpp" line="2204" column="21" bodyfile="pros/motor_group.hpp" bodystart="2204" bodyend="-1"/>
+        <location file="pros/motor_group.hpp" line="2320" column="21" bodyfile="pros/motor_group.hpp" bodystart="2320" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -3277,7 +3298,7 @@ This function uses the following values of errno when an error state is reached:
         <link refid="classpros_1_1v5_1_1AbstractMotor"/>
       </node>
     </collaborationgraph>
-    <location file="pros/motor_group.hpp" line="38" column="46" bodyfile="pros/motor_group.hpp" bodystart="38" bodyend="2205"/>
+    <location file="pros/motor_group.hpp" line="38" column="46" bodyfile="pros/motor_group.hpp" bodystart="38" bodyend="2321"/>
     <listofallmembers>
       <member refid="group__cpp-motor-group_1ga07ee9da7c8a60505543b6416ad4896dc" prot="private" virt="non-virtual"><scope>pros::v5::MotorGroup</scope><name>_MotorGroup_mutex</name></member>
       <member refid="group__cpp-motor-group_1gade3d5afddf0961ac868c51e39335ec29" prot="private" virt="non-virtual"><scope>pros::v5::MotorGroup</scope><name>_ports</name></member>
