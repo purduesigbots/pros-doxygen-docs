@@ -202,26 +202,9 @@ V5</span></a>
             </dt>
             <dd>Fill a circular region of the screen using the current pen color.</dd>
             <dt>
-              <div class="m-doc-template">template&lt;typename... Params&gt;</div>
-              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga934a573ccd12290a30af83fbd7ba1140" class="m-doc-self">print</a>(</span><span class="m-doc-wrap"><a href="group__c-screen.html#ga1793008155ca135d61e68f63e1a77e0f" class="m-doc">pros::<wbr />text_format_e_t</a> txt_fmt,
-              const std::int16_t line,
-              const char* text,
-              Params... args)</span></span>
-            </dt>
-            <dd>Screen Text Display Functions<br /></dd>
-            <dt>
-              <div class="m-doc-template">template&lt;typename... Params&gt;</div>
-              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gabca8d131b3c02dc5806c15e3f3f32bc7" class="m-doc-self">print</a>(</span><span class="m-doc-wrap"><a href="group__c-screen.html#ga1793008155ca135d61e68f63e1a77e0f" class="m-doc">pros::<wbr />text_format_e_t</a> txt_fmt,
-              const std::int16_t x,
-              const std::int16_t y,
-              const char* text,
-              Params... args)</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt>
               <span class="m-doc-wrap-bumper"><a href="structscreen__touch__status__s__t.html" class="m-doc">screen_<wbr />touch_<wbr />status_<wbr />s_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4e473df306276304a64218f5cb1afad1" class="m-doc-self">touch_status</a>(</span><span class="m-doc-wrap">)</span></span>
             </dt>
-            <dd>Screen Touch Functions<br /></dd>
+            <dd>Screen Text Display Functions<br /></dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::uint32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8493a48e858cba5e4aa28f6889a79f54" class="m-doc-self">touch_callback</a>(</span><span class="m-doc-wrap">touch_event_cb_fn_t cb,
               last_touch_e_t event_type)</span></span>
@@ -255,7 +238,15 @@ V5</span></a>
               </tfoot>
             </table>
 <p>These functions allow programmers to display shapes on the <a href="namespacepros_1_1v5.html" class="m-doc">v5</a> screen<br />Set the pen color for subsequent graphics operations</p><p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="w">  </span><span class="c1">// This should print in red.</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4ed69aedba2817fe21fe710ff190fc8c"><div>
@@ -283,7 +274,15 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">//set pen color to red</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="mh">0x00FF0000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="mh">0x00FF0000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="w">  </span><span class="c1">// This should print in red.</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf675ab41bd5a23c76ebc0ea060311d88"><div>
@@ -312,6 +311,14 @@ V5</span></a>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">//set eraser color to red</span>
 <span class="w">  </span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w"> </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="w">  </span><span class="c1">// This should print in red.</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="o">++</span><span class="p">);</span>
+<span class="w"> </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gac818c20d7c748be206c5825a4fbcb34e"><div>
@@ -339,7 +346,14 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">//set eraser color to red</span>
-<span class="w">  </span><span class="n">set_eraser</span><span class="p">(</span><span class="mh">0x00FF0000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_eraser</span><span class="p">(</span><span class="mh">0x00FF0000</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="w">  </span><span class="c1">// This should turn the screen red.</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga16f5bad9cbd8aaf1de2f747bf4c88139"><div>
@@ -357,13 +371,13 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
 <span class="w">    </span><span class="c1">// Should print number equivalent to red defined in colors.hpp.</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">get_pen</span><span class="p">());</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">get_pen</span><span class="p">());</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -382,13 +396,13 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
 <span class="w">    </span><span class="c1">// Should print number equivalent to red defined in colors.h.</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">get_eraser</span><span class="p">());</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">get_eraser</span><span class="p">());</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -407,13 +421,13 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><ul><li><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
 <span class="w">    </span><span class="c1">// This should turn the screen red.</span>
-<span class="w">    </span><span class="n">erase</span><span class="p">();</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre></li></ul>
           </div></section>
@@ -446,9 +460,9 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Scroll 3 lines</span>
-<span class="w">  </span><span class="n">scroll</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">scroll</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga54598658b4962091f0dd30474d3c579f"><div>
@@ -495,9 +509,9 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function behaves in the same way as <code>screen_scroll</code>, except that you specify a rectangular region within which to scroll lines instead of a start line.</p><p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Scrolls area of screen upwards slightly. including line of text</span>
-<span class="w">  </span><span class="n">scroll_area</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">scroll_area</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gac8b195fde29a483de7fe34156067a92c"><div>
@@ -550,9 +564,9 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">uint32_t</span><span class="o">*</span><span class="w"> </span><span class="n">buf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">uint32_t</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
-<span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Line Here&quot;</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Copies area of the screen including text</span>
-<span class="w">  </span><span class="n">copy_area</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">copy_area</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint32_t</span><span class="o">*</span><span class="p">)</span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Equation for stride is x2 - x1 + 1</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -587,9 +601,9 @@ V5</span></a>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">){</span>
-<span class="w">    </span><span class="n">draw_pixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">draw_pixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// Draws a line at x = 100 gradually down the screen, pixel by pixel</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -623,13 +637,13 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Color the Screen in Red</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="p">){</span>
-<span class="w">    </span><span class="n">erase_pixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase_pixel</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">i</span><span class="o">++</span><span class="p">);</span>
 <span class="w">    </span><span class="c1">// Erases a line at x = 100 gradually down the screen, pixel by pixel</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -672,9 +686,9 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">     </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Draw line down the screen at x = 100</span>
-<span class="w">  </span><span class="n">draw_line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">draw_line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga22c2c2ac7ffe36b2946052170c526e7d"><div>
@@ -717,10 +731,10 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Color the Screen in Red</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">400</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Erase line down the screen at x = 100</span>
-<span class="w">  </span><span class="n">erase_line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase_line</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga02af0ec1e3430efbb5b66c4cfe92b735"><div>
@@ -762,8 +776,8 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">draw_rect</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">480</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">draw_rect</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">480</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga22199222d41fd80c81799fafe3fbec4e"><div>
@@ -806,8 +820,8 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Draw Box Around Half the Screen in Red</span>
-<span class="w">  </span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">erase_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_eraser</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga596ee2c64e8d5cb8abcdab741490b884"><div>
@@ -850,8 +864,8 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Fill Around Half the Screen in Red</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga53c5922a466814315bf0c0150838b799"><div>
@@ -889,8 +903,8 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// Draw a circle with radius of 100 in red</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">draw_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">draw_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga3ab31a7257cb0d6d0fb776703b17ede3"><div>
@@ -927,11 +941,11 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">  </span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Erase a circle with radius of 100 in blue</span>
-<span class="w">  </span><span class="n">set_pen</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
-<span class="w">  </span><span class="n">erase_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">erase_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga7037d11afb655cb5e2d7547d94c5f91a"><div>
@@ -968,93 +982,65 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
-<span class="w">   </span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">red</span><span class="p">);</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">240</span><span class="p">,</span><span class="mi">200</span><span class="p">);</span>
 <span class="w">   </span><span class="c1">// Fill a circlular area with radius of 100 in blue</span>
-<span class="w">   </span><span class="n">set_pen</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
-<span class="w">   </span><span class="n">fill_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">set_pen</span><span class="p">(</span><span class="n">blue</span><span class="p">);</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">fill_circle</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
 <span class="w"> </span><span class="p">}</span></pre>
-          </div></section>
-          <section class="m-doc-details" id="ga934a573ccd12290a30af83fbd7ba1140"><div>
-            <h3>
-              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="screen_8hpp.html">&lt;pros/screen.hpp&gt;</a></div>
-              <div class="m-doc-template">
-                template&lt;typename... Params&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga934a573ccd12290a30af83fbd7ba1140" class="m-doc-self">print</a>(</span><span class="m-doc-wrap"><a href="group__c-screen.html#ga1793008155ca135d61e68f63e1a77e0f" class="m-doc">pros::<wbr />text_format_e_t</a> txt_fmt,
-              const std::int16_t line,
-              const char* text,
-              Params... args)</span></span>
-            </h3>
-            <p>Screen Text Display Functions<br /></p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">txt_fmt</td>
-                  <td>Text format enum that determines if the text is medium, large, medium_center, or large_center. (DOES NOT SUPPORT SMALL)</td>
-                </tr>
-                <tr>
-                  <td>line</td>
-                  <td>The line number on which to print</td>
-                </tr>
-                <tr>
-                  <td>text</td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>args</td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-<p>These functions allow programmers to display text on the <a href="namespacepros_1_1v5.html" class="m-doc">v5</a> screen<br />Print a formatted string to the screen, overwrite available for printing at location too.</p><p>Will default to a medium sized font by default if invalid txt_fmt is given.</p>
-          </div></section>
-          <section class="m-doc-details" id="gabca8d131b3c02dc5806c15e3f3f32bc7"><div>
-            <h3>
-              <div class="m-doc-include m-code m-inverted m-right-m m-text-right"><span class="cp">#include</span> <a class="cpf" href="screen_8hpp.html">&lt;pros/screen.hpp&gt;</a></div>
-              <div class="m-doc-template">
-                template&lt;typename... Params&gt;
-              </div>
-              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gabca8d131b3c02dc5806c15e3f3f32bc7" class="m-doc-self">print</a>(</span><span class="m-doc-wrap"><a href="group__c-screen.html#ga1793008155ca135d61e68f63e1a77e0f" class="m-doc">pros::<wbr />text_format_e_t</a> txt_fmt,
-              const std::int16_t x,
-              const std::int16_t y,
-              const char* text,
-              Params... args)</span></span>
-            </h3>
-            <p><span></span></p>
           </div></section>
           <section class="m-doc-details" id="ga4e473df306276304a64218f5cb1afad1"><div>
             <h3>
               <span class="m-doc-wrap-bumper"><a href="structscreen__touch__status__s__t.html" class="m-doc">screen_<wbr />touch_<wbr />status_<wbr />s_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4e473df306276304a64218f5cb1afad1" class="m-doc-self">touch_status</a>(</span><span class="m-doc-wrap">)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="screen_8hpp.html">&lt;pros/screen.hpp&gt;</a></div>
             </h3>
-            <p>Screen Touch Functions<br /></p>
+            <p>Screen Text Display Functions<br /></p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
                   <th style="width: 1%">Returns</th>
-                  <td>The last_touch_e_t enum specifier that indicates the last touch status of the screen (E_TOUCH_EVENT_RELEASE, E_TOUCH_EVENT_PRESS, or E_TOUCH_EVENT_PRESS_AND_HOLD). This will be released by default if no action was taken. If an error occured, the <a href="structscreen__touch__status__s__t.html" class="m-doc">screen_<wbr />touch_<wbr />status_<wbr />s_<wbr />t</a> will have its last_touch_e_t enum specifier set to E_TOUCH_ERR, and other values set to -1.</td>
+                  <td>The last_touch_e_t enum specifier that indicates the last touch status of the screen (E_TOUCH_EVENT_RELEASE, E_TOUCH_EVENT_PRESS, or E_TOUCH_EVENT_PRESS_AND_HOLD).</td>
                 </tr>
               </tfoot>
             </table>
-<p>These functions allow programmers to access<br />information about screen touches<br />Gets the touch status of the last touch of the screen.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="n">screen_touch_status_s_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
-<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
-<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">touch_status</span><span class="p">();</span>
+<p>These functions allow programmers to display text on the <a href="namespacepros_1_1v5.html" class="m-doc">v5</a> screen<br /></p><pre>Print a formatted string to the screen, overwrite available for printing at location too.
 
-<span class="w">    </span><span class="c1">// Will print various information about the last touch</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Touch Status (Type): %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">touch_status</span><span class="p">);</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Last X: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Last Y: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Press Count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">press_count</span><span class="p">);</span>
-<span class="w">    </span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Release Count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">release_count</span><span class="p">);</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+Will default to a medium sized font by default if invalid txt_fmt is given.
+
+\param txt_fmt Text format enum that determines if the text is medium, large, medium_center, or large_center. (DOES NOT SUPPORT SMALL)
+\param line The line number on which to print
+\param x The (x,y) coordinates of the top left corner of the string
+\param y The (x,y) coordinates of the top left corner of the string
+\param fmt  Format string
+\param ...  Optional list of arguments for the format string
+
+\b Example
+\code
+void opcontrol() {
+   int i = 0;
+   pros::screen::set_pen(blue);
+   while(1){
+      // Will print seconds started since program started on line 3
+      pros::screen::print(pros::TEXT_MEDIUM, 3, &quot;Seconds Passed: %3d&quot;, i++);
+      pros::delay(1000);
+   }
+}
+</pre><p>/ template &lt;typename... Params&gt; void print(pros::text_format_e_t txt_fmt, const std::int16_t line, const char* text, Params... args){ pros::c::screen_print(txt_fmt, line, text, convert_args(args)...); }</p><p>template &lt;typename... Params&gt; void print(pros::text_format_e_t txt_fmt, const std::int16_t x, const std::int16_t y, const char* text, Params... args){ pros::c::screen_print_at(txt_fmt, x, y, text, convert_args(args)...); }</p><p>/******************************************************************************/ /** Screen Touch Functions **/ /** **/ /** These functions allow programmers to access **/ /** information about screen touches **/ /******************************************************************************/</p><p>/**</p><ul><li>Gets the touch status of the last touch of the screen.</li><li></li><li></li><li>This will be released by default if no action was taken.</li><li>If an error occured, the <a href="structscreen__touch__status__s__t.html" class="m-doc">screen_<wbr />touch_<wbr />status_<wbr />s_<wbr />t</a> will have its</li><li>last_touch_e_t enum specifier set to E_TOUCH_ERR, and other values set to -1.</li><li></li><li><strong>Example</strong></li><li><pre class="m-code"><span class="o">*</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="o">*</span><span class="w">   </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="o">*</span><span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">screen_touch_status_s_t</span><span class="w"> </span><span class="n">status</span><span class="p">;</span>
+<span class="o">*</span><span class="w">   </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">){</span>
+<span class="o">*</span><span class="w">     </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">touch_status</span><span class="p">();</span>
+<span class="o">*</span>
+<span class="o">*</span><span class="w">     </span><span class="c1">// Will print various information about the last touch</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Touch Status (Type): %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">touch_status</span><span class="p">);</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Last X: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Last Y: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Press Count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">press_count</span><span class="p">);</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">print</span><span class="p">(</span><span class="n">TEXT_MEDIUM</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Release Count: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">.</span><span class="n">release_count</span><span class="p">);</span>
+<span class="o">*</span><span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="o">*</span><span class="w">   </span><span class="p">}</span>
+<span class="o">*</span><span class="w"> </span><span class="p">}</span>
+<span class="o">*</span><span class="w"> </span></pre></li></ul>
           </div></section>
           <section class="m-doc-details" id="ga8493a48e858cba5e4aa28f6889a79f54"><div>
             <h3>
@@ -1085,14 +1071,16 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: EACCESS - Another resource is currently trying to access the screen mutex.</p><p><strong>Example</strong></p><pre class="m-code"><span class="n">touch_event_cb_fn_t</span><span class="w"> </span><span class="nf">changePixel</span><span class="p">(){</span>
-<span class="w">  </span><span class="n">screen_touch_status_s_t</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">touch_status</span><span class="p">();</span>
-<span class="w">  </span><span class="n">draw_pixel</span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">status</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen_touch_status_s_t</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">touch_status</span><span class="p">();</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">draw_pixel</span><span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">status</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">touch_callback</span><span class="p">(</span><span class="n">changePixel</span><span class="p">(),</span><span class="w"> </span><span class="n">TOUCH_PRESSED</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">screen</span><span class="o">::</span><span class="n">touch_callback</span><span class="p">(</span><span class="n">changePixel</span><span class="p">(),</span><span class="w"> </span><span class="n">TOUCH_PRESSED</span><span class="p">);</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
         </section>
