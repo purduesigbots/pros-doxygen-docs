@@ -45,19 +45,6 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="1714" column="13" bodyfile="pros/adi.hpp" bodystart="1714" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="group__cpp-adi_1gaefa451efd5a405dc96dd4f0a4293dcc4" prot="private" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool active_low</definition>
-        <argsstring></argsstring>
-        <name>active_low</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/adi.hpp" line="1882" column="6" bodyfile="pros/adi.hpp" bodystart="1882" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="group__cpp-adi_1gab30ba07e2a0bd07a15e45a92c32db9c5" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool state</definition>
@@ -69,7 +56,20 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1883" column="6" bodyfile="pros/adi.hpp" bodystart="1883" bodyend="-1"/>
+        <location file="pros/adi.hpp" line="1956" column="6" bodyfile="pros/adi.hpp" bodystart="1956" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__cpp-adi_1ga3639241ee3cf152713c606ca81cbec37" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool extended_is_low</definition>
+        <argsstring></argsstring>
+        <name>extended_is_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1957" column="6" bodyfile="pros/adi.hpp" bodystart="1957" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -1850,10 +1850,10 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/adi.hpp" line="1711" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-adi_1ga31b72ad99ad86fa4031994615dedf776" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga651f3eab5039a6e4b90e12e05890849f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>Pneumatics</definition>
-        <argsstring>(std::uint8_t adi_port, bool start_extended, bool active_low=false)</argsstring>
+        <argsstring>(std::uint8_t adi_port, bool start_extended, bool extended_is_low=false)</argsstring>
         <name>Pneumatics</name>
         <param>
           <type>std::uint8_t</type>
@@ -1865,7 +1865,7 @@ This function uses the following values of errno when an error state is reached:
         </param>
         <param>
           <type>bool</type>
-          <declname>active_low</declname>
+          <declname>extended_is_low</declname>
           <defval>false</defval>
         </param>
         <briefdescription>
@@ -1886,38 +1886,51 @@ This function uses the following values of errno when an error state is reached:
 <parametername>start_extended</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, the pneumatic will start the match extended </para>
+<para>If true, the pneumatic will start extended when the program starts. By default, the piston starts retracted when the program starts. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>active_low</parametername>
+<parametername>extended_is_low</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If set to true, a value of false corresponds to the pneumatic&apos;s wire being set to high.</para>
+<para>A flag to set whether the the pneumatic is extended when the ADI it receives a high or a low value. When true, the extended state corresponds to a output low on the ADI port. This allows the user to reverse the behavior of the pneumatics if needed.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_PNEUMATICS_PORT<sp/>&apos;a&apos;</highlight></codeline>
+/b Example: <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::adi::Pneumatics<sp/>left_piston(&apos;a&apos;,<sp/>false);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>high</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>right_piston(&apos;b&apos;,<sp/>false,<sp/>true);<sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>low<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>pneumatics<sp/>(ADI_PNEUMATICS_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>pneumatic<sp/>solenoid<sp/>to<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pneumatics.set_value(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1756" column="10"/>
+        <location file="pros/adi.hpp" line="1774" column="10"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-adi_1gaf151de9b4a5d40407619e780a2fca5bf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1ga3a3f1f3cfa03c7f38514e6c51e5c657f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>Pneumatics</definition>
-        <argsstring>(ext_adi_port_pair_t port_pair, bool start_extended, bool active_low=false)</argsstring>
+        <argsstring>(ext_adi_port_pair_t port_pair, bool start_extended, bool extended_is_low=false)</argsstring>
         <name>Pneumatics</name>
         <param>
           <type>ext_adi_port_pair_t</type>
@@ -1929,11 +1942,11 @@ This function uses the following values of errno when an error state is reached:
         </param>
         <param>
           <type>bool</type>
-          <declname>active_low</declname>
+          <declname>extended_is_low</declname>
           <defval>false</defval>
         </param>
         <briefdescription>
-<para>Creates a <ref refid="classpros_1_1adi_1_1Pneumatics" kindref="compound">Pneumatics</ref> object for the given port. </para>
+<para>Creates a <ref refid="classpros_1_1adi_1_1Pneumatics" kindref="compound">Pneumatics</ref> object for the given port pair. </para>
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</para>
@@ -1950,26 +1963,39 @@ This function uses the following values of errno when an error state is reached:
 <parametername>start_extended</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If true, the pneumatic will start the match extended </para>
+<para>If true, the pneumatic will start extended when the program starts. By default, the piston starts retracted when the program starts. </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername>active_low</parametername>
+<parametername>extended_is_low</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>If set to true, a value of false corresponds to the pneumatic&apos;s wire being set to high.</para>
+<para>A flag to set whether the the pneumatic is extended when the ADI it receives a high or a low value. When true, the extended state corresponds to a output low on the ADI port. This allows the user to reverse the behavior of the pneumatics if needed.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_PNEUMATICS_PORT<sp/>&apos;a&apos;</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+/b Example: <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::adi::Pneumatics<sp/>left_piston({1,<sp/>&apos;a&apos;},<sp/>false);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>high</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>right_piston({1,<sp/>&apos;b&apos;},<sp/>false,<sp/>true);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>low<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>pneumatics<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>ADI_PNEUMATICS_PORT<sp/>}});</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>pneumatic<sp/>solenoid<sp/>to<sp/>true</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pneumatics.set_value(true);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_L2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R1))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_R2))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1977,7 +2003,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1789" column="10"/>
+        <location file="pros/adi.hpp" line="1826" column="10"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-adi_1ga978e7aa4645a66a7d4f9f33302a641e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -1985,12 +2011,35 @@ This function uses the following values of errno when an error state is reached:
         <argsstring>()</argsstring>
         <name>extend</name>
         <briefdescription>
+<para>Extends the piston, if not already extended. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>1 if the piston newly extended, 0 if the piston was already extended, or PROS_ERR is the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::adi::Pneumatics<sp/>piston({1,<sp/>&apos;a&apos;},<sp/>false);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>high</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(mastetr.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.toggle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1811" column="14"/>
+        <location file="pros/adi.hpp" line="1860" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-adi_1ga576c02db9db2b629570917b0835ebb9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -1998,12 +2047,35 @@ This function uses the following values of errno when an error state is reached:
         <argsstring>()</argsstring>
         <name>retract</name>
         <briefdescription>
+<para>Retracts the piston, if not already retracted. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>1 if the piston newly retracted, 0 if the piston was already retracted, or PROS_ERR is the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::adi::Pneumatics<sp/>piston({1,<sp/>&apos;a&apos;},<sp/>false);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>high</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(mastetr.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.toggle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1833" column="14"/>
+        <location file="pros/adi.hpp" line="1891" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-adi_1gadd7b300c1e148a1cb09a5686442eb157" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -2011,25 +2083,71 @@ This function uses the following values of errno when an error state is reached:
         <argsstring>()</argsstring>
         <name>toggle</name>
         <briefdescription>
+<para>Puts the piston into the opposite state of its current state. </para>
         </briefdescription>
         <detaileddescription>
+<para>If it is retracted, it will extend. If it is extended, it will retract.</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<simplesect kind="return"><para>1 if the piston successfully toggled, or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::adi::Pneumatics<sp/>piston({1,<sp/>&apos;a&apos;},<sp/>false);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Starts<sp/>retracted,<sp/>extends<sp/>when<sp/>the<sp/>ADI<sp/>port<sp/>is<sp/>high</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_X))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.extend();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(master.get_digital(pros::E_CONTROLLER_DIGITAL_B))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.retract();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(mastetr.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>left_piston.toggle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1856" column="14"/>
+        <location file="pros/adi.hpp" line="1926" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-adi_1ga797b2b095a8dff0b40fffca0907cc7bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-adi_1gadbf2c4caaffd502ca55e535bd0107ed6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
-        <definition>bool get_state</definition>
+        <definition>bool is_extended</definition>
         <argsstring>() const</argsstring>
-        <name>get_state</name>
+        <name>is_extended</name>
         <briefdescription>
+<para>Returns whether the piston is extended or not. </para>
         </briefdescription>
         <detaileddescription>
+<para><simplesect kind="return"><para>true if the piston is extended, false if it is retracted.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ADI_PNEUMATICS_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Pneumatics<sp/>pneumatics<sp/>(ADI_PNEUMATICS_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Check<sp/>if<sp/>the<sp/>piston<sp/>is<sp/>extended</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(pneumatics.is_extended())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;The<sp/>pneumatic<sp/>is<sp/>extended\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;The<sp/>pneumatic<sp/>is<sp/>not<sp/>extended\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="1879" column="6"/>
+        <location file="pros/adi.hpp" line="1953" column="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="">
