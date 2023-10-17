@@ -14,21 +14,39 @@ will work as expected.
 
 When declaring motors in C++, it is not necessary to set the
 configuration for the motor with its constructor (beyond its port
-number) more than once for the given port. An example of this is given
+number) more than once for the given port. You may also reverse motors by passing the port number of the motor, but negative. An example of this is given
 below.
 
 ```{.cpp}
 #define MOTOR_PORT 1
+#define REVERSED_MOTOR_PORT -2
 void opcontrol() {
-  pros::Motor drive_left (MOTOR_PORT);
-  // drive_left will have the same configuration as drive_left_initializer
+	pros::Motor drive_left (MOTOR_PORT);
+	// drive_left will have the same configuration as drive_left_initializer
+
+	pros::Motor drive_right (REVERSED_MOTOR_PORT);
+	// drive_right is the reversed version of the motor on port two
+}
+```
+
+## Motor Groups
+
+In C++, V5 Motors can be configured together within a motor group to perform actions together. When declaring motor groups, you can pass a vector of the ports that the motors exist at. Then you can call motor functions (such as move) for the entire motor group. An example of this is given below.
+
+```{.cpp}
+#define MOTOR_PORT 1
+#define REVERSED_MOTOR_PORT -2
+void opcontrol() {
+	pros::MotorGroup my_motor_group ({MOTOR_PORT, REVERSED_MOTOR_PORT});
+	my_motor_group.move(100);
+	pros::delay(1000);
 }
 ```
 
 ## Simple Usage
 
 The easiest way to interact with the motors is through the
-[motor_move](../../api/c/motors.html#motor-move) function.
+`motor_move()`function.
 
 ## Autonomous Movement
 
