@@ -9,7 +9,7 @@ For a full list of functions for interacting with the V5 Motors, see its
 V5 Motors should be configured before use in your code. Configuration
 options like the gearset and encoder units are important to address
 first thing in your user program to ensure that functions like
-`motor_move_velocity()`
+`MotorGroup.move_velocity()`
 will work as expected.
 
 When declaring motors in C++, it is not necessary to set the
@@ -46,20 +46,20 @@ void opcontrol() {
 ## Simple Usage
 
 The easiest way to interact with the motors is through the
-`motor_move()`function.
+`MotorGroup.move()`function.
 
 ## Autonomous Movement
 
 The V5 Motors can move in a number of different ways that are better
-suited towards autonomous movement than the simple `motor_move()`
+suited towards autonomous movement than the simple `MotorGroup.move()`
 example shown above.
 
 ### Profile Movements
 
 Profile movements are movements to a given position that are executed by
 the motor's firmware. There are two functions that achieve this,
-`motor_move_absolute()` and `motor_move_relative()`. These two functions
-are practically similar, but `motor_move_relative()` takes into account
+`MotorGroup.move_absolute()` and `MotorGroup.move_relative()`. These two functions
+are practically similar, but `MotorGroup.move_relative()` takes into account
 the zero position of the motor's encoder.
 
 These functions are very well suited to movement in autonomous.
