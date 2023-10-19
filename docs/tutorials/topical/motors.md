@@ -9,7 +9,7 @@ For a full list of functions for interacting with the V5 Motors, see its
 V5 Motors should be configured before use in your code. Configuration
 options like the gearset and encoder units are important to address
 first thing in your user program to ensure that functions like
-`pros::motor::move_velocity()`
+`pros::Motor::move_velocity()`
 will work as expected.
 
 When declaring motors in C++, it is not necessary to set the
@@ -46,20 +46,20 @@ void opcontrol() {
 ## Simple Usage
 
 The easiest way to interact with the motors is through the
-`pros::motor::move()`function.
+`pros::Motor::move()`function.
 
 ## Autonomous Movement
 
 The V5 Motors can move in a number of different ways that are better
-suited towards autonomous movement than the simple `pros::motor::move()`
+suited towards autonomous movement than the simple `pros::Motor::move()`
 example shown above.
 
 ### Profile Movements
 
 Profile movements are movements to a given position that are executed by
 the motor's firmware. There are two functions that achieve this,
-`pros::motor::move_absolute()` and `pros::motor::move_relative()`. These two functions
-are practically similar, but `pros::motor::move_relative()` takes into account
+`pros::Motor::move_absolute()` and `pros::Motor::move_relative()`. These two functions
+are practically similar, but `pros::Motor::move_relative()` takes into account
 the zero position of the motor's encoder.
 
 These functions are very well suited to movement in autonomous.
@@ -78,6 +78,6 @@ control.
 ### Velocity Controller Movement
 
 The final `move` function available with the PROS Motor API is
-`pros::motor::move_velocity()`. This ensures consistent velocity output from
+`pros::Motor::move_velocity()`. This ensures consistent velocity output from
 the motor through the use of
 [PID](http://georgegillard.com/documents/2-introduction-to-pid-controllers).
