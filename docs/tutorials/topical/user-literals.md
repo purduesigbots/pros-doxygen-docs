@@ -7,11 +7,12 @@ syntax:
 
 ```{.cpp}
 // In order to use the user literals, we need to be using the pros::literals
-// namespace. 
+// namespace. Make sure to include the line "using namespace pros::literals"
+// at the beginning of any file in which you want to use user literals.
 using namespace pros::literals;
 
 pros::Motor front_motor = 1_mtr;   // Constructs a motor on port 1
-pros::Motor back_motor = -2_motor; // Constructs a motor on port 2, and reverses it
+pros::Motor back_motor = 2_rmtr; // Constructs a motor on port 2, and reverses it
 pros::Imu imu = 12_imu;            // Constructs an IMU object on port 12
 ```
 
@@ -31,6 +32,14 @@ device class (\ref api).
 
 ## List of PROS Literals:
 
-
-# Defining Your Own User Literals
+```{.cpp}
+const pros::Rotation operator"" _rot(const unsigned long long int r);
+const pros::Imu operator"" _imu(const unsigned long long int i);
+const pros::Gps operator""_gps(const unsigned long long int g);
+const pros::Optical operator"" _opt(const unsigned long long int o);
+const pros::Distance operator"" _dist(const unsigned long long int d);
+const pros::Motor operator"" _mtr(const unsigned long long int m); // For non-reversed motor
+const pros::Motor operator"" _rmtr(const unsigned long long int m); // For reversed motor
+const pros::Serial operator"" _ser(const unsigned long long int m);
+```
 
