@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="distance_8h" kind="file" language="C++">
     <compoundname>distance.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -27,16 +27,26 @@
         <label>kapi.h</label>
         <link refid="kapi_8h"/>
       </node>
-      <node id="6">
+      <node id="9">
         <label>pros/distance.hpp</label>
         <link refid="distance_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="4">
+      <node id="5">
+        <label>pros/api_legacy.h</label>
+        <link refid="api__legacy_8h"/>
+      </node>
+      <node id="6">
         <label>pros/apix.h</label>
         <link refid="apix_8h"/>
         <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>pros/optical.hpp</label>
+        <link refid="optical_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -48,16 +58,28 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>pros/optical.h</label>
+        <link refid="optical_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>pros/distance.h</label>
         <link refid="distance_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="4">
         <label>main.h</label>
         <link refid="main_8h"/>
       </node>
@@ -65,7 +87,7 @@
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
       <sectiondef kind="func">
-      <memberdef kind="function" id="group__c-distance_1ga7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a7d24458fd388aaa7bee4fac208b47d3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -78,33 +100,25 @@
 <para>Get the currently measured distance from the sensor in mm. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Value:<sp/>%d<sp/>mm\n&quot;,<sp/>distance_get(DISTANCE_PORT));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="64" column="9" declfile="pros/distance.h" declline="64" declcolumn="9"/>
+        <location file="pros/distance.h" line="43" column="9" declfile="pros/distance.h" declline="43" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-distance_1ga97b69852b0f1ec60cdac10ca20caabdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a97b69852b0f1ec60cdac10ca20caabdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get_confidence</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -118,33 +132,25 @@
         </briefdescription>
         <detaileddescription>
 <para>This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is &gt; 200mm (the value 10 is returned in this scenario).</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The confidence value or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The confidence value or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Confidence<sp/>Value:<sp/>%d\n&quot;,<sp/>distance_get_confidence(DISTANCE_PORT));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="94" column="9" declfile="pros/distance.h" declline="94" declcolumn="9"/>
+        <location file="pros/distance.h" line="61" column="9" declfile="pros/distance.h" declline="61" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-distance_1gaa87f08f6faaed31f3876d3980b1d3689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1aa87f08f6faaed31f3876d3980b1d3689" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::distance_get_object_size</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -158,33 +164,25 @@
         </briefdescription>
         <detaileddescription>
 <para>This is a value that has a range of 0 to 400. A 18&quot; x 30&quot; grey card will return a value of approximately 75 in typical room lighting.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The size value or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The size value or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Size:<sp/>%d\n&quot;,<sp/>distance_get_object_size(DISTANCE_PORT));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="124" column="9" declfile="pros/distance.h" declline="124" declcolumn="9"/>
+        <location file="pros/distance.h" line="79" column="9" declfile="pros/distance.h" declline="79" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-distance_1ga744e01aa684d89ff70dd443dba4eea53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a744e01aa684d89ff70dd443dba4eea53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
         <definition>double pros::c::distance_get_object_velocity</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -197,41 +195,33 @@
 <para>Get the object velocity in m/s. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1Distance" kindref="compound">Distance</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The velocity value or PROS_ERR if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>The velocity value or PROS_ERR if the operation failed, setting errno. </para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>Velocity:<sp/>%f\n&quot;,<sp/>distance_get_object_velocity(DISTANCE_PORT));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/distance.h" line="150" column="8" declfile="pros/distance.h" declline="150" declcolumn="8"/>
+        <location file="pros/distance.h" line="93" column="8" declfile="pros/distance.h" declline="93" declcolumn="8"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Contains prototypes for functions related to the VEX Distance sensor. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains prototypes for functions related to the VEX Distance sensor.</para>
+<para>Visit <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/distance.html">https://pros.cs.purdue.edu/v5/tutorials/topical/distance.html</ulink> to learn more.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
-<para><simplesect kind="copyright"><para>(c) 2017-2023, Purdue University ACM SIGBots.</para>
-</simplesect>
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
+<para>Copyright (c) 2017-2021, Purdue University ACM SIGBots.</para>
+<para>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
     </detaileddescription>
     <location file="pros/distance.h"/>
   </compounddef>

@@ -66,6 +66,7 @@ V5</span></a>
         <h1>
           kapi.h <span class="m-thin">file</span>
         </h1>
+        <p>Kernel API header.</p>
         <div class="m-block m-default">
           <h3>Contents</h3>
           <ul>
@@ -79,7 +80,7 @@ V5</span></a>
             </li>
           </ul>
         </div>
-<p>Kernel API header</p><p>Contains additional declarations for use internally within kernel development. This file includes the FreeRTOS header, which allows for creation of statically allocated FreeRTOS primitives like tasks, semaphores, and queues.</p><aside class="m-note m-default"><h4>Copyright</h4><p>Copyright (c) 2017-2023, Purdue University ACM SIGBots. All rights reserved.</p></aside><p>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a href="http://mozilla.org/MPL/2.0/">http:/<wbr />/<wbr />mozilla.org/<wbr />MPL/<wbr />2.0/<wbr /></a>.</p>
+<p>Contains additional declarations for use internally within kernel development. This file includes the FreeRTOS header, which allows for creation of statically allocated FreeRTOS primitives like tasks, semaphores, and queues.</p><p>Copyright (c) 2017-2021, Purdue University ACM SIGBots. All rights reserved.</p><p>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <a href="http://mozilla.org/MPL/2.0/">http:/<wbr />/<wbr />mozilla.org/<wbr />MPL/<wbr />2.0/<wbr /></a>.</p>
         <section id="func-members">
           <h2><a href="#func-members">Functions</a></h2>
           <dl class="m-doc">
@@ -118,6 +119,10 @@ V5</span></a>
               static_queue_s_t* queue_buffer)</span></span>
             </dt>
             <dd>Creates a statically allocated queue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc782ea27c8020a7181f1d9620d22d7c" class="m-doc-self">display_error</a>(</span><span class="m-doc-wrap">const char* text)</span></span>
+            </dt>
+            <dd>Display a non-fatal error to the built-in LCD/touch screen.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0070639864e6a77a016b6262a1eb5e7c" class="m-doc-self">display_fatal_error</a>(</span><span class="m-doc-wrap">const char* text)</span></span>
             </dt>
@@ -380,6 +385,24 @@ V5</span></a>
             </table>
 <p>All FreeRTOS primitives must be created statically if they are required for operation of the kernel.</p>
           </div></section>
+          <section class="m-doc-details" id="abc782ea27c8020a7181f1d9620d22d7c"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#abc782ea27c8020a7181f1d9620d22d7c" class="m-doc-self">display_error</a>(</span><span class="m-doc-wrap">const char* text)</span></span>
+            </h3>
+            <p>Display a non-fatal error to the built-in LCD/touch screen.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">text&nbsp;<span class="m-label m-flat m-info">in</span></td>
+                  <td>The text string to display to the screen</td>
+                </tr>
+              </tbody>
+            </table>
+<p>Note that this function is thread-safe, which requires that the scheduler be in a functioning state. For situations in which it is unclear whether the scheduler is working, use <code>display_fatal_error</code> instead.</p>
+          </div></section>
           <section class="m-doc-details" id="a0070639864e6a77a016b6262a1eb5e7c"><div>
             <h3>
               <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a0070639864e6a77a016b6262a1eb5e7c" class="m-doc-self">display_fatal_error</a>(</span><span class="m-doc-wrap">const char* text)</span></span>
@@ -459,14 +482,14 @@ V5</span></a>
     </div>
   </div>
 </div>
-<script src="search-v2.js"></script>
-<script src="searchdata-v2.js" async="async"></script>
+<script src="search-v1.js"></script>
+<script src="searchdata-v1.js" async="async"></script>
 <footer><nav>
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS for
-V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
