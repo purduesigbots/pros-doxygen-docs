@@ -23,6 +23,7 @@ LINKS_NAVBAR1 = [
         ],
     ),
     ("API", "api", []),
+    ("pros3", "../index.html", []),
 ]
 
 LINKS_NAVBAR2 = [
