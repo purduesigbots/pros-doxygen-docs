@@ -23,7 +23,6 @@ LINKS_NAVBAR1 = [
         ],
     ),
     ("API", "api", []),
-    ("pros3", "https://pros.cs.purdue.edu/v5", []),
 ]
 
 LINKS_NAVBAR2 = [
