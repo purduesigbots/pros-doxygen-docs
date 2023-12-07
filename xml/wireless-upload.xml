@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="wireless-upload" kind="page">
     <compoundname>wireless-upload</compoundname>
     <title>Wireless Upload and Hot/Cold Linking</title>
@@ -15,7 +15,7 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 <codeline><highlight class="normal">USE_PACKAGE:=0</highlight></codeline>
 </programlisting></para>
 <para>so that <computeroutput>USE_PACKAGE:=1</computeroutput>. Re-build and upload your project and PROS will automatically use the new files. PROS will automatically detect when you&apos;re using the same combination of libraries and decide not to re-upload the &quot;cold&quot; code. Verification that the library is present is done with filename and checksum of the file. As a result, if you use the same combination of libraries (cold image), only one copy of the cold image is uploaded to the V5.</para>
-<sect2 id="wireless-upload_1autotoc_md64">
+<sect2 id="wireless-upload_1autotoc_md82">
 <title>Large Projects</title>
 <para>Projects with large codebases may still take some time to upload even with hot/cold linking. You may be able to reduce the size of your hot image by making part of your project a library so that some code is included in the cold image. To do so, edit the following lines of your project&apos;s Makefile:</para>
 <para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>this<sp/>to<sp/>1<sp/>to<sp/>add<sp/>additional<sp/>rules<sp/>to<sp/>compile<sp/>your<sp/>project<sp/>as<sp/>a<sp/>PROS<sp/>library<sp/>template</highlight></codeline>
@@ -27,7 +27,8 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 </programlisting></para>
 <para>Change <computeroutput>IS_LIBRARY</computeroutput> to <computeroutput>1</computeroutput> and rename the library to something of your choosing. We recommend <computeroutput>lib&lt;robot name&gt;</computeroutput> or <computeroutput>lib&lt;team number&gt;</computeroutput> (e.g. <computeroutput>lib7701</computeroutput>) to be unique enough to avoid cause naming conflicts with other cold images. When compiling, PROS will include this library as part of the cold image. Your library should only contain files you infrequently change so that you do not have to frequently upload the cold image. By default, the Makefile is set up to exclude your project&apos;s opcontrol.cpp, autonomous.cpp, and initialize.cpp files. If you change other files frequently, you can add lines like <computeroutput>EXCLUDE_SRC_FROM_LIB+=/myfile.c</computeroutput> as needed.</para>
 <para><bold>An important caveat</bold> is that code that goes into the cold image is <bold>not</bold> able to link against anything (call functions or use variables) in the hot image. Doing so will result in a linker error - you will be told what&apos;s trying to refer to what in the hot image: <verbatim>bin/libtheseus.a(lcdselector.cpp.o):(.data.inits+0x0): undefined reference to `auton::allianceInit(auton::color)&apos;
-</verbatim> You should refactor your code so that only &quot;hot&quot; code calls &quot;cold&quot; code or include the culprit file in the hot image.</para>
+</verbatim></para>
+<para>You should refactor your code so that only &quot;hot&quot; code calls &quot;cold&quot; code or include the culprit file in the hot image.</para>
 <para>An example of a modified Makefile&apos;s relevant lines is shown below:</para>
 <para><programlisting filename=".Makefile"><codeline><highlight class="normal">#<sp/>Set<sp/>to<sp/>1<sp/>to<sp/>enable<sp/>hot/cold<sp/>linking</highlight></codeline>
 <codeline><highlight class="normal">USE_PACKAGE=1</highlight></codeline>
@@ -42,7 +43,7 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 <codeline><highlight class="normal">EXCLUDE_SRC_FROM_LIB+=$(SRCDIR)/lcdselector.cpp<sp/><sp/><sp/><sp/><sp/>#<sp/>exclude<sp/>src/lcdselector.cpp</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="wireless-upload_1autotoc_md65">
+<sect2 id="wireless-upload_1autotoc_md83">
 <title>Hot/Cold Linking Troubleshooting</title>
 <para>Since hot/cold linking involves ensuring two compiled programs interact consistently, there may be additional runtime issues running in this mode. This section serves as a guide for debugging these sorts of issues.</para>
 <para>Generally, if the program appears to be running correctly (i.e. the screen shows), then the compilation mode worked correctly and the error you&apos;re experiencing is likely related to your code&apos;s logic. If your code&apos;s logic runs correctly when not using hot/cold linking, contact us so we may assist in troubleshooting.</para>
@@ -60,6 +61,5 @@ image&quot; and the code that changes frequently and gets uploaded every time th
 <para>If you&apos;re having issues, contact us so we may assist in troubleshooting. </para>
 </sect2>
     </detaileddescription>
-    <location file="docs/tutorials/topical/wireless-upload.md"/>
   </compounddef>
 </doxygen>

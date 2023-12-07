@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="rotation_8h" kind="file" language="C++">
     <compoundname>rotation.h</compoundname>
     <includes local="no">stdbool.h</includes>
@@ -32,26 +32,16 @@
         <link refid="rotation_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>pros/api_legacy.h</label>
-        <link refid="api__legacy_8h"/>
-      </node>
-      <node id="6">
+      <node id="4">
         <label>pros/apix.h</label>
         <link refid="apix_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>pros/optical.hpp</label>
-        <link refid="optical_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
+      <node id="6">
         <label>pros/rotation.hpp</label>
         <link refid="rotation_8hpp"/>
         <childnode refid="2" relation="include">
@@ -66,20 +56,8 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="7">
-        <label>pros/optical.h</label>
-        <link refid="optical_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
+      <node id="5">
         <label>main.h</label>
         <link refid="main_8h"/>
       </node>
@@ -87,7 +65,7 @@
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
       <sectiondef kind="define">
-      <memberdef kind="define" id="rotation_8h_1a6eda4d88f03dc2cec837e48e06c925c2" prot="public" static="no">
+      <memberdef kind="define" id="group__c-rotation_1ga6eda4d88f03dc2cec837e48e06c925c2" prot="public" static="no">
         <name>ROTATION_MINIMUM_DATA_RATE</name>
         <initializer>5</initializer>
         <briefdescription>
@@ -96,11 +74,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="31" column="9" bodyfile="pros/rotation.h" bodystart="31" bodyend="-1"/>
+        <location file="pros/rotation.h" line="40" column="9" bodyfile="pros/rotation.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepros_1_1c_1a4d70d505abcf5fa27a6ee4bbdf7c1bfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1ga4d70d505abcf5fa27a6ee4bbdf7c1bfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_reset</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -110,29 +88,40 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Reset <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor. </para>
+<para>Reset <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Reset the current absolute position to be the same as the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor angle.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>Reset the current absolute position to be the same as the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor angle.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_reset(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="49" column="9" declfile="pros/rotation.h" declline="49" declcolumn="9"/>
+        <location file="pros/rotation.h" line="73" column="9" declfile="pros/rotation.h" declline="73" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a31281a73c59f9dbeba897980c27ed103" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1ga31281a73c59f9dbeba897980c27ed103" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_set_data_rate</definition>
         <argsstring>(uint8_t port, uint32_t rate)</argsstring>
@@ -146,17 +135,17 @@
           <declname>rate</declname>
         </param>
         <briefdescription>
-<para>Set the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s refresh interval in milliseconds. </para>
+<para>Set the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s refresh interval in milliseconds. </para>
         </briefdescription>
         <detaileddescription>
 <para>The rate may be specified in increments of 5ms, and will be rounded down to the nearest increment. The minimum allowable refresh rate is 5ms. The default rate is 10ms.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -168,15 +157,21 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>rotation_set_data_rate(ROTATION_PORT,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="69" column="9" declfile="pros/rotation.h" declline="69" declcolumn="9"/>
+        <location file="pros/rotation.h" line="103" column="9" declfile="pros/rotation.h" declline="103" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1ad29fe5d6d6200ab893088998aa6ce2e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1gad29fe5d6d6200ab893088998aa6ce2e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_set_position</definition>
         <argsstring>(uint8_t port, uint32_t position)</argsstring>
@@ -190,16 +185,16 @@
           <declname>position</declname>
         </param>
         <briefdescription>
-<para>Set the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor position reading to a desired rotation value. </para>
+<para>Set the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor position reading to a desired rotation value. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -211,15 +206,26 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_position(ROTATION_PORT,<sp/>600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="86" column="9" declfile="pros/rotation.h" declline="86" declcolumn="9"/>
+        <location file="pros/rotation.h" line="135" column="9" declfile="pros/rotation.h" declline="135" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1ad198d62869c39045f6f76a2ea8eee09e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1gad198d62869c39045f6f76a2ea8eee09e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_reset_position</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -229,28 +235,39 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Reset the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor position to 0. </para>
+<para>Reset the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor position to 0. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_reset_position(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="102" column="9" declfile="pros/rotation.h" declline="102" declcolumn="9"/>
+        <location file="pros/rotation.h" line="166" column="9" declfile="pros/rotation.h" declline="166" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1af8845e58af42bda70c803c1975ee626d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1gaf8845e58af42bda70c803c1975ee626d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_get_position</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -260,28 +277,36 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current position in centidegrees. </para>
+<para>Get the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current position in centidegrees. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The position value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The position value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Position:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_position(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="117" column="9" declfile="pros/rotation.h" declline="117" declcolumn="9"/>
+        <location file="pros/rotation.h" line="193" column="9" declfile="pros/rotation.h" declline="193" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a67fad4961368a788999ebe244182567e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1ga67fad4961368a788999ebe244182567e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_get_velocity</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -291,28 +316,36 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current velocity in centidegrees per second. </para>
+<para>Get the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current velocity in centidegrees per second. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The velocity value or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The velocity value or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Velocity:<sp/>%d<sp/>centidegrees<sp/>per<sp/>second<sp/>\n&quot;,<sp/>rotation_get_velocity(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="132" column="9" declfile="pros/rotation.h" declline="132" declcolumn="9"/>
+        <location file="pros/rotation.h" line="220" column="9" declfile="pros/rotation.h" declline="220" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a1fcb97ffd0b4f780291b6f31be759975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1ga1fcb97ffd0b4f780291b6f31be759975" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_get_angle</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -322,28 +355,36 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current angle in centidegrees (0-36000) </para>
+<para>Get the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s current angle in centidegrees (0-36000) </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>The angle value (0-36000) or PROS_ERR_F if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>The angle value (0-36000) or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Angle:<sp/>%d<sp/>centidegrees<sp/>\n&quot;,<sp/>rotation_get_angle(ROTATION_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="147" column="9" declfile="pros/rotation.h" declline="147" declcolumn="9"/>
+        <location file="pros/rotation.h" line="247" column="9" declfile="pros/rotation.h" declline="247" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1af9b37a6fc9d89f144c006c84f75fe890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1gaf9b37a6fc9d89f144c006c84f75fe890" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_set_reversed</definition>
         <argsstring>(uint8_t port, bool value)</argsstring>
@@ -357,16 +398,16 @@
           <declname>value</declname>
         </param>
         <briefdescription>
-<para>Set the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction reversed flag. </para>
+<para>Set the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction reversed flag. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -374,19 +415,31 @@
 <parametername>value</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Determines if the direction of the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor is reversed or not.</para>
+<para>Determines if the direction of the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor is reversed or not.</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if operation succeeded or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if operation succeeded or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_set_reversed(ROTATION_PORT,<sp/>true);<sp/>//<sp/>Reverses<sp/>the<sp/>Rotation<sp/>Sensor<sp/>on<sp/>ROTATION_PORT</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="165" column="9" declfile="pros/rotation.h" declline="165" declcolumn="9"/>
+        <location file="pros/rotation.h" line="281" column="9" declfile="pros/rotation.h" declline="281" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a709b419d6a78d1bf52ebb069315b4dc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1ga709b419d6a78d1bf52ebb069315b4dc5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_reverse</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -396,28 +449,96 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Reverse the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction. </para>
+<para>Reverse the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_reverse(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="181" column="9" declfile="pros/rotation.h" declline="181" declcolumn="9"/>
+        <location file="pros/rotation.h" line="313" column="9" declfile="pros/rotation.h" declline="313" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a8cebefc88493efb298f15e6f47eb7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-rotation_1gab2b7c3407d06709163b14b76fa2ef6c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::rotation_init_reverse</definition>
+        <argsstring>(uint8_t port, bool reverse_flag)</argsstring>
+        <name>rotation_init_reverse</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reverse_flag</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor with a reverse flag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse_flag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Determines if the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor is reversed or not.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>bool<sp/>reverse_flag<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_init_reverse(ROTATION_PORT,<sp/>reverse_flag);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rotation.h" line="348" column="9" declfile="pros/rotation.h" declline="348" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-rotation_1ga8cebefc88493efb298f15e6f47eb7992" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
         <definition>int32_t pros::c::rotation_get_reversed</definition>
         <argsstring>(uint8_t port)</argsstring>
@@ -427,36 +548,48 @@
           <declname>port</declname>
         </param>
         <briefdescription>
-<para>Get the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s reversed flag. </para>
+<para>Get the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s reversed flag. </para>
         </briefdescription>
         <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor</para>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
 <parametername>port</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The V5 <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
+<para>The V5 <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor port number from 1-21</para>
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>Boolean value of if the <ref refid="classpros_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction is reversed or not or PROS_ERR if the operation failed, setting errno. </para>
+<simplesect kind="return"><para>Boolean value of if the <ref refid="classpros_1_1v5_1_1Rotation" kindref="compound">Rotation</ref> Sensor&apos;s direction is reversed or not or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ROTATION_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Rotation<sp/>rotation_sensor(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(controller_get_digital(CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_X)){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rotation_get_reversed(ROTATION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rotation.h" line="197" column="9" declfile="pros/rotation.h" declline="197" declcolumn="9"/>
+        <location file="pros/rotation.h" line="380" column="9" declfile="pros/rotation.h" declline="380" declcolumn="9"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Contains prototypes for functions related to the VEX Rotation Sensor. </para>
     </briefdescription>
     <detaileddescription>
-<para>Visit <ulink url="https://pros.cs.purdue.edu/v5/tutorials/topical/rotation.html">https://pros.cs.purdue.edu/v5/tutorials/topical/rotation.html</ulink> to learn more.</para>
+<para>Contains prototypes for functions related to the VEX Rotation Sensor.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
-<para>Copyright (c) 2017-2021, Purdue University ACM SIGBots.</para>
-<para>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
+<para><simplesect kind="copyright"><para>(c) 2017-2023, Purdue University ACM SIGBots.</para>
+</simplesect>
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
     </detaileddescription>
     <location file="pros/rotation.h"/>
   </compounddef>

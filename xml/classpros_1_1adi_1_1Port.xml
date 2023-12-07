@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1Port" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::Port</compoundname>
+    <derivedcompoundref refid="classpros_1_1adi_1_1AnalogIn" prot="private" virt="non-virtual">AnalogIn</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1AnalogOut" prot="private" virt="non-virtual">AnalogOut</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1DigitalIn" prot="private" virt="non-virtual">DigitalIn</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1DigitalOut" prot="private" virt="non-virtual">DigitalOut</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1Encoder" prot="private" virt="non-virtual">Encoder</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1Gyro" prot="private" virt="non-virtual">Gyro</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1Led" prot="private" virt="non-virtual">Led</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1Motor" prot="private" virt="non-virtual">Motor</derivedcompoundref>
+    <derivedcompoundref refid="classpros_1_1adi_1_1Ultrasonic" prot="private" virt="non-virtual">Ultrasonic</derivedcompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="group__cpp-adi_1ga44a445eef95291c2673e57ed31106dd4" prot="private" static="no" mutable="no">
+        <type>std::uint8_t</type>
+        <definition>std::uint8_t _smart_port</definition>
+        <argsstring></argsstring>
+        <name>_smart_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="194" column="14" bodyfile="pros/adi.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__cpp-adi_1ga4140268936472c65e97796860c95cc4a" prot="private" static="no" mutable="no">
+        <type>std::uint8_t</type>
+        <definition>std::uint8_t _adi_port</definition>
+        <argsstring></argsstring>
+        <name>_adi_port</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="195" column="14" bodyfile="pros/adi.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1gaa138d06943231f988490b016e952d281" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Port</definition>
+        <argsstring>(std::uint8_t adi_port, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
+        <name>Port</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+          <defval><ref refid="group__c-adi_1ggad5f9ddf0fd9de73c4b23fa5485144b7fa37e9d6ebc03d88c58db1904a7f2b7373" kindref="member">E_ADI_TYPE_UNDEFINED</ref></defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>POTENTIOMETER_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>POTENTIOMETER_TYPE<sp/>pros::E_ADI_POT_EDR</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::ADIPotentiometer<sp/>potentiometer<sp/>(POTENTIOMETER_PORT,<sp/>POTENTIOMETER_TYPE);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>potentiometer<sp/>angle</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Angle:<sp/>&quot;<sp/>&lt;&lt;<sp/>potnetiometer.get_angle();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="82" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga619b2a3ef88a5093aee2a0e0d3f81066" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Port</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, adi_port_config_e_t type=E_ADI_TYPE_UNDEFINED)</argsstring>
+        <name>Port</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" kindref="member">ext_adi_port_pair_t</ref></type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+          <defval><ref refid="group__c-adi_1ggad5f9ddf0fd9de73c4b23fa5485144b7fa37e9d6ebc03d88c58db1904a7f2b7373" kindref="member">E_ADI_TYPE_UNDEFINED</ref></defval>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on an adi expander to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>EXT_ADI_SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Port<sp/>sensor<sp/>({{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/>ANALOG_SENSOR_PORT<sp/>}},<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Type:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_config();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="110" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gabc268911f1961b5389b71852e946f729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_config</definition>
+        <argsstring>() const</argsstring>
+        <name>get_config</name>
+        <briefdescription>
+<para>Gets the configuration for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The ADI configuration for the given port</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>adi_port_set_config(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Displays<sp/>the<sp/>value<sp/>of<sp/>E_ADI_ANALOG_IN</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Port<sp/>Type:<sp/>%d\n&quot;,<sp/>adi_port_get_config(ANALOG_SENSOR_PORT));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="127" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the value for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The value stored for the given port</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Port<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Port<sp/>Value:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="144" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gae1418e3d7d46f72ea805789d6e511c50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_config</definition>
+        <argsstring>(adi_port_config_e_t type) const</argsstring>
+        <name>set_config</name>
+        <param>
+          <type>adi_port_config_e_t</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a given sensor type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The configuration type for the port</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>ANALOG_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Port<sp/>sensor<sp/>(ANALOG_SENSOR_PORT,<sp/>E_ADI_DIGITAL_IN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Do<sp/>things<sp/>as<sp/>a<sp/>digital<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Digital<sp/>is<sp/>unplugged<sp/>and<sp/>an<sp/>analog<sp/>is<sp/>plugged<sp/>in</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_config(E_ADI_ANALOG_IN);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="167" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_value</definition>
+        <argsstring>(std::int32_t value) const</argsstring>
+        <name>set_value</name>
+        <param>
+          <type>std::int32_t</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets the value for the given ADI port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This only works on ports configured as outputs, and the behavior will change depending on the configuration of the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The value to set the ADI port to</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Port<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT,<sp/>E_ADI_DIGITAL_OUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.set_value(DIGITAL_SENSOR_PORT,<sp/>HIGH);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="191" column="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>DigitalOut</label>
+        <link refid="classpros_1_1adi_1_1DigitalOut"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Ultrasonic</label>
+        <link refid="classpros_1_1adi_1_1Ultrasonic"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AnalogIn</label>
+        <link refid="classpros_1_1adi_1_1AnalogIn"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Motor</label>
+        <link refid="classpros_1_1adi_1_1Motor"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Encoder</label>
+        <link refid="classpros_1_1adi_1_1Encoder"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>DigitalIn</label>
+        <link refid="classpros_1_1adi_1_1DigitalIn"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Potentiometer</label>
+        <link refid="classpros_1_1adi_1_1Potentiometer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Pneumatics</label>
+        <link refid="classpros_1_1adi_1_1Pneumatics"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>AnalogOut</label>
+        <link refid="classpros_1_1adi_1_1AnalogOut"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Gyro</label>
+        <link refid="classpros_1_1adi_1_1Gyro"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+      <node id="10">
+        <label>Led</label>
+        <link refid="classpros_1_1adi_1_1Led"/>
+        <childnode refid="1" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="pros/adi.hpp" line="47" column="11" bodyfile="pros/adi.hpp" bodystart="47" bodyend="196"/>
+    <listofallmembers>
+      <member refid="group__cpp-adi_1ga4140268936472c65e97796860c95cc4a" prot="private" virt="non-virtual"><scope>pros::adi::Port</scope><name>_adi_port</name></member>
+      <member refid="group__cpp-adi_1ga44a445eef95291c2673e57ed31106dd4" prot="private" virt="non-virtual"><scope>pros::adi::Port</scope><name>_smart_port</name></member>
+      <member refid="group__cpp-adi_1gabc268911f1961b5389b71852e946f729" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>get_config</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1gaa138d06943231f988490b016e952d281" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>Port</name></member>
+      <member refid="group__cpp-adi_1ga619b2a3ef88a5093aee2a0e0d3f81066" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>Port</name></member>
+      <member refid="group__cpp-adi_1gae1418e3d7d46f72ea805789d6e511c50" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>set_config</name></member>
+      <member refid="group__cpp-adi_1ga833ed782b711495035dae08cfce3e62e" prot="public" virt="non-virtual"><scope>pros::adi::Port</scope><name>set_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

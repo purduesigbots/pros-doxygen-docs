@@ -1,0 +1,471 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1Led" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::Led</compoundname>
+    <basecompoundref refid="classpros_1_1adi_1_1Port" prot="private" virt="non-virtual">Port</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="group__cpp-adi_1ga2f90484f4e6d6af516e99301af40f484" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; uint32_t &gt;</type>
+        <definition>std::vector&lt;uint32_t&gt; _buffer</definition>
+        <argsstring></argsstring>
+        <name>_buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1714" column="13" bodyfile="pros/adi.hpp" bodystart="1714" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1ga940c125c457549717840ffd81acc2e5d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Led</definition>
+        <argsstring>(std::uint8_t adi_port, std::uint32_t length)</argsstring>
+        <name>Led</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port</declname>
+        </param>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port to act as a LED. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of LEDs in the chain</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>entire<sp/>LED<sp/>strip<sp/>to<sp/>red</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>led.set_all(0xFF0000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1461" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac175118de7a27d82d581607a64452792" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Led</definition>
+        <argsstring>(ext_adi_port_pair_t port_pair, std::uint32_t length)</argsstring>
+        <name>Led</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" kindref="member">ext_adi_port_pair_t</ref></type>
+          <declname>port_pair</declname>
+        </param>
+        <param>
+          <type>std::uint32_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Configures an ADI port on a adi_expander to act as a LED. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_pair</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pair of the smart port number (from 1-22) and the ADI port number (from 1-8, &apos;a&apos;-&apos;h&apos;, &apos;A&apos;-&apos;H&apos;) to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of LEDs in the chain</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>({{<sp/>SMART_PORT<sp/>,<sp/>LED_PORT<sp/>}},<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>entire<sp/>LED<sp/>strip<sp/>to<sp/>red</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>led.set_all(0xFF0000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1493" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga61c7fa7a23ef246276650e62808d23ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t clear_all</definition>
+        <argsstring>()</argsstring>
+        <name>clear_all</name>
+        <briefdescription>
+<para>Operator overload to access the buffer in the ADILed class, it is recommended that you call .<ref refid="group__cpp-adi_1ga595ef524ae8f742fa1e57cecded413f0" kindref="member">update()</ref>; after doing any operations with this. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>i</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>0 indexed pixel of the lED </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>uint32_t&amp; the address of the buffer at i to modify</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/>#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>first<sp/>3<sp/>pixels<sp/>to<sp/>red,<sp/>green,<sp/>and<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0xFF0000,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x00FF00,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x0000FF,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>[]<sp/>operator<sp/>to<sp/>set<sp/>the<sp/>first<sp/>pixel<sp/>to<sp/>black</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.operator[](0)<sp/>=<sp/>0x000000;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.update();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
+<codeline><highlight class="normal">std::uint32_t&amp;<sp/>operator[]<sp/>(size_t<sp/>i);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>Clear<sp/>the<sp/>entire<sp/>led<sp/>strip<sp/>of<sp/>color</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>function<sp/>uses<sp/>the<sp/>following<sp/>values<sp/>of<sp/>errno<sp/>when<sp/>an<sp/>error<sp/>state<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>reached:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>ENXIO<sp/>-<sp/>The<sp/>given<sp/>value<sp/>is<sp/>not<sp/>within<sp/>the<sp/>range<sp/>of<sp/>ADI<sp/>Ports</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>EINVAL<sp/>-<sp/>A<sp/>parameter<sp/>is<sp/>out<sp/>of<sp/>bounds/incorrect</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>EADDRINUSE<sp/>-<sp/>The<sp/>port<sp/>is<sp/>not<sp/>configured<sp/>for<sp/>ADI<sp/>output</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@return<sp/>PROS_SUCCESS<sp/>if<sp/>successful,<sp/>PROS_ERR<sp/>if<sp/>not</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\b<sp/>Example:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\code</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>first<sp/>3<sp/>pixels<sp/>to<sp/>red,<sp/>green,<sp/>and<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>led.set_pixel(0xFF0000,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x00FF00,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x0000FF,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>//<sp/>Clear<sp/>the<sp/>led<sp/>strip<sp/>of<sp/>color</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>led.clear();</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1557" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac41bd42fcdbf07917dac5530bcb7c702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1558" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga595ef524ae8f742fa1e57cecded413f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t update</definition>
+        <argsstring>() const</argsstring>
+        <name>update</name>
+        <briefdescription>
+<para>Force the LED strip to update with the current buffered values, this should be called after any changes to the buffer using the [] operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A parameter is out of bounds/incorrect EADDRINUSE - The port is not configured for ADI output</para>
+<para><simplesect kind="return"><para>PROS_SUCCESS if successful, PROS_ERR if not</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>first<sp/>3<sp/>pixels<sp/>to<sp/>red,<sp/>green,<sp/>and<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0xFF0000,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x00FF00,<sp/>1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x0000FF,<sp/>2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>the<sp/>[]<sp/>operator<sp/>to<sp/>set<sp/>the<sp/>first<sp/>pixel<sp/>to<sp/>black</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.operator[](0)<sp/>=<sp/>0x000000;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Update<sp/>the<sp/>led<sp/>strip<sp/>with<sp/>the<sp/>new<sp/>values</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.update();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1594" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gabf676529de54eeb2a31be67f65bc9f9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_all</definition>
+        <argsstring>(uint32_t color)</argsstring>
+        <name>set_all</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+<para>Set the entire led strip to one color. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A parameter is out of bounds/incorrect EADDRINUSE - The port is not configured for ADI output</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to set all the led strip value to </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PROS_SUCCESS if successful, PROS_ERR if not</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>entire<sp/>led<sp/>strip<sp/>to<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_all(0x0000FF);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1622" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga289f11671c6a07f14c867c67a1453f0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t set_pixel</definition>
+        <argsstring>(uint32_t color, uint32_t pixel_position)</argsstring>
+        <name>set_pixel</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>pixel_position</declname>
+        </param>
+        <briefdescription>
+<para>Set one pixel on the led strip. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A parameter is out of bounds/incorrect EADDRINUSE - The port is not configured for ADI output</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>color</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>color to clear all the led strip to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pixel_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position of the pixel to clear </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PROS_SUCCESS if successful, PROS_ERR if not</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>first<sp/>pixel<sp/>to<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x0000FF,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1651" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gab1238881a74794a65229c25624fd3139" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t clear_pixel</definition>
+        <argsstring>(uint32_t pixel_position)</argsstring>
+        <name>clear_pixel</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>pixel_position</declname>
+        </param>
+        <briefdescription>
+<para>Clear one pixel on the led strip. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A parameter is out of bounds/incorrect EADDRINUSE - The port is not configured for ADI output</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pixel_position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>position of the pixel to clear </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>PROS_SUCCESS if successful, PROS_ERR if not</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>the<sp/>first<sp/>pixel<sp/>to<sp/>blue</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.set_pixel(0x0000FF,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Clear<sp/>the<sp/>first<sp/>pixel</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led.clear_pixel(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1683" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga9db625a4040954a37db814f6fba1b372" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t length</definition>
+        <argsstring>()</argsstring>
+        <name>length</name>
+        <briefdescription>
+<para>Get the length of the led strip. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A parameter is out of bounds/incorrect EADDRINUSE - The port is not configured for ADI output</para>
+<para><simplesect kind="return"><para>The length (in pixels) of the LED strip</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">#define<sp/>LED_PORT<sp/>&apos;a&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>LED_LENGTH<sp/>3</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Led<sp/>led<sp/>(LED_PORT,<sp/>LED_LENGTH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Get<sp/>the<sp/>length<sp/>of<sp/>the<sp/>led<sp/>strip</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>length<sp/>=<sp/>led.length();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(1,<sp/>&quot;Length:<sp/>%d&quot;,<sp/>length);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1711" column="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+      <node id="1">
+        <label>Led</label>
+        <link refid="classpros_1_1adi_1_1Led"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+      <node id="1">
+        <label>Led</label>
+        <link refid="classpros_1_1adi_1_1Led"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="1426" column="23" bodyfile="pros/adi.hpp" bodystart="1426" bodyend="1715"/>
+    <listofallmembers>
+      <member refid="group__cpp-adi_1ga2f90484f4e6d6af516e99301af40f484" prot="private" virt="non-virtual"><scope>pros::adi::Led</scope><name>_buffer</name></member>
+      <member refid="group__cpp-adi_1gac41bd42fcdbf07917dac5530bcb7c702" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>clear</name></member>
+      <member refid="group__cpp-adi_1ga61c7fa7a23ef246276650e62808d23ec" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>clear_all</name></member>
+      <member refid="group__cpp-adi_1gab1238881a74794a65229c25624fd3139" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>clear_pixel</name></member>
+      <member refid="group__cpp-adi_1ga940c125c457549717840ffd81acc2e5d" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>Led</name></member>
+      <member refid="group__cpp-adi_1gac175118de7a27d82d581607a64452792" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>Led</name></member>
+      <member refid="group__cpp-adi_1ga9db625a4040954a37db814f6fba1b372" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>length</name></member>
+      <member refid="group__cpp-adi_1gabf676529de54eeb2a31be67f65bc9f9d" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>set_all</name></member>
+      <member refid="group__cpp-adi_1ga289f11671c6a07f14c867c67a1453f0a" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>set_pixel</name></member>
+      <member refid="group__cpp-adi_1ga595ef524ae8f742fa1e57cecded413f0" prot="public" virt="non-virtual"><scope>pros::adi::Led</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

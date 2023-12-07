@@ -1,0 +1,525 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__c-serial" kind="group">
+    <compoundname>c-serial</compoundname>
+    <title>Generic Serial C API</title>
+    <innerfile refid="serial_8h">serial.h</innerfile>
+      <sectiondef kind="user-defined">
+      <header>Serial communication functions</header>
+      <description><para>These functions allow programmers to communicate using UART over RS485 </para>
+</description>
+      <memberdef kind="function" id="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_enable</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_enable</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Enables generic serial on the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function must be called before any of the generic serial functions will work.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="69" column="9" declfile="pros/serial.h" declline="69" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_set_baudrate</definition>
+        <argsstring>(uint8_t port, int32_t baudrate)</argsstring>
+        <name>serial_set_baudrate</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>baudrate</declname>
+        </param>
+        <briefdescription>
+<para>Sets the baudrate for the serial port to operate at. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>baudrate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The baudrate to operate at</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga6178a93ae6ef642d9071c55980954e00" kindref="member">serial_write</ref>(1,<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="99" column="9" declfile="pros/serial.h" declline="99" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga01af0f44a069891e14e17953cd3a6260" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_flush</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_flush</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Clears the internal input and output FIFO buffers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This can be useful to reset state and remove old, potentially unneeded data from the input FIFO buffer or to cancel sending any data in the output FIFO buffer.</para>
+<para><simplesect kind="note"><para>This function does not cause the data in the output buffer to be written, it simply clears the internal buffers. Unlike stdout, generic serial does not use buffered IO (the FIFO buffers are written as soon as possible).</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga01af0f44a069891e14e17953cd3a6260" kindref="member">serial_flush</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga6178a93ae6ef642d9071c55980954e00" kindref="member">serial_write</ref>(1,<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="137" column="9" declfile="pros/serial.h" declline="137" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga44e637ac10841488b1e2a692cb20e733" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_get_read_avail</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_get_read_avail</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of bytes available to be read in the the port&apos;s FIFO input buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function does not actually read any bytes, is simply returns the number of bytes available to be read.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes avaliable to be read or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga44e637ac10841488b1e2a692cb20e733" kindref="member">serial_get_read_avail</ref>(1)<sp/>&gt;=<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[12];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga5cc07e5fb43c781d5c0853a3ff645b26" kindref="member">serial_read</ref>(1,<sp/>buffer,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>buffer);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="174" column="9" declfile="pros/serial.h" declline="174" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga72e8b6f07f44136e0ab9ede6a9d0316e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_get_write_free</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_get_write_free</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Returns the number of bytes free in the port&apos;s FIFO output buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function does not actually write any bytes, is simply returns the number of bytes free in the port&apos;s buffer.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes free or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga72e8b6f07f44136e0ab9ede6a9d0316e" kindref="member">serial_get_write_free</ref>(1)<sp/>&gt;=<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga6178a93ae6ef642d9071c55980954e00" kindref="member">serial_write</ref>(1,<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="207" column="9" declfile="pros/serial.h" declline="207" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga629ab10f7b2dfa10eab9c6aedc8cfecd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_peek_byte</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_peek_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Reads the next byte avaliable in the port&apos;s input buffer without removing it. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga629ab10f7b2dfa10eab9c6aedc8cfecd" kindref="member">serial_peek_byte</ref>(1)<sp/>==<sp/></highlight><highlight class="charliteral">&apos;H&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[12];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga5cc07e5fb43c781d5c0853a3ff645b26" kindref="member">serial_read</ref>(1,<sp/>buffer,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>buffer);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="239" column="9" declfile="pros/serial.h" declline="239" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga4786d527472b1a40dafd15aaf6ef823b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_read_byte</definition>
+        <argsstring>(uint8_t port)</argsstring>
+        <name>serial_read_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Reads the next byte avaliable in the port&apos;s input buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The next byte avaliable to be read, -1 if none are available, or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga4786d527472b1a40dafd15aaf6ef823b" kindref="member">serial_read_byte</ref>(1)<sp/>==<sp/></highlight><highlight class="charliteral">&apos;H&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[12];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga5cc07e5fb43c781d5c0853a3ff645b26" kindref="member">serial_read</ref>(1,<sp/>buffer,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>buffer);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="271" column="9" declfile="pros/serial.h" declline="271" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga5cc07e5fb43c781d5c0853a3ff645b26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_read</definition>
+        <argsstring>(uint8_t port, uint8_t *buffer, int32_t length)</argsstring>
+        <name>serial_read</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Reads up to the next length bytes from the port&apos;s input buffer and places them in the user supplied buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function will only return bytes that are currently avaliable to be read and will not block waiting for any to arrive.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The location to place the data read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum number of bytes to read</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes read or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga44e637ac10841488b1e2a692cb20e733" kindref="member">serial_get_read_avail</ref>(1)<sp/>&gt;=<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[12];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga5cc07e5fb43c781d5c0853a3ff645b26" kindref="member">serial_read</ref>(1,<sp/>buffer,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%s&quot;</highlight><highlight class="normal">,<sp/>buffer);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="311" column="9" declfile="pros/serial.h" declline="311" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga67712457bac23b549b04f88790977be1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_write_byte</definition>
+        <argsstring>(uint8_t port, uint8_t buffer)</argsstring>
+        <name>serial_write_byte</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>buffer</declname>
+        </param>
+        <briefdescription>
+<para>Write the given byte to the port&apos;s output buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Data in the port&apos;s output buffer is written to the serial port as soon as possible on a FIFO basis and can not be done manually by the user.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port. EIO - Serious internal write error.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The byte to write</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga72e8b6f07f44136e0ab9ede6a9d0316e" kindref="member">serial_get_write_free</ref>(1)<sp/>&gt;=<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;H&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;e&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;o&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;<sp/>&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;W&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;o&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;r&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;d&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;!&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga67712457bac23b549b04f88790977be1" kindref="member">serial_write_byte</ref>(1,<sp/></highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="359" column="9" declfile="pros/serial.h" declline="359" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-serial_1ga6178a93ae6ef642d9071c55980954e00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::serial_write</definition>
+        <argsstring>(uint8_t port, uint8_t *buffer, int32_t length)</argsstring>
+        <name>serial_write</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Writes up to length bytes from the user supplied buffer to the port&apos;s output buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Data in the port&apos;s output buffer is written to the serial port as soon as possible on a FIFO basis and can not be done manually by the user.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - The given value is not within the range of V5 ports (1-21). EACCES - Another resource is currently trying to access the port. EIO - Serious internal write error.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum number of bytes to write</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The number of bytes written or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting filename=".c"><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga3dfc8cbc0618e9a5f95467733cb95b39" kindref="member">serial_enable</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga764ae0c3adf9c45564fdfa6ac398968e" kindref="member">serial_set_baudrate</ref>(1,<sp/>9600);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="group__c-serial_1ga72e8b6f07f44136e0ab9ede6a9d0316e" kindref="member">serial_get_write_free</ref>(1)<sp/>&gt;=<sp/>12)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-serial_1ga6178a93ae6ef642d9071c55980954e00" kindref="member">serial_write</ref>(1,<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!\n&quot;</highlight><highlight class="normal">,<sp/>12);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/serial.h" line="398" column="9" declfile="pros/serial.h" declline="398" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
