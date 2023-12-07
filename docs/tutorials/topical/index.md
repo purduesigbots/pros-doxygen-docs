@@ -6,7 +6,6 @@ and more detail about using the PROS API.
 - \subpage controller
 - \subpage display
 - \subpage filesystem
-- \subpage jinx
 - \subpage llemu
 - \subpage motors
 - \subpage multitasking
