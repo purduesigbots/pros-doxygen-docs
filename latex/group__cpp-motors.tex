@@ -1,0 +1,1140 @@
+\hypertarget{group__cpp-motors}{}\doxysection{Motors C++ API}
+\label{group__cpp-motors}\index{Motors C++ API@{Motors C++ API}}
+\doxysubsection*{Files}
+\begin{DoxyCompactItemize}
+\item 
+file \mbox{\hyperlink{motors_8hpp}{motors.\+hpp}}
+\begin{DoxyCompactList}\small\item\em Contains prototypes for the V5 Motor-\/related functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__cpp-motors_gaa97370bad030313681ac1404c2f9d68c}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset, const bool reverse, const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t encoder\+\_\+units)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} object for the given port and specifications. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__cpp-motors_gad7498af850377ab4fd186b04b9a48872}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset, const bool reverse)
+\item 
+\mbox{\hyperlink{group__cpp-motors_gadfef3d1f2efbe3f95ccce541db8e8589}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset)
+\item 
+\mbox{\hyperlink{group__cpp-motors_ga9a0404a55ab9cf5e00e4fbb47cda5644}{Motor}} (const std\+::uint8\+\_\+t port, const bool reverse)
+\item 
+\mbox{\hyperlink{group__cpp-motors_gae14a145a375a86a358cadf61279331d0}{Motor}} (const std\+::uint8\+\_\+t port)
+\end{DoxyCompactItemize}
+\doxysubsection*{Motor movement functions}
+\label{_amgrp3c4536b769f0294610bef0e0fdb69d8f}%
+These functions allow programmers to make motors move \begin{DoxyCompactItemize}
+\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaef1912d05cd3cb958438611206980ee5}{operator=}} (std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage for the motor from -\/128 to 127. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga8b513d45c840a5100c07c9b6c215f445}{move}} (std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage for the motor from -\/127 to 127. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga4dec019cd22aecb8215e5c4b002e0134}{move\+\_\+absolute}} (const double position, const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the target absolute position for the motor to move to. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gac5d68e91660d43861a3d4f5e78f54b81}{move\+\_\+relative}} (const double position, const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the relative target position for the motor to move to. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga70b77a5b452fa26b140b55a54017fe4f}{move\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the velocity for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}{move\+\_\+voltage}} (const std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the output voltage for the motor from -\/12000 to 12000 in millivolts. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}{modify\+\_\+profiled\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Changes the output velocity for a profiled movement (\mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute()}} or \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative()}}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Motor telemetry functions}
+\label{_amgrp03bd5d78004a10fef51f97a32f71082d}%
+These functions allow programmers to collect telemetry from motors \begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}{get\+\_\+target\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the target position set for the motor by the user. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga14c12585d679f88b6dfc300a84845939}{get\+\_\+target\+\_\+velocity}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the velocity commanded to the motor by the user. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga21db04b7746d4fff9a36a6aeeda01f6b}{get\+\_\+actual\+\_\+velocity}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the actual velocity of the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga44fecf2b74bed9d7e31aae4ebc2e10df}{get\+\_\+current\+\_\+draw}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the current drawn by the motor in mA. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga657d012f658caea149b8c61187d058ef}{get\+\_\+direction}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the direction of movement for the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga09d2c79b445558fa0d76b85119e64266}{get\+\_\+efficiency}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the motor in percent. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga12deded62f43f330260cf21cb44aa724}{is\+\_\+over\+\_\+current}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is drawing over its current limit. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gade19ea7ad11e891e14934765b0dba8c6}{is\+\_\+stopped}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is stopped. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9561a3e8ffbee6d1e3d2fdaa48243888}{get\+\_\+zero\+\_\+position\+\_\+flag}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is at its zero position. \end{DoxyCompactList}\item 
+virtual std\+::uint32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga4aa64cc8385a86c5e88073b784b3b208}{get\+\_\+faults}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the faults experienced by the motor. \end{DoxyCompactList}\item 
+virtual std\+::uint32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8f83750611015ed13d2c49526866bed}{get\+\_\+flags}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the flags set by the motor\textquotesingle{}s operation. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaa766640684db6f6e858ea5681fe73cef}{get\+\_\+raw\+\_\+position}} (std\+::uint32\+\_\+t $\ast$const timestamp) const
+\begin{DoxyCompactList}\small\item\em Gets the raw encoder count of the motor at a given timestamp. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga798c89ba25758c44922e112136b3046c}{is\+\_\+over\+\_\+temp}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the temperature limit flag for the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga7fb03fc14c98289b0117adfee8f8ab5c}{get\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the absolute position of the motor in its encoder units. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga7ce531b8f95c8c5a585a9fdff0c5664f}{get\+\_\+power}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the power drawn by the motor in Watts. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga8be0961c2ee57455dc7f5ed65b99531b}{get\+\_\+temperature}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the temperature of the motor in degrees Celsius. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_gabf414d317991199c5db1dab32df70108}{get\+\_\+torque}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the torque generated by the motor in Newton Meters (Nm). \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga6680df159a8a9d895aace4ca7cf38116}{get\+\_\+voltage}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the voltage delivered to the motor in millivolts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Motor configuration functions}
+\label{_amgrp83bd33fee95d2cab9ccae7e146667265}%
+These functions allow programmers to configure the behavior of motors \begin{DoxyCompactItemize}
+\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga75be8c1109c98996f050756ae9edb330}{set\+\_\+zero\+\_\+position}} (const double position) const
+\begin{DoxyCompactList}\small\item\em Sets the position for the motor in its encoder units. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga3f32870211b3b26c49b48f08148574d6}{tare\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Sets the \char`\"{}absolute\char`\"{} zero position of the motor to its current position. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9f4155603ddb45c08e7ff5315a429e0c}{set\+\_\+brake\+\_\+mode}} (const motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t mode) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t to the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga41dbff104f8d8b35881142b4f3d938be}{set\+\_\+current\+\_\+limit}} (const std\+::int32\+\_\+t limit) const
+\begin{DoxyCompactList}\small\item\em Sets the current limit for the motor in mA. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9c9ada870a37281413266765738065f7}{set\+\_\+encoder\+\_\+units}} (const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t units) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t for the motor encoder. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf6d7ffe286f1ec9d2d9126cb36bc6e42}{set\+\_\+gearing}} (const motor\+\_\+gearset\+\_\+e\+\_\+t gearset) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+gearset\+\_\+e\+\_\+t for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga31fb47035fff5d6ebfae1e5d6bb898a8}{set\+\_\+reversed}} (const bool reverse) const
+\begin{DoxyCompactList}\small\item\em Sets the reverse flag for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gae26d08a3a18cdbbb7a497f412d3be012}{set\+\_\+voltage\+\_\+limit}} (const std\+::int32\+\_\+t limit) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage limit for the motor in Volts. \end{DoxyCompactList}\item 
+virtual motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaec44686d49722f73f5d151a808d5de56}{get\+\_\+brake\+\_\+mode}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the brake mode that was set for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga073b3abe81f0df096fa7622ed5f5c9e6}{get\+\_\+current\+\_\+limit}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the current limit for the motor in mA. \end{DoxyCompactList}\item 
+virtual motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaa9d5c1124dfdce664106556bf35d3a36}{get\+\_\+encoder\+\_\+units}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the encoder units that were set for the motor. \end{DoxyCompactList}\item 
+virtual motor\+\_\+gearset\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga1d57975b221c88405850f15fb66d35e7}{get\+\_\+gearing}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the gearset that was set for the motor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} \mbox{\hyperlink{group__cpp-motors_gae7d410a424561924c554eb461135798f}{get\+\_\+pos\+\_\+pid}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the position PID that was set for the motor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} \mbox{\hyperlink{group__cpp-motors_ga86e2e6c03a9037a9d0035d1f8df9c759}{get\+\_\+vel\+\_\+pid}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the velocity PID that was set for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gab5d7f0bb616576070b3613cc9f3bd7a2}{is\+\_\+reversed}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the operation direction of the motor as set by the user. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gac72d46268a3a67d69648e8018372c8c1}{get\+\_\+voltage\+\_\+limit}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the voltage limit set by the user. \end{DoxyCompactList}\item 
+virtual std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga66477d87d2b7169e3f588f926c17b1d1}{get\+\_\+port}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the port number of the motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyNote}{Note}
+Additional example code for this module can be found in its \mbox{\hyperlink{motors}{Tutorial}}. 
+\end{DoxyNote}
+
+
+\doxysubsection{Data Structure Documentation}
+\index{pros::Motor@{pros::Motor}}\label{classpros_1_1Motor}
+\Hypertarget{group__cpp-motors_classpros_1_1Motor}
+\doxysubsubsection{class pros\+::Motor}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{group__cpp-motors_gaa97370bad030313681ac1404c2f9d68c}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset, const bool reverse, const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t encoder\+\_\+units)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} object for the given port and specifications. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{group__cpp-motors_gad7498af850377ab4fd186b04b9a48872}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset, const bool reverse)
+\item 
+\mbox{\hyperlink{group__cpp-motors_gadfef3d1f2efbe3f95ccce541db8e8589}{Motor}} (const std\+::uint8\+\_\+t port, const motor\+\_\+gearset\+\_\+e\+\_\+t gearset)
+\item 
+\mbox{\hyperlink{group__cpp-motors_ga9a0404a55ab9cf5e00e4fbb47cda5644}{Motor}} (const std\+::uint8\+\_\+t port, const bool reverse)
+\item 
+\mbox{\hyperlink{group__cpp-motors_gae14a145a375a86a358cadf61279331d0}{Motor}} (const std\+::uint8\+\_\+t port)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Motor movement functions}\par
+{\em These functions allow programmers to make motors move }\begin{DoxyCompactItemize}
+\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaef1912d05cd3cb958438611206980ee5}{operator=}} (std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage for the motor from -\/128 to 127. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga8b513d45c840a5100c07c9b6c215f445}{move}} (std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage for the motor from -\/127 to 127. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga4dec019cd22aecb8215e5c4b002e0134}{move\+\_\+absolute}} (const double position, const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the target absolute position for the motor to move to. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gac5d68e91660d43861a3d4f5e78f54b81}{move\+\_\+relative}} (const double position, const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the relative target position for the motor to move to. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga70b77a5b452fa26b140b55a54017fe4f}{move\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Sets the velocity for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}{move\+\_\+voltage}} (const std\+::int32\+\_\+t voltage) const
+\begin{DoxyCompactList}\small\item\em Sets the output voltage for the motor from -\/12000 to 12000 in millivolts. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}{modify\+\_\+profiled\+\_\+velocity}} (const std\+::int32\+\_\+t velocity) const
+\begin{DoxyCompactList}\small\item\em Changes the output velocity for a profiled movement (\mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute()}} or \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative()}}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Motor telemetry functions}\par
+{\em These functions allow programmers to collect telemetry from motors }\begin{DoxyCompactItemize}
+\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}{get\+\_\+target\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the target position set for the motor by the user. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga14c12585d679f88b6dfc300a84845939}{get\+\_\+target\+\_\+velocity}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the velocity commanded to the motor by the user. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga21db04b7746d4fff9a36a6aeeda01f6b}{get\+\_\+actual\+\_\+velocity}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the actual velocity of the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga44fecf2b74bed9d7e31aae4ebc2e10df}{get\+\_\+current\+\_\+draw}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the current drawn by the motor in mA. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga657d012f658caea149b8c61187d058ef}{get\+\_\+direction}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the direction of movement for the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga09d2c79b445558fa0d76b85119e64266}{get\+\_\+efficiency}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the motor in percent. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga12deded62f43f330260cf21cb44aa724}{is\+\_\+over\+\_\+current}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is drawing over its current limit. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gade19ea7ad11e891e14934765b0dba8c6}{is\+\_\+stopped}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is stopped. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9561a3e8ffbee6d1e3d2fdaa48243888}{get\+\_\+zero\+\_\+position\+\_\+flag}} (void) const
+\begin{DoxyCompactList}\small\item\em Checks if the motor is at its zero position. \end{DoxyCompactList}\item 
+virtual std\+::uint32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga4aa64cc8385a86c5e88073b784b3b208}{get\+\_\+faults}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the faults experienced by the motor. \end{DoxyCompactList}\item 
+virtual std\+::uint32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf8f83750611015ed13d2c49526866bed}{get\+\_\+flags}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the flags set by the motor\textquotesingle{}s operation. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaa766640684db6f6e858ea5681fe73cef}{get\+\_\+raw\+\_\+position}} (std\+::uint32\+\_\+t $\ast$const timestamp) const
+\begin{DoxyCompactList}\small\item\em Gets the raw encoder count of the motor at a given timestamp. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga798c89ba25758c44922e112136b3046c}{is\+\_\+over\+\_\+temp}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the temperature limit flag for the motor. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga7fb03fc14c98289b0117adfee8f8ab5c}{get\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the absolute position of the motor in its encoder units. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga7ce531b8f95c8c5a585a9fdff0c5664f}{get\+\_\+power}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the power drawn by the motor in Watts. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_ga8be0961c2ee57455dc7f5ed65b99531b}{get\+\_\+temperature}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the temperature of the motor in degrees Celsius. \end{DoxyCompactList}\item 
+virtual double \mbox{\hyperlink{group__cpp-motors_gabf414d317991199c5db1dab32df70108}{get\+\_\+torque}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the torque generated by the motor in Newton Meters (Nm). \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga6680df159a8a9d895aace4ca7cf38116}{get\+\_\+voltage}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the voltage delivered to the motor in millivolts. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsubsection*{Motor configuration functions}
+\label{_amgrp83bd33fee95d2cab9ccae7e146667265}%
+These functions allow programmers to configure the behavior of motors \begin{DoxyCompactItemize}
+\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga75be8c1109c98996f050756ae9edb330}{set\+\_\+zero\+\_\+position}} (const double position) const
+\begin{DoxyCompactList}\small\item\em Sets the position for the motor in its encoder units. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga3f32870211b3b26c49b48f08148574d6}{tare\+\_\+position}} (void) const
+\begin{DoxyCompactList}\small\item\em Sets the \char`\"{}absolute\char`\"{} zero position of the motor to its current position. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9f4155603ddb45c08e7ff5315a429e0c}{set\+\_\+brake\+\_\+mode}} (const motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t mode) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t to the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga41dbff104f8d8b35881142b4f3d938be}{set\+\_\+current\+\_\+limit}} (const std\+::int32\+\_\+t limit) const
+\begin{DoxyCompactList}\small\item\em Sets the current limit for the motor in mA. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga9c9ada870a37281413266765738065f7}{set\+\_\+encoder\+\_\+units}} (const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t units) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t for the motor encoder. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaf6d7ffe286f1ec9d2d9126cb36bc6e42}{set\+\_\+gearing}} (const motor\+\_\+gearset\+\_\+e\+\_\+t gearset) const
+\begin{DoxyCompactList}\small\item\em Sets one of motor\+\_\+gearset\+\_\+e\+\_\+t for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga31fb47035fff5d6ebfae1e5d6bb898a8}{set\+\_\+reversed}} (const bool reverse) const
+\begin{DoxyCompactList}\small\item\em Sets the reverse flag for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gae26d08a3a18cdbbb7a497f412d3be012}{set\+\_\+voltage\+\_\+limit}} (const std\+::int32\+\_\+t limit) const
+\begin{DoxyCompactList}\small\item\em Sets the voltage limit for the motor in Volts. \end{DoxyCompactList}\item 
+virtual motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaec44686d49722f73f5d151a808d5de56}{get\+\_\+brake\+\_\+mode}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the brake mode that was set for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga073b3abe81f0df096fa7622ed5f5c9e6}{get\+\_\+current\+\_\+limit}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the current limit for the motor in mA. \end{DoxyCompactList}\item 
+virtual motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_gaa9d5c1124dfdce664106556bf35d3a36}{get\+\_\+encoder\+\_\+units}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the encoder units that were set for the motor. \end{DoxyCompactList}\item 
+virtual motor\+\_\+gearset\+\_\+e\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga1d57975b221c88405850f15fb66d35e7}{get\+\_\+gearing}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the gearset that was set for the motor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} \mbox{\hyperlink{group__cpp-motors_gae7d410a424561924c554eb461135798f}{get\+\_\+pos\+\_\+pid}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the position PID that was set for the motor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} \mbox{\hyperlink{group__cpp-motors_ga86e2e6c03a9037a9d0035d1f8df9c759}{get\+\_\+vel\+\_\+pid}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the velocity PID that was set for the motor. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gab5d7f0bb616576070b3613cc9f3bd7a2}{is\+\_\+reversed}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the operation direction of the motor as set by the user. \end{DoxyCompactList}\item 
+virtual std\+::int32\+\_\+t \mbox{\hyperlink{group__cpp-motors_gac72d46268a3a67d69648e8018372c8c1}{get\+\_\+voltage\+\_\+limit}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the voltage limit set by the user. \end{DoxyCompactList}\item 
+virtual std\+::uint8\+\_\+t \mbox{\hyperlink{group__cpp-motors_ga66477d87d2b7169e3f588f926c17b1d1}{get\+\_\+port}} (void) const
+\begin{DoxyCompactList}\small\item\em Gets the port number of the motor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group__cpp-motors_gaa97370bad030313681ac1404c2f9d68c}\label{group__cpp-motors_gaa97370bad030313681ac1404c2f9d68c}} 
+\index{Motors C++ API@{Motors C++ API}!Motor@{Motor}}
+\index{Motor@{Motor}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} (\begin{DoxyParamCaption}\item[{const std\+::uint8\+\_\+t}]{port,  }\item[{const motor\+\_\+gearset\+\_\+e\+\_\+t}]{gearset,  }\item[{const bool}]{reverse,  }\item[{const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t}]{encoder\+\_\+units }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Creates a \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} object for the given port and specifications. 
+
+This function uses the following values of errno when an error state is reached\+: ENXIO -\/ The given value is not within the range of V5 ports (1-\/21). ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21 \\
+\hline
+{\em gearset} & The motor\textquotesingle{}s gearset \\
+\hline
+{\em reverse} & True reverses the motor, false is default \\
+\hline
+{\em encoder\+\_\+units} & The motor\textquotesingle{}s encoder units\\
+\hline
+\end{DoxyParams}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1, \mbox{\hyperlink{group__c-motors_gga91f7e3d7eea68bd25b0d724136394fb1a95444ef9bee438d4bcfebb0c0a399443}{E\_MOTOR\_GEARSET\_18}}, \textcolor{keyword}{false}, \mbox{\hyperlink{group__c-motors_gga49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf}{E\_MOTOR\_ENCODER\_DEGREES}});}
+\DoxyCodeLine{  \mbox{\hyperlink{classpros_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    motor.move(master.get\_analog(\mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5ac68939b7adc180b25b95367fd0098e99}{E\_CONTROLLER\_ANALOG\_LEFT\_Y}}));}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_gad7498af850377ab4fd186b04b9a48872}\label{group__cpp-motors_gad7498af850377ab4fd186b04b9a48872}} 
+\index{Motors C++ API@{Motors C++ API}!Motor@{Motor}}
+\index{Motor@{Motor}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} (\begin{DoxyParamCaption}\item[{const std\+::uint8\+\_\+t}]{port,  }\item[{const motor\+\_\+gearset\+\_\+e\+\_\+t}]{gearset,  }\item[{const bool}]{reverse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{group__cpp-motors_gadfef3d1f2efbe3f95ccce541db8e8589}\label{group__cpp-motors_gadfef3d1f2efbe3f95ccce541db8e8589}} 
+\index{Motors C++ API@{Motors C++ API}!Motor@{Motor}}
+\index{Motor@{Motor}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} (\begin{DoxyParamCaption}\item[{const std\+::uint8\+\_\+t}]{port,  }\item[{const motor\+\_\+gearset\+\_\+e\+\_\+t}]{gearset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{group__cpp-motors_ga9a0404a55ab9cf5e00e4fbb47cda5644}\label{group__cpp-motors_ga9a0404a55ab9cf5e00e4fbb47cda5644}} 
+\index{Motors C++ API@{Motors C++ API}!Motor@{Motor}}
+\index{Motor@{Motor}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} (\begin{DoxyParamCaption}\item[{const std\+::uint8\+\_\+t}]{port,  }\item[{const bool}]{reverse }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{group__cpp-motors_gae14a145a375a86a358cadf61279331d0}\label{group__cpp-motors_gae14a145a375a86a358cadf61279331d0}} 
+\index{Motors C++ API@{Motors C++ API}!Motor@{Motor}}
+\index{Motor@{Motor}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{Motor()}{Motor()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{Motor}} (\begin{DoxyParamCaption}\item[{const std\+::uint8\+\_\+t}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{group__cpp-motors_gaef1912d05cd3cb958438611206980ee5}\label{group__cpp-motors_gaef1912d05cd3cb958438611206980ee5}} 
+\index{Motors C++ API@{Motors C++ API}!operator=@{operator=}}
+\index{operator=@{operator=}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t operator= (\begin{DoxyParamCaption}\item[{std\+::int32\+\_\+t}]{voltage }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the voltage for the motor from -\/128 to 127. 
+
+This is designed to map easily to the input from the controller\textquotesingle{}s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of \mbox{\hyperlink{group__cpp-motors_ga8b513d45c840a5100c07c9b6c215f445}{pros\+::\+Motor\+::move()}}, or motor\+Set from the PROS 2 API.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & The new motor voltage from -\/127 to 127\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1, \mbox{\hyperlink{group__c-motors_gga91f7e3d7eea68bd25b0d724136394fb1a95444ef9bee438d4bcfebb0c0a399443}{E\_MOTOR\_GEARSET\_18}});}
+\DoxyCodeLine{  \mbox{\hyperlink{classpros_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    motor = master.get\_analog(\mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5ac68939b7adc180b25b95367fd0098e99}{E\_CONTROLLER\_ANALOG\_LEFT\_Y}});}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_ga8b513d45c840a5100c07c9b6c215f445}\label{group__cpp-motors_ga8b513d45c840a5100c07c9b6c215f445}} 
+\index{Motors C++ API@{Motors C++ API}!move@{move}}
+\index{move@{move}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t move (\begin{DoxyParamCaption}\item[{std\+::int32\+\_\+t}]{voltage }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the voltage for the motor from -\/127 to 127. 
+
+This is designed to map easily to the input from the controller\textquotesingle{}s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of \mbox{\hyperlink{group__c-motors_gac14bccd595a812fff8c30d2d050844a9}{motor\+\_\+move()}}, or \mbox{\hyperlink{api__legacy_8h_a59a0d6bd050cd259ad488e68f856ae81}{motor\+Set()}} from the PROS 2 API.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em voltage} & The new motor voltage from -\/127 to 127\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a1903abdb5ef0f301d660754c8315fc17}{opcontrol}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  \mbox{\hyperlink{classpros_1_1Controller}{pros::Controller}} master (\mbox{\hyperlink{namespacepros_af1323f00203099060d46f722b1fbd460a1c9d9311575877d185c44df1cadad226}{E\_CONTROLLER\_MASTER}});}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{    motor.move(master.get\_analog(\mbox{\hyperlink{namespacepros_a8bdd0963e2bc0d4fbe03435eee8a5ca5ac68939b7adc180b25b95367fd0098e99}{E\_CONTROLLER\_ANALOG\_LEFT\_Y}}));}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_ga4dec019cd22aecb8215e5c4b002e0134}\label{group__cpp-motors_ga4dec019cd22aecb8215e5c4b002e0134}} 
+\index{Motors C++ API@{Motors C++ API}!move\_absolute@{move\_absolute}}
+\index{move\_absolute@{move\_absolute}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{move\_absolute()}{move\_absolute()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t move\+\_\+absolute (\begin{DoxyParamCaption}\item[{const double}]{position,  }\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the target absolute position for the motor to move to. 
+
+This movement is relative to the position of the motor when initialized or the position when it was most recently reset with \mbox{\hyperlink{group__cpp-motors_ga75be8c1109c98996f050756ae9edb330}{pros\+::\+Motor\+::set\+\_\+zero\+\_\+position()}}.
+
+\begin{DoxyNote}{Note}
+This function simply sets the target for the motor, it does not block program execution until the movement finishes.
+\end{DoxyNote}
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The absolute position to move to in the motor\textquotesingle{}s encoder units \\
+\hline
+{\em velocity} & The maximum allowable velocity for the movement in RPM\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  motor.move\_absolute(100, 100); \textcolor{comment}{// Moves 100 units forward}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!((motor.get\_position() < 105) \&\& (motor.get\_position() > 95))) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Continue running this loop as long as the motor is not within +-\/5 units of its goal}}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  motor.move\_absolute(100, 100); \textcolor{comment}{// This does not cause a movement}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!((motor.get\_position() < 105) \&\& (motor.get\_position() > 95))) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  motor.tare\_position();}
+\DoxyCodeLine{  motor.move\_absolute(100, 100); \textcolor{comment}{// Moves 100 units forward}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!((motor.get\_position() < 105) \&\& (motor.get\_position() > 95))) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_gac5d68e91660d43861a3d4f5e78f54b81}\label{group__cpp-motors_gac5d68e91660d43861a3d4f5e78f54b81}} 
+\index{Motors C++ API@{Motors C++ API}!move\_relative@{move\_relative}}
+\index{move\_relative@{move\_relative}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{move\_relative()}{move\_relative()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t move\+\_\+relative (\begin{DoxyParamCaption}\item[{const double}]{position,  }\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the relative target position for the motor to move to. 
+
+This movement is relative to the current position of the motor as given in \mbox{\hyperlink{group__c-motors_gac58430bb6174017c2d9d6d73f5239bc7}{pros\+::\+Motor\+::motor\+\_\+get\+\_\+position()}}. Providing 10.\+0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.
+
+\begin{DoxyNote}{Note}
+This function simply sets the target for the motor, it does not block program execution until the movement finishes.
+\end{DoxyNote}
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The relative position to move to in the motor\textquotesingle{}s encoder units \\
+\hline
+{\em velocity} & The maximum allowable velocity for the movement in RPM\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  motor.move\_relative(100, 100); \textcolor{comment}{// Moves 100 units forward}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!((motor.get\_position() < 105) \&\& (motor.get\_position() > 95))) \{}
+\DoxyCodeLine{    \textcolor{comment}{// Continue running this loop as long as the motor is not within +-\/5 units of its goal}}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{  motor.move\_relative(100, 100); \textcolor{comment}{// Also moves 100 units forward}}
+\DoxyCodeLine{  \textcolor{keywordflow}{while} (!((motor.get\_position() < 205) \&\& (motor.get\_position() > 195))) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(2);}
+\DoxyCodeLine{  \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_ga70b77a5b452fa26b140b55a54017fe4f}\label{group__cpp-motors_ga70b77a5b452fa26b140b55a54017fe4f}} 
+\index{Motors C++ API@{Motors C++ API}!move\_velocity@{move\_velocity}}
+\index{move\_velocity@{move\_velocity}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{move\_velocity()}{move\_velocity()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t move\+\_\+velocity (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the velocity for the motor. 
+
+This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-\/100 for E\+\_\+\+MOTOR\+\_\+\+GEARSET\+\_\+36, +-\/200 for E\+\_\+\+MOTOR\+\_\+\+GEARSET\+\_\+18, and +-\/600 for E\+\_\+\+MOTOR\+\_\+\+GEARSET\+\_\+6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor\textquotesingle{}s voltage.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & The new motor velocity from -\/+-\/100, +-\/200, or +-\/600 depending on the motor\textquotesingle{}s gearset\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno.
+\end{DoxyReturn}
+{\bfseries{Example}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void} \mbox{\hyperlink{main_8h_a2df3d06bc5bced154da27fce393f991f}{autonomous}}() \{}
+\DoxyCodeLine{  \mbox{\hyperlink{group__cpp-motors_classpros_1_1Motor}{pros::Motor}} motor (1);}
+\DoxyCodeLine{  motor.move\_velocity(100);}
+\DoxyCodeLine{  \mbox{\hyperlink{namespacepros_1_1c_a6a62f5325d65f95436762552df547d73}{pros::delay}}(1000); \textcolor{comment}{// Move at 100 RPM for 1 second}}
+\DoxyCodeLine{  motor.move\_velocity(0);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}\label{group__cpp-motors_gaf8499ba89081225b6b40e5ee3149e684}} 
+\index{Motors C++ API@{Motors C++ API}!move\_voltage@{move\_voltage}}
+\index{move\_voltage@{move\_voltage}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{move\_voltage()}{move\_voltage()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t move\+\_\+voltage (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{voltage }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the output voltage for the motor from -\/12000 to 12000 in millivolts. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21 \\
+\hline
+{\em voltage} & The new voltage value from -\/12000 to 12000\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}\label{group__cpp-motors_gaeaf01839c12cb7ac6c673079b1b7e07b}} 
+\index{Motors C++ API@{Motors C++ API}!modify\_profiled\_velocity@{modify\_profiled\_velocity}}
+\index{modify\_profiled\_velocity@{modify\_profiled\_velocity}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{modify\_profiled\_velocity()}{modify\_profiled\_velocity()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t modify\+\_\+profiled\+\_\+velocity (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{velocity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Changes the output velocity for a profiled movement (\mbox{\hyperlink{group__c-motors_ga490a367ce2fea03acaa1e817c0648916}{motor\+\_\+move\+\_\+absolute()}} or \mbox{\hyperlink{group__c-motors_ga003028bf3f30c48559f442d7c0d74a9a}{motor\+\_\+move\+\_\+relative()}}). 
+
+This will have no effect if the motor is not following a profiled movement.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocity} & The new motor velocity from +-\/100, +-\/200, or +-\/600 depending on the motor\textquotesingle{}s gearset\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}\label{group__cpp-motors_ga4fca98cca442b8d1714081d2c5352454}} 
+\index{Motors C++ API@{Motors C++ API}!get\_target\_position@{get\_target\_position}}
+\index{get\_target\_position@{get\_target\_position}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_target\_position()}{get\_target\_position()}}
+{\footnotesize\ttfamily virtual double get\+\_\+target\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the target position set for the motor by the user. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The target position in its encoder units or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga14c12585d679f88b6dfc300a84845939}\label{group__cpp-motors_ga14c12585d679f88b6dfc300a84845939}} 
+\index{Motors C++ API@{Motors C++ API}!get\_target\_velocity@{get\_target\_velocity}}
+\index{get\_target\_velocity@{get\_target\_velocity}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_target\_velocity()}{get\_target\_velocity()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+target\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the velocity commanded to the motor by the user. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The commanded motor velocity from +-\/100, +-\/200, or +-\/600, or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga21db04b7746d4fff9a36a6aeeda01f6b}\label{group__cpp-motors_ga21db04b7746d4fff9a36a6aeeda01f6b}} 
+\index{Motors C++ API@{Motors C++ API}!get\_actual\_velocity@{get\_actual\_velocity}}
+\index{get\_actual\_velocity@{get\_actual\_velocity}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_actual\_velocity()}{get\_actual\_velocity()}}
+{\footnotesize\ttfamily virtual double get\+\_\+actual\+\_\+velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the actual velocity of the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s actual velocity in RPM or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga44fecf2b74bed9d7e31aae4ebc2e10df}\label{group__cpp-motors_ga44fecf2b74bed9d7e31aae4ebc2e10df}} 
+\index{Motors C++ API@{Motors C++ API}!get\_current\_draw@{get\_current\_draw}}
+\index{get\_current\_draw@{get\_current\_draw}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_current\_draw()}{get\_current\_draw()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+current\+\_\+draw (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the current drawn by the motor in mA. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s current in mA or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga657d012f658caea149b8c61187d058ef}\label{group__cpp-motors_ga657d012f658caea149b8c61187d058ef}} 
+\index{Motors C++ API@{Motors C++ API}!get\_direction@{get\_direction}}
+\index{get\_direction@{get\_direction}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_direction()}{get\_direction()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the direction of movement for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 for moving in the positive direction, -\/1 for moving in the negative direction, and PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga09d2c79b445558fa0d76b85119e64266}\label{group__cpp-motors_ga09d2c79b445558fa0d76b85119e64266}} 
+\index{Motors C++ API@{Motors C++ API}!get\_efficiency@{get\_efficiency}}
+\index{get\_efficiency@{get\_efficiency}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_efficiency()}{get\_efficiency()}}
+{\footnotesize\ttfamily virtual double get\+\_\+efficiency (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the efficiency of the motor in percent. 
+
+An efficiency of 100\% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0\% means that the motor is drawing power but not moving.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s efficiency in percent or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga12deded62f43f330260cf21cb44aa724}\label{group__cpp-motors_ga12deded62f43f330260cf21cb44aa724}} 
+\index{Motors C++ API@{Motors C++ API}!is\_over\_current@{is\_over\_current}}
+\index{is\_over\_current@{is\_over\_current}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_over\_current()}{is\_over\_current()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t is\+\_\+over\+\_\+current (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is drawing over its current limit. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the motor\textquotesingle{}s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gade19ea7ad11e891e14934765b0dba8c6}\label{group__cpp-motors_gade19ea7ad11e891e14934765b0dba8c6}} 
+\index{Motors C++ API@{Motors C++ API}!is\_stopped@{is\_stopped}}
+\index{is\_stopped@{is\_stopped}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_stopped()}{is\_stopped()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t is\+\_\+stopped (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is stopped. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyNote}{Note}
+Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS\+\_\+\+ERR with errno set to ENOSYS.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if the motor is not moving, 0 if the motor is moving, or PROS\+\_\+\+ERR if the operation failed, setting errno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga9561a3e8ffbee6d1e3d2fdaa48243888}\label{group__cpp-motors_ga9561a3e8ffbee6d1e3d2fdaa48243888}} 
+\index{Motors C++ API@{Motors C++ API}!get\_zero\_position\_flag@{get\_zero\_position\_flag}}
+\index{get\_zero\_position\_flag@{get\_zero\_position\_flag}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_zero\_position\_flag()}{get\_zero\_position\_flag()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+zero\+\_\+position\+\_\+flag (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Checks if the motor is at its zero position. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyNote}{Note}
+Although this function forwards data from the motor, the motor presently does not provide any value. This function returns PROS\+\_\+\+ERR with errno set to ENOSYS.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+1 if the motor is at zero absolute position, 0 if the motor has moved from its absolute zero, or PROS\+\_\+\+ERR if the operation failed, setting errno 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga4aa64cc8385a86c5e88073b784b3b208}\label{group__cpp-motors_ga4aa64cc8385a86c5e88073b784b3b208}} 
+\index{Motors C++ API@{Motors C++ API}!get\_faults@{get\_faults}}
+\index{get\_faults@{get\_faults}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_faults()}{get\_faults()}}
+{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t get\+\_\+faults (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the faults experienced by the motor. 
+
+Compare this bitfield to the bitmasks in pros\+::motor\+\_\+fault\+\_\+e\+\_\+t.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A bitfield containing the motor\textquotesingle{}s faults. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaf8f83750611015ed13d2c49526866bed}\label{group__cpp-motors_gaf8f83750611015ed13d2c49526866bed}} 
+\index{Motors C++ API@{Motors C++ API}!get\_flags@{get\_flags}}
+\index{get\_flags@{get\_flags}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_flags()}{get\_flags()}}
+{\footnotesize\ttfamily virtual std\+::uint32\+\_\+t get\+\_\+flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the flags set by the motor\textquotesingle{}s operation. 
+
+Compare this bitfield to the bitmasks in pros\+::motor\+\_\+flag\+\_\+e\+\_\+t.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The V5 port number from 1-\/21\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A bitfield containing the motor\textquotesingle{}s flags. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaa766640684db6f6e858ea5681fe73cef}\label{group__cpp-motors_gaa766640684db6f6e858ea5681fe73cef}} 
+\index{Motors C++ API@{Motors C++ API}!get\_raw\_position@{get\_raw\_position}}
+\index{get\_raw\_position@{get\_raw\_position}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_raw\_position()}{get\_raw\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+raw\+\_\+position (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t $\ast$const}]{timestamp }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the raw encoder count of the motor at a given timestamp. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em timestamp} & A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The raw encoder count at the given timestamp or PROS\+\_\+\+ERR if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga798c89ba25758c44922e112136b3046c}\label{group__cpp-motors_ga798c89ba25758c44922e112136b3046c}} 
+\index{Motors C++ API@{Motors C++ API}!is\_over\_temp@{is\_over\_temp}}
+\index{is\_over\_temp@{is\_over\_temp}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_over\_temp()}{is\_over\_temp()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t is\+\_\+over\+\_\+temp (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the temperature limit flag for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga7fb03fc14c98289b0117adfee8f8ab5c}\label{group__cpp-motors_ga7fb03fc14c98289b0117adfee8f8ab5c}} 
+\index{Motors C++ API@{Motors C++ API}!get\_position@{get\_position}}
+\index{get\_position@{get\_position}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_position()}{get\_position()}}
+{\footnotesize\ttfamily virtual double get\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the absolute position of the motor in its encoder units. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s absolute position in its encoder units or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga7ce531b8f95c8c5a585a9fdff0c5664f}\label{group__cpp-motors_ga7ce531b8f95c8c5a585a9fdff0c5664f}} 
+\index{Motors C++ API@{Motors C++ API}!get\_power@{get\_power}}
+\index{get\_power@{get\_power}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_power()}{get\_power()}}
+{\footnotesize\ttfamily virtual double get\+\_\+power (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the power drawn by the motor in Watts. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s power draw in Watts or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga8be0961c2ee57455dc7f5ed65b99531b}\label{group__cpp-motors_ga8be0961c2ee57455dc7f5ed65b99531b}} 
+\index{Motors C++ API@{Motors C++ API}!get\_temperature@{get\_temperature}}
+\index{get\_temperature@{get\_temperature}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_temperature()}{get\_temperature()}}
+{\footnotesize\ttfamily virtual double get\+\_\+temperature (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the temperature of the motor in degrees Celsius. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s temperature in degrees Celsius or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gabf414d317991199c5db1dab32df70108}\label{group__cpp-motors_gabf414d317991199c5db1dab32df70108}} 
+\index{Motors C++ API@{Motors C++ API}!get\_torque@{get\_torque}}
+\index{get\_torque@{get\_torque}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_torque()}{get\_torque()}}
+{\footnotesize\ttfamily virtual double get\+\_\+torque (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the torque generated by the motor in Newton Meters (Nm). 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s torque in Nm or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga6680df159a8a9d895aace4ca7cf38116}\label{group__cpp-motors_ga6680df159a8a9d895aace4ca7cf38116}} 
+\index{Motors C++ API@{Motors C++ API}!get\_voltage@{get\_voltage}}
+\index{get\_voltage@{get\_voltage}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_voltage()}{get\_voltage()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+voltage (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the voltage delivered to the motor in millivolts. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s voltage in mV or PROS\+\_\+\+ERR\+\_\+F if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga75be8c1109c98996f050756ae9edb330}\label{group__cpp-motors_ga75be8c1109c98996f050756ae9edb330}} 
+\index{Motors C++ API@{Motors C++ API}!set\_zero\_position@{set\_zero\_position}}
+\index{set\_zero\_position@{set\_zero\_position}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_zero\_position()}{set\_zero\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+zero\+\_\+position (\begin{DoxyParamCaption}\item[{const double}]{position }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the position for the motor in its encoder units. 
+
+This will be the future reference point for the motor\textquotesingle{}s \char`\"{}absolute\char`\"{} position.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & The new reference position in its encoder units\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga3f32870211b3b26c49b48f08148574d6}\label{group__cpp-motors_ga3f32870211b3b26c49b48f08148574d6}} 
+\index{Motors C++ API@{Motors C++ API}!tare\_position@{tare\_position}}
+\index{tare\_position@{tare\_position}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{tare\_position()}{tare\_position()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t tare\+\_\+position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the \char`\"{}absolute\char`\"{} zero position of the motor to its current position. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga9f4155603ddb45c08e7ff5315a429e0c}\label{group__cpp-motors_ga9f4155603ddb45c08e7ff5315a429e0c}} 
+\index{Motors C++ API@{Motors C++ API}!set\_brake\_mode@{set\_brake\_mode}}
+\index{set\_brake\_mode@{set\_brake\_mode}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_brake\_mode()}{set\_brake\_mode()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+brake\+\_\+mode (\begin{DoxyParamCaption}\item[{const motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t}]{mode }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets one of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t to the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & The motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t to set for the motor\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga41dbff104f8d8b35881142b4f3d938be}\label{group__cpp-motors_ga41dbff104f8d8b35881142b4f3d938be}} 
+\index{Motors C++ API@{Motors C++ API}!set\_current\_limit@{set\_current\_limit}}
+\index{set\_current\_limit@{set\_current\_limit}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_current\_limit()}{set\_current\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+current\+\_\+limit (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{limit }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the current limit for the motor in mA. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & The new current limit in mA\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga9c9ada870a37281413266765738065f7}\label{group__cpp-motors_ga9c9ada870a37281413266765738065f7}} 
+\index{Motors C++ API@{Motors C++ API}!set\_encoder\_units@{set\_encoder\_units}}
+\index{set\_encoder\_units@{set\_encoder\_units}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_encoder\_units()}{set\_encoder\_units()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+encoder\+\_\+units (\begin{DoxyParamCaption}\item[{const motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t}]{units }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets one of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t for the motor encoder. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em units} & The new motor encoder units\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaf6d7ffe286f1ec9d2d9126cb36bc6e42}\label{group__cpp-motors_gaf6d7ffe286f1ec9d2d9126cb36bc6e42}} 
+\index{Motors C++ API@{Motors C++ API}!set\_gearing@{set\_gearing}}
+\index{set\_gearing@{set\_gearing}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_gearing()}{set\_gearing()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+gearing (\begin{DoxyParamCaption}\item[{const motor\+\_\+gearset\+\_\+e\+\_\+t}]{gearset }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets one of motor\+\_\+gearset\+\_\+e\+\_\+t for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em gearset} & The new motor gearset\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga31fb47035fff5d6ebfae1e5d6bb898a8}\label{group__cpp-motors_ga31fb47035fff5d6ebfae1e5d6bb898a8}} 
+\index{Motors C++ API@{Motors C++ API}!set\_reversed@{set\_reversed}}
+\index{set\_reversed@{set\_reversed}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_reversed()}{set\_reversed()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+reversed (\begin{DoxyParamCaption}\item[{const bool}]{reverse }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the reverse flag for the motor. 
+
+This will invert its movements and the values returned for its position.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em reverse} & True reverses the motor, false is default\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gae26d08a3a18cdbbb7a497f412d3be012}\label{group__cpp-motors_gae26d08a3a18cdbbb7a497f412d3be012}} 
+\index{Motors C++ API@{Motors C++ API}!set\_voltage\_limit@{set\_voltage\_limit}}
+\index{set\_voltage\_limit@{set\_voltage\_limit}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{set\_voltage\_limit()}{set\_voltage\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t set\+\_\+voltage\+\_\+limit (\begin{DoxyParamCaption}\item[{const std\+::int32\+\_\+t}]{limit }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the voltage limit for the motor in Volts. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em limit} & The new voltage limit in Volts\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if the operation was successful or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaec44686d49722f73f5d151a808d5de56}\label{group__cpp-motors_gaec44686d49722f73f5d151a808d5de56}} 
+\index{Motors C++ API@{Motors C++ API}!get\_brake\_mode@{get\_brake\_mode}}
+\index{get\_brake\_mode@{get\_brake\_mode}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_brake\_mode()}{get\_brake\_mode()}}
+{\footnotesize\ttfamily virtual motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t get\+\_\+brake\+\_\+mode (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the brake mode that was set for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+One of motor\+\_\+brake\+\_\+mode\+\_\+e\+\_\+t, according to what was set for the motor, or E\+\_\+\+MOTOR\+\_\+\+BRAKE\+\_\+\+INVALID if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga073b3abe81f0df096fa7622ed5f5c9e6}\label{group__cpp-motors_ga073b3abe81f0df096fa7622ed5f5c9e6}} 
+\index{Motors C++ API@{Motors C++ API}!get\_current\_limit@{get\_current\_limit}}
+\index{get\_current\_limit@{get\_current\_limit}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_current\_limit()}{get\_current\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+current\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the current limit for the motor in mA. 
+
+The default value is 2500 mA.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s current limit in mA or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gaa9d5c1124dfdce664106556bf35d3a36}\label{group__cpp-motors_gaa9d5c1124dfdce664106556bf35d3a36}} 
+\index{Motors C++ API@{Motors C++ API}!get\_encoder\_units@{get\_encoder\_units}}
+\index{get\_encoder\_units@{get\_encoder\_units}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_encoder\_units()}{get\_encoder\_units()}}
+{\footnotesize\ttfamily virtual motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t get\+\_\+encoder\+\_\+units (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the encoder units that were set for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+One of motor\+\_\+encoder\+\_\+units\+\_\+e\+\_\+t according to what is set for the motor or E\+\_\+\+MOTOR\+\_\+\+ENCODER\+\_\+\+INVALID if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga1d57975b221c88405850f15fb66d35e7}\label{group__cpp-motors_ga1d57975b221c88405850f15fb66d35e7}} 
+\index{Motors C++ API@{Motors C++ API}!get\_gearing@{get\_gearing}}
+\index{get\_gearing@{get\_gearing}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_gearing()}{get\_gearing()}}
+{\footnotesize\ttfamily virtual motor\+\_\+gearset\+\_\+e\+\_\+t get\+\_\+gearing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the gearset that was set for the motor. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+One of motor\+\_\+gearset\+\_\+e\+\_\+t according to what is set for the motor, or E\+\_\+\+GEARSET\+\_\+\+INVALID if the operation failed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gae7d410a424561924c554eb461135798f}\label{group__cpp-motors_gae7d410a424561924c554eb461135798f}} 
+\index{Motors C++ API@{Motors C++ API}!get\_pos\_pid@{get\_pos\_pid}}
+\index{get\_pos\_pid@{get\_pos\_pid}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_pos\_pid()}{get\_pos\_pid()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} get\+\_\+pos\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the position PID that was set for the motor. 
+
+This function will return zero for all of the parameters if the \mbox{\hyperlink{group__c-motors_gab0b4f1bc39192d62df335064eb1bce8d}{motor\+\_\+set\+\_\+pos\+\_\+pid()}} or \mbox{\hyperlink{group__c-motors_ga687b54bd7ab9f44648d429738218bbdd}{motor\+\_\+set\+\_\+pos\+\_\+pid\+\_\+full()}} functions have not been used.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+Additionally, in an error state all values of the returned struct are set to their negative maximum values.
+
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} containing the position PID constants last set to the given motor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga86e2e6c03a9037a9d0035d1f8df9c759}\label{group__cpp-motors_ga86e2e6c03a9037a9d0035d1f8df9c759}} 
+\index{Motors C++ API@{Motors C++ API}!get\_vel\_pid@{get\_vel\_pid}}
+\index{get\_vel\_pid@{get\_vel\_pid}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_vel\_pid()}{get\_vel\_pid()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} get\+\_\+vel\+\_\+pid (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the velocity PID that was set for the motor. 
+
+This function will return zero for all of the parameters if the \mbox{\hyperlink{group__c-motors_gaa9610f71331eb8d508a284af4de011bc}{motor\+\_\+set\+\_\+vel\+\_\+pid()}} or \mbox{\hyperlink{group__c-motors_ga8ecb787c318f55ff9fabc3f6e74c5cfc}{motor\+\_\+set\+\_\+vel\+\_\+pid\+\_\+full()}} functions have not been used.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+Additionally, in an error state all values of the returned struct are set to their negative maximum values.
+
+\begin{DoxyReturn}{Returns}
+A \mbox{\hyperlink{group__c-motors_structmotor__pid__full__s__t}{motor\+\_\+pid\+\_\+full\+\_\+s\+\_\+t}} containing the velocity PID constants last set to the given motor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gab5d7f0bb616576070b3613cc9f3bd7a2}\label{group__cpp-motors_gab5d7f0bb616576070b3613cc9f3bd7a2}} 
+\index{Motors C++ API@{Motors C++ API}!is\_reversed@{is\_reversed}}
+\index{is\_reversed@{is\_reversed}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{is\_reversed()}{is\_reversed()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t is\+\_\+reversed (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the operation direction of the motor as set by the user. 
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+1 if the motor has been reversed and 0 if the motor was not reversed, or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_gac72d46268a3a67d69648e8018372c8c1}\label{group__cpp-motors_gac72d46268a3a67d69648e8018372c8c1}} 
+\index{Motors C++ API@{Motors C++ API}!get\_voltage\_limit@{get\_voltage\_limit}}
+\index{get\_voltage\_limit@{get\_voltage\_limit}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_voltage\_limit()}{get\_voltage\_limit()}}
+{\footnotesize\ttfamily virtual std\+::int32\+\_\+t get\+\_\+voltage\+\_\+limit (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the voltage limit set by the user. 
+
+Default value is 0V, which means that there is no software limitation imposed on the voltage.
+
+This function uses the following values of errno when an error state is reached\+: ENODEV -\/ The port cannot be configured as a motor
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s voltage limit in V or PROS\+\_\+\+ERR if the operation failed, setting errno. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{group__cpp-motors_ga66477d87d2b7169e3f588f926c17b1d1}\label{group__cpp-motors_ga66477d87d2b7169e3f588f926c17b1d1}} 
+\index{Motors C++ API@{Motors C++ API}!get\_port@{get\_port}}
+\index{get\_port@{get\_port}!Motors C++ API@{Motors C++ API}}
+\doxysubsubsection{\texorpdfstring{get\_port()}{get\_port()}}
+{\footnotesize\ttfamily virtual std\+::uint8\+\_\+t get\+\_\+port (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the port number of the motor. 
+
+\begin{DoxyReturn}{Returns}
+The motor\textquotesingle{}s port number. 
+\end{DoxyReturn}

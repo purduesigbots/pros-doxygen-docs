@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classpros_1_1ADIUltrasonic" kind="class" language="C++" prot="public">
+    <compoundname>pros::ADIUltrasonic</compoundname>
+    <basecompoundref refid="classpros_1_1ADIPort" prot="private" virt="non-virtual">ADIPort</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1ae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIUltrasonic</definition>
+        <argsstring>(std::uint8_t adi_port_ping, std::uint8_t adi_port_echo)</argsstring>
+        <name>ADIUltrasonic</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_ping</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_echo</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an Ultrasonic sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_ping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the orange OUTPUT cable. This should be in port 1, 3, 5, or 7 (&apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port_echo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="547" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1a9e8d38b246266bb0be06168998855e68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ADIUltrasonic</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple)</argsstring>
+        <name>ADIUltrasonic</name>
+        <param>
+          <type><ref refid="namespacepros_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+          <declname>port_tuple</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an Ultrasonic sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the port connected to the orange OUTPUT cable (1, 3, 5, 7 or &apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;), and the port connected to the yellow INPUT cable (the next) highest port following port_ping). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="563" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1ADIUltrasonic_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the current ultrasonic sensor value in centimeters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an ultrasonic</para>
+<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="579" column="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+      <node id="1">
+        <label>ADIUltrasonic</label>
+        <link refid="classpros_1_1ADIUltrasonic"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ADIPort</label>
+        <link refid="classpros_1_1ADIPort"/>
+      </node>
+      <node id="1">
+        <label>ADIUltrasonic</label>
+        <link refid="classpros_1_1ADIUltrasonic"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="530" column="1" bodyfile="pros/adi.hpp" bodystart="530" bodyend="580"/>
+    <listofallmembers>
+      <member refid="classpros_1_1ADIUltrasonic_1ae2d7a5d694c0f81199672ec29ad4c7a3" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
+      <member refid="classpros_1_1ADIUltrasonic_1a9e8d38b246266bb0be06168998855e68" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>ADIUltrasonic</name></member>
+      <member refid="classpros_1_1ADIUltrasonic_1a60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::ADIUltrasonic</scope><name>get_value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
