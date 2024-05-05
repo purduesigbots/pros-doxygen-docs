@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="namespacepros_1_1usd" kind="namespace" language="C++">
     <compoundname>pros::usd</compoundname>
       <sectiondef kind="func">
@@ -15,19 +15,66 @@
 <para>Checks if the SD card is installed. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise </para>
+<para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise</para>
 </simplesect>
-</para>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;%i&quot;,<sp/>is_installed());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="327" column="14" declfile="pros/misc.hpp" declline="327" declcolumn="14"/>
+        <location file="pros/misc.hpp" line="529" column="14" declfile="pros/misc.hpp" declline="529" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacepros_1_1usd_1acffd319feb1e7f689445b2e0837018d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t pros::usd::list_files</definition>
+        <argsstring>(const char *path, char *buffer, std::int32_t len)</argsstring>
+        <name>list_files</name>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>std::int32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Lists the files in a directory specified by the path Puts the list of file names (NOT DIRECTORIES) into the buffer seperated by newlines. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>EIO - Hard error occured in the low level disk I/O layer EINVAL - file or directory is invalid, or length is invalid EBUSY - THe physical drinve cannot work ENOENT - cannot find the path or file EINVAL - the path name format is invalid EACCES - Access denied or directory full EEXIST - Access denied EROFS - SD card is write protected ENXIO - drive number is invalid or not a FAT32 drive ENOBUFS - drive has no work area ENFILE - too many open files</para>
+<para><simplesect kind="note"><para>use a path of &quot;\&quot; to list the files in the main directory NOT &quot;/usd/&quot; DO NOT PREPEND YOUR PATHS WITH &quot;/usd/&quot;</para>
+</simplesect>
+<simplesect kind="return"><para>1 on success or PROS_ERR on failure setting errno</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>char*<sp/>test<sp/>=<sp/>(char*)<sp/>malloc(128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::usd::list_files(&quot;/&quot;,<sp/>test,<sp/>128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>file<sp/>names<sp/>in<sp/>the<sp/>root<sp/>directory<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::list_files(&quot;/test&quot;,<sp/>test,<sp/>128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>names<sp/>of<sp/>files<sp/>in<sp/>the<sp/>folder<sp/>named<sp/>test<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.hpp" line="571" column="14" declfile="pros/misc.hpp" declline="571" declcolumn="14"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/misc.hpp" line="321" column="1"/>
+    <location file="pros/misc.hpp" line="516" column="13"/>
   </compounddef>
 </doxygen>

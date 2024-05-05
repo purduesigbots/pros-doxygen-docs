@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="troubleshooting" kind="page">
     <compoundname>troubleshooting</compoundname>
     <title>PROS Troubleshooting and Common Problems</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect2 id="troubleshooting_1autotoc_md25">
+<sect2 id="troubleshooting_1autotoc_md40">
 <title>Why do I get a &quot;Could not open port&quot; error when flashing?</title>
 <para>You might have seen an error like this:</para>
 <para><programlisting filename=".none"><codeline><highlight class="normal">Uploading<sp/>bin/output.bin<sp/>to<sp/>v5<sp/>device<sp/>on<sp/>COM11<sp/>as<sp/>hello<sp/>to<sp/>slot<sp/>1</highlight></codeline>
@@ -17,22 +17,26 @@
 </programlisting></para>
 <para>That means that some other resource is using the port. If you also have the V5 Utility open, that would cause this error to occur. Close the V5 Utility if you want to flash.</para>
 </sect2>
-<sect2 id="troubleshooting_1autotoc_md26">
+<sect2 id="troubleshooting_1autotoc_md41">
 <title>Compile-Time Issues</title>
-<para><blockquote><para>- <computeroutput>&quot;main.h&quot; file not found</computeroutput>: : This error occurs when the compilation database <computeroutput>compile_commands.json</computeroutput> is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the CLI without the after creating the project. Regardless of when this issue after creating the project. Regardless of when this issue appears, running <computeroutput>pros make all</computeroutput> in the CLI or running <computeroutput>PROS -&gt; Build -&gt; All</computeroutput> in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors. </para>
-</blockquote><blockquote><para>- <computeroutput>undefined reference to ...</computeroutput> or <computeroutput>implicit declaration of function ...</computeroutput>: : A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in <computeroutput><ref refid="main_8h" kindref="compound">main.h</ref></computeroutput> or in the file in which they are used.</para>
-<para><itemizedlist>
-<listitem><para><computeroutput>format ... expects argument of type ..., but argument has type ...</computeroutput>: : The value provided to a function like <ulink url="http://www.cplusplus.com/reference/cstdio/printf/">printf</ulink> or <ulink url="../../api/c/llemu.html#lcd-print">lcd_print</ulink> does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types <computeroutput>double</computeroutput> or <computeroutput>long long</computeroutput> are mixed with other types.</para>
+<para><blockquote><para><itemizedlist>
+<listitem><para><computeroutput>&quot;main.h&quot; file not found</computeroutput>: : This error occurs when the compilation database <computeroutput>compile_commands.json</computeroutput> is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the CLI without the after creating the project. Regardless of when this issue after creating the project. Regardless of when this issue appears, running <computeroutput>pros make all</computeroutput> in the CLI or running <computeroutput>PROS -&gt; Build -&gt; All</computeroutput> in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors. </para>
+</listitem></itemizedlist>
+</para>
+</blockquote></para>
+<para><blockquote><para><itemizedlist>
+<listitem><para><computeroutput>undefined reference to ...</computeroutput> or <computeroutput>implicit declaration of function ...</computeroutput>: : A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in <computeroutput><ref refid="main_8h" kindref="compound">main.h</ref></computeroutput> or in the file in which they are used.</para>
+</listitem><listitem><para><computeroutput>format ... expects argument of type ..., but argument has type ...</computeroutput>: : The value provided to a function like <ulink url="http://www.cplusplus.com/reference/cstdio/printf/">printf</ulink> or <ulink url="../../api/c/llemu.html#lcd-print">lcd_print</ulink> does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types <computeroutput>double</computeroutput> or <computeroutput>long long</computeroutput> are mixed with other types.</para>
 </listitem><listitem><para><computeroutput>assignment makes pointer from integer without a cast</computeroutput>: : Typically caused when a C pointer has the wrong number of asterisks to <ulink url="http://stackoverflow.com/a/4955297/3681958">dereference</ulink> it, or when assigning a constant to <computeroutput>pointer</computeroutput> (instead of <computeroutput>*pointer</computeroutput>). </para>
 </listitem></itemizedlist>
 </para>
 </blockquote></para>
 </sect2>
-<sect2 id="troubleshooting_1autotoc_md27">
+<sect2 id="troubleshooting_1autotoc_md42">
 <title>Run-Time Issues</title>
-<para><blockquote><para>- <bold>Some tasks are running, others are not:</bold> : A task is not waiting using <ulink url="../../api/c/rtos.html#delay">delay</ulink> or <ulink url="../../api/c/rtos.html#task-delay-until">task_delay_until</ulink>. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as <ulink url="https://en.wikipedia.org/wiki/Starvation_(computer_science)">starvation</ulink>. See <ulink url="/tutorials/topical/multitasking">Tasks/Multithreading</ulink> for more information.</para>
-<para><itemizedlist>
-<listitem><para><bold>VEX LCD updates very slowly or is &quot;frozen&quot;:</bold> : A task is not waiting using <ulink url="../../api/c/rtos.html#delay">delay</ulink> or From the kernel&apos;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD. <verbatim>The LCD is only updated if all other tasks are waiting.
+<para><blockquote><para><itemizedlist>
+<listitem><para><bold>Some tasks are running, others are not:</bold> : A task is not waiting using <ulink url="../../api/c/rtos.html#delay">delay</ulink> or <ulink url="../../api/c/rtos.html#task-delay-until">task_delay_until</ulink>. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as <ulink url="https://en.wikipedia.org/wiki/Starvation_(computer_science)">starvation</ulink>. See <ulink url="/tutorials/topical/multitasking">Tasks/Multithreading</ulink> for more information.</para>
+</listitem><listitem><para><bold>VEX LCD updates very slowly or is &quot;frozen&quot;:</bold> : A task is not waiting using <ulink url="../../api/c/rtos.html#delay">delay</ulink> or From the kernel&apos;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD. <verbatim>The LCD is only updated if all other tasks are waiting.
 </verbatim></para>
 </listitem><listitem><para><bold>Neither autonomous nor driver control code starts:</bold> : The <computeroutput><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize()</ref></computeroutput> function may still be running. Some tasks such as <ulink url="../../api/c/adi.html#analog-calibrate">analog_calibrate</ulink> take time. <verbatim>If the `initialize()` function implements some type of loop or
 autonomous selection routine, verify that it actually has a
@@ -53,6 +57,5 @@ means of ending.
 </blockquote></para>
 </sect2>
     </detaileddescription>
-    <location file="docs/tutorials/general/troubleshooting.md"/>
   </compounddef>
 </doxygen>

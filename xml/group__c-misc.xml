@@ -1,0 +1,1123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__c-misc" kind="group">
+    <compoundname>c-misc</compoundname>
+    <title>Miscellaneous C API</title>
+    <innerfile refid="misc_8h">misc.h</innerfile>
+    <innerclass refid="structpros_1_1c_1_1date__s__t" prot="public">pros::c::date_s_t</innerclass>
+    <innerclass refid="structpros_1_1c_1_1time__s__t" prot="public">pros::c::time_s_t</innerclass>
+    <innernamespace refid="namespacepros">pros</innernamespace>
+    <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
+      <sectiondef kind="user-defined">
+      <header>V5 Competition</header>
+      <memberdef kind="enum" id="group__c-misc_1gabb339fb59d7bc35709f8e58f39fc6740" prot="public" static="no" strong="no">
+        <type></type>
+        <name>competition_status</name>
+        <enumvalue id="group__c-misc_1ggabb339fb59d7bc35709f8e58f39fc6740a91c865f56f54aa14a4dc0d3c46e353e7" prot="public">
+          <name>COMPETITION_DISABLED</name>
+          <initializer>= 1 &lt;&lt; 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-misc_1ggabb339fb59d7bc35709f8e58f39fc6740a2eb868b8790ee3b4432148ef482c5835" prot="public">
+          <name>COMPETITION_CONNECTED</name>
+          <initializer>= 1 &lt;&lt; 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-misc_1ggabb339fb59d7bc35709f8e58f39fc6740a479b30e0447c1ef0c5dce5bdf5488704" prot="public">
+          <name>COMPETITION_AUTONOMOUS</name>
+          <initializer>= 1 &lt;&lt; 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-misc_1ggabb339fb59d7bc35709f8e58f39fc6740aa9f2419be8471cb3e04dab801a729f30" prot="public">
+          <name>COMPETITION_SYSTEM</name>
+          <initializer>= 1 &lt;&lt; 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="45" column="14" bodyfile="pros/misc.h" bodystart="45" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__c-misc_1ga53280163169348b8429c14c340a7c2b3" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* baked_date</definition>
+        <argsstring></argsstring>
+        <name>baked_date</name>
+        <briefdescription>
+<para>Date and Time <linebreak/>
+ </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="808" column="19" declfile="pros/misc.h" declline="808" declcolumn="19"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-misc_1ga33aa244a3bbfcc84286cfa8999805cf2" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* baked_time</definition>
+        <argsstring></argsstring>
+        <name>baked_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="809" column="19" declfile="pros/misc.h" declline="809" declcolumn="19"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__c-misc_1ga464d2c47de8b3b726b1e50c7538e4459" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>competition_get_status</definition>
+        <argsstring>(void)</argsstring>
+        <name>competition_get_status</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Get the current status of the competition control.</para>
+<para><simplesect kind="return"><para>The competition control status as a mask of bits with COMPETITION_{ENABLED,AUTONOMOUS,CONNECTED}.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(competition_get_status()<sp/>&amp;<sp/>COMPETITION_CONNECTED<sp/>==<sp/>true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Field<sp/>Control<sp/>is<sp/>Connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>LCD<sp/>Selector<sp/>code<sp/>or<sp/>similar</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="75" column="9" declfile="pros/misc.h" declline="75" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gaf5729caa2b036fa7c7d47aceaf4f73f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>competition_is_disabled</definition>
+        <argsstring>(void)</argsstring>
+        <name>competition_is_disabled</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is disabled, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!competition_is_disabled())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Run<sp/>competition<sp/>tasks<sp/>(like<sp/>Lift<sp/>Control<sp/>or<sp/>similar)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIO_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="95" column="9" declfile="pros/misc.h" declline="95" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga827a8493560406eec6ff20df85078969" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t pros::c::competition_is_connected</definition>
+        <argsstring>(void)</argsstring>
+        <name>competition_is_connected</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is connected to competition control, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(competition_is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Field<sp/>Control<sp/>is<sp/>Connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>LCD<sp/>Selector<sp/>code<sp/>or<sp/>similar</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="110" column="9" declfile="pros/misc.h" declline="110" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gae50c88811ec84470f4f04126e74626eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t pros::c::competition_is_autonomous</definition>
+        <argsstring>(void)</argsstring>
+        <name>competition_is_autonomous</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is in autonomous mode, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>my_task_fn(void*<sp/>ignore)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!competition_is_autonomous())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Wait<sp/>to<sp/>do<sp/>anything<sp/>until<sp/>autonomous<sp/>starts</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(competition_is_autonomous())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>whatever<sp/>code<sp/>is<sp/>desired<sp/>to<sp/>just<sp/>execute<sp/>in<sp/>autonomous</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>task_t<sp/>my_task<sp/>=<sp/>task_create(my_task_fn,<sp/>NULL,<sp/>TASK_PRIO_DEFAULT,<sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;My<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="132" column="9" declfile="pros/misc.h" declline="132" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga9f1c7fa097141d0505ca861abbe228af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t pros::c::competition_is_field</definition>
+        <argsstring>(void)</argsstring>
+        <name>competition_is_field</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is connected to VEXnet Field <ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref>, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(competition_is_field())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>connected<sp/>to<sp/>VEXnet<sp/>Field<sp/>Controller</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="146" column="9" declfile="pros/misc.h" declline="146" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga1a381afe1cabb7c9b5dd5a734a5ee4a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_is_connected</definition>
+        <argsstring>(controller_id_e_t id)</argsstring>
+        <name>controller_is_connected</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the V5 Brain is connected to VEXnet Competition Switch, false otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/>void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>if<sp/>(competition_is_switch())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>connected<sp/>to<sp/>VEXnet<sp/>Competition<sp/>Switch</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>/</highlight></codeline>
+<codeline><highlight class="normal">uint8_t<sp/>competition_is_switch(void);</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal">///@}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">///<sp/>\name<sp/>V5<sp/>Controller</highlight></codeline>
+<codeline><highlight class="normal">///@{</highlight></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline><highlight class="normal">extern<sp/>&quot;C&quot;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">namespace<sp/>pros<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\enum</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>enum<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>master<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_MASTER<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>partner<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_PARTNER</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>controller_id_e_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\enum</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>enum<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>horizontal<sp/>axis<sp/>of<sp/>the<sp/>controller’s<sp/>left<sp/>analog<sp/>stick.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_ANALOG_LEFT_X<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>vertical<sp/>axis<sp/>of<sp/>the<sp/>controller’s<sp/>left<sp/>analog<sp/>stick.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_ANALOG_LEFT_Y,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>horizontal<sp/>axis<sp/>of<sp/>the<sp/>controller’s<sp/>right<sp/>analog<sp/>stick.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_ANALOG_RIGHT_X,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>vertical<sp/>axis<sp/>of<sp/>the<sp/>controller’s<sp/>right<sp/>analog<sp/>stick.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_ANALOG_RIGHT_Y</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>controller_analog_e_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\enum</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>enum<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>first<sp/>trigger<sp/>on<sp/>the<sp/>left<sp/>side<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_L1<sp/>=<sp/>6,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>second<sp/>trigger<sp/>on<sp/>the<sp/>left<sp/>side<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_L2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>first<sp/>trigger<sp/>on<sp/>the<sp/>right<sp/>side<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_R1,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>second<sp/>trigger<sp/>on<sp/>the<sp/>right<sp/>side<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_R2,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>up<sp/>arrow<sp/>on<sp/>the<sp/>left<sp/>arrow<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_UP,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>down<sp/>arrow<sp/>on<sp/>the<sp/>left<sp/>arrow<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_DOWN,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>left<sp/>arrow<sp/>on<sp/>the<sp/>left<sp/>arrow<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_LEFT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>right<sp/>arrow<sp/>on<sp/>the<sp/>left<sp/>arrow<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_RIGHT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>‘X’<sp/>button<sp/>on<sp/>the<sp/>right<sp/>button<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_X,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>‘B’<sp/>button<sp/>on<sp/>the<sp/>right<sp/>button<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_B,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>‘Y’<sp/>button<sp/>on<sp/>the<sp/>right<sp/>button<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_Y,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>///<sp/>The<sp/>‘A’<sp/>button<sp/>on<sp/>the<sp/>right<sp/>button<sp/>pad<sp/>of<sp/>the<sp/>controller.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>E_CONTROLLER_DIGITAL_A</highlight></codeline>
+<codeline><highlight class="normal">}<sp/>controller_digital_e_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>PROS_USE_SIMPLE_NAMES</highlight></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CONTROLLER_MASTER<sp/>pros::E_CONTROLLER_MASTER</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CONTROLLER_PARTNER<sp/>pros::E_CONTROLLER_PARTNER</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_LEFT_X<sp/>pros::E_CONTROLLER_ANALOG_LEFT_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_LEFT_Y<sp/>pros::E_CONTROLLER_ANALOG_LEFT_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_RIGHT_X<sp/>pros::E_CONTROLLER_ANALOG_RIGHT_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_RIGHT_Y<sp/>pros::E_CONTROLLER_ANALOG_RIGHT_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_L1<sp/>pros::E_CONTROLLER_DIGITAL_L1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_L2<sp/>pros::E_CONTROLLER_DIGITAL_L2</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_R1<sp/>pros::E_CONTROLLER_DIGITAL_R1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_R2<sp/>pros::E_CONTROLLER_DIGITAL_R2</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_UP<sp/>pros::E_CONTROLLER_DIGITAL_UP</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_DOWN<sp/>pros::E_CONTROLLER_DIGITAL_DOWN</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_LEFT<sp/>pros::E_CONTROLLER_DIGITAL_LEFT</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_RIGHT<sp/>pros::E_CONTROLLER_DIGITAL_RIGHT</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_X<sp/>pros::E_CONTROLLER_DIGITAL_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_B<sp/>pros::E_CONTROLLER_DIGITAL_B</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_Y<sp/>pros::E_CONTROLLER_DIGITAL_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_A<sp/>pros::E_CONTROLLER_DIGITAL_A</highlight></codeline>
+<codeline><highlight class="normal">#else</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CONTROLLER_MASTER<sp/>E_CONTROLLER_MASTER</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CONTROLLER_PARTNER<sp/>E_CONTROLLER_PARTNER</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_LEFT_X<sp/>E_CONTROLLER_ANALOG_LEFT_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_LEFT_Y<sp/>E_CONTROLLER_ANALOG_LEFT_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_RIGHT_X<sp/>E_CONTROLLER_ANALOG_RIGHT_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>ANALOG_RIGHT_Y<sp/>E_CONTROLLER_ANALOG_RIGHT_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_L1<sp/>E_CONTROLLER_DIGITAL_L1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_L2<sp/>E_CONTROLLER_DIGITAL_L2</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_R1<sp/>E_CONTROLLER_DIGITAL_R1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_R2<sp/>E_CONTROLLER_DIGITAL_R2</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_UP<sp/>E_CONTROLLER_DIGITAL_UP</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_DOWN<sp/>E_CONTROLLER_DIGITAL_DOWN</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_LEFT<sp/>E_CONTROLLER_DIGITAL_LEFT</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_RIGHT<sp/>E_CONTROLLER_DIGITAL_RIGHT</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_X<sp/>E_CONTROLLER_DIGITAL_X</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_B<sp/>E_CONTROLLER_DIGITAL_B</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_Y<sp/>E_CONTROLLER_DIGITAL_Y</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>DIGITAL_A<sp/>E_CONTROLLER_DIGITAL_A</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\def<sp/>Given<sp/>an<sp/>id<sp/>and<sp/>a<sp/>port,<sp/>this<sp/>macro<sp/>sets<sp/>the<sp/>port<sp/>variable<sp/>based<sp/>on<sp/>the<sp/>id<sp/>and<sp/>allows<sp/>the<sp/>mutex<sp/>to<sp/>take<sp/>that</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>port.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\returns<sp/>error<sp/>(in<sp/>the<sp/>function/scope<sp/>it&apos;s<sp/>in)<sp/>if<sp/>the<sp/>controller<sp/>failed<sp/>to<sp/>connect<sp/>or<sp/>an<sp/>invalid<sp/>id<sp/>is<sp/>given.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>CONTROLLER_PORT_MUTEX_TAKE(id,<sp/>port)<sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>switch<sp/>(id)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>E_CONTROLLER_MASTER:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port<sp/>=<sp/>V5_PORT_CONTROLLER_1;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>case<sp/>E_CONTROLLER_PARTNER:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>port<sp/>=<sp/>V5_PORT_CONTROLLER_2;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>break;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>default:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errno<sp/>=<sp/>EINVAL;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>PROS_ERR;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!internal_port_mutex_take(port))<sp/>{<sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>errno<sp/>=<sp/>EACCES;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>PROS_ERR;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>__cplusplus</highlight></codeline>
+<codeline><highlight class="normal">namespace<sp/>c<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>Checks<sp/>if<sp/>the<sp/>controller<sp/>is<sp/>connected.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>function<sp/>uses<sp/>the<sp/>following<sp/>values<sp/>of<sp/>errno<sp/>when<sp/>an<sp/>error<sp/>state<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>reached:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>EINVAL<sp/>-<sp/>A<sp/>value<sp/>other<sp/>than<sp/>E_CONTROLLER_MASTER<sp/>or<sp/>E_CONTROLLER_PARTNER<sp/>is</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>given.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>EACCES<sp/>-<sp/>Another<sp/>resource<sp/>is<sp/>currently<sp/>trying<sp/>to<sp/>access<sp/>the<sp/>controller<sp/>port.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\param<sp/>id</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>The<sp/>ID<sp/>of<sp/>the<sp/>controller<sp/>(e.g.<sp/>the<sp/>master<sp/>or<sp/>partner<sp/>controller).</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Must<sp/>be<sp/>one<sp/>of<sp/>CONTROLLER_MASTER<sp/>or<sp/>CONTROLLER_PARTNER</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\return<sp/>1<sp/>if<sp/>the<sp/>controller<sp/>is<sp/>connected,<sp/>0<sp/>otherwise</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\b<sp/>Example</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>\code</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/>if<sp/>(competition_is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>//<sp/>Field<sp/>Control<sp/>is<sp/>Connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/><sp/><sp/>//<sp/>Run<sp/>LCD<sp/>Selector<sp/>code<sp/>or<sp/>similar</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/></highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="323" column="9" declfile="pros/misc.h" declline="323" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga1a7c4e6bcb39260bf7ce5b1a58638753" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_get_analog</definition>
+        <argsstring>(controller_id_e_t id, controller_analog_e_t channel)</argsstring>
+        <name>controller_get_analog</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>controller_analog_e_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Gets the value of an analog channel (joystick) on a controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The analog channel to get. Must be one of ANALOG_LEFT_X, ANALOG_LEFT_Y, ANALOG_RIGHT_X, ANALOG_RIGHT_Y</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The current reading of the analog channel: [-127, 127]. If the controller was not connected, then 0 is returned</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="355" column="9" declfile="pros/misc.h" declline="355" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga3708b3194feeb243710d0fa2079e57b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_get_battery_capacity</definition>
+        <argsstring>(controller_id_e_t id)</argsstring>
+        <name>controller_get_battery_capacity</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Gets the battery capacity of the given controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The controller&apos;s battery capacity</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Capacity:<sp/>%d\n&quot;,<sp/>controller_get_battery_capacity(E_CONTROLLER_MASTER));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="379" column="9" declfile="pros/misc.h" declline="379" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga35f22987a76d5a3c9117755b0abc2548" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_get_battery_level</definition>
+        <argsstring>(controller_id_e_t id)</argsstring>
+        <name>controller_get_battery_level</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Gets the battery level of the given controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The controller&apos;s battery level</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%d\n&quot;,<sp/>controller_get_battery_level(E_CONTROLLER_MASTER));</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="403" column="9" declfile="pros/misc.h" declline="403" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga764da856ff7fcb710b10daa1a2fe4519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_get_digital</definition>
+        <argsstring>(controller_id_e_t id, controller_digital_e_t button)</argsstring>
+        <name>controller_get_digital</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>controller_digital_e_t</type>
+          <declname>button</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a digital channel (button) on the controller is currently pressed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The button to read. Must be one of DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(controller_get_digital(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="440" column="9" declfile="pros/misc.h" declline="440" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gac98088451005003975c19dda4e20a1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_get_digital_new_press</definition>
+        <argsstring>(controller_id_e_t id, controller_digital_e_t button)</argsstring>
+        <name>controller_get_digital_new_press</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>controller_digital_e_t</type>
+          <declname>button</declname>
+        </param>
+        <briefdescription>
+<para>Returns a rising-edge case for a controller button press. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> A calls this function for buttons 1 and 2. <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</para>
+<para>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The button to read. Must be one of DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(controller_get_digital_new_press(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>similar<sp/>actions</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="482" column="9" declfile="pros/misc.h" declline="482" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga7bdcfd084f96b7eda87867de947997b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_print</definition>
+        <argsstring>(controller_id_e_t id, uint8_t line, uint8_t col, const char *fmt,...)</argsstring>
+        <name>controller_print</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Sets text to the controller LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line number at which the text will be displayed [0-2] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column number at which the text will be displayed [0-14] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fmt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The format string to print to the controller </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The argument list for the format string</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>controller_print(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Counter:<sp/>%d&quot;,<sp/>count);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="527" column="9" declfile="pros/misc.h" declline="527" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga9e301c0fb1fe773010f0f63c07f0ff30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_set_text</definition>
+        <argsstring>(controller_id_e_t id, uint8_t line, uint8_t col, const char *str)</argsstring>
+        <name>controller_set_text</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Sets text to the controller LCD screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line number at which the text will be displayed [0-2] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The column number at which the text will be displayed [0-14] </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The pre-formatted string to print to the controller</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>controller_set_text(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Example<sp/>text&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="570" column="9" declfile="pros/misc.h" declline="570" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga57f585f20ca272ce035390e9a7ba8cdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_clear_line</definition>
+        <argsstring>(controller_id_e_t id, uint8_t line)</argsstring>
+        <name>controller_clear_line</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>line</declname>
+        </param>
+        <briefdescription>
+<para>Clears an individual line of the controller screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> text setting is currently in beta, so continuous, fast updates will not work well.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line number to clear [0-2]</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_set_text(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_clear_line(E_CONTROLLER_MASTER,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="602" column="9" declfile="pros/misc.h" declline="602" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga9ccf53b8954bc4033abebec9a79da0c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_clear</definition>
+        <argsstring>(controller_id_e_t id)</argsstring>
+        <name>controller_clear</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Clears all of the lines on the controller screen. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> text setting is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port. EAGAIN - Could not send the text to the controller.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_set_text(E_CONTROLLER_MASTER,<sp/>0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>controller_clear(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="633" column="9" declfile="pros/misc.h" declline="633" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga6a2fde9e8c3eec3dc88cb00235a1df7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::controller_rumble</definition>
+        <argsstring>(controller_id_e_t id, const char *rumble_pattern)</argsstring>
+        <name>controller_rumble</name>
+        <param>
+          <type>controller_id_e_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>rumble_pattern</declname>
+        </param>
+        <briefdescription>
+<para>Rumble the controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">Controller</ref> rumble activation is a slow process, so updates faster than 10ms when on a wired connection or 50ms over Vexnet will not be applied to the controller.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The ID of the controller (e.g. the master or partner controller). Must be one of CONTROLLER_MASTER or CONTROLLER_PARTNER </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rumble_pattern</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A string consisting of the characters &apos;.&apos;, &apos;-&apos;, and &apos; &apos;, where dots are short rumbles, dashes are long rumbles, and spaces are pauses. Maximum supported length is 8 characters.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>send<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>controller_rumble(E_CONTROLLER_MASTER,<sp/>&quot;.<sp/>-<sp/>.<sp/>-&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="673" column="9" declfile="pros/misc.h" declline="673" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga9d34cbe2b17dc9daec083fdaf8c10a1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::battery_get_voltage</definition>
+        <argsstring>(void)</argsstring>
+        <name>battery_get_voltage</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current voltage of the battery, as reported by VEXos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
+<para><simplesect kind="return"><para>The current voltage of the battery</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Voltage:<sp/>%d\n&quot;,<sp/>battery_get_voltage());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="691" column="9" declfile="pros/misc.h" declline="691" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga6cd34d4960ca5193d70626bc59094505" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::battery_get_current</definition>
+        <argsstring>(void)</argsstring>
+        <name>battery_get_current</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current current of the battery, as reported by VEXos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
+<para><simplesect kind="return"><para>The current current of the battery</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Current:<sp/>%d\n&quot;,<sp/>battery_get_current());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="709" column="9" declfile="pros/misc.h" declline="709" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1ga79dd0288c3ac547c75c25e374087f91b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double pros::c::battery_get_temperature</definition>
+        <argsstring>(void)</argsstring>
+        <name>battery_get_temperature</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current temperature of the battery, as reported by VEXos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
+<para><simplesect kind="return"><para>The current temperature of the battery</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Temperature:<sp/>%d\n&quot;,<sp/>battery_get_temperature());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="727" column="8" declfile="pros/misc.h" declline="727" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gaa5e755785c93c5cafe6b0d98695d7c20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double pros::c::battery_get_capacity</definition>
+        <argsstring>(void)</argsstring>
+        <name>battery_get_capacity</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets the current capacity of the battery, as reported by VEXos. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
+<para><simplesect kind="return"><para>The current capacity of the battery</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%d\n&quot;,<sp/>battery_get_capacity());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="745" column="8" declfile="pros/misc.h" declline="745" declcolumn="8"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gafa370f223e76f68f27bdfed38724724e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::usd_is_installed</definition>
+        <argsstring>(void)</argsstring>
+        <name>usd_is_installed</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Checks if the SD card is installed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;%i&quot;,<sp/>usd_is_installed());</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="759" column="9" declfile="pros/misc.h" declline="759" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-misc_1gadc0d363a5f04fd32c684b9404df9b46d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int32_t</type>
+        <definition>int32_t pros::c::usd_list_files</definition>
+        <argsstring>(const char *path, char *buffer, int32_t len)</argsstring>
+        <name>usd_list_files</name>
+        <param>
+          <type>const char *</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+<para>Lists the files in a directory specified by the path Puts the list of file names (NOT DIRECTORIES) into the buffer seperated by newlines. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached:</para>
+<para>EIO - Hard error occured in the low level disk I/O layer EINVAL - file or directory is invalid, or length is invalid EBUSY - THe physical drinve cannot work ENOENT - cannot find the path or file EINVAL - the path name format is invalid EACCES - Access denied or directory full EEXIST - Access denied EROFS - SD card is write protected ENXIO - drive number is invalid or not a FAT32 drive ENOBUFS - drive has no work area ENFILE - too many open files</para>
+<para><simplesect kind="note"><para>use a path of &quot;\&quot; to list the files in the main directory NOT &quot;/usd/&quot; DO NOT PREPEND YOUR PATHS WITH &quot;/usd/&quot;</para>
+</simplesect>
+<simplesect kind="return"><para>1 on success or PROS_ERR on failure setting errno</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>test<sp/>=<sp/>(char*)<sp/>malloc(128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::c::usd_list_files(&quot;/&quot;,<sp/>test,<sp/>128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>file<sp/>names<sp/>in<sp/>the<sp/>root<sp/>directory<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::c::usd_list_files(&quot;/test&quot;,<sp/>test,<sp/>128);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
+<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>names<sp/>of<sp/>files<sp/>in<sp/>the<sp/>folder<sp/>named<sp/>test<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
+<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.h" line="802" column="9" declfile="pros/misc.h" declline="802" declcolumn="9"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>Additional example code for this module can be found in its <ref refid="controller" kindref="compound">Tutorial.</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

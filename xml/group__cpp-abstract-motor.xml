@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__cpp-abstract-motor" kind="group">
+    <compoundname>Cpp-abstract-motor</compoundname>
+    <title>Cpp-abstract-motor</title>
+    <innerfile refid="abstract__motor_8hpp">abstract_motor.hpp</innerfile>
+    <innerclass refid="classpros_1_1v5_1_1AbstractMotor" prot="public">pros::v5::AbstractMotor</innerclass>
+    <innergroup refid="group__cpp-motor-telemetry">Cpp-motor-telemetry</innergroup>
+      <sectiondef kind="user-defined">
+      <header>Motor movement functions</header>
+      <description><para>These functions allow programmers to make motors move </para>
+</description>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga2affe67be5ec0f6c6ac406176777128c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t move</definition>
+        <argsstring>(std::int32_t voltage) const =0</argsstring>
+        <name>move</name>
+        <reimplementedby refid="group__cpp-motors_1ga4dceeada7f369a3dd25a4944019e0631">move</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga4dceeada7f369a3dd25a4944019e0631">move</reimplementedby>
+        <param>
+          <type>std::int32_t</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Sets the voltage for the motor from -127 to 127. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gac76e46064191f91bf2546335caccf6b5" kindref="member">motor_move()</ref>, or motorSet() from the PROS 2 API.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor voltage from -127 to 127</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="109" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga6d274aaeea2b1f0eacd4199a607c5460" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t move_absolute</definition>
+        <argsstring>(const double position, const std::int32_t velocity) const =0</argsstring>
+        <name>move_absolute</name>
+        <reimplementedby refid="group__cpp-motors_1ga6f6ed2b95a6d2e4e2f2473017dc42eec">move_absolute</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga6f6ed2b95a6d2e4e2f2473017dc42eec">move_absolute</reimplementedby>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the target absolute position for the motor to move to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="group__cpp-motor-configuration_1gaef47e9be34d06e6a1dc536454838f600" kindref="member">pros::Motor::set_zero_position()</ref>.</para>
+<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The absolute position to move to in the motor&apos;s encoder units </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowable velocity for the movement in RPM</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="133" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga570e69a0d12d8f7c2fa372cf3889d1e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t move_relative</definition>
+        <argsstring>(const double position, const std::int32_t velocity) const =0</argsstring>
+        <name>move_relative</name>
+        <reimplementedby refid="group__cpp-motors_1ga966302132cf4a74d3f2493b70764191b">move_relative</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga966302132cf4a74d3f2493b70764191b">move_relative</reimplementedby>
+        <param>
+          <type>const double</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the relative target position for the motor to move to. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This movement is relative to the current position of the motor as given in <ref refid="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" kindref="member">pros::Motor::motor_get_position()</ref>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
+<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>position</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The relative position to move to in the motor&apos;s encoder units </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The maximum allowable velocity for the movement in RPM</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="158" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1gaf9e6c6b881edf9a214f7beb9a65016e2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t move_velocity</definition>
+        <argsstring>(const std::int32_t velocity) const =0</argsstring>
+        <name>move_velocity</name>
+        <reimplementedby refid="group__cpp-motors_1ga589bce07656e7689a07ef4cef4e8152e">move_velocity</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga589bce07656e7689a07ef4cef4e8152e">move_velocity</reimplementedby>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Sets the velocity for the motor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&apos;s voltage.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor velocity from -+-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="180" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1gaa624ba8db4d6f6bfef33a6310a962ec6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t move_voltage</definition>
+        <argsstring>(const std::int32_t voltage) const =0</argsstring>
+        <name>move_voltage</name>
+        <reimplementedby refid="group__cpp-motors_1ga3d490ebe9fc7bc4b1c80dad7e78a8cb4">move_voltage</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga3d490ebe9fc7bc4b1c80dad7e78a8cb4">move_voltage</reimplementedby>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>voltage</declname>
+        </param>
+        <briefdescription>
+<para>Sets the output voltage for the motor from -12000 to 12000 in millivolts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21 </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new voltage value from -12000 to 12000</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="197" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1gacd632653366f285fcadaeef24874f50b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t brake</definition>
+        <argsstring>(void) const =0</argsstring>
+        <name>brake</name>
+        <reimplementedby refid="group__cpp-motors_1ga3ac7359521b822775fbdc3a708f9e687">brake</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga3ac7359521b822775fbdc3a708f9e687">brake</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stops the motor using the currently configured brake mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling move_absolute(0) or motor_move_relative(0).</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="211" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga4969d7ec9d84d6abda496a684fbdfcfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t modify_profiled_velocity</definition>
+        <argsstring>(const std::int32_t velocity) const =0</argsstring>
+        <name>modify_profiled_velocity</name>
+        <reimplementedby refid="group__cpp-motors_1ga530807d30c58f7e098a65d14c039dc57">modify_profiled_velocity</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga530807d30c58f7e098a65d14c039dc57">modify_profiled_velocity</reimplementedby>
+        <param>
+          <type>const std::int32_t</type>
+          <declname>velocity</declname>
+        </param>
+        <briefdescription>
+<para>Changes the output velocity for a profiled movement (motor_move_absolute or motor_move_relative). </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This will have no effect if the motor is not following a profiled movement.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>velocity</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="229" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga270586ebcfe29081d91e1e1888c1cea5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double get_target_position</definition>
+        <argsstring>(const std::uint8_t index=0) const =0</argsstring>
+        <name>get_target_position</name>
+        <reimplementedby refid="group__cpp-motor-group_1ga148fe7b4dff2c95e3e2c32dc08b304d7">get_target_position</reimplementedby>
+        <reimplementedby refid="group__cpp-motors_1gaf80d06724728e5524b091097c801d14b">get_target_position</reimplementedby>
+        <param>
+          <type>const std::uint8_t</type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Gets the target position set for the motor by the user, with a parameter for the motor index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="246" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga3372e3eeb8f9713158cf7533d9f22fdd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>virtual std::vector&lt;double&gt; get_target_position_all</definition>
+        <argsstring>(void) const =0</argsstring>
+        <name>get_target_position_all</name>
+        <reimplementedby refid="group__cpp-motor-group_1gaca0311be741c4c1a58bbb71859774460">get_target_position_all</reimplementedby>
+        <reimplementedby refid="classpros_1_1v5_1_1Motor_1aca0311be741c4c1a58bbb71859774460">get_target_position_all</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets a vector containing the target position(s) set for the motor(s) by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing the target position(s) in its encoder units or PROS_ERR_F if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="259" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1gad432481d905cf4b1184e989fc6435223" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t get_target_velocity</definition>
+        <argsstring>(const std::uint8_t index=0) const =0</argsstring>
+        <name>get_target_velocity</name>
+        <reimplementedby refid="group__cpp-motors_1ga5a4983140113c80ed0f5f6302bb9edc7">get_target_velocity</reimplementedby>
+        <reimplementedby refid="group__cpp-motor-group_1ga5a4983140113c80ed0f5f6302bb9edc7">get_target_velocity</reimplementedby>
+        <param>
+          <type>const std::uint8_t</type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Gets the velocity commanded to the motor by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="275" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-abstract-motor_1ga6712354fb8815453799295cf595dadb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; std::int32_t &gt;</type>
+        <definition>virtual std::vector&lt;std::int32_t&gt; get_target_velocity_all</definition>
+        <argsstring>(void) const =0</argsstring>
+        <name>get_target_velocity_all</name>
+        <reimplementedby refid="group__cpp-motor-group_1ga95eda9da6ae183d72c627ac02914d8ed">get_target_velocity_all</reimplementedby>
+        <reimplementedby refid="classpros_1_1v5_1_1Motor_1a95eda9da6ae183d72c627ac02914d8ed">get_target_velocity_all</reimplementedby>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
+<para><simplesect kind="return"><para>A vector containing the commanded motor velocity/velocities from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="287" column="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

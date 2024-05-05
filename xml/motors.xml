@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
   <compounddef id="motors" kind="page">
     <compoundname>motors</compoundname>
     <title>Motors</title>
@@ -9,36 +9,51 @@
 <para><simplesect kind="note"><para>For a full list of functions for interacting with the V5 Motors, see its <ref refid="group__c-motors" kindref="compound">C API</ref> and <ref refid="group__cpp-motors" kindref="compound">C++ API</ref>.</para>
 </simplesect>
 </para>
-<sect2 id="motors_1autotoc_md48">
+<sect2 id="motors_1autotoc_md63">
 <title>Initialization</title>
-<para>V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like <computeroutput><ref refid="group__c-motors_1ga2f3f7e0a243e9432b3d60e4b6147f177" kindref="member">motor_move_velocity()</ref></computeroutput> will work as expected.</para>
-<para>When declaring motors in C++, it is not necessary to set the configuration for the motor with its constructor (beyond its port number) more than once for the given port. An example of this is given below.</para>
+<para>V5 Motors should be configured before use in your code. Configuration options like the gearset and encoder units are important to address first thing in your user program to ensure that functions like <computeroutput><ref refid="group__cpp-abstract-motor_1gaf9e6c6b881edf9a214f7beb9a65016e2" kindref="member">pros::Motor::move_velocity()</ref></computeroutput> will work as expected.</para>
+<para>When declaring motors in C++, it is not necessary to set the configuration for the motor with its constructor (beyond its port number) more than once for the given port. You may also reverse motors by passing the port number of the motor, but negative. An example of this is given below.</para>
 <para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#define<sp/>MOTOR_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REVERSED_MOTOR_PORT<sp/>-2</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1Motor" kindref="compound">pros::Motor</ref><sp/>drive_left<sp/>(MOTOR_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>drive_left<sp/>will<sp/>have<sp/>the<sp/>same<sp/>configuration<sp/>as<sp/>drive_left_initializer</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/>drive_left<sp/>(MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>drive_left<sp/>will<sp/>have<sp/>the<sp/>same<sp/>configuration<sp/>as<sp/>drive_left_initializer</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/>drive_right<sp/>(REVERSED_MOTOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>drive_right<sp/>is<sp/>the<sp/>reversed<sp/>version<sp/>of<sp/>the<sp/>motor<sp/>on<sp/>port<sp/>two</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting></para>
 </sect2>
-<sect2 id="motors_1autotoc_md49">
-<title>Simple Usage</title>
-<para>The easiest way to interact with the motors is through the <ulink url="../../api/c/motors.html#motor-move">motor_move</ulink> function.</para>
+<sect2 id="motors_1autotoc_md64">
+<title>Motor Groups</title>
+<para>In C++, V5 Motors can be configured together within a motor group to perform actions together. When declaring motor groups, you can pass a vector of the ports that the motors exist at. Then you can call motor functions (such as move) for the entire motor group. An example of this is given below.</para>
+<para><programlisting filename=".cpp"><codeline><highlight class="preprocessor">#define<sp/>MOTOR_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>REVERSED_MOTOR_PORT<sp/>-2</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1MotorGroup" kindref="compound">pros::MotorGroup</ref><sp/>my_motor_group<sp/>({MOTOR_PORT,<sp/>REVERSED_MOTOR_PORT});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>my_motor_group.<ref refid="group__cpp-motor-group_1ga4dceeada7f369a3dd25a4944019e0631" kindref="member">move</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1ga6a62f5325d65f95436762552df547d73" kindref="member">pros::delay</ref>(1000);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
 </sect2>
-<sect2 id="motors_1autotoc_md50">
+<sect2 id="motors_1autotoc_md65">
+<title>Simple Usage</title>
+<para>The easiest way to interact with the motors is through the <computeroutput><ref refid="group__cpp-abstract-motor_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref></computeroutput>function.</para>
+</sect2>
+<sect2 id="motors_1autotoc_md66">
 <title>Autonomous Movement</title>
-<para>The V5 Motors can move in a number of different ways that are better suited towards autonomous movement than the simple <computeroutput><ref refid="group__c-motors_1gac14bccd595a812fff8c30d2d050844a9" kindref="member">motor_move()</ref></computeroutput> example shown above.</para>
-<sect3 id="motors_1autotoc_md51">
+<para>The V5 Motors can move in a number of different ways that are better suited towards autonomous movement than the simple <computeroutput><ref refid="group__cpp-abstract-motor_1ga2affe67be5ec0f6c6ac406176777128c" kindref="member">pros::Motor::move()</ref></computeroutput> example shown above.</para>
+<sect3 id="motors_1autotoc_md67">
 <title>Profile Movements</title>
-<para>Profile movements are movements to a given position that are executed by the motor&apos;s firmware. There are two functions that achieve this, <computeroutput><ref refid="group__c-motors_1ga490a367ce2fea03acaa1e817c0648916" kindref="member">motor_move_absolute()</ref></computeroutput> and <computeroutput><ref refid="group__c-motors_1ga003028bf3f30c48559f442d7c0d74a9a" kindref="member">motor_move_relative()</ref></computeroutput>. These two functions are practically similar, but <computeroutput><ref refid="group__c-motors_1ga003028bf3f30c48559f442d7c0d74a9a" kindref="member">motor_move_relative()</ref></computeroutput> takes into account the zero position of the motor&apos;s encoder.</para>
+<para>Profile movements are movements to a given position that are executed by the motor&apos;s firmware. There are two functions that achieve this, <computeroutput><ref refid="group__cpp-abstract-motor_1ga6d274aaeea2b1f0eacd4199a607c5460" kindref="member">pros::Motor::move_absolute()</ref></computeroutput> and <computeroutput><ref refid="group__cpp-abstract-motor_1ga570e69a0d12d8f7c2fa372cf3889d1e5" kindref="member">pros::Motor::move_relative()</ref></computeroutput>. These two functions are practically similar, but <computeroutput><ref refid="group__cpp-abstract-motor_1ga570e69a0d12d8f7c2fa372cf3889d1e5" kindref="member">pros::Motor::move_relative()</ref></computeroutput> takes into account the zero position of the motor&apos;s encoder.</para>
 <para>These functions are very well suited to movement in autonomous.</para>
 <para>For further reading material on the algorithms that create these profiled movement, see <ulink url="https://pdfs.semanticscholar.org/a229/fdba63d8d68abd09f70604d56cc07ee50f7d.pdf">Mathematics of Motion Control Profiles</ulink> for the <ulink url="https://en.wikipedia.org/wiki/Feed_forward_(control)">Feedforward</ulink> control, and <ulink url="http://georgegillard.com/documents/2-introduction-to-pid-controllers">George Gillard&apos;s PID Explanation</ulink> for the <ulink url="https://en.wikipedia.org/wiki/Control_theory#PID_feedback_control">feedback</ulink> control.</para>
 </sect3>
-<sect3 id="motors_1autotoc_md52">
+<sect3 id="motors_1autotoc_md68">
 <title>Velocity Controller Movement</title>
-<para>The final <computeroutput>move</computeroutput> function available with the PROS Motor API is <computeroutput><ref refid="group__c-motors_1ga2f3f7e0a243e9432b3d60e4b6147f177" kindref="member">motor_move_velocity()</ref></computeroutput>. This ensures consistent velocity output from the motor through the use of <ulink url="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</ulink>. </para>
+<para>The final <computeroutput>move</computeroutput> function available with the PROS Motor API is <computeroutput><ref refid="group__cpp-abstract-motor_1gaf9e6c6b881edf9a214f7beb9a65016e2" kindref="member">pros::Motor::move_velocity()</ref></computeroutput>. This ensures consistent velocity output from the motor through the use of <ulink url="http://georgegillard.com/documents/2-introduction-to-pid-controllers">PID</ulink>. </para>
 </sect3>
 </sect2>
     </detaileddescription>
-    <location file="docs/tutorials/topical/motors.md"/>
   </compounddef>
 </doxygen>

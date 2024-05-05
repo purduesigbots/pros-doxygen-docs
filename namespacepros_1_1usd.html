@@ -86,6 +86,12 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />usd::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a2d7eecbe50533c0d753e82470dc2e6f3" class="m-doc-self">is_installed</a>(</span><span class="m-doc-wrap">void)</span></span>
             </dt>
             <dd>Checks if the SD card is installed.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />usd::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acffd319feb1e7f689445b2e0837018d7" class="m-doc-self">list_files</a>(</span><span class="m-doc-wrap">const char* path,
+              char* buffer,
+              std::int32_t len)</span></span>
+            </dt>
+            <dd>Lists the files in a directory specified by the path Puts the list of file names (NOT DIRECTORIES) into the buffer seperated by newlines.</dd>
           </dl>
         </section>
         <section>
@@ -103,6 +109,37 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%i&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">is_installed</span><span class="p">());</span>
+<span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="acffd319feb1e7f689445b2e0837018d7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />usd::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#acffd319feb1e7f689445b2e0837018d7" class="m-doc-self">list_files</a>(</span><span class="m-doc-wrap">const char* path,
+              char* buffer,
+              std::int32_t len)</span></span>
+            </h3>
+            <p>Lists the files in a directory specified by the path Puts the list of file names (NOT DIRECTORIES) into the buffer seperated by newlines.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>1 on success or PROS_ERR on failure setting errno</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached:</p><p>EIO - Hard error occured in the low level disk I/O layer EINVAL - file or directory is invalid, or length is invalid EBUSY - THe physical drinve cannot work ENOENT - cannot find the path or file EINVAL - the path name format is invalid EACCES - Access denied or directory full EEXIST - Access denied EROFS - SD card is write protected ENXIO - drive number is invalid or not a FAT32 drive ENOBUFS - drive has no work area ENFILE - too many open files</p><aside class="m-note m-info"><h4>Note</h4><p>use a path of &quot;\&quot; to list the files in the main directory NOT &quot;/usd/&quot; DO NOT PREPEND YOUR PATHS WITH &quot;/usd/&quot;</p></aside>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="mi">128</span><span class="p">);</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">usd</span><span class="o">::</span><span class="n">list_files</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span><span class="w"> </span><span class="c1">//Prints the file names in the root directory seperated by newlines</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">list_files</span><span class="p">(</span><span class="s">&quot;/test&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">,</span><span class="w"> </span><span class="mi">128</span><span class="p">);</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="w"> </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">);</span><span class="w"> </span><span class="c1">//Prints the names of files in the folder named test seperated by newlines</span>
+<span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span></pre>
           </div></section>
         </section>
       </div>
@@ -143,14 +180,14 @@ V5</span></a>
     </div>
   </div>
 </div>
-<script src="search-v1.js"></script>
-<script src="searchdata-v1.js" async="async"></script>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
 <footer><nav>
   <div class="m-container">
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS for
-V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.9.1 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

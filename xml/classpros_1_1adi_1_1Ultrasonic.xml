@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1Ultrasonic" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::Ultrasonic</compoundname>
+    <basecompoundref refid="classpros_1_1adi_1_1Port" prot="private" virt="non-virtual">Port</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1gabf944977048739d617bdcd57dd900f70" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ultrasonic</definition>
+        <argsstring>(std::uint8_t adi_port_ping, std::uint8_t adi_port_echo)</argsstring>
+        <name>Ultrasonic</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_ping</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_echo</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an <ref refid="classpros_1_1adi_1_1Ultrasonic" kindref="compound">Ultrasonic</ref> sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_ping</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the orange OUTPUT cable. This should be in port 1, 3, 5, or 7 (&apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>port_echo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The port connected to the yellow INPUT cable. This should be in the next highest port following port_ping.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Ultrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1089" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga44343b47838b6ad2fd1f7655b390bd2a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ultrasonic</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple)</argsstring>
+        <name>Ultrasonic</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+          <declname>port_tuple</declname>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an <ref refid="classpros_1_1adi_1_1Ultrasonic" kindref="compound">Ultrasonic</ref> sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the port connected to the orange OUTPUT cable (1, 3, 5, 7 or &apos;A&apos;, &apos;C&apos;, &apos;E&apos;, &apos;G&apos;), and the port connected to the yellow INPUT cable (the next) highest port following port_ping).</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>&apos;A&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>&apos;B&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Ultrasonic<sp/>sensor<sp/>(<sp/>{{<sp/>SMART_PORT,<sp/>PORT_PING,<sp/>PORT_ECHO<sp/>}}<sp/>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1121" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the current ultrasonic sensor value in centimeters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>If no object was found, zero is returned. If the ultrasonic sensor was never started, the return value is undefined. Round and fluffy objects can cause inaccurate values to be returned.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as an ultrasonic</para>
+<para><simplesect kind="return"><para>The distance to the nearest object in m^-4 (10000 indicates 1 meter), measured from the sensor&apos;s mounting points.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_PING<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_ECHO<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Ultrasonic<sp/>sensor<sp/>(PORT_PING,<sp/>PORT_ECHO);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Print<sp/>the<sp/>distance<sp/>read<sp/>by<sp/>the<sp/>ultrasonic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Distance:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1152" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classpros_1_1adi_1_1Ultrasonic_1a3b53f72ea88a01fe169c93270bbba0a9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacepros_1_1adi_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+        <definition>virtual ext_adi_port_tuple_t get_port</definition>
+        <argsstring>() const</argsstring>
+        <name>get_port</name>
+        <briefdescription>
+<para>Gets the port of the sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>returns a tuple of integer ports.</para>
+</simplesect>
+<simplesect kind="note"><para>The parts of the tuple are {smart port, adi port, second adi port (when applicable)}.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1<sp/>//<sp/>&apos;A&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::AnalogIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Getting<sp/>values<sp/>from<sp/>the<sp/>tuple<sp/>using<sp/>std::get&lt;index&gt;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>int<sp/>sensorSmartPort<sp/>=<sp/>std::get&lt;0&gt;(sensor.get_port());<sp/>//<sp/>First<sp/>value</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>sensorAdiPort<sp/>=<sp/>std::get&lt;1&gt;(sensor.get_port());<sp/>//<sp/>Second<sp/>value</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>first<sp/>and<sp/>second<sp/>value<sp/>from<sp/>the<sp/>port<sp/>tuple<sp/>(The<sp/>Adi<sp/>Port.<sp/>The<sp/>first<sp/>value<sp/>is<sp/>the<sp/>Smart<sp/>Port)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Smart<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorSmartPort);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Adi<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorAdiPort);<sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1154" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Ultrasonic</label>
+        <link refid="classpros_1_1adi_1_1Ultrasonic"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Ultrasonic</label>
+        <link refid="classpros_1_1adi_1_1Ultrasonic"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="1053" column="30" bodyfile="pros/adi.hpp" bodystart="1053" bodyend="1155"/>
+    <listofallmembers>
+      <member refid="classpros_1_1adi_1_1Ultrasonic_1a3b53f72ea88a01fe169c93270bbba0a9" prot="public" virt="non-virtual"><scope>pros::adi::Ultrasonic</scope><name>get_port</name></member>
+      <member refid="group__cpp-adi_1ga3b53f72ea88a01fe169c93270bbba0a9" prot="private" virt="virtual" ambiguityscope="pros::adi::Port::"><scope>pros::adi::Ultrasonic</scope><name>get_port</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::adi::Ultrasonic</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1gabf944977048739d617bdcd57dd900f70" prot="public" virt="non-virtual"><scope>pros::adi::Ultrasonic</scope><name>Ultrasonic</name></member>
+      <member refid="group__cpp-adi_1ga44343b47838b6ad2fd1f7655b390bd2a" prot="public" virt="non-virtual"><scope>pros::adi::Ultrasonic</scope><name>Ultrasonic</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

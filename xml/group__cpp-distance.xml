@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="group__cpp-distance" kind="group">
+    <compoundname>cpp-distance</compoundname>
+    <title>VEX Distance Sensor C++ API</title>
+    <innerfile refid="distance_8hpp">distance.hpp</innerfile>
+    <innerclass refid="classpros_1_1v5_1_1Distance" prot="public">pros::v5::Distance</innerclass>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__cpp-distance_1gacbdaad211add7384715740d88fda622b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Distance</definition>
+        <argsstring>(const std::uint8_t port)</argsstring>
+        <name>Distance</name>
+        <param>
+          <type>const std::uint8_t</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor object for the given port. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1ga8d9aa3936d18041a6d95533a5b9aa133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Distance</definition>
+        <argsstring>(const Device &amp;device)</argsstring>
+        <name>Distance</name>
+        <param>
+          <type>const Device &amp;</type>
+          <declname>device</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="61" column="1" bodyfile="pros/distance.hpp" bodystart="61" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1gab0a3957a7a1e019671cc14fd4960663a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t get</definition>
+        <argsstring>()</argsstring>
+        <name>get</name>
+        <briefdescription>
+<para>Get the currently measured distance from the sensor in mm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno. Will return 9999 if the sensor can not detect an object.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>confidence:<sp/>%d\n&quot;,<sp/>distance.get());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="88" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1ga1e8062b0775a50a97d613768847d8661" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; Distance &gt;</type>
+        <definition>static std::vector&lt;Distance&gt; get_all_devices</definition>
+        <argsstring>()</argsstring>
+        <name>get_all_devices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="90" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1gaf03c7202dbbda4fe5acdf0b360b2b73a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t get_distance</definition>
+        <argsstring>()</argsstring>
+        <name>get_distance</name>
+        <briefdescription>
+<para>Get the currently measured distance from the sensor in mm. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function is identical to <ref refid="group__cpp-distance_1gab0a3957a7a1e019671cc14fd4960663a" kindref="member">get()</ref>.</para>
+</simplesect>
+This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><simplesect kind="return"><para>The distance value or PROS_ERR if the operation failed, setting errno. Will return 9999 if the sensor can not detect an object.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>confidence:<sp/>%d\n&quot;,<sp/>distance.get_distance());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="117" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1ga4d31d7f4266e2f4d929c80fcfd285a98" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t get_confidence</definition>
+        <argsstring>()</argsstring>
+        <name>get_confidence</name>
+        <briefdescription>
+<para>Get the confidence in the distance reading. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is &gt; 200mm.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><simplesect kind="return"><para>The confidence value or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>confidence:<sp/>%d\n&quot;,<sp/>distance.get_confidence());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="147" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1gabcac5325a1d8014ce878f1520800b5dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>std::int32_t</type>
+        <definition>virtual std::int32_t get_object_size</definition>
+        <argsstring>()</argsstring>
+        <name>get_object_size</name>
+        <briefdescription>
+<para>Get the current guess at relative object size. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This is a value that has a range of 0 to 400. A 18&quot; x 30&quot; grey card will return a value of approximately 75 in typical room lighting.</para>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><simplesect kind="return"><para>The size value or PROS_ERR if the operation failed, setting errno. Will return -1 if the sensor is not able to determine object size.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DISTANCE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>confidence:<sp/>%d\n&quot;,<sp/>distance.get_object_size());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="177" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-distance_1gaffb975fa101c38c7e802bbf53242cdee" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>double</type>
+        <definition>virtual double get_object_velocity</definition>
+        <argsstring>()</argsstring>
+        <name>get_object_velocity</name>
+        <briefdescription>
+<para>Get the object velocity in m/s. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> Sensor</para>
+<para><simplesect kind="return"><para>The velocity value or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/>Distance<sp/>distance(DISTANCE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Distance<sp/>Object<sp/>velocity:<sp/>%f\n&quot;,<sp/>distance.get_object_velocity());</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="202" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="">
+      <memberdef kind="friend" id="group__cpp-distance_1ga0d0c3b018fe86d78e40d6c77a03d28dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, pros::Distance &amp;distance)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classpros_1_1v5_1_1Distance" kindref="compound">pros::Distance</ref> &amp;</type>
+          <declname>distance</declname>
+        </param>
+        <briefdescription>
+<para>This is the overload for the &lt;&lt; operator for printing to streams. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints in format(this below is all in one line with no new line): <ref refid="classpros_1_1v5_1_1Distance" kindref="compound">Distance</ref> [port: (port number), distance: (distance), confidence: (confidence), object size: (object size), object velocity: (object velocity)] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/distance.hpp" line="211" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classpros_1_1adi_1_1Encoder" kind="class" language="C++" prot="public">
+    <compoundname>pros::adi::Encoder</compoundname>
+    <basecompoundref refid="classpros_1_1adi_1_1Port" prot="private" virt="non-virtual">Port</basecompoundref>
+    <includes refid="adi_8hpp" local="yes">adi.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="group__cpp-adi_1ga0fb66efa2362ba59b90ff0dfd8731c65" prot="private" static="no" mutable="no">
+        <type><ref refid="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" kindref="member">ext_adi_port_pair_t</ref></type>
+        <definition>ext_adi_port_pair_t _port_pair</definition>
+        <argsstring></argsstring>
+        <name>_port_pair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1047" column="21" bodyfile="pros/adi.hpp" bodystart="1047" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="group__cpp-adi_1ga25dffd7691902d766efb7116d20af056" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Encoder</definition>
+        <argsstring>(std::uint8_t adi_port_top, std::uint8_t adi_port_bottom, bool reversed=false)</argsstring>
+        <name>Encoder</name>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_top</declname>
+        </param>
+        <param>
+          <type>std::uint8_t</type>
+          <declname>adi_port_bottom</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports to act as an <ref refid="classpros_1_1adi_1_1Encoder" kindref="compound">Encoder</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>adi_port_top</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;top&quot; wire from the encoder sensor with the removable cover side up </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>adi_port_bottom</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in the opposite direction</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Encoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="951" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga68013bea06d27362fe1b706da71ff043" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Encoder</definition>
+        <argsstring>(ext_adi_port_tuple_t port_tuple, bool reversed=false)</argsstring>
+        <name>Encoder</name>
+        <param>
+          <type><ref refid="namespacepros_1_1adi_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+          <declname>port_tuple</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>reversed</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Configures a set of ADI ports on an adi_expander to act as an <ref refid="classpros_1_1adi_1_1Encoder" kindref="compound">Encoder</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: ENXIO - Either the ADI port value or the smart port value is not within its valid range (ADI port: 1-8, &apos;a&apos;-&apos;h&apos;, or &apos;A&apos;-&apos;H&apos;; smart port: 1-21).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port_tuple</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The tuple of the smart port number, the &quot;top&quot; wire from the encoder sensor with the removable cover side up, and the &quot;bottom&quot; wire from the encoder sensor </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reverse</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If &quot;true&quot;, the sensor will count in theopposite direction</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>&apos;A&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>&apos;B&apos;</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>SMART_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Encoder<sp/>sensor<sp/>({<sp/>SMART_PORT,<sp/>PORT_TOP,<sp/>PORT_BOTTOM<sp/>},<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>//<sp/>Use<sp/>the<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="980" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac92589176d26914068b37bb9d6afba7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t reset</definition>
+        <argsstring>() const</argsstring>
+        <name>reset</name>
+        <briefdescription>
+<para>Sets the encoder value to zero. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>It is safe to use this method while an encoder is enabled. It is not necessary to call this method before stopping or starting an encoder.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Encoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>the<sp/>encoder<sp/>around<sp/>in<sp/>this<sp/>time</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>sensor.reset();<sp/>//<sp/>The<sp/>encoder<sp/>is<sp/>now<sp/>zero<sp/>again</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1007" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_value</definition>
+        <argsstring>() const</argsstring>
+        <name>get_value</name>
+        <briefdescription>
+<para>Gets the number of ticks recorded by the encoder. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>There are 360 ticks in one revolution.</para>
+<para>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</para>
+<para><simplesect kind="return"><para>The signed and cumulative number of counts since the last start or</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>PORT_TOP<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>PORT_BOTTOM<sp/>2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Encoder<sp/>sensor<sp/>(PORT_TOP,<sp/>PORT_BOTTOM,<sp/>false);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Encoder<sp/>Value:<sp/>&quot;<sp/>&lt;&lt;<sp/>sensor.get_value();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1034" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="group__cpp-adi_1gac357b750d18f47319848968300b6b2b8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="namespacepros_1_1adi_1ab96eeca6120dfe95a7a63bbe88723f3e" kindref="member">ext_adi_port_tuple_t</ref></type>
+        <definition>ext_adi_port_tuple_t get_port</definition>
+        <argsstring>() const override</argsstring>
+        <name>get_port</name>
+        <reimplements refid="group__cpp-adi_1ga3b53f72ea88a01fe169c93270bbba0a9">get_port</reimplements>
+        <briefdescription>
+<para>Gets the port of the sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>returns a tuple of integer ports.</para>
+</simplesect>
+<simplesect kind="note"><para>The parts of the tuple are {smart port, adi port, second adi port (when applicable)}.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DIGITAL_SENSOR_PORT<sp/>1<sp/>//<sp/>&apos;A&apos;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::AnalogIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Getting<sp/>values<sp/>from<sp/>the<sp/>tuple<sp/>using<sp/>std::get&lt;index&gt;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>int<sp/>sensorSmartPort<sp/>=<sp/>std::get&lt;0&gt;(sensor.get_port());<sp/>//<sp/>First<sp/>value</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>int<sp/>sensorAdiPort<sp/>=<sp/>std::get&lt;1&gt;(sensor.get_port());<sp/>//<sp/>Second<sp/>value</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>first<sp/>and<sp/>second<sp/>value<sp/>from<sp/>the<sp/>port<sp/>tuple<sp/>(The<sp/>Adi<sp/>Port.<sp/>The<sp/>first<sp/>value<sp/>is<sp/>the<sp/>Smart<sp/>Port)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Smart<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorSmartPort);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Adi<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorAdiPort);<sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1044" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="group__cpp-adi_1ga7b69bd6f64d35e7919de807e40eb02ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;os, pros::adi::Encoder &amp;encoder)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type><ref refid="classpros_1_1adi_1_1Encoder" kindref="compound">pros::adi::Encoder</ref> &amp;</type>
+          <declname>encoder</declname>
+        </param>
+        <briefdescription>
+<para>This is the overload for the &lt;&lt; operator for printing to streams. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Prints in format(this below is all in one line with no new line): <ref refid="classpros_1_1adi_1_1Encoder" kindref="compound">Encoder</ref> [smart_port: encoder._smart_port, adi_port: encoder._adi_port, value: (value)] </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/adi.hpp" line="1043" column="8"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Encoder</label>
+        <link refid="classpros_1_1adi_1_1Encoder"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Encoder</label>
+        <link refid="classpros_1_1adi_1_1Encoder"/>
+        <childnode refid="2" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Port</label>
+        <link refid="classpros_1_1adi_1_1Port"/>
+      </node>
+    </collaborationgraph>
+    <location file="pros/adi.hpp" line="919" column="27" bodyfile="pros/adi.hpp" bodystart="919" bodyend="1049"/>
+    <listofallmembers>
+      <member refid="group__cpp-adi_1ga0fb66efa2362ba59b90ff0dfd8731c65" prot="private" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>_port_pair</name></member>
+      <member refid="group__cpp-adi_1ga25dffd7691902d766efb7116d20af056" prot="public" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>Encoder</name></member>
+      <member refid="group__cpp-adi_1ga68013bea06d27362fe1b706da71ff043" prot="public" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>Encoder</name></member>
+      <member refid="group__cpp-adi_1gac357b750d18f47319848968300b6b2b8" prot="public" virt="virtual"><scope>pros::adi::Encoder</scope><name>get_port</name></member>
+      <member refid="group__cpp-adi_1ga60987c8e4946650cf9aa40f8e8345f01" prot="public" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>get_value</name></member>
+      <member refid="group__cpp-adi_1ga7b69bd6f64d35e7919de807e40eb02ca" prot="public" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>operator&lt;&lt;</name></member>
+      <member refid="group__cpp-adi_1gac92589176d26914068b37bb9d6afba7b" prot="public" virt="non-virtual"><scope>pros::adi::Encoder</scope><name>reset</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
