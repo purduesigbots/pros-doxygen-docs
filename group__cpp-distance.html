@@ -111,13 +111,13 @@ V5</span></a>
             </dt>
             <dd>Get the currently measured distance from the sensor in mm.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">static std::vector&lt;Distance&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1e8062b0775a50a97d613768847d8661" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap">)</span></span>
-            </dt>
-            <dd><span></span></dd>
-            <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf03c7202dbbda4fe5acdf0b360b2b73a" class="m-doc-self">get_distance</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </dt>
             <dd>Get the currently measured distance from the sensor in mm.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">static std::vector&lt;Distance&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1e8062b0775a50a97d613768847d8661" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap">)</span></span>
+            </dt>
+            <dd>Gets all distance sensors.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4d31d7f4266e2f4d929c80fcfd285a98" class="m-doc-self">get_confidence</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </dt>
@@ -178,22 +178,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="w"> </span><span class="cp">#define DISTANCE_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
-          </div></section>
-          <section class="m-doc-details" id="ga1e8062b0775a50a97d613768847d8661"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">static std::vector&lt;Distance&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1e8062b0775a50a97d613768847d8661" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap">)</span></span>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8hpp.html">&lt;pros/distance.hpp&gt;</a></div>
-            </h3>
-            <p><span></span></p>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get</span><span class="p">());</span>
+<span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaf03c7202dbbda4fe5acdf0b360b2b73a"><div>
             <h3>
@@ -209,14 +202,33 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<aside class="m-note m-info"><h4>Note</h4><p>This function is identical to <a href="group__cpp-distance.html#gab0a3957a7a1e019671cc14fd4960663a" class="m-doc">get()</a>.</p></aside><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+<aside class="m-note m-info"><h4>Note</h4><p>This function is identical to <a href="group__cpp-distance.html#gab0a3957a7a1e019671cc14fd4960663a" class="m-doc">get()</a>.</p></aside><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="w"> </span><span class="cp">#define DISTANCE_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_distance</span><span class="p">());</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_distance</span><span class="p">());</span>
+<span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga1e8062b0775a50a97d613768847d8661"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">static std::vector&lt;Distance&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1e8062b0775a50a97d613768847d8661" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap">)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="distance_8hpp.html">&lt;pros/distance.hpp&gt;</a></div>
+            </h3>
+            <p>Gets all distance sensors.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A vector of <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> sensor objects.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Distance</span><span class="o">&gt;</span><span class="w"> </span><span class="n">distance_all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Distance</span><span class="o">::</span><span class="n">get_all_devices</span><span class="p">();</span><span class="w">  </span><span class="c1">// All distance sensors that are</span>
+<span class="n">connected</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga4d31d7f4266e2f4d929c80fcfd285a98"><div>
@@ -233,15 +245,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is &gt; 200mm.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+<p>This is a value that has a range of 0 to 63. 63 means high confidence, lower values imply less confidence. Confidence is only available when distance is &gt; 200mm.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="w"> </span><span class="cp">#define DISTANCE_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_confidence</span><span class="p">());</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_confidence</span><span class="p">());</span>
+<span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gabcac5325a1d8014ce878f1520800b5dd"><div>
             <h3>
@@ -257,15 +269,15 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This is a value that has a range of 0 to 400. A 18&quot; x 30&quot; grey card will return a value of approximately 75 in typical room lighting.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DISTANCE_PORT 1</span>
+<p>This is a value that has a range of 0 to 400. A 18&quot; x 30&quot; grey card will return a value of approximately 75 in typical room lighting.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Distance.html" class="m-doc">Distance</a> Sensor</p><p><strong>Example</strong></p><pre class="m-code"><span class="w"> </span><span class="cp">#define DISTANCE_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w"> </span><span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_object_size</span><span class="p">());</span>
-<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="n">Distance</span><span class="w"> </span><span class="n">distance</span><span class="p">(</span><span class="n">DISTANCE_PORT</span><span class="p">);</span>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Distance confidence: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">distance</span><span class="p">.</span><span class="n">get_object_size</span><span class="p">());</span>
+<span class="w">     </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaffb975fa101c38c7e802bbf53242cdee"><div>
             <h3>

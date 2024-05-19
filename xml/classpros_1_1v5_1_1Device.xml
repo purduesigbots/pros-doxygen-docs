@@ -22,7 +22,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="157" column="20" bodyfile="pros/device.hpp" bodystart="157" bodyend="-1"/>
+        <location file="pros/device.hpp" line="197" column="20" bodyfile="pros/device.hpp" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="group__cpp-device_1gaf4d433a0f9520be750fae39848de394a" prot="private" static="no" mutable="no">
         <type>enum <ref refid="group__cpp-device_1gad258d4c51629346fceac4679b3209ad9" kindref="member">DeviceType</ref></type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="157" column="20" bodyfile="pros/device.hpp" bodystart="158" bodyend="-1"/>
+        <location file="pros/device.hpp" line="197" column="20" bodyfile="pros/device.hpp" bodystart="198" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -167,12 +167,35 @@
           <declname>port</declname>
         </param>
         <briefdescription>
+<para>Gets the type of device on a given port. </para>
         </briefdescription>
         <detaileddescription>
+<para>This function uses the following values of errno when an error state is reached: EACCES - <ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref> of port cannot be taken (access denied).</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>port</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The V5 port number from 1-21</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The device type as an enum.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>DEVICE_PORT<sp/>1</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>DeviceType<sp/>dt<sp/>=<sp/>pros::Device::get_plugged_type(DEVICE_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;device<sp/>plugged<sp/>type:<sp/>{plugged<sp/>type:<sp/>%d}\n&quot;,<sp/>dt);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(20);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="140" column="25"/>
+        <location file="pros/device.hpp" line="165" column="25"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-device_1gaeb207d6beaac509eb94a0f21137b6f35" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classpros_1_1v5_1_1Device" kindref="compound">Device</ref> &gt;</type>
@@ -185,12 +208,28 @@
           <defval>pros::DeviceType::undefined</defval>
         </param>
         <briefdescription>
+<para>Gets all devices of a given device type. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <ref refid="group__cpp-device_1gad258d4c51629346fceac4679b3209ad9" kindref="member">pros::DeviceType</ref> enum that matches the type of device desired.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A vector of <ref refid="classpros_1_1v5_1_1Device" kindref="compound">Device</ref> objects for the given device type.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;Device&gt;<sp/>motor_devices<sp/>=<sp/>pros::Device::get_all_devices(pros::DeviceType::motor);<sp/><sp/>//<sp/>All<sp/>Device<sp/>objects<sp/>are<sp/>motors</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="142" column="20"/>
+        <location file="pros/device.hpp" line="182" column="20"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -232,7 +271,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="152" column="1" bodyfile="pros/device.hpp" bodystart="152" bodyend="154"/>
+        <location file="pros/device.hpp" line="192" column="1" bodyfile="pros/device.hpp" bodystart="192" bodyend="194"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -287,7 +326,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="pros/device.hpp" line="58" column="13" bodyfile="pros/device.hpp" bodystart="58" bodyend="161"/>
+    <location file="pros/device.hpp" line="58" column="13" bodyfile="pros/device.hpp" bodystart="58" bodyend="201"/>
     <listofallmembers>
       <member refid="group__cpp-device_1gaf4d433a0f9520be750fae39848de394a" prot="private" virt="non-virtual"><scope>pros::v5::Device</scope><name>_deviceType</name></member>
       <member refid="group__cpp-device_1ga16b806c98fffb4fd7235419ef22ac101" prot="private" virt="non-virtual"><scope>pros::v5::Device</scope><name>_port</name></member>

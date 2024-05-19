@@ -111,11 +111,11 @@ V5</span></a>
             <dt>
               <span class="m-doc-wrap-bumper">static <a href="group__cpp-device.html#gad258d4c51629346fceac4679b3209ad9" class="m-doc">pros::<wbr />DeviceType</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga270385bad8e84b2d327ea4551f3ea648" class="m-doc-self">get_plugged_type</a>(</span><span class="m-doc-wrap">std::uint8_t port)</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Gets the type of device on a given port.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">static std::vector&lt;Device&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaeb207d6beaac509eb94a0f21137b6f35" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap"><a href="group__cpp-device.html#gad258d4c51629346fceac4679b3209ad9" class="m-doc">pros::<wbr />DeviceType</a> device_type = pros::DeviceType::undefined)</span></span>
             </dt>
-            <dd><span></span></dd>
+            <dd>Gets all devices of a given device type.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae965ded0275d67e56b0b2831dc35260d" class="m-doc-self">Device</a>(</span><span class="m-doc-wrap">const std::uint8_t port,
               const enum DeviceType deviceType) <span class="m-label m-danger">private</span></span></span>
@@ -273,14 +273,60 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">static <a href="group__cpp-device.html#gad258d4c51629346fceac4679b3209ad9" class="m-doc">pros::<wbr />DeviceType</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga270385bad8e84b2d327ea4551f3ea648" class="m-doc-self">get_plugged_type</a>(</span><span class="m-doc-wrap">std::uint8_t port)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="device_8hpp.html">&lt;pros/device.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Gets the type of device on a given port.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 port number from 1-21</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>The device type as an enum.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: EACCES - <a href="classpros_1_1rtos_1_1Mutex.html" class="m-doc">Mutex</a> of port cannot be taken (access denied).</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DEVICE_PORT 1</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">    </span><span class="n">DeviceType</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Device</span><span class="o">::</span><span class="n">get_plugged_type</span><span class="p">(</span><span class="n">DEVICE_PORT</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;device plugged type: {plugged type: %d}</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaeb207d6beaac509eb94a0f21137b6f35"><div>
             <h3>
               <span class="m-doc-wrap-bumper">static std::vector&lt;Device&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaeb207d6beaac509eb94a0f21137b6f35" class="m-doc-self">get_all_devices</a>(</span><span class="m-doc-wrap"><a href="group__cpp-device.html#gad258d4c51629346fceac4679b3209ad9" class="m-doc">pros::<wbr />DeviceType</a> device_type = pros::DeviceType::undefined)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="device_8hpp.html">&lt;pros/device.hpp&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Gets all devices of a given device type.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">device_type</td>
+                  <td>The <a href="group__cpp-device.html#gad258d4c51629346fceac4679b3209ad9" class="m-doc">pros::<wbr />DeviceType</a> enum that matches the type of device desired.</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>A vector of <a href="classpros_1_1v5_1_1Device.html" class="m-doc">Device</a> objects for the given device type.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Device</span><span class="o">&gt;</span><span class="w"> </span><span class="n">motor_devices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">Device</span><span class="o">::</span><span class="n">get_all_devices</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">DeviceType</span><span class="o">::</span><span class="n">motor</span><span class="p">);</span><span class="w">  </span><span class="c1">// All Device objects are motors</span>
+<span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gae965ded0275d67e56b0b2831dc35260d"><div>
             <h3>
