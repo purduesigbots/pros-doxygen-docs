@@ -40,7 +40,7 @@ The C++ API is designed for those who want to take an object oreinted approach t
 
 
 # C API Headers
-The C API is designed for more advanced users who would rather program functionally than object oreinted. 
+The C API is designed for more advanced users who would rather program functionally than object oreinted.
 
 ### C Motor Functions
 
@@ -75,11 +75,11 @@ The C API is designed for more advanced users who would rather program functiona
 
 PROS also includes LVGL installed as a default template, a graphics library that enables users to create advanced
 user interfaces on the V5's screen. For LVGL's features, please refer to LVGL's documentation:
- - [Official LVGL 8.3.x Documentation](https://docs.lvgl.io/master/index.html)
+ - [Official LVGL 8.3.x Documentation](https://docs.lvgl.io/8.3/index.html)
  - [Archive of the LVGL 5.3.x Documentation](https://gcec-2918.github.io/LVGL_v5-3_Documentation_Archive/)
 
 # Okapi
 
-Bundled with PROS as a default templateis also Okapi, a powerful motion control library for advanced users. 
+Bundled with PROS as a default templateis also Okapi, a powerful motion control library for advanced users.
 For Okapi's API, please check Okapi's documentation:
  - [Official Okapi Documentation](https://okapilib.github.io/OkapiLib/index.html)
