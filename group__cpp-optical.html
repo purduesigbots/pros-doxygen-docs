@@ -158,6 +158,14 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6bad3c7e71be57013fa7f46d49f5612a" class="m-doc-self">disable_gesture</a>(</span><span class="m-doc-wrap">) <span class="m-label m-warning">virtual</span></span></span>
             </dt>
             <dd>Disable gesture detection on the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7e9005f4767dea1b3b9848c4d7d9770a" class="m-doc-self">get_integration_time</a>(</span><span class="m-doc-wrap">)</span></span>
+            </dt>
+            <dd>Set integration time (update rate) of the optical sensor in milliseconds, with minimum time being 3 ms and maximum time being 712 ms.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaa4c8b08ba7e2f92692d0dc5a4773e1d" class="m-doc-self">set_integration_time</a>(</span><span class="m-doc-wrap">double time)</span></span>
+            </dt>
+            <dd>Get integration time (update rate) of the optical sensor in milliseconds.</dd>
           </dl>
         </section>
         <section>
@@ -482,6 +490,47 @@ V5</span></a>
 <span class="w">            </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga7e9005f4767dea1b3b9848c4d7d9770a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">double </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7e9005f4767dea1b3b9848c4d7d9770a" class="m-doc-self">get_integration_time</a>(</span><span class="m-doc-wrap">)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="optical_8hpp.html">&lt;pros/optical.hpp&gt;</a></div>
+            </h3>
+            <p>Set integration time (update rate) of the optical sensor in milliseconds, with minimum time being 3 ms and maximum time being 712 ms.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>1 if the operation is successful or PROS_ERR_F if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>Default is 100 ms, with the optical sensor communciating with the V5 brain every 20 ms.</p><p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Optical.html" class="m-doc">Optical</a> Sensor</p>
+          </div></section>
+          <section class="m-doc-details" id="gaaa4c8b08ba7e2f92692d0dc5a4773e1d"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaa4c8b08ba7e2f92692d0dc5a4773e1d" class="m-doc-self">set_integration_time</a>(</span><span class="m-doc-wrap">double time)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="optical_8hpp.html">&lt;pros/optical.hpp&gt;</a></div>
+            </h3>
+            <p>Get integration time (update rate) of the optical sensor in milliseconds.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">time</td>
+                  <td>The desired integration time in milliseconds</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>Integration time in milliseconds if the operation is successful or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as an <a href="classpros_1_1v5_1_1Optical.html" class="m-doc">Optical</a> Sensor</p>
           </div></section>
         </section>
       </div>
