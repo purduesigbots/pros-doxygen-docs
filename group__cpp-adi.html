@@ -419,7 +419,7 @@ V5</span></a>
 <span class="cp">#define EXT_ADI_SMART_PORT 1</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Port</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({{</span><span class="w"> </span><span class="n">EXT_ADI_SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="w"> </span><span class="p">}},</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Port</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">},</span><span class="w"> </span><span class="n">E_ADI_ANALOG_IN</span><span class="p">);</span>
 <span class="w">  </span><span class="c1">// Displays the value of E_ADI_ANALOG_IN</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Port Type: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">sensor</span><span class="p">.</span><span class="n">get_config</span><span class="p">();</span>
 <span class="p">}</span></pre>
@@ -546,14 +546,14 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">AnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
-<span class="w">  </span>
-<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt; </span>
+
+<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt;</span>
 <span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// First value</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// Second value</span>
 
 <span class="w">     </span><span class="c1">// Prints the first and second value from the port tuple (The Adi Port. The first value is the Smart Port)</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Smart Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span><span class="w">   </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gaa10478efbd65c2e3e591cc6c789f4625"><div>
@@ -606,7 +606,7 @@ V5</span></a>
 <span class="cp">#define ADI_PORT &#39;a&#39;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({{</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">ADIAnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Use the sensor</span>
 <span class="w">  </span><span class="p">}</span>
@@ -726,7 +726,7 @@ V5</span></a>
 <span class="cp">#define ADI_PORT &#39;a&#39;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">AnalogOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({{</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">AnalogOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="c1">// Use the sensor</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -791,7 +791,7 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kt">bool</span><span class="w"> </span><span class="n">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LOW</span><span class="p">;</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">DigitalOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="n">EXT_ADI_SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="w"> </span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">DigitalOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">state</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">state</span><span class="p">;</span>
 <span class="w">    </span><span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">state</span><span class="p">);</span>
@@ -844,7 +844,7 @@ V5</span></a>
 <span class="cp">#define ADI_PORT &#39;a&#39;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">DigitalIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({{</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">DigitalIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="c1">// Use the sensor</span>
 <span class="p">}</span></pre>
           </div></section>
@@ -922,7 +922,7 @@ V5</span></a>
 <span class="cp">#define ADI_MOTOR_PORT &#39;a&#39;</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="n">EXT_ADI_SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w">  </span><span class="n">ADI_MOTOR_PORT</span><span class="p">}}</span><span class="w"> </span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">({</span><span class="n">EXT_ADI_SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_MOTOR_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
 <span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
@@ -1085,14 +1085,14 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">AnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
-<span class="w">  </span>
-<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt; </span>
+
+<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt;</span>
 <span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// First value</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// Second value</span>
 
 <span class="w">     </span><span class="c1">// Prints the first and second value from the port tuple (The Adi Port. The first value is the Smart Port)</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Smart Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span><span class="w">   </span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gabf944977048739d617bdcd57dd900f70"><div>
@@ -1229,7 +1229,7 @@ V5</span></a>
 <span class="cp">#define SMART_PORT 1</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">({{</span><span class="w"> </span><span class="n">SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ADI_GYRO_PORT</span><span class="w"> </span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Gyro</span><span class="w"> </span><span class="n">gyro</span><span class="w"> </span><span class="p">({</span><span class="n">SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="n">ADI_GYRO_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Get the gyro heading</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Distance: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">gyro</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span>
@@ -1355,7 +1355,7 @@ V5</span></a>
 <span class="cp">#define SMART_PORT 1</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Potentiometer</span><span class="w"> </span><span class="n">potentiometer</span><span class="w"> </span><span class="p">({{</span><span class="w"> </span><span class="n">SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">ADI_POTENTIOMETER_PORT</span><span class="w"> </span><span class="p">}});</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Potentiometer</span><span class="w"> </span><span class="n">potentiometer</span><span class="w"> </span><span class="p">({</span><span class="n">SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">ADI_POTENTIOMETER_PORT</span><span class="p">});</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Get the potentiometer angle</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Angle: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">potentiometer</span><span class="p">.</span><span class="n">get_angle</span><span class="p">();</span>
@@ -1417,10 +1417,10 @@ V5</span></a>
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Led</span><span class="w"> </span><span class="n">led</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">LED_LENGTH</span><span class="p">);</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// Set entire LED strip to red</span>
+<span class="w">       </span><span class="c1">// Set entire LED strip to red</span>
 <span class="w">    </span><span class="n">led</span><span class="p">.</span><span class="n">set_all</span><span class="p">(</span><span class="mh">0xFF0000</span><span class="p">);</span>
-<span class="w">      </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">       </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">     </span><span class="p">}</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gac175118de7a27d82d581607a64452792"><div>
@@ -1450,7 +1450,7 @@ V5</span></a>
 <span class="cp">#define LED_LENGTH 3</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Led</span><span class="w"> </span><span class="n">led</span><span class="w"> </span><span class="p">({{</span><span class="w"> </span><span class="n">SMART_PORT</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">LED_PORT</span><span class="w"> </span><span class="p">}},</span><span class="w"> </span><span class="n">LED_LENGTH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Led</span><span class="w"> </span><span class="n">led</span><span class="w"> </span><span class="p">({</span><span class="n">SMART_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">LED_PORT</span><span class="p">},</span><span class="w"> </span><span class="n">LED_LENGTH</span><span class="p">);</span>
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Set entire LED strip to red</span>
 <span class="w">    </span><span class="n">led</span><span class="p">.</span><span class="n">set_all</span><span class="p">(</span><span class="mh">0xFF0000</span><span class="p">);</span>
@@ -1474,7 +1474,7 @@ V5</span></a>
             </table>
 <p><strong>Example:</strong></p><pre class="m-code"><span class="w">   </span><span class="cp">#define LED_PORT &#39;a&#39;</span>
 <span class="w">   </span><span class="cp">#define LED_LENGTH 3</span>
-<span class="w">   </span>
+<span class="w">  </span>
 <span class="w">   </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">Led</span><span class="w"> </span><span class="n">led</span><span class="w"> </span><span class="p">(</span><span class="n">LED_PORT</span><span class="p">,</span><span class="w"> </span><span class="n">LED_LENGTH</span><span class="p">);</span>
 <span class="w">     </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1483,7 +1483,7 @@ V5</span></a>
 <span class="w">       </span><span class="n">led</span><span class="p">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="mh">0x00FF00</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">       </span><span class="n">led</span><span class="p">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="mh">0x0000FF</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">       </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
-<span class="w">   </span>
+<span class="w">  </span>
 <span class="w">       </span><span class="c1">// Use the [] operator to set the first pixel to black</span>
 <span class="w">       </span><span class="n">led</span><span class="p">.</span><span class="k">operator</span><span class="p">[](</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x000000</span><span class="p">;</span>
 <span class="w">       </span><span class="n">led</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
@@ -1491,39 +1491,39 @@ V5</span></a>
 <span class="w">     </span><span class="p">}</span>
 <span class="w">   </span><span class="p">}</span>
 <span class="w">  </span><span class="o">/</span>
-<span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="p">[]</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="kt">uint32_t</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="p">[](</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
 
 <span class="cm">/**</span>
-<span class="cm"> * @brief Clear the entire led strip of color</span>
-<span class="cm"> *</span>
-<span class="cm"> * This function uses the following values of errno when an error state is</span>
-<span class="cm"> * reached:</span>
-<span class="cm"> * ENXIO - The given value is not within the range of ADI Ports</span>
-<span class="cm"> * EINVAL - A parameter is out of bounds/incorrect</span>
-<span class="cm"> * EADDRINUSE - The port is not configured for ADI output</span>
-<span class="cm"> *</span>
-<span class="cm"> * @return PROS_SUCCESS if successful, PROS_ERR if not</span>
-<span class="cm"> *</span>
-<span class="cm"> * \b Example:</span>
-<span class="cm"> * \code</span>
-<span class="cm"> * #define LED_PORT &#39;a&#39;</span>
-<span class="cm"> * #define LED_LENGTH 3</span>
-<span class="cm"> *</span>
-<span class="cm"> * void opcontrol() {</span>
-<span class="cm"> *   pros::Led led (LED_PORT, LED_LENGTH);</span>
-<span class="cm"> *   while (true) {</span>
-<span class="cm"> *     // Set the first 3 pixels to red, green, and blue</span>
-<span class="cm"> *     led.set_pixel(0xFF0000, 0);</span>
-<span class="cm"> *     led.set_pixel(0x00FF00, 1);</span>
-<span class="cm"> *     led.set_pixel(0x0000FF, 2);</span>
-<span class="cm"> *     pros::delay(20);</span>
-<span class="cm"> *</span>
-<span class="cm"> *     // Clear the led strip of color</span>
-<span class="cm"> *     led.clear();</span>
-<span class="cm"> *     pros::delay(20);</span>
-<span class="cm"> *  }</span>
-<span class="cm"> * }</span>
-<span class="cm"> * </span></pre>
+<span class="cm">  * @brief Clear the entire led strip of color</span>
+<span class="cm">  *</span>
+<span class="cm">  * This function uses the following values of errno when an error state is</span>
+<span class="cm">  * reached:</span>
+<span class="cm">  * ENXIO - The given value is not within the range of ADI Ports</span>
+<span class="cm">  * EINVAL - A parameter is out of bounds/incorrect</span>
+<span class="cm">  * EADDRINUSE - The port is not configured for ADI output</span>
+<span class="cm">  *</span>
+<span class="cm">  * @return PROS_SUCCESS if successful, PROS_ERR if not</span>
+<span class="cm">  *</span>
+<span class="cm">  * \b Example:</span>
+<span class="cm">  * \code</span>
+<span class="cm">  * #define LED_PORT &#39;a&#39;</span>
+<span class="cm">  * #define LED_LENGTH 3</span>
+<span class="cm">  *</span>
+<span class="cm">  * void opcontrol() {</span>
+<span class="cm">  *   pros::Led led (LED_PORT, LED_LENGTH);</span>
+<span class="cm">  *   while (true) {</span>
+<span class="cm">  *        // Set the first 3 pixels to red, green, and blue</span>
+<span class="cm">  *        led.set_pixel(0xFF0000, 0);</span>
+<span class="cm">  *        led.set_pixel(0x00FF00, 1);</span>
+<span class="cm">  *        led.set_pixel(0x0000FF, 2);</span>
+<span class="cm">  *        pros::delay(20);</span>
+<span class="cm">  *</span>
+<span class="cm">  *        // Clear the led strip of color</span>
+<span class="cm">  *        led.clear();</span>
+<span class="cm">  *        pros::delay(20);</span>
+<span class="cm">  *  }</span>
+<span class="cm">  * }</span>
+<span class="cm">  * </span></pre>
           </div></section>
           <section class="m-doc-details" id="gac41bd42fcdbf07917dac5530bcb7c702"><div>
             <h3>
@@ -1736,8 +1736,8 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p>/b Example:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">left_piston</span><span class="p">(</span><span class="sc">&#39;a&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">         </span><span class="c1">// Starts retracted, extends when the ADI port is high</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">right_piston</span><span class="p">(</span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Starts retracted, extends when the ADI port is low </span>
-<span class="w">  </span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">right_piston</span><span class="p">(</span><span class="sc">&#39;b&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Starts retracted, extends when the ADI port is low</span>
+
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1747,7 +1747,7 @@ V5</span></a>
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_L2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">retract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span>
+
 <span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">extend</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1785,30 +1785,31 @@ V5</span></a>
                 </tr>
               </tbody>
             </table>
-<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p>/b Example:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of ADI Ports</p><p>/b Example:</p><pre class="m-code"><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">left_piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">            </span><span class="c1">// Starts retracted, extends when the ADI port is high</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">right_piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">        </span><span class="c1">// Starts retracted, extends when the ADI port is low </span>
-<span class="w">  </span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">right_piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;b&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span><span class="w">       </span><span class="c1">// Starts retracted, extends when the ADI port is</span>
+<span class="o">*</span><span class="n">low</span>
 
-<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">extend</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_L2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">retract</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">extend</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="n">left_piston</span><span class="p">.</span><span class="n">retract</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">   </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span></pre>
+<span class="w">   </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_L1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">left_piston</span><span class="p">.</span><span class="n">extend</span><span class="p">();</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_L2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">left_piston</span><span class="p">.</span><span class="n">retract</span><span class="p">();</span>
+<span class="w">     </span><span class="p">}</span>
+
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_R1</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">left_piston</span><span class="p">.</span><span class="n">extend</span><span class="p">();</span>
+<span class="w">     </span><span class="p">}</span>
+<span class="w">     </span><span class="k">if</span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_R2</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="n">left_piston</span><span class="p">.</span><span class="n">retract</span><span class="p">();</span>
+<span class="w">     </span><span class="p">}</span>
+
+<span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="ga978e7aa4645a66a7d4f9f33302a641e7"><div>
             <h3>
@@ -1826,7 +1827,7 @@ V5</span></a>
             </table>
 <p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">            </span><span class="c1">// Starts retracted, extends when the ADI port is high</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1860,7 +1861,7 @@ V5</span></a>
             </table>
 <p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">     </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">            </span><span class="c1">// Starts retracted, extends when the ADI port is high</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1894,7 +1895,7 @@ V5</span></a>
             </table>
 <p>If it is retracted, it will extend. If it is extended, it will retract.</p><p><strong>Example:</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Pneumatics</span><span class="w"> </span><span class="n">piston</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;a&#39;</span><span class="p">},</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span><span class="w">            </span><span class="c1">// Starts retracted, extends when the ADI port is high</span>
-<span class="w">  </span>
+
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 
 <span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
