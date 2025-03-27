@@ -1530,6 +1530,134 @@
         </inbodydescription>
         <location file="pros/rtos.h" line="1076" column="6" declfile="pros/rtos.h" declline="1076" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga4eef1a2598a22cbf8000fe03633d0b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+        <definition>mutex_t pros::c::mutex_recursive_create</definition>
+        <argsstring>(void)</argsstring>
+        <name>mutex_recursive_create</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Creates a recursive mutex which can be locked recursively by the owner. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A newly created recursive mutex.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1100" column="9" declfile="pros/rtos.h" declline="1100" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga960dac0c60f0f13331f14325d56d7506" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_recursive_take</definition>
+        <argsstring>(mutex_t mutex, uint32_t timeout)</argsstring>
+        <name>mutex_recursive_take</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Takes a recursive mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A mutex handle created by mutex_recursive_create </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amount of time to wait before timing out</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1129" column="6" declfile="pros/rtos.h" declline="1129" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga0366fbae5b45a13bb3d76ba963fde37b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_recursive_give</definition>
+        <argsstring>(mutex_t mutex)</argsstring>
+        <name>mutex_recursive_give</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <briefdescription>
+<para>Gives a recursive mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A mutex handle created by mutex_recursive_create</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1156" column="6" declfile="pros/rtos.h" declline="1156" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void pros::c::mutex_delete</definition>
@@ -1540,7 +1668,7 @@
           <declname>mutex</declname>
         </param>
         <briefdescription>
-<para>Deletes a mutex. </para>
+<para>Deletes a mutex or recursive mutex. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1566,7 +1694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="1098" column="6" declfile="pros/rtos.h" declline="1098" declcolumn="6"/>
+        <location file="pros/rtos.h" line="1178" column="6" declfile="pros/rtos.h" declline="1178" declcolumn="6"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="define">

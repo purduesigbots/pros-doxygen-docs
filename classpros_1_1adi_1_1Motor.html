@@ -163,7 +163,7 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
 
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
 <span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
@@ -188,14 +188,14 @@ V5</span></a>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">AnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
-
-<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt;</span>
+<span class="w">  </span>
+<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt; </span>
 <span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// First value</span>
 <span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// Second value</span>
 
 <span class="w">     </span><span class="c1">// Prints the first and second value from the port tuple (The Adi Port. The first value is the Smart Port)</span>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Smart Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span><span class="w">   </span>
 <span class="p">}</span></pre>
           </div></section>
         </section>

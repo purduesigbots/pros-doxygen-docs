@@ -70,7 +70,7 @@
 <codeline><highlight class="normal">#define<sp/>ADI_MOTOR_PORT<sp/>&apos;a&apos;</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::adi::Motor<sp/>motor<sp/>({EXT_ADI_SMART_PORT,<sp/>ADI_MOTOR_PORT});</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::adi::Motor<sp/>motor<sp/>(<sp/>{{<sp/>EXT_ADI_SMART_PORT<sp/>,<sp/><sp/>ADI_MOTOR_PORT}}<sp/>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(1000);</highlight></codeline>
@@ -163,7 +163,7 @@
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>MOTOR_PORT<sp/>1</highlight></codeline>
 <codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::adi::Motor<sp/>motor<sp/>(MOTOR_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>motor.set_value(127);<sp/>//<sp/>Go<sp/>full<sp/>speed<sp/>forward</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>&quot;Commanded<sp/>Motor<sp/>Power:<sp/>&quot;<sp/>&lt;&lt;<sp/>motor.get_value();<sp/>//<sp/>Will<sp/>display<sp/>127</highlight></codeline>
@@ -193,14 +193,14 @@
 <codeline></codeline>
 <codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>pros::adi::AnalogIn<sp/>sensor<sp/>(DIGITAL_SENSOR_PORT);</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Getting<sp/>values<sp/>from<sp/>the<sp/>tuple<sp/>using<sp/>std::get&lt;index&gt;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Getting<sp/>values<sp/>from<sp/>the<sp/>tuple<sp/>using<sp/>std::get&lt;index&gt;<sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>int<sp/>sensorSmartPort<sp/>=<sp/>std::get&lt;0&gt;(sensor.get_port());<sp/>//<sp/>First<sp/>value</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>int<sp/>sensorAdiPort<sp/>=<sp/>std::get&lt;1&gt;(sensor.get_port());<sp/>//<sp/>Second<sp/>value</highlight></codeline>
 <codeline></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>first<sp/>and<sp/>second<sp/>value<sp/>from<sp/>the<sp/>port<sp/>tuple<sp/>(The<sp/>Adi<sp/>Port.<sp/>The<sp/>first<sp/>value<sp/>is<sp/>the<sp/>Smart<sp/>Port)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Smart<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorSmartPort);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Adi<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorAdiPort);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Sensor<sp/>Adi<sp/>Port:<sp/>%d\n&quot;,<sp/>sensorAdiPort);<sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>

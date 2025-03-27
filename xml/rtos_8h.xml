@@ -28,20 +28,26 @@
         <link refid="rtos_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>pros/ai_vision.hpp</label>
+        <link refid="ai__vision_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
       </node>
       <node id="3">
         <label>kapi.h</label>
         <link refid="kapi_8h"/>
       </node>
-      <node id="8">
+      <node id="9">
         <label>pros/distance.hpp</label>
         <link refid="distance_8hpp"/>
         <childnode refid="2" relation="include">
@@ -53,31 +59,31 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="10">
         <label>pros/gps.hpp</label>
         <link refid="gps_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="11">
+      <node id="12">
         <label>pros/link.hpp</label>
         <link refid="link_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="19">
         <label>pros/serial.hpp</label>
         <link refid="serial_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="15">
         <label>pros/optical.hpp</label>
         <link refid="optical_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="16">
         <label>pros/rotation.hpp</label>
         <link refid="rotation_8hpp"/>
         <childnode refid="2" relation="include">
@@ -93,35 +99,35 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="12">
+      <node id="13">
         <label>pros/motor_group.hpp</label>
         <link refid="motor__group_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="14">
         <label>pros/motors.hpp</label>
         <link refid="motors_8hpp"/>
-        <childnode refid="12" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="17">
         <label>pros/vision.hpp</label>
         <link refid="vision_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="18">
         <label>pros/abstract_motor.hpp</label>
         <link refid="abstract__motor_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
-      <node id="10">
+      <node id="11">
         <label>pros/imu.hpp</label>
         <link refid="imu_8hpp"/>
         <childnode refid="2" relation="include">
@@ -142,9 +148,9 @@
       <node id="7">
         <label>pros/device.hpp</label>
         <link refid="device_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
         <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -165,6 +171,8 @@
         <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -1710,6 +1718,134 @@
         </inbodydescription>
         <location file="pros/rtos.h" line="1076" column="6" declfile="pros/rtos.h" declline="1076" declcolumn="6"/>
       </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga4eef1a2598a22cbf8000fe03633d0b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+        <definition>mutex_t pros::c::mutex_recursive_create</definition>
+        <argsstring>(void)</argsstring>
+        <name>mutex_recursive_create</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Creates a recursive mutex which can be locked recursively by the owner. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A newly created recursive mutex.</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1100" column="9" declfile="pros/rtos.h" declline="1100" declcolumn="9"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga960dac0c60f0f13331f14325d56d7506" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_recursive_take</definition>
+        <argsstring>(mutex_t mutex, uint32_t timeout)</argsstring>
+        <name>mutex_recursive_take</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout</declname>
+        </param>
+        <briefdescription>
+<para>Takes a recursive mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A mutex handle created by mutex_recursive_create </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Amount of time to wait before timing out</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1129" column="6" declfile="pros/rtos.h" declline="1129" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-rtos_1ga0366fbae5b45a13bb3d76ba963fde37b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool pros::c::mutex_recursive_give</definition>
+        <argsstring>(mutex_t mutex)</argsstring>
+        <name>mutex_recursive_give</name>
+        <param>
+          <type><ref refid="kapi_8h_1a93e65d556f878c762685fae603d1f95d" kindref="member">mutex_t</ref></type>
+          <declname>mutex</declname>
+        </param>
+        <briefdescription>
+<para>Gives a recursive mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mutex</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A mutex handle created by mutex_recursive_create</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the mutex was obtained, 0 otherwise</para>
+</simplesect>
+<bold>Example:</bold> <programlisting><codeline><highlight class="normal">mutex_t<sp/>mutex<sp/>=<sp/>mutex_recursive_create();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>task_fn(void*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>while(1)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_take(mutex,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>critical<sp/>section</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>mutex_recursive_give(mutex);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>task_delay(1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">task_create(task_fn,<sp/>(void*)&quot;PROS&quot;,<sp/>TASK_PRIORITY_DEFAULT,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>TASK_STACK_DEPTH_DEFAULT,<sp/>&quot;task_fn&quot;);</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/rtos.h" line="1156" column="6" declfile="pros/rtos.h" declline="1156" declcolumn="6"/>
+      </memberdef>
       <memberdef kind="function" id="group__c-rtos_1gaf5995c8132175bc8e76904ccd1f6e39a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void pros::c::mutex_delete</definition>
@@ -1720,7 +1856,7 @@
           <declname>mutex</declname>
         </param>
         <briefdescription>
-<para>Deletes a mutex. </para>
+<para>Deletes a mutex or recursive mutex. </para>
         </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
@@ -1746,7 +1882,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/rtos.h" line="1098" column="6" declfile="pros/rtos.h" declline="1098" declcolumn="6"/>
+        <location file="pros/rtos.h" line="1178" column="6" declfile="pros/rtos.h" declline="1178" declcolumn="6"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -1754,9 +1890,9 @@
     <detaileddescription>
 <para>Contains declarations for the PROS RTOS kernel for use by typical VEX programmers.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
-<para><simplesect kind="copyright"><para>(c) 2017-2023, Purdue University ACM SIGBots. All rights reserved.</para>
+<para><simplesect kind="copyright"><para>(c) 2017-2024, Purdue University ACM SIGBots. All rights reserved.</para>
 </simplesect>
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
+This Source <ref refid="structCode" kindref="compound">Code</ref> Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at <ulink url="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</ulink>. </para>
     </detaileddescription>
     <location file="pros/rtos.h"/>
   </compounddef>

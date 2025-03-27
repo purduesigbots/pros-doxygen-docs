@@ -338,6 +338,14 @@ V5</span></a>
             </dt>
             <dd>Gets a vector of the operation direction of each motor in the motor group as set by the user.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">MotorType </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad106004032a06f12b10f45d6d97681b7" class="m-doc-self">get_type</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">virtual</span></span></span>
+            </dt>
+            <dd>Gets the type of a motor in the motor group.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::vector&lt;MotorType&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga762525e95b609aa93391ef02d7e6344f" class="m-doc-self">get_type_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">virtual</span></span></span>
+            </dt>
+            <dd>Gets a vector of the type of each motor.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gafb95b9ca6edbf9ac13e860909394085e" class="m-doc-self">set_brake_mode</a>(</span><span class="m-doc-wrap">const MotorBrake mode,
               const std::uint8_t index = 0) const <span class="m-label m-warning">virtual</span></span></span>
             </dt>
@@ -2018,6 +2026,53 @@ V5</span></a>
 <span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">mg</span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">});</span>
 <span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Is the motor reversed? &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">is_reversed_all</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
 <span class="w">  </span><span class="c1">// Prints &quot;0&quot;</span>
+<span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="gad106004032a06f12b10f45d6d97681b7"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">MotorType </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad106004032a06f12b10f45d6d97681b7" class="m-doc-self">get_type</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">virtual</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motor__group_8hpp.html">&lt;pros/motor_group.hpp&gt;</a></div>
+            </h3>
+            <p>Gets the type of a motor in the motor group.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>Optional parameter, 0 by default. The zero indexed index of the motor in the motor group</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>One of MotorType according to the type of the motor, or pros::MotorType::invalid if the operation failed.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty EOVERFLOW - The index is greater than or equal to <a href="group__cpp-motor-group.html#gaea6e734c75989d4f96734d5c70d39d5b" class="m-doc">MotorGroup::<wbr />size()</a></p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">mg</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_06</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">E_MOTOR_ENCODER_COUNTS</span><span class="p">);</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Motor Type: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">mg</span><span class="p">.</span><span class="n">get_type</span><span class="p">();</span>
+<span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga762525e95b609aa93391ef02d7e6344f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::vector&lt;MotorType&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga762525e95b609aa93391ef02d7e6344f" class="m-doc-self">get_type_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">virtual</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motor__group_8hpp.html">&lt;pros/motor_group.hpp&gt;</a></div>
+            </h3>
+            <p>Gets a vector of the type of each motor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A vector with one of MotorType according to the type of the motor, or pros::MotorType::invalid if the operation failed for each motor.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor EDOM - The motor group is empty</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">MotorGroup</span><span class="w"> </span><span class="n">mg</span><span class="w"> </span><span class="p">({</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">},</span><span class="w"> </span><span class="n">E_MOTOR_GEARSET_06</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="n">E_MOTOR_ENCODER_COUNTS</span><span class="p">);</span>
+<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Motor Type: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">mg</span><span class="p">.</span><span class="n">get_type_all</span><span class="p">()[</span><span class="mi">0</span><span class="p">];</span>
 <span class="p">}</span></pre>
           </div></section>
           <section class="m-doc-details" id="gafb95b9ca6edbf9ac13e860909394085e"><div>

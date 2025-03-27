@@ -3,6 +3,7 @@
   <compounddef id="namespacepros" kind="namespace" language="C++">
     <compoundname>pros</compoundname>
     <innerclass refid="classpros_1_1v5_1_1AbstractMotor" prot="public">pros::v5::AbstractMotor</innerclass>
+    <innerclass refid="classpros_1_1v5_1_1AIVision" prot="public">pros::v5::AIVision</innerclass>
     <innerclass refid="classpros_1_1v5_1_1Controller" prot="public">pros::v5::Controller</innerclass>
     <innerclass refid="classpros_1_1v5_1_1Device" prot="public">pros::v5::Device</innerclass>
     <innerclass refid="classpros_1_1v5_1_1Distance" prot="public">pros::v5::Distance</innerclass>
@@ -15,6 +16,7 @@
     <innerclass refid="classpros_1_1rtos_1_1MutexVar" prot="public">pros::rtos::MutexVar</innerclass>
     <innerclass refid="classpros_1_1rtos_1_1MutexVarLock" prot="public">pros::rtos::MutexVarLock</innerclass>
     <innerclass refid="classpros_1_1v5_1_1Optical" prot="public">pros::v5::Optical</innerclass>
+    <innerclass refid="classpros_1_1rtos_1_1RecursiveMutex" prot="public">pros::rtos::RecursiveMutex</innerclass>
     <innerclass refid="classpros_1_1v5_1_1Rotation" prot="public">pros::v5::Rotation</innerclass>
     <innerclass refid="classpros_1_1Serial" prot="public">pros::Serial</innerclass>
     <innerclass refid="classpros_1_1rtos_1_1Task" prot="public">pros::rtos::Task</innerclass>
@@ -415,6 +417,44 @@
         </inbodydescription>
         <location file="pros/abstract_motor.hpp" line="59" column="22" bodyfile="pros/abstract_motor.hpp" bodystart="59" bodyend="70"/>
       </memberdef>
+      <memberdef kind="enum" id="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>MotorType</name>
+        <enumvalue id="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3a4b6df01946f4919a3f5af8c1f0f9c3c5" prot="public">
+          <name>v5</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>11w motor </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3ab0ab0254bd58eb87eaee3172ba49fefb" prot="public">
+          <name>exp</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>5.5w motor </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3afedb2d84cafe20862cb4399751a8a7e3" prot="public">
+          <name>invalid</name>
+          <initializer>= INT32_MAX</initializer>
+          <briefdescription>
+<para>Error return code. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/abstract_motor.hpp" line="76" column="21" bodyfile="pros/abstract_motor.hpp" bodystart="76" bodyend="80"/>
+      </memberdef>
       <memberdef kind="enum" id="group__c-adi_1gad5f9ddf0fd9de73c4b23fa5485144b7f" prot="public" static="no" strong="no">
         <type></type>
         <name>adi_port_config_e</name>
@@ -603,6 +643,280 @@
         <inbodydescription>
         </inbodydescription>
         <location file="pros/adi.h" line="89" column="38" bodyfile="pros/adi.h" bodystart="89" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-aivision_1ga4d24882e694b0cdd9114cdbf16dffdbf" prot="public" static="no" strong="no">
+        <type></type>
+        <name>aivision_detected_type</name>
+        <enumvalue id="group__c-aivision_1gga4d24882e694b0cdd9114cdbf16dffdbfa57749b0a3b284410c4d5042bc7d29d97" prot="public">
+          <name>E_AIVISION_DETECTED_COLOR</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga4d24882e694b0cdd9114cdbf16dffdbfa162d7a5f2f22e427f31b06defb1fbfde" prot="public">
+          <name>E_AIVISION_DETECTED_CODE</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga4d24882e694b0cdd9114cdbf16dffdbfa841848af1db33f69d063be360ff999ed" prot="public">
+          <name>E_AIVISION_DETECTED_OBJECT</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga4d24882e694b0cdd9114cdbf16dffdbfa7fd1a4f6ea9e84f73c0ad881fe22fc5c" prot="public">
+          <name>E_AIVISION_DETECTED_TAG</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="54" column="36" bodyfile="pros/ai_vision.h" bodystart="54" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-aivision_1ga37ad8e27e9e06bbacfa315691a09f0f6" prot="public" static="no" strong="no">
+        <type></type>
+        <name>aivision_mode_type</name>
+        <enumvalue id="group__c-aivision_1gga37ad8e27e9e06bbacfa315691a09f0f6a304fd1e19e263ae0212ddf47228f161e" prot="public">
+          <name>E_AIVISION_MODE_TAGS</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga37ad8e27e9e06bbacfa315691a09f0f6ad1ebcd521e316857a56b3c8380a02365" prot="public">
+          <name>E_AIVISION_MODE_COLORS</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga37ad8e27e9e06bbacfa315691a09f0f6aac3dd3d2b339956278d34d7191ffdac3" prot="public">
+          <name>E_AIVISION_MODE_OBJECTS</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga37ad8e27e9e06bbacfa315691a09f0f6a31fcb8ab8908bd657dfd615c47b4b60c" prot="public">
+          <name>E_AIVISION_MODE_COLOR_MERGE</name>
+          <initializer>= (1 &lt;&lt; 4)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga37ad8e27e9e06bbacfa315691a09f0f6a3e32b64dfd36e52d9d8157d05b576804" prot="public">
+          <name>E_AIVISION_MODE_ALL</name>
+          <initializer>= (1 &lt;&lt; 0) | (1 &lt;&lt; 1) | (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="67" column="32" bodyfile="pros/ai_vision.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c-aivision_1ga56ddc675631ea6c586979fcf6d443759" prot="public" static="no" strong="no">
+        <type></type>
+        <name>aivision_tag_family_e</name>
+        <enumvalue id="group__c-aivision_1gga56ddc675631ea6c586979fcf6d443759af46656a088a4af59a2bb590a87b68bd6" prot="public">
+          <name>TAG_CIRCLE_21H7</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga56ddc675631ea6c586979fcf6d443759af44528e02509bf5842c76dcb9d3c6096" prot="public">
+          <name>TAG_16H5</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga56ddc675631ea6c586979fcf6d443759a1d4f2acd98008e6a7a5f748d2881736a" prot="public">
+          <name>TAG_25H9</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__c-aivision_1gga56ddc675631ea6c586979fcf6d443759ae3c11cedf67537faecc352bff7eadcad" prot="public">
+          <name>TAG_61H11</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="110" column="35" bodyfile="pros/ai_vision.h" bodystart="110" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacepros_1_1v5_1ac17d222b04253cfc92f95fad9585e576" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>AivisionDetectType</name>
+        <enumvalue id="namespacepros_1_1v5_1ac17d222b04253cfc92f95fad9585e576a70dda5dfb8053dc6d1c492574bce9bfd" prot="public">
+          <name>color</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac17d222b04253cfc92f95fad9585e576ac13367945d5d4c91047b3b50234aa7ab" prot="public">
+          <name>code</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac17d222b04253cfc92f95fad9585e576aa8cfde6331bd59eb2ac96f8911c4b666" prot="public">
+          <name>object</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac17d222b04253cfc92f95fad9585e576ae4d23e841d8e8804190027bce3180fa5" prot="public">
+          <name>tag</name>
+          <initializer>= (1 &lt;&lt; 3)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.hpp" line="33" column="30" bodyfile="pros/ai_vision.hpp" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>AivisionModeType</name>
+        <enumvalue id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627ad57ac45256849d9b13e2422d91580fb9" prot="public">
+          <name>tags</name>
+          <initializer>= (1 &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627a62848e3ce5804aa985513a7922ff87b2" prot="public">
+          <name>colors</name>
+          <initializer>= (1 &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627a5891da2d64975cae48d175d1e001f5da" prot="public">
+          <name>objects</name>
+          <initializer>= (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627aca3cd32874136e7fd941a0a1728e80e3" prot="public">
+          <name>color_merge</name>
+          <initializer>= (1 &lt;&lt; 4)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1ac0547245fd7886299fefa72cd70c7627aa181a603769c1f98ad927e7367c7aa51" prot="public">
+          <name>all</name>
+          <initializer>= (1 &lt;&lt; 0) | (1 &lt;&lt; 1) | (1 &lt;&lt; 2)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.hpp" line="35" column="28" bodyfile="pros/ai_vision.hpp" bodystart="35" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacepros_1_1v5_1a32ad532260806caf191156cc84dc2b23" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>AivisionTagFamily</name>
+        <enumvalue id="namespacepros_1_1v5_1a32ad532260806caf191156cc84dc2b23a09ebd092f6f9aefa606d6e303101c551" prot="public">
+          <name>tag_21H7</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1a32ad532260806caf191156cc84dc2b23a2f089761b7fb273576119cdc77f4b92f" prot="public">
+          <name>tag_16H5</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1a32ad532260806caf191156cc84dc2b23af9748b4cdb80713e823596da8c77a6c8" prot="public">
+          <name>tag_25H9</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1_1v5_1a32ad532260806caf191156cc84dc2b23a3c301e3e76fa8efcccc9e166f6cc973b" prot="public">
+          <name>tag_61H11</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.hpp" line="43" column="29" bodyfile="pros/ai_vision.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
       <memberdef kind="enum" id="group__cpp-colors_1gab87bacfdad76e61b9412d7124be44c1c" prot="public" static="no" strong="yes">
         <type></type>
@@ -1878,6 +2192,15 @@
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
+        <enumvalue id="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9ad3ee929f5f3ba6e5cff2f6c547493a89" prot="public">
+          <name>aivision</name>
+          <initializer>= 29</initializer>
+          <briefdescription>
+<para>An AI vision sensor is plugged into the port. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
         <enumvalue id="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a74136b24217cb75599440e6e1d807cf7" prot="public">
           <name>serial</name>
           <initializer>= 129</initializer>
@@ -1902,7 +2225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/device.hpp" line="43" column="22" bodyfile="pros/device.hpp" bodystart="43" bodyend="56"/>
+        <location file="pros/device.hpp" line="43" column="22" bodyfile="pros/device.hpp" bodystart="43" bodyend="57"/>
       </memberdef>
       <memberdef kind="enum" id="group__c-imu_1ga74af1f93aaa6112117b4436b4b1f230d" prot="public" static="no" strong="no">
         <type></type>
@@ -2379,6 +2702,41 @@
         </inbodydescription>
         <location file="pros/motors.h" line="890" column="29" bodyfile="pros/motors.h" bodystart="890" bodyend="901"/>
       </memberdef>
+      <memberdef kind="enum" id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397" prot="public" static="no" strong="no">
+        <type></type>
+        <name>motor_type_e</name>
+        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397ac5908681cc32e0d9e7b235a8d1e0b4d1" prot="public">
+          <name>E_MOTOR_TYPE_V5</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397a3ef4228454d8147a64f8ba36d7650a10" prot="public">
+          <name>E_MOTOR_TYPE_EXP</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397a148eae4c58891987608640733afb14e8" prot="public">
+          <name>E_MOTOR_TYPE_INVALID</name>
+          <initializer>= INT32_MAX</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/motors.h" line="907" column="26" bodyfile="pros/motors.h" bodystart="907" bodyend="911"/>
+      </memberdef>
       <memberdef kind="enum" id="group__c-screen_1ga1793008155ca135d61e68f63e1a77e0f" prot="public" static="no" strong="no">
         <type></type>
         <name>text_format_e_t</name>
@@ -2607,7 +2965,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="74" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="74" bodyend="-1"/>
+        <location file="pros/abstract_motor.hpp" line="84" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacepros_1_1v5_1aebb777ae4f994347f8a6bfd7af7682a2" prot="public" static="no">
         <type><ref refid="namespacepros_1_1v5_1a3bad47afb79fa112f199d2c5f54eec8d" kindref="member">MotorGears</ref></type>
@@ -2620,7 +2978,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="75" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="75" bodyend="-1"/>
+        <location file="pros/abstract_motor.hpp" line="85" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacepros_1_1v5_1a8458c1f0af361d6a9c63ce556ce1882c" prot="public" static="no">
         <type><ref refid="namespacepros_1_1v5_1a3bad47afb79fa112f199d2c5f54eec8d" kindref="member">MotorGears</ref></type>
@@ -2633,7 +2991,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="76" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="76" bodyend="-1"/>
+        <location file="pros/abstract_motor.hpp" line="86" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="namespacepros_1_1v5_1a16aa0ea5d3aa13583cfe49e018368f43" prot="public" static="no">
         <type><ref refid="namespacepros_1_1v5_1a3bad47afb79fa112f199d2c5f54eec8d" kindref="member">MotorGears</ref></type>
@@ -2646,7 +3004,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/abstract_motor.hpp" line="77" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="77" bodyend="-1"/>
+        <location file="pros/abstract_motor.hpp" line="87" column="1" bodyfile="pros/abstract_motor.hpp" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c-gps_1ga207fc83ba7d708bb8fe13855938469ef" prot="public" static="no">
         <type>struct <ref refid="structpros_1_1gps__raw__s" kindref="compound">gps_raw_s</ref></type>
@@ -2734,7 +3092,7 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-<para>Color codes are just signatures with multiple IDs and a different type. </para>
+<para><ref refid="structColor" kindref="compound">Color</ref> codes are just signatures with multiple IDs and a different type. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -2755,6 +3113,84 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
+      <memberdef kind="variable" id="group__c-aivision_1ga9b7006d8cf4f324853f386e51feb4373" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_color_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_color_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="89" column="2" bodyfile="pros/ai_vision.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-aivision_1ga48c0b982cbf4aa9f6b3133946126b80b" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_code_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_code_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="103" column="2" bodyfile="pros/ai_vision.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-aivision_1ga5b04cf36177eb0701f8c044b186beb2e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_object_color_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_object_color_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="127" column="2" bodyfile="pros/ai_vision.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-aivision_1gabafaf82f02df158554fef8c3684bce2e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_object_tag_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_object_tag_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="142" column="2" bodyfile="pros/ai_vision.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-aivision_1ga5b7aff6f25a014a0e9bd76961e033250" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_object_element_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_object_element_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="150" column="2" bodyfile="pros/ai_vision.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c-aivision_1ga12c53baad5cf05b6a47ce7ddfc2dffcd" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>aivision_object_s_t</definition>
+        <argsstring></argsstring>
+        <name>aivision_object_s_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="168" column="2" bodyfile="pros/ai_vision.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
       <memberdef kind="variable" id="group__c-gps_1ga8220d838b58329126b90c8cb16c2e6d1" prot="public" static="no" mutable="no">
         <type></type>
         <definition>gps_position_s_t</definition>
@@ -2865,7 +3301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2013" column="1" declfile="pros/adi.hpp" declline="2013" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2023" column="1" declfile="pros/adi.hpp" declline="2023" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1ad2c357c28981520c44cec73279f804ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2884,7 +3320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2014" column="1" declfile="pros/adi.hpp" declline="2014" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2024" column="1" declfile="pros/adi.hpp" declline="2024" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a901d82f15c0f291580a69f28515445a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2903,7 +3339,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2015" column="1" declfile="pros/adi.hpp" declline="2015" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2025" column="1" declfile="pros/adi.hpp" declline="2025" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a89a800ddc650af3391de92f713caec48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2922,7 +3358,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2016" column="1" declfile="pros/adi.hpp" declline="2016" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2026" column="1" declfile="pros/adi.hpp" declline="2026" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a1cd7b8f8f811c5cb139b5e274e9c0865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2941,7 +3377,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2017" column="1" declfile="pros/adi.hpp" declline="2017" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2027" column="1" declfile="pros/adi.hpp" declline="2027" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1aeb60eddc5dc15ff82bcdd69dc3c64e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2960,7 +3396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2018" column="1" declfile="pros/adi.hpp" declline="2018" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2028" column="1" declfile="pros/adi.hpp" declline="2028" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a4d53428ef0f12b6a6d1b6c2ac9dbda6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2979,7 +3415,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2019" column="1" declfile="pros/adi.hpp" declline="2019" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2029" column="1" declfile="pros/adi.hpp" declline="2029" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a0c30b605aa72408919edcaa73f6fb1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2998,7 +3434,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2020" column="1" declfile="pros/adi.hpp" declline="2020" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2030" column="1" declfile="pros/adi.hpp" declline="2030" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1afe34bab2eb3eb5316a002871dff1e277" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3017,7 +3453,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2021" column="1" declfile="pros/adi.hpp" declline="2021" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2031" column="1" declfile="pros/adi.hpp" declline="2031" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a70f8b7d8c332bfd47f25f32a8abed210" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3036,7 +3472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2022" column="1" declfile="pros/adi.hpp" declline="2022" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2032" column="1" declfile="pros/adi.hpp" declline="2032" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1af08e96b8369d135667d6b50b5ba0501e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3055,7 +3491,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2025" column="1" declfile="pros/adi.hpp" declline="2025" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2035" column="1" declfile="pros/adi.hpp" declline="2035" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1ab3a2ae495201c1fc855912a701c19a2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3074,7 +3510,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2026" column="1" declfile="pros/adi.hpp" declline="2026" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2036" column="1" declfile="pros/adi.hpp" declline="2036" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a21b38f7a38d5e33a712a75e19563114d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3093,7 +3529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2027" column="1" declfile="pros/adi.hpp" declline="2027" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2037" column="1" declfile="pros/adi.hpp" declline="2037" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a6e169088b436b4178a324f5872e89148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3112,7 +3548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2028" column="1" declfile="pros/adi.hpp" declline="2028" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2038" column="1" declfile="pros/adi.hpp" declline="2038" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1a3958cffc6a92e5366e2bf4b5ffb7b92e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3131,7 +3567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2029" column="1" declfile="pros/adi.hpp" declline="2029" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2039" column="1" declfile="pros/adi.hpp" declline="2039" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1af395abda0ab3f07bf59a5fbc34b62219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3150,7 +3586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2030" column="1" declfile="pros/adi.hpp" declline="2030" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2040" column="1" declfile="pros/adi.hpp" declline="2040" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1ad5fdc30e5c52dc442fe804edc7eabce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3169,7 +3605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2031" column="1" declfile="pros/adi.hpp" declline="2031" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2041" column="1" declfile="pros/adi.hpp" declline="2041" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespacepros_1aaafa1ec0d59db197126969c5c76f9b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -3188,7 +3624,23 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="2032" column="1" declfile="pros/adi.hpp" declline="2032" declcolumn="1"/>
+        <location file="pros/adi.hpp" line="2042" column="1" declfile="pros/adi.hpp" declline="2042" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="group__c-aivision_1ga843452695e5bcb245ab6152c2f75cc4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>struct</type>
+        <definition>struct __attribute__</definition>
+        <argsstring>((packed)) aivision_color_s</argsstring>
+        <name>__attribute__</name>
+        <param>
+          <type>(packed)</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/ai_vision.h" line="1" column="0" bodyfile="pros/ai_vision.h" bodystart="82" bodyend="89"/>
       </memberdef>
       <memberdef kind="function" id="group__c-gps_1gaf2a0dfb3b35ce0554ca2eabe96ccab6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct</type>

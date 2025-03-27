@@ -200,9 +200,22 @@ V5</span></a>
             </dt>
             <dd>Unlocks a mutex.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4eef1a2598a22cbf8000fe03633d0b13" class="m-doc-self">mutex_recursive_create</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd>Creates a recursive mutex which can be locked recursively by the owner.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga960dac0c60f0f13331f14325d56d7506" class="m-doc-self">mutex_recursive_take</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex,
+              uint32_t timeout)</span></span>
+            </dt>
+            <dd>Takes a recursive mutex.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0366fbae5b45a13bb3d76ba963fde37b" class="m-doc-self">mutex_recursive_give</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
+            </dt>
+            <dd>Gives a recursive mutex.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf5995c8132175bc8e76904ccd1f6e39a" class="m-doc-self">mutex_delete</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
             </dt>
-            <dd>Deletes a mutex.</dd>
+            <dd>Deletes a mutex or recursive mutex.</dd>
           </dl>
         </section>
         <section id="macros">
@@ -1298,12 +1311,116 @@ V5</span></a>
 <span class="w">  </span><span class="n">task_create</span><span class="p">(</span><span class="n">chassis_task</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Chassis Task&quot;</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
+          <section class="m-doc-details" id="ga4eef1a2598a22cbf8000fe03633d0b13"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4eef1a2598a22cbf8000fe03633d0b13" class="m-doc-self">mutex_recursive_create</a>(</span><span class="m-doc-wrap">void)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8h.html">&lt;pros/rtos.h&gt;</a></div>
+            </h3>
+            <p>Creates a recursive mutex which can be locked recursively by the owner.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A newly created recursive mutex.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga960dac0c60f0f13331f14325d56d7506"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga960dac0c60f0f13331f14325d56d7506" class="m-doc-self">mutex_recursive_take</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex,
+              uint32_t timeout)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8h.html">&lt;pros/rtos.h&gt;</a></div>
+            </h3>
+            <p>Takes a recursive mutex.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">mutex</td>
+                  <td>A mutex handle created by mutex_recursive_create</td>
+                </tr>
+                <tr>
+                  <td>timeout</td>
+                  <td></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the mutex was obtained, 0 otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga0366fbae5b45a13bb3d76ba963fde37b"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0366fbae5b45a13bb3d76ba963fde37b" class="m-doc-self">mutex_recursive_give</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8h.html">&lt;pros/rtos.h&gt;</a></div>
+            </h3>
+            <p>Gives a recursive mutex.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">mutex</td>
+                  <td>A mutex handle created by mutex_recursive_create</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the mutex was obtained, 0 otherwise</td>
+                </tr>
+              </tfoot>
+            </table>
+<p><strong>Example:</strong></p><pre class="m-code"><span class="n">mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutex_recursive_create</span><span class="p">();</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">task_fn</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">mutex_recursive_take</span><span class="p">(</span><span class="n">mutex</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// critical section</span>
+<span class="w">    </span><span class="n">mutex_recursive_give</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+<span class="w">    </span><span class="n">task_delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="n">task_create</span><span class="p">(</span><span class="n">task_fn</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="p">)</span><span class="s">&quot;PROS&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">TASK_PRIORITY_DEFAULT</span><span class="p">,</span>
+<span class="w">                          </span><span class="n">TASK_STACK_DEPTH_DEFAULT</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;task_fn&quot;</span><span class="p">);</span></pre>
+          </div></section>
           <section class="m-doc-details" id="gaf5995c8132175bc8e76904ccd1f6e39a"><div>
             <h3>
               <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf5995c8132175bc8e76904ccd1f6e39a" class="m-doc-self">mutex_delete</a>(</span><span class="m-doc-wrap"><a href="kapi_8h.html#a93e65d556f878c762685fae603d1f95d" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="rtos_8h.html">&lt;pros/rtos.h&gt;</a></div>
             </h3>
-            <p>Deletes a mutex.</p>
+            <p>Deletes a mutex or recursive mutex.</p>
             <table class="m-table m-fullwidth m-flat">
               <thead>
                 <tr><th colspan="2">Parameters</th></tr>

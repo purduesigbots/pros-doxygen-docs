@@ -74,6 +74,7 @@ V5</span></a>
               Reference
               <ul>
                 <li><a href="#func-members">Functions</a></li>
+                <li><a href="#functions">Functions</a></li>
                 <li><a href="#rtos-facilities">RTOS Facilities</a></li>
                 <li><a href="#device-registration">Device Registration</a></li>
                 <li><a href="#filesystem">Filesystem</a></li>
@@ -81,7 +82,6 @@ V5</span></a>
                 <li><a href="#value-set-functions">Value Set Functions</a></li>
                 <li><a href="#motor-movement-functions">Motor movement functions</a></li>
                 <li><a href="#motor-telemetry-functions">Motor telemetry functions</a></li>
-                <li><a href="#functions">Functions</a></li>
                 <li><a href="#screen-graphical-display-functions">Screen Graphical Display Functions</a></li>
                 <li><a href="#screen-text-display-functions">Screen Text Display Functions</a></li>
                 <li><a href="#screen-touch-functions">Screen Touch Functions</a></li>
@@ -673,9 +673,13 @@ V5</span></a>
             </dt>
             <dd>Clear the receive buffer of the link, and discarding the data.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a564926c20bf903fc2b52b27a84f7bebf" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(weak)) lcd_print(int16_t line</span></span>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00d4b197b996610c13f8a3a952bd95ad" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(weak)) int16_t line</span></span>
             </dt>
             <dd>Displays a formatted string on the emulated three-button LCD screen.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20d544cc97ac1931a3d2dd1bd59a7a67" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(unused)) const char *fmt</span></span>
+            </dt>
+            <dd><span></span></dd>
             <dt>
               <span class="m-doc-wrap-bumper">uint8_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga464d2c47de8b3b726b1e50c7538e4459" class="m-doc-self">competition_get_status</a>(</span><span class="m-doc-wrap">void)</span></span>
             </dt>
@@ -866,6 +870,10 @@ V5</span></a>
             </dt>
             <dd>Gets the voltage limit set by the user.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">motor_type_e_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a386dcafd223cb5e6576ee550b49fa8a4" class="m-doc-self">motor_get_type</a>(</span><span class="m-doc-wrap">int8_t port)</span></span>
+            </dt>
+            <dd>Get the type of the motor.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4d70d505abcf5fa27a6ee4bbdf7c1bfd" class="m-doc-self">rotation_reset</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
             <dd>Reset <a href="classpros_1_1v5_1_1Rotation.html" class="m-doc">Rotation</a> Sensor.</dd>
@@ -1021,9 +1029,22 @@ V5</span></a>
             </dt>
             <dd>Unlocks a mutex.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4eef1a2598a22cbf8000fe03633d0b13" class="m-doc-self">mutex_recursive_create</a>(</span><span class="m-doc-wrap">void)</span></span>
+            </dt>
+            <dd>Creates a recursive mutex which can be locked recursively by the owner.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga960dac0c60f0f13331f14325d56d7506" class="m-doc-self">mutex_recursive_take</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex,
+              uint32_t timeout)</span></span>
+            </dt>
+            <dd>Takes a recursive mutex.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0366fbae5b45a13bb3d76ba963fde37b" class="m-doc-self">mutex_recursive_give</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
+            </dt>
+            <dd>Gives a recursive mutex.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">void pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf5995c8132175bc8e76904ccd1f6e39a" class="m-doc-self">mutex_delete</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
             </dt>
-            <dd>Deletes a mutex.</dd>
+            <dd>Deletes a mutex or recursive mutex.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf43a5a9cea1850757c8f0cc180604705" class="m-doc-self">lcd_is_initialized</a>(</span><span class="m-doc-wrap">void)</span></span>
             </dt>
@@ -1077,6 +1098,269 @@ V5</span></a>
             <dd>Changes the alignment of text on the LCD background.</dd>
           </dl>
         </section>
+        <section id="functions">
+          <h2><a href="#functions">Functions</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7549d258a23be1bd116d1f1ec28cf8c7" class="m-doc-self">aivision_reset</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Resets the AI <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> sensor to the initial state.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf4cbc1cd9d683fdf42ad796f48dff392" class="m-doc-self">aivision_get_enabled_detection_types</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Returns a bitfield of the types of objects the AI vision sensor is currently searching for, as per aivision_mode_type_e_t.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7ef1089559d38acdc09934350ae0e8b2" class="m-doc-self">aivision_set_enabled_detection_types</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint8_t bits,
+              uint8_t bitmask)</span></span>
+            </dt>
+            <dd>Modifies the types of objects the AI vision sensor is currently searching for, as per aivision_mode_type_e_t.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7afefcd967316a45e6cd22fe07d72f9c" class="m-doc-self">aivision_enable_detection_types</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint8_t types_mask)</span></span>
+            </dt>
+            <dd>Enable detecting these types of objects, a bitmask as per aivision_mode_type_e_t.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga635b5ae44350191d4d98e6a1fc79a259" class="m-doc-self">aivision_disable_detection_types</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint8_t types_mask)</span></span>
+            </dt>
+            <dd>Disable detecting these types of objects, a bitmask as per aivision_mode_type_e_t.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3b110af5386ac8b6a6b63190e53007c2" class="m-doc-self">aivision_set_tag_family_override</a>(</span><span class="m-doc-wrap">uint8_t port,
+              aivision_tag_family_e_t family)</span></span>
+            </dt>
+            <dd>Sets the april tag family to detect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7d9b4539b634da19ed8603d7c81de721" class="m-doc-self">aivision_set_tag_family</a>(</span><span class="m-doc-wrap">uint8_t port,
+              aivision_tag_family_e_t family)</span></span>
+            </dt>
+            <dd>Sets the april tag family to detect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4eb20af4d87a441f72ea360df0d2c9fe" class="m-doc-self">aivision_set_color</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const <a href="structaivision__color__s__t.html" class="m-doc">aivision_<wbr />color_<wbr />s_<wbr />t</a>* color)</span></span>
+            </dt>
+            <dd>Set a color configuration that the AI vision sensor will detect.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structaivision__color__s__t.html" class="m-doc">aivision_<wbr />color_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga53fbb2537eb8d4796c0b15fa55d6b1e1" class="m-doc-self">aivision_get_color</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint32_t id)</span></span>
+            </dt>
+            <dd>Get a color configuration that the AI vision sensor has stored.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac92dfc5bdaf6a7f9079d76ecb57e4c43" class="m-doc-self">aivision_get_class_name</a>(</span><span class="m-doc-wrap">uint8_t port,
+              int32_t id,
+              uint8_t* class_name)</span></span>
+            </dt>
+            <dd>Get a class name that the AI vision sensor has stored.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8b6159ff4aca19c3129d5c5a836ee851" class="m-doc-self">aivision_set_usb_bounding_box_overlay</a>(</span><span class="m-doc-wrap">uint8_t port,
+              bool enabled)</span></span>
+            </dt>
+            <dd>Enable or disable the bounding box overlay the AI <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> sensor outputs on the USB port.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structaivision__code__s__t.html" class="m-doc">aivision_<wbr />code_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga23eb4c4360dedc82e613ee1755175427" class="m-doc-self">aivision_get_code</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint32_t id)</span></span>
+            </dt>
+            <dd>Get a code that the AI vision sensor has stored.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga81589166896502ffce63d3f5fcc26d43" class="m-doc-self">aivision_set_code</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const <a href="structaivision__code__s__t.html" class="m-doc">aivision_<wbr />code_<wbr />s_<wbr />t</a>* wcode)</span></span>
+            </dt>
+            <dd>Set a code that the AI vision sensor will detect for.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2b4cf52be2b56964c2128aa7dade393b" class="m-doc-self">aivision_get_object_count</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the current number of objects detected by the AI vision sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structaivision__object__s__t.html" class="m-doc">aivision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga03ada73e96368c2f5b65d993631950e3" class="m-doc-self">aivision_get_object</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint32_t object_index)</span></span>
+            </dt>
+            <dd>Get the detected object at a given object index; there are aivision_get_object_count objects and the index starts from 0.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaffe245efdab6e788c76b436c17760fe8" class="m-doc-self">aivision_get_temperature</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the current reported temperature of the AI <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> sensor in degrees Celsius.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga50e6ba3fb0f21a6df917edd3f50de276" class="m-doc-self">optical_get_hue</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the detected color hue.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga35a880783281c7d2f7f20a52a46fa5f2" class="m-doc-self">optical_get_saturation</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the detected color saturation.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa2221123c7b73a038c628050c5ebcb43" class="m-doc-self">optical_get_brightness</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the detected color brightness.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga84cf2173597ccd58a1f390c6d310e710" class="m-doc-self">optical_get_proximity</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the detected proximity value.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2028f86cc74a0e3b1f021743c03b5756" class="m-doc-self">optical_set_led_pwm</a>(</span><span class="m-doc-wrap">uint8_t port,
+              uint8_t value)</span></span>
+            </dt>
+            <dd>Set the pwm value of the White LED.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5b3af2f98629b5f6e569cd1c12547502" class="m-doc-self">optical_get_led_pwm</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the pwm value of the White LED.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structoptical__rgb__s__t.html" class="m-doc">optical_<wbr />rgb_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga118d9f2a59afb6ac81ba509e7f8f1b92" class="m-doc-self">optical_get_rgb</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the processed RGBC data from the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structoptical__raw__s__t.html" class="m-doc">optical_<wbr />raw_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8455ca417578452c577dc349b29d2708" class="m-doc-self">optical_get_raw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the raw, unprocessed RGBC data from the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">optical_direction_e_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1591d88e399ed3e534f3d3d8de99f02c" class="m-doc-self">optical_get_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the most recent gesture data from the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structoptical__gesture__s__t.html" class="m-doc">optical_<wbr />gesture_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga61d526831891d514f499f73059c99ca7" class="m-doc-self">optical_get_gesture_raw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the most recent raw gesture data from the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga847424925f023e834607165cffa44a8f" class="m-doc-self">optical_enable_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Enable gesture detection on the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga30b26632678e49f288b5e12fd353f3bc" class="m-doc-self">optical_disable_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Disable gesture detection on the sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad1cb35417781269e23e0be5742a69014" class="m-doc-self">optical_get_integration_time</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get integration time (update rate) of the optical sensor in milliseconds, with minimum time being.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaca9ac02c4369dc5338024cf9b5c67f14" class="m-doc-self">optical_set_integration_time</a>(</span><span class="m-doc-wrap">uint8_t port,
+              double time)</span></span>
+            </dt>
+            <dd>Set integration time (update rate) of the optical sensor in milliseconds.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad824e5dc94e77e8d6e7a62e59a97e560" class="m-doc-self">vision_clear_led</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Clears the vision sensor LED color, reseting it back to its default behavior, displaying the most prominent object signature color.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9a4161d557e410fff34c4f158aa229d8" class="m-doc-self">vision_signature_from_utility</a>(</span><span class="m-doc-wrap">const int32_t id,
+              const int32_t u_min,
+              const int32_t u_max,
+              const int32_t u_mean,
+              const int32_t v_min,
+              const int32_t v_max,
+              const int32_t v_mean,
+              const float range,
+              const int32_t type)</span></span>
+            </dt>
+            <dd>Creates a signature from the vision sensor utility.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga33a33d487f771f21d08c3159e6763418" class="m-doc-self">vision_create_color_code</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t sig_id1,
+              const uint32_t sig_id2,
+              const uint32_t sig_id3,
+              const uint32_t sig_id4,
+              const uint32_t sig_id5)</span></span>
+            </dt>
+            <dd>Creates a color code that represents a combination of the given signature IDs.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad0b47d5910ba2a6e5d52629f2b93c3e6" class="m-doc-self">vision_get_by_size</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id)</span></span>
+            </dt>
+            <dd>Gets the nth largest object according to size_id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae53aedc2122f3b4c53d5874fde408a76" class="m-doc-self">vision_get_by_sig</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id,
+              const uint32_t sig_id)</span></span>
+            </dt>
+            <dd>Gets the nth largest object of the given signature according to size_id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaf91323dda2e39bd1ef885f7a0c32b0b" class="m-doc-self">vision_get_by_code</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id,
+              const <a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> color_code)</span></span>
+            </dt>
+            <dd>Gets the nth largest object of the given color code according to size_id.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6c463892ea46d1cfd4fb7d7e237a4db1" class="m-doc-self">vision_get_exposure</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Gets the exposure parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5d6c54c6754717e256a6d59976976e25" class="m-doc-self">vision_get_object_count</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Gets the number of objects currently detected by the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga698db4dbf0a04384a19d1a7496612d81" class="m-doc-self">vision_get_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
+            </dt>
+            <dd>Get the white balance parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2f2007dafb30e5aafeb21d9acba05826" class="m-doc-self">vision_print_signature</a>(</span><span class="m-doc-wrap">const <a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> sig)</span></span>
+            </dt>
+            <dd>Prints the contents of the signature as an initializer list to the terminal.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4ec230e74ab6348768a5156c9e5c5a0b" class="m-doc-self">vision_read_by_size</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id,
+              const uint32_t object_count,
+              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
+            </dt>
+            <dd>Reads up to object_count object descriptors into object_arr.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0f38715b935eae0421d59e5102d98155" class="m-doc-self">vision_read_by_sig</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id,
+              const uint32_t sig_id,
+              const uint32_t object_count,
+              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
+            </dt>
+            <dd>Reads up to object_count object descriptors into object_arr.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0363eec188a23e6d41e98449a323a091" class="m-doc-self">vision_read_by_code</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint32_t size_id,
+              const <a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> color_code,
+              const uint32_t object_count,
+              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
+            </dt>
+            <dd>Reads up to object_count object descriptors into object_arr.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper"><a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga42e645bdac1e2eb230fd55205f37dd5f" class="m-doc-self">vision_get_signature</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint8_t signature_id)</span></span>
+            </dt>
+            <dd>Gets the object detection signature with the given id number.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7812fb755e22f147e11ae29911149242" class="m-doc-self">vision_set_signature</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint8_t signature_id,
+              <a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a>*const signature_ptr)</span></span>
+            </dt>
+            <dd>Stores the supplied object detection signature onto the vision sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga146e2f14c5a77f1a20fc64762910112c" class="m-doc-self">vision_set_auto_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint8_t enable)</span></span>
+            </dt>
+            <dd>Enables/disables auto white-balancing on the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga133b8ef84216367d5df385c2eb869ef4" class="m-doc-self">vision_set_exposure</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint8_t exposure)</span></span>
+            </dt>
+            <dd>Sets the exposure parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9a01d95432c9dcd138c11ff718b0b264" class="m-doc-self">vision_set_led</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const int32_t rgb)</span></span>
+            </dt>
+            <dd>Sets the vision sensor LED color, overriding the automatic behavior.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac3be7d132e62ab6b2bd20f564e9a5c85" class="m-doc-self">vision_set_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const int32_t rgb)</span></span>
+            </dt>
+            <dd>Sets the white balance parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga00226eaa06fb4907a90ac188ec16a6c3" class="m-doc-self">vision_set_zero_point</a>(</span><span class="m-doc-wrap">uint8_t port,
+              vision_zero_e_t zero_point)</span></span>
+            </dt>
+            <dd>Sets the (0,0) coordinate for the Field of View.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga86efa93d00dc9646f726eea073068117" class="m-doc-self">vision_set_wifi_mode</a>(</span><span class="m-doc-wrap">uint8_t port,
+              const uint8_t enable)</span></span>
+            </dt>
+            <dd>Sets the Wi-Fi mode of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> sensor.</dd>
+          </dl>
+        </section>
         <section id="rtos-facilities">
           <h2><a href="#rtos-facilities">RTOS Facilities</a></h2>
           <dl class="m-doc">
@@ -1099,19 +1383,6 @@ V5</span></a>
               <a href="group__c-rtos.html#ga42ea99b5e5d38da0b98154609cf6c570" class="m-doc">notify_<wbr />action_<wbr />e_<wbr />t</a> notify_action)</span></span>
             </dt>
             <dd>Notify a task when a target task is being deleted.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4eef1a2598a22cbf8000fe03633d0b13" class="m-doc-self">mutex_recursive_create</a>(</span><span class="m-doc-wrap">void)</span></span>
-            </dt>
-            <dd>Creates a recursive mutex which can be locked recursively by the owner.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga960dac0c60f0f13331f14325d56d7506" class="m-doc-self">mutex_recursive_take</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex,
-              uint32_t timeout)</span></span>
-            </dt>
-            <dd>Takes a recursive mutex.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0366fbae5b45a13bb3d76ba963fde37b" class="m-doc-self">mutex_recursive_give</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
-            </dt>
-            <dd>Gives a recursive mutex.</dd>
             <dt>
               <span class="m-doc-wrap-bumper"><a href="group__c-rtos.html#ga1d7e0825b8d8876e8cd8ece3f9115293" class="m-doc">task_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga35e2514c392ad052f702c7c6a3ed5ae2" class="m-doc-self">mutex_get_owner</a>(</span><span class="m-doc-wrap"><a href="group__c-rtos.html#gab15ea84d90257d70b44e8e04519864d2" class="m-doc">mutex_<wbr />t</a> mutex)</span></span>
             </dt>
@@ -1375,191 +1646,6 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad47d180d2620885f1d2b3a1b0d867da2" class="m-doc-self">motor_is_over_temp</a>(</span><span class="m-doc-wrap">int8_t port)</span></span>
             </dt>
             <dd>Checks if the motor&#x27;s temperature is above its limit.</dd>
-          </dl>
-        </section>
-        <section id="functions">
-          <h2><a href="#functions">Functions</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga50e6ba3fb0f21a6df917edd3f50de276" class="m-doc-self">optical_get_hue</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the detected color hue.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga35a880783281c7d2f7f20a52a46fa5f2" class="m-doc-self">optical_get_saturation</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the detected color saturation.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaa2221123c7b73a038c628050c5ebcb43" class="m-doc-self">optical_get_brightness</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the detected color brightness.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga84cf2173597ccd58a1f390c6d310e710" class="m-doc-self">optical_get_proximity</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the detected proximity value.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2028f86cc74a0e3b1f021743c03b5756" class="m-doc-self">optical_set_led_pwm</a>(</span><span class="m-doc-wrap">uint8_t port,
-              uint8_t value)</span></span>
-            </dt>
-            <dd>Set the pwm value of the White LED.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5b3af2f98629b5f6e569cd1c12547502" class="m-doc-self">optical_get_led_pwm</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the pwm value of the White LED.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structoptical__rgb__s__t.html" class="m-doc">optical_<wbr />rgb_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga118d9f2a59afb6ac81ba509e7f8f1b92" class="m-doc-self">optical_get_rgb</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the processed RGBC data from the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structoptical__raw__s__t.html" class="m-doc">optical_<wbr />raw_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8455ca417578452c577dc349b29d2708" class="m-doc-self">optical_get_raw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the raw, unprocessed RGBC data from the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">optical_direction_e_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga1591d88e399ed3e534f3d3d8de99f02c" class="m-doc-self">optical_get_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the most recent gesture data from the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structoptical__gesture__s__t.html" class="m-doc">optical_<wbr />gesture_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga61d526831891d514f499f73059c99ca7" class="m-doc-self">optical_get_gesture_raw</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the most recent raw gesture data from the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga847424925f023e834607165cffa44a8f" class="m-doc-self">optical_enable_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Enable gesture detection on the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga30b26632678e49f288b5e12fd353f3bc" class="m-doc-self">optical_disable_gesture</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Disable gesture detection on the sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">double pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad1cb35417781269e23e0be5742a69014" class="m-doc-self">optical_get_integration_time</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get integration time (update rate) of the optical sensor in milliseconds, with minimum time being.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaca9ac02c4369dc5338024cf9b5c67f14" class="m-doc-self">optical_set_integration_time</a>(</span><span class="m-doc-wrap">uint8_t port,
-              double time)</span></span>
-            </dt>
-            <dd>Set integration time (update rate) of the optical sensor in milliseconds.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad824e5dc94e77e8d6e7a62e59a97e560" class="m-doc-self">vision_clear_led</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Clears the vision sensor LED color, reseting it back to its default behavior, displaying the most prominent object signature color.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9a4161d557e410fff34c4f158aa229d8" class="m-doc-self">vision_signature_from_utility</a>(</span><span class="m-doc-wrap">const int32_t id,
-              const int32_t u_min,
-              const int32_t u_max,
-              const int32_t u_mean,
-              const int32_t v_min,
-              const int32_t v_max,
-              const int32_t v_mean,
-              const float range,
-              const int32_t type)</span></span>
-            </dt>
-            <dd>Creates a signature from the vision sensor utility.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga33a33d487f771f21d08c3159e6763418" class="m-doc-self">vision_create_color_code</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t sig_id1,
-              const uint32_t sig_id2,
-              const uint32_t sig_id3,
-              const uint32_t sig_id4,
-              const uint32_t sig_id5)</span></span>
-            </dt>
-            <dd>Creates a color code that represents a combination of the given signature IDs.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad0b47d5910ba2a6e5d52629f2b93c3e6" class="m-doc-self">vision_get_by_size</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id)</span></span>
-            </dt>
-            <dd>Gets the nth largest object according to size_id.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gae53aedc2122f3b4c53d5874fde408a76" class="m-doc-self">vision_get_by_sig</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id,
-              const uint32_t sig_id)</span></span>
-            </dt>
-            <dd>Gets the nth largest object of the given signature according to size_id.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaaf91323dda2e39bd1ef885f7a0c32b0b" class="m-doc-self">vision_get_by_code</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id,
-              const <a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> color_code)</span></span>
-            </dt>
-            <dd>Gets the nth largest object of the given color code according to size_id.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6c463892ea46d1cfd4fb7d7e237a4db1" class="m-doc-self">vision_get_exposure</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Gets the exposure parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga5d6c54c6754717e256a6d59976976e25" class="m-doc-self">vision_get_object_count</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Gets the number of objects currently detected by the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga698db4dbf0a04384a19d1a7496612d81" class="m-doc-self">vision_get_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
-            </dt>
-            <dd>Get the white balance parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2f2007dafb30e5aafeb21d9acba05826" class="m-doc-self">vision_print_signature</a>(</span><span class="m-doc-wrap">const <a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> sig)</span></span>
-            </dt>
-            <dd>Prints the contents of the signature as an initializer list to the terminal.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4ec230e74ab6348768a5156c9e5c5a0b" class="m-doc-self">vision_read_by_size</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id,
-              const uint32_t object_count,
-              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
-            </dt>
-            <dd>Reads up to object_count object descriptors into object_arr.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0f38715b935eae0421d59e5102d98155" class="m-doc-self">vision_read_by_sig</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id,
-              const uint32_t sig_id,
-              const uint32_t object_count,
-              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
-            </dt>
-            <dd>Reads up to object_count object descriptors into object_arr.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0363eec188a23e6d41e98449a323a091" class="m-doc-self">vision_read_by_code</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint32_t size_id,
-              const <a href="group__c-vision.html#ga9e389c1c0197cdfd70e4935c2d22ee18" class="m-doc">vision_<wbr />color_<wbr />code_<wbr />t</a> color_code,
-              const uint32_t object_count,
-              <a href="structvision__object__s__t.html" class="m-doc">vision_<wbr />object_<wbr />s_<wbr />t</a>*const object_arr)</span></span>
-            </dt>
-            <dd>Reads up to object_count object descriptors into object_arr.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a> pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga42e645bdac1e2eb230fd55205f37dd5f" class="m-doc-self">vision_get_signature</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint8_t signature_id)</span></span>
-            </dt>
-            <dd>Gets the object detection signature with the given id number.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga7812fb755e22f147e11ae29911149242" class="m-doc-self">vision_set_signature</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint8_t signature_id,
-              <a href="structvision__signature__s__t.html" class="m-doc">vision_<wbr />signature_<wbr />s_<wbr />t</a>*const signature_ptr)</span></span>
-            </dt>
-            <dd>Stores the supplied object detection signature onto the vision sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga146e2f14c5a77f1a20fc64762910112c" class="m-doc-self">vision_set_auto_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint8_t enable)</span></span>
-            </dt>
-            <dd>Enables/disables auto white-balancing on the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga133b8ef84216367d5df385c2eb869ef4" class="m-doc-self">vision_set_exposure</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint8_t exposure)</span></span>
-            </dt>
-            <dd>Sets the exposure parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga9a01d95432c9dcd138c11ff718b0b264" class="m-doc-self">vision_set_led</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const int32_t rgb)</span></span>
-            </dt>
-            <dd>Sets the vision sensor LED color, overriding the automatic behavior.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac3be7d132e62ab6b2bd20f564e9a5c85" class="m-doc-self">vision_set_white_balance</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const int32_t rgb)</span></span>
-            </dt>
-            <dd>Sets the white balance parameter of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> Sensor.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga00226eaa06fb4907a90ac188ec16a6c3" class="m-doc-self">vision_set_zero_point</a>(</span><span class="m-doc-wrap">uint8_t port,
-              vision_zero_e_t zero_point)</span></span>
-            </dt>
-            <dd>Sets the (0,0) coordinate for the Field of View.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">int32_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga86efa93d00dc9646f726eea073068117" class="m-doc-self">vision_set_wifi_mode</a>(</span><span class="m-doc-wrap">uint8_t port,
-              const uint8_t enable)</span></span>
-            </dt>
-            <dd>Sets the Wi-Fi mode of the <a href="classpros_1_1v5_1_1Vision.html" class="m-doc">Vision</a> sensor.</dd>
           </dl>
         </section>
         <section id="screen-graphical-display-functions">
@@ -1939,6 +2025,7 @@ V5</span></a>
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45aaf0a34b25623b86363823c284133b1e1" class="m-doc">E_DEVICE_ADI</a> = 12,
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45af335796b1126951c9fa1aba19987b0b9" class="m-doc">E_DEVICE_OPTICAL</a> = 16,
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45a1188eeeddb1369a5b208366aeb612ee5" class="m-doc">E_DEVICE_GPS</a> = 20,
+              <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45ae5fca55109385ea79695410ed5c57d99" class="m-doc">E_DEVICE_AIVISION</a> = 29,
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45a9512b3799968456e47dfa3e8c8957094" class="m-doc">E_DEVICE_SERIAL</a> = 129,
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45abf497463e7913f0166fc2224239e3b5f" class="m-doc">__attribute__</a> =((deprecated(&quot;use E_DEVICE_SERIAL instead&quot;))) = E_DEVICE_SERIAL,
               <a href="#ggaaba853cd2f7eed658c07dafd7cc41a45a4a089975a8d1abaaf4c4bf0c35512cd3" class="m-doc">E_DEVICE_UNDEFINED</a> = 255 }</span>
@@ -2004,10 +2091,6 @@ V5</span></a>
           <h2><a href="#var-members">Variables</a></h2>
           <dl class="m-doc">
             <dt>
-              bool const char* <a href="#afcd0aa4e112c558d7524f074e9e79126" class="m-doc">fmt</a>
-            </dt>
-            <dd><span></span></dd>
-            <dt>
               const char* <a href="group__c-misc.html#ga53280163169348b8429c14c340a7c2b3" class="m-doc">baked_date</a>
             </dt>
             <dd>Date and Time<br /></dd>
@@ -2019,9 +2102,9 @@ V5</span></a>
         </section>
         <section>
           <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a564926c20bf903fc2b52b27a84f7bebf"><div>
+          <section class="m-doc-details" id="a00d4b197b996610c13f8a3a952bd95ad"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a564926c20bf903fc2b52b27a84f7bebf" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(weak)) lcd_print(int16_t line</span></span>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a00d4b197b996610c13f8a3a952bd95ad" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(weak)) int16_t line</span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="pros_2include_2pros_2llemu_8h.html">&lt;pros/llemu.h&gt;</a></div>
             </h3>
             <p>Displays a formatted string on the emulated three-button LCD screen.</p>
@@ -2034,6 +2117,13 @@ V5</span></a>
               </tfoot>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENXIO - The LCD has not been initialized. Call <a href="group__c-llemu.html#ga36a50f90e2186a37abce6cf36d5df6a3" class="m-doc">lcd_<wbr />initialize()</a> first. EINVAL - The line number specified is not in the range [0-7]</p>
+          </div></section>
+          <section class="m-doc-details" id="a20d544cc97ac1931a3d2dd1bd59a7a67"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">bool pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a20d544cc97ac1931a3d2dd1bd59a7a67" class="m-doc-self">__attribute__</a>(</span><span class="m-doc-wrap">(unused)) const char *fmt</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="pros_2include_2pros_2llemu_8h.html">&lt;pros/llemu.h&gt;</a></div>
+            </h3>
+            <p><span></span></p>
           </div></section>
           <section class="m-doc-details" id="a4aec20e889c09650f066f4e28048c19b"><div>
             <h3>
@@ -2432,15 +2522,33 @@ V5</span></a>
 <span class="w">  </span><span class="c1">// Prints 0 by default, indicating no limit</span>
 <span class="p">}</span></pre>
           </div></section>
-        </section>
-        <section>
-          <h2>Variable documentation</h2>
-          <section class="m-doc-details" id="afcd0aa4e112c558d7524f074e9e79126"><div>
+          <section class="m-doc-details" id="a386dcafd223cb5e6576ee550b49fa8a4"><div>
             <h3>
-              bool const char* pros::<wbr />c::<wbr /><a href="#afcd0aa4e112c558d7524f074e9e79126" class="m-doc-self">fmt</a>
-              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="pros_2include_2pros_2llemu_8h.html">&lt;pros/llemu.h&gt;</a></div>
+              <span class="m-doc-wrap-bumper">motor_type_e_t pros::<wbr />c::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a386dcafd223cb5e6576ee550b49fa8a4" class="m-doc-self">motor_get_type</a>(</span><span class="m-doc-wrap">int8_t port)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="motors_8h.html">&lt;pros/motors.h&gt;</a></div>
             </h3>
-            <p><span></span></p>
+            <p>Get the type of the motor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">port</td>
+                  <td>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>One of motor_type_e_t according to the type of the motor, or E_MOTOR_TYPE_INVALID if the operation failed.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21| ENODEV - The port cannot be configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Motor Type: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">motor_get_type</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">  </span><span class="c1">// Prints the type of the motor</span>
+<span class="p">}</span></pre>
           </div></section>
         </section>
       </div>

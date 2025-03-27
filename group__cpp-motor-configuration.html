@@ -135,6 +135,14 @@ V5</span></a>
             </dt>
             <dd>Gets a vector of the operation direction(s) of the motor(s) as set by the user.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">MotorType </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaee7b1eddc508d7bf574d51f7318cac52" class="m-doc-self">get_type</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </dt>
+            <dd>Gets the type of the motor.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">std::vector&lt;MotorType&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac89e098e61eb9fa184d17d3d68876a6f" class="m-doc-self">get_type_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+            </dt>
+            <dd>Gets a vector of the type(s) of the motor(s).</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab3c69370324f5fa215bbc9d4d6e9f41f" class="m-doc-self">set_brake_mode</a>(</span><span class="m-doc-wrap">const MotorBrake mode,
               const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
@@ -500,6 +508,47 @@ V5</span></a>
                 <tr>
                   <th style="width: 1%">Returns</th>
                   <td>1 if the motor has been reversed and 0 if the motor was not reversed, or PROS_ERR if the operation failed, setting errno.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+          </div></section>
+          <section class="m-doc-details" id="gaee7b1eddc508d7bf574d51f7318cac52"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">MotorType </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaee7b1eddc508d7bf574d51f7318cac52" class="m-doc-self">get_type</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
+            </h3>
+            <p>Gets the type of the motor.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">index</td>
+                  <td>Optional parameter. The index of the motor to get the target position of. By default index is 0, and will return an error for an out of bounds index</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>One of MotorType according to the type of the motor, or pros::MotorType::invalid if the operation failed</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+          </div></section>
+          <section class="m-doc-details" id="gac89e098e61eb9fa184d17d3d68876a6f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::vector&lt;MotorType&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac89e098e61eb9fa184d17d3d68876a6f" class="m-doc-self">get_type_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
+            </h3>
+            <p>Gets a vector of the type(s) of the motor(s).</p>
+            <table class="m-table m-fullwidth m-flat">
+              <tfoot>
+                <tr>
+                  <th style="width: 1%">Returns</th>
+                  <td>A vector of MotorType according to the type(s) of the motor(s), or pros::MotorType::invalid if the operation failed.</td>
                 </tr>
               </tfoot>
             </table>
