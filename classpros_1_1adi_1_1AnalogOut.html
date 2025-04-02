@@ -68,114 +68,6 @@ V5</span></a>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8hpp.html">&lt;pros/adi.hpp&gt;</a></div>
         </h1>
         <p><span></span></p>
-        <nav class="m-block m-default">
-          <h3>Contents</h3>
-          <ul>
-            <li>
-              Reference
-              <ul>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
-                <li><a href="#pub-methods">Public functions</a></li>
-                <li><a href="#friends">Friends</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gab7d03537eb962b32db90ac968fa28562" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
-            </dt>
-            <dd>Configures an ADI port to act as an Analog Output.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga4d631a179c67046d169b2c113bb462d5" class="m-doc-self">AnalogOut</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#aa8b90563c470741ebd760aeacfd90599" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair) <span class="m-label m-info">explicit</span> </span></span>
-            </dt>
-            <dd>Configures an ADI port on an adi_expander to act as an Analog Output.</dd>
-          </dl>
-        </section>
-        <section id="pub-methods">
-          <h2><a href="#pub-methods">Public functions</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>
-            </dt>
-            <dd>Sets the output for the Analog Output from 0 (0V) to 4095 (5V).</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="namespacepros_1_1adi.html#ab96eeca6120dfe95a7a63bbe88723f3e" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b53f72ea88a01fe169c93270bbba0a9" class="m-doc-self">get_port</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </dt>
-            <dd>Gets the port of the sensor.</dd>
-          </dl>
-        </section>
-        <section id="friends">
-          <h2><a href="#friends">Friends</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">std::ostream&amp; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaec8efd397020f55eae222bf74fd0c18b" class="m-doc-self">operator&lt;&lt;</a>(</span><span class="m-doc-wrap">std::ostream&amp; os,
-              <a href="classpros_1_1adi_1_1AnalogOut.html" class="m-doc">pros::<wbr />adi::<wbr />AnalogOut</a>&amp; analog_out)</span></span>
-            </dt>
-            <dd>This is the overload for the &lt;&lt; operator for printing to streams.</dd>
-          </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a833ed782b711495035dae08cfce3e62e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />AnalogOut::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>
-            </h3>
-            <p>Sets the output for the Analog Output from 0 (0V) to 4095 (5V).</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">value</td>
-                  <td>The value to set the ADI port to</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>Inherited from ADIPort::set_value.</p><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the ADI.</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define ANALOG_SENSOR_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">AnalogOut</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">ANALOG_SENSOR_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">sensor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">4095</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set the port to 5V</span>
-<span class="p">}</span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a3b53f72ea88a01fe169c93270bbba0a9"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"><a href="namespacepros_1_1adi.html#ab96eeca6120dfe95a7a63bbe88723f3e" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> pros::<wbr />adi::<wbr />AnalogOut::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b53f72ea88a01fe169c93270bbba0a9" class="m-doc-self">get_port</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Gets the port of the sensor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>returns a tuple of integer ports.</td>
-                </tr>
-              </tfoot>
-            </table>
-<aside class="m-note m-info"><h4>Note</h4><p>The parts of the tuple are {smart port, adi port, second adi port (when applicable)}.</p></aside><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT 1 </span><span class="c1">// &#39;A&#39;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">AnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
-<span class="w">  </span>
-<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt; </span>
-<span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// First value</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// Second value</span>
-
-<span class="w">     </span><span class="c1">// Prints the first and second value from the port tuple (The Adi Port. The first value is the Smart Port)</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Smart Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span><span class="w">   </span>
-<span class="p">}</span></pre>
-          </div></section>
-        </section>
       </div>
     </div>
   </div>
@@ -221,7 +113,7 @@ V5</span></a>
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS for
-V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.12.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

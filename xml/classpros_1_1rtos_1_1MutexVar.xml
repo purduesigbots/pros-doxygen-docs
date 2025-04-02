@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="classpros_1_1rtos_1_1MutexVar" kind="class" language="C++" prot="public">
     <compoundname>pros::rtos::MutexVar</compoundname>
     <includes refid="rtos_8hpp" local="yes">rtos.hpp</includes>
@@ -8,12 +8,13 @@
         <type>typename Var</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classpros_1_1rtos_1_1MutexVar_1ae8b85b4f519a4945ba9ea43e9b503531" prot="private" static="no" mutable="no">
         <type><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">Mutex</ref></type>
         <definition>Mutex mutex</definition>
         <argsstring></argsstring>
         <name>mutex</name>
+        <qualifiedname>pros::rtos::MutexVar::mutex</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -27,6 +28,7 @@
         <definition>Var var</definition>
         <argsstring></argsstring>
         <name>var</name>
+        <qualifiedname>pros::rtos::MutexVar::var</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,8 +37,8 @@
         </inbodydescription>
         <location file="pros/rtos.hpp" line="1928" column="5" bodyfile="pros/rtos.hpp" bodystart="1928" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a9b0f56bcfe012b9a9084b6790812106c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -49,6 +51,7 @@
         <definition>MutexVar</definition>
         <argsstring>(Args &amp;&amp;... args)</argsstring>
         <name>MutexVar</name>
+        <qualifiedname>pros::rtos::MutexVar::MutexVar</qualifiedname>
         <param>
           <type>Args &amp;&amp;...</type>
           <declname>args</declname>
@@ -66,50 +69,50 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">//<sp/>We<sp/>create<sp/>a<sp/>pose<sp/>class<sp/>to<sp/>contain<sp/>all<sp/>our<sp/>odometry<sp/>data<sp/>in<sp/>a<sp/>single</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>variable<sp/>that<sp/>can<sp/>be<sp/>protected<sp/>by<sp/>a<sp/>MutexVar.<sp/>Otherwise,<sp/>we<sp/>would<sp/>have</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>three<sp/>seperate<sp/>variables<sp/>which<sp/>could<sp/>not<sp/>be<sp/>protected<sp/>in<sp/>a<sp/>single<sp/></highlight></codeline>
-<codeline><highlight class="normal">//<sp/>MutexVar</highlight></codeline>
-<codeline><highlight class="normal">struct<sp/>Pose<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>double<sp/>x;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>double<sp/>y;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>double<sp/>heading;</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="comment">//<sp/>We<sp/>create<sp/>a<sp/>pose<sp/>class<sp/>to<sp/>contain<sp/>all<sp/>our<sp/>odometry<sp/>data<sp/>in<sp/>a<sp/>single</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>variable<sp/>that<sp/>can<sp/>be<sp/>protected<sp/>by<sp/>a<sp/>MutexVar.<sp/>Otherwise,<sp/>we<sp/>would<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>three<sp/>seperate<sp/>variables<sp/>which<sp/>could<sp/>not<sp/>be<sp/>protected<sp/>in<sp/>a<sp/>single<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>MutexVar</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Pose<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>y;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>heading;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">pros::MutexVar&lt;Pose&gt;<sp/>odom_pose(0.0,<sp/>0.0,<sp/>0.0);</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>odom_task(void*<sp/>param)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classpros_1_1rtos_1_1MutexVar" kindref="compound">pros::MutexVar&lt;Pose&gt;</ref><sp/>odom_pose(0.0,<sp/>0.0,<sp/>0.0);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>odom_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Pose<sp/>old_pose<sp/>=<sp/>*odom_pose.lock();</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Pose<sp/>new_pose{0.0,<sp/>0.0,<sp/>0.0};</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>---<sp/>Calculate<sp/>new<sp/>pose<sp/>for<sp/>the<sp/>robot<sp/>here<sp/>---</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>new<sp/>pose,<sp/>we<sp/>can<sp/>update<sp/>the<sp/>global<sp/>variables</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>---<sp/>Calculate<sp/>new<sp/>pose<sp/>for<sp/>the<sp/>robot<sp/>here<sp/>---</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>new<sp/>pose,<sp/>we<sp/>can<sp/>update<sp/>the<sp/>global<sp/>variables</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>*odom_pose.take()<sp/>=<sp/>new_pose;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>chassis_task(void*<sp/>param)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>chassis_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Pose<sp/>cur_pose<sp/>=<sp/>*odom_pose.take();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>----<sp/>Move<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>current<sp/>locations<sp/>goes<sp/>here<sp/>----</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>----<sp/>Move<sp/>the<sp/>robot<sp/>using<sp/>the<sp/>current<sp/>locations<sp/>goes<sp/>here<sp/>----</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>odom_mutex<sp/>=<sp/>pros::Mutex();</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>odom_task(odom_task,<sp/>&quot;Odometry<sp/>Task&quot;);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Task<sp/>chassis_task(odom_task,<sp/>&quot;Chassis<sp/>Control<sp/>Task&quot;);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>odom_mutex<sp/>=<sp/><ref refid="classpros_1_1rtos_1_1Mutex" kindref="compound">pros::Mutex</ref>();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1rtos_1_1Task" kindref="compound">pros::Task</ref><sp/>odom_task(odom_task,<sp/></highlight><highlight class="stringliteral">&quot;Odometry<sp/>Task&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1rtos_1_1Task" kindref="compound">pros::Task</ref><sp/>chassis_task(odom_task,<sp/></highlight><highlight class="stringliteral">&quot;Chassis<sp/>Control<sp/>Task&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -117,11 +120,12 @@
         </inbodydescription>
         <location file="pros/rtos.hpp" line="1989" column="1" bodyfile="pros/rtos.hpp" bodystart="1989" bodyend="1989"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a58ed9f1f6e6da87308feef7ec3a7a34d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a46852e06e964bb08a1f9e53007612615" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt; &gt;</type>
-        <definition>std::optional&lt;MutexVarLock&lt;Var&gt; &gt; try_lock</definition>
+        <definition>std::optional&lt; MutexVarLock&lt; Var &gt; &gt; try_lock</definition>
         <argsstring>(std::uint32_t timeout)</argsstring>
         <name>try_lock</name>
+        <qualifiedname>pros::rtos::MutexVar::try_lock</qualifiedname>
         <param>
           <type>std::uint32_t</type>
           <declname>timeout</declname>
@@ -141,19 +145,19 @@
 </parameterlist>
 <simplesect kind="return"><para>A std::optional which contains a <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable if locking is successful.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">pros::MutexVar&lt;Pose&gt;<sp/>odom_pose;</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>my_task(void*<sp/>param)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;pros::MutexVar&lt;Pose&gt;&gt;<sp/>cur_pose_opt<sp/>=<sp/>odom_pose.try_lock(100);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><ref refid="classpros_1_1rtos_1_1MutexVar" kindref="compound">pros::MutexVar&lt;Pose&gt;</ref><sp/>odom_pose;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>my_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;pros::MutexVar&lt;Pose&gt;&gt;<sp/>cur_pose_opt<sp/>=<sp/>odom_pose.<ref refid="classpros_1_1rtos_1_1MutexVar_1a46852e06e964bb08a1f9e53007612615" kindref="member">try_lock</ref>(100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(cur_pose_opt.has_value())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cur_pose_opt.has_value())<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Pose*<sp/>cur_pose<sp/>=<sp/>**cur_pose_opt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Could<sp/>not<sp/>lock<sp/>the<sp/>mutex<sp/>var!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>lock<sp/>the<sp/>mutex<sp/>var!&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -163,7 +167,7 @@
         </inbodydescription>
         <location file="pros/rtos.hpp" line="2021" column="15" bodyfile="pros/rtos.hpp" bodystart="2021" bodyend="2027"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1acd3bef91b2c35648f3c9cd41440d50a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a04bfbf4db5bfe9a91c8744a3b2389892" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>typename Rep</type>
@@ -173,9 +177,10 @@
           </param>
         </templateparamlist>
         <type>std::optional&lt; <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt; &gt;</type>
-        <definition>std::optional&lt;MutexVarLock&lt;Var&gt; &gt; try_lock</definition>
+        <definition>std::optional&lt; MutexVarLock&lt; Var &gt; &gt; try_lock</definition>
         <argsstring>(const std::chrono::duration&lt; Rep, Period &gt; &amp;rel_time)</argsstring>
         <name>try_lock</name>
+        <qualifiedname>pros::rtos::MutexVar::try_lock</qualifiedname>
         <param>
           <type>const std::chrono::duration&lt; Rep, Period &gt; &amp;</type>
           <declname>rel_time</declname>
@@ -195,20 +200,20 @@
 </parameterlist>
 <simplesect kind="return"><para>A std::optional which contains a <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable if locking is successful.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">pros::MutexVar&lt;Pose&gt;<sp/>odom_pose;</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>my_task(void*<sp/>param)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><ref refid="classpros_1_1rtos_1_1MutexVar" kindref="compound">pros::MutexVar&lt;Pose&gt;</ref><sp/>odom_pose;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>my_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::chrono::duration&lt;int,<sp/>std::milli&gt;<sp/>timeout(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;pros::MutexVar&lt;Pose&gt;&gt;<sp/>cur_pose_opt<sp/>=<sp/>odom_pose.try_lock(timeout);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::optional&lt;pros::MutexVar&lt;Pose&gt;&gt;<sp/>cur_pose_opt<sp/>=<sp/>odom_pose.<ref refid="classpros_1_1rtos_1_1MutexVar_1a46852e06e964bb08a1f9e53007612615" kindref="member">try_lock</ref>(timeout);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if(cur_pose_opt.has_value())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(cur_pose_opt.has_value())<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Pose*<sp/>cur_pose<sp/>=<sp/>**cur_pose_opt;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(&quot;Could<sp/>not<sp/>lock<sp/>the<sp/>mutex<sp/>var!&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Could<sp/>not<sp/>lock<sp/>the<sp/>mutex<sp/>var!&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -218,27 +223,28 @@
         </inbodydescription>
         <location file="pros/rtos.hpp" line="2061" column="15" bodyfile="pros/rtos.hpp" bodystart="2061" bodyend="2063"/>
       </memberdef>
-      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1a6e111f3c307aa2c5b488301c1970fa7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="classpros_1_1rtos_1_1MutexVar_1acf9eb025fbbea0e2593d55d94226b525" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref>&lt; Var &gt;</type>
-        <definition>MutexVarLock&lt;Var&gt; lock</definition>
+        <definition>MutexVarLock&lt; Var &gt; lock</definition>
         <argsstring>()</argsstring>
         <name>lock</name>
+        <qualifiedname>pros::rtos::MutexVar::lock</qualifiedname>
         <briefdescription>
 <para>Lock the mutex-protected variable, waiting indefinitely. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>A <ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">MutexVarLock</ref> providing access to the protected variable.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">pros::MutexVar&lt;Pose&gt;<sp/>odom_pose;</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>my_task(void*<sp/>param)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><ref refid="classpros_1_1rtos_1_1MutexVar" kindref="compound">pros::MutexVar&lt;Pose&gt;</ref><sp/>odom_pose;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>my_task(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>param)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(10);</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::MutexVarLock&lt;Pose&gt;<sp/>cur_pose<sp/>=<sp/>odom_pose.lock();</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1rtos_1_1MutexVarLock" kindref="compound">pros::MutexVarLock&lt;Pose&gt;</ref><sp/>cur_pose<sp/>=<sp/>odom_pose.<ref refid="classpros_1_1rtos_1_1MutexVar_1acf9eb025fbbea0e2593d55d94226b525" kindref="member">lock</ref>();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Pose<sp/>cur_pose<sp/>=<sp/>*cur_pose;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>do<sp/>stuff<sp/>with<sp/>cur_pose</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>do<sp/>stuff<sp/>with<sp/>cur_pose</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -247,18 +253,18 @@
         </inbodydescription>
         <location file="pros/rtos.hpp" line="2086" column="14" bodyfile="pros/rtos.hpp" bodystart="2086" bodyend="2090"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/rtos.hpp" line="1894" column="1" bodyfile="pros/rtos.hpp" bodystart="1894" bodyend="-1"/>
+    <location file="pros/rtos.hpp" line="1894" column="1" bodyfile="pros/rtos.hpp" bodystart="1926" bodyend="2091"/>
     <listofallmembers>
-      <member refid="classpros_1_1rtos_1_1MutexVar_1a6e111f3c307aa2c5b488301c1970fa7a" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1acf9eb025fbbea0e2593d55d94226b525" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>lock</name></member>
       <member refid="classpros_1_1rtos_1_1MutexVar_1ae8b85b4f519a4945ba9ea43e9b503531" prot="private" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>mutex</name></member>
       <member refid="classpros_1_1rtos_1_1MutexVar_1a9b0f56bcfe012b9a9084b6790812106c" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>MutexVar</name></member>
-      <member refid="classpros_1_1rtos_1_1MutexVar_1a58ed9f1f6e6da87308feef7ec3a7a34d" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
-      <member refid="classpros_1_1rtos_1_1MutexVar_1acd3bef91b2c35648f3c9cd41440d50a3" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a46852e06e964bb08a1f9e53007612615" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
+      <member refid="classpros_1_1rtos_1_1MutexVar_1a04bfbf4db5bfe9a91c8744a3b2389892" prot="public" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>try_lock</name></member>
       <member refid="classpros_1_1rtos_1_1MutexVar_1a3707f75fceb41470afe4843f653e93ff" prot="private" virt="non-virtual"><scope>pros::rtos::MutexVar</scope><name>var</name></member>
     </listofallmembers>
   </compounddef>

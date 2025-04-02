@@ -1,20 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="motors_8h" kind="file" language="C++">
     <compoundname>motors.h</compoundname>
     <includes local="no">stdbool.h</includes>
     <includes local="no">stdint.h</includes>
     <includedby refid="api_8h" local="yes">api.h</includedby>
+    <includedby refid="abstract__motor_8hpp" local="yes">pros/abstract_motor.hpp</includedby>
     <includedby refid="motor__group_8hpp" local="yes">pros/motor_group.hpp</includedby>
     <includedby refid="motors_8hpp" local="yes">pros/motors.hpp</includedby>
-    <includedby refid="abstract__motor_8hpp" local="yes">pros/abstract_motor.hpp</includedby>
     <incdepgraph>
-      <node id="2">
-        <label>stdbool.h</label>
-      </node>
-      <node id="3">
-        <label>stdint.h</label>
-      </node>
       <node id="1">
         <label>pros/motors.h</label>
         <link refid="motors_8h"/>
@@ -23,18 +17,14 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>stdbool.h</label>
+      </node>
+      <node id="3">
+        <label>stdint.h</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="3">
-        <label>kapi.h</label>
-        <link refid="kapi_8h"/>
-      </node>
-      <node id="4">
-        <label>pros/apix.h</label>
-        <link refid="apix_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>api.h</label>
         <link refid="api_8h"/>
@@ -45,17 +35,31 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
+      <node id="3">
+        <label>kapi.h</label>
+        <link refid="kapi_8h"/>
+      </node>
+      <node id="4">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+      </node>
       <node id="6">
-        <label>pros/motor_group.hpp</label>
-        <link refid="motor__group_8hpp"/>
-        <childnode refid="2" relation="include">
+        <label>pros/abstract_motor.hpp</label>
+        <link refid="abstract__motor_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>pros/apix.h</label>
+        <link refid="apix_8h"/>
+        <childnode refid="3" relation="include">
         </childnode>
       </node>
       <node id="7">
-        <label>pros/motors.hpp</label>
-        <link refid="motors_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
+        <label>pros/motor_group.hpp</label>
+        <link refid="motor__group_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
@@ -72,740 +76,47 @@
         </childnode>
       </node>
       <node id="8">
-        <label>pros/abstract_motor.hpp</label>
-        <link refid="abstract__motor_8hpp"/>
-        <childnode refid="6" relation="include">
+        <label>pros/motors.hpp</label>
+        <link refid="motors_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>main.h</label>
-        <link refid="main_8h"/>
-      </node>
     </invincdepgraph>
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1c">pros::c</innernamespace>
-      <sectiondef kind="user-defined">
+    <sectiondef kind="user-defined">
       <header>Motor movement functions</header>
       <description><para>These functions allow programmers to make motors move </para>
 </description>
-      <memberdef kind="function" id="group__c-motors_1gac76e46064191f91bf2546335caccf6b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move</definition>
-        <argsstring>(int8_t port, int32_t voltage)</argsstring>
-        <name>motor_move</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>int32_t</type>
-          <declname>voltage</declname>
-        </param>
-        <briefdescription>
-<para>Sets the voltage for the motor from -127 to 127. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" kindref="member">motor_move_voltage()</ref>.</para>
-<para><simplesect kind="note"><para>This function will not respect brake modes, and simply sets the voltage to the desired value.</para>
-</simplesect>
-<simplesect kind="note"><para>A negative port will negate the input voltage</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor voltage from -127 to 127</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="79" column="9" declfile="pros/motors.h" declline="79" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa5f42cf9767315e3bf2f465cf64faf80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_brake</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_brake</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Stops the motor using the currently configured brake mode. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function sets motor velocity to zero, which will cause it to act according to the set brake mode. If brake mode is set to MOTOR_BRAKE_HOLD, this function may behave differently than calling motor_move_absolute(port, 0) or motor_move_relative(port, 0).</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_move(1,<sp/>127);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(1000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_break(1);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="109" column="9" declfile="pros/motors.h" declline="109" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaeab0d89347dae23cfb25a0c3c4e8b55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_absolute</definition>
-        <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
-        <name>motor_move_absolute</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>position</declname>
-        </param>
-        <param>
-          <type>const int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the target absolute position for the motor to move to. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="namespacepros_1_1c_1a4aec20e889c09650f066f4e28048c19b" kindref="member">motor_set_zero_position()</ref>.</para>
-<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
-</simplesect>
-<simplesect kind="note"><para>A negative port number will negate the target position</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>position</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The absolute position to move to in the motor&apos;s encoder units </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The maximum allowable velocity for the movement in RPM</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>This<sp/>will<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_tare_position(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="158" column="9" declfile="pros/motors.h" declline="158" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gab51091352630168597e8e30bde079eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_relative</definition>
-        <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
-        <name>motor_move_relative</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>double</type>
-          <declname>position</declname>
-        </param>
-        <param>
-          <type>const int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the relative target position for the motor to move to. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This movement is relative to the current position of the motor as given in <ref refid="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" kindref="member">motor_get_position()</ref>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
-<para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
-</simplesect>
-<simplesect kind="note"><para>A negative port will negate the target position</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>position</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The relative position to move to in the motor&apos;s encoder units </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The maximum allowable velocity for the movement in RPM</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_relative(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_relative(1,<sp/>100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="205" column="9" declfile="pros/motors.h" declline="205" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa33296eaa7d7bddef72e9606e72bcc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_velocity</definition>
-        <argsstring>(int8_t port, const int32_t velocity)</argsstring>
-        <name>motor_move_velocity</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>const int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Sets the velocity for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This velocity corresponds to different actual speeds depending on the gearset used for the motor. This results in a range of +-100 for E_MOTOR_GEARSET_36, +-200 for E_MOTOR_GEARSET_18, and +-600 for E_MOTOR_GEARSET_6. The velocity is held with PID to ensure consistent speed, as opposed to setting the motor&apos;s voltage.</para>
-<para><simplesect kind="note"><para>A negative port will negate the velocity</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_velocity(1,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_velocity(1,<sp/>0);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="241" column="9" declfile="pros/motors.h" declline="241" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_voltage</definition>
-        <argsstring>(int8_t port, const int32_t voltage)</argsstring>
-        <name>motor_move_voltage</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>const int32_t</type>
-          <declname>voltage</declname>
-        </param>
-        <briefdescription>
-<para>Sets the output voltage for the motor from -12000 to 12000 in millivolts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port negates the voltage</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="note"><para>This function will not respect brake modes, and simply sets the voltage to the desired value.</para>
-</simplesect>
-<parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>voltage</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new voltage value from -12000 to 12000</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_voltage(1,<sp/>12000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_voltage(1,<sp/>0);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="273" column="9" declfile="pros/motors.h" declline="273" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga8815309c8900190c036e43c223afc0b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_modify_profiled_velocity</definition>
-        <argsstring>(int8_t port, const int32_t velocity)</argsstring>
-        <name>motor_modify_profiled_velocity</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>const int32_t</type>
-          <declname>velocity</declname>
-        </param>
-        <briefdescription>
-<para>Changes the output velocity for a profiled movement (motor_move_absolute or motor_move_relative). </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This will have no effect if the motor is not following a profiled movement.</para>
-<para><simplesect kind="note"><para>A negative port negates the velocity</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername>velocity</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The new motor velocity from +-100, +-200, or +-600 depending on the motor&apos;s gearset</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_modify_profiled_velocity(1,<sp/>0);<sp/>//<sp/>Stop<sp/>the<sp/>motor<sp/>early</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="305" column="9" declfile="pros/motors.h" declline="305" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga1d612333c59cacac2b6daf8085605213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_target_position</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_target_position</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the target position set for the motor by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port negates the return value</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Target:<sp/>%d\n&quot;,<sp/>motor_get_target_position(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>100</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="332" column="8" declfile="pros/motors.h" declline="332" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga14476b124c9072efc14ad2cbcf6481ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_target_velocity</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_target_velocity</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the velocity commanded to the motor by the user. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port negates the return value</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move_velocity(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Commanded<sp/>Velocity:<sp/>%d\n&quot;,<sp/>motor_get_target_velocity(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="361" column="9" declfile="pros/motors.h" declline="361" declcolumn="9"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
+      <member refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kind="function"><name>motor_move</name></member>
+      <member refid="group__c-motors_1gaaee4a094e60b2982d25ecb7220da4877" kind="function"><name>motor_brake</name></member>
+      <member refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kind="function"><name>motor_move_absolute</name></member>
+      <member refid="group__c-motors_1ga979552d772e0a07f10c48d5646ad793f" kind="function"><name>motor_move_relative</name></member>
+      <member refid="group__c-motors_1ga71532a248061542a59d553d0925310ea" kind="function"><name>motor_move_velocity</name></member>
+      <member refid="group__c-motors_1gaec0d8c25cf301db219e14d4120111772" kind="function"><name>motor_move_voltage</name></member>
+      <member refid="group__c-motors_1ga65aa160210391fb7670b2170b6edd6ba" kind="function"><name>motor_modify_profiled_velocity</name></member>
+      <member refid="group__c-motors_1ga4cd78c1e95fb14506c58f12a0c94116d" kind="function"><name>motor_get_target_position</name></member>
+      <member refid="group__c-motors_1ga3de0889a9ae4b14b3b5a6d111928052c" kind="function"><name>motor_get_target_velocity</name></member>
+    </sectiondef>
+    <sectiondef kind="user-defined">
       <header>Motor telemetry functions</header>
       <description><para>These functions allow programmers to collect telemetry from motors </para>
 </description>
-      <memberdef kind="function" id="group__c-motors_1ga2ad53ef4a029ef4860d840ba3fa27cac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_actual_velocity</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_actual_velocity</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the actual velocity of the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port negates the return value</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor_get_actual_velocity(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="396" column="8" declfile="pros/motors.h" declline="396" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga42567d532e2ca7c25ea54c17ac3c7742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_current_draw</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_current_draw</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the current drawn by the motor in mA. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Current<sp/>Draw:<sp/>%d\n&quot;,<sp/>motor_get_current_draw(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="423" column="9" declfile="pros/motors.h" declline="423" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga0f9c29ae5adda0f2d753b8e7c2af5c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_direction</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_direction</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the direction of movement for the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port number negates the return value.</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Direction:<sp/>%d\n&quot;,<sp/>motor_get_direction(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="452" column="9" declfile="pros/motors.h" declline="452" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga7a974a7c9626135e8fc19525623d3a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_efficiency</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_efficiency</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the efficiency of the motor in percent. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>An efficiency of 100% means that the motor is moving electrically while drawing no electrical power, and an efficiency of 0% means that the motor is drawing power but not moving.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Efficiency:<sp/>%d\n&quot;,<sp/>motor_get_efficiency(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="483" column="8" declfile="pros/motors.h" declline="483" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga155b9e37b6dba8e0530cc153cdb5c55e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_is_over_current</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_is_over_current</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Checks if the motor is drawing over its current limit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Current<sp/>Limit<sp/>Hit?:<sp/>%d\n&quot;,<sp/>motor_is_over_current(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="510" column="9" declfile="pros/motors.h" declline="510" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gad47d180d2620885f1d2b3a1b0d867da2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_is_over_temp</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_is_over_temp</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Checks if the motor&apos;s temperature is above its limit. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the the temperature is below the limit, or PROS_ERR if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Temp<sp/>Limit:<sp/>%d\n&quot;,<sp/>motor_is_over_temp(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="537" column="9" declfile="pros/motors.h" declline="537" declcolumn="9"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="enum">
-      <memberdef kind="enum" id="namespacepros_1a6a794029fb7c8da16ee9c883b3c5f1d1" prot="public" static="no" strong="no">
+      <member refid="group__c-motors_1ga23fc650901d4e2e41f7e0b28e96f49fa" kind="function"><name>motor_get_actual_velocity</name></member>
+      <member refid="group__c-motors_1gaa158b475c4cab293b025a63b668e419a" kind="function"><name>motor_get_current_draw</name></member>
+      <member refid="group__c-motors_1ga8663560665438ed7cd4f3f8e523d2a5d" kind="function"><name>motor_get_direction</name></member>
+      <member refid="group__c-motors_1ga08e2a72d59ac24f3e12a04ca41f5d022" kind="function"><name>motor_get_efficiency</name></member>
+      <member refid="group__c-motors_1ga8bcfb650bda8c8b4d9e362ad00f16091" kind="function"><name>motor_is_over_current</name></member>
+      <member refid="group__c-motors_1gab457c1b2a7840260e5b46b89eed11b5d" kind="function"><name>motor_is_over_temp</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacepros_1a94974905e721e3380faedf503355ff2c" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_fault_e</name>
-        <enumvalue id="namespacepros_1ga6a794029fb7c8da16ee9c883b3c5f1d1aa1763132e678a09c2a2299dcb8ca91f2" prot="public">
+        <name>motor_fault_e_t</name>
+        <qualifiedname>pros::motor_fault_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1ga94974905e721e3380faedf503355ff2caa1763132e678a09c2a2299dcb8ca91f2" prot="public">
           <name>E_MOTOR_FAULT_NO_FAULTS</name>
           <initializer>= 0x00</initializer>
           <briefdescription>
@@ -814,16 +125,16 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1ga6a794029fb7c8da16ee9c883b3c5f1d1a19697fdb3bda40d671908094d19bb816" prot="public">
+        <enumvalue id="namespacepros_1ga94974905e721e3380faedf503355ff2ca19697fdb3bda40d671908094d19bb816" prot="public">
           <name>E_MOTOR_FAULT_MOTOR_OVER_TEMP</name>
           <initializer>= 0x01</initializer>
           <briefdescription>
-<para>Analogous to <ref refid="group__c-motors_1gad47d180d2620885f1d2b3a1b0d867da2" kindref="member">motor_is_over_temp()</ref> </para>
+<para>Analogous to motor_is_over_temp() </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1ga6a794029fb7c8da16ee9c883b3c5f1d1a129793cdd6c08a6df63a4ce690a563e9" prot="public">
+        <enumvalue id="namespacepros_1ga94974905e721e3380faedf503355ff2ca129793cdd6c08a6df63a4ce690a563e9" prot="public">
           <name>E_MOTOR_FAULT_DRIVER_FAULT</name>
           <initializer>= 0x02</initializer>
           <briefdescription>
@@ -832,16 +143,16 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1ga6a794029fb7c8da16ee9c883b3c5f1d1ad58554131e6fe018bca28e8447e9da19" prot="public">
+        <enumvalue id="namespacepros_1ga94974905e721e3380faedf503355ff2cad58554131e6fe018bca28e8447e9da19" prot="public">
           <name>E_MOTOR_FAULT_OVER_CURRENT</name>
           <initializer>= 0x04</initializer>
           <briefdescription>
-<para>Analogous to <ref refid="group__c-motors_1ga155b9e37b6dba8e0530cc153cdb5c55e" kindref="member">motor_is_over_current()</ref> </para>
+<para>Analogous to motor_is_over_current() </para>
           </briefdescription>
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1ga6a794029fb7c8da16ee9c883b3c5f1d1a4261f9f8989960a7aed89cbc8821007c" prot="public">
+        <enumvalue id="namespacepros_1ga94974905e721e3380faedf503355ff2ca4261f9f8989960a7aed89cbc8821007c" prot="public">
           <name>E_MOTOR_FAULT_DRV_OVER_CURRENT</name>
           <initializer>= 0x08</initializer>
           <briefdescription>
@@ -856,12 +167,13 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="548" column="27" bodyfile="pros/motors.h" bodystart="548" bodyend="559"/>
+        <location file="pros/motors.h" line="548" column="1" bodyfile="pros/motors.h" bodystart="548" bodyend="559"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1aefb84700279103f329387cdf6cba0d2b" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="namespacepros_1a5d04777f64c2de4ea739dc781f2f73b6" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_flag_e</name>
-        <enumvalue id="namespacepros_1gaefb84700279103f329387cdf6cba0d2bae402dfe134784f10ef577661e751cf25" prot="public">
+        <name>motor_flag_e_t</name>
+        <qualifiedname>pros::motor_flag_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1ga5d04777f64c2de4ea739dc781f2f73b6ae402dfe134784f10ef577661e751cf25" prot="public">
           <name>E_MOTOR_FLAGS_NONE</name>
           <initializer>= 0x00</initializer>
           <briefdescription>
@@ -870,7 +182,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1gaefb84700279103f329387cdf6cba0d2bacb8e657551c89b6678660318961f8b6b" prot="public">
+        <enumvalue id="namespacepros_1ga5d04777f64c2de4ea739dc781f2f73b6acb8e657551c89b6678660318961f8b6b" prot="public">
           <name>E_MOTOR_FLAGS_BUSY</name>
           <initializer>= 0x01</initializer>
           <briefdescription>
@@ -879,7 +191,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1gaefb84700279103f329387cdf6cba0d2ba897fee9d51039554c0cda9e061c2a3e0" prot="public">
+        <enumvalue id="namespacepros_1ga5d04777f64c2de4ea739dc781f2f73b6a897fee9d51039554c0cda9e061c2a3e0" prot="public">
           <name>E_MOTOR_FLAGS_ZERO_VELOCITY</name>
           <initializer>= 0x02</initializer>
           <briefdescription>
@@ -888,7 +200,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1gaefb84700279103f329387cdf6cba0d2bab9db9483c159e4bb272015e6507de0ac" prot="public">
+        <enumvalue id="namespacepros_1ga5d04777f64c2de4ea739dc781f2f73b6ab9db9483c159e4bb272015e6507de0ac" prot="public">
           <name>E_MOTOR_FLAGS_ZERO_POSITION</name>
           <initializer>= 0x04</initializer>
           <briefdescription>
@@ -903,12 +215,13 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="617" column="26" bodyfile="pros/motors.h" bodystart="617" bodyend="626"/>
+        <location file="pros/motors.h" line="617" column="1" bodyfile="pros/motors.h" bodystart="617" bodyend="626"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1abe00508f1ecabf2dad6bf6d8d323fec7" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="namespacepros_1aca70ad847e8a0985d312e02294869f1b" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_brake_mode_e</name>
-        <enumvalue id="namespacepros_1abe00508f1ecabf2dad6bf6d8d323fec7aa2cc502049ad45801c2ce0a4b3d2069e" prot="public">
+        <name>motor_brake_mode_e_t</name>
+        <qualifiedname>pros::motor_brake_mode_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1aca70ad847e8a0985d312e02294869f1baa2cc502049ad45801c2ce0a4b3d2069e" prot="public">
           <name>E_MOTOR_BRAKE_COAST</name>
           <initializer>= 0</initializer>
           <briefdescription>
@@ -917,7 +230,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1abe00508f1ecabf2dad6bf6d8d323fec7a0ea7e0574d40f6db40525bb6b7aeeba0" prot="public">
+        <enumvalue id="namespacepros_1aca70ad847e8a0985d312e02294869f1ba0ea7e0574d40f6db40525bb6b7aeeba0" prot="public">
           <name>E_MOTOR_BRAKE_BRAKE</name>
           <initializer>= 1</initializer>
           <briefdescription>
@@ -926,7 +239,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1abe00508f1ecabf2dad6bf6d8d323fec7aaa23ffec0b250ce72e7159b8de3d4b8d" prot="public">
+        <enumvalue id="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" prot="public">
           <name>E_MOTOR_BRAKE_HOLD</name>
           <initializer>= 2</initializer>
           <briefdescription>
@@ -935,7 +248,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1abe00508f1ecabf2dad6bf6d8d323fec7a23e68282557596c84cfecf5e6ec4a023" prot="public">
+        <enumvalue id="namespacepros_1aca70ad847e8a0985d312e02294869f1ba23e68282557596c84cfecf5e6ec4a023" prot="public">
           <name>E_MOTOR_BRAKE_INVALID</name>
           <initializer>= INT32_MAX</initializer>
           <briefdescription>
@@ -945,17 +258,19 @@ This function uses the following values of errno when an error state is reached:
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Indicates the current &apos;brake mode&apos; of a motor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="860" column="32" bodyfile="pros/motors.h" bodystart="860" bodyend="869"/>
+        <location file="pros/motors.h" line="860" column="1" bodyfile="pros/motors.h" bodystart="860" bodyend="869"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1a6d94b540f7c22cc42ba611576350193c" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="namespacepros_1a49625743f6507832dd2e739712335b7b" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_encoder_units_e</name>
-        <enumvalue id="namespacepros_1a6d94b540f7c22cc42ba611576350193ca3f8b78d1687e80752406e90ca3bd9caf" prot="public">
+        <name>motor_encoder_units_e_t</name>
+        <qualifiedname>pros::motor_encoder_units_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" prot="public">
           <name>E_MOTOR_ENCODER_DEGREES</name>
           <initializer>= 0</initializer>
           <briefdescription>
@@ -964,7 +279,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a6d94b540f7c22cc42ba611576350193ca5ba6e5cdf81faac8a776a8ce3f735285" prot="public">
+        <enumvalue id="namespacepros_1a49625743f6507832dd2e739712335b7ba5ba6e5cdf81faac8a776a8ce3f735285" prot="public">
           <name>E_MOTOR_ENCODER_ROTATIONS</name>
           <initializer>= 1</initializer>
           <briefdescription>
@@ -973,7 +288,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a6d94b540f7c22cc42ba611576350193cad1911b04d55f80e665634a2863386e86" prot="public">
+        <enumvalue id="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" prot="public">
           <name>E_MOTOR_ENCODER_COUNTS</name>
           <initializer>= 2</initializer>
           <briefdescription>
@@ -982,7 +297,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a6d94b540f7c22cc42ba611576350193ca4ab7c8effccd17c995a4abaf1fa4663f" prot="public">
+        <enumvalue id="namespacepros_1a49625743f6507832dd2e739712335b7ba4ab7c8effccd17c995a4abaf1fa4663f" prot="public">
           <name>E_MOTOR_ENCODER_INVALID</name>
           <initializer>= INT32_MAX</initializer>
           <briefdescription>
@@ -992,17 +307,19 @@ This function uses the following values of errno when an error state is reached:
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Indicates the units used by the motor encoders. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="875" column="35" bodyfile="pros/motors.h" bodystart="875" bodyend="884"/>
+        <location file="pros/motors.h" line="875" column="1" bodyfile="pros/motors.h" bodystart="875" bodyend="884"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_gearset_e</name>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92ad1b0135f1d6fde4ee29590836eb1b856" prot="public">
+        <name>motor_gearset_e_t</name>
+        <qualifiedname>pros::motor_gearset_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1ad1b0135f1d6fde4ee29590836eb1b856" prot="public">
           <name>E_MOTOR_GEARSET_36</name>
           <initializer>= 0</initializer>
           <briefdescription>
@@ -1010,7 +327,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a1a2e5afdd25ef99a95ba81e8e3f4196c" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a1a2e5afdd25ef99a95ba81e8e3f4196c" prot="public">
           <name>E_MOTOR_GEAR_RED</name>
           <initializer>= E_MOTOR_GEARSET_36</initializer>
           <briefdescription>
@@ -1018,7 +335,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a62a162f59f6d9af4d42d52c6dacfbbe1" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a62a162f59f6d9af4d42d52c6dacfbbe1" prot="public">
           <name>E_MOTOR_GEAR_100</name>
           <initializer>= E_MOTOR_GEARSET_36</initializer>
           <briefdescription>
@@ -1026,7 +343,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a95444ef9bee438d4bcfebb0c0a399443" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a95444ef9bee438d4bcfebb0c0a399443" prot="public">
           <name>E_MOTOR_GEARSET_18</name>
           <initializer>= 1</initializer>
           <briefdescription>
@@ -1034,7 +351,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a863194b050bc8f03c51a5b66d92eae2f" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a863194b050bc8f03c51a5b66d92eae2f" prot="public">
           <name>E_MOTOR_GEAR_GREEN</name>
           <initializer>= E_MOTOR_GEARSET_18</initializer>
           <briefdescription>
@@ -1042,7 +359,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92ad4d1450466369454f459ff77bddc6f76" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1ad4d1450466369454f459ff77bddc6f76" prot="public">
           <name>E_MOTOR_GEAR_200</name>
           <initializer>= E_MOTOR_GEARSET_18</initializer>
           <briefdescription>
@@ -1050,7 +367,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a33f143e34739e15a553885015455db37" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" prot="public">
           <name>E_MOTOR_GEARSET_06</name>
           <initializer>= 2</initializer>
           <briefdescription>
@@ -1058,7 +375,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a43d1c2e07d7affaa13d8498a57c20ef2" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a43d1c2e07d7affaa13d8498a57c20ef2" prot="public">
           <name>E_MOTOR_GEAR_BLUE</name>
           <initializer>= E_MOTOR_GEARSET_06</initializer>
           <briefdescription>
@@ -1066,7 +383,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a025b0cf3f6d87be2b65746404500b0df" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a025b0cf3f6d87be2b65746404500b0df" prot="public">
           <name>E_MOTOR_GEAR_600</name>
           <initializer>= E_MOTOR_GEARSET_06</initializer>
           <briefdescription>
@@ -1074,7 +391,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1a20a5d12701ec52a5c6bde1c3fe14ab92a934f089388ca6bd6b92df6321dfbe45d" prot="public">
+        <enumvalue id="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a934f089388ca6bd6b92df6321dfbe45d" prot="public">
           <name>E_MOTOR_GEARSET_INVALID</name>
           <initializer>= INT32_MAX</initializer>
           <briefdescription>
@@ -1083,17 +400,19 @@ This function uses the following values of errno when an error state is reached:
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Indicates the current internal gear ratio of a motor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="890" column="29" bodyfile="pros/motors.h" bodystart="890" bodyend="901"/>
+        <location file="pros/motors.h" line="890" column="1" bodyfile="pros/motors.h" bodystart="890" bodyend="901"/>
       </memberdef>
-      <memberdef kind="enum" id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397" prot="public" static="no" strong="no">
+      <memberdef kind="enum" id="namespacepros_1ad594f39f95c3b0dc304cea89f8833d01" prot="public" static="no" strong="no">
         <type></type>
-        <name>motor_type_e</name>
-        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397ac5908681cc32e0d9e7b235a8d1e0b4d1" prot="public">
+        <name>motor_type_e_t</name>
+        <qualifiedname>pros::motor_type_e_t</qualifiedname>
+        <enumvalue id="namespacepros_1ad594f39f95c3b0dc304cea89f8833d01ac5908681cc32e0d9e7b235a8d1e0b4d1" prot="public">
           <name>E_MOTOR_TYPE_V5</name>
           <initializer>= 0</initializer>
           <briefdescription>
@@ -1101,7 +420,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397a3ef4228454d8147a64f8ba36d7650a10" prot="public">
+        <enumvalue id="namespacepros_1ad594f39f95c3b0dc304cea89f8833d01a3ef4228454d8147a64f8ba36d7650a10" prot="public">
           <name>E_MOTOR_TYPE_EXP</name>
           <initializer>= 1</initializer>
           <briefdescription>
@@ -1109,7 +428,7 @@ This function uses the following values of errno when an error state is reached:
           <detaileddescription>
           </detaileddescription>
         </enumvalue>
-        <enumvalue id="namespacepros_1aa1fd8b9aa2e96e55a26ed4395f618397a148eae4c58891987608640733afb14e8" prot="public">
+        <enumvalue id="namespacepros_1ad594f39f95c3b0dc304cea89f8833d01a148eae4c58891987608640733afb14e8" prot="public">
           <name>E_MOTOR_TYPE_INVALID</name>
           <initializer>= INT32_MAX</initializer>
           <briefdescription>
@@ -1118,344 +437,30 @@ This function uses the following values of errno when an error state is reached:
           </detaileddescription>
         </enumvalue>
         <briefdescription>
+<para>Indicates the type of a motor. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/motors.h" line="907" column="26" bodyfile="pros/motors.h" bodystart="907" bodyend="911"/>
+        <location file="pros/motors.h" line="907" column="1" bodyfile="pros/motors.h" bodystart="907" bodyend="911"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="group__c-motors_1ga2cbdf023d7dfb10606b70422fe698616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint32_t</type>
-        <definition>uint32_t pros::c::motor_get_faults</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_faults</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the faults experienced by the motor. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Compare this bitfield to the bitmasks in motor_fault_e_t.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1-21</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s faults.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Faults:<sp/>%d\n&quot;,<sp/>motor_get_faults(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="607" column="10" declfile="pros/motors.h" declline="607" declcolumn="10"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga29a31e20d6203737a15b77d7b2479da8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>uint32_t</type>
-        <definition>uint32_t pros::c::motor_get_flags</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_flags</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the flags set by the motor&apos;s operation. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>Compare this bitfield to the bitmasks in motor_flag_e_t.</para>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>A bitfield containing the motor&apos;s flags.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Flags:<sp/>%d\n&quot;,<sp/>motor_get_flags(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="672" column="10" declfile="pros/motors.h" declline="672" declcolumn="10"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gae7399c7b8bde6a7c371e5a67e85b1d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__c-motors_1ga331d74978f66b713465d51a5495ab910" kind="function"><name>motor_get_faults</name></member>
+      <member refid="group__c-motors_1ga5067a982c9ffb97ab775b4a2fd0b85c9" kind="function"><name>motor_get_flags</name></member>
+      <member refid="group__c-motors_1ga4c777d4111897794eced1b02403de957" kind="function"><name>motor_get_raw_position</name></member>
+      <member refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kind="function"><name>motor_get_position</name></member>
+      <member refid="group__c-motors_1ga42f81ce853b56cf5beab631611d49e80" kind="function"><name>motor_get_power</name></member>
+      <member refid="group__c-motors_1ga344b4ad711dc9ea8538b8b7ed2ad8bd1" kind="function"><name>motor_get_temperature</name></member>
+      <member refid="group__c-motors_1gad0016aa5490f14b5cfb1bf7a7164fac7" kind="function"><name>motor_get_torque</name></member>
+      <member refid="group__c-motors_1ga7393fc003a250c41ab6301190e683808" kind="function"><name>motor_get_voltage</name></member>
+      <memberdef kind="function" id="namespacepros_1_1c_1a4ba666a7a23e8f29fb5476fc0232c258" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_raw_position</definition>
-        <argsstring>(int8_t port, uint32_t *const timestamp)</argsstring>
-        <name>motor_get_raw_position</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <param>
-          <type>uint32_t *const</type>
-          <declname>timestamp</declname>
-        </param>
-        <briefdescription>
-<para>Gets the raw encoder count of the motor at a given timestamp. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port value negates the return value</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors </para>
-</parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">timestamp</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>A pointer to a time in milliseconds for which the encoder count will be returned. If NULL, the timestamp at which the encoder count was read will not be supplied</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Encoder<sp/>Count:<sp/>%d\n&quot;,<sp/>motor_get_raw_position(1,<sp/>&amp;now));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="706" column="9" declfile="pros/motors.h" declline="706" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_position</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_position</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the absolute position of the motor in its encoder units. </para>
-        </briefdescription>
-        <detaileddescription>
-<para><simplesect kind="note"><para>A negative port value negates the return value</para>
-</simplesect>
-This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Position:<sp/>%lf\n&quot;,<sp/>motor_get_position(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="735" column="8" declfile="pros/motors.h" declline="735" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaaaf993792ce15b7b025b8177b3af01c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_power</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_power</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the power drawn by the motor in Watts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Power:<sp/>%lf\n&quot;,<sp/>motor_get_power(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="763" column="8" declfile="pros/motors.h" declline="763" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga22a0f1bb6100680ea52d32f9053ec5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_temperature</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_temperature</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the temperature of the motor in degrees Celsius. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Temperature:<sp/>%lf\n&quot;,<sp/>motor_get_temperature(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="790" column="8" declfile="pros/motors.h" declline="790" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaea02a297a5d59b4ca640a038e2a90edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>double</type>
-        <definition>double pros::c::motor_get_torque</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_torque</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the torque generated by the motor in Newton Meters (Nm). </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports |1-21|. ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Torque:<sp/>%lf\n&quot;,<sp/>motor_get_torque(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="817" column="8" declfile="pros/motors.h" declline="817" declcolumn="8"/>
-      </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga5d1e2d0ca02dfe1b53bc577f8b9a1ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_voltage</definition>
-        <argsstring>(int8_t port)</argsstring>
-        <name>motor_get_voltage</name>
-        <param>
-          <type>int8_t</type>
-          <declname>port</declname>
-        </param>
-        <briefdescription>
-<para>Gets the voltage delivered to the motor in millivolts. </para>
-        </briefdescription>
-        <detaileddescription>
-<para>This function uses the following values of errno when an error state is reached: ENXIO - The given value is not within the range of V5 ports (1-21). ENODEV - The port cannot be configured as a motor</para>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>port</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>The V5 port number from 1 to 21, or from -21 to -1 for reversed motors</para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
-<simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno.</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Voltage:<sp/>%lf\n&quot;,<sp/>motor_get_voltage(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="pros/motors.h" line="844" column="9" declfile="pros/motors.h" declline="844" declcolumn="9"/>
-      </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a4aec20e889c09650f066f4e28048c19b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_zero_position</definition>
+        <definition>int32_t motor_set_zero_position</definition>
         <argsstring>(int8_t port, const double position)</argsstring>
         <name>motor_set_zero_position</name>
+        <qualifiedname>pros::c::motor_set_zero_position</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1490,21 +495,21 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> </para>
-<para><programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<para><programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_zero_position(1,<sp/>80);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1a4ba666a7a23e8f29fb5476fc0232c258" kindref="member">motor_set_zero_position</ref>(1,<sp/>80);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1513,11 +518,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1053" column="9" declfile="pros/motors.h" declline="1053" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a712a9fb1e8cb15f75edcf06514ffb5ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1ab1b33e6dd0ef52447a9c7029ad779008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_tare_position</definition>
+        <definition>int32_t motor_tare_position</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_tare_position</name>
+        <qualifiedname>pros::c::motor_tare_position</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1538,21 +544,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_tare_position(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1ab1b33e6dd0ef52447a9c7029ad779008" kindref="member">motor_tare_position</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>-<sp/>100<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1561,11 +567,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1090" column="9" declfile="pros/motors.h" declline="1090" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a7000cc1293b6eda984f01fa7282b38f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1ad3339bc4dd9c805fbcd12dc48d493eb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_brake_mode</definition>
+        <definition>int32_t motor_set_brake_mode</definition>
         <argsstring>(int8_t port, const motor_brake_mode_e_t mode)</argsstring>
         <name>motor_set_brake_mode</name>
+        <qualifiedname>pros::c::motor_set_brake_mode</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1598,9 +605,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_brake_mode(1,<sp/>E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Brake<sp/>Mode:<sp/>%d\n&quot;,<sp/>motor_get_brake_mode(1));</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1ad3339bc4dd9c805fbcd12dc48d493eb4" kindref="member">motor_set_brake_mode</ref>(1,<sp/><ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1a99dec1fa09b485134ed94c2265f62e64" kindref="member">motor_get_brake_mode</ref>(1));</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1608,11 +615,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1116" column="9" declfile="pros/motors.h" declline="1116" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a76d822bc8a190b5dc0c7db692cd50f55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1abf2e5bfbca8815c30c02387a29dde558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_current_limit</definition>
+        <definition>int32_t motor_set_current_limit</definition>
         <argsstring>(int8_t port, const int32_t limit)</argsstring>
         <name>motor_set_current_limit</name>
+        <qualifiedname>pros::c::motor_set_current_limit</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1645,12 +653,12 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_current_limit(1,<sp/>1000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>motor<sp/>will<sp/>reduce<sp/>its<sp/>output<sp/>at<sp/>1000<sp/>mA<sp/>instead<sp/>of<sp/>the<sp/>default<sp/>2500<sp/>mA</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1abf2e5bfbca8815c30c02387a29dde558" kindref="member">motor_set_current_limit</ref>(1,<sp/>1000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>reduce<sp/>its<sp/>output<sp/>at<sp/>1000<sp/>mA<sp/>instead<sp/>of<sp/>the<sp/>default<sp/>2500<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1659,11 +667,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1146" column="9" declfile="pros/motors.h" declline="1146" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aa73489a83d6cc6ef0ce0c7e54f4ed452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a453ef34c3b17c6f90e951f0a9c77c89d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_encoder_units</definition>
+        <definition>int32_t motor_set_encoder_units</definition>
         <argsstring>(int8_t port, const motor_encoder_units_e_t units)</argsstring>
         <name>motor_set_encoder_units</name>
+        <qualifiedname>pros::c::motor_set_encoder_units</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1696,9 +705,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_encoder_units(1,<sp/>E_MOTOR_ENCODER_DEGREES);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Encoder<sp/>Units:<sp/>%d\n&quot;,<sp/>motor_get_encoder_units(1));</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1a453ef34c3b17c6f90e951f0a9c77c89d" kindref="member">motor_set_encoder_units</ref>(1,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" kindref="member">E_MOTOR_ENCODER_DEGREES</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Encoder<sp/>Units:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1aa492ef9ddff282aefe1bf9f85cdfbfd9" kindref="member">motor_get_encoder_units</ref>(1));</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1706,11 +715,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1172" column="9" declfile="pros/motors.h" declline="1172" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a6be12015c137a6279f21199bd75913c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a856d007f36c21c11bc6c0b5596dfd463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_gearing</definition>
+        <definition>int32_t motor_set_gearing</definition>
         <argsstring>(int8_t port, const motor_gearset_e_t gearset)</argsstring>
         <name>motor_set_gearing</name>
+        <qualifiedname>pros::c::motor_set_gearing</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1743,9 +753,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_gearing(1,<sp/>E_MOTOR_GEARSET_06);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Brake<sp/>Mode:<sp/>%d\n&quot;,<sp/>motor_get_gearing(1));</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1a856d007f36c21c11bc6c0b5596dfd463" kindref="member">motor_set_gearing</ref>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1a48eee7c44a3b9c0fd38a9bfcc0eb7a7f" kindref="member">motor_get_gearing</ref>(1));</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1753,11 +763,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1198" column="9" declfile="pros/motors.h" declline="1198" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1ac264f3c731cb5a1fcf8005dfa520c088" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1ace62d95f08adcc745d29b2e0c35dbb1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_set_voltage_limit</definition>
+        <definition>int32_t motor_set_voltage_limit</definition>
         <argsstring>(int8_t port, const int32_t limit)</argsstring>
         <name>motor_set_voltage_limit</name>
+        <qualifiedname>pros::c::motor_set_voltage_limit</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1790,12 +801,12 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_voltage_limit(1,<sp/>10000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>The<sp/>motor<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1ace62d95f08adcc745d29b2e0c35dbb1a" kindref="member">motor_set_voltage_limit</ref>(1,<sp/>10000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1804,11 +815,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1228" column="9" declfile="pros/motors.h" declline="1228" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a8beaf89dc810ff17908a6bc1056e81b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a99dec1fa09b485134ed94c2265f62e64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>motor_brake_mode_e_t</type>
-        <definition>motor_brake_mode_e_t pros::c::motor_get_brake_mode</definition>
+        <definition>motor_brake_mode_e_t motor_get_brake_mode</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_brake_mode</name>
+        <qualifiedname>pros::c::motor_get_brake_mode</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1829,9 +841,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>One of motor_brake_mode_e_t, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_set_brake_mode(1,<sp/>E_MOTOR_BRAKE_HOLD);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Brake<sp/>Mode:<sp/>%d\n&quot;,<sp/>motor_get_brake_mode(1));</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1ad3339bc4dd9c805fbcd12dc48d493eb4" kindref="member">motor_set_brake_mode</ref>(1,<sp/><ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1a99dec1fa09b485134ed94c2265f62e64" kindref="member">motor_get_brake_mode</ref>(1));</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1839,11 +851,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1252" column="22" declfile="pros/motors.h" declline="1252" declcolumn="22"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1afd59b63eed6e6f3e8d6a0e6bcd285302" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a38b65591016541ff95252e4aa8df3aec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_current_limit</definition>
+        <definition>int32_t motor_get_current_limit</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_current_limit</name>
+        <qualifiedname>pros::c::motor_get_current_limit</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1865,9 +878,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s current limit in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Current<sp/>Limit:<sp/>%d\n&quot;,<sp/>motor_get_current_limit(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>&quot;Motor<sp/>Current<sp/>Limit:<sp/>2500&quot;</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Limit:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1a38b65591016541ff95252e4aa8df3aec" kindref="member">motor_get_current_limit</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;Motor<sp/>Current<sp/>Limit:<sp/>2500&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1875,11 +888,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1278" column="9" declfile="pros/motors.h" declline="1278" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1abf890e2b403938bcb0d0092b53877eb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1aa492ef9ddff282aefe1bf9f85cdfbfd9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>motor_encoder_units_e_t</type>
-        <definition>motor_encoder_units_e_t pros::c::motor_get_encoder_units</definition>
+        <definition>motor_encoder_units_e_t motor_get_encoder_units</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_encoder_units</name>
+        <qualifiedname>pros::c::motor_get_encoder_units</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1906,11 +920,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1294" column="25" declfile="pros/motors.h" declline="1294" declcolumn="25"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1aed931b677d95aa05e203f4f19ffa1e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a48eee7c44a3b9c0fd38a9bfcc0eb7a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>motor_gearset_e_t</type>
-        <definition>motor_gearset_e_t pros::c::motor_get_gearing</definition>
+        <definition>motor_gearset_e_t motor_get_gearing</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_gearing</name>
+        <qualifiedname>pros::c::motor_get_gearing</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1931,9 +946,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>One of motor_gearset_e_t according to what is set for the motor, or E_GEARSET_INVALID if the operation failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Encoder<sp/>Units:<sp/>%d\n&quot;,<sp/>motor_get_encoder_units(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>E_MOTOR_ENCODER_DEGREES<sp/>by<sp/>default</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Encoder<sp/>Units:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1aa492ef9ddff282aefe1bf9f85cdfbfd9" kindref="member">motor_get_encoder_units</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>E_MOTOR_ENCODER_DEGREES<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1941,11 +956,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1318" column="19" declfile="pros/motors.h" declline="1318" declcolumn="19"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a4249989376799f8c7f12b3ebccc8b494" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1ac50d760739d42c873f19c4894a30dc40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_voltage_limit</definition>
+        <definition>int32_t motor_get_voltage_limit</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_voltage_limit</name>
+        <qualifiedname>pros::c::motor_get_voltage_limit</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1967,9 +983,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s voltage limit in V or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Voltage<sp/>Limit:<sp/>%d\n&quot;,<sp/>motor_get_voltage_limit(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>0<sp/>by<sp/>default,<sp/>indicating<sp/>no<sp/>limit</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage<sp/>Limit:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1ac50d760739d42c873f19c4894a30dc40" kindref="member">motor_get_voltage_limit</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>0<sp/>by<sp/>default,<sp/>indicating<sp/>no<sp/>limit</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1977,11 +993,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1345" column="9" declfile="pros/motors.h" declline="1345" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1c_1a386dcafd223cb5e6576ee550b49fa8a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1c_1a9c0bcb78d05a0e4cdc435649c207a5f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>motor_type_e_t</type>
-        <definition>motor_type_e_t pros::c::motor_get_type</definition>
+        <definition>motor_type_e_t motor_get_type</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_type</name>
+        <qualifiedname>pros::c::motor_get_type</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -2002,9 +1019,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>One of motor_type_e_t according to the type of the motor, or E_MOTOR_TYPE_INVALID if the operation failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Type:<sp/>%d\n&quot;,<sp/>motor_get_type(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>the<sp/>type<sp/>of<sp/>the<sp/>motor</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Type:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1c_1a9c0bcb78d05a0e4cdc435649c207a5f1" kindref="member">motor_get_type</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>type<sp/>of<sp/>the<sp/>motor</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -2012,11 +1029,11 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="1369" column="16" declfile="pros/motors.h" declline="1369" declcolumn="16"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
+<para>Contains prototypes for the V5 Motor-related functions. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains prototypes for the V5 Motor-related functions.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
 <para><simplesect kind="copyright"><para>(c) 2017-2024, Purdue University ACM SIGBots.</para>
 </simplesect>

@@ -1,0 +1,28 @@
+var classpros_1_1v5_1_1Vision =
+[
+    [ "Vision", "classpros_1_1v5_1_1Vision.html#addf9ae6eb4813386116110d06c5beac4", null ],
+    [ "Vision", "classpros_1_1v5_1_1Vision.html#adbdf68f47f449b0483ccd28d42acc868", null ],
+    [ "clear_led", "classpros_1_1v5_1_1Vision.html#a76431ffd2012b88a7a32a629584b594a", null ],
+    [ "signature_from_utility", "classpros_1_1v5_1_1Vision.html#a4f1fc5e12221451d7e244318cfe5bc04", null ],
+    [ "create_color_code", "classpros_1_1v5_1_1Vision.html#aad39648fb027abf526d427fcd39ac850", null ],
+    [ "get_all_devices", "classpros_1_1v5_1_1Vision.html#a4d43e0f968ad79b1050fdfd6bc631fd7", null ],
+    [ "get_by_size", "classpros_1_1v5_1_1Vision.html#af4fa926cf28cf99a0818714f5f701187", null ],
+    [ "get_by_sig", "classpros_1_1v5_1_1Vision.html#aad2f7f19ea9d69ccbf82af9f5b55f419", null ],
+    [ "get_by_code", "classpros_1_1v5_1_1Vision.html#a0ee6adc0ac7836cc75195a65fd0dbaed", null ],
+    [ "get_exposure", "classpros_1_1v5_1_1Vision.html#af21a819740fe50fd73af70c41651cbae", null ],
+    [ "get_object_count", "classpros_1_1v5_1_1Vision.html#a450dc055c2448fab6eb551231dde7071", null ],
+    [ "get_signature", "classpros_1_1v5_1_1Vision.html#afcbec69e9c0dc3bf13765441f9e9e659", null ],
+    [ "get_white_balance", "classpros_1_1v5_1_1Vision.html#abb5ece73e4caaa15a39f5e661c3ec5cd", null ],
+    [ "read_by_size", "classpros_1_1v5_1_1Vision.html#ab5b546c064555ccc94aa3efdcb62dbfd", null ],
+    [ "read_by_sig", "classpros_1_1v5_1_1Vision.html#a054480d0518c7368c4d9206b9cde25e0", null ],
+    [ "read_by_code", "classpros_1_1v5_1_1Vision.html#a107dcaf6b54f1cb77e67998e5fef148f", null ],
+    [ "print_signature", "classpros_1_1v5_1_1Vision.html#ace530d71a4be7d2c1ab90dc31856f58b", null ],
+    [ "set_auto_white_balance", "classpros_1_1v5_1_1Vision.html#a3056945e74c922ee2a8d324fe136fac7", null ],
+    [ "set_exposure", "classpros_1_1v5_1_1Vision.html#a4c754824ad4dc5fbbe9afc45064b10a9", null ],
+    [ "set_led", "classpros_1_1v5_1_1Vision.html#ae3fe29fed597773781e7532275a93b22", null ],
+    [ "set_signature", "classpros_1_1v5_1_1Vision.html#a82489e0d344b86b031e45a7a549f6acd", null ],
+    [ "set_white_balance", "classpros_1_1v5_1_1Vision.html#ac3307c30a25eebfba74911220d404a94", null ],
+    [ "set_zero_point", "classpros_1_1v5_1_1Vision.html#af4949921bb01abcf430d48fa5532b5c8", null ],
+    [ "set_wifi_mode", "classpros_1_1v5_1_1Vision.html#a9d04ecf017d67e551ca413b0bfd8fcd7", null ],
+    [ "get_vision", "classpros_1_1v5_1_1Vision.html#aa122fa671c11a03f223e30e29cdd98f2", null ]
+];

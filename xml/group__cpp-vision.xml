@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="group__cpp-vision" kind="group">
     <compoundname>cpp-vision</compoundname>
     <title>Vision Sensor C++ API</title>
     <innerfile refid="vision_8hpp">vision.hpp</innerfile>
     <innerclass refid="classpros_1_1v5_1_1Vision" prot="public">pros::v5::Vision</innerclass>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="group__cpp-vision_1gaddf9ae6eb4813386116110d06c5beac4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Vision</definition>
         <argsstring>(std::uint8_t port, vision_zero_e_t zero_point=E_VISION_ZERO_TOPLEFT)</argsstring>
         <name>Vision</name>
+        <qualifiedname>pros::v5::Vision::Vision</qualifiedname>
         <param>
           <type>std::uint8_t</type>
           <declname>port</declname>
@@ -42,8 +43,8 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(1);<sp/>//<sp/>Creates<sp/>a<sp/>vision<sp/>sensor<sp/>on<sp/>port<sp/>one,<sp/>with<sp/>the<sp/>zero<sp/>point<sp/>set<sp/>to<sp/>top<sp/>left</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(1);<sp/></highlight><highlight class="comment">//<sp/>Creates<sp/>a<sp/>vision<sp/>sensor<sp/>on<sp/>port<sp/>one,<sp/>with<sp/>the<sp/>zero<sp/>point<sp/>set<sp/>to<sp/>top<sp/>left</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -56,6 +57,7 @@
         <definition>Vision</definition>
         <argsstring>(const Device &amp;device)</argsstring>
         <name>Vision</name>
+        <qualifiedname>pros::v5::Vision::Vision</qualifiedname>
         <param>
           <type>const Device &amp;</type>
           <declname>device</declname>
@@ -73,6 +75,7 @@
         <definition>std::int32_t clear_led</definition>
         <argsstring>(void) const</argsstring>
         <name>clear_led</name>
+        <qualifiedname>pros::v5::Vision::clear_led</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -83,8 +86,8 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
 <para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(1);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.clear_led();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -98,6 +101,7 @@
         <definition>static vision_signature_s_t signature_from_utility</definition>
         <argsstring>(const std::int32_t id, const std::int32_t u_min, const std::int32_t u_max, const std::int32_t u_mean, const std::int32_t v_min, const std::int32_t v_max, const std::int32_t v_mean, const float range, const std::int32_t type)</argsstring>
         <name>signature_from_utility</name>
+        <qualifiedname>pros::v5::Vision::signature_from_utility</qualifiedname>
         <param>
           <type>const std::int32_t</type>
           <declname>id</declname>
@@ -213,20 +217,20 @@
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> that can be set using <ref refid="group__cpp-vision_1ga82489e0d344b86b031e45a7a549f6acd" kindref="member">Vision::set_signature</ref></para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal">//<sp/>values<sp/>acquired<sp/>from<sp/>the<sp/>vision<sp/>utility</highlight></codeline>
-<codeline><highlight class="normal">vision_signature_s_t<sp/>RED_SIG<sp/>=</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_signature_from_utility(EXAMPLE_SIG,<sp/>8973,<sp/>11143,<sp/>10058,<sp/>-2119,<sp/>-1053,<sp/>-1586,<sp/>5.4,<sp/>0);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>values<sp/>acquired<sp/>from<sp/>the<sp/>vision<sp/>utility</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref><sp/>RED_SIG<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-aivision_1ga452a6732e27d1496360f69b84af7609f" kindref="member">vision_signature_from_utility</ref>(EXAMPLE_SIG,<sp/>8973,<sp/>11143,<sp/>10058,<sp/>-2119,<sp/>-1053,<sp/>-1586,<sp/>5.4,<sp/>0);</highlight></codeline>
 <codeline><highlight class="normal">vision_sensor.set_signature(EXAMPLE_SIG,<sp/>&amp;RED_SIG);</highlight></codeline>
-<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(VISION_PORT,<sp/>0,<sp/>EXAMPLE_SIG);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref><sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(VISION_PORT,<sp/>0,<sp/>EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -241,6 +245,7 @@
         <definition>vision_color_code_t create_color_code</definition>
         <argsstring>(const std::uint32_t sig_id1, const std::uint32_t sig_id2, const std::uint32_t sig_id3=0, const std::uint32_t sig_id4=0, const std::uint32_t sig_id5=0) const</argsstring>
         <name>create_color_code</name>
+        <qualifiedname>pros::v5::Vision::create_color_code</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>sig_id1</declname>
@@ -312,13 +317,13 @@
 </parameterlist>
 <simplesect kind="return"><para>A vision_color_code_t object containing the color code information.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OTHER_SIG<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-vision_1ga71f2011a47e95558bb534b05c16c7f2b" kindref="member">vision_color_code_t</ref><sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -326,19 +331,20 @@
         </inbodydescription>
         <location file="pros/vision.hpp" line="170" column="21"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-vision_1gaf6628b91485a6e85eee34b31bc4438ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-vision_1ga4d43e0f968ad79b1050fdfd6bc631fd7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; Vision &gt;</type>
-        <definition>static std::vector&lt;Vision&gt; get_all_devices</definition>
+        <definition>static std::vector&lt; Vision &gt; get_all_devices</definition>
         <argsstring>()</argsstring>
         <name>get_all_devices</name>
+        <qualifiedname>pros::v5::Vision::get_all_devices</qualifiedname>
         <briefdescription>
 <para>Gets all vision sensors. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="return"><para>A vector of <ref refid="classpros_1_1v5_1_1Vision" kindref="compound">Vision</ref> sensor objects.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;Vision&gt;<sp/>vision_all<sp/>=<sp/>pros::Vision::get_all_devices();<sp/><sp/>//<sp/>All<sp/>vision<sp/>sensors<sp/>that<sp/>are<sp/>connected</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::vector&lt;Vision&gt;<sp/>vision_all<sp/>=<sp/><ref refid="group__cpp-device_1ga0c90365b98b8643388adcb6efec8cf58" kindref="member">pros::Vision::get_all_devices</ref>();<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>vision<sp/>sensors<sp/>that<sp/>are<sp/>connected</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -351,6 +357,7 @@
         <definition>vision_object_s_t get_by_size</definition>
         <argsstring>(const std::uint32_t size_id) const</argsstring>
         <name>get_by_size</name>
+        <qualifiedname>pros::v5::Vision::get_by_size</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -371,14 +378,14 @@
 </parameterlist>
 <simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given size id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_size(0);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>rtn<sp/>=<sp/>vision_sensor.get_by_size(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>rtn.signature);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -393,6 +400,7 @@
         <definition>vision_object_s_t get_by_sig</definition>
         <argsstring>(const std::uint32_t size_id, const std::uint32_t sig_id) const</argsstring>
         <name>get_by_sig</name>
+        <qualifiedname>pros::v5::Vision::get_by_sig</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -425,16 +433,16 @@
 </parameterlist>
 <simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given signature and size_id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal">pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal">while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(0,<sp/>EXAMPLE_SIG);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>rtn<sp/>=<sp/>vision_sensor.get_by_sig(0,<sp/>EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>largest<sp/>object<sp/>of<sp/>the<sp/>EXAMPLE_SIG<sp/>signature</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>rtn.signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -449,6 +457,7 @@
         <definition>vision_object_s_t get_by_code</definition>
         <argsstring>(const std::uint32_t size_id, const vision_color_code_t color_code) const</argsstring>
         <name>get_by_code</name>
+        <qualifiedname>pros::v5::Vision::get_by_code</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -481,17 +490,17 @@
 </parameterlist>
 <simplesect kind="return"><para>The <ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref> object corresponding to the given color code and size_id, or PROS_ERR if an error occurred.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_object_s_t<sp/>rtn<sp/>=<sp/>vision_sensor.get_by_code(0,<sp/>code1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>rtn.signature);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OTHER_SIG<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-vision_1ga71f2011a47e95558bb534b05c16c7f2b" kindref="member">vision_color_code_t</ref><sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>rtn<sp/>=<sp/>vision_sensor.get_by_code(0,<sp/>code1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Gets<sp/>the<sp/>largest<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>rtn.signature);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -506,6 +515,7 @@
         <definition>std::int32_t get_exposure</definition>
         <argsstring>(void) const</argsstring>
         <name>get_exposure</name>
+        <qualifiedname>pros::v5::Vision::get_exposure</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -516,11 +526,11 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
 <para><simplesect kind="return"><para>The current exposure parameter from [0,150], PROS_ERR if an error occurred</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_exposure(50);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -534,6 +544,7 @@
         <definition>std::int32_t get_object_count</definition>
         <argsstring>(void) const</argsstring>
         <name>get_object_count</name>
+        <qualifiedname>pros::v5::Vision::get_object_count</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -544,12 +555,12 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
 <para><simplesect kind="return"><para>The number of objects detected on the specified vision sensor. Returns PROS_ERR if the port was invalid or an error occurred.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Number<sp/>of<sp/>Objects<sp/>Detected:<sp/>%d\n&quot;,<sp/>vision_sensor.get_object_count());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Number<sp/>of<sp/>Objects<sp/>Detected:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>vision_sensor.get_object_count());</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -564,6 +575,7 @@
         <definition>vision_signature_s_t get_signature</definition>
         <argsstring>(const std::uint8_t signature_id) const</argsstring>
         <name>get_signature</name>
+        <qualifiedname>pros::v5::Vision::get_signature</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>signature_id</declname>
@@ -584,12 +596,12 @@
 </parameterlist>
 <simplesect kind="return"><para>A <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref> containing information about the signature.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref><sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.print_signature(sig);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -603,6 +615,7 @@
         <definition>std::int32_t get_white_balance</definition>
         <argsstring>(void) const</argsstring>
         <name>get_white_balance</name>
+        <qualifiedname>pros::v5::Vision::get_white_balance</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -613,12 +626,12 @@
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a vision sensor</para>
 <para><simplesect kind="return"><para>The current RGB white balance setting of the sensor</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>VISION_WHITE<sp/>0xff</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_white_balance()<sp/>!=<sp/>VISION_WHITE)</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VISION_WHITE<sp/>0xff</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vision_sensor.get_white_balance()<sp/>!=<sp/>VISION_WHITE)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_white_balance(VISION_WHITE);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -632,6 +645,7 @@
         <definition>std::int32_t read_by_size</definition>
         <argsstring>(const std::uint32_t size_id, const std::uint32_t object_count, vision_object_s_t *const object_arr) const</argsstring>
         <name>read_by_size</name>
+        <qualifiedname>pros::v5::Vision::read_by_size</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -676,16 +690,16 @@
 </parameterlist>
 <simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_size(0,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -700,6 +714,7 @@
         <definition>std::int32_t read_by_sig</definition>
         <argsstring>(const std::uint32_t size_id, const std::uint32_t sig_id, const std::uint32_t object_count, vision_object_s_t *const object_arr) const</argsstring>
         <name>read_by_sig</name>
+        <qualifiedname>pros::v5::Vision::read_by_sig</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -756,17 +771,17 @@
 </parameterlist>
 <simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_sig(0,<sp/>EXAMPLE_SIG,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;sig:<sp/>1&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -781,6 +796,7 @@
         <definition>int32_t read_by_code</definition>
         <argsstring>(const std::uint32_t size_id, const vision_color_code_t color_code, const std::uint32_t object_count, vision_object_s_t *const object_arr) const</argsstring>
         <name>read_by_code</name>
+        <qualifiedname>pros::v5::Vision::read_by_code</qualifiedname>
         <param>
           <type>const std::uint32_t</type>
           <declname>size_id</declname>
@@ -837,19 +853,19 @@
 </parameterlist>
 <simplesect kind="return"><para>The number of object signatures copied. This number will be less than object_count if there are fewer objects detected by the vision sensor. Returns PROS_ERR if the port was invalid, an error occurred, or fewer objects than size_id were found. All objects in object_arr that were not found are given VISION_OBJECT_ERR_SIG as their signature.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>OTHER_SIG<sp/>2</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_object_s_t<sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_color_code_t<sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OTHER_SIG<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>NUM_VISION_OBJECTS<sp/>4</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__object__s__t" kindref="compound">vision_object_s_t</ref><sp/>object_arr[NUM_VISION_OBJECTS];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-vision_1ga71f2011a47e95558bb534b05c16c7f2b" kindref="member">vision_color_code_t</ref><sp/>code1<sp/>=<sp/>vision_sensor.create_color_code(EXAMPLE_SIG,<sp/>OTHER_SIG,<sp/>0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>vision_sensor.read_by_code(0,<sp/>code1,<sp/>NUM_VISION_OBJECTS,<sp/>object_arr);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;sig:<sp/>%d&quot;,<sp/>object_arr[0].signature);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;sig:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>object_arr[0].signature);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>signature<sp/>of<sp/>the<sp/>largest<sp/>object<sp/>found</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -864,6 +880,7 @@
         <definition>static std::int32_t print_signature</definition>
         <argsstring>(const vision_signature_s_t sig)</argsstring>
         <name>print_signature</name>
+        <qualifiedname>pros::v5::Vision::print_signature</qualifiedname>
         <param>
           <type>const <ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref></type>
           <declname>sig</declname>
@@ -883,13 +900,13 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>visionsensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_print_signature(sig);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref><sp/>sig<sp/>=<sp/>visionsensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-aivision_1ga2fc1d334e9d0a312a5d07378d4a95f18" kindref="member">vision_print_signature</ref>(sig);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -902,6 +919,7 @@
         <definition>std::int32_t set_auto_white_balance</definition>
         <argsstring>(const std::uint8_t enable) const</argsstring>
         <name>set_auto_white_balance</name>
+        <qualifiedname>pros::v5::Vision::set_auto_white_balance</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>enable</declname>
@@ -922,11 +940,11 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_auto_white_balance(true);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_auto_white_balance(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -939,6 +957,7 @@
         <definition>std::int32_t set_exposure</definition>
         <argsstring>(const std::uint8_t exposure) const</argsstring>
         <name>set_exposure</name>
+        <qualifiedname>pros::v5::Vision::set_exposure</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>exposure</declname>
@@ -959,11 +978,11 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vision_sensor.get_exposure()<sp/>&lt;<sp/>50)</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_exposure(50);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -977,6 +996,7 @@
         <definition>std::int32_t set_led</definition>
         <argsstring>(const std::int32_t rgb) const</argsstring>
         <name>set_led</name>
+        <qualifiedname>pros::v5::Vision::set_led</qualifiedname>
         <param>
           <type>const std::int32_t</type>
           <declname>rgb</declname>
@@ -997,10 +1017,10 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_led(COLOR_BLANCHED_ALMOND);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1014,6 +1034,7 @@
         <definition>std::int32_t set_signature</definition>
         <argsstring>(const std::uint8_t signature_id, vision_signature_s_t *const signature_ptr) const</argsstring>
         <name>set_signature</name>
+        <qualifiedname>pros::v5::Vision::set_signature</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>signature_id</declname>
@@ -1047,12 +1068,12 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if no errors occured, PROS_ERR otherwise</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>EXAMPLE_SIG<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_signature_s_t<sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EXAMPLE_SIG<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="structvision__signature__s__t" kindref="compound">vision_signature_s_t</ref><sp/>sig<sp/>=<sp/>vision_sensor.get_signature(EXAMPLE_SIG);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>sig.range<sp/>=<sp/>10.0;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_signature(EXAMPLE_SIG,<sp/>&amp;sig);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1067,6 +1088,7 @@
         <definition>std::int32_t set_white_balance</definition>
         <argsstring>(const std::int32_t rgb) const</argsstring>
         <name>set_white_balance</name>
+        <qualifiedname>pros::v5::Vision::set_white_balance</qualifiedname>
         <param>
           <type>const std::int32_t</type>
           <declname>rgb</declname>
@@ -1087,11 +1109,11 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline><highlight class="normal">#define<sp/>VISION_WHITE<sp/>0xff</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VISION_WHITE<sp/>0xff</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_white_balance(VISION_WHITE);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1105,6 +1127,7 @@
         <definition>std::int32_t set_zero_point</definition>
         <argsstring>(vision_zero_e_t zero_point) const</argsstring>
         <name>set_zero_point</name>
+        <qualifiedname>pros::v5::Vision::set_zero_point</qualifiedname>
         <param>
           <type>vision_zero_e_t</type>
           <declname>zero_point</declname>
@@ -1126,11 +1149,11 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_zero_point(E_VISION_ZERO_CENTER);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_zero_point(<ref refid="group__c-vision_1gga7585bf041822ef8c34c538d768644962ac4bfba95a9c18805da897280e18387c1" kindref="member">E_VISION_ZERO_CENTER</ref>);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1143,6 +1166,7 @@
         <definition>std::int32_t set_wifi_mode</definition>
         <argsstring>(const std::uint8_t enable) const</argsstring>
         <name>set_wifi_mode</name>
+        <qualifiedname>pros::v5::Vision::set_wifi_mode</qualifiedname>
         <param>
           <type>const std::uint8_t</type>
           <declname>enable</declname>
@@ -1163,10 +1187,10 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">#define<sp/>VISION_PORT<sp/>1</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Vision<sp/>vision_sensor(VISION_PORT);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="preprocessor">#define<sp/>VISION_PORT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Vision" kindref="compound">pros::Vision</ref><sp/>vision_sensor(VISION_PORT);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>vision_sensor.set_wifi_mode(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1180,6 +1204,7 @@
         <definition>static Vision get_vision</definition>
         <argsstring>()</argsstring>
         <name>get_vision</name>
+        <qualifiedname>pros::v5::Vision::get_vision</qualifiedname>
         <briefdescription>
 <para>Gets a vision sensor that is plugged in to the brain. </para>
         </briefdescription>
@@ -1195,7 +1220,7 @@ This functions uses the following values of errno when an error state is reached
         </inbodydescription>
         <location file="pros/vision.hpp" line="764" column="15"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="namespacepros_1_1usd" kind="namespace" language="C++">
     <compoundname>pros::usd</compoundname>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepros_1_1usd_1a2d7eecbe50533c0d753e82470dc2e6f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacepros_1_1usd_1a295a33054a91c74c88e3ed4773612910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
-        <definition>std::int32_t pros::usd::is_installed</definition>
+        <definition>std::int32_t is_installed</definition>
         <argsstring>(void)</argsstring>
         <name>is_installed</name>
+        <qualifiedname>pros::usd::is_installed</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -17,8 +18,8 @@
         <detaileddescription>
 <para><simplesect kind="return"><para>1 if the SD card is installed, 0 otherwise</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;%i&quot;,<sp/>is_installed());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%i&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespacepros_1_1usd_1a295a33054a91c74c88e3ed4773612910" kindref="member">is_installed</ref>());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -26,11 +27,12 @@
         </inbodydescription>
         <location file="pros/misc.hpp" line="529" column="14" declfile="pros/misc.hpp" declline="529" declcolumn="14"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1_1usd_1acffd319feb1e7f689445b2e0837018d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1_1usd_1ade2e7fe36a16eb8154248077afc9135d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
-        <definition>std::int32_t pros::usd::list_files</definition>
+        <definition>std::int32_t list_files</definition>
         <argsstring>(const char *path, char *buffer, std::int32_t len)</argsstring>
         <name>list_files</name>
+        <qualifiedname>pros::usd::list_files</qualifiedname>
         <param>
           <type>const char *</type>
           <declname>path</declname>
@@ -49,32 +51,36 @@
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached:</para>
 <para>EIO - Hard error occured in the low level disk I/O layer EINVAL - file or directory is invalid, or length is invalid EBUSY - THe physical drinve cannot work ENOENT - cannot find the path or file EINVAL - the path name format is invalid EACCES - Access denied or directory full EEXIST - Access denied EROFS - SD card is write protected ENXIO - drive number is invalid or not a FAT32 drive ENOBUFS - drive has no work area ENFILE - too many open files</para>
-<para><simplesect kind="note"><para>use a path of &quot;\&quot; to list the files in the main directory NOT &quot;/usd/&quot; DO NOT PREPEND YOUR PATHS WITH &quot;/usd/&quot;</para>
+<para><simplesect kind="note"><para>use a path of &quot;\&quot; to list the files in the main directory NOT &quot;/usd/&quot;
+ DO NOT PREPEND YOUR PATHS WITH &quot;/usd/&quot;
+
+\return 1 on success or PROS_ERR on failure setting errno
+
+\b Example
+@code 
+void opcontrol() {
+    char* test = (char*) malloc(128);
+ pros::usd::list_files(&quot;/&quot;, test, 128);
+ pros::delay(200);
+ printf(&quot;s<linebreak/>
+&quot;, test); //Prints the file names in the root directory seperated by newlines
+ pros::delay(100);
+ pros::list_files(&quot;/test&quot;, test, 128);
+ pros::delay(200);
+ printf(&quot;s<linebreak/>
+", test); //Prints the names of files in the folder named test seperated by newlines pros::delay(100); }  </para>
 </simplesect>
-<simplesect kind="return"><para>1 on success or PROS_ERR on failure setting errno</para>
-</simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>char*<sp/>test<sp/>=<sp/>(char*)<sp/>malloc(128);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::usd::list_files(&quot;/&quot;,<sp/>test,<sp/>128);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>file<sp/>names<sp/>in<sp/>the<sp/>root<sp/>directory<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::list_files(&quot;/test&quot;,<sp/>test,<sp/>128);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::delay(200);</highlight></codeline>
-<codeline><highlight class="normal"><sp/>printf(&quot;%s\n&quot;,<sp/>test);<sp/>//Prints<sp/>the<sp/>names<sp/>of<sp/>files<sp/>in<sp/>the<sp/>folder<sp/>named<sp/>test<sp/>seperated<sp/>by<sp/>newlines</highlight></codeline>
-<codeline><highlight class="normal"><sp/>pros::delay(100);</highlight></codeline>
-<codeline><highlight class="normal">}</highlight></codeline>
-</programlisting> </para>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="pros/misc.hpp" line="572" column="14" declfile="pros/misc.hpp" declline="572" declcolumn="14"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="pros/misc.hpp" line="516" column="13"/>
+    <location file="pros/misc.hpp" line="516" column="1"/>
   </compounddef>
 </doxygen>

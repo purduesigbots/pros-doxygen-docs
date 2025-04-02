@@ -84,14 +84,14 @@ V5</span></a>
           <h2><a href="#groups">Modules</a></h2>
           <dl class="m-doc">
             <dt>module <a href="group__cpp-motor-telemetry.html" class="m-doc">Cpp-motor-telemetry</a></dt>
-            <dd></dd>
+            <dd>These functions allow programmers to collect telemetry from motors</dd>
           </dl>
         </section>
         <section id="files">
           <h2><a href="#files">Files</a></h2>
           <dl class="m-doc">
             <dt>file <a href="abstract__motor_8hpp.html" class="m-doc">abstract_motor.hpp</a></dt>
-            <dd></dd>
+            <dd>Contains prototypes for AbstractMotor, the abstract base class of both motors and motor groups.</dd>
           </dl>
         </section>
         <section id="nested-classes">
@@ -142,17 +142,17 @@ V5</span></a>
             </dt>
             <dd>Gets the target position set for the motor by the user, with a parameter for the motor index.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3372e3eeb8f9713158cf7533d9f22fdd" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf49a8ba8a2ebd44322a7377a72854008" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Gets a vector containing the target position(s) set for the motor(s) by the user.</dd>
+            <dd>Gets a vector containing the target position(s) set for the <a href="group__cpp-device.html#ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" class="m-doc">motor(s)</a> by the user.</dd>
             <dt>
               <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gad432481d905cf4b1184e989fc6435223" class="m-doc-self">get_target_velocity</a>(</span><span class="m-doc-wrap">const std::uint8_t index = 0) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
             <dd>Gets the velocity commanded to the motor by the user.</dd>
             <dt>
-              <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6712354fb8815453799295cf595dadb3" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac982a535e68607f2500d713763245b87" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
             </dt>
-            <dd>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user.</dd>
+            <dd>Gets a vector containing the velocity/velocities commanded to the <a href="group__cpp-device.html#ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" class="m-doc">motor(s)</a> by the user.</dd>
           </dl>
         </section>
         <section>
@@ -180,7 +180,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <a href="group__c-motors.html#gac76e46064191f91bf2546335caccf6b5" class="m-doc">motor_<wbr />move()</a>, or motorSet() from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+<p>This is designed to map easily to the input from the controller&#x27;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of motor_move(), or motorSet() from the PROS 2 API.</p><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="ga6d274aaeea2b1f0eacd4199a607c5460"><div>
             <h3>
@@ -240,7 +240,7 @@ V5</span></a>
                 </tr>
               </tfoot>
             </table>
-<p>This movement is relative to the current position of the motor as given in <a href="group__c-motors.html#ga113fbf1950304b3a56705722b283c3a1" class="m-doc">pros::<wbr />Motor::<wbr />motor_get_position()</a>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
+<p>This movement is relative to the current position of the motor as given in pros::Motor::motor_get_position(). Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</p><aside class="m-note m-info"><h4>Note</h4><p>This function simply sets the target for the motor, it does not block program execution until the movement finishes.</p></aside><p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
           <section class="m-doc-details" id="gaf9e6c6b881edf9a214f7beb9a65016e2"><div>
             <h3>
@@ -350,12 +350,12 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
-          <section class="m-doc-details" id="ga3372e3eeb8f9713158cf7533d9f22fdd"><div>
+          <section class="m-doc-details" id="gaf49a8ba8a2ebd44322a7377a72854008"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga3372e3eeb8f9713158cf7533d9f22fdd" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <span class="m-doc-wrap-bumper">std::vector&lt;double&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf49a8ba8a2ebd44322a7377a72854008" class="m-doc-self">get_target_position_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Gets a vector containing the target position(s) set for the motor(s) by the user.</p>
+            <p>Gets a vector containing the target position(s) set for the <a href="group__cpp-device.html#ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" class="m-doc">motor(s)</a> by the user.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
@@ -391,12 +391,12 @@ V5</span></a>
             </table>
 <p>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</p>
           </div></section>
-          <section class="m-doc-details" id="ga6712354fb8815453799295cf595dadb3"><div>
+          <section class="m-doc-details" id="gac982a535e68607f2500d713763245b87"><div>
             <h3>
-              <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga6712354fb8815453799295cf595dadb3" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
+              <span class="m-doc-wrap-bumper">std::vector&lt;std::int32_t&gt; </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gac982a535e68607f2500d713763245b87" class="m-doc-self">get_target_velocity_all</a>(</span><span class="m-doc-wrap">void) const <span class="m-label m-warning">pure virtual</span></span></span>
               <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="abstract__motor_8hpp.html">&lt;pros/abstract_motor.hpp&gt;</a></div>
             </h3>
-            <p>Gets a vector containing the velocity/velocities commanded to the motor(s) by the user.</p>
+            <p>Gets a vector containing the velocity/velocities commanded to the <a href="group__cpp-device.html#ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" class="m-doc">motor(s)</a> by the user.</p>
             <table class="m-table m-fullwidth m-flat">
               <tfoot>
                 <tr>
@@ -453,7 +453,7 @@ V5</span></a>
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS for
-V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.12.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>

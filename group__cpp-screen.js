@@ -1,0 +1,26 @@
+var group__cpp_screen =
+[
+    [ "screen.hpp", "screen_8hpp.html", null ],
+    [ "set_pen", "group__cpp-screen.html#gaf5e2d587391a7f62859e13542e0c1095", null ],
+    [ "set_pen", "group__cpp-screen.html#gac18720cf693c3c1c6a6375436d162ec6", null ],
+    [ "set_eraser", "group__cpp-screen.html#ga0aad78b69df18d76ff86bfbcce4ed128", null ],
+    [ "set_eraser", "group__cpp-screen.html#gab1dc9559c71e41d17ca66f7d3fd296c7", null ],
+    [ "get_pen", "group__cpp-screen.html#gaab4ab5dae694a7710835d21dc6b2cf9e", null ],
+    [ "get_eraser", "group__cpp-screen.html#gaede9fcaa5a16d6af79e9c75253608685", null ],
+    [ "erase", "group__cpp-screen.html#gac5a2c77b679e427c8f53f92e0fd73863", null ],
+    [ "scroll", "group__cpp-screen.html#ga73b227e9b0d4cb26372c179ad4234e9a", null ],
+    [ "scroll_area", "group__cpp-screen.html#gafcc32916e5d2a336daeb9460474972f4", null ],
+    [ "copy_area", "group__cpp-screen.html#gaf7c42b5aeb2ebd171524d4ba58c33010", null ],
+    [ "draw_pixel", "group__cpp-screen.html#ga4e5f777a1c2d372159f4bc8ac96ef931", null ],
+    [ "erase_pixel", "group__cpp-screen.html#ga1c96af8aef39266aea076fadcefc8c33", null ],
+    [ "draw_line", "group__cpp-screen.html#gadb3300f969fefafcd760e39a530d6a00", null ],
+    [ "erase_line", "group__cpp-screen.html#ga560fd433be5b597b1905511aacf8903d", null ],
+    [ "draw_rect", "group__cpp-screen.html#ga1dd0c98f39c79adc5be978b822ad5df2", null ],
+    [ "erase_rect", "group__cpp-screen.html#ga83f2c0a1fb491d98fd9b57351878bc65", null ],
+    [ "fill_rect", "group__cpp-screen.html#ga017ca68941c7903576cbd002ec739e0e", null ],
+    [ "draw_circle", "group__cpp-screen.html#ga046c3d3445dce6243e9b83643d159269", null ],
+    [ "erase_circle", "group__cpp-screen.html#ga2cd905b373d9d4751a5e49ec45646776", null ],
+    [ "fill_circle", "group__cpp-screen.html#ga5b00ff2a66e985255c9039d31950867c", null ],
+    [ "touch_status", "group__cpp-screen.html#gaa67ef963cb837c242180c1403369456d", null ],
+    [ "touch_callback", "group__cpp-screen.html#ga3f908882a9104439c980a8b9589d2d84", null ]
+];

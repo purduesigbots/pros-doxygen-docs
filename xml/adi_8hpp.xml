@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="adi_8hpp" kind="file" language="C++">
     <compoundname>adi.hpp</compoundname>
     <includes local="no">cstdint</includes>
@@ -10,8 +10,13 @@
     <includes refid="adi_8h" local="yes">pros/adi.h</includes>
     <includedby refid="api_8h" local="yes">api.h</includedby>
     <incdepgraph>
-      <node id="8">
-        <label>stdbool.h</label>
+      <node id="7">
+        <label>pros/adi.h</label>
+        <link refid="adi_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>pros/adi.hpp</label>
@@ -32,47 +37,26 @@
       <node id="2">
         <label>cstdint</label>
       </node>
+      <node id="6">
+        <label>iostream</label>
+      </node>
+      <node id="8">
+        <label>stdbool.h</label>
+      </node>
       <node id="9">
         <label>stdint.h</label>
       </node>
       <node id="4">
         <label>tuple</label>
       </node>
-      <node id="3">
-        <label>vector</label>
-      </node>
-      <node id="7">
-        <label>pros/adi.h</label>
-        <link refid="adi_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
       <node id="5">
         <label>utility</label>
       </node>
-      <node id="6">
-        <label>iostream</label>
+      <node id="3">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1">
-        <label>pros/adi.hpp</label>
-        <link refid="adi_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>kapi.h</label>
-        <link refid="kapi_8h"/>
-      </node>
-      <node id="4">
-        <label>pros/apix.h</label>
-        <link refid="apix_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
       <node id="2">
         <label>api.h</label>
         <link refid="api_8h"/>
@@ -83,9 +67,25 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="5">
+      <node id="3">
+        <label>kapi.h</label>
+        <link refid="kapi_8h"/>
+      </node>
+      <node id="4">
         <label>main.h</label>
         <link refid="main_8h"/>
+      </node>
+      <node id="1">
+        <label>pros/adi.hpp</label>
+        <link refid="adi_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>pros/apix.h</label>
+        <link refid="apix_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classpros_1_1adi_1_1Port" prot="public">pros::adi::Port</innerclass>
@@ -102,27 +102,28 @@
     <innerclass refid="classpros_1_1adi_1_1Pneumatics" prot="public">pros::adi::Pneumatics</innerclass>
     <innernamespace refid="namespacepros">pros</innernamespace>
     <innernamespace refid="namespacepros_1_1adi">pros::adi</innernamespace>
-      <sectiondef kind="define">
+    <sectiondef kind="define">
       <memberdef kind="define" id="adi_8hpp_1a2d31825366889c69e13affe8888e3009" prot="public" static="no">
         <name>LEGACY_TYPEDEF</name>
         <param><defname>old_name</defname></param>
         <param><defname>new_name</defname></param>
-        <initializer>using old_name [[deprecated(&quot;use &quot; #new_name &quot; instead&quot;)]] = new_name</initializer>
+        <initializer>    using old_name [[deprecated(&quot;use &quot; #new_name &quot; instead&quot;)]] = new_name</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/adi.hpp" line="32" column="9" bodyfile="pros/adi.hpp" bodystart="32" bodyend="-1"/>
+        <location file="pros/adi.hpp" line="32" column="9" bodyfile="pros/adi.hpp" bodystart="32" bodyend="33"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="typedef">
+    </sectiondef>
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespacepros_1_1adi_1aa8b90563c470741ebd760aeacfd90599" prot="public" static="no">
         <type>std::pair&lt; std::uint8_t, std::uint8_t &gt;</type>
         <definition>using ext_adi_port_pair_t =  std::pair&lt;std::uint8_t, std::uint8_t&gt;</definition>
         <argsstring></argsstring>
         <name>ext_adi_port_pair_t</name>
+        <qualifiedname>pros::adi::ext_adi_port_pair_t</qualifiedname>
         <briefdescription>
 <para>type definition for the pair of smart port and adi port for the basic adi devices </para>
         </briefdescription>
@@ -137,6 +138,7 @@
         <definition>using ext_adi_port_tuple_t =  std::tuple&lt;std::uint8_t, std::uint8_t, std::uint8_t&gt;</definition>
         <argsstring></argsstring>
         <name>ext_adi_port_tuple_t</name>
+        <qualifiedname>pros::adi::ext_adi_port_tuple_t</qualifiedname>
         <briefdescription>
 <para>type definition for the triplet of smart port and two adi ports for the two wire adi devices </para>
         </briefdescription>
@@ -151,6 +153,7 @@
         <definition>using LineSensor =  AnalogIn</definition>
         <argsstring></argsstring>
         <name>LineSensor</name>
+        <qualifiedname>pros::adi::LineSensor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -164,6 +167,7 @@
         <definition>using LightSensor =  AnalogIn</definition>
         <argsstring></argsstring>
         <name>LightSensor</name>
+        <qualifiedname>pros::adi::LightSensor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -177,6 +181,7 @@
         <definition>using Accelerometer =  AnalogIn</definition>
         <argsstring></argsstring>
         <name>Accelerometer</name>
+        <qualifiedname>pros::adi::Accelerometer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -190,6 +195,7 @@
         <definition>using Button =  DigitalIn</definition>
         <argsstring></argsstring>
         <name>Button</name>
+        <qualifiedname>pros::adi::Button</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -203,6 +209,7 @@
         <definition>using LED =  Led</definition>
         <argsstring></argsstring>
         <name>LED</name>
+        <qualifiedname>pros::adi::LED</qualifiedname>
         <briefdescription>
 <para>Alias for ADILed. </para>
         </briefdescription>
@@ -212,13 +219,14 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="1770" column="1" bodyfile="pros/adi.hpp" bodystart="1770" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespacepros_1acf15d6d8765eca8f8c213b26e330735f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacepros_1a5d10c7eb5336fe88bb9e033803a6bfb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIPort, pros::adi::Port)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIPort</type>
         </param>
@@ -233,11 +241,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2023" column="1" declfile="pros/adi.hpp" declline="2023" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1ad2c357c28981520c44cec73279f804ed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1acba133a002e2dfd045d375dfd5761bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIAnalogIn, pros::adi::AnalogIn)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIAnalogIn</type>
         </param>
@@ -252,11 +261,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2024" column="1" declfile="pros/adi.hpp" declline="2024" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a901d82f15c0f291580a69f28515445a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a0827463814a8c699003750884afb8590" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIAnalogOut, pros::adi::AnalogOut)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIAnalogOut</type>
         </param>
@@ -271,11 +281,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2025" column="1" declfile="pros/adi.hpp" declline="2025" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a89a800ddc650af3391de92f713caec48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a643b5f71650bd972404eac0afa6b6afe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIDigitalIn, pros::adi::DigitalIn)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIDigitalIn</type>
         </param>
@@ -290,11 +301,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2026" column="1" declfile="pros/adi.hpp" declline="2026" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a1cd7b8f8f811c5cb139b5e274e9c0865" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1ab662c6e297490e8f55c739631b7c3c9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIDigitalOut, pros::adi::DigitalOut)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIDigitalOut</type>
         </param>
@@ -309,11 +321,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2027" column="1" declfile="pros/adi.hpp" declline="2027" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1aeb60eddc5dc15ff82bcdd69dc3c64e3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1ac442e33c3873de232d344d409c328af6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIMotor, pros::adi::Motor)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIMotor</type>
         </param>
@@ -328,11 +341,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2028" column="1" declfile="pros/adi.hpp" declline="2028" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a4d53428ef0f12b6a6d1b6c2ac9dbda6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a4b44a418f0d54d7e6be004bebf6ce65b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIGyro, pros::adi::Gyro)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIGyro</type>
         </param>
@@ -347,11 +361,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2029" column="1" declfile="pros/adi.hpp" declline="2029" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a0c30b605aa72408919edcaa73f6fb1f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a8e6c1e0f8a0d18815a8157b8a9092ab0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIEncoder, pros::adi::Encoder)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIEncoder</type>
         </param>
@@ -366,11 +381,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2030" column="1" declfile="pros/adi.hpp" declline="2030" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1afe34bab2eb3eb5316a002871dff1e277" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1ade3e500f8f01898bd0759893fbf02b44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIUltrasonic, pros::adi::Ultrasonic)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIUltrasonic</type>
         </param>
@@ -385,11 +401,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2031" column="1" declfile="pros/adi.hpp" declline="2031" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a70f8b7d8c332bfd47f25f32a8abed210" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1abde08be228859a73b17729fd95878bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(LED, pros::adi::Led)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>LED</type>
         </param>
@@ -404,11 +421,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2032" column="1" declfile="pros/adi.hpp" declline="2032" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1af08e96b8369d135667d6b50b5ba0501e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1aa3795b26b3be5502bbac77fe9e63c758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIPotentiometer, pros::adi::Potentiometer)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIPotentiometer</type>
         </param>
@@ -423,11 +441,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2035" column="1" declfile="pros/adi.hpp" declline="2035" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1ab3a2ae495201c1fc855912a701c19a2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a6dba1328154236583bd73efca623f2fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADILineSensor, pros::adi::LineSensor)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADILineSensor</type>
         </param>
@@ -442,11 +461,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2036" column="1" declfile="pros/adi.hpp" declline="2036" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a21b38f7a38d5e33a712a75e19563114d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a954e86d3181c0f2cbdb4cc6a8d7f5ee8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADILightSensor, pros::adi::LightSensor)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADILightSensor</type>
         </param>
@@ -461,11 +481,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2037" column="1" declfile="pros/adi.hpp" declline="2037" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a6e169088b436b4178a324f5872e89148" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a0cc49796529132be45e8335b0fd48270" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIAccelerometer, pros::adi::Accelerometer)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIAccelerometer</type>
         </param>
@@ -480,11 +501,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2038" column="1" declfile="pros/adi.hpp" declline="2038" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1a3958cffc6a92e5366e2bf4b5ffb7b92e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a78e822744f598a004460edd01fd7c0e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIButton, pros::adi::Button)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIButton</type>
         </param>
@@ -499,11 +521,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2039" column="1" declfile="pros/adi.hpp" declline="2039" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1af395abda0ab3f07bf59a5fbc34b62219" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a435dc2704b311346ac6bdcbe9f2b6c9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADIPneumatics, pros::adi::Pneumatics)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADIPneumatics</type>
         </param>
@@ -518,11 +541,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2040" column="1" declfile="pros/adi.hpp" declline="2040" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1ad5fdc30e5c52dc442fe804edc7eabce3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a9b204bc5def12462f8213e0b837dcaa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADILED, pros::adi::Led)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADILED</type>
         </param>
@@ -537,11 +561,12 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2041" column="1" declfile="pros/adi.hpp" declline="2041" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespacepros_1aaafa1ec0d59db197126969c5c76f9b6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacepros_1a5d90461d902f1b78e89c245843ce26d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
-        <definition>pros::LEGACY_TYPEDEF</definition>
+        <definition>LEGACY_TYPEDEF</definition>
         <argsstring>(ADILed, pros::adi::Led)</argsstring>
         <name>LEGACY_TYPEDEF</name>
+        <qualifiedname>pros::LEGACY_TYPEDEF</qualifiedname>
         <param>
           <type>ADILed</type>
         </param>
@@ -556,11 +581,11 @@
         </inbodydescription>
         <location file="pros/adi.hpp" line="2042" column="1" declfile="pros/adi.hpp" declline="2042" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
+<para>Contains prototypes for interfacing with the ADI. </para>
     </briefdescription>
     <detaileddescription>
-<para>Contains prototypes for interfacing with the ADI.</para>
 <para>This file should not be modified by users, since it gets replaced whenever a kernel upgrade occurs.</para>
 <para><simplesect kind="copyright"><para>(c) 2017-2024, Purdue University ACM SIGBots.</para>
 </simplesect>

@@ -1,30 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="faq" kind="page">
     <compoundname>faq</compoundname>
     <title>Coding FAQ</title>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<sect2 id="faq_1autotoc_md31">
-<title>Coding FAQ</title>
-<para><itemizedlist>
+<sect1 id="faq_1autotoc_md31_1s1"><sect2 id="faq_1autotoc_md31">
+<title>Coding FAQ</title><para><itemizedlist>
 <listitem><para><computeroutput>&quot;main.h&quot; file not found</computeroutput>: This error occurs when the compilation database <computeroutput>compile_commands.json</computeroutput> is not up to date. The file contains the exact compiler calls of the project, and should be automatically populated when the code is compiled. If you see this error just after creating a project, it could be because the project was created using the CLI without the <computeroutput>–compile-after</computeroutput> flag, or there was a hang-up in the editor after creating the project. Regardless of when this issue appears, running <computeroutput>pros make all</computeroutput> in the CLI or running <computeroutput>PROS -&gt; Build -&gt; All</computeroutput> in the editor, the whole project is compiled again, fixing this issue. You may need to close and reopen any files in order for the linter to catch up. It is also possible that a compilation error was not caught by the linter, so running a full build will help discover these hidden errors.</para>
 </listitem></itemizedlist>
 </para>
-</sect2>
-<sect2 id="faq_1autotoc_md32">
-<title>Compile-Time Issues</title>
-<para><itemizedlist>
+</sect2></sect1>
+<sect1 id="faq_1autotoc_md32_1s1"><sect2 id="faq_1autotoc_md32">
+<title>Compile-Time Issues</title><para><itemizedlist>
 <listitem><para><computeroutput>undefined reference to ...</computeroutput> or <computeroutput>implicit declaration of function ...</computeroutput>: A function name is spelled incorrectly, or the function was incorrectly declared in a header file. Custom headers must be included in <computeroutput><ref refid="main_8h" kindref="compound">main.h</ref></computeroutput> or in the file in which they are used.</para>
 </listitem><listitem><para><computeroutput>format ... expects argument of type ..., but argument has type ...</computeroutput>: The value provided to a function like <computeroutput>printf &lt;<ulink url="http://www.cplusplus.com/reference/cstdio/printf/">http://www.cplusplus.com/reference/cstdio/printf/</ulink>&gt;</computeroutput>_ or <computeroutput>lcd_print &lt;../../api/c/llemu.html#lcd-print&gt;</computeroutput>_ does not match the expected type inferred from the format string. Some instances of this warning can be safely ignored, but crashes can occur if types <computeroutput>double</computeroutput> or <computeroutput>long long</computeroutput> are mixed with other types.</para>
 </listitem><listitem><para><computeroutput>assignment makes pointer from integer without a cast</computeroutput>: Typically caused when a C pointer has the wrong number of asterisks to <computeroutput>dereference &lt;<ulink url="http://stackoverflow.com/a/4955297/3681958">http://stackoverflow.com/a/4955297/3681958</ulink>&gt;</computeroutput>_ it, or when assigning a constant to <computeroutput>pointer</computeroutput> (instead of <computeroutput>*pointer</computeroutput>).</para>
 </listitem></itemizedlist>
 </para>
-</sect2>
-<sect2 id="faq_1autotoc_md33">
-<title>Run-Time Issues</title>
-<para><itemizedlist>
+</sect2></sect1>
+<sect1 id="faq_1autotoc_md33_1s1"><sect2 id="faq_1autotoc_md33">
+<title>Run-Time Issues</title><para><itemizedlist>
 <listitem><para><bold>Some tasks are running, others are not:</bold> A task is not waiting using <computeroutput>delay &lt;../../api/c/rtos.html#delay&gt;</computeroutput>_ or <computeroutput>task_delay_until &lt;../../api/c/rtos.html#task-delay-until&gt;</computeroutput>_. Due to the fact that PROS utilizes a priority based non-preemptive scheduler, tasks of higher or equal priority to the blocking task will still run while lower priority tasks will not. This scenario is also known as <computeroutput>starvation &lt;<ulink url="https://en.wikipedia.org/wiki/Starvation_(computer_science)">https://en.wikipedia.org/wiki/Starvation_(computer_science)</ulink>&gt;</computeroutput>_. See <computeroutput>Tasks/Multithreading &lt;/tutorials/topical/multitasking&gt;</computeroutput>_ for more information.</para>
 </listitem><listitem><para><bold>VEX LCD updates very slowly or is &quot;frozen&quot;:</bold> A task is not waiting using <computeroutput>delay &lt;../../api/c/rtos.html#delay&gt;</computeroutput>_ or <computeroutput>task_delay_until &lt;../../api/c/rtos.html#task-delay-until&gt;</computeroutput>_. From the kernel&apos;s perspective, updating the LCD is usually less important than how well the robot is running, so PROS prioritizes user tasks over the LCD.</para>
 <para>The LCD is only updated if all other tasks are waiting.</para>
@@ -41,7 +38,8 @@
 </listitem></itemizedlist>
 </para>
 <para>.. _printf: <ulink url="http://www.cplusplus.com/reference/cstdio/printf/">http://www.cplusplus.com/reference/cstdio/printf/</ulink> </para>
-</sect2>
+</sect2></sect1>
     </detaileddescription>
+    <location file="docs/tutorials/general/coding-faq.md"/>
   </compounddef>
 </doxygen>

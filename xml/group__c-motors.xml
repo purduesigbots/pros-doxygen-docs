@@ -1,18 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="group__c-motors" kind="group">
     <compoundname>c-motors</compoundname>
     <title>Motors C API</title>
     <innerfile refid="motors_8h">motors.h</innerfile>
-      <sectiondef kind="user-defined">
+    <sectiondef kind="user-defined">
       <header>Motor movement functions</header>
       <description><para>These functions allow programmers to make motors move </para>
 </description>
-      <memberdef kind="function" id="group__c-motors_1gac76e46064191f91bf2546335caccf6b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move</definition>
+        <definition>int32_t motor_move</definition>
         <argsstring>(int8_t port, int32_t voltage)</argsstring>
         <name>motor_move</name>
+        <qualifiedname>pros::c::motor_move</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -25,7 +26,7 @@
 <para>Sets the voltage for the motor from -127 to 127. </para>
         </briefdescription>
         <detaileddescription>
-<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" kindref="member">motor_move_voltage()</ref>.</para>
+<para>This is designed to map easily to the input from the controller&apos;s analog stick for simple opcontrol use. The actual behavior of the motor is analogous to use of <ref refid="group__c-motors_1gaec0d8c25cf301db219e14d4120111772" kindref="member">motor_move_voltage()</ref>.</para>
 <para><simplesect kind="note"><para>This function will not respect brake modes, and simply sets the voltage to the desired value.</para>
 </simplesect>
 <simplesect kind="note"><para>A negative port will negate the input voltage</para>
@@ -50,10 +51,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -62,11 +63,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="79" column="9" declfile="pros/motors.h" declline="79" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa5f42cf9767315e3bf2f465cf64faf80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gaaee4a094e60b2982d25ecb7220da4877" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_brake</definition>
+        <definition>int32_t motor_brake</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_brake</name>
+        <qualifiedname>pros::c::motor_brake</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -88,9 +90,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_move(1,<sp/>127);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>delay(1000);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/>127);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(1000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_break(1);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -99,11 +101,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="109" column="9" declfile="pros/motors.h" declline="109" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaeab0d89347dae23cfb25a0c3c4e8b55a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_absolute</definition>
+        <definition>int32_t motor_move_absolute</definition>
         <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
         <name>motor_move_absolute</name>
+        <qualifiedname>pros::c::motor_move_absolute</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -120,7 +123,7 @@ This function uses the following values of errno when an error state is reached:
 <para>Sets the target absolute position for the motor to move to. </para>
         </briefdescription>
         <detaileddescription>
-<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="namespacepros_1_1c_1a4aec20e889c09650f066f4e28048c19b" kindref="member">motor_set_zero_position()</ref>.</para>
+<para>This movement is relative to the position of the motor when initialized or the position when it was most recently reset with <ref refid="namespacepros_1_1c_1a4ba666a7a23e8f29fb5476fc0232c258" kindref="member">motor_set_zero_position()</ref>.</para>
 <para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
 </simplesect>
 <simplesect kind="note"><para>A negative port number will negate the target position</para>
@@ -153,21 +156,21 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>This<sp/>will<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>will<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_tare_position(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1c_1ab1b33e6dd0ef52447a9c7029ad779008" kindref="member">motor_tare_position</ref>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -176,11 +179,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="158" column="9" declfile="pros/motors.h" declline="158" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gab51091352630168597e8e30bde079eb2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga979552d772e0a07f10c48d5646ad793f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_relative</definition>
+        <definition>int32_t motor_move_relative</definition>
         <argsstring>(int8_t port, double position, const int32_t velocity)</argsstring>
         <name>motor_move_relative</name>
+        <qualifiedname>pros::c::motor_move_relative</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -197,7 +201,7 @@ This function uses the following values of errno when an error state is reached:
 <para>Sets the relative target position for the motor to move to. </para>
         </briefdescription>
         <detaileddescription>
-<para>This movement is relative to the current position of the motor as given in <ref refid="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" kindref="member">motor_get_position()</ref>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
+<para>This movement is relative to the current position of the motor as given in <ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position()</ref>. Providing 10.0 as the position parameter would result in the motor moving clockwise 10 units, no matter what the current position is.</para>
 <para><simplesect kind="note"><para>This function simply sets the target for the motor, it does not block program execution until the movement finishes. The example code shows how to block until a movement is finished.</para>
 </simplesect>
 <simplesect kind="note"><para>A negative port will negate the target position</para>
@@ -230,16 +234,16 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_relative(1,<sp/>100,<sp/>100);<sp/>//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga979552d772e0a07f10c48d5646ad793f" kindref="member">motor_move_relative</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_relative(1,<sp/>100,<sp/>100);<sp/>//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(!((motor_get_position(1)<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(motor_get_position(1)<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga979552d772e0a07f10c48d5646ad793f" kindref="member">motor_move_relative</ref>(1,<sp/>100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(<ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1)<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -248,11 +252,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="205" column="9" declfile="pros/motors.h" declline="205" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa33296eaa7d7bddef72e9606e72bcc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga71532a248061542a59d553d0925310ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_velocity</definition>
+        <definition>int32_t motor_move_velocity</definition>
         <argsstring>(int8_t port, const int32_t velocity)</argsstring>
         <name>motor_move_velocity</name>
+        <qualifiedname>pros::c::motor_move_velocity</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -288,10 +293,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_velocity(1,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_velocity(1,<sp/>0);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga71532a248061542a59d553d0925310ea" kindref="member">motor_move_velocity</ref>(1,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga71532a248061542a59d553d0925310ea" kindref="member">motor_move_velocity</ref>(1,<sp/>0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -299,11 +304,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="241" column="9" declfile="pros/motors.h" declline="241" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaa1412c80eedabb6cd86159d51184b283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gaec0d8c25cf301db219e14d4120111772" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_move_voltage</definition>
+        <definition>int32_t motor_move_voltage</definition>
         <argsstring>(int8_t port, const int32_t voltage)</argsstring>
         <name>motor_move_voltage</name>
+        <qualifiedname>pros::c::motor_move_voltage</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -340,10 +346,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_voltage(1,<sp/>12000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(1000);<sp/>//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_voltage(1,<sp/>0);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1gaec0d8c25cf301db219e14d4120111772" kindref="member">motor_move_voltage</ref>(1,<sp/>12000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1gaec0d8c25cf301db219e14d4120111772" kindref="member">motor_move_voltage</ref>(1,<sp/>0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -351,11 +357,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="273" column="9" declfile="pros/motors.h" declline="273" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga8815309c8900190c036e43c223afc0b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga65aa160210391fb7670b2170b6edd6ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_modify_profiled_velocity</definition>
+        <definition>int32_t motor_modify_profiled_velocity</definition>
         <argsstring>(int8_t port, const int32_t velocity)</argsstring>
         <name>motor_modify_profiled_velocity</name>
+        <qualifiedname>pros::c::motor_modify_profiled_velocity</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -391,10 +398,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_modify_profiled_velocity(1,<sp/>0);<sp/>//<sp/>Stop<sp/>the<sp/>motor<sp/>early</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga65aa160210391fb7670b2170b6edd6ba" kindref="member">motor_modify_profiled_velocity</ref>(1,<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>motor<sp/>early</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -402,11 +409,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="305" column="9" declfile="pros/motors.h" declline="305" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga1d612333c59cacac2b6daf8085605213" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga4cd78c1e95fb14506c58f12a0c94116d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_target_position</definition>
+        <definition>double motor_get_target_position</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_target_position</name>
+        <qualifiedname>pros::c::motor_get_target_position</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -429,10 +437,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>autonomous()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>motor_move_absolute(1,<sp/>100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Motor<sp/>Target:<sp/>%d\n&quot;,<sp/>motor_get_target_position(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>//<sp/>Prints<sp/>100</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__c-motors_1ga0ad7ee8dd077a584890f5f30efda9d2e" kindref="member">motor_move_absolute</ref>(1,<sp/>100,<sp/>100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Target:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga4cd78c1e95fb14506c58f12a0c94116d" kindref="member">motor_get_target_position</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>100</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -440,11 +448,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="332" column="8" declfile="pros/motors.h" declline="332" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga14476b124c9072efc14ad2cbcf6481ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga3de0889a9ae4b14b3b5a6d111928052c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_target_velocity</definition>
+        <definition>int32_t motor_get_target_velocity</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_target_velocity</name>
+        <qualifiedname>pros::c::motor_get_target_velocity</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -467,11 +476,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move_velocity(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Commanded<sp/>Velocity:<sp/>%d\n&quot;,<sp/>motor_get_target_velocity(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga71532a248061542a59d553d0925310ea" kindref="member">motor_move_velocity</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Commanded<sp/>Velocity:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga3de0889a9ae4b14b3b5a6d111928052c" kindref="member">motor_get_target_velocity</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -480,16 +489,17 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="361" column="9" declfile="pros/motors.h" declline="361" declcolumn="9"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="user-defined">
+    </sectiondef>
+    <sectiondef kind="user-defined">
       <header>Motor telemetry functions</header>
       <description><para>These functions allow programmers to collect telemetry from motors </para>
 </description>
-      <memberdef kind="function" id="group__c-motors_1ga2ad53ef4a029ef4860d840ba3fa27cac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga23fc650901d4e2e41f7e0b28e96f49fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_actual_velocity</definition>
+        <definition>double motor_get_actual_velocity</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_actual_velocity</name>
+        <qualifiedname>pros::c::motor_get_actual_velocity</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -512,11 +522,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;,<sp/>motor_get_actual_velocity(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga23fc650901d4e2e41f7e0b28e96f49fa" kindref="member">motor_get_actual_velocity</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -525,11 +535,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="396" column="8" declfile="pros/motors.h" declline="396" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga42567d532e2ca7c25ea54c17ac3c7742" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gaa158b475c4cab293b025a63b668e419a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_current_draw</definition>
+        <definition>int32_t motor_get_current_draw</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_current_draw</name>
+        <qualifiedname>pros::c::motor_get_current_draw</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -550,11 +561,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Current<sp/>Draw:<sp/>%d\n&quot;,<sp/>motor_get_current_draw(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Draw:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1gaa158b475c4cab293b025a63b668e419a" kindref="member">motor_get_current_draw</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -563,11 +574,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="423" column="9" declfile="pros/motors.h" declline="423" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga0f9c29ae5adda0f2d753b8e7c2af5c6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga8663560665438ed7cd4f3f8e523d2a5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_direction</definition>
+        <definition>int32_t motor_get_direction</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_direction</name>
+        <qualifiedname>pros::c::motor_get_direction</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -590,11 +602,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Direction:<sp/>%d\n&quot;,<sp/>motor_get_direction(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Direction:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga8663560665438ed7cd4f3f8e523d2a5d" kindref="member">motor_get_direction</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -603,11 +615,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="452" column="9" declfile="pros/motors.h" declline="452" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga7a974a7c9626135e8fc19525623d3a15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga08e2a72d59ac24f3e12a04ca41f5d022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_efficiency</definition>
+        <definition>double motor_get_efficiency</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_efficiency</name>
+        <qualifiedname>pros::c::motor_get_efficiency</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -629,11 +642,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Efficiency:<sp/>%d\n&quot;,<sp/>motor_get_efficiency(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Efficiency:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga08e2a72d59ac24f3e12a04ca41f5d022" kindref="member">motor_get_efficiency</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -642,11 +655,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="483" column="8" declfile="pros/motors.h" declline="483" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga155b9e37b6dba8e0530cc153cdb5c55e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga8bcfb650bda8c8b4d9e362ad00f16091" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_is_over_current</definition>
+        <definition>int32_t motor_is_over_current</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_is_over_current</name>
+        <qualifiedname>pros::c::motor_is_over_current</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -667,11 +681,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Current<sp/>Limit<sp/>Hit?:<sp/>%d\n&quot;,<sp/>motor_is_over_current(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Limit<sp/>Hit?:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga8bcfb650bda8c8b4d9e362ad00f16091" kindref="member">motor_is_over_current</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -680,11 +694,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="510" column="9" declfile="pros/motors.h" declline="510" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gad47d180d2620885f1d2b3a1b0d867da2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gab457c1b2a7840260e5b46b89eed11b5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_is_over_temp</definition>
+        <definition>int32_t motor_is_over_temp</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_is_over_temp</name>
+        <qualifiedname>pros::c::motor_is_over_temp</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -705,11 +720,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the the temperature is below the limit, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Temp<sp/>Limit:<sp/>%d\n&quot;,<sp/>motor_is_over_temp(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Temp<sp/>Limit:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1gab457c1b2a7840260e5b46b89eed11b5d" kindref="member">motor_is_over_temp</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -718,13 +733,14 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="537" column="9" declfile="pros/motors.h" declline="537" declcolumn="9"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="group__c-motors_1ga2cbdf023d7dfb10606b70422fe698616" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__c-motors_1ga331d74978f66b713465d51a5495ab910" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
-        <definition>uint32_t pros::c::motor_get_faults</definition>
+        <definition>uint32_t motor_get_faults</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_faults</name>
+        <qualifiedname>pros::c::motor_get_faults</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -746,11 +762,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>A bitfield containing the motor&apos;s faults.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Faults:<sp/>%d\n&quot;,<sp/>motor_get_faults(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga331d74978f66b713465d51a5495ab910" kindref="member">motor_get_faults</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -759,11 +775,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="607" column="10" declfile="pros/motors.h" declline="607" declcolumn="10"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga29a31e20d6203737a15b77d7b2479da8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga5067a982c9ffb97ab775b4a2fd0b85c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
-        <definition>uint32_t pros::c::motor_get_flags</definition>
+        <definition>uint32_t motor_get_flags</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_flags</name>
+        <qualifiedname>pros::c::motor_get_flags</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -785,11 +802,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>A bitfield containing the motor&apos;s flags.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Flags:<sp/>%d\n&quot;,<sp/>motor_get_flags(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Flags:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga5067a982c9ffb97ab775b4a2fd0b85c9" kindref="member">motor_get_flags</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -798,11 +815,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="672" column="10" declfile="pros/motors.h" declline="672" declcolumn="10"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gae7399c7b8bde6a7c371e5a67e85b1d0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga4c777d4111897794eced1b02403de957" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_raw_position</definition>
+        <definition>int32_t motor_get_raw_position</definition>
         <argsstring>(int8_t port, uint32_t *const timestamp)</argsstring>
         <name>motor_get_raw_position</name>
+        <qualifiedname>pros::c::motor_get_raw_position</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -837,12 +855,12 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Encoder<sp/>Count:<sp/>%d\n&quot;,<sp/>motor_get_raw_position(1,<sp/>&amp;now));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/><ref refid="group__c-rtos_1gacd8d13c328bebdf9eddea27ff9448c2d" kindref="member">millis</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Encoder<sp/>Count:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga4c777d4111897794eced1b02403de957" kindref="member">motor_get_raw_position</ref>(1,<sp/>&amp;now));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -851,11 +869,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="706" column="9" declfile="pros/motors.h" declline="706" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga113fbf1950304b3a56705722b283c3a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_position</definition>
+        <definition>double motor_get_position</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_position</name>
+        <qualifiedname>pros::c::motor_get_position</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -878,11 +897,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Position:<sp/>%lf\n&quot;,<sp/>motor_get_position(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Position:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga0c7a043db32efbaca919514cb68d2d01" kindref="member">motor_get_position</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -891,11 +910,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="735" column="8" declfile="pros/motors.h" declline="735" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaaaf993792ce15b7b025b8177b3af01c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga42f81ce853b56cf5beab631611d49e80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_power</definition>
+        <definition>double motor_get_power</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_power</name>
+        <qualifiedname>pros::c::motor_get_power</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -916,12 +936,12 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/>millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Power:<sp/>%lf\n&quot;,<sp/>motor_get_power(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>uint32_t<sp/>now<sp/>=<sp/><ref refid="group__c-rtos_1gacd8d13c328bebdf9eddea27ff9448c2d" kindref="member">millis</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Power:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga42f81ce853b56cf5beab631611d49e80" kindref="member">motor_get_power</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -930,11 +950,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="763" column="8" declfile="pros/motors.h" declline="763" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga22a0f1bb6100680ea52d32f9053ec5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga344b4ad711dc9ea8538b8b7ed2ad8bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_temperature</definition>
+        <definition>double motor_get_temperature</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_temperature</name>
+        <qualifiedname>pros::c::motor_get_temperature</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -955,11 +976,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Temperature:<sp/>%lf\n&quot;,<sp/>motor_get_temperature(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Temperature:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga344b4ad711dc9ea8538b8b7ed2ad8bd1" kindref="member">motor_get_temperature</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -968,11 +989,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="790" column="8" declfile="pros/motors.h" declline="790" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1gaea02a297a5d59b4ca640a038e2a90edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1gad0016aa5490f14b5cfb1bf7a7164fac7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::c::motor_get_torque</definition>
+        <definition>double motor_get_torque</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_torque</name>
+        <qualifiedname>pros::c::motor_get_torque</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -993,11 +1015,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Torque:<sp/>%lf\n&quot;,<sp/>motor_get_torque(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Torque:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1gad0016aa5490f14b5cfb1bf7a7164fac7" kindref="member">motor_get_torque</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1006,11 +1028,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="817" column="8" declfile="pros/motors.h" declline="817" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__c-motors_1ga5d1e2d0ca02dfe1b53bc577f8b9a1ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__c-motors_1ga7393fc003a250c41ab6301190e683808" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::c::motor_get_voltage</definition>
+        <definition>int32_t motor_get_voltage</definition>
         <argsstring>(int8_t port)</argsstring>
         <name>motor_get_voltage</name>
+        <qualifiedname>pros::c::motor_get_voltage</qualifiedname>
         <param>
           <type>int8_t</type>
           <declname>port</declname>
@@ -1031,11 +1054,11 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>controller_get_analog(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(&quot;Motor<sp/>Voltage:<sp/>%lf\n&quot;,<sp/>motor_get_voltage(1));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__c-motors_1ga7393fc003a250c41ab6301190e683808" kindref="member">motor_get_voltage</ref>(1));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-rtos_1gab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1044,7 +1067,7 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/motors.h" line="844" column="9" declfile="pros/motors.h" declline="844" declcolumn="9"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
   <compounddef id="group__cpp-misc" kind="group">
     <compoundname>cpp-misc</compoundname>
     <title>Miscellaneous C++ API</title>
     <innerclass refid="classpros_1_1v5_1_1Controller" prot="public">pros::v5::Controller</innerclass>
-      <sectiondef kind="var">
+    <sectiondef kind="var">
       <memberdef kind="variable" id="group__cpp-misc_1ga87feae64216cf22775b662fbc5f20048" prot="private" static="no" mutable="no">
         <type>controller_id_e_t</type>
         <definition>controller_id_e_t _id</definition>
         <argsstring></argsstring>
         <name>_id</name>
+        <qualifiedname>pros::v5::Controller::_id</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,13 +19,14 @@
         </inbodydescription>
         <location file="pros/misc.hpp" line="403" column="19" bodyfile="pros/misc.hpp" bodystart="403" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
+    </sectiondef>
+    <sectiondef kind="func">
       <memberdef kind="function" id="group__cpp-misc_1ga652922e5c7390ce35a405959dda1d68a" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>Controller</definition>
         <argsstring>(controller_id_e_t id)</argsstring>
         <name>Controller</name>
+        <qualifiedname>pros::v5::Controller::Controller</qualifiedname>
         <param>
           <type>controller_id_e_t</type>
           <declname>id</declname>
@@ -53,6 +55,7 @@
         <definition>std::int32_t is_connected</definition>
         <argsstring>(void)</argsstring>
         <name>is_connected</name>
+        <qualifiedname>pros::v5::Controller::is_connected</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -63,10 +66,10 @@
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
 <para><simplesect kind="return"><para>1 if the controller is connected, 0 otherwise</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>status_display_controller(){</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if(!master.is_connected())<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::lcd::print(0,<sp/>&quot;Main<sp/>controller<sp/>is<sp/>not<sp/>connected!&quot;);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>status_display_controller(){</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!master.is_connected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__cpp-llemu_1gabb0b0cd54030fcac8b041b5d3f79e5cb" kindref="member">pros::lcd::print</ref>(0,<sp/></highlight><highlight class="stringliteral">&quot;Main<sp/>controller<sp/>is<sp/>not<sp/>connected!&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -80,6 +83,7 @@
         <definition>std::int32_t get_analog</definition>
         <argsstring>(controller_analog_e_t channel)</argsstring>
         <name>get_analog</name>
+        <qualifiedname>pros::v5::Controller::get_analog</qualifiedname>
         <param>
           <type>controller_analog_e_t</type>
           <declname>channel</declname>
@@ -100,10 +104,10 @@
 </parameterlist>
 <simplesect kind="return"><para>The current reading of the analog channel: [-127, 127]. If the controller was not connected, then 0 is returned</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_move(1,<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__c-motors_1ga4599c4456e8c9ffeeb5e920d58ad1688" kindref="member">motor_move</ref>(1,<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -118,6 +122,7 @@
         <definition>std::int32_t get_battery_capacity</definition>
         <argsstring>(void)</argsstring>
         <name>get_battery_capacity</name>
+        <qualifiedname>pros::v5::Controller::get_battery_capacity</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -128,9 +133,9 @@
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
 <para><simplesect kind="return"><para>The controller&apos;s battery capacity</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Capacity:<sp/>%d\n&quot;,<sp/>master.get_battery_capacity());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Capacity:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>master.get_battery_capacity());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -143,6 +148,7 @@
         <definition>std::int32_t get_battery_level</definition>
         <argsstring>(void)</argsstring>
         <name>get_battery_level</name>
+        <qualifiedname>pros::v5::Controller::get_battery_level</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -153,9 +159,9 @@
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
 <para><simplesect kind="return"><para>The controller&apos;s battery level</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%d\n&quot;,<sp/>master.get_battery_level());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Level:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>master.get_battery_level());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -168,6 +174,7 @@
         <definition>std::int32_t get_digital</definition>
         <argsstring>(controller_digital_e_t button)</argsstring>
         <name>get_digital</name>
+        <qualifiedname>pros::v5::Controller::get_digital</qualifiedname>
         <param>
           <type>controller_digital_e_t</type>
           <declname>button</declname>
@@ -188,13 +195,13 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the button on the controller is pressed. If the controller was not connected, then 0 is returned</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(master.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(master.get_digital(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor_set(1,<sp/>0);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
@@ -211,6 +218,7 @@
         <definition>std::int32_t get_digital_new_press</definition>
         <argsstring>(controller_digital_e_t button)</argsstring>
         <name>get_digital_new_press</name>
+        <qualifiedname>pros::v5::Controller::get_digital_new_press</qualifiedname>
         <param>
           <type>controller_digital_e_t</type>
           <declname>button</declname>
@@ -232,13 +240,13 @@
 </parameterlist>
 <simplesect kind="return"><para>1 if the button on the controller is pressed and had not been pressed the last time this function was called, 0 otherwise.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>similar<sp/>actions</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>similar<sp/>actions</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -258,6 +266,7 @@
         <definition>T convert_args</definition>
         <argsstring>(T arg)</argsstring>
         <name>convert_args</name>
+        <qualifiedname>pros::v5::Controller::convert_args</qualifiedname>
         <param>
           <type>T</type>
           <declname>arg</declname>
@@ -270,11 +279,12 @@
         </inbodydescription>
         <location file="pros/misc.hpp" line="217" column="3" bodyfile="pros/misc.hpp" bodystart="217" bodyend="219"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-misc_1ga157a634f89e6ec862d929edeaa529cff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga4558de96ee6162ee8253079a777d51a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
-        <definition>const char* convert_args</definition>
+        <definition>const char * convert_args</definition>
         <argsstring>(const std::string &amp;arg)</argsstring>
         <name>convert_args</name>
+        <qualifiedname>pros::v5::Controller::convert_args</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>arg</declname>
@@ -299,6 +309,7 @@
         <definition>std::int32_t print</definition>
         <argsstring>(std::uint8_t line, std::uint8_t col, const char *fmt, Params... args)</argsstring>
         <name>print</name>
+        <qualifiedname>pros::v5::Controller::print</qualifiedname>
         <param>
           <type>std::uint8_t</type>
           <declname>line</declname>
@@ -357,13 +368,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.print(0,<sp/>0,<sp/>&quot;Counter:<sp/>%d&quot;,<sp/>count);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.print(0,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Counter:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>count);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>delay(2);</highlight></codeline>
@@ -380,6 +391,7 @@ This function uses the following values of errno when an error state is reached:
         <definition>std::int32_t set_text</definition>
         <argsstring>(std::uint8_t line, std::uint8_t col, const char *str)</argsstring>
         <name>set_text</name>
+        <qualifiedname>pros::v5::Controller::set_text</qualifiedname>
         <param>
           <type>std::uint8_t</type>
           <declname>line</declname>
@@ -426,13 +438,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example<sp/>text&quot;);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>print<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>text<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>master.set_text(0,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Example<sp/>text&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
@@ -449,6 +461,7 @@ This function uses the following values of errno when an error state is reached:
         <definition>std::int32_t set_text</definition>
         <argsstring>(std::uint8_t line, std::uint8_t col, const std::string &amp;str)</argsstring>
         <name>set_text</name>
+        <qualifiedname>pros::v5::Controller::set_text</qualifiedname>
         <param>
           <type>std::uint8_t</type>
           <declname>line</declname>
@@ -474,6 +487,7 @@ This function uses the following values of errno when an error state is reached:
         <definition>std::int32_t clear_line</definition>
         <argsstring>(std::uint8_t line)</argsstring>
         <name>clear_line</name>
+        <qualifiedname>pros::v5::Controller::clear_line</qualifiedname>
         <param>
           <type>std::uint8_t</type>
           <declname>line</declname>
@@ -496,9 +510,9 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Example&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>master.clear_line(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -513,6 +527,7 @@ This function uses the following values of errno when an error state is reached:
         <definition>std::int32_t rumble</definition>
         <argsstring>(const char *rumble_pattern)</argsstring>
         <name>rumble</name>
+        <qualifiedname>pros::v5::Controller::rumble</qualifiedname>
         <param>
           <type>const char *</type>
           <declname>rumble_pattern</declname>
@@ -535,13 +550,13 @@ This function uses the following values of errno when an error state is reached:
 </parameterlist>
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>int<sp/>count<sp/>=<sp/>0;</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>while<sp/>(true)<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>if<sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Only<sp/>send<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.rumble(&quot;.<sp/>-<sp/>.<sp/>-&quot;);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(count<sp/>%<sp/>25))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Only<sp/>send<sp/>every<sp/>50ms,<sp/>the<sp/>controller<sp/>update<sp/>rate<sp/>is<sp/>slow</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>master.rumble(</highlight><highlight class="stringliteral">&quot;.<sp/>-<sp/>.<sp/>-&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>count++;</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
@@ -558,6 +573,7 @@ This function uses the following values of errno when an error state is reached:
         <definition>std::int32_t clear</definition>
         <argsstring>(void)</argsstring>
         <name>clear</name>
+        <qualifiedname>pros::v5::Controller::clear</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -570,9 +586,9 @@ This function uses the following values of errno when an error state is reached:
 This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
 <para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>opcontrol()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Controller<sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/>&quot;Example&quot;);</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>master.set_text(0,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Example&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>delay(100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>master.clear();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -582,11 +598,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/misc.hpp" line="400" column="14"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-misc_1ga42876357c2ed5a047a535aca84f4458e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga3691f21715ab0f7bfebc243babdde84d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::battery::get_capacity</definition>
+        <definition>double get_capacity</definition>
         <argsstring>(void)</argsstring>
         <name>get_capacity</name>
+        <qualifiedname>pros::battery::get_capacity</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -597,8 +614,8 @@ This function uses the following values of errno when an error state is reached:
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
 <para><simplesect kind="return"><para>The current voltage of the battery</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Level:<sp/>%.2f\n&quot;,<sp/>get_capacity());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Level:<sp/>%.2f\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__cpp-misc_1ga3691f21715ab0f7bfebc243babdde84d" kindref="member">get_capacity</ref>());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -606,11 +623,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/misc.hpp" line="429" column="8" declfile="pros/misc.hpp" declline="429" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-misc_1gad0f092e6341126d68ae15d41b5dba352" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga7477dea988ce2ba564e86ac93e633801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::battery::get_current</definition>
+        <definition>int32_t get_current</definition>
         <argsstring>(void)</argsstring>
         <name>get_current</name>
+        <qualifiedname>pros::battery::get_current</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -621,8 +639,8 @@ This function uses the following values of errno when an error state is reached:
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
 <para><simplesect kind="return"><para>The current current of the battery</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery<sp/>Current:<sp/>%d\n&quot;,<sp/>get_current());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery<sp/>Current:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__cpp-misc_1ga7477dea988ce2ba564e86ac93e633801" kindref="member">get_current</ref>());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -630,11 +648,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/misc.hpp" line="447" column="9" declfile="pros/misc.hpp" declline="447" declcolumn="9"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-misc_1ga33d1a503808ed06148a1884e3ccf88ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1ga71d58d2fbd8eaa30092d5c051d0c333b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
-        <definition>double pros::battery::get_temperature</definition>
+        <definition>double get_temperature</definition>
         <argsstring>(void)</argsstring>
         <name>get_temperature</name>
+        <qualifiedname>pros::battery::get_temperature</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -645,8 +664,8 @@ This function uses the following values of errno when an error state is reached:
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
 <para><simplesect kind="return"><para>The current temperature of the battery</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Temperature:<sp/>%.2f\n&quot;,<sp/>get_temperature());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery&apos;s<sp/>Temperature:<sp/>%.2f\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__cpp-misc_1ga71d58d2fbd8eaa30092d5c051d0c333b" kindref="member">get_temperature</ref>());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -654,11 +673,12 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/misc.hpp" line="465" column="8" declfile="pros/misc.hpp" declline="465" declcolumn="8"/>
       </memberdef>
-      <memberdef kind="function" id="group__cpp-misc_1ga2c325b346f66c15ca7e5a844a66b20d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="group__cpp-misc_1gafb88205f43fb3305b3aac91af4b4bed2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
-        <definition>int32_t pros::battery::get_voltage</definition>
+        <definition>int32_t get_voltage</definition>
         <argsstring>(void)</argsstring>
         <name>get_voltage</name>
+        <qualifiedname>pros::battery::get_voltage</qualifiedname>
         <param>
           <type>void</type>
         </param>
@@ -669,8 +689,8 @@ This function uses the following values of errno when an error state is reached:
 <para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the battery port.</para>
 <para><simplesect kind="return"><para>The current capacity of the battery</para>
 </simplesect>
-<bold>Example</bold> <programlisting><codeline><highlight class="normal">void<sp/>initialize()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>printf(&quot;Battery&apos;s<sp/>Voltage:<sp/>%d\n&quot;,<sp/>get_voltage());</highlight></codeline>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Battery&apos;s<sp/>Voltage:<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__cpp-misc_1gafb88205f43fb3305b3aac91af4b4bed2" kindref="member">get_voltage</ref>());</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -678,13 +698,15 @@ This function uses the following values of errno when an error state is reached:
         </inbodydescription>
         <location file="pros/misc.hpp" line="483" column="9" declfile="pros/misc.hpp" declline="483" declcolumn="9"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
-<para><simplesect kind="note"><para>Additional example code for this module can be found in its <ref refid="controller" kindref="compound">Tutorial.</ref></para>
+<para>///</para>
+<para>///</para>
+<para><simplesect kind="note"><para>Additional example code for this module can be found in its <ref refid="controller" kindref="compound">Tutorial.</ref> </para>
 </simplesect>
-/// </para>
+</para>
     </detaileddescription>
   </compounddef>
 </doxygen>

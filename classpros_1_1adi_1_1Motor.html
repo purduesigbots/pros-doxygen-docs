@@ -68,137 +68,6 @@ V5</span></a>
           <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="adi_8hpp.html">&lt;pros/adi.hpp&gt;</a></div>
         </h1>
         <p><span></span></p>
-        <nav class="m-block m-default">
-          <h3>Contents</h3>
-          <ul>
-            <li>
-              Reference
-              <ul>
-                <li><a href="#typeless-methods">Constructors, destructors, conversion operators</a></li>
-                <li><a href="#pub-methods">Public functions</a></li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        <section id="typeless-methods">
-          <h2><a href="#typeless-methods">Constructors, destructors, conversion operators</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaff0e259cdf8926b89b6da9eefd58571a" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap">std::uint8_t adi_port) <span class="m-label m-info">explicit</span> </span></span>
-            </dt>
-            <dd>Configures an ADI port to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga2e065574a8dd4a4b62070b0a132c633b" class="m-doc-self">Motor</a>(</span><span class="m-doc-wrap"><a href="namespacepros_1_1adi.html#aa8b90563c470741ebd760aeacfd90599" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />pair_<wbr />t</a> port_pair) <span class="m-label m-info">explicit</span> </span></span>
-            </dt>
-            <dd>Configures an ADI port on an adi_expander to act as a <a href="classpros_1_1adi_1_1Motor.html" class="m-doc">Motor</a>.</dd>
-          </dl>
-        </section>
-        <section id="pub-methods">
-          <h2><a href="#pub-methods">Public functions</a></h2>
-          <dl class="m-doc">
-            <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga0722135fc9e602e21043c879642c3fad" class="m-doc-self">stop</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </dt>
-            <dd>Stops the motor on the given port.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>
-            </dt>
-            <dd>Sets the speed of the motor on the given port.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60987c8e4946650cf9aa40f8e8345f01" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </dt>
-            <dd>Gets the last set speed of the motor on the given port.</dd>
-            <dt>
-              <span class="m-doc-wrap-bumper"><a href="namespacepros_1_1adi.html#ab96eeca6120dfe95a7a63bbe88723f3e" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b53f72ea88a01fe169c93270bbba0a9" class="m-doc-self">get_port</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </dt>
-            <dd>Gets the port of the sensor.</dd>
-          </dl>
-        </section>
-        <section>
-          <h2>Function documentation</h2>
-          <section class="m-doc-details" id="a833ed782b711495035dae08cfce3e62e"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a833ed782b711495035dae08cfce3e62e" class="m-doc-self">set_value</a>(</span><span class="m-doc-wrap">std::int32_t value) const</span></span>
-            </h3>
-            <p>Sets the speed of the motor on the given port.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <thead>
-                <tr><th colspan="2">Parameters</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td style="width: 1%">value</td>
-                  <td>The new signed speed; -127 is full reverse and 127 is full forward, with 0 being off</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <th>Returns</th>
-                  <td>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
-<span class="p">}</span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a60987c8e4946650cf9aa40f8e8345f01"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper">std::int32_t pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a60987c8e4946650cf9aa40f8e8345f01" class="m-doc-self">get_value</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Gets the last set speed of the motor on the given port.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>The last set speed of the motor on the given</td>
-                </tr>
-              </tfoot>
-            </table>
-<p>This function uses the following values of errno when an error state is reached: ENODEV - The port is not configured as a motor</p><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define MOTOR_PORT 1</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">Motor</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="p">(</span><span class="n">MOTOR_PORT</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">127</span><span class="p">);</span><span class="w"> </span><span class="c1">// Go full speed forward</span>
-<span class="w">  </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Commanded Motor Power: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">motor</span><span class="p">.</span><span class="n">get_value</span><span class="p">();</span><span class="w"> </span><span class="c1">// Will display 127</span>
-<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-<span class="w">  </span><span class="n">motor</span><span class="p">.</span><span class="n">set_value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="c1">// Stop the motor</span>
-<span class="p">}</span></pre>
-          </div></section>
-          <section class="m-doc-details" id="a3b53f72ea88a01fe169c93270bbba0a9"><div>
-            <h3>
-              <span class="m-doc-wrap-bumper"><a href="namespacepros_1_1adi.html#ab96eeca6120dfe95a7a63bbe88723f3e" class="m-doc">ext_<wbr />adi_<wbr />port_<wbr />tuple_<wbr />t</a> pros::<wbr />adi::<wbr />Motor::<wbr /></span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#a3b53f72ea88a01fe169c93270bbba0a9" class="m-doc-self">get_port</a>(</span><span class="m-doc-wrap">) const</span></span>
-            </h3>
-            <p>Gets the port of the sensor.</p>
-            <table class="m-table m-fullwidth m-flat">
-              <tfoot>
-                <tr>
-                  <th style="width: 1%">Returns</th>
-                  <td>returns a tuple of integer ports.</td>
-                </tr>
-              </tfoot>
-            </table>
-<aside class="m-note m-info"><h4>Note</h4><p>The parts of the tuple are {smart port, adi port, second adi port (when applicable)}.</p></aside><p><strong>Example</strong></p><pre class="m-code"><span class="cp">#define DIGITAL_SENSOR_PORT 1 </span><span class="c1">// &#39;A&#39;</span>
-
-<span class="kt">void</span><span class="w"> </span><span class="nf">initialize</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="n">pros</span><span class="o">::</span><span class="n">adi</span><span class="o">::</span><span class="n">AnalogIn</span><span class="w"> </span><span class="n">sensor</span><span class="w"> </span><span class="p">(</span><span class="n">DIGITAL_SENSOR_PORT</span><span class="p">);</span>
-<span class="w">  </span>
-<span class="w">     </span><span class="c1">// Getting values from the tuple using std::get&lt;index&gt; </span>
-<span class="w">     </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">0</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// First value</span>
-<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">get</span><span class="o">&lt;</span><span class="mi">1</span><span class="o">&gt;</span><span class="p">(</span><span class="n">sensor</span><span class="p">.</span><span class="n">get_port</span><span class="p">());</span><span class="w"> </span><span class="c1">// Second value</span>
-
-<span class="w">     </span><span class="c1">// Prints the first and second value from the port tuple (The Adi Port. The first value is the Smart Port)</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Smart Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorSmartPort</span><span class="p">);</span>
-<span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sensor Adi Port: %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sensorAdiPort</span><span class="p">);</span><span class="w">   </span>
-<span class="p">}</span></pre>
-          </div></section>
-        </section>
       </div>
     </div>
   </div>
@@ -244,7 +113,7 @@ V5</span></a>
     <div class="m-row">
       <div class="m-col-l-10 m-push-l-1">
         <p>PROS for
-V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.8.17 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.12.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
       </div>
     </div>
   </div>
