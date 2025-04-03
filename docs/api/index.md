@@ -12,6 +12,7 @@ The C++ API is designed for those who want to take an object oreinted approach t
 
 ### C++ Sensor Classes
 
+- \subpage cpp-aivision             "C++ API for AI Vision Sensors"
 - \subpage cpp-distance             "C++ API for Distance Sensors"
 - \subpage cpp-gps                  "C++ API for GPS Sensors"
 - \subpage cpp-imu                  "C++ API for IMU Sensors"
