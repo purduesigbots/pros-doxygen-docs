@@ -3,6 +3,7 @@ If you want more information about using a particular part of the \ref api, the 
 and more detail about using the PROS API.
 
 - \subpage adi
+- \subpage aivision
 - \subpage controller
 - \subpage display
 - \subpage filesystem
