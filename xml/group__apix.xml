@@ -1118,6 +1118,80 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="user-defined">
+      <header>Startup options</header>
+      <memberdef kind="function" id="group__apix_1ga39932ffa4071565ddb53aabe1a8d4bec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void enable_banner</definition>
+        <argsstring>(bool enabled)</argsstring>
+        <name>enable_banner</name>
+        <qualifiedname>pros::c::enable_banner</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable/disable the PROS banner printed to the serial stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>This function must be called BEFORE the PROS daemon starts. The easiest way to acheive this is to NOT call this function directly, and instead use the BANNER_ENABLE macro.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the banner should be enabled or disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/apix.h" line="677" column="6" declfile="pros/apix.h" declline="677" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="define" id="group__apix_1gacdfae2dad4da439b127fb6d123b29376" prot="public" static="no">
+        <name>PRE_PROS_INIT_PRIORITY</name>
+        <initializer>101</initializer>
+        <briefdescription>
+<para>This priority value, when used with <bold>attribute</bold>((constructor( ))), is guaranteed to run before PROS initializes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/apix.h" line="683" column="9" bodyfile="pros/apix.h" bodystart="683" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__apix_1ga2ca974b89173e648c9d7a2e5ee98bf2f" prot="public" static="no">
+        <name>ENABLE_BANNER</name>
+        <param><defname>enabled</defname></param>
+        <initializer>                               static_assert(!__builtin_strcmp(__FUNCTION__, &quot;top level&quot;),                            \
+                               &quot;Cannot use ENABLE_BANNER inside a function!&quot;);                                        \
+                               <ref refid="screen_8hpp_1ac6dd2800b8464c33cb5f27414dbd3542" kindref="member">__attribute__</ref>((constructor(<ref refid="group__apix_1gacdfae2dad4da439b127fb6d123b29376" kindref="member">PRE_PROS_INIT_PRIORITY</ref>))) static void _enable_banner_impl() \
+                               { <ref refid="group__apix_1ga39932ffa4071565ddb53aabe1a8d4bec" kindref="member">pros::c::enable_banner</ref>(enabled); }</initializer>
+        <briefdescription>
+<para>Enable/disable the PROS banner printed to the serial stream. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>This macro must be used in global scope, outside of any function.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the banner should be enabled or disabled. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/apix.h" line="694" column="9" bodyfile="pros/apix.h" bodystart="694" bodyend="697"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="user-defined">
       <header>Filesystem</header>
       <memberdef kind="function" id="group__apix_1ga8287028141d5265105a25d899280a8e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1200,7 +1274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="717" column="9" declfile="pros/apix.h" declline="717" declcolumn="9"/>
+        <location file="pros/apix.h" line="759" column="9" declfile="pros/apix.h" declline="759" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1ga2fa32fc79e297f90fa08d22c381c2972" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1249,7 +1323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="745" column="9" declfile="pros/apix.h" declline="745" declcolumn="9"/>
+        <location file="pros/apix.h" line="787" column="9" declfile="pros/apix.h" declline="787" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__apix_1gaa01b06cd1235f48a058a6dae6dc188c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -1285,7 +1359,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="769" column="9" declfile="pros/apix.h" declline="769" declcolumn="9"/>
+        <location file="pros/apix.h" line="811" column="9" declfile="pros/apix.h" declline="811" declcolumn="9"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga597a3aaaad99225156c5940db91ed7e7" prot="public" static="no">
         <name>SERCTL_ACTIVATE</name>
@@ -1298,7 +1372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="779" column="9" bodyfile="pros/apix.h" bodystart="779" bodyend="-1"/>
+        <location file="pros/apix.h" line="821" column="9" bodyfile="pros/apix.h" bodystart="821" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1gaa07c3d6750babcc306ece8dd1b18ec26" prot="public" static="no">
         <name>SERCTL_DEACTIVATE</name>
@@ -1311,7 +1385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="789" column="9" bodyfile="pros/apix.h" bodystart="789" bodyend="-1"/>
+        <location file="pros/apix.h" line="831" column="9" bodyfile="pros/apix.h" bodystart="831" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga487ad68591182ba67ceb987f59f31fab" prot="public" static="no">
         <name>SERCTL_BLKWRITE</name>
@@ -1324,7 +1398,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="798" column="9" bodyfile="pros/apix.h" bodystart="798" bodyend="-1"/>
+        <location file="pros/apix.h" line="840" column="9" bodyfile="pros/apix.h" bodystart="840" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga48765184fb0f8084d9cebf9dcbc27da7" prot="public" static="no">
         <name>SERCTL_NOBLKWRITE</name>
@@ -1337,7 +1411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="807" column="9" bodyfile="pros/apix.h" bodystart="807" bodyend="-1"/>
+        <location file="pros/apix.h" line="849" column="9" bodyfile="pros/apix.h" bodystart="849" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga20c46bffd0ef8939413f671a5ac92252" prot="public" static="no">
         <name>SERCTL_ENABLE_COBS</name>
@@ -1350,7 +1424,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="817" column="9" bodyfile="pros/apix.h" bodystart="817" bodyend="-1"/>
+        <location file="pros/apix.h" line="859" column="9" bodyfile="pros/apix.h" bodystart="859" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga9a50f0ab303c00138f09df10358b01c4" prot="public" static="no">
         <name>SERCTL_DISABLE_COBS</name>
@@ -1363,7 +1437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="827" column="9" bodyfile="pros/apix.h" bodystart="827" bodyend="-1"/>
+        <location file="pros/apix.h" line="869" column="9" bodyfile="pros/apix.h" bodystart="869" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1gad7e4ecbf8e36a784cdf4d245cd3c7d1d" prot="public" static="no">
         <name>DEVCTL_FIONREAD</name>
@@ -1375,7 +1449,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="834" column="9" bodyfile="pros/apix.h" bodystart="834" bodyend="-1"/>
+        <location file="pros/apix.h" line="876" column="9" bodyfile="pros/apix.h" bodystart="876" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga0089c4b06b9b75f4995256ca740f8ee2" prot="public" static="no">
         <name>DEVCTL_FIONWRITE</name>
@@ -1387,7 +1461,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="841" column="9" bodyfile="pros/apix.h" bodystart="841" bodyend="-1"/>
+        <location file="pros/apix.h" line="883" column="9" bodyfile="pros/apix.h" bodystart="883" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="group__apix_1ga5ac3b151b46b5bfce1ec424b5fdc773b" prot="public" static="no">
         <name>DEVCTL_SET_BAUDRATE</name>
@@ -1400,7 +1474,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/apix.h" line="848" column="9" bodyfile="pros/apix.h" bodystart="848" bodyend="-1"/>
+        <location file="pros/apix.h" line="890" column="9" bodyfile="pros/apix.h" bodystart="890" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

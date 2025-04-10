@@ -74,6 +74,7 @@ V5</span></a>
                 <li><a href="#files">Files</a></li>
                 <li><a href="#rtos-facilities">RTOS Facilities</a></li>
                 <li><a href="#device-registration">Device Registration</a></li>
+                <li><a href="#startup-options">Startup options</a></li>
                 <li><a href="#filesystem">Filesystem</a></li>
               </ul>
             </li>
@@ -200,6 +201,23 @@ V5</span></a>
               <span class="m-doc-wrap-bumper">v5_device_e_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga490c81f1c80b6655410f96a0a07f4b0b" class="m-doc-self">registry_get_plugged_type</a>(</span><span class="m-doc-wrap">uint8_t port)</span></span>
             </dt>
             <dd>Returns the type of the device plugged into the zero-indexed port.</dd>
+          </dl>
+        </section>
+        <section id="startup-options">
+          <h2><a href="#startup-options">Startup options</a></h2>
+          <dl class="m-doc">
+            <dt>
+              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga39932ffa4071565ddb53aabe1a8d4bec" class="m-doc-self">enable_banner</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+            </dt>
+            <dd>Enable/disable the PROS banner printed to the serial stream.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">#define <a href="#gacdfae2dad4da439b127fb6d123b29376" class="m-doc">PRE_PROS_INIT_PRIORITY</a></span>
+            </dt>
+            <dd>This priority value, when used with <strong>attribute</strong>((constructor( ))), is guaranteed to run before PROS initializes.</dd>
+            <dt>
+              <span class="m-doc-wrap-bumper">#define <a href="#ga2ca974b89173e648c9d7a2e5ee98bf2f" class="m-doc">ENABLE_BANNER</a>(</span><span class="m-doc-wrap">enabled)</span>
+            </dt>
+            <dd>Enable/disable the PROS banner printed to the serial stream.</dd>
           </dl>
         </section>
         <section id="filesystem">
@@ -1039,6 +1057,14 @@ V5</span></a>
 <span class="w">  </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;port 1 is registered to a motor: %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">registry_get_plugged_type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">E_DEVICE_MOTOR</span><span class="p">);</span>
 <span class="p">}</span></pre>
           </div></section>
+          <section class="m-doc-details" id="ga39932ffa4071565ddb53aabe1a8d4bec"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">void </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga39932ffa4071565ddb53aabe1a8d4bec" class="m-doc-self">enable_banner</a>(</span><span class="m-doc-wrap">bool enabled)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
+            </h3>
+            <p>Enable/disable the PROS banner printed to the serial stream.</p>
+<aside class="m-note m-danger"><h4>Warning</h4><p>This function must be called BEFORE the PROS daemon starts. The easiest way to acheive this is to NOT call this function directly, and instead use the BANNER_ENABLE macro.</p></aside>
+          </div></section>
           <section class="m-doc-details" id="ga8287028141d5265105a25d899280a8e1"><div>
             <h3>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga8287028141d5265105a25d899280a8e1" class="m-doc-self">fdctl</a>(</span><span class="m-doc-wrap">int file,
@@ -1196,6 +1222,21 @@ V5</span></a>
         </section>
         <section>
           <h2>Define documentation</h2>
+          <section class="m-doc-details" id="gacdfae2dad4da439b127fb6d123b29376"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">#define <a href="#gacdfae2dad4da439b127fb6d123b29376" class="m-doc-self">PRE_PROS_INIT_PRIORITY</a></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
+            </h3>
+            <p>This priority value, when used with <strong>attribute</strong>((constructor( ))), is guaranteed to run before PROS initializes.</p>
+          </div></section>
+          <section class="m-doc-details" id="ga2ca974b89173e648c9d7a2e5ee98bf2f"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">#define <a href="#ga2ca974b89173e648c9d7a2e5ee98bf2f" class="m-doc-self">ENABLE_BANNER</a>(</span><span class="m-doc-wrap">enabled)</span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="apix_8h.html">&lt;pros/apix.h&gt;</a></div>
+            </h3>
+            <p>Enable/disable the PROS banner printed to the serial stream.</p>
+<aside class="m-note m-danger"><h4>Warning</h4><p>This macro must be used in global scope, outside of any function.</p></aside>
+          </div></section>
           <section class="m-doc-details" id="ga597a3aaaad99225156c5940db91ed7e7"><div>
             <h3>
               <span class="m-doc-wrap-bumper">#define <a href="#ga597a3aaaad99225156c5940db91ed7e7" class="m-doc-self">SERCTL_ACTIVATE</a></span>

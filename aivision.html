@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Home &raquo; Tutorials &raquo; Topical Tutorials &raquo; AI Vision Sensor | PROS for
+V5</title>
+  <link rel="stylesheet" href="m-dark+documentation.compiled.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i%7CSource+Code+Pro:400,400i,600" />
+  <link rel="stylesheet" href="pros-custom.css" />
+  <link rel="stylesheet" href="pros-code.css" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e6b85c" />
+</head>
+<body>
+<header><nav id="navigation">
+  <div class="m-container">
+    <div class="m-row">
+      <a href="index.html" id="m-navbar-brand" class="m-col-t-8 m-col-m-none m-left-m"><img src="logo.png" alt="" />PROS <span class="m-thin">for
+V5</span></a>
+      <div class="m-col-t-4 m-hide-m m-text-right m-nopadr">
+        <a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+          <path id="m-doc-search-icon-path" d="m6 0c-3.31 0-6 2.69-6 6 0 3.31 2.69 6 6 6 1.49 0 2.85-0.541 3.89-1.44-0.0164 0.338 0.147 0.759 0.5 1.15l3.22 3.79c0.552 0.614 1.45 0.665 2 0.115 0.55-0.55 0.499-1.45-0.115-2l-3.79-3.22c-0.392-0.353-0.812-0.515-1.15-0.5 0.895-1.05 1.44-2.41 1.44-3.89 0-3.31-2.69-6-6-6zm0 1.56a4.44 4.44 0 0 1 4.44 4.44 4.44 4.44 0 0 1-4.44 4.44 4.44 4.44 0 0 1-4.44-4.44 4.44 4.44 0 0 1 4.44-4.44z"/>
+        </svg></a>
+        <a id="m-navbar-show" href="#navigation" title="Show navigation"></a>
+        <a id="m-navbar-hide" href="#" title="Hide navigation"></a>
+      </div>
+      <div id="m-navbar-collapse" class="m-col-t-12 m-show-m m-col-m-none m-right-m">
+        <div class="m-row">
+          <ol class="m-col-t-6 m-col-m-none">
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li>
+              <a href="tutorials.html">Tutorials</a>
+              <ol>
+                <li><a href="general-tutorials.html">General Tutorials</a></li>
+                <li><a href="walkthrough-tutorials.html">Walkthrough Tutorials</a></li>
+                <li><a href="topical-tutorials.html">Topical Tutorials</a></li>
+              </ol>
+            </li>
+            <li><a href="api.html">API Home</a></li>
+          </ol>
+          <ol class="m-col-t-6 m-col-m-none" start="4">
+            <li>
+              <a href="#">Other</a>
+              <ol>
+                <li><a href="pages.html">Pages</a></li>
+                <li><a href="annotated.html">Classes</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="namespaces.html">Namespaces</a></li>
+                <li><a href="files.html">Files</a></li>
+              </ol>
+            </li>
+            <li class="m-show-m"><a href="#search" class="m-doc-search-icon" title="Search" onclick="return showSearch()"><svg style="height: 0.9rem;" viewBox="0 0 16 16">
+              <use href="#m-doc-search-icon-path" />
+            </svg></a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav></header>
+<main><article>
+  <div class="m-container m-container-inflatable">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <h1>
+          <span class="m-breadcrumb"><a href="index.html">Home</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="tutorials.html">Tutorials</a> &raquo;</span>
+          <span class="m-breadcrumb"><a href="topical-tutorials.html">Topical Tutorials</a> &raquo;</span>
+          AI Vision Sensor
+        </h1>
+<aside class="m-note m-info"><h4>Note</h4><p>For a full list of functions for interacting with the ADI, see its : <a href="group__c-aivision.html" class="m-doc">C API</a> and <a href="group__cpp-aivision.html" class="m-doc">C++ API</a>.</p></aside><section id="autotoc_md56_1s1"><section id="autotoc_md56"><h3><a href="#autotoc_md56">Coordinate System</a></h3><p>All objects found by the AI Vision Sensor will have x and y coordinates. The origin of its coordinate system is the top left corner of the image, with x increasing from left to right and y increasing from top to bottom. Object detected based on color descriptors, code descriptors, and AI models</p></section></section><section id="autotoc_md57_1s1"><section id="autotoc_md57"><h3><a href="#autotoc_md57">Color Descriptors</a></h3><p>Similar to the Vision Sensor, the AI Vision Sensor can detect objects as color blobs. Colors for blob detection can be specified to the AI Vision Sensor as color descriptors. A color descriptor consists of an RGB color, a hue range, a saturation range, and an ID. IDs can range from 1-7, hue range can range from 1-40, and saturation range can range from 0.1-1. Color objects are returned by the AI Vision Sensor with type color and the same ID as the matching color descriptor, as well as the x and y coordinates of the top-left corner of its bounding box, the width and height of the bounding box, and the angle.</p><p>Example Code:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="w"> </span><span class="n">aivision</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">enable_detection_types</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionModeType</span><span class="o">::</span><span class="n">colors</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">142</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">194</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">hue_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">saturation_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Color</span><span class="w"> </span><span class="n">color2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">236</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">hue_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">saturation_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Color</span><span class="w"> </span><span class="n">color3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">146</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">216</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">hue_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">saturation_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aivision</span><span class="p">.</span><span class="n">get_all_objects</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">object</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">objects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">is_type</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionDetectType</span><span class="o">::</span><span class="n">color</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;color</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;id %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">xoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">yoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></pre></section></section><section id="autotoc_md58_1s1"><section id="autotoc_md58"><h3><a href="#autotoc_md58">Code Descriptors</a></h3><p>The AI Vision Sensor allows blobs of different colors close to each other to be detected as a single object by using code descriptors. Code descriptors tell the AI Vision Sensor which color descriptors it should combine. Code descriptors consist of an ID, the number of color descriptors to combine, and the IDs of the color descriptors. IDs can range from 1-5, and the number of color descriptors to combine can range from 2-5. Code objects are returned by the AI Vision Sensor with type code, and are otherwise identical to color objects.</p><p>Example Code:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="w"> </span><span class="n">aivision</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">enable_detection_types</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionModeType</span><span class="o">::</span><span class="n">colors</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Color</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">142</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">194</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">hue_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">saturation_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Color</span><span class="w"> </span><span class="n">color2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">red</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">236</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">green</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">blue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">95</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">hue_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">saturation_range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5</span><span class="p">};</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">Code</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">};</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_code</span><span class="p">(</span><span class="n">code</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aivision</span><span class="p">.</span><span class="n">get_all_objects</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">object</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">objects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">is_type</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionDetectType</span><span class="o">::</span><span class="n">code</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;code</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;id %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">xoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">yoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">color</span><span class="p">.</span><span class="n">angle</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></pre></section></section><section id="autotoc_md59_1s1"><section id="autotoc_md59"><h3><a href="#autotoc_md59">AI Model Object Detection</a></h3><p>The AI Vision Sensor can also detect objects using an AI model, which can be more robust than simple color descriptors. There is no method for uploading your own AI model, but the model on the AI Vision Sensor can be switched between competition and classroom elements by using VEXCode V5. Objects detected using the AI model are returned by the AI Vision Sensor with type object and the ID of the object class, as well as the x and y coordinates of the top-left corner of its bounding box, the width and height of the bounding box, and the score of the detection. Score is reported as a percentage, from 0-100, with higher indicating the model has higher confidence in the detection.</p><p>Example Code:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="w"> </span><span class="n">aivision</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">enable_detection_types</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionModeType</span><span class="o">::</span><span class="n">objects</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aivision</span><span class="p">.</span><span class="n">get_all_objects</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">object</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">objects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">is_type</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionDetectType</span><span class="o">::</span><span class="n">object</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;object</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;id %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">xoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">yoffset</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">width</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">element</span><span class="p">.</span><span class="n">score</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></pre></section></section><section id="autotoc_md60_1s1"><section id="autotoc_md60"><h3><a href="#autotoc_md60">AprilTag Detection</a></h3><p>The AI Vision Sensor can detect AprilTags of four different families. AprilTags detected by the AI Vision Sensor are returned with type tag and the ID of the AprilTag, as well as the x and y coordinates of the four corners of the AprilTag.</p><p>Example Code:</p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="w"> </span><span class="n">aivision</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">enable_detection_types</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionModeType</span><span class="o">::</span><span class="n">tags</span><span class="p">);</span>
+<span class="w">    </span><span class="n">aivision</span><span class="p">.</span><span class="n">set_tag_family</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionTagFamily</span><span class="o">::</span><span class="n">tag_16H5</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">objects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aivision</span><span class="p">.</span><span class="n">get_all_objects</span><span class="p">();</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="o">&amp;</span><span class="n">object</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">objects</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">AIVision</span><span class="o">::</span><span class="n">is_type</span><span class="p">(</span><span class="n">object</span><span class="p">,</span><span class="w"> </span><span class="n">pros</span><span class="o">::</span><span class="n">AivisionDetectType</span><span class="o">::</span><span class="n">tag</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;tag</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;id %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+<span class="w">                </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d %d %d %d %d %d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">x1</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">y1</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">x2</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">y2</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">x3</span><span class="p">,</span><span class="w"> </span><span class="n">object</span><span class="p">.</span><span class="n">object</span><span class="p">.</span><span class="n">tag</span><span class="p">.</span><span class="n">y3</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">pros</span><span class="o">::</span><span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span></pre></section></section>
+      </div>
+    </div>
+  </div>
+</article></main>
+<div class="m-doc-search" id="search">
+  <a href="#!" onclick="return hideSearch()"></a>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-m-8 m-push-m-2">
+        <div class="m-doc-search-header m-text m-small">
+          <div><span class="m-label m-default">Tab</span> / <span class="m-label m-default">T</span> to search, <span class="m-label m-default">Esc</span> to close</div>
+          <div id="search-symbolcount">&hellip;</div>
+        </div>
+        <div class="m-doc-search-content">
+          <form>
+            <input type="search" name="q" id="search-input" placeholder="Loading &hellip;" disabled="disabled" autofocus="autofocus" autocomplete="off" spellcheck="false" />
+          </form>
+          <noscript class="m-text m-danger m-text-center">Unlike everything else in the docs, the search functionality <em>requires</em> JavaScript.</noscript>
+          <div id="search-help" class="m-text m-dim m-text-center">
+            <p class="m-noindent">Search for symbols, directories, files, pages or
+            modules. You can omit any prefix from the symbol or file path; adding a
+            <code>:</code> or <code>/</code> suffix lists all members of given symbol or
+            directory.</p>
+            <p class="m-noindent">Use <span class="m-label m-dim">&darr;</span>
+            / <span class="m-label m-dim">&uarr;</span> to navigate through the list,
+            <span class="m-label m-dim">Enter</span> to go.
+            <span class="m-label m-dim">Tab</span> autocompletes common prefix, you can
+            copy a link to the result using <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">L</span> while <span class="m-label m-dim">⌘</span>
+            <span class="m-label m-dim">M</span> produces a Markdown link.</p>
+          </div>
+          <div id="search-notfound" class="m-text m-warning m-text-center">Sorry, nothing was found.</div>
+          <ul id="search-results"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="search-v2.js"></script>
+<script src="searchdata-v2.js" async="async"></script>
+<footer><nav>
+  <div class="m-container">
+    <div class="m-row">
+      <div class="m-col-l-10 m-push-l-1">
+        <p>PROS for
+V5. Created with <a href="https://doxygen.org/">Doxygen</a> 1.12.0 and <a href="https://mcss.mosra.cz/">m.css</a>.</p>
+      </div>
+    </div>
+  </div>
+</nav></footer>
+</body>
+</html>

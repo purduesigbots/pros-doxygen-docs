@@ -162,6 +162,11 @@ V5</span></a>
             </dt>
             <dd>Returns a rising-edge case for a controller button press.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga494970d689d156bd9bce238fcfebd9ae" class="m-doc-self">controller_get_digital_new_release</a>(</span><span class="m-doc-wrap">controller_id_e_t id,
+              controller_digital_e_t button)</span></span>
+            </dt>
+            <dd>Returns a falling-edge case for a controller button press.</dd>
+            <dt>
               <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#gaf7c72fcad599c9c0517ef22e6e813ae8" class="m-doc-self">controller_print</a>(</span><span class="m-doc-wrap">controller_id_e_t id,
               uint8_t line,
               uint8_t col,
@@ -441,7 +446,9 @@ V5</span></a>
 <span class="w">    </span><span class="c1">/// The ‘Y’ button on the right button pad of the controller.</span>
 <span class="w">    </span><span class="n">E_CONTROLLER_DIGITAL_Y</span><span class="p">,</span>
 <span class="w">    </span><span class="c1">/// The ‘A’ button on the right button pad of the controller.</span>
-<span class="w">    </span><span class="n">E_CONTROLLER_DIGITAL_A</span>
+<span class="w">    </span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">/// The power button on the front of the controller.</span>
+<span class="w">    </span><span class="n">E_CONTROLLER_DIGITAL_POWER</span>
 <span class="p">}</span><span class="w"> </span><span class="n">controller_digital_e_t</span><span class="p">;</span>
 
 <span class="cp">#ifdef PROS_USE_SIMPLE_NAMES</span>
@@ -464,6 +471,7 @@ V5</span></a>
 <span class="cp">#define DIGITAL_B pros::E_CONTROLLER_DIGITAL_B</span>
 <span class="cp">#define DIGITAL_Y pros::E_CONTROLLER_DIGITAL_Y</span>
 <span class="cp">#define DIGITAL_A pros::E_CONTROLLER_DIGITAL_A</span>
+<span class="cp">#define DIGITAL_POWER pros::E_CONTROLLER_DIGITAL_POWER</span>
 <span class="cp">#else</span>
 <span class="cp">#define CONTROLLER_MASTER E_CONTROLLER_MASTER</span>
 <span class="cp">#define CONTROLLER_PARTNER E_CONTROLLER_PARTNER</span>
@@ -698,6 +706,45 @@ V5</span></a>
 <p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button presses, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: EINVAL - A value other than E_CONTROLLER_MASTER or E_CONTROLLER_PARTNER is given. EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">controller_get_digital_new_press</span><span class="p">(</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">,</span><span class="w"> </span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Toggle pneumatics or other similar actions</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga494970d689d156bd9bce238fcfebd9ae"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga494970d689d156bd9bce238fcfebd9ae" class="m-doc-self">controller_get_digital_new_release</a>(</span><span class="m-doc-wrap">controller_id_e_t id,
+              controller_digital_e_t button)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8h.html">&lt;pros/misc.h&gt;</a></div>
+            </h3>
+            <p>Returns a falling-edge case for a controller button press.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">id</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>button</td>
+                  <td>The button to read. Must be one of DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the button on the controller is not pressed and had been pressed the last time this function was called, 0 otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button releases, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital_new_release</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Toggle pneumatics or other similar actions</span>
 <span class="w">  </span><span class="p">}</span>
 

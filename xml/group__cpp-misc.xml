@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="403" column="19" bodyfile="pros/misc.hpp" bodystart="403" bodyend="-1"/>
+        <location file="pros/misc.hpp" line="442" column="19" bodyfile="pros/misc.hpp" bodystart="442" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -256,6 +256,49 @@
         </inbodydescription>
         <location file="pros/misc.hpp" line="212" column="14"/>
       </memberdef>
+      <memberdef kind="function" id="group__cpp-misc_1ga481a790f86664215d673355daa582a9a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::int32_t</type>
+        <definition>std::int32_t get_digital_new_release</definition>
+        <argsstring>(controller_digital_e_t button)</argsstring>
+        <name>get_digital_new_release</name>
+        <qualifiedname>pros::v5::Controller::get_digital_new_release</qualifiedname>
+        <param>
+          <type>controller_digital_e_t</type>
+          <declname>button</declname>
+        </param>
+        <briefdescription>
+<para>Returns a falling-edge case for a controller button press. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> A calls this function for buttons 1 and 2. <ref refid="classpros_1_1rtos_1_1Task" kindref="compound">Task</ref> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button releases, and not in any other tasks.</para>
+<para>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>button</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The button to read. Must be one of DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 if the button on the controller is not pressed and had been pressed the last time this function was called, 0 otherwise.</para>
+</simplesect>
+<bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master(pros::E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(master.get_digital_new_release(pros::E_CONTROLLER_DIGITAL_A))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Toggle<sp/>pneumatics<sp/>or<sp/>other<sp/>similar<sp/>actions</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="pros/misc.hpp" line="251" column="14"/>
+      </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga28aa7fefb62dcdf98555066756a6fbd5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -277,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="217" column="3" bodyfile="pros/misc.hpp" bodystart="217" bodyend="219"/>
+        <location file="pros/misc.hpp" line="256" column="3" bodyfile="pros/misc.hpp" bodystart="256" bodyend="258"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga4558de96ee6162ee8253079a777d51a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const char *</type>
@@ -295,7 +338,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="220" column="12" bodyfile="pros/misc.hpp" bodystart="220" bodyend="222"/>
+        <location file="pros/misc.hpp" line="259" column="12" bodyfile="pros/misc.hpp" bodystart="259" bodyend="261"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaffd382a2e5b4b50fbbc7b9799637b0a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -384,7 +427,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="265" column="14" bodyfile="pros/misc.hpp" bodystart="265" bodyend="267"/>
+        <location file="pros/misc.hpp" line="304" column="14" bodyfile="pros/misc.hpp" bodystart="304" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga3cd136d81be409f77263bf0c983058a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -454,7 +497,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="306" column="14"/>
+        <location file="pros/misc.hpp" line="345" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga792642d2e8721a3ba27e0ba6b8f0755f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -480,7 +523,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="307" column="14"/>
+        <location file="pros/misc.hpp" line="346" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga65549b3a6f5f7af9d68684a2813b5d2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -520,7 +563,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="336" column="14"/>
+        <location file="pros/misc.hpp" line="375" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gaa76da9849eb5dfde35588f2d08ac6f19" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -566,7 +609,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="373" column="14"/>
+        <location file="pros/misc.hpp" line="412" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gacb5f1e6485a4af89f3fce3ff66895b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::int32_t</type>
@@ -596,7 +639,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="400" column="14"/>
+        <location file="pros/misc.hpp" line="439" column="14"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga3691f21715ab0f7bfebc243babdde84d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -621,7 +664,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="429" column="8" declfile="pros/misc.hpp" declline="429" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="468" column="8" declfile="pros/misc.hpp" declline="468" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga7477dea988ce2ba564e86ac93e633801" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -646,7 +689,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="447" column="9" declfile="pros/misc.hpp" declline="447" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="486" column="9" declfile="pros/misc.hpp" declline="486" declcolumn="9"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1ga71d58d2fbd8eaa30092d5c051d0c333b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>double</type>
@@ -671,7 +714,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="465" column="8" declfile="pros/misc.hpp" declline="465" declcolumn="8"/>
+        <location file="pros/misc.hpp" line="504" column="8" declfile="pros/misc.hpp" declline="504" declcolumn="8"/>
       </memberdef>
       <memberdef kind="function" id="group__cpp-misc_1gafb88205f43fb3305b3aac91af4b4bed2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int32_t</type>
@@ -696,7 +739,7 @@ This function uses the following values of errno when an error state is reached:
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="pros/misc.hpp" line="483" column="9" declfile="pros/misc.hpp" declline="483" declcolumn="9"/>
+        <location file="pros/misc.hpp" line="522" column="9" declfile="pros/misc.hpp" declline="522" declcolumn="9"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

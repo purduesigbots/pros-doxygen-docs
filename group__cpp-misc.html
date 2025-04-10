@@ -120,6 +120,10 @@ V5</span></a>
             </dt>
             <dd>Returns a rising-edge case for a controller button press.</dd>
             <dt>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga481a790f86664215d673355daa582a9a" class="m-doc-self">get_digital_new_release</a>(</span><span class="m-doc-wrap">controller_digital_e_t button)</span></span>
+            </dt>
+            <dd>Returns a falling-edge case for a controller button press.</dd>
+            <dt>
               <div class="m-doc-template">template&lt;typename T&gt;</div>
               <span class="m-doc-wrap-bumper">T </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga28aa7fefb62dcdf98555066756a6fbd5" class="m-doc-self">convert_args</a>(</span><span class="m-doc-wrap">T arg)</span></span>
             </dt>
@@ -360,6 +364,40 @@ V5</span></a>
 <span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital_new_press</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Toggle pneumatics or other similar actions</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span></pre>
+          </div></section>
+          <section class="m-doc-details" id="ga481a790f86664215d673355daa582a9a"><div>
+            <h3>
+              <span class="m-doc-wrap-bumper">std::int32_t </span><span class="m-doc-wrap"><span class="m-doc-wrap-bumper"><a href="#ga481a790f86664215d673355daa582a9a" class="m-doc-self">get_digital_new_release</a>(</span><span class="m-doc-wrap">controller_digital_e_t button)</span></span>
+              <div class="m-doc-include m-code m-inverted m-text-right"><span class="cp">#include</span> <a class="cpf" href="misc_8hpp.html">&lt;pros/misc.hpp&gt;</a></div>
+            </h3>
+            <p>Returns a falling-edge case for a controller button press.</p>
+            <table class="m-table m-fullwidth m-flat">
+              <thead>
+                <tr><th colspan="2">Parameters</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="width: 1%">button</td>
+                  <td>The button to read. Must be one of DIGITAL_{RIGHT,DOWN,LEFT,UP,A,B,Y,X,R1,R2,L1,L2}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Returns</th>
+                  <td>1 if the button on the controller is not pressed and had been pressed the last time this function was called, 0 otherwise.</td>
+                </tr>
+              </tfoot>
+            </table>
+<p>This function is not thread-safe. Multiple tasks polling a single button may return different results under the same circumstances, so only one task should call this function for any given button. E.g., <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> A calls this function for buttons 1 and 2. <a href="classpros_1_1rtos_1_1Task.html" class="m-doc">Task</a> B may call this function for button 3, but should not for buttons 1 or 2. A typical use-case for this function is to call inside opcontrol to detect new button releases, and not in any other tasks.</p><p>This function uses the following values of errno when an error state is reached: EACCES - Another resource is currently trying to access the controller port.</p><p><strong>Example</strong></p><pre class="m-code"><span class="kt">void</span><span class="w"> </span><span class="nf">opcontrol</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pros</span><span class="o">::</span><span class="n">Controller</span><span class="w"> </span><span class="n">master</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_MASTER</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">master</span><span class="p">.</span><span class="n">get_digital_new_release</span><span class="p">(</span><span class="n">pros</span><span class="o">::</span><span class="n">E_CONTROLLER_DIGITAL_A</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// Toggle pneumatics or other similar actions</span>
 <span class="w">  </span><span class="p">}</span>
 
