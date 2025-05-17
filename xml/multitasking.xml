@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="multitasking" kind="page">
     <compoundname>multitasking</compoundname>
     <title>Multitasking</title>
@@ -9,16 +9,18 @@
 <para><simplesect kind="note"><para>For a full list of functions for interacting with Tasks, see its <ref refid="group__c-rtos" kindref="compound">C API</ref> and <ref refid="group__cpp-rtos" kindref="compound">C++ API</ref>. Tasks are a great tool to do multiple things at once, but they can be difficult to use properly. The most important thing to remember when using tasks is that tasks aren&apos;t truly running in the background - they are run one at a time and swapped out by the PROS scheduler. If your task performs some repeated action (e.g. a <computeroutput>while</computeroutput> loop), you should include a <computeroutput>delay()</computeroutput> or <computeroutput>task_delay_until()</computeroutput>. Without a <computeroutput>delay()</computeroutput> statement, your task could starve the processor of resources and prevent the kernel from running properly.</para>
 </simplesect>
 The PROS task scheduler is a preemptive, priority-based, round-robin scheduler. This means that tasks are preempted (interrupted) every millisecond to determine if another task ought to run. PROS decides which task to run next based on all of the ready tasks&apos; priorities.</para>
-<para><blockquote><para><zwj/>- Tasks which are eligible for execution are called &quot;ready.&quot; Tasks are typically not ready because they may be sleeping (in a <computeroutput>task_delay</computeroutput>) or blocked waiting for a synchronization mechanism (e.g. a mutex or semaphore).<itemizedlist>
-<listitem><para>The higher the priority, the more crucial the task is considered, and more CPU time will be awarded to the task. Ready tasks of higher priority will always run in preference to lower priority tasks.</para>
+<para><blockquote><para><itemizedlist>
+<listitem><para>Tasks which are eligible for execution are called &quot;ready.&quot; Tasks are typically not ready because they may be sleeping (in a <computeroutput>task_delay</computeroutput>) or blocked waiting for a synchronization mechanism (e.g. a mutex or semaphore).</para>
+</listitem><listitem><para>The higher the priority, the more crucial the task is considered, and more CPU time will be awarded to the task. Ready tasks of higher priority will always run in preference to lower priority tasks.</para>
 </listitem><listitem><para>Tasks of equal priority take preference when a task is preempted. In other words, if tasks A and B have equal priority, then when A is interrupted, B will run next, even if A is still eligible for execution. This is called round-robin scheduling. </para>
 </listitem></itemizedlist>
 </para>
 </blockquote></para>
 <sect1 id="multitasking_1autotoc_md74_1s1"><sect2 id="multitasking_1autotoc_md74">
 <title>On the Abuse of Tasks</title><para>Tasks are very often misused and abused in ways that make the PROS kernel behave in unintended ways. The following list are some commonly made mistakes and guidelines for using Tasks in PROS.</para>
-<para><blockquote><para><zwj/>- Tasks in real-time operating systems should be long-living. That is, tasks should not typically perform a short operation and then die. Consider re-working the logic of your program to enable such behavior.<itemizedlist>
-<listitem><para>&quot;Task functions&quot; are not special, except that their signature needs to be correct. In other programming environments for VEX, tasks must be marked with a special keyword. With most modern programming environments, tasks are just functions that get executed asynchronously.</para>
+<para><blockquote><para><itemizedlist>
+<listitem><para>Tasks in real-time operating systems should be long-living. That is, tasks should not typically perform a short operation and then die. Consider re-working the logic of your program to enable such behavior.</para>
+</listitem><listitem><para>&quot;Task functions&quot; are not special, except that their signature needs to be correct. In other programming environments for VEX, tasks must be marked with a special keyword. With most modern programming environments, tasks are just functions that get executed asynchronously.</para>
 </listitem><listitem><para>It was mentioned above, but it&apos;s important enough for a second mention: every tasks&apos; loop should have a <computeroutput>delay()</computeroutput> statement. </para>
 </listitem></itemizedlist>
 </para>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.13.2" xml:lang="en-US">
   <compounddef id="group__cpp-motors" kind="group">
     <compoundname>cpp-motors</compoundname>
     <title>Motors C++ API</title>
@@ -37,11 +37,11 @@
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-motors_1ga1e122f68ae9831149e1f271e49a2503b" kindref="member">Motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-motors_1ga1e122f68ae9831149e1f271e49a2503b" kindref="member">Motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -93,20 +93,20 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.tare_position();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -158,15 +158,15 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_relative(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&lt;<sp/>105)<sp/>&amp;&amp;<sp/>(<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&gt;<sp/>95)))<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>running<sp/>this<sp/>loop<sp/>as<sp/>long<sp/>as<sp/>the<sp/>motor<sp/>is<sp/>not<sp/>within<sp/>+-5<sp/>units<sp/>of<sp/>its<sp/>goal</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_relative(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Also<sp/>moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!((<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&lt;<sp/>205)<sp/>&amp;&amp;<sp/>(<ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position()<sp/>&gt;<sp/>195)))<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -204,9 +204,9 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_velocity(100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>100<sp/>RPM<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_velocity(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -252,7 +252,7 @@ This function uses the following values of errno when an error state is reached:
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_voltage(12000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_voltage(0);</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -282,7 +282,7 @@ This function uses the following values of errno when an error state is reached:
 <bold>Example</bold> <programlisting><codeline><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><ref refid="group__cpp-motors_1ga1e122f68ae9831149e1f271e49a2503b" kindref="member">Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_voltage(12000);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(1000);<sp/></highlight><highlight class="comment">//<sp/>Move<sp/>at<sp/>max<sp/>voltage<sp/>for<sp/>1<sp/>second</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.brake();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -320,9 +320,9 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(100);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.modify_profiled_velocity(0);<sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>the<sp/>motor<sp/>early</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -367,7 +367,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The target position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Target:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_target_position();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>100</highlight><highlight class="normal"></highlight></codeline>
@@ -409,13 +409,13 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_velocity(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Velocity:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_target_velocity();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>value<sp/>of<sp/>E_CONTROLLER_ANALOG_LEFT_Y</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -455,11 +455,11 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_MASTER,<sp/>E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Actual<sp/>velocity:<sp/>%lf\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_actual_velocity());</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -501,12 +501,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Draw:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_current_draw();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -548,12 +548,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Direction:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_direction();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -596,12 +596,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Efficiency:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_efficiency();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -644,11 +644,11 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>A bitfield containing the motor&apos;s faults.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_faults();pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_faults();<ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -691,12 +691,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>A bitfield containing the motor&apos;s flags.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_faults();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -738,12 +738,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Position:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -785,12 +785,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Power:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_power();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -844,13 +844,13 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The raw encoder count at the given timestamp or PROS_ERR if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/><ref refid="namespacepros_1_1rtos_1acd8d13c328bebdf9eddea27ff9448c2d" kindref="member">pros::millis</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Position:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_raw_position(&amp;now);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -892,12 +892,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Temperature:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_temperature();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -939,12 +939,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Torque:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_torque();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -986,12 +986,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_voltage();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1033,12 +1033,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>current<sp/>limit?:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_over_current();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1080,12 +1080,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>temperature<sp/>limit?:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_over_temp();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1129,10 +1129,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>One of MotorBrake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
+<simplesect kind="return"><para>One of <ref refid="namespacepros_1_1v5_1a4bbc51927291bf7b40f671bb83050356" kindref="member">MotorBrake</ref>, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1175,10 +1175,10 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>The motor&apos;s current limit in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Limit:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_current_limit();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1217,10 +1217,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>One of MotorUnits according to what is set for the motor or E_MOTOR_ENCODER_INVALID if the operation failed.</para>
+<simplesect kind="return"><para>One of <ref refid="namespacepros_1_1v5_1aea59920620d1c7618398359ee93f303e" kindref="member">MotorUnits</ref> according to what is set for the motor or E_MOTOR_ENCODER_INVALID if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1259,10 +1259,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>One of MotorGears according to what is set for the motor, or pros::MotorGears::invalid if the operation failed.</para>
+<simplesect kind="return"><para>One of <ref refid="namespacepros_1_1v5_1a3bad47afb79fa112f199d2c5f54eec8d" kindref="member">MotorGears</ref> according to what is set for the motor, or pros::MotorGears::invalid if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Gearing:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1303,7 +1303,7 @@ This function uses the following values of errno when an error state is reached:
 </parameteritem>
 </parameterlist>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage<sp/>Limit:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_voltage_limit();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1344,7 +1344,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the motor has been reversed and 0 if the motor was not reversed, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>reversed?<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_reversed();</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;0&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1384,10 +1384,10 @@ This function uses the following values of errno when an error state is reached:
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>One of MotorType according to the type of the motor, or pros::MotorType::invalid if the operation failed.</para>
+<simplesect kind="return"><para>One of <ref refid="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3" kindref="member">MotorType</ref> according to the type of the motor, or pros::MotorType::invalid if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Type:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_type();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1426,7 +1426,7 @@ This function uses the following values of errno when an error state is reached:
 <parametername>mode</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The MotorBrake to set for the motor</para>
+<para>The <ref refid="namespacepros_1_1v5_1a4bbc51927291bf7b40f671bb83050356" kindref="member">MotorBrake</ref> to set for the motor</para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1441,7 +1441,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1468,7 +1468,7 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets one of MotorBrake to the motor. </para>
+<para>Sets one of <ref refid="namespacepros_1_1v5_1a4bbc51927291bf7b40f671bb83050356" kindref="member">MotorBrake</ref> to the motor. </para>
         </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is one of many <ref refid="classpros_1_1v5_1_1Motor" kindref="compound">Motor</ref> functions that takes in an optional index parameter. This parameter can be ignored by most users but exists to give a shared base class for motors and motor groups</para>
@@ -1481,7 +1481,7 @@ This function uses the following values of errno when an error state is reached:
 <parametername>mode</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>The MotorBrake to set for the motor</para>
+<para>The <ref refid="namespacepros_1_1v5_1a4bbc51927291bf7b40f671bb83050356" kindref="member">MotorBrake</ref> to set for the motor</para>
 </parameterdescription>
 </parameteritem>
 <parameteritem>
@@ -1496,7 +1496,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1551,14 +1551,14 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_current_limit(1000);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>reduce<sp/>its<sp/>output<sp/>at<sp/>1000<sp/>mA<sp/>instead<sp/>of<sp/>the<sp/>default<sp/>2500<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1584,7 +1584,7 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets one of MotorUnits for the motor encoder. </para>
+<para>Sets one of <ref refid="namespacepros_1_1v5_1aea59920620d1c7618398359ee93f303e" kindref="member">MotorUnits</ref> for the motor encoder. </para>
         </briefdescription>
         <detaileddescription>
 <para>Works with the C enum and the C++ enum class.</para>
@@ -1601,7 +1601,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_encoder_units(<ref refid="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" kindref="member">E_MOTOR_ENCODER_DEGREES</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1628,7 +1628,7 @@ This function uses the following values of errno when an error state is reached:
           <defval>0</defval>
         </param>
         <briefdescription>
-<para>Sets one of MotorUnits for the motor encoder. </para>
+<para>Sets one of <ref refid="namespacepros_1_1v5_1aea59920620d1c7618398359ee93f303e" kindref="member">MotorUnits</ref> for the motor encoder. </para>
         </briefdescription>
         <detaileddescription>
 <para>Works with the C enum and the C++ enum class.</para>
@@ -1659,7 +1659,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_encoder_units(<ref refid="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" kindref="member">E_MOTOR_ENCODER_DEGREES</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1717,7 +1717,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_gearing(<ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gearset:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1773,7 +1773,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_gearing(<ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gearset:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1828,7 +1828,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_reversed(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>this<sp/>motor<sp/>reversed?<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_reversed();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -1871,14 +1871,14 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_voltage_limit(10000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -1933,12 +1933,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_zero_position(80);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>20<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -1979,7 +1979,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
@@ -2082,7 +2082,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the target position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Target:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_target_position_all()[0];</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>100</highlight><highlight class="normal"></highlight></codeline>
@@ -2111,13 +2111,13 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the commanded motor velocity from +-100, +-200, or +-600, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_velocity(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Velocity:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_target_velocity_all()[0];</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>value<sp/>of<sp/>E_CONTROLLER_ANALOG_LEFT_Y</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2144,13 +2144,13 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s actual velocity in RPM or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_velocity(master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y));</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Velocity:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_actual_velocity_all()[0];</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>the<sp/>value<sp/>of<sp/>E_CONTROLLER_ANALOG_LEFT_Y</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2178,12 +2178,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s current in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Draw:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_current_draw_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2211,12 +2211,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing 1 for moving in the positive direction, -1 for moving in the negative direction, and PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Direction:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_direction_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2245,12 +2245,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing The motor&apos;s efficiency in percent or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Efficiency:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_efficiency();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2279,12 +2279,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A bitfield containing the motor&apos;s faults.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_faults_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2313,12 +2313,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A bitfield containing the motor&apos;s flags.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Faults:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_faults_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2346,12 +2346,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s absolute position in its encoder units or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Position:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_position_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2379,12 +2379,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s power draw in Watts or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Power:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_power_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2422,13 +2422,13 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>A vector containing the raw encoder count at the given timestamp or PROS_ERR if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/>pros::millis();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>std::uint32_t<sp/>now<sp/>=<sp/><ref refid="namespacepros_1_1rtos_1acd8d13c328bebdf9eddea27ff9448c2d" kindref="member">pros::millis</ref>();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Position:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_raw_position(&amp;now);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2455,12 +2455,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector contaioning the motor&apos;s temperature in degrees Celsius or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Temperature:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_temperature_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2487,12 +2487,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s torque in Nm or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Torque:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_torque();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2519,12 +2519,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector of the motor&apos;s voltage in mV or PROS_ERR_F if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_voltage_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2551,12 +2551,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing 1 if the motor&apos;s current limit is being exceeded and 0 if the current limit is not exceeded, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>current<sp/>limit?:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_over_current_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2583,12 +2583,12 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing 1 if the temperature limit is exceeded and 0 if the temperature is below the limit, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>over<sp/>its<sp/>temperature<sp/>limit?:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_over_temp_all();</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2615,7 +2615,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>One of Motor_Brake, according to what was set for the motor, or E_MOTOR_BRAKE_INVALID if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -2644,10 +2644,10 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s current limit in mA or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Current<sp/>Limit:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_current_limit_all()[0];</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2674,7 +2674,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing One of Motor_Units according to what is set for the motor or E_MOTOR_ENCODER_INVALID if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units_all()[0];</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2701,7 +2701,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing one of Motor_Gears according to what is set for the motor, or pros::Motor_Gears::invalid if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Gearing:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing_all()[0];</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2751,7 +2751,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing the motor&apos;s voltage limit in V or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Voltage<sp/>Limit:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_voltage_limit_all()[0];</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2777,7 +2777,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>A vector containing 1 if the motor has been reversed and 0 if the motor was not reversed, or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>the<sp/>motor<sp/>reversed?<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_reversed_all()[0];</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Prints<sp/>&quot;0&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -2802,10 +2802,10 @@ This function uses the following values of errno when an error state is reached:
         </briefdescription>
         <detaileddescription>
 <para>This function uses the following values of errno when an error state is reached: ENODEV - The port cannot be configured as a motor</para>
-<para><simplesect kind="return"><para>A vector containing one of MotorType according to the type of the motor, or pros::MotorType::invalid if the operation failed.</para>
+<para><simplesect kind="return"><para>A vector containing one of <ref refid="namespacepros_1_1v5_1a3f29f8952bca737db7bc832cd0a6d6f3" kindref="member">MotorType</ref> according to the type of the motor, or pros::MotorType::invalid if the operation failed.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1,<sp/><ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>,<sp/><ref refid="namespacepros_1a49625743f6507832dd2e739712335b7bad1911b04d55f80e665634a2863386e86" kindref="member">E_MOTOR_ENCODER_COUNTS</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>Type:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_type_all()[0];</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2842,7 +2842,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode_all(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -2880,7 +2880,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_brake_mode_all(<ref refid="namespacepros_1aca70ad847e8a0985d312e02294869f1baaa23ffec0b250ce72e7159b8de3d4b8d" kindref="member">pros::E_MOTOR_BRAKE_HOLD</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Brake<sp/>Mode:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_brake_mode();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -2918,14 +2918,14 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a1903abdb5ef0f301d660754c8315fc17" kindref="member">opcontrol</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_current_limit_all(1000);</highlight></codeline>
 <codeline><highlight class="normal"></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/><ref refid="group__c-misc_1gaed67feb70cbdb115e9ec2c7cc28a5da8" kindref="member">controller_get_analog</ref>(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>reduce<sp/>its<sp/>output<sp/>at<sp/>1000<sp/>mA<sp/>instead<sp/>of<sp/>the<sp/>default<sp/>2500<sp/>mA</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -2976,7 +2976,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_encoder_units_all(<ref refid="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" kindref="member">E_MOTOR_ENCODER_DEGREES</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -3017,7 +3017,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_encoder_units_all(<ref refid="namespacepros_1a49625743f6507832dd2e739712335b7ba3f8b78d1687e80752406e90ca3bd9caf" kindref="member">E_MOTOR_ENCODER_DEGREES</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Encoder<sp/>Units:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_encoder_units();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -3056,7 +3056,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_gearing_all(<ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gearset:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -3095,7 +3095,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_gearing_all(<ref refid="namespacepros_1a91f7e3d7eea68bd25b0d724136394fb1a33f143e34739e15a553885015455db37" kindref="member">E_MOTOR_GEARSET_06</ref>);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Gearset:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.get_gearing();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -3133,7 +3133,7 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a9efe22aaead3a5e936b5df459de02eba" kindref="member">initialize</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_reversed_all(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Is<sp/>this<sp/>motor<sp/>reversed?<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.is_reversed();</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
@@ -3183,14 +3183,14 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Controller" kindref="compound">pros::Controller</ref><sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Controller<sp/>master<sp/>(E_CONTROLLER_MASTER);</highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_voltage_limit_all(10000);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>=<sp/>master.get_analog(E_CONTROLLER_ANALOG_LEFT_Y);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>motor<sp/>will<sp/>not<sp/>output<sp/>more<sp/>than<sp/>10<sp/>V</highlight><highlight class="normal"></highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>pros::delay(2);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacepros_1_1rtos_1ab8c5a8048d5576a33d7f79b95a2fa0dd" kindref="member">pros::delay</ref>(2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
@@ -3228,12 +3228,12 @@ This function uses the following values of errno when an error state is reached:
 <simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.set_zero_position_all(80);</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>80<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>20<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> </para>
         </detaileddescription>
@@ -3259,7 +3259,7 @@ This function uses the following values of errno when an error state is reached:
 <para><simplesect kind="return"><para>1 if the operation was successful or PROS_ERR if the operation failed, setting errno.</para>
 </simplesect>
 <bold>Example</bold> <programlisting><codeline><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="main_8h_1a2df3d06bc5bced154da27fce393f991f" kindref="member">autonomous</ref>()<sp/>{</highlight></codeline>
-<codeline><highlight class="normal"><sp/><sp/><ref refid="classpros_1_1v5_1_1Motor" kindref="compound">pros::Motor</ref><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pros::Motor<sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref><sp/>(1);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>Moves<sp/>100<sp/>units<sp/>forward</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><ref refid="group__cpp-device_1ggad258d4c51629346fceac4679b3209ad9a59417166c47f7e6b70d1a6701bf4efdd" kindref="member">motor</ref>.move_absolute(100,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>This<sp/>does<sp/>not<sp/>cause<sp/>a<sp/>movement</highlight><highlight class="normal"></highlight></codeline>
 <codeline><highlight class="normal"></highlight></codeline>
